@@ -1,6 +1,67 @@
-// TODO after update all "@nrwl/*"-packages to 13.8.6+:
-// 1. Drop this file
-// 2. Rename "tsconfig.base.json" => "tsconfig.json"
 {
-    "extends": "./tsconfig.base.json"
+    "compileOnSave": false,
+    "angularCompilerOptions": {
+        "enableIvy": true,
+        "compilationMode": "partial",
+        "preserveWhitespaces": false,
+        "annotateForClosureCompiler": false,
+        "skipTemplateCodegen": true,
+        "strictMetadataEmit": true,
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true,
+        "enableResourceInlining": true,
+        "strictLiteralTypes": true,
+        "strictInputTypes": true,
+        "strictInputAccessModifiers": true,
+        "strictNullInputTypes": true,
+        "strictAttributeTypes": true,
+        "strictSafeNavigationTypes": true,
+        "strictDomLocalRefTypes": true,
+        "strictOutputEventTypes": true,
+        "strictDomEventTypes": true,
+        "strictContextGenerics": true
+    },
+    "compilerOptions": {
+        "strict": true,
+        "baseUrl": "./",
+        "outDir": "./dist",
+        "target": "es2015",
+        "module": "es2020",
+        "lib": ["es2017", "es2018.asynciterable", "dom"],
+        "typeRoots": ["node_modules/@types"],
+        "skipLibCheck": true,
+        "downlevelIteration": true,
+        "skipDefaultLibCheck": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "importHelpers": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noUnusedParameters": true,
+        "incremental": true,
+        "newLine": "lf",
+        "alwaysStrict": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noStrictGenericChecks": false,
+        "allowUmdGlobalAccess": true,
+        "useDefineForClassFields": false,
+        "forceConsistentCasingInFileNames": true,
+        "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
+        "noImplicitOverride": true,
+        "paths": {}
+    },
+    "ts-node": {
+        "files": true,
+        "transpileOnly": true,
+        "compilerOptions": {
+            "types": ["node"],
+            "module": "commonjs"
+        }
+    }
 }

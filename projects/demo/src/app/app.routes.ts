@@ -1,20 +1,44 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {StaticComponent} from './modules/static/static.component';
+import {DemoPath} from './constants/demo-path';
 
 export const appRoutes: Routes = [
+    // Getting started
     {
-        path: '',
-        component: StaticComponent,
+        path: DemoPath.WhatIsMaskito,
+        loadChildren: async () =>
+            import(`./pages/documentation/what-is-maskito/what-is-maskito.module`).then(
+                m => m.WhatIsMaskitoDocPageModule,
+            ),
+        data: {
+            title: `What is Maskito?`,
+        },
+    },
+    // Core concepts
+    {
+        path: DemoPath.CoreConceptsOverview,
+        loadChildren: async () =>
+            import(
+                `./pages/documentation/core-concepts-overview/core-concepts-overview.module`
+            ).then(m => m.CoreConceptsOverviewDocPageModule),
+        data: {
+            title: `Core concepts`,
+        },
     },
     {
-        path: 'lazy',
-        loadChildren: () => import(`./modules/lazy/lazy.module`).then(m => m.LazyModule),
+        path: DemoPath.Changelog,
+        loadChildren: async () =>
+            import(`./pages/documentation/changelog/changelog.module`).then(
+                m => m.ChangelogModule,
+            ),
+        data: {
+            title: `Changelog`,
+        },
     },
     {
         path: '**',
-        redirectTo: '',
+        redirectTo: DemoPath.WhatIsMaskito,
     },
 ];
 
@@ -23,7 +47,7 @@ export const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes, {
             initialNavigation: 'enabledBlocking',
             relativeLinkResolution: 'corrected',
-            scrollPositionRestoration: 'enabled',
+            scrollPositionRestoration: `enabled`,
         }),
     ],
     exports: [RouterModule],

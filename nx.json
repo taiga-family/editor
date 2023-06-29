@@ -1,23 +1,11 @@
 {
-    "implicitDependencies": {
-        "angular.json": "*",
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        ".eslintrc.js": "*",
-        "nx.json": "*",
-        "karma.*.js": "*",
-        "tsconfig.*.json": "*",
-        "tsconfig.json": "*"
-    },
-    "npmScope": "angular-open-source-starter",
+    "npmScope": "tui-editor",
     "tasksRunnerOptions": {
         "default": {
-            "runner": "@nrwl/nx-cloud",
+            "runner": "nx-cloud",
             "options": {
                 "cacheableOperations": ["build", "test", "lint"],
-                "parallel": 1
+                "parallel": 3
             }
         }
     },
@@ -29,22 +17,29 @@
         "appsDir": "projects"
     },
     "defaultProject": "demo",
-    "generators": {
-        "@nrwl/js:library": {
-            "buildable": true,
-            "strict": true,
-            "linter": "none",
-            "unitTestRunner": "jest",
-            "config": "project"
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "sharedGlobals": [
+            "{workspaceRoot}/angular.json",
+            "{workspaceRoot}/nx.json",
+            "{workspaceRoot}/karma.*.js",
+            "{workspaceRoot}/tsconfig.*.json",
+            "{workspaceRoot}/tsconfig.json"
+        ],
+        "production": [
+            "default",
+            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+            "!{projectRoot}/tsconfig.spec.json",
+            "!{projectRoot}/jest.config.[jt]s"
+        ]
+    },
+    "targetDefaults": {
+        "build": {
+            "inputs": ["production", "^production"]
         },
-        "@nrwl/angular:library": {
-            "buildable": true,
-            "compilationMode": "partial",
-            "linter": "none",
-            "unitTestRunner": "jest",
-            "strict": true,
-            "skipModule": true,
-            "standaloneConfig": true
+        "test": {
+            "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
         }
     }
 }
