@@ -11,7 +11,7 @@ import {switchMap} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChangelogComponent {
-    readonly changelog$ = of(import('../../../../../../../CHANGELOG.md?raw')).pipe(
+    readonly changelog$ = of(import('../../../../../../CHANGELOG.md?raw')).pipe(
         switchMap(tuiRawLoad),
     );
 }

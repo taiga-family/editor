@@ -4,15 +4,15 @@ import {DemoPath} from '../constants';
 
 export const DEMO_PAGES: TuiDocPages = [
     {
-        section: 'Getting started',
-        title: 'What is Maskito?',
-        route: DemoPath.WhatIsTuiEditor,
-        keywords: 'getting, started, what, is, maskito',
+        section: 'Overview',
+        title: 'Introduction',
+        route: DemoPath.Introduction,
+        keywords: 'getting, started, introduction, what, is, editor',
     },
     {
-        section: 'Core concepts',
-        title: 'Overview',
-        route: DemoPath.CoreConceptsOverview,
-        keywords: 'core, concepts, overview',
+        section: 'Overview',
+        title: 'Installation',
+        route: DemoPath.Installation,
+        keywords: 'installation',
     },
 ];

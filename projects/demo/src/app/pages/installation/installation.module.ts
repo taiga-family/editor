@@ -2,10 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 
-import {WhatIsTuiEditorPageComponent} from './what-is-tui-editor.component';
+import {InstallationPageComponent} from './installation.component';
 
 @NgModule({
     imports: [
@@ -14,9 +14,10 @@ import {WhatIsTuiEditorPageComponent} from './what-is-tui-editor.component';
         TuiIslandModule,
         TuiLinkModule,
         TuiMarkerIconModule,
-        RouterModule.forChild(tuiGenerateRoutes(WhatIsTuiEditorPageComponent)),
+        TuiNotificationModule,
+        RouterModule.forChild(tuiGenerateRoutes(InstallationPageComponent)),
     ],
-    declarations: [WhatIsTuiEditorPageComponent],
-    exports: [WhatIsTuiEditorPageComponent],
+    declarations: [InstallationPageComponent],
+    exports: [InstallationPageComponent],
 })
-export class WhatIsTuiEditorPageModule {}
+export class InstallationPageModule {}

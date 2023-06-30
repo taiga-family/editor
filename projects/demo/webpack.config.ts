@@ -1,5 +1,10 @@
+import {GLOBAL_DEFS_FOR_TERSER_WITH_AOT} from '@angular/compiler-cli';
+import {tuiIsObject} from '@taiga-ui/cdk';
+import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
+
+const CI_MODE = process.env[`TUI_CI`] === `true`;
 
 /**
  * We can't just import TS-file to get its content
@@ -14,20 +19,17 @@ import {merge} from 'webpack-merge';
  * ```
  * @see https://webpack.js.org/guides/asset-modules/#replacing-inline-loader-syntax
  */
-const RAW_QUERY = /raw/;
+const RAW_TS_QUERY = /raw/;
 
 /**
  * Default Angular configurations have rules to compile (uglify) ts/less-files.
  * We don't need any transformations for RAW loading of these files.
  */
-const DONT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`, `*.css`];
+const DO_NOT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`];
 
 /**
  * [Fixed bug in Node.js 18]
  * error:0308010C:digital envelope routines::unsupported
- *
- * TODO: after upgrading of angular/nx deps run `npm audit fix` and drop this temporary workaround
- * Learn more: https://stackoverflow.com/a/73027407
  *
  * https://github.com/webpack/webpack/issues/13572#issuecomment-923736472
  * Useful when needing to revert to a legacy algorithm
@@ -43,14 +45,39 @@ const DONT_MUTATE_RAW_FILE_CONTENTS = [`*.ts`, `*.less`, `*.html`, `*.css`];
  *
  * instead of:
  */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const crypto = require(`crypto`);
 const fallbackCreateHash = crypto.createHash;
 
 crypto.createHash = (algorithm: string) =>
     fallbackCreateHash(algorithm === `md4` ? `sha256` : algorithm);
 
+const TERSER_PLUGIN = new TerserPlugin({
+    parallel: true,
+    extractComments: false,
+    terserOptions: {
+        ecma: 2015,
+        mangle: true,
+        module: true,
+        sourceMap: false,
+        compress: {
+            passes: 3,
+            keep_fnames: false,
+            keep_classnames: false,
+            pure_funcs: [`forwardRef`],
+            global_defs: GLOBAL_DEFS_FOR_TERSER_WITH_AOT,
+        },
+        format: {
+            comments: false,
+        },
+    },
+});
+
 const config: Configuration = {
+    resolve: {
+        fallback: {
+            punycode: false,
+        },
+    },
     module: {
         /**
          * With Webpack 5, the raw-loader is no longer needed.
@@ -60,27 +87,30 @@ const config: Configuration = {
         rules: [
             {
                 test: /\.(ts|html|css|less|md|svg)$/i,
-                resourceQuery: RAW_QUERY,
+                resourceQuery: RAW_TS_QUERY,
                 type: `asset/source`,
             },
         ],
     },
-    resolve: {
-        alias: {
-            vue$: 'vue/dist/vue.esm-bundler.js',
-        },
-    },
+    ...(CI_MODE
+        ? {
+              mode: `production`,
+              plugins: [TERSER_PLUGIN],
+              optimization: {minimize: true, minimizer: [TERSER_PLUGIN]},
+          }
+        : {}),
 };
 
+// noinspection JSUnusedGlobalSymbols
 export default (ngConfigs: Configuration): Configuration => {
     const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
         if (
-            typeof rule === `object` &&
-            DONT_MUTATE_RAW_FILE_CONTENTS.some(
-                pattern => rule?.test instanceof RegExp && rule.test?.test(pattern),
+            tuiIsObject(rule) &&
+            DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
+                pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )
         ) {
-            return {...rule, resourceQuery: {not: [RAW_QUERY]}};
+            return {...rule, resourceQuery: {not: [RAW_TS_QUERY]}};
         }
 
         return rule;
