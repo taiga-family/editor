@@ -6,8 +6,11 @@
     "prefix": "app",
     "targets": {
         "build": {
-            "executor": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-builders/custom-webpack:browser",
             "options": {
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.config.ts"
+                },
                 "baseHref": "/",
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
@@ -15,8 +18,24 @@
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "aot": false,
-                "assets": ["projects/demo/src/favicon.ico"],
-                "styles": ["projects/demo/src/styles.css"],
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "projects/demo/src/assets/",
+                        "output": "./assets/"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "node_modules/@taiga-ui/icons/src",
+                        "output": "assets/taiga-ui/icons"
+                    }
+                ],
+                "styles": [
+                    "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+                    "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+                    "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+                    "projects/demo/src/styles.less"
+                ],
                 "scripts": [],
                 "vendorChunk": true,
                 "extractLicenses": false,
@@ -27,6 +46,30 @@
             },
             "configurations": {
                 "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "projects/demo/src/environments/environment.ts",
+                            "with": "projects/demo/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "aot": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "2mb",
+                            "maximumError": "10mb"
+                        }
+                    ]
+                },
+                "github": {
+                    "baseHref": "/maskito/",
                     "fileReplacements": [
                         {
                             "replace": "projects/demo/src/environments/environment.ts",
@@ -61,15 +104,17 @@
                     "echo 'Github pages require special baseHref + 404.html'",
                     "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
                     "echo ------",
-                    "nx build --base-href='/angular-open-source-starter/'",
-                    "cp dist/demo/browser/index.html dist/demo/browser/404.html"
+                    "nx build -c github",
+                    "cp dist/demo/browser/index.html dist/demo/browser/404.html",
+                    "nx run demo:prerender -c github"
                 ]
             }
         },
         "serve": {
-            "executor": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-builders/custom-webpack:dev-server",
             "options": {
                 "browserTarget": "demo:build",
+                "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
             },
@@ -84,13 +129,13 @@
             "defaultConfiguration": "development"
         },
         "serve-ip": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "@nrwl/workspace:run-commands",
             "options": {
                 "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
             }
         },
         "serve-ssl": {
-            "builder": "@nrwl/workspace:run-commands",
+            "executor": "@nrwl/workspace:run-commands",
             "options": {
                 "parallel": false,
                 "commands": [
@@ -105,16 +150,19 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/projects/demo"],
+            "executor": "@nx/jest:jest",
+            "outputs": ["coverage/demo"],
             "options": {
-                "jestConfig": "projects/demo/jest.config.js",
+                "jestConfig": "jest.config.ts",
                 "passWithNoTests": true
             }
         },
         "server": {
-            "executor": "@angular-devkit/build-angular:server",
+            "executor": "@angular-builders/custom-webpack:server",
             "options": {
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.config.ts"
+                },
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server.ts",
                 "tsConfig": "projects/demo/tsconfig.server.json",
@@ -135,7 +183,8 @@
             "executor": "@nguniversal/builders:ssr-dev-server",
             "options": {
                 "browserTarget": "demo:build",
-                "serverTarget": "demo:server"
+                "serverTarget": "demo:server",
+                "port": 3333
             },
             "configurations": {
                 "production": {
@@ -149,16 +198,36 @@
             },
             "defaultConfiguration": "development"
         },
+        "generate-routes-file": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "command": "ts-node ./scripts/generate-demo-routes-file.ts"
+            },
+            "configurations": {
+                "github": {}
+            },
+            "defaultConfiguration": "github"
+        },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
             "options": {
                 "browserTarget": "demo:build:production",
                 "serverTarget": "demo:server:production",
-                "routes": ["/"]
+                "routesFile": "./projects/demo/routesFile.txt"
             },
             "configurations": {
-                "production": {}
-            }
+                "production": {},
+                "github": {
+                    "browserTarget": "demo:build:github"
+                }
+            },
+            "dependsOn": [
+                {
+                    "target": "generate-routes-file",
+                    "projects": "self",
+                    "params": "ignore"
+                }
+            ]
         }
     }
 }

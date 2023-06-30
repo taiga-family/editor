@@ -1,16 +1,37 @@
-<blockquote>
-    Import from your library in this demo project as if you were using it as an
-    NPM package
-</blockquote>
-<blockquote>
-    <a
-        routerLink="."
-        style="margin-right: 16px"
-    >
-        Static component
-    </a>
-    <a routerLink="/lazy">Lazy component</a>
-</blockquote>
-<blockquote>
-    <router-outlet></router-outlet>
-</blockquote>
+<tui-doc-main>
+    <ng-container ngProjectAs="tuiDocHeader">
+        <a
+            tuiLink
+            tuiMode="onLight"
+            href="https://github.com/tinkoff/maskito"
+            title="Maskito source code on GitHub"
+            rel="noreferrer"
+            iconAlign="left"
+            icon="assets/icons/github.svg"
+            target="_blank"
+            class="link"
+        ></a>
+
+        <a
+            tuiLink
+            tuiMode="onLight"
+            href="https://t.me/taiga_ui"
+            title="Get help on Telegram"
+            iconAlign="left"
+            rel="noreferrer"
+            icon="assets/icons/telegram.svg"
+            target="_blank"
+            class="link"
+        ></a>
+
+        <a
+            tuiLink
+            tuiMode="onLight"
+            title="Maskito StackBlitz Starter"
+            iconAlign="left"
+            icon="assets/icons/stackblitz.svg"
+            class="link"
+            [routerLink]="stackblitzStarterPath"
+        ></a>
+    </ng-container>
+</tui-doc-main>

@@ -1,0 +1,21 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.islands-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    @media @tui-mobile {
+        flex-direction: column;
+    }
+}
+
+.island {
+    flex: 1;
+    min-width: 14rem;
+
+    @media @tui-desktop-min {
+        max-width: 40%;
+    }
+}

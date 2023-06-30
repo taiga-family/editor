@@ -1,25 +1,27 @@
 import {APP_BASE_HREF} from '@angular/common';
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Router} from '@angular/router';
 
 import {AppBrowserModule} from './app.browser.module';
 import {AppComponent} from './app.component';
+import {DemoPath} from './constants/demo-path';
 
 describe('Test dummy', () => {
-    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [AppBrowserModule],
+            declarations: [AppComponent],
             providers: [{provide: APP_BASE_HREF, useValue: '/'}],
         });
 
-        component = TestBed.createComponent(AppComponent);
+        fixture = TestBed.createComponent(AppComponent);
     });
 
-    it('AppComponent compiles properly', () => {
-        TestBed.inject(Router).navigate(['/lazy']);
+    it('AppComponent compiles properly', async () => {
+        await TestBed.inject(Router).navigate([`/${DemoPath.WhatIsMaskito}`]);
 
-        expect(component).toBeTruthy();
+        expect(fixture.nativeElement.textContent).toContain('Why Maskito?');
     });
 });
