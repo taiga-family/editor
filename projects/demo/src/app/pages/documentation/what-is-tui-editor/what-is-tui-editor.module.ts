@@ -5,7 +5,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 
-import {WhatIsMaskitoDocPageComponent} from './what-is-maskito.component';
+import {WhatIsTuiEditorPageComponent} from './what-is-tui-editor.component';
 
 @NgModule({
     imports: [
@@ -14,9 +14,9 @@ import {WhatIsMaskitoDocPageComponent} from './what-is-maskito.component';
         TuiIslandModule,
         TuiLinkModule,
         TuiMarkerIconModule,
-        RouterModule.forChild(tuiGenerateRoutes(WhatIsMaskitoDocPageComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(WhatIsTuiEditorPageComponent)),
     ],
-    declarations: [WhatIsMaskitoDocPageComponent],
-    exports: [WhatIsMaskitoDocPageComponent],
+    declarations: [WhatIsTuiEditorPageComponent],
+    exports: [WhatIsTuiEditorPageComponent],
 })
-export class WhatIsMaskitoDocPageModule {}
+export class WhatIsTuiEditorPageModule {}

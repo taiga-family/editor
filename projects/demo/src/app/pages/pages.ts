@@ -6,7 +6,7 @@ export const DEMO_PAGES: TuiDocPages = [
     {
         section: 'Getting started',
         title: 'What is Maskito?',
-        route: DemoPath.WhatIsMaskito,
+        route: DemoPath.WhatIsTuiEditor,
         keywords: 'getting, started, what, is, maskito',
     },
     {

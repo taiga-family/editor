@@ -6,6 +6,6 @@
         "strict": false,
         "incremental": true
     },
-    "include": ["projects", "scripts"],
+    "include": ["projects"],
     "exclude": ["**/node_modules", "**/schematics/**", "**/.*/", "*.js"]
 }

@@ -69,7 +69,7 @@
                     ]
                 },
                 "github": {
-                    "baseHref": "/maskito/",
+                    "baseHref": "/tui-editor/",
                     "fileReplacements": [
                         {
                             "replace": "projects/demo/src/environments/environment.ts",
@@ -97,14 +97,14 @@
             "defaultConfiguration": "production"
         },
         "build-gh-pages": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
                 "commands": [
                     "echo 'Github pages require special baseHref + 404.html'",
                     "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
                     "echo ------",
-                    "nx build -c github",
+                    "nx build demo -c github",
                     "cp dist/demo/browser/index.html dist/demo/browser/404.html",
                     "nx run demo:prerender -c github"
                 ]
@@ -129,13 +129,13 @@
             "defaultConfiguration": "development"
         },
         "serve-ip": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
             }
         },
         "serve-ssl": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
                 "commands": [
@@ -199,9 +199,9 @@
             "defaultConfiguration": "development"
         },
         "generate-routes-file": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./scripts/generate-demo-routes-file.ts"
+                "command": "ts-node ./projects/demo/scripts/generate-demo-routes-file.ts"
             },
             "configurations": {
                 "github": {}
