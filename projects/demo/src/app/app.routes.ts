@@ -6,13 +6,13 @@ import {DemoPath} from './constants/demo-path';
 export const appRoutes: Routes = [
     // Getting started
     {
-        path: DemoPath.WhatIsMaskito,
+        path: DemoPath.WhatIsTuiEditor,
         loadChildren: async () =>
-            import(`./pages/documentation/what-is-maskito/what-is-maskito.module`).then(
-                m => m.WhatIsMaskitoDocPageModule,
-            ),
+            import(
+                `./pages/documentation/what-is-tui-editor/what-is-tui-editor.module`
+            ).then(m => m.WhatIsTuiEditorPageModule),
         data: {
-            title: `What is Maskito?`,
+            title: `What is tui-editor?`,
         },
     },
     // Core concepts
@@ -38,7 +38,7 @@ export const appRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: DemoPath.WhatIsMaskito,
+        redirectTo: DemoPath.WhatIsTuiEditor,
     },
 ];
 

@@ -1,5 +1,5 @@
 import {isPlatformBrowser, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {inject, PLATFORM_ID, Provider} from '@angular/core';
+import {ErrorHandler, inject, PLATFORM_ID, Provider} from '@angular/core';
 import {
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_LOGO,
@@ -12,8 +12,13 @@ import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 
 import {LOGO_CONTENT} from './modules/logo/logo.component';
 import {DEMO_PAGES} from './pages/pages';
+import {ServerErrorHandler} from './server-error-handler';
 
 export const APP_PROVIDERS: Provider[] = [
+    {
+        provide: ErrorHandler,
+        useClass: ServerErrorHandler,
+    },
     {
         provide: LocationStrategy,
         useClass: PathLocationStrategy,
@@ -37,7 +42,7 @@ export const APP_PROVIDERS: Provider[] = [
     {
         provide: TUI_DOC_SOURCE_CODE,
         useValue: (context: TuiDocSourceCodePathOptions) => {
-            const link = `https://github.com/tinkoff/maskito/tree/main/projects`;
+            const link = `https://github.com/tinkoff/tui-editor/tree/main/projects`;
 
             if (context.path) {
                 return `${link}/${context.path}`;
@@ -47,7 +52,7 @@ export const APP_PROVIDERS: Provider[] = [
                 return null;
             }
 
-            return `${link}/${context.package.toLowerCase()}/src/lib/masks/${(
+            return `${link}/${context.package.toLowerCase()}/src/lib/tui-editor/${(
                 context.header[0].toLowerCase() + context.header.slice(1)
             ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
         },

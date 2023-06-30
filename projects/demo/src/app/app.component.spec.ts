@@ -20,7 +20,7 @@ describe('Test dummy', () => {
     });
 
     it('AppComponent compiles properly', async () => {
-        await TestBed.inject(Router).navigate([`/${DemoPath.WhatIsMaskito}`]);
+        await TestBed.inject(Router).navigate([`/${DemoPath.WhatIsTuiEditor}`]);
 
         expect(fixture.nativeElement.textContent).toContain('Why Maskito?');
     });
