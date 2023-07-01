@@ -25,7 +25,7 @@ export const APP_PROVIDERS: Provider[] = [
     },
     {
         provide: TUI_DOC_TITLE,
-        useValue: 'Maskito | ',
+        useValue: 'TUI Editor | ',
     },
     {
         provide: TUI_DOC_LOGO,

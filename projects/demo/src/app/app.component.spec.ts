@@ -20,8 +20,8 @@ describe('Test dummy', () => {
     });
 
     it('AppComponent compiles properly', async () => {
-        await TestBed.inject(Router).navigate([`/${DemoPath.WhatIsTuiEditor}`]);
+        await TestBed.inject(Router).navigate([`/${DemoPath.Introduction}`]);
 
-        expect(fixture.nativeElement.textContent).toContain('Why Maskito?');
+        expect(fixture.nativeElement.textContent).toContain('TUI Editor');
     });
 });

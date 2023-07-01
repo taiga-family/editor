@@ -6,22 +6,22 @@ import {DemoPath} from './constants/demo-path';
 export const appRoutes: Routes = [
     // Getting started
     {
-        path: DemoPath.WhatIsTuiEditor,
+        path: DemoPath.Introduction,
         loadChildren: async () =>
-            import(
-                `./pages/documentation/what-is-tui-editor/what-is-tui-editor.module`
-            ).then(m => m.WhatIsTuiEditorPageModule),
+            import(`./pages/introduction/introduction.module`).then(
+                m => m.IntroductionPageModule,
+            ),
         data: {
             title: `What is tui-editor?`,
         },
     },
     // Core concepts
     {
-        path: DemoPath.CoreConceptsOverview,
+        path: DemoPath.Installation,
         loadChildren: async () =>
-            import(
-                `./pages/documentation/core-concepts-overview/core-concepts-overview.module`
-            ).then(m => m.CoreConceptsOverviewDocPageModule),
+            import(`./pages/installation/installation.module`).then(
+                m => m.InstallationPageModule,
+            ),
         data: {
             title: `Core concepts`,
         },
@@ -29,16 +29,14 @@ export const appRoutes: Routes = [
     {
         path: DemoPath.Changelog,
         loadChildren: async () =>
-            import(`./pages/documentation/changelog/changelog.module`).then(
-                m => m.ChangelogModule,
-            ),
+            import(`./pages/changelog/changelog.module`).then(m => m.ChangelogModule),
         data: {
             title: `Changelog`,
         },
     },
     {
         path: '**',
-        redirectTo: DemoPath.WhatIsTuiEditor,
+        redirectTo: DemoPath.Introduction,
     },
 ];
 

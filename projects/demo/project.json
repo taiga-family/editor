@@ -17,7 +17,6 @@
                 "main": "projects/demo/src/main.browser.ts",
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
-                "aot": false,
                 "assets": [
                     {
                         "glob": "**/*",
@@ -37,6 +36,7 @@
                     "projects/demo/src/styles.less"
                 ],
                 "scripts": [],
+                "aot": true,
                 "vendorChunk": true,
                 "extractLicenses": false,
                 "buildOptimizer": false,

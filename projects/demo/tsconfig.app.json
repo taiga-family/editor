@@ -1,5 +1,8 @@
 {
     "extends": "../../tsconfig.json",
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    },
     "compilerOptions": {
         "outDir": "../out-tsc/app"
     },

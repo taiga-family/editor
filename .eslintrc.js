@@ -17,6 +17,7 @@ module.exports = {
         '*.js',
         'setup-jest.ts',
         'jest.config.ts',
+        'webpack.config.ts',
         'generate-demo-routes-file.ts',
     ],
     parser: '@typescript-eslint/parser',

@@ -2,10 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 
-import {CoreConceptsOverviewDocPageComponent} from './core-concepts-overview.component';
+import {IntroductionPageComponent} from './introduction.component';
 
 @NgModule({
     imports: [
@@ -14,10 +14,9 @@ import {CoreConceptsOverviewDocPageComponent} from './core-concepts-overview.com
         TuiIslandModule,
         TuiLinkModule,
         TuiMarkerIconModule,
-        TuiNotificationModule,
-        RouterModule.forChild(tuiGenerateRoutes(CoreConceptsOverviewDocPageComponent)),
+        RouterModule.forChild(tuiGenerateRoutes(IntroductionPageComponent)),
     ],
-    declarations: [CoreConceptsOverviewDocPageComponent],
-    exports: [CoreConceptsOverviewDocPageComponent],
+    declarations: [IntroductionPageComponent],
+    exports: [IntroductionPageComponent],
 })
-export class CoreConceptsOverviewDocPageModule {}
+export class IntroductionPageModule {}
