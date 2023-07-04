@@ -74,47 +74,9 @@
                         }
                     ]
                 },
-                "github": {
-                    "baseHref": "/tui-editor/",
-                    "fileReplacements": [
-                        {
-                            "replace": "apps/demo/src/environments/environment.ts",
-                            "with": "apps/demo/src/environments/environment.prod.ts"
-                        }
-                    ],
-                    "optimization": true,
-                    "outputHashing": "all",
-                    "sourceMap": false,
-                    "namedChunks": false,
-                    "aot": true,
-                    "extractLicenses": true,
-                    "vendorChunk": false,
-                    "buildOptimizer": true,
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "2mb",
-                            "maximumError": "5mb"
-                        }
-                    ]
-                },
                 "development": {}
             },
             "defaultConfiguration": "production"
-        },
-        "build-gh-pages": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "echo 'Github pages require special baseHref + 404.html'",
-                    "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
-                    "echo ------",
-                    "nx build demo -c github",
-                    "cp dist/demo/index.html dist/demo/404.html",
-                    "nx run demo:prerender -c github"
-                ]
-            }
         },
         "serve": {
             "executor": "@angular-builders/custom-webpack:dev-server",
@@ -133,99 +95,6 @@
                 }
             },
             "defaultConfiguration": "development"
-        },
-        "serve-ip": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "nx serve --open --host 0.0.0.0 --disable-host-check"
-            }
-        },
-        "serve-ssl": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "echo \"mkcert is a simple tool for making locally-trusted development certificates\"",
-                    "echo \"Read about installation and more: https://github.com/FiloSottile/mkcert\"",
-                    "echo ------",
-                    "mkcert -install",
-                    "mkdir -p .ssl",
-                    "mkcert -key-file .ssl/localhost-key.pem -cert-file .ssl/localhost.pem localhost 127.0.0.1 ::1",
-                    "nx serve --ssl"
-                ]
-            }
-        },
-        "server": {
-            "executor": "@angular-builders/custom-webpack:server",
-            "options": {
-                "customWebpackConfig": {
-                    "path": "apps/demo/webpack.config.ts"
-                },
-                "outputPath": "dist/demo/server",
-                "main": "apps/demo/server.ts",
-                "tsConfig": "apps/demo/tsconfig.server.json",
-                "sourceMap": true,
-                "optimization": false
-            },
-            "configurations": {
-                "production": {
-                    "outputHashing": "media",
-                    "sourceMap": false,
-                    "optimization": true
-                },
-                "development": {}
-            },
-            "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-            "executor": "@nguniversal/builders:ssr-dev-server",
-            "options": {
-                "browserTarget": "demo:build",
-                "serverTarget": "demo:server",
-                "port": 3333
-            },
-            "configurations": {
-                "production": {
-                    "browserTarget": "demo:build:production",
-                    "serverTarget": "demo:server:production"
-                },
-                "development": {
-                    "serverTarget": "demo:server:development",
-                    "browserTarget": "demo:build:development"
-                }
-            },
-            "defaultConfiguration": "development"
-        },
-        "generate-routes-file": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "ts-node ./apps/demo/scripts/generate-demo-routes-file.ts"
-            },
-            "configurations": {
-                "github": {}
-            },
-            "defaultConfiguration": "github"
-        },
-        "prerender": {
-            "executor": "@nguniversal/builders:prerender",
-            "options": {
-                "browserTarget": "demo:build:production",
-                "serverTarget": "demo:server:production",
-                "routesFile": "./apps/demo/routesFile.txt"
-            },
-            "configurations": {
-                "production": {},
-                "github": {
-                    "browserTarget": "demo:build:github"
-                }
-            },
-            "dependsOn": [
-                {
-                    "target": "generate-routes-file",
-                    "projects": "self",
-                    "params": "ignore"
-                }
-            ]
         }
     }
 }

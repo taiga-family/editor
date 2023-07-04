@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": ["**/*.spec.ts"],
+    "compilerOptions": {
+        "outDir": "./dist/out-tsc/lib",
+        "declaration": true,
+        "sourceMap": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "paths": {
+            "@tinkoff/tui-editor/*": ["./dist/tui-editor/*"],
+            "@tinkoff/tui-editor": ["./dist/tui-editor/index"]
+        }
+    }
+}
