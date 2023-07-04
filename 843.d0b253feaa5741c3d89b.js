@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[843],{7843:e=>{e.exports='```html\n<tui-editor\n  exampleText="Example"\n  [(ngModel)]="model"\n>\n  Placeholder\n</tui-editor>\n```\n'}}]);
