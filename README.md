@@ -14,27 +14,9 @@
     <a href="https://t.me/taiga_ui">Contact Us</a>
 </p>
 
-**TUI Editor** is a rich text editor extension with related Taiga UI components.
-
-## Why
-
-- **Maskito** supports all user’s interactions with text fields: basic typing and deleting via keyboard, pasting,
-  dropping text inside with a pointer, browser autofill, predictive text from mobile native keyboard.
-
-- **Maskito** is robust. The whole project is developed with strict TypeScript mode. Our code is covered by hundreds of
-  [Cypress](https://www.cypress.io) tests.
-
-- Server Side Rendering and Shadow DOM support.
-
-- You can use it with `HTMLInputElement` and `HTMLTextAreaElement`.
-
-- **Maskito** core is zero-dependency package. You can mask input in your vanilla JavaScript project. However, we have
-  separate packages for Angular, React and Vue as well.
-
-- **Maskito** includes optional framework-agnostic package with configurable ready-to-use masks.
-
-No text field with invalid value! Use Maskito. **Mask it!** Learn more about the library in our
-[documentation](https://tinkoff.github.io/maskito).
+<p align="center">
+    <b>TUI Editor</b> is a rich text editor extension with related Taiga UI components.
+</p>
 
 ## Contributing
 
