@@ -13,8 +13,8 @@
         "defaultBase": "origin/main"
     },
     "workspaceLayout": {
-        "libsDir": "projects",
-        "appsDir": "projects"
+        "libsDir": "libs",
+        "appsDir": "apps"
     },
     "defaultProject": "demo",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",

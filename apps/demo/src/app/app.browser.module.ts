@@ -1,0 +1,92 @@
+import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+    TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_LOGO,
+    TUI_DOC_PAGES,
+    TUI_DOC_SOURCE_CODE,
+    TUI_DOC_TITLE,
+    TuiDocMainModule,
+    TuiDocSourceCodePathOptions,
+} from '@taiga-ui/addon-doc';
+import {TUI_SANITIZER, TuiLinkModule, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
+import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {MarkdownModule} from 'ngx-markdown';
+
+import {TuiAppComponent} from './app.component';
+import {TuiAppRoutingModule} from './app.routes';
+import {TUI_LOGO_CONTENT} from './modules/logo/logo.component';
+import {TuiLogoModule} from './modules/logo/logo.module';
+import {DEMO_PAGES} from './pages/pages';
+import {TuiServerErrorHandler} from './server-error-handler';
+
+@NgModule({
+    bootstrap: [TuiAppComponent],
+    imports: [
+        BrowserModule.withServerTransition({
+            appId: `demo`,
+        }),
+        TuiAppRoutingModule,
+        TuiRootModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        TuiLogoModule,
+        MarkdownModule.forRoot({loader: HttpClient}),
+        TuiDocMainModule,
+        TuiLinkModule,
+        TuiModeModule,
+    ],
+    declarations: [TuiAppComponent],
+    providers: [
+        {
+            provide: ErrorHandler,
+            useClass: TuiServerErrorHandler,
+        },
+        {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy,
+        },
+        {
+            provide: TUI_DOC_TITLE,
+            useValue: `TUI Editor | `,
+        },
+        {
+            provide: TUI_DOC_LOGO,
+            useValue: TUI_LOGO_CONTENT,
+        },
+        {
+            provide: TUI_DOC_DEFAULT_TABS,
+            useValue: [`Description and examples`, `API`],
+        },
+        {
+            provide: TUI_DOC_PAGES,
+            useValue: DEMO_PAGES,
+        },
+        {
+            provide: TUI_SANITIZER,
+            useClass: NgDompurifySanitizer,
+        },
+        {
+            provide: TUI_DOC_SOURCE_CODE,
+            useValue: (context: TuiDocSourceCodePathOptions) => {
+                const link = `https://github.com/tinkoff/tui-editor/tree/main/libs`;
+
+                if (context.path) {
+                    return `${link}/${context.path}`;
+                }
+
+                if (!context.package || context.package.toLowerCase() !== `kit`) {
+                    return null;
+                }
+
+                return `${link}/${context.package.toLowerCase()}/src/lib/tui-editor/${(
+                    context.header[0].toLowerCase() + context.header.slice(1)
+                ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+            },
+        },
+    ],
+})
+export class TuiAppBrowserModule {}

@@ -28,7 +28,8 @@
         "target": "es2015",
         "module": "es2020",
         "lib": ["es2017", "es2018.asynciterable", "dom"],
-        "typeRoots": ["node_modules/@types"],
+        "typeRoots": ["node_modules/@types", "libs/tui-editor/types"],
+        "types": ["ng-dev-mode"],
         "skipLibCheck": true,
         "downlevelIteration": true,
         "skipDefaultLibCheck": true,
@@ -54,7 +55,10 @@
         "forceConsistentCasingInFileNames": true,
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
         "noImplicitOverride": true,
-        "paths": {}
+        "paths": {
+            "@tinkoff/tui-editor": ["libs/tui-editor/index"],
+            "@tinkoff/tui-editor/*": ["libs/tui-editor/*"]
+        }
     },
     "ts-node": {
         "files": true,

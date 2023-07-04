@@ -5,5 +5,5 @@
         "module": "esnext",
         "types": ["jest"]
     },
-    "exclude": ["**/schematics/**/*", "projects/demo-integrations"]
+    "exclude": ["**/schematics/**/*", "apps/demo-integrations"]
 }
