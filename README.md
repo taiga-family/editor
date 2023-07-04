@@ -1,12 +1,14 @@
-# TUI Editor
+<div align="center">
+    <img src="apps/demo/src/assets/icons/logo.svg" alt="logo" height="120px">
+</div>
+
+<div align="center">
 
 [![npm version](https://img.shields.io/npm/v/@tinkoff/tui-editor.svg)](https://npmjs.com/package/@tinkoff/tui-editor)
 [![All packages CI](https://github.com/tinkoff/tui-editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/tinkoff/tui-editor/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/tinkoff/tui-editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/Tinkoff/tui-editor/tree/main/projects)
 
-<p align="center">
-    <img src="apps/demo/src/assets/icons/logo.svg" alt="logo" height="120px">
-</p>
+</div>
 
 <p align="center">
     <a href="https://tinkoff.github.io/tui-editor">Documentation</a> •
