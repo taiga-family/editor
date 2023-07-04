@@ -1,0 +1,64 @@
+name: ⚠️ Release @tinkoff/tui-editor
+on:
+  workflow_dispatch:
+    inputs:
+      forcePush:
+        type: boolean
+        required: false
+        description: --force-publish package
+      mode:
+        type: choice
+        description: force package to be versioned (depend --force-publish)
+        required: false
+        default: minor
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  run-release:
+    name: Run release
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+    steps:
+      - name: Fetch from origin repo
+        uses: actions/checkout@v3.5.3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.TINKOFF_BOT_PAT }}
+
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - name: Setup GIT username and NPM token
+        run: |
+          git config --global user.name "tinkoff-bot"
+          git config --global user.email "tinkoff-bot@tinkoff.ru"
+          git config remote.origin.url https://x-access-token:${{ secrets.TINKOFF_BOT_PAT }}@github.com/$GITHUB_REPOSITORY
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
+          NPM_WHOAMI_OUTPUT=$(npm whoami)
+          echo "::debug::npm whoami: ${NPM_WHOAMI_OUTPUT}"
+
+      - name: Lerna update version of packages
+        if: always()
+        run: |
+          if [[ ${{ github.event.inputs.forcePush }} == "true" ]]; then
+            npx lerna version ${{ github.event.inputs.type }} --no-private --force-publish
+          else
+              npx lerna version --no-private
+          fi
+
+      - name: Build
+        run: npx nx build tui-editor
+
+      - name: Publish
+        if: always()
+        run: npx nx publish tui-editor
+
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
