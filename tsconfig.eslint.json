@@ -3,9 +3,9 @@
     "compilerOptions": {
         "rootDir": ".",
         "baseUrl": ".",
-        "strict": false,
+        "strict": true,
         "incremental": true
     },
-    "include": ["projects"],
-    "exclude": ["**/node_modules", "**/schematics/**", "**/.*/", "*.js"]
+    "include": ["apps/**/*.ts", "libs/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],
+    "exclude": ["**/node_modules", "*.js"]
 }

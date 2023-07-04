@@ -1,0 +1,36 @@
+<tui-root>
+    <tui-doc-main>
+        <ng-container ngProjectAs="tuiDocHeader">
+            <a
+                tuiLink
+                tuiMode="onLight"
+                href="https://github.com/tinkoff/maskito"
+                title="Maskito source code on GitHub"
+                rel="noreferrer"
+                iconAlign="left"
+                icon="assets/icons/github.svg"
+                target="_blank"
+                class="link"
+            ></a>
+
+            <a
+                tuiLink
+                tuiMode="onLight"
+                href="https://t.me/taiga_ui"
+                title="Get help on Telegram"
+                iconAlign="left"
+                rel="noreferrer"
+                icon="assets/icons/telegram.svg"
+                target="_blank"
+                class="link"
+            ></a>
+        </ng-container>
+
+        <p
+            ngProjectAs="tuiDocNavigation"
+            class="app-version"
+        >
+            v{{ version }}
+        </p>
+    </tui-doc-main>
+</tui-root>
