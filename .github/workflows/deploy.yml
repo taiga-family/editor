@@ -13,7 +13,7 @@ jobs:
         uses: ./.github/actions/nodejs
 
       - name: Build demo
-        run: npm run build
+        run: npm run build -- --base-href="/tui-editor/"
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5

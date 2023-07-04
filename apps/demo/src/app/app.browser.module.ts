@@ -1,6 +1,6 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -21,7 +21,6 @@ import {TuiAppRoutingModule} from './app.routes';
 import {TUI_LOGO_CONTENT} from './modules/logo/logo.component';
 import {TuiLogoModule} from './modules/logo/logo.module';
 import {DEMO_PAGES} from './pages/pages';
-import {TuiServerErrorHandler} from './server-error-handler';
 
 @NgModule({
     bootstrap: [TuiAppComponent],
@@ -41,10 +40,6 @@ import {TuiServerErrorHandler} from './server-error-handler';
     ],
     declarations: [TuiAppComponent],
     providers: [
-        {
-            provide: ErrorHandler,
-            useClass: TuiServerErrorHandler,
-        },
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy,
