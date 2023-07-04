@@ -1,11 +1,12 @@
-name: Deploy
+name: Build
 on:
+  pull_request:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,14 +16,6 @@ jobs:
       - name: Build demo
         run: npm run build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        with:
-          branch: gh-pages
-          folder: dist/demo
-          silent: false
-          clean: true
-
 concurrency:
-  group: deploy-${{ github.head_ref }}
+  group: build-${{ github.head_ref }}
   cancel-in-progress: true

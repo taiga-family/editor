@@ -13,8 +13,8 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Build demo
-        run: npm run build
+      - name: Build library
+        run: npx nx build tui-editor
 
 concurrency:
   group: build-${{ github.head_ref }}
