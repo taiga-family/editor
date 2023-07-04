@@ -1,7 +1,5 @@
 {
     "projectType": "application",
-    "generators": {},
-    "root": "apps/demo",
     "sourceRoot": "apps/demo/src",
     "prefix": "app",
     "targets": {
@@ -65,18 +63,24 @@
                     "aot": true,
                     "extractLicenses": true,
                     "vendorChunk": false,
-                    "buildOptimizer": true,
-                    "budgets": [
-                        {
-                            "type": "initial",
-                            "maximumWarning": "2mb",
-                            "maximumError": "10mb"
-                        }
-                    ]
+                    "buildOptimizer": true
                 },
                 "development": {}
             },
             "defaultConfiguration": "production"
+        },
+        "build-gh-pages": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "echo 'Github pages require special baseHref + 404.html'",
+                    "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
+                    "echo ------",
+                    "nx build demo --base-href=/tui-editor/",
+                    "cp dist/demo/index.html dist/demo/404.html"
+                ]
+            }
         },
         "serve": {
             "executor": "@angular-builders/custom-webpack:dev-server",

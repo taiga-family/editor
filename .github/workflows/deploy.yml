@@ -12,8 +12,8 @@ jobs:
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 
-      - name: Build demo
-        run: npm run build -- --base-href="/tui-editor/"
+      - name: Build demo for Github Pages
+        run: npx nx build-gh-pages demo
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
