@@ -19,7 +19,7 @@ jobs:
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
-          FOLDER: ${{ env.DIST }}/next
+          FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
 
