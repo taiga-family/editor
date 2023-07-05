@@ -1,4 +1,4 @@
-name: Build
+name: Build demo
 on:
   pull_request:
   push:
