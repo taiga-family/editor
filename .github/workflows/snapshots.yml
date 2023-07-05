@@ -1,0 +1,28 @@
+name: 🚀 Snapshots
+on:
+  push:
+    branches: [main]
+
+jobs:
+  snapshots-next:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - name: Setup global variables
+        uses: ./.github/actions/variables
+      - name: Setup Node.js and Cache
+        uses: ./.github/actions/nodejs
+
+      - run: npx nx build demo
+      - run: tree ${{ env.DIST }} -P '*.html'
+      - name: Publish snapshots
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          FOLDER: ${{ env.DIST }}/next
+          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+
+concurrency:
+  group: snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
