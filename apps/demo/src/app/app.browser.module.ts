@@ -12,7 +12,14 @@ import {
     TuiDocMainModule,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
-import {TUI_SANITIZER, TuiLinkModule, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
+import {TuiPreviewModule} from '@taiga-ui/addon-preview';
+import {
+    TUI_SANITIZER,
+    TuiDialogModule,
+    TuiLinkModule,
+    TuiModeModule,
+    TuiRootModule,
+} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {MarkdownModule} from 'ngx-markdown';
 
@@ -30,6 +37,8 @@ import {TuiLogoModule} from './modules/logo/logo.module';
         }),
         TuiAppRoutingModule,
         TuiRootModule,
+        TuiDialogModule,
+        TuiPreviewModule,
         BrowserAnimationsModule,
         HttpClientModule,
         TuiLogoModule,
