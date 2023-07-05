@@ -1,0 +1,1 @@
+(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[4047],{24047:e=>{e.exports="# Changelog\n\nAll notable changes to this project will be documented in this file. See\n[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.\n"}}]);
