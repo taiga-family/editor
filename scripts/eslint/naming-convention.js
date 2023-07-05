@@ -83,11 +83,7 @@ module.exports = {
             },
         },
         {
-            files: [
-                '**/projects/*demo/**/*.ts',
-                '**/scripts/**/*.ts',
-                '**/schematics/**/*.ts',
-            ],
+            files: ['**/apps/*demo/**/*.ts', '**/apps/demo*/**/*.ts'],
             parser: '@typescript-eslint/parser',
             plugins: ['@typescript-eslint'],
             rules: {

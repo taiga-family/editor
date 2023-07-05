@@ -17,10 +17,10 @@ import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {TuiAppComponent} from './app.component';
+import {DEMO_PAGES} from './app.pages';
 import {TuiAppRoutingModule} from './app.routes';
 import {TUI_LOGO_CONTENT} from './modules/logo/logo.component';
 import {TuiLogoModule} from './modules/logo/logo.module';
-import {DEMO_PAGES} from './pages/pages';
 
 @NgModule({
     bootstrap: [TuiAppComponent],
@@ -84,4 +84,4 @@ import {DEMO_PAGES} from './pages/pages';
         },
     ],
 })
-export class TuiAppBrowserModule {}
+export class AppBrowserModule {}
