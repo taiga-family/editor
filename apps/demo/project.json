@@ -99,6 +99,13 @@
                 }
             },
             "defaultConfiguration": "development"
+        },
+        "serve-compiled": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "angular-http-server -p {args.port} --silent --path {args.path} & npx wait-on http://localhost:{args.port} --timeout 5000",
+                "forwardAllArgs": false
+            }
         }
     }
 }

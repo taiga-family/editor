@@ -1,0 +1,34 @@
+{
+    "name": "demo-integrations",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/demo-integrations/cypress",
+    "projectType": "application",
+    "prefix": "app",
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/apps/demo-integrations/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/demo-integrations/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "e2e-ui": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cypress open --browser chrome --project ./apps/demo-integrations"
+            }
+        },
+        "e2e": {
+            "executor": "nx:run-commands",
+            "outputs": ["{projectRoot}/cypress/snapshots"],
+            "options": {
+                "command": "cypress run --env ci=true --browser chrome --headless --project ./apps/demo-integrations"
+            }
+        }
+    }
+}
