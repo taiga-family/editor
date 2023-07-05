@@ -4,11 +4,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {TuiDemoPath} from './constants/demo-path';
 
 export const appRoutes: Routes = [
+    // Editor
     {
         path: TuiDemoPath.StarterKit,
         loadChildren: async () =>
             (await import(`./pages/starter/editor-starter.module`))
-                .TuiEditorStarterPageModule,
+                .ExampleTuiEditorStarterModule,
         data: {
             title: `StarterKit`,
         },
@@ -16,16 +17,191 @@ export const appRoutes: Routes = [
     {
         path: TuiDemoPath.Installation,
         loadChildren: async () =>
-            (await import(`./pages/installation/installation.module`))
-                .TuiInstallationPageModule,
+            (await import(`./pages/installation/editor-installation.module`))
+                .ExampleTuiEditorInstallationModule,
         data: {
-            title: `Core concepts`,
+            title: `Installation`,
         },
     },
     {
+        path: TuiDemoPath.Font,
+        loadChildren: async () =>
+            (await import(`./pages/font/editor-font.module`)).ExampleTuiEditorFontModule,
+        data: {
+            title: `Font`,
+        },
+    },
+    {
+        path: TuiDemoPath.Anchors,
+        loadChildren: async () =>
+            (await import(`./pages/anchors/editor-anchors.module`))
+                .ExampleTuiEditorAnchorsModule,
+        data: {
+            title: `Anchors`,
+        },
+    },
+    {
+        path: TuiDemoPath.Focus,
+        loadChildren: async () =>
+            (await import(`./pages/focus/editor-focus.module`))
+                .ExampleTuiEditorFocusModule,
+        data: {
+            title: `Focus`,
+        },
+    },
+    {
+        path: TuiDemoPath.Groups,
+        loadChildren: async () =>
+            (await import(`./pages/groups/editor-groups.module`))
+                .ExampleTuiEditorGroupsModule,
+        data: {
+            title: `Groups`,
+        },
+    },
+    {
+        path: TuiDemoPath.UploadFiles,
+        loadChildren: async () =>
+            (await import(`./pages/upload-files/editor-upload-files.module`))
+                .ExampleTuiEditorUploadFilesModule,
+        data: {
+            title: `Upload files`,
+        },
+    },
+    {
+        path: TuiDemoPath.PasteEmoji,
+        loadChildren: async () =>
+            (await import(`./pages/custom-tool/paste-emoji/editor-paste-emoji.module`))
+                .ExampleTuiEditorPasteEmojiToolModule,
+        data: {
+            title: `Editor — Paste emoji custom tool`,
+        },
+    },
+    {
+        path: TuiDemoPath.ColorPicker,
+        loadChildren: async () =>
+            (await import(`./pages/custom-tool/color-picker/editor-color-picker.module`))
+                .ExampleTuiEditorColorPickerToolModule,
+        data: {
+            title: `Editor — Color picker custom tool`,
+        },
+    },
+    {
+        path: TuiDemoPath.PasteImage,
+        loadChildren: async () =>
+            (
+                await import(
+                    `./pages/custom-tool/paste-image/editor-paste-image-tool.module`
+                )
+            ).ExampleTuiEditorPasteImageToolModule,
+        data: {
+            title: `Editor — Paste image custom tool`,
+        },
+    },
+    {
+        path: TuiDemoPath.HighlightText,
+        loadChildren: async () =>
+            (await import(`./pages/highlight/text/editor-mark-text.module`))
+                .ExampleTuiEditorMarkTextModule,
+        data: {
+            title: `Editor — Highlight text`,
+        },
+    },
+    {
+        path: TuiDemoPath.ProcessingLegacyHtml,
+        loadChildren: async () =>
+            (await import(`./pages/processing/legacy-html/editor-legacy-html.module`))
+                .ExampleTuiEditorLegacyHtmlModule,
+        data: {
+            title: `Editor — Legacy html`,
+        },
+    },
+    {
+        path: TuiDemoPath.ProcessingCleanupHtml,
+        loadChildren: async () =>
+            (await import(`./pages/processing/cleanup-html/editor-cleanup-html.module`))
+                .ExampleTuiEditorCleanupHtmlModule,
+        data: {
+            title: `Editor — Cleanup html`,
+        },
+    },
+    {
+        path: TuiDemoPath.ProcessingMarkdown,
+        loadChildren: async () =>
+            (await import(`./pages/processing/markdown/editor-markdown.module`))
+                .ExampleTuiEditorMarkdownModule,
+        data: {
+            title: `Editor — Markdown`,
+        },
+    },
+    {
+        path: TuiDemoPath.HighlightCode,
+        loadChildren: async () =>
+            (await import(`./pages/highlight/code/editor-code-block.module`))
+                .ExampleTuiEditorCodeBlockModule,
+        data: {
+            title: `Editor — Highlight code`,
+        },
+    },
+    {
+        path: TuiDemoPath.ImagesResizable,
+        loadChildren: async () =>
+            (await import(`./pages/images/resizable/editor-resizable-images.module`))
+                .ExampleTuiEditorResizableImagesToolModule,
+        data: {
+            title: `Editor  — Resizable images`,
+        },
+    },
+    {
+        path: TuiDemoPath.ImagesPreview,
+        loadChildren: async () =>
+            (await import(`./pages/images/preview/editor-preview-images.module`))
+                .ExampleTuiEditorPreviewImagesToolModule,
+        data: {
+            title: `Editor  — Preview images`,
+        },
+    },
+    {
+        path: TuiDemoPath.ImagesUpload,
+        loadChildren: async () =>
+            (await import(`./pages/images/upload/editor-upload-images.module`))
+                .ExampleTuiEditorUploadImagesModule,
+        data: {
+            title: `Editor — Upload images`,
+        },
+    },
+    {
+        path: TuiDemoPath.EmbedYoutube,
+        loadChildren: async () =>
+            (await import(`./pages/embed/youtube/editor-embed-youtube.module`))
+                .ExampleTuiEditorEmbedYoutubeModule,
+        data: {
+            title: `Editor — Youtube`,
+        },
+    },
+    {
+        path: TuiDemoPath.EmbedIframe,
+        loadChildren: async () =>
+            (await import(`./pages/embed/iframe/editor-embed-iframe.module`))
+                .ExampleTuiEditorEmbedIframeModule,
+        data: {
+            title: `Editor — Iframe`,
+        },
+    },
+    {
+        path: TuiDemoPath.EmbedHtml5,
+        loadChildren: async () =>
+            (await import(`./pages/embed/html5/editor-embed-html5.module`))
+                .ExampleTuiEditorEmbedHtml5Module,
+        data: {
+            title: `Editor — HTML5`,
+        },
+    },
+    // Other
+    {
         path: TuiDemoPath.Changelog,
         loadChildren: async () =>
-            (await import(`./pages/changelog/changelog.module`)).TuiChangelogModule,
+            (await import(`./pages/changelog/editor-changelog.module`))
+                .ExampleTuiEditorChangelogModule,
         data: {
             title: `Changelog`,
         },

@@ -33,4 +33,4 @@ import {TuiEditorStarterPageComponent} from './editor-starter.component';
     declarations: [TuiEditorStarterPageComponent],
     exports: [TuiEditorStarterPageComponent],
 })
-export class TuiEditorStarterPageModule {}
+export class ExampleTuiEditorStarterModule {}
