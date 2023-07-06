@@ -1,24 +1,20 @@
 describe(`Editor's anchors`, () => {
     beforeEach(() => {
-        cy.viewport(1280, 500).tuiVisit(`/anchors`);
+        cy.viewport(1280, 500).tuiVisit(`anchors`);
 
         cy.get(`tui-doc-example[heading="Anchors"]`).tuiScrollIntoView().as(`wrapper`);
 
         cy.get(`@wrapper`).findByAutomationId(`tui-doc-example`).as(`example`);
     });
 
+    it(`all content`, () => {
+        cy.get(`@example`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`anchors-example-content`);
+    });
+
     describe(`anchors`, () => {
         beforeEach(() => {
-            cy.get(`@wrapper`)
-                .find(`tui-editor`)
-                .then(el => el.remove());
-
-            cy.get(`@wrapper`)
-                .find(`h4`)
-                .contains(`Text`)
-                .next()
-                .then(el => el.remove());
-
             cy.get(`@wrapper`)
                 .find(`h4`)
                 .contains(`HTML`)
@@ -37,11 +33,15 @@ describe(`Editor's anchors`, () => {
         ]) {
             it(`anchor is #${anchor}`, () => {
                 cy.get(`@example`)
+                    .wait(5000)
                     .find(`a[href="#${anchor}"]`)
+                    .eq(1)
                     .click({force: true})
-                    .wait(2000);
+                    .wait(5000);
 
-                cy.matchImageSnapshot(`anchor-${anchor}`, {capture: `viewport`});
+                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`anchor-${anchor}`, {
+                    capture: `viewport`,
+                });
             });
         }
     });
