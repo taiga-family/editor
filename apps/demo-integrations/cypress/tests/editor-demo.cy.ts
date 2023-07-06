@@ -1,4 +1,3 @@
-import {tuiComponentsExcluded} from '../support/helpers/components-excluded';
 import {DEMO_PATHS, isEmbedPage} from '../support/helpers/demo-paths';
 
 describe(`Demo`, () => {
@@ -22,15 +21,30 @@ describe(`Demo`, () => {
                         .tuiScrollIntoView()
                         .as(`example`);
 
-                    return tuiComponentsExcluded(path, index + 1)
-                        ? cy.get(`@example`)
-                        : cy
-                              .get(`@example`)
-                              .tuiWaitBeforeAction()
-                              .wait(Cypress.env(`waitBeforeScreenshotComponents`) ?? 50, {
-                                  log: false,
-                              })
-                              .matchImageSnapshot(`${path}/${index + 1}`);
+                    cy.get(`@example`)
+                        .find(`tui-editor-socket`)
+                        .then(socket => {
+                            if (Cypress.$(socket).length > 1) {
+                                cy.get(`@example`)
+                                    .find(`tui-editor`)
+                                    .tuiWaitBeforeScreenshot()
+                                    .matchImageSnapshot(`${path}/${index + 1}__editor`);
+
+                                cy.get(`@example`)
+                                    .find(`tui-editor`)
+                                    .tuiWaitBeforeScreenshot()
+                                    .matchImageSnapshot(`${path}/${index + 1}__editor`);
+
+                                cy.wrap(socket)
+                                    .eq(1)
+                                    .tuiWaitBeforeScreenshot()
+                                    .matchImageSnapshot(`${path}/${index + 1}__output`);
+                            } else {
+                                cy.get(`@example`)
+                                    .tuiWaitBeforeScreenshot()
+                                    .matchImageSnapshot(`${path}/${index + 1}`);
+                            }
+                        });
                 });
             });
         });

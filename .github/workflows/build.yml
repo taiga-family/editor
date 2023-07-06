@@ -1,4 +1,4 @@
-name: Build lib
+name: ⚙️ Build lib
 on:
   pull_request:
   push:
