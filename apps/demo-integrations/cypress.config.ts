@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import {defineConfig} from 'cypress';
 
 import {
@@ -9,6 +10,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     video: false,
     viewportWidth,
     viewportHeight,
+    watchForFileChanges: false,
     fixturesFolder: `cypress/fixtures`,
     screenshotsFolder: `cypress/screenshots`,
     requestTimeout: 120_000,
@@ -16,13 +18,18 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     taskTimeout: 120_000,
     defaultCommandTimeout: 120_000,
     responseTimeout: 120_000,
+    blockHosts: [
+        `*.google-analytics.com`,
+        `*.doubleclick.net`,
+        `*.ggpht.com`,
+        `*.bcbits.com`,
+    ],
     retries: {
-        runMode: 1, // Configure retry attempts for `cypress run`
+        runMode: 0, // Configure retry attempts for `cypress run`
         openMode: 0, // Configure retry attempts for `cypress open`
     },
     numTestsKeptInMemory: 0,
     env: {
-        componentsExclusion: [],
         waitBeforeScreenshot: 1000,
         waitBeforeAction: 50,
         fonts: {
@@ -32,7 +39,6 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
             '@tui-desktop': {width: 1280, font: `Manrope`},
         },
     },
-
     e2e: {
         specPattern: `cypress/tests/**/*.cy.ts`,
         supportFile: `cypress/support/e2e.ts`,
