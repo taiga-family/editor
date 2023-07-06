@@ -37,8 +37,8 @@ export class TuiAppComponent implements OnInit {
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
     ) {}
 
-    async ngOnInit(): Promise<void> {
-        await this.replaceEnvInURI();
+    ngOnInit(): void {
+        void this.replaceEnvInURI();
     }
 
     protected async replaceEnvInURI(): Promise<void> {
