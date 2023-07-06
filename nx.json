@@ -4,8 +4,9 @@
         "default": {
             "runner": "nx-cloud",
             "options": {
+                "parallel": 1,
                 "cacheableOperations": ["build", "test", "lint"],
-                "parallel": 3
+                "accessToken": "NTNmY2Y0MzktZGVhMC00NDdmLTkwNTYtMTM2YTRlNTgwMmY1fHJlYWQtd3JpdGU="
             }
         }
     },
