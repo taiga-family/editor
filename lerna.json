@@ -29,7 +29,7 @@
         "publish": {
             "yes": true,
             "registry": "https://registry.npmjs.org",
-            "message": "chore(release): update CHANGELOG.md [ci skip]"
+            "message": "chore(release): publish %s"
         }
     }
 }
