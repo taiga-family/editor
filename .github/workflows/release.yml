@@ -16,6 +16,9 @@ on:
           - minor
           - major
 
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
 jobs:
   run-release:
     name: Run release
@@ -23,14 +26,12 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
     steps:
-      - name: Fetch from origin repo
-        uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.5.3
         with:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TINKOFF_BOT_PAT }}
-
       - name: Setup Node.js and Cache
         uses: ./.github/actions/nodejs
 

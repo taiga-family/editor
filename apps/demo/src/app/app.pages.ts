@@ -7,7 +7,7 @@ export const DEMO_PAGES: TuiDocPages = [
         section: `Editor`,
         title: `Starter Kit`,
         route: TuiDemoPath.StarterKit,
-        keywords: `getting, started, introduction, starter, kit, api`,
+        keywords: `editor, setup, starter kit, wysiwyg, редактор, текст, html, rich, text`,
     },
     {
         section: `Editor`,
@@ -17,27 +17,33 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: `Editor`,
+        title: `ColorPicker`,
+        route: TuiDemoPath.ColorPicker,
+        keywords: `цвет, выбор, градиент, gradient, палитра, input, inputcolor`,
+    },
+    {
+        section: `Editor`,
         title: `Font`,
         route: TuiDemoPath.Font,
-        keywords: `font`,
+        keywords: `editor, font, wysiwyg, редактор, текст, html, rich, text`,
     },
     {
         section: `Editor`,
         title: `Anchors`,
         route: TuiDemoPath.Anchors,
-        keywords: `anchors`,
+        keywords: `editor, anchors, wysiwyg, редактор, текст, html, rich, text`,
     },
     {
         section: `Editor`,
         title: `Groups`,
         route: TuiDemoPath.Groups,
-        keywords: `groups`,
+        keywords: `editor, draggable, nested, hilite, groups, wysiwyg, редактор, текст, html, rich, text`,
     },
     {
         section: `Editor`,
         title: `Focus`,
         route: TuiDemoPath.Focus,
-        keywords: `focus`,
+        keywords: `editor, focus, focusable, wysiwyg, редактор, фокус, html, rich, text`,
     },
     {
         section: `Editor`,
@@ -47,19 +53,19 @@ export const DEMO_PAGES: TuiDocPages = [
                 section: `Editor`,
                 title: `Paste emoji`,
                 keywords: `editor, custom, tool, emoji, wysiwyg, редактор, текст, html, rich, text`,
-                route: `/${TuiDemoPath.PasteEmoji}`,
+                route: `/${TuiDemoPath.PasteEmojiTool}`,
             },
             {
                 section: `Editor`,
                 title: `Color picker`,
                 keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
-                route: `/${TuiDemoPath.ColorPicker}`,
+                route: `/${TuiDemoPath.ColorPickerTool}`,
             },
             {
                 section: `Editor`,
                 title: `Paste image`,
                 keywords: `editor, paste image, tool, wysiwyg, редактор, текст, html, rich, text`,
-                route: `/${TuiDemoPath.PasteImage}`,
+                route: `/${TuiDemoPath.PasteImageTool}`,
             },
             {
                 section: `Editor`,
@@ -164,6 +170,6 @@ export const DEMO_PAGES: TuiDocPages = [
         section: `Other`,
         title: `Changelog`,
         route: TuiDemoPath.Changelog,
-        keywords: `changelog`,
+        keywords: `release, change, changelog, archive, history`,
     },
 ];

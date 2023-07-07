@@ -21,6 +21,14 @@ describe(`Demo`, () => {
                         .tuiScrollIntoView()
                         .as(`example`);
 
+                    if ($body.find(`tui-editor-socket`).length < 1) {
+                        cy.get(`@example`)
+                            .tuiWaitBeforeScreenshot()
+                            .matchImageSnapshot(`${path}/${index + 1}`);
+
+                        return;
+                    }
+
                     cy.get(`@example`)
                         .find(`tui-editor-socket`)
                         .then(socket => {

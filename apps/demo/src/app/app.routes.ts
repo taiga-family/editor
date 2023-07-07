@@ -24,6 +24,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.ColorPicker,
+        loadChildren: async () =>
+            (await import(`./pages/color-picker/editor-input-color-picker.module`))
+                .ExampleTuiEditorInputColorPickerModule,
+        data: {
+            title: `Input color picker`,
+        },
+    },
+    {
         path: TuiDemoPath.Font,
         loadChildren: async () =>
             (await import(`./pages/font/editor-font.module`)).ExampleTuiEditorFontModule,
@@ -68,7 +77,7 @@ export const appRoutes: Routes = [
         },
     },
     {
-        path: TuiDemoPath.PasteEmoji,
+        path: TuiDemoPath.PasteEmojiTool,
         loadChildren: async () =>
             (await import(`./pages/custom-tool/paste-emoji/editor-paste-emoji.module`))
                 .ExampleTuiEditorPasteEmojiToolModule,
@@ -77,7 +86,7 @@ export const appRoutes: Routes = [
         },
     },
     {
-        path: TuiDemoPath.ColorPicker,
+        path: TuiDemoPath.ColorPickerTool,
         loadChildren: async () =>
             (await import(`./pages/custom-tool/color-picker/editor-color-picker.module`))
                 .ExampleTuiEditorColorPickerToolModule,
@@ -86,7 +95,7 @@ export const appRoutes: Routes = [
         },
     },
     {
-        path: TuiDemoPath.PasteImage,
+        path: TuiDemoPath.PasteImageTool,
         loadChildren: async () =>
             (
                 await import(
