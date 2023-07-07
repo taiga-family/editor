@@ -72,7 +72,9 @@ describe(`Editor's toolbar`, () => {
         cy.get(`.smile`).first().should(`be.visible`).click();
         cy.get(`@input`).should(`be.focused`);
 
-        cy.get(`@wrapper`).matchImageSnapshot(`2-2-inserted-smile`);
+        cy.get(`@wrapper`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`2-2-inserted-smile`);
 
         cy.focused().type(`awesome library for awesome people`).tuiWaitBeforeAction();
 
@@ -87,7 +89,9 @@ describe(`Editor's toolbar`, () => {
         cy.get(`.smile`).last().should(`be.visible`).click();
         cy.get(`@input`).should(`be.focused`);
 
-        cy.get(`@wrapper`).matchImageSnapshot(`2-3-inserted-new-smile`);
+        cy.get(`@wrapper`)
+            .tuiWaitBeforeScreenshot()
+            .matchImageSnapshot(`2-3-inserted-new-smile`);
     });
 
     it(`make a html table by 2x2`, () => {
