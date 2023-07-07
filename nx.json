@@ -5,8 +5,7 @@
             "runner": "nx-cloud",
             "options": {
                 "parallel": 1,
-                "cacheableOperations": ["build", "test", "lint"],
-                "accessToken": "NTNmY2Y0MzktZGVhMC00NDdmLTkwNTYtMTM2YTRlNTgwMmY1fHJlYWQtd3JpdGU="
+                "cacheableOperations": ["build", "test", "lint"]
             }
         }
     },
