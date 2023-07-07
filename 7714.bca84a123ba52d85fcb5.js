@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[7714],{7714:o=>{o.exports="```ts\nimport {FormsModule} from '@angular/forms';\nimport {TuiEditorModule} from '@tinkoff/tui-editor';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiEditorModule,\n    FormsModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
