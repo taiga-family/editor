@@ -4,7 +4,7 @@ describe(`Editor's color picker`, () => {
     it(`opened color picker`, () => {
         openColorPicker(`wrapper`);
 
-        cy.matchImageSnapshot(`1-color-picker-with-hex`);
+        cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`1-color-picker-with-hex`);
     });
 
     it(`opened color picker and change rgb`, () => {
