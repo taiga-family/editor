@@ -15,6 +15,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: `stackblitz`,
+        loadChildren: async () =>
+            (await import(`./pages/stackblitz/starter/stackblitz-starter.module`))
+                .StackblitzStarterModule,
+        data: {
+            title: `Stackblitz Starter`,
+        },
+    },
+    {
         path: TuiDemoPath.Installation,
         loadChildren: async () =>
             (await import(`./pages/installation/editor-installation.module`))

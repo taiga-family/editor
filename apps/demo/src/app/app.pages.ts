@@ -4,6 +4,18 @@ import {TuiDemoPath} from './constants';
 
 export const DEMO_PAGES: TuiDocPages = [
     {
+        section: `Documentation`,
+        title: `StackBlitz`,
+        keywords: `reproduce, issue, bug, sandbox, playground, test`,
+        route: TuiDemoPath.Stackblitz,
+    },
+    {
+        section: `Documentation`,
+        title: `Changelog`,
+        route: TuiDemoPath.Changelog,
+        keywords: `release, change, changelog, archive, history`,
+    },
+    {
         section: `Editor`,
         title: `Starter Kit`,
         route: TuiDemoPath.StarterKit,
@@ -165,11 +177,5 @@ export const DEMO_PAGES: TuiDocPages = [
                 route: `/${TuiDemoPath.EmbedHtml5}`,
             },
         ],
-    },
-    {
-        section: `Other`,
-        title: `Changelog`,
-        route: TuiDemoPath.Changelog,
-        keywords: `release, change, changelog, archive, history`,
     },
 ];
