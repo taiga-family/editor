@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-restricted-syntax
 export const enum TuiDemoPath {
+    Stackblitz = `stackblitz`,
+    Changelog = `changelog`,
     StarterKit = `starter-kit`,
     Installation = `installation`,
     ColorPicker = `color-picker`,
@@ -22,5 +24,4 @@ export const enum TuiDemoPath {
     EmbedYoutube = `embed/youtube`,
     EmbedIframe = `embed/iframe`,
     EmbedHtml5 = `embed/html5`,
-    Changelog = `changelog`,
 }

@@ -2,7 +2,7 @@ import type {TuiDocPage, TuiDocPages} from '@taiga-ui/addon-doc';
 
 import {DEMO_PAGES} from '../../../../demo/src/app/app.pages';
 
-const EXCLUSION_SECTIONS: string[] = [`Other`];
+const EXCLUSION_SECTIONS: string[] = [`Documentation`];
 const EXCLUSION_ROUTES: string[] = [`Starter Kit`];
 
 export const DEMO_PATHS = flatPages(DEMO_PAGES)
