@@ -73,7 +73,7 @@
         "@nx/jest": "16.4.0",
         "@nx/node": "16.4.0",
         "@nx/workspace": "16.4.0",
-        "@stackblitz/sdk": "1.8.2",
+        "@stackblitz/sdk": "1.9.0",
         "@taiga-ui/addon-doc": "3.35.0",
         "@taiga-ui/addon-mobile": "3.35.0",
         "@taiga-ui/addon-preview": "3.35.0",
