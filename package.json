@@ -120,7 +120,7 @@
         "lerna": "7.0.2",
         "lint-staged": "12.3.7",
         "markdown-it": "13.0.1",
-        "marked": "1.1.0",
+        "marked": "1.2.9",
         "ng-packagr": "12.2.7",
         "ngx-highlightjs": "5.0.0",
         "ngx-markdown": "12.1.0",
