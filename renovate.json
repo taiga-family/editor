@@ -2,5 +2,6 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["github>tinkoff/taiga-ui"],
     "repositories": ["tinkoff/tui-editor"],
+    "reviewers": ["renovate-approve"],
     "automerge": true
 }
