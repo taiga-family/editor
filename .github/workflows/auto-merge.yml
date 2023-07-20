@@ -28,6 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
           MERGE_REQUIRED_APPROVALS: 0
           MERGE_LABELS: renovate
+          MERGE_READY_STATE: clean
           UPDATE_METHOD: rebase
           MERGE_METHOD: squash
           LOG: DEBUG
