@@ -111,7 +111,7 @@
         "eslint-plugin-simple-import-sort": "7.0.0",
         "eslint-plugin-unicorn": "44.0.2",
         "express": "4.18.2",
-        "highlight.js": "11.8.0",
+        "highlight.js": "11.7.0",
         "http-server": "14.1.1",
         "husky": "7.0.4",
         "jest": "28.1.3",
