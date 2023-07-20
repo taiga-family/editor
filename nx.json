@@ -23,7 +23,6 @@
         "sharedGlobals": [
             "{workspaceRoot}/angular.json",
             "{workspaceRoot}/nx.json",
-            "{workspaceRoot}/karma.*.js",
             "{workspaceRoot}/tsconfig.*.json",
             "{workspaceRoot}/tsconfig.json"
         ],
