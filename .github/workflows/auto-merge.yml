@@ -29,5 +29,6 @@ jobs:
           MERGE_REQUIRED_APPROVALS: 0
           MERGE_LABELS: renovate
           UPDATE_METHOD: rebase
+          MERGE_READY_STATE: clean
           MERGE_METHOD: squash
           LOG: DEBUG
