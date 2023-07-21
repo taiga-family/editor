@@ -1,0 +1,31 @@
+{
+    "name": "tui-editor",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "hostRequirements": {
+        "cpus": 8
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "npm ci",
+    "postCreateCommand": "",
+    "postAttachCommand": {
+        "server": "npm start"
+    },
+    "customizations": {
+        "codespaces": {
+            "openFiles": ["apps/demo/src/app/app.component.ts"]
+        }
+    },
+    "portsAttributes": {
+        "3333": {
+            "label": "Application",
+            "onAutoForward": "openBrowserOnce"
+        }
+    },
+    "forwardPorts": [3333],
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts",
+            "nodeGypDependencies": true
+        }
+    }
+}
