@@ -6,9 +6,9 @@
         "cpus": 4
     },
     "waitFor": "onCreateCommand",
-    "updateContentCommand": "npm ci --force --loglevel silent --ignore-scripts --audit false --ignore-engines --ignore-platform --no-fund",
+    "updateContentCommand": "npm ci --force --loglevel silent --audit false --ignore-engines --ignore-platform --no-fund",
     "postCreateCommand": "",
-    "postAttachCommand": "npm start",
+    "postAttachCommand": "npm start -- --host 0.0.0.0 --disable-host-check",
     "customizations": {
         "codespaces": {
             "openFiles": ["CONTRIBUTING.md"]
@@ -17,7 +17,7 @@
     "portsAttributes": {
         "3333": {
             "label": "Demo",
-            "onAutoForward": "openPreview"
+            "onAutoForward": "notify"
         }
     },
     "forwardPorts": [3333]
