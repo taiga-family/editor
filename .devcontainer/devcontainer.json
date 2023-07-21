@@ -2,7 +2,7 @@
     "name": "tui-editor",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "hostRequirements": {
-        "cpus": 8
+        "cpus": 4
     },
     "waitFor": "onCreateCommand",
     "updateContentCommand": "npm ci",
