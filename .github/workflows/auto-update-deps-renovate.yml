@@ -9,12 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Setup Git user
-        shell: bash
-        run: |
-          git config --global user.email 'bot@renovateapp.com'
-          git config --global user.name  'Renovate Bot'
-
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v38.1.13
         with:
