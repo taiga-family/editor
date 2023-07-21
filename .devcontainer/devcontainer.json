@@ -1,31 +1,24 @@
 {
-    "name": "tui-editor",
-    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "name": "tui-editor dev container",
+    "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
     "hostRequirements": {
+        "memory": "8gb",
         "cpus": 4
     },
     "waitFor": "onCreateCommand",
-    "updateContentCommand": "npm ci",
+    "updateContentCommand": "npm ci --force --loglevel silent --ignore-scripts --audit false --ignore-engines --ignore-platform --no-fund",
     "postCreateCommand": "",
-    "postAttachCommand": {
-        "server": "npm start"
-    },
+    "postAttachCommand": "npm start",
     "customizations": {
         "codespaces": {
-            "openFiles": ["apps/demo/src/app/app.component.ts"]
+            "openFiles": ["CONTRIBUTING.md"]
         }
     },
     "portsAttributes": {
         "3333": {
-            "label": "Application",
-            "onAutoForward": "openBrowserOnce"
+            "label": "Demo",
+            "onAutoForward": "openPreview"
         }
     },
-    "forwardPorts": [3333],
-    "features": {
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "lts",
-            "nodeGypDependencies": true
-        }
-    }
+    "forwardPorts": [3333]
 }
