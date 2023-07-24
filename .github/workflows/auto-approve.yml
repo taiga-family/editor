@@ -10,7 +10,4 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
-          review-message: 'First approve'
-      - uses: hmarr/auto-approve-action@v3.2.1
-        with:
-          review-message: 'Second approve'
+          review-message: 'Auto approved automated PR for Tinkoff[bot]'
