@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/tinkoff/tui-editor/compare/@tinkoff/tui-editor@1.0.1...@tinkoff/tui-editor@1.1.0) (2023-07-25)
+
+### Bug Fixes
+
+- show cursor `pointer` for color `picker` ([#73](https://github.com/tinkoff/tui-editor/issues/73))
+  ([e593796](https://github.com/tinkoff/tui-editor/commit/e593796281fb875b8200be6d62ec2d2a8c86397e))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [1.0.1](https://github.com/tinkoff/tui-editor/compare/@tinkoff/tui-editor@1.0.0...@tinkoff/tui-editor@1.0.1) (2023-07-07)
 
 ### Bug Fixes
