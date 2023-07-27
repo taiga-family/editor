@@ -24,7 +24,7 @@ jobs:
           REPO: self
           FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
-          GITHUB_TOKEN: ${{ secrets.TINKOFF_BOT_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT }}
 
 concurrency:
   group: snapshots-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
