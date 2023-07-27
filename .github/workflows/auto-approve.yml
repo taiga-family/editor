@@ -11,4 +11,4 @@ jobs:
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
           review-message: 'Automated approved'
-          github-token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT }}
+          github-token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}

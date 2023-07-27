@@ -20,11 +20,11 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-            token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-            branch: gh-pages
-            folder: dist/demo
-            silent: false
-            clean: true
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          branch: gh-pages
+          folder: dist/demo
+          silent: false
+          clean: true
 
 concurrency:
   group: deploy-${{ github.head_ref }}
