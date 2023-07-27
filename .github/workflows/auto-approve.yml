@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
-          review-message: 'Automated approved by Taiga Family approve Bot'
+          review-message: 'LGTM (Automated approved)'
           github-token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
-          review-message: 'Automated approved by Github Bot'
+          review-message: 'LGTM (Automated approved)'
