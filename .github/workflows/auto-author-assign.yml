@@ -16,4 +16,4 @@ jobs:
         if: env.IS_OWNER_MODE == 'true'
         uses: toshimaru/auto-author-assign@v1.6.2
         with:
-          repo-token: ${{ secrets.TINKOFF_BOT_PAT }}
+          repo-token: ${{ secrets.TAIGA_FAMILY_BOT }}
