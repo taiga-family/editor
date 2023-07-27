@@ -2,8 +2,6 @@ name: 🚀 Deploy / preview
 
 on: pull_request
 
-env:
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
   IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
 

@@ -16,9 +16,6 @@ on:
           - minor
           - major
 
-env:
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-
 jobs:
   run-release:
     name: Run release
