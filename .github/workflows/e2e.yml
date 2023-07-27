@@ -1,4 +1,4 @@
-name: E2E-workflow
+name: ⚙️ E2E
 on:
   pull_request:
 
@@ -79,9 +79,9 @@ jobs:
           if-no-files-found: ignore
           retention-days: 1
 
-  e2e-final:
+  result:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    name: result
+    name: E2E result
     needs: [cypress]
     runs-on: ubuntu-latest
     steps:

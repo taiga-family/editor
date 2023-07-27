@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Build libs
     steps:
       - uses: actions/checkout@v3.5.3
       - name: Setup global variables
