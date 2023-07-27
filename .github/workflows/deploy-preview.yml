@@ -1,9 +1,5 @@
 name: 🚀 Deploy / preview
-
 on: pull_request
-
-  IS_FORK: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
-  IS_DEPENDABOT: ${{ github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' }}
 
 jobs:
   build_and_preview:
