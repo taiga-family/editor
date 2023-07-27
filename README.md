@@ -55,7 +55,7 @@ Read more about this license [here](https://choosealicense.com/licenses/apache-2
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Alex Inkin"
-                /><br /><b>Alex Inkin</b></a
+                /><br /><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alex&nbsp;Inkin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -80,13 +80,13 @@ Read more about this license [here](https://choosealicense.com/licenses/apache-2
             </div>
         </td>
         <td align="center">
-            <a href="http://marsibarsi.me"
+            <a href="https://twitter.com/marsibarsi"
                 ><img
                     src="https://github.com/marsibarsi.png?size=200"
                     width="100"
                     style="margin-bottom: -4px; border-radius: 8px;"
                     alt="Roman Sedov"
-                /><br /><b>Roman Sedov</b></a
+                /><br /><b>&nbsp;Roman&nbsp;Sedov&nbsp;</b></a
             >
             <div style="margin-top: 4px">
                 <a
@@ -112,5 +112,105 @@ Read more about this license [here](https://choosealicense.com/licenses/apache-2
                 /></a>
             </div>
         </td>
+        <td align="center">
+            <a href="https://github.com/vladimirpotekhin"
+                ><img
+                    src="https://github.com/vladimirpotekhin.png?size=200"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="Vladimir Potekhin"
+                /><br /><b>Vladimir&nbsp;Potekhin</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://twitter.com/v_potekhin"
+                    title="Twitter"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
+                /></a>
+                <a
+                    href="https://github.com/vladimirpotekhin"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/v_potekhin"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
+        <td align="center">
+            <a href="https://www.linkedin.com/in/nsbarsukov/"
+                ><img
+                    src="https://github.com/nsbarsukov.png?size=200"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="Nikita Barsukov"
+                /><br /><b>Nikita&nbsp;Barsukov</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://twitter.com/nsbarsukov"
+                    title="Twitter"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
+                /></a>
+                <a
+                    href="https://github.com/nsbarsukov"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/nsbarsukov"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
+        <td align="center">
+            <a href="https://github.com/splincode"
+                ><img
+                    src="https://github.com/splincode.png?size=200"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="Maksim Ivanov"
+                /><br /><b>Maksim&nbsp;Ivanov</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://twitter.com/splincodewd"
+                    title="Twitter"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
+                /></a>
+                <a
+                    href="https://github.com/splincode"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/splincode"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
     </tr>
 </table>
+
