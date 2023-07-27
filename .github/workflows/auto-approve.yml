@@ -15,4 +15,3 @@ jobs:
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
           review-message: 'Automated approved by Github Bot'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
