@@ -98,7 +98,7 @@
         "@types/node": "18.17.1",
         "@types/showdown": "2.0.1",
         "angular-http-server": "1.11.3",
-        "core-js": "2.6.12",
+        "core-js": "2.5.7",
         "cypress": "12.17.2",
         "cypress-image-snapshot": "4.0.1",
         "dompurify": "2.4.7",
