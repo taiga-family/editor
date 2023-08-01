@@ -99,7 +99,7 @@
         "@types/showdown": "2.0.1",
         "angular-http-server": "1.11.3",
         "core-js": "2.6.12",
-        "cypress": "12.17.2",
+        "cypress": "12.17.3",
         "cypress-image-snapshot": "4.0.1",
         "dompurify": "2.4.7",
         "eslint": "8.46.0",
