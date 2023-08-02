@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-    if: github.actor == 'taiga-family-bot'
     steps:
       - uses: hmarr/auto-approve-action@v3.2.1
         with:
