@@ -3,6 +3,7 @@
 <div align="center">
     <img src="apps/demo/src/assets/icons/logo.svg" alt="logo" height="120px">
 </div>
+
 <br />
 
 <div align="center">
@@ -170,39 +171,6 @@ Read more about this license [here](https://choosealicense.com/licenses/apache-2
                 /></a>
                 <a
                     href="https://t.me/nsbarsukov"
-                    title="Telegram"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
-                /></a>
-            </div>
-        </td>
-        <td align="center">
-            <a href="https://github.com/splincode"
-                ><img
-                    src="https://github.com/splincode.png?size=200"
-                    width="100"
-                    style="margin-bottom: -4px; border-radius: 8px;"
-                    alt="Maksim Ivanov"
-                /><br /><b>Maksim&nbsp;Ivanov</b></a
-            >
-            <div style="margin-top: 4px">
-                <a
-                    href="https://twitter.com/splincodewd"
-                    title="Twitter"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
-                /></a>
-                <a
-                    href="https://github.com/splincode"
-                    title="GitHub"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
-                /></a>
-                <a
-                    href="https://t.me/splincode"
                     title="Telegram"
                     ><img
                         width="16"
