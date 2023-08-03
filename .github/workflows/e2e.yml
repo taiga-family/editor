@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/./.github/actions/variables@1.2.0
-      - uses: taiga-family/ci/./.github/actions/rebase@1.2.0
+      - uses: taiga-family/ci/./.github/actions/variables@1.2.1
+      - uses: taiga-family/ci/./.github/actions/rebase@1.2.1
         continue-on-error: true
-      - uses: taiga-family/ci/./.github/actions/setup-node@1.2.0
+      - uses: taiga-family/ci/./.github/actions/setup-node@1.2.1
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo --output-path ${{ env.DIST }}
@@ -27,8 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/./.github/actions/variables@1.2.0
-      - uses: taiga-family/ci/./.github/actions/setup-node@1.2.0
+      - uses: taiga-family/ci/./.github/actions/variables@1.2.1
+      - uses: taiga-family/ci/./.github/actions/setup-node@1.2.1
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.1
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/./.github/actions/variables@1.2.0
+      - uses: taiga-family/ci/./.github/actions/variables@1.2.1
 
       - name: Download artifacts / ${{ env.SNAPSHOTS_KEY }}
         continue-on-error: true
