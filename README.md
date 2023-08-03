@@ -10,13 +10,13 @@
 
 [![npm version](https://img.shields.io/npm/v/@tinkoff/tui-editor.svg)](https://npmjs.com/package/@tinkoff/tui-editor)
 [![All packages CI](https://github.com/tinkoff/tui-editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/tinkoff/tui-editor/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/tinkoff/tui-editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/Tinkoff/tui-editor/tree/main/projects)
+[![codecov](https://codecov.io/gh/tinkoff/tui-editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/tui-editor/tree/main/projects)
 
 </div>
 
 <p align="center">
-    <a href="https://tinkoff.github.io/tui-editor">Documentation</a> •
-    <a href="https://github.com/Tinkoff/tui-editor/issues/new/choose">Submit an Issue</a> •
+    <a href="https://taiga-family.github.io/tui-editor">Documentation</a> •
+    <a href="https://github.com/taiga-family/tui-editor/issues/new/choose">Submit an Issue</a> •
     <a href="https://t.me/taiga_ui">Contact Us</a>
 </p>
 
