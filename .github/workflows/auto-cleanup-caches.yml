@@ -7,11 +7,9 @@ on:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3.5.3
-      - name: Cleanup cache
-        uses: ./.github/actions/cleanup-cache
+      - uses: taiga-family/ci/./.github/actions/cleanup-cache@1.2.0
         with:
           branch-name: refs/pull/${{ github.event.pull_request.number }}/merge
+          token: ${{ secrets.GITHUB_TOKEN }}

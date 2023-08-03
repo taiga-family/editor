@@ -7,7 +7,6 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@v0.5.0
+      - uses: taiga-family/ci/./.github/actions/setup-project@1.2.0
         with:
-          project-url: https://github.com/orgs/taiga-family/projects/1
-          github-token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
