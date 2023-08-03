@@ -10,8 +10,8 @@
         "text",
         "editor"
     ],
-    "homepage": "https://github.com/tinkoff/tui-editor",
-    "repository": "https://github.com/tinkoff/tui-editor",
+    "homepage": "https://github.com/taiga-family/tui-editor",
+    "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
     "dependencies": {
         "@tiptap/core": "2.0.4",
