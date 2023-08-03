@@ -1,19 +1,15 @@
-name: 🤖 Auto approve
+name: 🤖 Auto approve for renovate
 on: pull_request
 
 jobs:
-  automated-pull-request:
+  automated-approve-pull-request:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-    if:
-      github.actor == 'taiga-family-bot' && (contains(github.head_ref, 'release/') || contains(github.head_ref,
-      'renovate/'))
+    if: github.actor == 'taiga-family-bot' && contains(github.head_ref, 'renovate/')
     steps:
-      - uses: hmarr/auto-approve-action@v3.2.1
+      - uses: actions/checkout@v3
+      - uses: taiga-family/ci/./.github/actions/two-approve@1.0.0
         with:
-          review-message: 'LGTM (Automated approved)'
-          github-token: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
-      - uses: hmarr/auto-approve-action@v3.2.1
-        with:
-          review-message: 'LGTM (Automated approved)'
+          token1: ${{ secrets.GITHUB_TOKEN }}
+          token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
