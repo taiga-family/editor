@@ -76,7 +76,7 @@ import {TuiLogoModule} from './modules/logo/logo.module';
         {
             provide: TUI_DOC_SOURCE_CODE,
             useValue: (context: TuiDocSourceCodePathOptions) => {
-                const link = `https://github.com/tinkoff/tui-editor/tree/main/libs`;
+                const link = `https://github.com/taiga-family/tui-editor/tree/main/libs`;
 
                 if (context.path) {
                     return `${link}/${context.path}`;
