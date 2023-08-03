@@ -1,7 +1,5 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>tinkoff/taiga-ui"],
-    "repositories": ["taiga-family/tui-editor"],
-    "rebaseWhen": "behind-base-branch",
-    "automerge": true
+    "extends": ["github>taiga-family/renovate-config"],
+    "repositories": ["taiga-family/tui-editor"]
 }
