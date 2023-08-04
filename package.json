@@ -33,6 +33,11 @@
         "cy:open": "cypress open --project apps/demo-integrations/",
         "cy:run": "cypress run --project apps/demo-integrations/"
     },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
     "lint-staged": {
         "*.{js,ts,html,md,less,json}": [
             "npm run lint -- --fix",
@@ -42,6 +47,18 @@
         "*.less": [
             "stylelint --fix",
             "git add"
+        ]
+    },
+    "stylelint": {
+        "extends": [
+            "@tinkoff/stylelint-config/less",
+            "@tinkoff/stylelint-config/angular"
+        ],
+        "ignoreFiles": [
+            "**/demo/**",
+            "**/dist/**",
+            "**/coverage/**",
+            "**/node_modules/**"
         ]
     },
     "devDependencies": {

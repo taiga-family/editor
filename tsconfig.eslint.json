@@ -4,6 +4,7 @@
         "rootDir": ".",
         "baseUrl": ".",
         "strict": true,
+        "module": "esnext",
         "incremental": true
     },
     "include": ["apps/**/*.ts", "libs/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],

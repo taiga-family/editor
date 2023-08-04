@@ -25,20 +25,14 @@
             "{workspaceRoot}/nx.json",
             "{workspaceRoot}/tsconfig.*.json",
             "{workspaceRoot}/tsconfig.json"
-        ],
-        "production": [
-            "default",
-            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-            "!{projectRoot}/tsconfig.spec.json",
-            "!{projectRoot}/jest.config.[jt]s"
         ]
     },
     "targetDefaults": {
         "build": {
-            "inputs": ["production", "^production"]
+            "inputs": ["default"]
         },
         "test": {
-            "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+            "inputs": ["default"]
         }
     }
 }
