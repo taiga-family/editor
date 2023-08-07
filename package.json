@@ -23,15 +23,15 @@
         "start": "nx run demo:serve",
         "build": "nx run demo:build:production",
         "test": "nx test",
-        "test:e2e": "nx e2e-ui demo-integrations",
+        "test:e2e": "nx e2e-ui demo-cypress",
         "*** Format ***": "",
         "lint": "eslint .",
         "format": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
         "stylelint": "stylelint '**/*.{less,css}'",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Cypress ***": "",
-        "cy:open": "cypress open --project apps/demo-integrations/",
-        "cy:run": "cypress run --project apps/demo-integrations/"
+        "cy:open": "cypress open --project apps/demo-cypress/",
+        "cy:run": "cypress run --project apps/demo-cypress/"
     },
     "commitlint": {
         "extends": [

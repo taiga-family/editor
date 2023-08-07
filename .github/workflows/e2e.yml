@@ -2,6 +2,10 @@ name: ⚙️ E2E
 on:
   pull_request:
 
+env:
+  CYPRESS_failOnSnapshotDiff: 0
+  CYPRESS_SNAPSHOTS_PATH: /projects/demo-cypress/cypress/snapshots
+
 jobs:
   build-demo:
     name: Build demo
@@ -40,7 +44,7 @@ jobs:
         run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-integrations
+        run: npx nx e2e demo-cypress
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
@@ -57,16 +61,16 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: npx nx e2e demo-integrations
+        run: npx nx e2e demo-cypress
 
       - name: Clean up resources
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
-      - name: Upload artifacts / ${{ env.SNAPSHOTS_ARTIFACTS_KEY }}
+      - name: Upload artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v3.1.2
         with:
-          path: ${{ env.SNAPSHOTS_PATH }}/**/*.diff.png
-          name: ${{ env.SNAPSHOTS_ARTIFACTS_KEY }}
+          path: ${{ env.CYPRESS_SNAPSHOTS_PATH }}/**/*.diff.png
+          name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
           if-no-files-found: ignore
           retention-days: 1
 
@@ -79,22 +83,22 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - uses: taiga-family/ci/actions/variables@1.5.1
 
-      - name: Download artifacts / ${{ env.SNAPSHOTS_KEY }}
+      - name: Download artifacts / ${{ env.SNAPSHOTS_CACHE_KEY }}
         continue-on-error: true
         uses: actions/download-artifact@v3.0.2
         with:
-          name: ${{ env.SNAPSHOTS_KEY }}
-          path: ${{ env.SNAPSHOTS_PATH }}
+          name: ${{ env.SNAPSHOTS_CACHE_KEY }}
+          path: ${{ env.CYPRESS_SNAPSHOTS_PATH }}
 
       - name: Check if diff-output exists
         id: diff-checker
         run: |
-          echo "diff_exist=$(find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+          echo "diff_exist=$(find ${{ env.CYPRESS_SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
         run: |
-          find ${{ env.SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
+          find ${{ env.CYPRESS_SNAPSHOTS_PATH }} -regex '.*\.diff\.png$' -exec echo "{}" \;
           exit 1
 
 concurrency:
