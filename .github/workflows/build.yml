@@ -11,8 +11,8 @@ jobs:
     name: Build libs
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.7.0
-      - uses: taiga-family/ci/actions/setup-node@1.7.0
+      - uses: taiga-family/ci/actions/variables@1.7.5
+      - uses: taiga-family/ci/actions/setup-node@1.7.5
 
       - name: Build library
         run: npx nx build tui-editor
