@@ -29,11 +29,11 @@ jobs:
           persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup-node@1.7.5
-      - uses: taiga-family/ci/actions/setup-git@1.7.5
+      - uses: taiga-family/ci/actions/setup-node@1.7.6
+      - uses: taiga-family/ci/actions/setup-git@1.7.6
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup-npm@1.7.5
+      - uses: taiga-family/ci/actions/setup-npm@1.7.6
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
