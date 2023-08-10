@@ -15,6 +15,6 @@
 
 let greeter = new Greeter("world");
 </code></pre>
-<pre><code>https://github.com/tinkoff/taiga-ui</code></pre>
+<pre><code>https://github.com/taiga-family/taiga-ui</code></pre>
 <p></p>
 ```
