@@ -33,8 +33,8 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## Maintained
 
-TUI Editor is a part of [Taiga UI](https://github.com/Tinkoff/taiga-ui) libraries family which is backed and used by a
-large enterprise. This means you can rely on timely support and continuous development.
+TUI Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used
+by a large enterprise. This means you can rely on timely support and continuous development.
 
 ## License
 

@@ -1,13 +1,17 @@
 {
     "name": "tui-editor",
     "private": true,
-    "description": "This is a template project to develop, create and open-source Angular libraries with demos",
+    "description": "Rich text editor extension with related Taiga UI components",
     "keywords": [
-        "tinkoff"
+        "wysiwyg",
+        "text editor",
+        "taiga ui",
+        "prosemirror",
+        "tiptap"
     ],
-    "homepage": "https://github.com/tinkoff/angular-open-source-starter#README",
-    "bugs": "https://github.com/tinkoff/angular-open-source-starter/issues",
-    "repository": "https://github.com/tinkoff/angular-open-source-starter",
+    "homepage": "https://taiga-family.github.io/tui-editor",
+    "bugs": "https://github.com/taiga-family/tui-editor/issues",
+    "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
     "contributors": [
         "Alex Inkin <alexander@inkin.ru>",
