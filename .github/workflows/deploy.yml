@@ -17,6 +17,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup-deploy@1.7.6
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          folder: dist/demo/browser
 
 concurrency:
   group: deploy-${{ github.head_ref }}
