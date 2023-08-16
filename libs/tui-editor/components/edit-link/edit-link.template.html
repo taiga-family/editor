@@ -2,13 +2,9 @@
     <ng-container *ngIf="edit; else view">
         <label class="t-label">
             <div class="t-label-properties">
-                <ng-container *ngIf="anchorMode; else fullOptions">
-                    Edit anchor
-                </ng-container>
+                <ng-container *ngIf="anchorMode; else fullOptions">Edit anchor</ng-container>
                 <ng-template #fullOptions>
-                    <span *ngIf="prefixIsHashMode; else urlTitle">
-                        Link to anchor
-                    </span>
+                    <span *ngIf="prefixIsHashMode; else urlTitle">Link to anchor</span>
                     <ng-template #urlTitle>
                         <span>URL</span>
                     </ng-template>
@@ -27,11 +23,7 @@
                 >
                     <ng-container *ngIf="texts$ | async as text">
                         <!-- eslint-disable @html-eslint/indent -->
-                        {{
-                            prefixIsHashMode
-                                ? text.anchorExample
-                                : text.urlExample
-                        }}
+                        {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     </ng-container>
                 </tui-input-inline>
             </div>

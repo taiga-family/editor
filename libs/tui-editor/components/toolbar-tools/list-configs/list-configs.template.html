@@ -15,12 +15,7 @@
             automation-id="toolbar__ordering-list-button"
             tuiHintDescribe
             [tuiHint]="texts.list"
-            [pseudoActive]="
-                list?.open ||
-                listState?.unordered ||
-                listState?.ordered ||
-                false
-            "
+            [pseudoActive]="list?.open || listState?.unordered || listState?.ordered || false"
             [focusable]="list.open"
         ></button>
         <ng-template #listDropdown>
@@ -55,9 +50,7 @@
                     appearance="icon"
                     class="t-option t-option_margin"
                     [tuiHint]="texts.indent"
-                    [disabled]="
-                        (!listState?.ordered && !listState?.unordered) || false
-                    "
+                    [disabled]="(!listState?.ordered && !listState?.unordered) || false"
                     (click)="sinkListItem()"
                 ></button>
                 <button
@@ -68,9 +61,7 @@
                     appearance="icon"
                     class="t-option"
                     [tuiHint]="texts.outdent"
-                    [disabled]="
-                        (!listState?.ordered && !listState?.unordered) || false
-                    "
+                    [disabled]="(!listState?.ordered && !listState?.unordered) || false"
                     (click)="liftListItem()"
                 ></button>
             </div>

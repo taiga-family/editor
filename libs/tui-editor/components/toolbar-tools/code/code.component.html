@@ -17,10 +17,7 @@
     <ng-template #codesDropdown>
         <tui-data-list>
             <button
-                *ngFor="
-                    let item of codeOptionsTexts$ | async;
-                    let index = index
-                "
+                *ngFor="let item of codeOptionsTexts$ | async; let index = index"
                 tuiOption
                 (click)="onCode(!!index)"
             >

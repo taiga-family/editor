@@ -15,13 +15,7 @@
             automation-id="toolbar__font-style-button"
             tuiHintDescribe
             [tuiHint]="texts.fontStyle"
-            [pseudoActive]="
-                format.open ||
-                state.bold ||
-                state.italic ||
-                state.underline ||
-                state.strike
-            "
+            [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
             [focusable]="format.open"
         ></button>
         <ng-template #formatDropdown>
