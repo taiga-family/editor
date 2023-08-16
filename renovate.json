@@ -1,5 +1,21 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["github>taiga-family/renovate-config"],
-    "automerge": false
+    "automerge": false,
+    "packageRules": [
+        {
+            "groupName": "taiga-ui-migrate",
+            "matchFileNames": ["package.json"],
+            "matchPackagePatterns": ["@taiga-ui/.*"],
+            "matchUpdateTypes": ["minor", "patch", "pin"],
+            "postUpgradeTasks": {
+                "fileFilters": ["**/**"],
+                "commands": [
+                    "npm ci --ignore-scripts --force",
+                    "npx --no-install nx migrate {{{depName}}} --from={{{depName}}}@{{{replace '^[^\\\\d]*' '' currentValue}}} --to={{{depName}}}@{{{replace '^[^\\\\d]*' '' newValue}}}",
+                    "npx --no-install nx migrate --run-migrations=migrations.json --if-exists"
+                ]
+            }
+        }
+    ]
 }
