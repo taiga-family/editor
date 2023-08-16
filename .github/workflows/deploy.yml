@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.3
-      - uses: taiga-family/ci/actions/variables@1.9.1
-      - uses: taiga-family/ci/actions/setup-node@1.9.1
+      - uses: taiga-family/ci/actions/variables@1.9.2
+      - uses: taiga-family/ci/actions/setup-node@1.9.2
 
       - name: Build demo for Github Pages
         run: npx nx build-gh-pages demo
 
-      - uses: taiga-family/ci/actions/setup-deploy@1.9.1
+      - uses: taiga-family/ci/actions/setup-deploy@1.9.2
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           folder: dist/demo/browser
