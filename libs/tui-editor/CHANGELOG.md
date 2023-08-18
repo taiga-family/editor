@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.2.0...@tinkoff/tui-editor@1.3.0) (2023-08-18)
+
+### Features
+
+- change margin for list ([#152](https://github.com/taiga-family/tui-editor/issues/152))
+  ([57d79ca](https://github.com/taiga-family/tui-editor/commit/57d79ca8741db87b88df887e921402477e228346))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.2.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.1.0...@tinkoff/tui-editor@1.2.0) (2023-07-27)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
