@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiActiveZoneModule, TuiItemDirective} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiItemModule} from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
 import {TuiEditLinkModule} from '@tinkoff/tui-editor/components/edit-link';
 import {TuiEditorSocketModule} from '@tinkoff/tui-editor/components/editor-socket';
@@ -18,6 +18,7 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiEditorPortalDirective,
     ],
     imports: [
+        TuiItemModule,
         CommonModule,
         TuiToolbarModule,
         TuiWrapperModule,
@@ -28,6 +29,6 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiTiptapEditorModule,
         TuiEditorSocketModule,
     ],
-    exports: [TuiEditorComponent, TuiItemDirective],
+    exports: [TuiEditorComponent],
 })
 export class TuiEditorModule {}
