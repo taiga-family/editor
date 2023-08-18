@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.1...@tinkoff/tui-editor@1.4.0) (2023-08-18)
+
+### Bug Fixes
+
+- can't resolve item.directive.ts, but not a .d.ts file ([#157](https://github.com/taiga-family/tui-editor/issues/157))
+  ([50b117e](https://github.com/taiga-family/tui-editor/commit/50b117e57626c8cd3cc93c8c912dc402b67f0d36))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [1.3.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.0...@tinkoff/tui-editor@1.3.1) (2023-08-18)
 
 ### Bug Fixes
