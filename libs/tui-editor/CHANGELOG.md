@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.0...@tinkoff/tui-editor@1.3.1) (2023-08-18)
+
+### Bug Fixes
+
+- expect null pointer ([#156](https://github.com/taiga-family/tui-editor/issues/156))
+  ([fb50ce7](https://github.com/taiga-family/tui-editor/commit/fb50ce734dfb61e7540203b983eeb8ae9cbb6b94))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.3.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.2.0...@tinkoff/tui-editor@1.3.0) (2023-08-18)
 
 ### Features
