@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.4.0...@tinkoff/tui-editor@1.5.0) (2023-08-22)
+
+### Features
+
+- support override icons ([#165](https://github.com/taiga-family/tui-editor/issues/165))
+  ([4dc5cd4](https://github.com/taiga-family/tui-editor/commit/4dc5cd4ab69786637e661fa877e5c8bdc28b069b))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.4.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.1...@tinkoff/tui-editor@1.4.0) (2023-08-18)
 
 ### Bug Fixes
