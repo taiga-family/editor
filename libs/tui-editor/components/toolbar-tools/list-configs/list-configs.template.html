@@ -8,13 +8,13 @@
         <button
             appearance="icon"
             automation-id="toolbar__ordering-list-button"
-            icon="tuiIconListLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
             [focusable]="list.open"
+            [icon]="options.icons.listPreview"
             [pseudoActive]="list?.open || listState?.unordered || listState?.ordered || false"
             [tuiHint]="texts.list"
         ></button>
@@ -22,45 +22,49 @@
             <div class="t-dropdown">
                 <button
                     appearance="icon"
-                    icon="tuiIconListLarge"
+                    automation-id="toolbar__un-ordered-list-button"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.listUnOrdered"
                     [pseudoActive]="!!listState?.unordered"
                     [tuiHint]="texts.unorderedList"
                     (click)="editor.toggleUnorderedList()"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconOLLarge"
+                    automation-id="toolbar__ordered-list-button"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.listOrdered"
                     [pseudoActive]="!!listState?.ordered"
                     [tuiHint]="texts.orderedList"
                     (click)="editor.toggleOrderedList()"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconIndentLarge"
+                    automation-id="toolbar_indent-button"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
                     [disabled]="(!listState?.ordered && !listState?.unordered) || false"
+                    [icon]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     (click)="sinkListItem()"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconOutdentLarge"
+                    automation-id="toolbar_outdent-button"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option"
                     [disabled]="(!listState?.ordered && !listState?.unordered) || false"
+                    [icon]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     (click)="liftListItem()"
                 ></button>

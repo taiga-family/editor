@@ -4,7 +4,9 @@ import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {
     TUI_EDITOR_CODE_OPTIONS,
+    TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
+    TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -23,6 +25,7 @@ export class TuiCodeComponent {
     );
 
     constructor(
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,

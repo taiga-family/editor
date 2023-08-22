@@ -42,7 +42,7 @@ export function tuiOpenAnchorDropdown({containHref}: {containHref: string}): voi
 }
 
 export function tuiTrashValueByEditLink(): void {
-    cy.get(`tui-edit-link button[icon=tuiIconUnlinkLarge]`)
+    cy.get(`tui-edit-link button[automation-id="toolbar__popup-link-clear-button"]`)
         .tuiWaitBeforeScreenshot()
         .click();
 }
@@ -75,7 +75,7 @@ export function tuiClearHint(): void {
 
 export function tuiInsertLink(): void {
     tuiGetDemoContent()
-        .find(`tui-toolbar button[icon=tuiIconLinkLarge]`)
+        .find(`tui-toolbar button[automation-id="toolbar__link-button"]`)
         .click({force: true})
         .tuiWaitBeforeScreenshot();
 
@@ -95,7 +95,9 @@ export function tuiGetScreenshotArea(): Cypress.Chainable<unknown> {
 }
 
 export function tuiOpenFontTool(): Cypress.Chainable<JQuery> {
-    tuiGetDemoContent().find(`button[icon="tuiIconFontLarge"]`).as(`iconFontLargeTool`);
+    tuiGetDemoContent()
+        .find(`button[automation-id="toolbar__font-size-button"]`)
+        .as(`iconFontLargeTool`);
 
     cy.get(`body`).then($body => {
         if ($body.find(`tui-data-list[role="listbox"]`).length === 0) {

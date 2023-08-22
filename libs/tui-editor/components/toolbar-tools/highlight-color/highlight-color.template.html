@@ -8,7 +8,6 @@
     <button
         appearance="icon"
         automation-id="toolbar__hilite-button"
-        icon="tuiIconHiliteLarge"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
@@ -16,6 +15,7 @@
         type="button"
         class="t-tool"
         [focusable]="hilite.open"
+        [icon]="options.icons.textHilite"
         [pseudoActive]="hilite.open"
         [tuiHint]="backColorText$ | async"
     ></button>

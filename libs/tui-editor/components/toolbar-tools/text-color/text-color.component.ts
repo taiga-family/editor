@@ -18,18 +18,17 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class TuiTextColorComponent {
     @Input()
-    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
+    colors: ReadonlyMap<string, string> = this.options.colors;
 
     readonly fontColor$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.getFontColor() || this.defaultOptions.blankColor),
+        map(() => this.editor.getFontColor() || this.options.blankColor),
         distinctUntilChanged(),
     );
 
     readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
 
     constructor(
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,

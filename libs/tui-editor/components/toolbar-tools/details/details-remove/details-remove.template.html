@@ -1,7 +1,6 @@
 <button
     *ngIf="texts$ | async as text"
     appearance="icon"
-    icon="tuiIconSpoilerDeleteLarge"
     size="s"
     tuiHintDescribe
     tuiHintDirection="top-left"
@@ -9,6 +8,7 @@
     type="button"
     [disabled]="!!(disabled$ | async)"
     [focusable]="false"
+    [icon]="options.icons.detailsRemove"
     [tuiHint]="text.removeDetails"
     (click)="removeDetails()"
 ></button>

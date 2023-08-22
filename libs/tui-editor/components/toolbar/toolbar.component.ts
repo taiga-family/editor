@@ -60,7 +60,7 @@ export class TuiToolbarComponent {
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
 
     @Input()
-    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
+    colors: ReadonlyMap<string, string> = this.options.colors;
 
     @Input()
     @HostBinding('class._disabled')
@@ -100,8 +100,7 @@ export class TuiToolbarComponent {
         > | null,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Self()
         @Inject(TuiDestroyService)
         private readonly destroy$: TuiDestroyService,

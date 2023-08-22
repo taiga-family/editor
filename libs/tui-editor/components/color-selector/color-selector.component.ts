@@ -9,7 +9,11 @@ import {
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@tinkoff/tui-editor/tokens';
+import {
+    TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES,
+    TUI_EDITOR_OPTIONS,
+    TuiEditorOptions,
+} from '@tinkoff/tui-editor/tokens';
 import {TuiGradientDirection} from '@tinkoff/tui-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@tinkoff/tui-editor/utils';
 
@@ -67,6 +71,7 @@ export class TuiColorSelectorComponent {
     ];
 
     constructor(
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES) readonly modes: [string, string],
     ) {}

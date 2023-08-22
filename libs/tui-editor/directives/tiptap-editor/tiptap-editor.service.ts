@@ -35,7 +35,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     set editable(editable: boolean) {
-        this.editor.setEditable(editable);
+        this.editor.setEditable(editable, false);
     }
 
     get state(): EditorState {

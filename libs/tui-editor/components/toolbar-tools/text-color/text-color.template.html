@@ -9,13 +9,13 @@
     <button
         appearance="icon"
         automation-id="toolbar__color-button"
-        icon="tuiIconColorLarge"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [focusable]="color.open"
+        [icon]="options.icons.textColor"
         [pseudoActive]="color.open"
         [tuiHint]="foreColorText$ | async"
     ></button>

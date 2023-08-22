@@ -20,7 +20,9 @@ describe(`Examples with groups in editor`, () => {
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`2-1-draggable-groups`);
 
-        cy.get(`@wrapper`).find(`button[icon=tuiIconPlusLarge]`).click();
+        cy.get(`@wrapper`)
+            .find(`button[automation-id="toolbar__group-add-button"]`)
+            .click();
         cy.get(`@wrapper`).should(`be.visible`).click(); // clear hints
 
         cy.get(`@editor`)
@@ -28,10 +30,14 @@ describe(`Examples with groups in editor`, () => {
             .matchImageSnapshot(`2-2-draggable-groups`);
 
         cy.get(`@editor`).should(`be.visible`).type(`{selectall}{backspace}`);
-        cy.get(`@wrapper`).find(`button[icon=tuiIconPlusLarge]`).click();
+        cy.get(`@wrapper`)
+            .find(`button[automation-id="toolbar__group-add-button"]`)
+            .click();
         cy.document().then(doc => cy.wrap(doc.activeElement, {log: false}).type(`123`));
 
-        cy.get(`@wrapper`).find(`button[icon=tuiIconPlusLarge]`).click();
+        cy.get(`@wrapper`)
+            .find(`button[automation-id="toolbar__group-add-button"]`)
+            .click();
         cy.document().then(doc => cy.wrap(doc.activeElement, {log: false}).type(`456`));
 
         cy.get(`@wrapper`).should(`be.visible`).tuiWaitBeforeAction().click(); // clear hints

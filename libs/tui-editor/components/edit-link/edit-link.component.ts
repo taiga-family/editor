@@ -54,8 +54,7 @@ export class TuiEditLinkComponent {
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
         @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly options: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
     ) {}
 
     get defaultProtocol(): TuiEditorLinkProtocol {

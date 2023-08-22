@@ -6,7 +6,6 @@
 >
     <button
         appearance="icon"
-        icon="tuiIconAddRowLarge"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
@@ -14,6 +13,7 @@
         type="button"
         [disabled]="!active"
         [focusable]="tableCommand.open"
+        [icon]="options.icons.addRowTable"
         [tuiHint]="rowsColumnsManagingText$ | async"
     ></button>
 </tui-hosted-dropdown>

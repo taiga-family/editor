@@ -10,7 +10,7 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
     video: false,
     viewportWidth,
     viewportHeight,
-    watchForFileChanges: false,
+    watchForFileChanges: true,
     fixturesFolder: `cypress/fixtures`,
     screenshotsFolder: `cypress/screenshots`,
     requestTimeout: 120_000,
