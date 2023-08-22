@@ -25,8 +25,7 @@ export class TuiFontSizeComponent {
     readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
 
     constructor(
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly options: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,

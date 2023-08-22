@@ -8,7 +8,6 @@
     >
         <button
             appearance="icon"
-            icon="tuiIconPaintLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -16,6 +15,7 @@
             type="button"
             [disabled]="!isActive"
             [focusable]="colorSelect.open"
+            [icon]="options.icons.paint"
             [pseudoActive]="colorSelect.open"
             [tuiHint]="colorText$ | async"
         ></button>

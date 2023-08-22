@@ -7,13 +7,14 @@
     >
         <button
             appearance="icon"
-            icon="tuiIconAlignLeftLarge"
+            automation-id="toolbar__align-button"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
             [focusable]="align.open"
+            [icon]="options.icons.textAlignPreview"
             [pseudoActive]="align.open"
             [tuiHint]="texts.justify"
         ></button>
@@ -21,44 +22,44 @@
             <div class="t-dropdown">
                 <button
                     appearance="icon"
-                    icon="tuiIconAlignLeftLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.textAlignLeft"
                     [pseudoActive]="!!alignState?.left"
                     [tuiHint]="texts.justifyLeft"
                     (click)="editor.onAlign('left')"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconAlignCenterLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.textAlignCenter"
                     [pseudoActive]="!!alignState?.center"
                     [tuiHint]="texts.justifyCenter"
                     (click)="editor.onAlign('center')"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconAlignRightLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.textAlignRight"
                     [pseudoActive]="!!alignState?.right"
                     [tuiHint]="texts.justifyRight"
                     (click)="editor.onAlign('right')"
                 ></button>
                 <button
                     appearance="icon"
-                    icon="tuiIconAlignJustifyLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.textAlignJustify"
                     [pseudoActive]="!!alignState?.justify"
                     [tuiHint]="texts.justifyFull"
                     (click)="editor.onAlign('justify')"

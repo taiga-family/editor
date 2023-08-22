@@ -18,24 +18,23 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class TuiHighlightColorComponent {
     @Input()
-    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
+    colors: ReadonlyMap<string, string> = this.options.colors;
 
     readonly backgroundColor$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.getBackgroundColor() || this.defaultOptions.blankColor),
+        map(() => this.editor.getBackgroundColor() || this.options.blankColor),
         distinctUntilChanged(),
     );
 
     readonly backColorText$ = this.texts$.pipe(map(texts => texts.backColor));
 
     constructor(
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
     ) {}
 
     isBlankColor(color: string): boolean {
-        return color === this.defaultOptions.blankColor;
+        return color === this.options.blankColor;
     }
 }

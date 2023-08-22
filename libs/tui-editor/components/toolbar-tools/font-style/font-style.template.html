@@ -8,13 +8,13 @@
         <button
             appearance="icon"
             automation-id="toolbar__font-style-button"
-            icon="tuiIconFormatLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
             [focusable]="format.open"
+            [icon]="options.icons.fontStylePreview"
             [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
             [tuiHint]="texts.fontStyle"
         ></button>
@@ -23,11 +23,11 @@
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Bold)"
                     appearance="icon"
-                    icon="tuiIconBoldLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.fontStyleBold"
                     [pseudoActive]="state.bold"
                     [tuiHint]="texts.bold"
                     (click)="editor.toggleBold()"
@@ -35,11 +35,11 @@
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Italic)"
                     appearance="icon"
-                    icon="tuiIconItalicLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.fontStyleItalic"
                     [pseudoActive]="state.italic"
                     [tuiHint]="texts.italic"
                     (click)="editor.toggleItalic()"
@@ -47,11 +47,11 @@
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Underline)"
                     appearance="icon"
-                    icon="tuiIconUnderlineLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.fontStyleUnderline"
                     [pseudoActive]="state.underline"
                     [tuiHint]="texts.underline"
                     (click)="editor.toggleUnderline()"
@@ -59,11 +59,11 @@
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Strikethrough)"
                     appearance="icon"
-                    icon="tuiIconStrikeThroughLarge"
                     size="s"
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
+                    [icon]="options.icons.fontStyleStrike"
                     [pseudoActive]="state.strike"
                     [tuiHint]="texts.strikeThrough"
                     (click)="editor.toggleStrike()"

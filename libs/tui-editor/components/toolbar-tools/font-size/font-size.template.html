@@ -4,13 +4,14 @@
 >
     <button
         appearance="icon"
-        icon="tuiIconFontLarge"
+        automation-id="toolbar__font-size-button"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [focusable]="fonts.open"
+        [icon]="options.icons.fontSize"
         [pseudoActive]="fonts.open"
         [tuiHint]="fontText$ | async"
     ></button>

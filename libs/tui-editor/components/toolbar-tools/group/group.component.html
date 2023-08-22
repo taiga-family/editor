@@ -1,24 +1,26 @@
 <button
     appearance="icon"
-    icon="tuiIconPlusLarge"
+    automation-id="toolbar__group-add-button"
     size="s"
     tuiHintDescribe
     tuiIconButton
     type="button"
     [focusable]="false"
+    [icon]="options.icons.groupAdd"
     [tuiHint]="insertGroupText$ | async"
     (click)="addGroup()"
 ></button>
 
 <button
     appearance="icon"
-    icon="tuiIconCloseLarge"
+    automation-id="toolbar__group-remove-button"
     size="s"
     tuiHintDescribe
     tuiIconButton
     type="button"
     [disabled]="!!(disabled$ | async)"
     [focusable]="false"
+    [icon]="options.icons.groupRemove"
     [tuiHint]="removeGroupText$ | async"
     (click)="removeGroup()"
 ></button>

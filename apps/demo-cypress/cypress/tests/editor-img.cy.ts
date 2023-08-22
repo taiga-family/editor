@@ -57,7 +57,9 @@ describe(`Examples images`, () => {
         });
 
         function closePreview(): void {
-            cy.get(`tui-preview`).find(`button[icon=tuiIconCloseLarge]._focused`).click();
+            cy.get(`tui-preview`)
+                .find(`button[data-appearance="preview-action"]._focused`)
+                .click();
         }
     });
 });

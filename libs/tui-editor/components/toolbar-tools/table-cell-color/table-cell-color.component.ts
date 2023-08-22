@@ -18,7 +18,7 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class TuiTableCellColorComponent {
     @Input()
-    colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
+    colors: ReadonlyMap<string, string> = this.options.colors;
 
     readonly colorText$ = this.texts$.pipe(
         map(
@@ -39,21 +39,20 @@ export class TuiTableCellColorComponent {
             () =>
                 this.editor.getCellColor() ||
                 this.editor.getGroupColor() ||
-                this.defaultOptions.blankColor,
+                this.options.blankColor,
         ),
         distinctUntilChanged(),
     );
 
     constructor(
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
     ) {}
 
     isBlankColor(color: string): boolean {
-        return color === this.defaultOptions.blankColor;
+        return color === this.options.blankColor;
     }
 
     setCellColor(color: string): void {

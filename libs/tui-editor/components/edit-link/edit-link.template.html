@@ -29,20 +29,20 @@
             </div>
         </label>
         <tui-svg
-            src="tuiIconCloseLarge"
             class="t-cleaner"
             [class.t-cleaner_hidden]="!hasUrl"
+            [src]="options.icons.popupLinkRemove"
             (click)="onClear()"
         ></tui-svg>
         <button
             appearance="icon"
-            icon="tuiIconCheckCircleLarge"
             shape="rounded"
             size="s"
             title="Insert link"
             tuiIconButton
             type="button"
             class="t-button"
+            [icon]="options.icons.popupLinkSave"
             (click)="onSave()"
         ></button>
     </ng-container>
@@ -59,24 +59,25 @@
         </a>
         <button
             appearance="icon"
-            icon="tuiIconEdit2Large"
             shape="rounded"
             size="s"
             title="Change link"
             tuiIconButton
             type="button"
             class="t-button t-edit-button"
+            [icon]="options.icons.popupPreviewLinkEdit"
             (click)="onEdit()"
         ></button>
         <button
             appearance="icon"
-            icon="tuiIconUnlinkLarge"
+            automation-id="toolbar__popup-link-clear-button"
             shape="rounded"
             size="s"
             title="Remove link"
             tuiIconButton
             type="button"
             class="t-button"
+            [icon]="options.icons.popupPreviewLinkClear"
             (click)="onRemove()"
         ></button>
     </ng-template>

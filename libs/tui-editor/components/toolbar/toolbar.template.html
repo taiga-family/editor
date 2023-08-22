@@ -25,7 +25,7 @@
     >
         <button
             appearance="icon"
-            icon="tuiIconUndoLarge"
+            automation-id="toolbar__undo-button"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -35,12 +35,13 @@
             class="t-tool t-tool_margin"
             [disabled]="undoDisabled"
             [focusable]="false"
+            [icon]="options.icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
         ></button>
         <button
             appearance="icon"
-            icon="tuiIconRedoLarge"
+            automation-id="toolbar__redo-button"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -50,6 +51,7 @@
             class="t-tool t-tool_margin"
             [disabled]="redoDisabled"
             [focusable]="false"
+            [icon]="options.icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
         ></button>
@@ -90,7 +92,7 @@
             *ngIf="enabled(TuiEditorTool.Quote)"
             #button
             appearance="icon"
-            icon="tuiIconQuoteLarge"
+            automation-id="toolbar__quote-button"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -100,6 +102,7 @@
             class="t-tool t-tool_margin"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
+            [icon]="options.icons.quote"
             [pseudoActive]="blockquote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
@@ -115,7 +118,7 @@
             <button
                 #button
                 appearance="icon"
-                icon="tuiIconLinkLarge"
+                automation-id="toolbar__link-button"
                 size="s"
                 tuiHintDescribe
                 tuiHintDirection="top-left"
@@ -123,6 +126,7 @@
                 type="button"
                 class="t-tool"
                 [focusable]="link.open"
+                [icon]="options.icons.link"
                 [pseudoActive]="link.open || a"
                 [tuiHint]="texts.link"
             ></button>
@@ -143,13 +147,13 @@
         >
             <button
                 appearance="icon"
-                icon="tuiIconAnchorLarge"
                 size="s"
                 tuiHintDescribe
                 tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
                 [focusable]="false"
+                [icon]="options.icons.anchor"
                 [pseudoActive]="anchor.open || jumpAnchor"
                 [tuiHint]="texts.insertAnchor"
             ></button>
@@ -165,7 +169,6 @@
             <button
                 #button
                 appearance="icon"
-                icon="tuiIconPaperclipLarge"
                 size="s"
                 tuiHintDescribe
                 tuiHintDirection="top-left"
@@ -174,6 +177,7 @@
                 type="button"
                 class="t-tool t-tool_margin"
                 [focusable]="false"
+                [icon]="options.icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
             ></button>
@@ -197,7 +201,6 @@
             *ngIf="enabled(TuiEditorTool.Sub)"
             #button
             appearance="icon"
-            icon="tuiIconSubscriptLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -206,6 +209,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
+            [icon]="options.icons.sub"
             [pseudoActive]="subscript"
             [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
@@ -214,7 +218,6 @@
             *ngIf="enabled(TuiEditorTool.Sup)"
             #button
             appearance="icon"
-            icon="tuiIconSuperscriptLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -223,6 +226,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
+            [icon]="options.icons.sup"
             [pseudoActive]="superscript"
             [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
@@ -260,7 +264,6 @@
             *ngIf="enabled(TuiEditorTool.Tex)"
             #button
             appearance="icon"
-            icon="tuiIconTeXLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -269,6 +272,7 @@
             type="button"
             class="t-tool"
             [focusable]="false"
+            [icon]="options.icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
         ></button>
@@ -280,7 +284,6 @@
             <button
                 #button
                 appearance="icon"
-                icon="tuiIconImageLarge"
                 size="s"
                 tuiHintDescribe
                 tuiHintDirection="top-left"
@@ -288,6 +291,7 @@
                 type="button"
                 class="t-tool"
                 [focusable]="false"
+                [icon]="options.icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
             ></button>
@@ -305,7 +309,6 @@
             *ngIf="enabled(TuiEditorTool.HR)"
             #button
             appearance="icon"
-            icon="tuiIconHrLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -314,6 +317,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
+            [icon]="options.icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
         ></button>
@@ -325,7 +329,6 @@
         <button
             #button
             appearance="icon"
-            icon="tuiIconClearFormatLarge"
             size="s"
             tuiHintDescribe
             tuiHintDirection="top-left"
@@ -334,6 +337,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
+            [icon]="options.icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"
         ></button>

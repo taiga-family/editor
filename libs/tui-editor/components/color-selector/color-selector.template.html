@@ -14,9 +14,9 @@
     </button>
     <ng-template #arrow>
         <tui-svg
-            src="tuiIconChevronDown"
             class="t-arrow"
             [class.t-arrow_rotated]="dropdown.open"
+            [src]="options.icons.colorSelectorDropdownChevron"
         ></tui-svg>
     </ng-template>
     <ng-template #menu>
@@ -37,8 +37,8 @@
                 {{ mode }}
                 <tui-svg
                     *ngIf="isModeActive(mode)"
-                    src="tuiIconCheck"
                     class="t-checkmark"
+                    [src]="options.icons.colorSelectorDropdownCheck"
                 ></tui-svg>
             </button>
         </tui-data-list>

@@ -2,7 +2,7 @@ describe(`Editor's anchors`, () => {
     beforeEach(() => {
         cy.viewport(1280, 500).tuiVisit(`anchors`);
 
-        cy.get(`tui-doc-example[heading="Anchors"]`).tuiScrollIntoView().as(`wrapper`);
+        cy.get(`tui-doc-example[heading="Anchors"]`).as(`wrapper`);
 
         cy.get(`@wrapper`).findByAutomationId(`tui-doc-example`).as(`example`);
     });
@@ -14,15 +14,6 @@ describe(`Editor's anchors`, () => {
     });
 
     describe(`anchors`, () => {
-        beforeEach(() => {
-            cy.get(`@wrapper`)
-                .find(`h4`)
-                .contains(`HTML`)
-                .next()
-                .tuiScrollIntoView()
-                .as(`content`);
-        });
-
         for (const anchor of [
             `moser`,
             `thirlwell`,

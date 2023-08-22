@@ -4,13 +4,13 @@
 >
     <button
         appearance="icon"
-        icon="tuiIconCodeLarge"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [focusable]="codes.open"
+        [icon]="options.icons.code"
         [pseudoActive]="codes.open || (insideCode$ | async)"
         [tuiHint]="hintText$ | async"
     ></button>

@@ -181,11 +181,9 @@ describe(`Editor API`, () => {
 
             cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
-            toggleBullet(`tuiIconListLarge`);
+            toggleBullet(`toolbar__un-ordered-list-button`);
 
             cy.get(`@editor`).type(`1{enter}`).type(`{enter}`);
-
-            toggleBullet(`tuiIconOLLarge`);
 
             cy.get(`@editor`).type(`A`);
             cy.get(`@wrapper`)
@@ -193,7 +191,7 @@ describe(`Editor API`, () => {
                 .matchImageSnapshot(`6-1-bullet-and-ordered-list`);
 
             clearEditor();
-            toggleBullet(`tuiIconListLarge`);
+            toggleBullet(`toolbar__un-ordered-list-button`);
 
             cy.get(`@editor`).type(
                 `first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line`,
@@ -203,7 +201,7 @@ describe(`Editor API`, () => {
                 .matchImageSnapshot(`6-2-bullet-and-ordered-list`);
 
             clearEditor();
-            toggleBullet(`tuiIconOLLarge`);
+            toggleBullet(`toolbar__ordered-list-button`);
 
             cy.get(`@editor`).type(
                 `first line{shift+enter}second line{shift+enter}third line{shift+enter}{enter}first line`,
@@ -219,10 +217,10 @@ describe(`Editor API`, () => {
 
             cy.get(`@wrapper`).find(tuiGetTipTapContentSelector()).as(`editor`);
 
-            toggleBullet(`tuiIconListLarge`);
+            toggleBullet(`toolbar__un-ordered-list-button`);
             cy.get(`@editor`).type(`1{enter}`);
             cy.get(`@editor`).type(`2`);
-            toggleBullet(`tuiIconIndentLarge`);
+            toggleBullet(`toolbar_indent-button`);
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
@@ -230,7 +228,7 @@ describe(`Editor API`, () => {
 
             cy.get(`@editor`).type(`{enter}`);
             cy.get(`@editor`).type(`3`);
-            toggleBullet(`tuiIconIndentLarge`);
+            toggleBullet(`toolbar_indent-button`);
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
@@ -238,21 +236,21 @@ describe(`Editor API`, () => {
 
             cy.get(`@editor`).type(`{enter}`);
             cy.get(`@editor`).type(`4`);
-            toggleBullet(`tuiIconIndentLarge`);
+            toggleBullet(`toolbar_indent-button`);
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`7-3-nested-list`);
 
             cy.get(`@editor`).type(`{enter}`);
-            toggleBullet(`tuiIconOutdentLarge`);
+            toggleBullet(`toolbar_outdent-button`);
 
             cy.get(`@wrapper`)
                 .tuiWaitBeforeScreenshot()
                 .matchImageSnapshot(`7-4-nested-list`);
 
             cy.get(`@editor`).type(`{enter}`);
-            toggleBullet(`tuiIconOutdentLarge`);
+            toggleBullet(`toolbar_outdent-button`);
             cy.get(`@editor`).type(`5`);
 
             cy.get(`@wrapper`)
@@ -260,12 +258,12 @@ describe(`Editor API`, () => {
                 .matchImageSnapshot(`7-6-nested-list`);
         });
 
-        function toggleBullet(iconType: string): void {
+        function toggleBullet(automationId: string): void {
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconListLarge"]`)
+                .find(`button[automation-id="toolbar__ordering-list-button"]`)
                 .click({force: true});
             cy.get(`tui-dropdown`)
-                .find(`button[icon="${iconType}"]`)
+                .find(`button[automation-id="${automationId}"]`)
                 .click({force: true});
         }
 

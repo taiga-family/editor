@@ -6,17 +6,18 @@
 >
     <button
         appearance="icon"
-        icon="tuiIconTableLarge"
+        automation-id="toolbar__insert-table-button"
         size="s"
         tuiHintDescribe
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [focusable]="table.open"
+        [icon]="options.icons.insertTable"
         [tuiHint]="insertTableText$ | async"
     ></button>
 </tui-hosted-dropdown>
 
 <ng-template #tableDropdown>
-    <tui-table-size-selector (onSelectSize)="addTable($event)"></tui-table-size-selector>
+    <tui-table-size-selector (selectSize)="addTable($event)"></tui-table-size-selector>
 </ng-template>

@@ -105,7 +105,9 @@ describe(`Editor's toolbar`, () => {
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`3-1-editor-break-line`);
 
-        cy.get(`@wrapper`).find(`button[icon="tuiIconTableLarge"]`).as(`tableTool`);
+        cy.get(`@wrapper`)
+            .find(`button[automation-id="toolbar__insert-table-button"]`)
+            .as(`tableTool`);
 
         cy.get(`@tableTool`).tuiFocus().click();
 
@@ -140,7 +142,7 @@ describe(`Editor's toolbar`, () => {
             .should(`be.visible`)
             .click();
 
-        cy.get(`button[icon="tuiIconListLarge"].t-option`)
+        cy.get(`button[automation-id="toolbar__un-ordered-list-button"].t-option`)
             .should(`be.visible`)
             .click({force: true});
 
@@ -155,7 +157,9 @@ describe(`Editor's toolbar`, () => {
             .tuiWaitBeforeScreenshot()
             .matchImageSnapshot(`4-1-set-unordered-list`);
 
-        cy.get(`@wrapper`).find(`button[icon="tuiIconTableLarge"]`).as(`tableTool`);
+        cy.get(`@wrapper`)
+            .find(`button[automation-id="toolbar__insert-table-button"]`)
+            .as(`tableTool`);
 
         cy.get(`@tableTool`).tuiFocus().click();
 
@@ -177,10 +181,14 @@ describe(`Editor's toolbar`, () => {
             tuiGetDemoContent().as(`wrapper`);
 
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconAlignLeftLarge"]`)
+                .find(`button[automation-id="toolbar__align-button"]`)
                 .as(`initialTool`);
-            cy.get(`@wrapper`).find(`button[icon="tuiIconFormatLarge"]`).as(`leftTool`);
-            cy.get(`@wrapper`).find(`button[icon="tuiIconListLarge"]`).as(`rightTool`);
+            cy.get(`@wrapper`)
+                .find(`button[automation-id="toolbar__font-style-button"]`)
+                .as(`leftTool`);
+            cy.get(`@wrapper`)
+                .find(`button[automation-id="toolbar__ordering-list-button"]`)
+                .as(`rightTool`);
 
             cy.get(`@initialTool`).tuiFocus();
 
@@ -201,13 +209,13 @@ describe(`Editor's toolbar`, () => {
             tuiClearEditor();
 
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconUndoLarge"]`)
+                .find(`button[automation-id="toolbar__undo-button"]`)
                 .as(`leftActiveTool`);
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconRedoLarge"]`)
+                .find(`button[automation-id="toolbar__redo-button"]`)
                 .as(`betweenDisabledTool`);
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconFontLarge"]`)
+                .find(`button[automation-id="toolbar__font-size-button"]`)
                 .as(`rightActiveTool`);
 
             // | (active) | disabled | active |
@@ -239,10 +247,10 @@ describe(`Editor's toolbar`, () => {
                 .type(`123`, {force: true});
 
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconUndoLarge"]`)
+                .find(`button[automation-id="toolbar__undo-button"]`)
                 .as(`leftBuiltInTool`);
             cy.get(`@wrapper`)
-                .find(`button[icon="tuiIconStarLarge"]`)
+                .find(`button[automation-id="smiles-tool__button"]`)
                 .as(`rightCustomTool`);
 
             // ==>
