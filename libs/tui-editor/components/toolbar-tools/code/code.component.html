@@ -3,16 +3,16 @@
     [content]="codesDropdown"
 >
     <button
+        appearance="icon"
+        icon="tuiIconCodeLarge"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        size="s"
-        icon="tuiIconCodeLarge"
-        appearance="icon"
-        tuiHintDirection="top-left"
-        tuiHintDescribe
-        [tuiHint]="hintText$ | async"
-        [pseudoActive]="codes.open || (insideCode$ | async)"
         [focusable]="codes.open"
+        [pseudoActive]="codes.open || (insideCode$ | async)"
+        [tuiHint]="hintText$ | async"
     ></button>
     <ng-template #codesDropdown>
         <tui-data-list>

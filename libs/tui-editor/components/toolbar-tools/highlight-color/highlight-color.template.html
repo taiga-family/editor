@@ -6,18 +6,18 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
+        appearance="icon"
+        automation-id="toolbar__hilite-button"
+        icon="tuiIconHiliteLarge"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        size="s"
-        tuiHintDirection="top-left"
-        appearance="icon"
-        icon="tuiIconHiliteLarge"
-        automation-id="toolbar__hilite-button"
-        tuiHintDescribe
         class="t-tool"
-        [tuiHint]="backColorText$ | async"
-        [pseudoActive]="hilite.open"
         [focusable]="hilite.open"
+        [pseudoActive]="hilite.open"
+        [tuiHint]="backColorText$ | async"
     ></button>
     <div
         *ngIf="!isBlankColor(selectedColor || '')"
@@ -30,8 +30,8 @@
     >
         <tui-palette
             class="t-color-picker"
-            [tuiActiveZoneParent]="activeZone"
             [colors]="colors"
+            [tuiActiveZoneParent]="activeZone"
             (selectedColor)="editor.setBackgroundColor($event)"
         ></tui-palette>
     </ng-template>

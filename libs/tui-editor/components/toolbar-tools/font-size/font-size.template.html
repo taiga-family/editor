@@ -3,28 +3,28 @@
     [content]="fontsDropdown"
 >
     <button
-        tuiIconButton
-        type="button"
-        size="s"
         appearance="icon"
         icon="tuiIconFontLarge"
-        tuiHintDirection="top-left"
+        size="s"
         tuiHintDescribe
-        [tuiHint]="fontText$ | async"
-        [pseudoActive]="fonts.open"
+        tuiHintDirection="top-left"
+        tuiIconButton
+        type="button"
         [focusable]="fonts.open"
+        [pseudoActive]="fonts.open"
+        [tuiHint]="fontText$ | async"
     ></button>
     <ng-template #fontsDropdown>
         <tui-data-list>
             <button
                 *ngFor="let item of fontsOptions$ | async"
                 tuiOption
-                [style.fontFamily]="item.family"
                 [attr.automation-id]="'tui_font__' + (item.name || '' | lowercase)"
-                [style.fontSize.px]="item.px"
-                [style.fontWeight]="item.weight"
                 [ngClass]="item?.ngClass || {}"
                 [ngStyle]="item?.ngStyle || {}"
+                [style.fontFamily]="item.family"
+                [style.fontSize.px]="item.px"
+                [style.fontWeight]="item.weight"
                 (click)="setFontOption(item)"
             >
                 {{ item.name }}

@@ -7,16 +7,16 @@
 </tui-input>
 <ng-template #color>
     <input
-        type="color"
         tabindex="-1"
+        type="color"
         [(ngModel)]="value"
-        (mousedown.stop)="(0)"
         (click.stop)="(0)"
+        (mousedown.stop)="(0)"
     />
     <tui-svg
+        appearance="icon"
         src="tuiIconPaintLarge"
         tuiWrapper
-        appearance="icon"
     ></tui-svg>
     <hr [style.background]="value" />
 </ng-template>

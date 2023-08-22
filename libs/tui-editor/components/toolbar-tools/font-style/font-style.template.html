@@ -6,66 +6,66 @@
         [content]="formatDropdown"
     >
         <button
+            appearance="icon"
+            automation-id="toolbar__font-style-button"
+            icon="tuiIconFormatLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            size="s"
-            icon="tuiIconFormatLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            automation-id="toolbar__font-style-button"
-            tuiHintDescribe
-            [tuiHint]="texts.fontStyle"
-            [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
             [focusable]="format.open"
+            [pseudoActive]="format.open || state.bold || state.italic || state.underline || state.strike"
+            [tuiHint]="texts.fontStyle"
         ></button>
         <ng-template #formatDropdown>
             <div class="t-dropdown">
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Bold)"
+                    appearance="icon"
+                    icon="tuiIconBoldLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconBoldLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
-                    [tuiHint]="texts.bold"
                     [pseudoActive]="state.bold"
+                    [tuiHint]="texts.bold"
                     (click)="editor.toggleBold()"
                 ></button>
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Italic)"
+                    appearance="icon"
+                    icon="tuiIconItalicLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconItalicLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
-                    [tuiHint]="texts.italic"
                     [pseudoActive]="state.italic"
+                    [tuiHint]="texts.italic"
                     (click)="editor.toggleItalic()"
                 ></button>
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Underline)"
+                    appearance="icon"
+                    icon="tuiIconUnderlineLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconUnderlineLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
-                    [tuiHint]="texts.underline"
                     [pseudoActive]="state.underline"
+                    [tuiHint]="texts.underline"
                     (click)="editor.toggleUnderline()"
                 ></button>
                 <button
                     *ngIf="isEnabled(TuiEditorTool.Strikethrough)"
+                    appearance="icon"
+                    icon="tuiIconStrikeThroughLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconStrikeThroughLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
-                    [tuiHint]="texts.strikeThrough"
                     [pseudoActive]="state.strike"
+                    [tuiHint]="texts.strikeThrough"
                     (click)="editor.toggleStrike()"
                 ></button>
             </div>

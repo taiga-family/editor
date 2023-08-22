@@ -24,33 +24,33 @@
         class="t-block"
     >
         <button
-            tuiItem
-            tuiIconButton
-            type="button"
-            size="s"
-            icon="tuiIconUndoLarge"
             appearance="icon"
-            tuiHintDirection="top-left"
+            icon="tuiIconUndoLarge"
+            size="s"
             tuiHintDescribe
+            tuiHintDirection="top-left"
+            tuiIconButton
+            tuiItem
+            type="button"
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.undo"
             [disabled]="undoDisabled"
             [focusable]="false"
+            [tuiHint]="texts.undo"
             (click)="undo()"
         ></button>
         <button
+            appearance="icon"
+            icon="tuiIconRedoLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconRedoLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.redo"
             [disabled]="redoDisabled"
             [focusable]="false"
+            [tuiHint]="texts.redo"
             (click)="redo()"
         ></button>
     </div>
@@ -89,19 +89,19 @@
         <button
             *ngIf="enabled(TuiEditorTool.Quote)"
             #button
+            appearance="icon"
+            icon="tuiIconQuoteLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconQuoteLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.quote"
-            [pseudoActive]="blockquote"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
+            [pseudoActive]="blockquote"
+            [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
         <tui-hosted-dropdown
@@ -114,17 +114,17 @@
         >
             <button
                 #button
+                appearance="icon"
+                icon="tuiIconLinkLarge"
+                size="s"
+                tuiHintDescribe
+                tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
-                size="s"
-                icon="tuiIconLinkLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                tuiHintDescribe
                 class="t-tool"
-                [tuiHint]="texts.link"
-                [pseudoActive]="link.open || a"
                 [focusable]="link.open"
+                [pseudoActive]="link.open || a"
+                [tuiHint]="texts.link"
             ></button>
             <ng-template #linkDropdown>
                 <tui-edit-link
@@ -142,13 +142,13 @@
             [content]="anchorDropdown"
         >
             <button
+                appearance="icon"
+                icon="tuiIconAnchorLarge"
+                size="s"
+                tuiHintDescribe
+                tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
-                size="s"
-                icon="tuiIconAnchorLarge"
-                tuiHintDirection="top-left"
-                appearance="icon"
-                tuiHintDescribe
                 [focusable]="false"
                 [pseudoActive]="anchor.open || jumpAnchor"
                 [tuiHint]="texts.insertAnchor"
@@ -164,17 +164,17 @@
         <ng-container *ngIf="enabled(TuiEditorTool.Attach)">
             <button
                 #button
+                appearance="icon"
+                icon="tuiIconPaperclipLarge"
+                size="s"
+                tuiHintDescribe
+                tuiHintDirection="top-left"
                 tuiIconButton
                 tuiItem
                 type="button"
-                size="s"
-                icon="tuiIconPaperclipLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                tuiHintDescribe
                 class="t-tool t-tool_margin"
-                [tuiHint]="texts.attach"
                 [focusable]="false"
+                [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
             ></button>
 
@@ -196,35 +196,35 @@
         <button
             *ngIf="enabled(TuiEditorTool.Sub)"
             #button
+            appearance="icon"
+            icon="tuiIconSubscriptLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconSubscriptLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.subscript"
-            [pseudoActive]="subscript"
             [focusable]="false"
+            [pseudoActive]="subscript"
+            [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
         ></button>
         <button
             *ngIf="enabled(TuiEditorTool.Sup)"
             #button
+            appearance="icon"
+            icon="tuiIconSuperscriptLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconSuperscriptLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.superscript"
-            [pseudoActive]="superscript"
             [focusable]="false"
+            [pseudoActive]="superscript"
+            [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
         ></button>
     </div>
@@ -259,17 +259,17 @@
         <button
             *ngIf="enabled(TuiEditorTool.Tex)"
             #button
+            appearance="icon"
+            icon="tuiIconTeXLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconTeXLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool"
-            [tuiHint]="texts.tex"
             [focusable]="false"
+            [tuiHint]="texts.tex"
             (click)="onTeX()"
         ></button>
         <div
@@ -279,23 +279,23 @@
         >
             <button
                 #button
+                appearance="icon"
+                icon="tuiIconImageLarge"
+                size="s"
+                tuiHintDescribe
+                tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
-                size="s"
-                icon="tuiIconImageLarge"
-                appearance="icon"
-                tuiHintDirection="top-left"
-                tuiHintDescribe
                 class="t-tool"
-                [tuiHint]="texts.image"
                 [focusable]="false"
+                [tuiHint]="texts.image"
                 (click)="image.click()"
             ></button>
 
             <input
                 #image
-                type="file"
                 accept="image/*"
+                type="file"
                 class="t-image"
                 [tuiFocusable]="false"
                 (change)="onImage(image)"
@@ -304,17 +304,17 @@
         <button
             *ngIf="enabled(TuiEditorTool.HR)"
             #button
+            appearance="icon"
+            icon="tuiIconHrLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconHrLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.insertHorizontalRule"
             [focusable]="false"
+            [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
         ></button>
     </div>
@@ -324,17 +324,17 @@
     >
         <button
             #button
+            appearance="icon"
+            icon="tuiIconClearFormatLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             tuiItem
             type="button"
-            size="s"
-            icon="tuiIconClearFormatLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
             class="t-tool t-tool_margin"
-            [tuiHint]="texts.clear"
             [focusable]="false"
+            [tuiHint]="texts.clear"
             (click)="removeFormat()"
         ></button>
     </div>

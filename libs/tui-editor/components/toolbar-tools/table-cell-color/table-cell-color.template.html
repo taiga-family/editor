@@ -2,22 +2,22 @@
     <tui-hosted-dropdown
         *tuiLet="isActive$ | async as isActive"
         #colorSelect
+        [canOpen]="!!isActive"
         [content]="cellColorDropdown"
         [tuiDropdownMaxHeight]="999"
-        [canOpen]="!!isActive"
     >
         <button
-            tuiIconButton
-            type="button"
-            size="s"
-            tuiHintDirection="top-left"
             appearance="icon"
             icon="tuiIconPaintLarge"
+            size="s"
             tuiHintDescribe
-            [tuiHint]="colorText$ | async"
-            [pseudoActive]="colorSelect.open"
-            [focusable]="colorSelect.open"
+            tuiHintDirection="top-left"
+            tuiIconButton
+            type="button"
             [disabled]="!isActive"
+            [focusable]="colorSelect.open"
+            [pseudoActive]="colorSelect.open"
+            [tuiHint]="colorText$ | async"
         ></button>
         <div
             *ngIf="!isBlankColor(color || '')"
@@ -30,8 +30,8 @@
         >
             <tui-palette
                 class="t-color-picker"
-                [tuiActiveZoneParent]="activeZone"
                 [colors]="colors"
+                [tuiActiveZoneParent]="activeZone"
                 (selectedColor)="setCellColor($event); colorSelect.close()"
             ></tui-palette>
         </ng-template>

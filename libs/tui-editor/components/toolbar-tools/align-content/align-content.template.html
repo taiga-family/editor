@@ -6,58 +6,58 @@
         [content]="alignDropdown"
     >
         <button
+            appearance="icon"
+            icon="tuiIconAlignLeftLarge"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            size="s"
-            icon="tuiIconAlignLeftLarge"
-            appearance="icon"
-            tuiHintDirection="top-left"
-            tuiHintDescribe
-            [tuiHint]="texts.justify"
-            [pseudoActive]="align.open"
             [focusable]="align.open"
+            [pseudoActive]="align.open"
+            [tuiHint]="texts.justify"
         ></button>
         <ng-template #alignDropdown>
             <div class="t-dropdown">
                 <button
+                    appearance="icon"
+                    icon="tuiIconAlignLeftLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconAlignLeftLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
                     [pseudoActive]="!!alignState?.left"
                     [tuiHint]="texts.justifyLeft"
                     (click)="editor.onAlign('left')"
                 ></button>
                 <button
+                    appearance="icon"
+                    icon="tuiIconAlignCenterLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconAlignCenterLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
                     [pseudoActive]="!!alignState?.center"
                     [tuiHint]="texts.justifyCenter"
                     (click)="editor.onAlign('center')"
                 ></button>
                 <button
+                    appearance="icon"
+                    icon="tuiIconAlignRightLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconAlignRightLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
                     [pseudoActive]="!!alignState?.right"
                     [tuiHint]="texts.justifyRight"
                     (click)="editor.onAlign('right')"
                 ></button>
                 <button
+                    appearance="icon"
+                    icon="tuiIconAlignJustifyLarge"
+                    size="s"
                     tuiIconButton
                     type="button"
-                    size="s"
-                    icon="tuiIconAlignJustifyLarge"
-                    appearance="icon"
                     class="t-option t-option_margin"
                     [pseudoActive]="!!alignState?.justify"
                     [tuiHint]="texts.justifyFull"

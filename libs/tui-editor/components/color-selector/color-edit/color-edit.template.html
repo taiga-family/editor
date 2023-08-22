@@ -1,7 +1,7 @@
 <tui-select
-    tuiTextfieldSize="m"
     tuiDropdownAlign="left"
     tuiDropdownLimitWidth="min"
+    tuiTextfieldSize="m"
     class="t-select tui-group__auto-width-item"
     [tuiTextfieldLabelOutside]="true"
     [(ngModel)]="mode"
@@ -21,8 +21,8 @@
 </tui-select>
 <tui-primitive-textfield
     *ngIf="isHex; else rgb"
-    tuiValueAccessor
     tuiTextfieldSize="m"
+    tuiValueAccessor
     [maskito]="hexMask"
     [tuiTextfieldLabelOutside]="true"
     [value]="hex"
@@ -31,26 +31,26 @@
 <ng-template #rgb>
     <tui-input-count
         tuiTextfieldSize="m"
-        [tuiTextfieldLabelOutside]="true"
         [hideButtons]="true"
         [max]="255"
         [ngModel]="color[0]"
+        [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange($event, color[1], color[2], color[3])"
     ></tui-input-count>
     <tui-input-count
         tuiTextfieldSize="m"
-        [tuiTextfieldLabelOutside]="true"
         [hideButtons]="true"
         [max]="255"
         [ngModel]="color[1]"
+        [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], $event, color[2], color[3])"
     ></tui-input-count>
     <tui-input-count
         tuiTextfieldSize="m"
-        [tuiTextfieldLabelOutside]="true"
         [hideButtons]="true"
         [max]="255"
         [ngModel]="color[2]"
+        [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], color[1], $event, color[3])"
     ></tui-input-count>
 </ng-template>
@@ -58,9 +58,9 @@
     tuiTextfieldPostfix="%"
     tuiTextfieldSize="m"
     class="t-opacity tui-group__auto-width-item"
-    [tuiTextfieldLabelOutside]="true"
     [hideButtons]="true"
     [max]="100"
     [ngModel]="opacity"
+    [tuiTextfieldLabelOutside]="true"
     (ngModelChange)="onRgbChange(color[0], color[1], color[2], $event / 100)"
 ></tui-input-count>

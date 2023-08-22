@@ -1,9 +1,9 @@
 <button
-    tuiIconButton
-    type="button"
     appearance="flat"
     icon="tuiIconMinus"
     size="s"
+    tuiIconButton
+    type="button"
     (click)="decrease()"
 ></button>
 
@@ -12,9 +12,9 @@
     [content]="fontsDropdown"
 >
     <button
-        tuiButton
-        size="s"
         appearance="flat"
+        size="s"
+        tuiButton
     >
         {{ size$ | async }}
     </button>
@@ -33,10 +33,10 @@
 </tui-hosted-dropdown>
 
 <button
-    tuiIconButton
-    type="button"
     appearance="flat"
     icon="tuiIconPlus"
     size="s"
+    tuiIconButton
+    type="button"
     (click)="increase()"
 ></button>

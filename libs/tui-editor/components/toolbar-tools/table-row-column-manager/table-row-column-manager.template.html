@@ -1,20 +1,20 @@
 <tui-hosted-dropdown
     *tuiLet="isActive$ | async as active"
     #tableCommand
-    [content]="tableOptionsDropdown"
     [canOpen]="!!active"
+    [content]="tableOptionsDropdown"
 >
     <button
+        appearance="icon"
+        icon="tuiIconAddRowLarge"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        size="s"
-        icon="tuiIconAddRowLarge"
-        appearance="icon"
-        tuiHintDirection="top-left"
-        tuiHintDescribe
-        [tuiHint]="rowsColumnsManagingText$ | async"
-        [focusable]="tableCommand.open"
         [disabled]="!active"
+        [focusable]="tableCommand.open"
+        [tuiHint]="rowsColumnsManagingText$ | async"
     ></button>
 </tui-hosted-dropdown>
 
