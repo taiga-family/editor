@@ -5,17 +5,17 @@
     <ng-template pageTab="API">
         <tui-doc-demo [sticky]="false">
             <tui-editor
-                [tuiAutoFocus]="!isCypress"
-                [style.minHeight.px]="minHeight"
-                [style.maxHeight.px]="maxHeight"
-                [formControl]="control"
-                [focusable]="focusable"
                 [exampleText]="exampleText"
-                [readOnly]="readOnly"
-                [tools]="tools"
-                [pseudoInvalid]="pseudoInvalid"
+                [focusable]="focusable"
+                [formControl]="control"
                 [pseudoFocus]="pseudoFocused"
                 [pseudoHover]="pseudoHovered"
+                [pseudoInvalid]="pseudoInvalid"
+                [readOnly]="readOnly"
+                [style.maxHeight.px]="maxHeight"
+                [style.minHeight.px]="minHeight"
+                [tools]="tools"
+                [tuiAutoFocus]="!isCypress"
             >
                 Start typing
             </tui-editor>
@@ -40,8 +40,8 @@
                 )
             </ng-template>
             <ng-template
-                documentationPropertyName="ngModel"
                 documentationPropertyMode="input"
+                documentationPropertyName="ngModel"
                 documentationPropertyType="string"
                 [documentationPropertyValue]="control.value"
                 (documentationPropertyValueChange)="control.setValue($event)"
@@ -49,16 +49,16 @@
                 Example pass HTML code
             </ng-template>
             <ng-template
-                documentationPropertyName="exampleText"
                 documentationPropertyMode="input"
+                documentationPropertyName="exampleText"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
             >
                 Example text shown on empty focused input
             </ng-template>
             <ng-template
-                documentationPropertyName="tools"
                 documentationPropertyMode="input"
+                documentationPropertyName="tools"
                 documentationPropertyType="ReadonlyArray<TuiEditorTool>"
                 [documentationPropertyValues]="toolsVariants"
                 [(documentationPropertyValue)]="tools"
@@ -68,16 +68,16 @@
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
             <ng-template
-                documentationPropertyName="style.minHeight.px"
                 documentationPropertyMode="input"
+                documentationPropertyName="style.minHeight.px"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="minHeight"
             >
                 Value of CSS-property "min-height"
             </ng-template>
             <ng-template
-                documentationPropertyName="style.maxHeight.px"
                 documentationPropertyMode="input"
+                documentationPropertyName="style.maxHeight.px"
                 documentationPropertyType="number"
                 [(documentationPropertyValue)]="maxHeight"
             >

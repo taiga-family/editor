@@ -5,15 +5,15 @@
     [content]="youtubeDropdown"
 >
     <button
-        tuiIconButton
-        type="button"
-        size="s"
         appearance="icon"
         automation-id="embed-tool__button"
         icon="tuiIconCodeLarge"
+        size="s"
+        tuiIconButton
+        type="button"
         class="tool-button"
-        [pseudoActive]="dropdown.open"
         [focusable]="dropdown.open"
+        [pseudoActive]="dropdown.open"
     ></button>
     <ng-template
         #youtubeDropdown

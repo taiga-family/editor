@@ -5,15 +5,15 @@
     [content]="tableDropdown"
 >
     <button
+        appearance="icon"
+        icon="tuiIconTableLarge"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        size="s"
-        icon="tuiIconTableLarge"
-        appearance="icon"
-        tuiHintDirection="top-left"
-        tuiHintDescribe
-        [tuiHint]="insertTableText$ | async"
         [focusable]="table.open"
+        [tuiHint]="insertTableText$ | async"
     ></button>
 </tui-hosted-dropdown>
 

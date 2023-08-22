@@ -9,19 +9,19 @@
     class="t-emulate-inline-node"
 ></p>
 <tui-editor-resizable
-    [width]="width"
     [autoHeight]="true"
+    [width]="width"
     (sizeChange)="updateSize($event)"
 >
     <img
         contenteditable="false"
-        [src]="src"
-        [width]="width"
         [alt]="alt"
-        [title]="title"
         [class.ProseMirror-selectednode]="focused"
-        [style.min-width.px]="options.minWidth"
+        [src]="src"
         [style.max-width.px]="options.maxWidth"
+        [style.min-width.px]="options.minWidth"
+        [title]="title"
+        [width]="width"
     />
 </tui-editor-resizable>
 <p

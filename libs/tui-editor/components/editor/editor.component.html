@@ -1,20 +1,20 @@
 <div
     *ngIf="editorLoaded$ | async as editorLoaded"
-    tuiWrapper
     appearance="textfield"
+    tuiWrapper
     class="t-wrapper"
-    [readOnly]="readOnly"
     [disabled]="disabled"
     [focus]="computedFocused"
     [hover]="pseudoHover"
     [invalid]="computedInvalid"
+    [readOnly]="readOnly"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="editorLoaded"
-            [tools]="tools"
             [disabled]="!interactive"
+            [tools]="tools"
             (fileAttached)="fileAttached.emit($event)"
         >
             <ng-content select="tools"></ng-content>
@@ -42,16 +42,16 @@
         <div
             tuiDropdownLimitWidth="auto"
             tuiDropdownSelectionPosition="tag"
-            [tuiDropdownSelection]="dropdownSelectionHandler"
             [tuiDropdown]="dropdown"
+            [tuiDropdownSelection]="dropdownSelectionHandler"
         >
             <tui-editor-socket
                 tuiTiptapEditor
                 class="tui-editor-socket"
-                [value]="value"
                 [editable]="interactive"
-                (valueChange)="onModelChange($event)"
+                [value]="value"
                 (stateChange)="(0)"
+                (valueChange)="onModelChange($event)"
             ></tui-editor-socket>
         </div>
 

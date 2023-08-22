@@ -4,13 +4,13 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
-        tuiIconButton
-        type="button"
-        size="s"
         appearance="icon"
         automation-id="toolbar__color-button"
-        [icon]="icon"
+        size="s"
+        tuiIconButton
+        type="button"
         [focusable]="color.open"
+        [icon]="icon"
     ></button>
     <div
         class="t-plate"
@@ -21,17 +21,17 @@
         let-activeZone
     >
         <tui-color-selector
-            [colors]="colors"
             [color]="selectedColor"
+            [colors]="colors"
             [tuiActiveZoneParent]="activeZone"
             (colorChange)="onValueChange($event)"
         ></tui-color-selector>
 
         <button
-            tuiButton
-            size="m"
-            type="button"
             appearance="flat"
+            size="m"
+            tuiButton
+            type="button"
             class="t-color-save"
             (click)="setColor()"
         >

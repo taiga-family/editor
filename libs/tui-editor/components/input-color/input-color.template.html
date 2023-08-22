@@ -5,15 +5,15 @@
 >
     <tui-primitive-textfield
         class="t-textfield"
-        [tuiTextfieldIconLeft]="color"
+        [disabled]="disabled"
+        [focusable]="focusable"
+        [invalid]="computedInvalid"
+        [nativeId]="nativeId"
+        [pseudoActive]="pseudoActive"
         [pseudoFocus]="computedFocused"
         [pseudoHover]="pseudoHover"
-        [pseudoActive]="pseudoActive"
-        [invalid]="computedInvalid"
-        [focusable]="focusable"
-        [nativeId]="nativeId"
-        [disabled]="disabled"
         [readOnly]="readOnly"
+        [tuiTextfieldIconLeft]="color"
         [(value)]="value"
         (focusedChange)="onFocused($event)"
     >
@@ -33,8 +33,8 @@
     let-activeZone
 >
     <tui-color-selector
-        [tuiActiveZoneParent]="activeZone"
         [colors]="colors"
+        [tuiActiveZoneParent]="activeZone"
         [(color)]="value"
     ></tui-color-selector>
 </ng-template>

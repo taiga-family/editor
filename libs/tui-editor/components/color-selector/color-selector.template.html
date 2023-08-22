@@ -4,9 +4,9 @@
     [content]="menu"
 >
     <button
-        tuiButton
         appearance=""
         size="s"
+        tuiButton
         type="button"
         [iconRight]="arrow"
     >
@@ -27,12 +27,12 @@
         >
             <button
                 *ngFor="let mode of modes"
-                tuiOption
                 role="menuitemradio"
+                tuiOption
                 [attr.aria-checked]="isModeActive(mode)"
+                (click)="onModeSelect(mode, dropdown)"
                 (keydown.enter.prevent)="onModeSelect(mode, dropdown)"
                 (keydown.space.prevent)="onModeSelect(mode, dropdown)"
-                (click)="onModeSelect(mode, dropdown)"
             >
                 {{ mode }}
                 <tui-svg
@@ -53,19 +53,19 @@
         <tui-linear-multi-picker
             class="t-gradient"
             [value]="stopsKeys"
-            (valueChange)="onStopsChange($event)"
             (indexChange)="onIndexChange($event)"
+            (valueChange)="onStopsChange($event)"
         ></tui-linear-multi-picker>
     </div>
     <div class="t-buttons">
         <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
         <button
             *ngFor="let button of buttons"
+            appearance=""
+            size="xs"
+            tuiHintDescribe
             tuiIconButton
             type="button"
-            size="xs"
-            appearance=""
-            tuiHintDescribe
             class="t-direction"
             [class.t-direction_active]="isDirectionActive(button)"
             [icon]="getIcon(button)"

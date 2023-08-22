@@ -5,15 +5,15 @@
     [content]="smileDropdown"
 >
     <button
-        tuiIconButton
-        type="button"
-        size="s"
-        icon="tuiIconStarLarge"
         appearance="icon"
         automation-id="smiles-tool__button"
+        icon="tuiIconStarLarge"
+        size="s"
+        tuiIconButton
+        type="button"
         class="tool-button"
-        [pseudoActive]="dropdown.open"
         [focusable]="dropdown.open"
+        [pseudoActive]="dropdown.open"
     ></button>
     <ng-template
         #smileDropdown

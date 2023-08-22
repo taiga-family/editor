@@ -7,17 +7,17 @@
     [tuiDropdownMaxHeight]="999"
 >
     <button
+        appearance="icon"
+        automation-id="toolbar__color-button"
+        icon="tuiIconColorLarge"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        size="s"
-        icon="tuiIconColorLarge"
-        appearance="icon"
-        tuiHintDirection="top-left"
-        automation-id="toolbar__color-button"
-        tuiHintDescribe
-        [tuiHint]="foreColorText$ | async"
-        [pseudoActive]="color.open"
         [focusable]="color.open"
+        [pseudoActive]="color.open"
+        [tuiHint]="foreColorText$ | async"
     ></button>
     <div
         class="t-plate"
@@ -29,8 +29,8 @@
     >
         <tui-palette
             class="t-color-picker"
-            [tuiActiveZoneParent]="activeZone"
             [colors]="colors"
+            [tuiActiveZoneParent]="activeZone"
             (selectedColor)="editor.setFontColor($event)"
         ></tui-palette>
     </ng-template>
