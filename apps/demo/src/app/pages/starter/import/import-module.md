@@ -1,16 +1,25 @@
 ```ts
-import {FormsModule} from '@angular/forms';
 import {TuiEditorModule} from '@tinkoff/tui-editor';
-
 // ...
 
 @NgModule({
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
-    // ...
+    // ..
     TuiEditorModule,
-    FormsModule,
+    ReactiveFormsModule,
   ],
-  // ...
+  providers: [
+    {
+      provide: TUI_SANITIZER,
+      useClass: NgDompurifySanitizer,
+    },
+    {
+      provide: TUI_EDITOR_EXTENSIONS,
+      useValue: defaultEditorExtensions,
+    },
+  ],
 })
-export class MyModule {}
+export class AppModule {}
 ```

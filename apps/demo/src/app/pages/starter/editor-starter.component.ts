@@ -23,8 +23,10 @@ import {
 export class TuiEditorStarterPageComponent {
     readonly exampleModule = import('./import/import-module.md?raw');
     readonly exampleHtml = import('./import/insert-template.md?raw');
-    readonly provideExtensions = import('./import/provide-extensions.md?raw');
+    readonly exampleComponent = import('./import/component.md?raw');
     readonly exampleEditorOptionsToken = import('./import/editor-options-token.md?raw');
+    readonly exampleStyles = import('./import/styles.less.md?raw');
+    readonly exampleIcons = import('./import/angular.json.md?raw');
 
     readonly control = new FormControl();
 

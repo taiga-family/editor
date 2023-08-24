@@ -24,15 +24,6 @@ export const appRoutes: Routes = [
         },
     },
     {
-        path: TuiDemoPath.Installation,
-        loadChildren: async () =>
-            (await import(`./pages/installation/editor-installation.module`))
-                .ExampleTuiEditorInstallationModule,
-        data: {
-            title: `Installation`,
-        },
-    },
-    {
         path: TuiDemoPath.ColorPicker,
         loadChildren: async () =>
             (await import(`./pages/color-picker/editor-input-color-picker.module`))

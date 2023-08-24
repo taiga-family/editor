@@ -3,7 +3,6 @@ export const enum TuiDemoPath {
     Stackblitz = `stackblitz`,
     Changelog = `changelog`,
     StarterKit = `starter-kit`,
-    Installation = `installation`,
     ColorPicker = `color-picker`,
     Font = `font`,
     Anchors = `anchors`,
