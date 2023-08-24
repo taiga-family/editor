@@ -1,4 +1,5 @@
 ```ts
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {TuiRootModule} from '@taiga-ui/core';
@@ -12,7 +13,15 @@ import {AppComponent} from './app.component';
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, TuiRootModule, TuiEditorModule, TuiEditorSocketModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    TuiRootModule,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     tuiSvgOptionsProvider({
       path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
