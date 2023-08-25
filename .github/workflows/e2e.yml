@@ -11,7 +11,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.10.0
       - uses: taiga-family/ci/actions/rebase@1.10.0
         continue-on-error: true
@@ -30,7 +30,7 @@ jobs:
     needs: [build-demo]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.10.0
       - uses: taiga-family/ci/actions/setup-node@1.10.0
 
@@ -80,7 +80,7 @@ jobs:
     needs: [cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - uses: taiga-family/ci/actions/variables@1.10.0
 
       - name: Download artifacts / ${{ env.SNAPSHOTS_CACHE_KEY }}
