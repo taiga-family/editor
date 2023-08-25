@@ -1,0 +1,1 @@
+(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[7843],{7843:o=>{o.exports='```html\n<tui-root>\n  <tui-editor\n    [formControl]="control"\n    [tools]="tools"\n  >\n    Placeholder\n  </tui-editor>\n</tui-root>\n```\n'}}]);
