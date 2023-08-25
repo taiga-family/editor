@@ -1,8 +1,10 @@
 ```html
-<tui-editor
-  exampleText="Example"
-  [(ngModel)]="model"
->
-  Placeholder
-</tui-editor>
+<tui-root>
+  <tui-editor
+    [formControl]="control"
+    [tools]="tools"
+  >
+    Placeholder
+  </tui-editor>
+</tui-root>
 ```
