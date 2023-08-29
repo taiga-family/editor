@@ -119,7 +119,7 @@
         "@types/markdown-it": "12.2.3",
         "@types/node": "18.17.11",
         "@types/showdown": "2.0.1",
-        "angular-http-server": "1.11.3",
+        "angular-http-server": "1.12.0",
         "core-js": "2.6.12",
         "cypress": "12.17.4",
         "cypress-image-snapshot": "4.0.1",
