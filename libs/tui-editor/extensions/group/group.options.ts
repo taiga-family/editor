@@ -1,9 +1,9 @@
 export interface TuiEditorGroupOptions {
+    readonly createOnEnter: boolean;
+    readonly draggable: boolean;
     readonly groupNodeClass: string;
     readonly groupPointerNodeClass: string;
-    readonly draggable: boolean;
     readonly nested: boolean;
-    readonly createOnEnter: boolean;
 }
 
 export const TUI_EDITOR_GROUP_DEFAULT_OPTIONS: TuiEditorGroupOptions = {

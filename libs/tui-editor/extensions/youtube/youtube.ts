@@ -1,10 +1,10 @@
 import YoutubeExtension from '@tiptap/extension-youtube';
 
 export interface TuiYoutubeOptions {
-    src: string;
-    width?: number | string;
     height?: number | string;
+    src: string;
     start?: number;
+    width?: number | string;
 }
 
 declare module '@tiptap/core' {
@@ -14,10 +14,10 @@ declare module '@tiptap/core' {
              * Insert a youtube video
              */
             setYoutubeVideo: (options: {
-                src: string;
-                width?: number;
                 height?: number;
+                src: string;
                 start?: number;
+                width?: number;
             }) => ReturnType;
         };
     }

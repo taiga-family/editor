@@ -6,8 +6,8 @@ import {
 } from '@tinkoff/tui-editor/constants';
 
 interface TuiEditLinkParsed {
-    prefix: string;
     path: string;
+    prefix: string;
 }
 
 export function tuiEditLinkParseUrl(url: string = ``): TuiEditLinkParsed {

@@ -15,17 +15,17 @@ const imgbb = {
 
 interface ImgbbResponse {
     data: {
+        expiration: string;
+        height: string;
         id: string;
+        size: number;
+        time: string;
         title: string;
         url: string;
         width: string;
-        height: string;
-        size: number;
-        time: string;
-        expiration: string;
     };
-    success: boolean;
     status: number;
+    success: boolean;
 }
 
 @Injectable({

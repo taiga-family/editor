@@ -6,9 +6,9 @@ import {TUI_EDITOR_GROUP_DEFAULT_OPTIONS, TuiEditorGroupOptions} from './group.o
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         group: {
+            removeGroup: () => ReturnType;
             setGroup: () => ReturnType;
             setGroupHilite: (color: string) => ReturnType;
-            removeGroup: () => ReturnType;
         };
     }
 }

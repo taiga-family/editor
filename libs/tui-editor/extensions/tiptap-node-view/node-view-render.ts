@@ -31,8 +31,8 @@ export class TuiNodeViewNgComponent implements NodeViewProps {
 }
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
-    update?: (node: ProseMirrorNode, decorations: Decoration[]) => boolean;
     injector: Injector;
+    update?: (node: ProseMirrorNode, decorations: Decoration[]) => boolean;
 }
 
 /**

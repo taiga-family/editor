@@ -153,8 +153,8 @@ export function tuiCreateImageEditorExtension<T, K>({
     injector,
     draggable,
 }: {
-    injector: Injector;
     draggable?: boolean;
+    injector: Injector;
 }): Node {
     return createImageEditorExtension<T, K>(injector, {draggable});
 }

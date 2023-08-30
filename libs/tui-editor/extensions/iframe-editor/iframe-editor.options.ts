@@ -1,18 +1,18 @@
 import {InjectionToken} from '@angular/core';
 
 export interface TuiEditableIframeOptions {
-    minWidth: number;
+    maxHeight: number;
     maxWidth: number;
     minHeight: number;
-    maxHeight: number;
+    minWidth: number;
 }
 
 export interface TuiEditableIframe {
-    src: string | null;
-    frameborder?: number | null;
     allowfullscreen?: boolean | null;
-    width?: number | string | null;
+    frameborder?: number | null;
     height?: number | string | null;
+    src: string | null;
+    width?: number | string | null;
 }
 
 /**
