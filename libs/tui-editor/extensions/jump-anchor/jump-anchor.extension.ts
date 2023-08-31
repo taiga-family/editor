@@ -3,8 +3,8 @@ import {Mark, mergeAttributes} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         anchor: {
-            setAnchor: (id: string) => ReturnType;
             removeAnchor: () => ReturnType;
+            setAnchor: (id: string) => ReturnType;
         };
     }
 }

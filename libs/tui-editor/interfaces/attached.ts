@@ -1,7 +1,7 @@
 export interface TuiEditorAttachedFile<T = Record<string, any>> {
-    name: string;
-    link: string;
     attrs?: T;
+    link: string;
+    name: string;
 }
 
 export interface TuiEditorAttachOptions {

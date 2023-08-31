@@ -1,16 +1,16 @@
 import {InjectionToken} from '@angular/core';
 
 export interface TuiImageEditorOptions {
-    minWidth: number;
     maxWidth: number;
+    minWidth: number;
 }
 
 export interface TuiEditableImage {
-    src: string;
-    width?: number | string;
     alt?: string;
-    title?: string;
     draggable?: '' | null;
+    src: string;
+    title?: string;
+    width?: number | string;
 }
 
 /**

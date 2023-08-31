@@ -5,8 +5,8 @@ import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 export interface TuiEditorResizableContainer {
-    width?: number | string | null;
     height?: number | string | null;
+    width?: number | string | null;
 }
 
 @Directive()

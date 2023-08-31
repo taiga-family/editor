@@ -8,8 +8,8 @@ export interface TuiDetailsOptions {
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         details: {
-            setDetails: () => ReturnType;
             removeDetails: () => ReturnType;
+            setDetails: () => ReturnType;
         };
     }
 }

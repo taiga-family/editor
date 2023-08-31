@@ -8,9 +8,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class TuiColorPickerExample3 {
     colors = new Map([
-        ['red', 'var(--tui-error-fill)'],
-        ['green', 'var(--tui-success-fill)'],
         ['blue', 'var(--tui-info-fill)'],
+        ['green', 'var(--tui-success-fill)'],
+        ['red', 'var(--tui-error-fill)'],
     ]);
 
     color$ = new BehaviorSubject('var(--tui-success-fill)');
