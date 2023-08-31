@@ -1,15 +1,16 @@
-name: 🤖 Auto approve for renovate
+name: 🤖 Auto approve by bot
 on: pull_request
 
 jobs:
-  automated-approve-pull-request:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    if: github.actor == 'taiga-family-bot' && contains(github.head_ref, 'renovate/')
-    steps:
-      - uses: actions/checkout@v3
-      - uses: taiga-family/ci/actions/two-approve@1.12.0
-        with:
-          token1: ${{ secrets.GITHUB_TOKEN }}
-          token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
+    automated-pull-request:
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+        steps:
+            - uses: actions/checkout@v3.6.0
+            - uses: taiga-family/ci/actions/variables@1.12.0
+            - uses: taiga-family/ci/actions/two-approve@1.12.0
+              if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
+              with:
+                  token1: ${{ secrets.GITHUB_TOKEN }}
+                  token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
