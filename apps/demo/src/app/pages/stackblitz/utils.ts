@@ -42,12 +42,11 @@ export function isPrimaryComponentFile(fileName: string): boolean {
     return Object.values<string>(TUI_EXAMPLE_PRIMARY_FILE_NAME).includes(fileName);
 }
 
-export const prepareLess = (content: string): string => {
-    return content.replace(
+export const prepareLess = (content: string): string =>
+    content.replace(
         /@import.+taiga-ui-local(.less)?';/g,
         `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
     );
-};
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
     `src/app/${stringsPart.join(``)}${path}`;
@@ -58,11 +57,10 @@ type FileContent = string;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
-): Array<[FileName, FileContent]> => {
-    return Object.entries(files).filter(
+): Array<[FileName, FileContent]> =>
+    Object.entries(files).filter(
         ([fileName, content]) => content && !isPrimaryComponentFile(fileName),
     );
-};
 
 export const prepareSupportFiles = (
     files: Array<[FileName, FileContent]>,
@@ -82,8 +80,8 @@ export const prepareSupportFiles = (
 
 export const getComponentsClassNames = (
     files: Array<[FileName, FileContent]>,
-): Array<[FileName, FileContent]> => {
-    return files
+): Array<[FileName, FileContent]> =>
+    files
         .filter(
             ([fileName, fileContent]) =>
                 isTS(fileName) && new TsFileParser(fileContent).hasNgComponent,
@@ -92,15 +90,13 @@ export const getComponentsClassNames = (
             fileName,
             new TsFileComponentParser(fileContent).className,
         ]);
-};
 
 export const getSupportModules = (
     files: Array<[FileName, FileContent]>,
-): Array<[FileName, TsFileModuleParser]> => {
-    return files
+): Array<[FileName, TsFileModuleParser]> =>
+    files
         .filter(([name, content]) => isTS(name) && new TsFileParser(content).hasNgModule)
         .map(([fileName, fileContent]) => [
             fileName,
             new TsFileModuleParser(fileContent),
         ]);
-};

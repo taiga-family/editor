@@ -42,20 +42,16 @@ export const TuiJumpAnchor = Mark.create({
         return {
             setAnchor:
                 id =>
-                ({chain}) => {
-                    return chain()
+                ({chain}) =>
+                    chain()
                         .extendMarkRange(`jumpAnchor`)
                         .setMark(`jumpAnchor`, {id})
-                        .run();
-                },
+                        .run(),
 
             removeAnchor:
                 () =>
-                ({chain}) => {
-                    return chain()
-                        .unsetMark(this.name, {extendEmptyMarkRange: true})
-                        .run();
-                },
+                ({chain}) =>
+                    chain().unsetMark(this.name, {extendEmptyMarkRange: true}).run(),
         };
     },
 });

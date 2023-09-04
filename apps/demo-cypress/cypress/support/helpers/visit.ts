@@ -5,7 +5,7 @@ import {stubMetrics} from '../stubs/stub-metrics';
 import {waitAllRequests} from './wait-requests.util';
 
 const NEXT_URL_STORAGE_KEY = `env`;
-const REPEATED_SLASH_REG = new RegExp(`//`, `g`);
+const REPEATED_SLASH_REG = /\/\//g;
 
 interface TuiVisitOptions {
     clock?: Date | null;
