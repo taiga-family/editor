@@ -47,8 +47,8 @@ export const TUI_EDITOR_PROVIDERS = [
             element: HTMLElement,
             extensions: Observable<Array<Extension | Mark | Node>>,
             editor: Observable<typeof Editor>,
-        ): Observable<Editor> => {
-            return combineLatest([editor, extensions]).pipe(
+        ): Observable<Editor> =>
+            combineLatest([editor, extensions]).pipe(
                 take(1),
                 map(
                     ([LazyEditor, extensions]) =>
@@ -58,8 +58,7 @@ export const TUI_EDITOR_PROVIDERS = [
                         }),
                 ),
                 shareReplay({bufferSize: 1, refCount: true}),
-            );
-        },
+            ),
     },
     TuiTiptapEditorService,
     TuiEditorPortalService,

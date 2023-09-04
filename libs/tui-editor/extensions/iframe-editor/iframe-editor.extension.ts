@@ -21,8 +21,8 @@ declare module '@tiptap/core' {
     }
 }
 
-export const createIframeEditorExtension = (injector: Injector): Node => {
-    return Node.create({
+export const createIframeEditorExtension = (injector: Injector): Node =>
+    Node.create({
         name: `iframe`,
         group: `block`,
         atom: true,
@@ -96,4 +96,3 @@ export const createIframeEditorExtension = (injector: Injector): Node => {
             };
         },
     });
-};

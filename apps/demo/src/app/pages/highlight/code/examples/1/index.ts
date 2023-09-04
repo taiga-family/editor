@@ -10,13 +10,11 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useFactory: () => {
-                return [
-                    import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                        ({StarterKit}) => StarterKit,
-                    ),
-                ];
-            },
+            useFactory: () => [
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                    ({StarterKit}) => StarterKit,
+                ),
+            ],
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
