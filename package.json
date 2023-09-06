@@ -32,7 +32,7 @@
         "lint": "eslint .",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
         "format": "npm run prettier -- --write",
-        "stylelint": "stylelint '**/*.{less,css}'",
+        "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Cypress ***": "",
         "cy:open": "cypress open --project apps/demo-cypress/",
@@ -62,7 +62,7 @@
     },
     "stylelint": {
         "extends": [
-            "@taiga-ui/stylelint-config/angular-less"
+            "@taiga-ui/stylelint-config/taiga"
         ],
         "ignoreFiles": [
             "**/demo/**",
