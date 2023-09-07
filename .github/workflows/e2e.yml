@@ -67,7 +67,7 @@ jobs:
         run: npx kill-port --port ${{ env.NG_SERVER_PORT }}
 
       - name: Upload artifacts / ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           path: ${{ env.CYPRESS_SNAPSHOTS_PATH }}/**/*.diff.png
           name: ${{ env.CYPRESS_SNAPSHOTS_ARTIFACTS_KEY }}
