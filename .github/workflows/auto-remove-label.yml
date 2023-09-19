@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
+        with:
+          submodules: recursive
       - uses: taiga-family/ci/actions/auto-remove-label@1.13.0

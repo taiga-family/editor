@@ -57,7 +57,23 @@
         "noImplicitOverride": true,
         "paths": {
             "@tinkoff/tui-editor": ["libs/tui-editor/index"],
-            "@tinkoff/tui-editor/*": ["libs/tui-editor/*"]
+            "@tinkoff/tui-editor/*": ["libs/tui-editor/*"],
+            "@taiga-ui/kit": ["./taiga-ui/projects/kit/index"],
+            "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
+            "@taiga-ui/cdk": ["./taiga-ui/projects/cdk/index"],
+            "@taiga-ui/cdk/*": ["./taiga-ui/projects/cdk/*"],
+            "@taiga-ui/core": ["./taiga-ui/projects/core/index"],
+            "@taiga-ui/core/*": ["./taiga-ui/projects/core/*"],
+            "@taiga-ui/i18n": ["./taiga-ui/projects/i18n/index"],
+            "@taiga-ui/i18n/*": ["./taiga-ui/projects/i18n/*"],
+            "@taiga-ui/addon-doc": ["./taiga-ui/projects/addon-doc/index"],
+            "@taiga-ui/addon-doc/*": ["./taiga-ui/projects/addon-doc/*"],
+            "@taiga-ui/addon-preview": ["./taiga-ui/projects/addon-preview/index"],
+            "@taiga-ui/addon-preview/*": ["./taiga-ui/projects/addon-preview/*"],
+            "@taiga-ui/addon-mobile": ["./taiga-ui/projects/addon-mobile/index"],
+            "@taiga-ui/addon-mobile/*": ["./taiga-ui/projects/addon-mobile/*"],
+            "@taiga-ui/testing": ["./taiga-ui/projects/testing/index"],
+            "@taiga-ui/testing/*": ["./taiga-ui/projects/testing/*"]
         }
     },
     "ts-node": {

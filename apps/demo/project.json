@@ -1,10 +1,16 @@
 {
-    "name": "demo",
+    "name": "editor-demo",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "sourceRoot": "apps/demo/src",
     "prefix": "app",
     "targets": {
+        "prebuild": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cd taiga-ui && npx nx build i18n --output-style=stream"
+            }
+        },
         "build": {
             "executor": "@angular-builders/custom-webpack:browser",
             "options": {
@@ -25,14 +31,17 @@
                     },
                     {
                         "glob": "**/*",
-                        "input": "node_modules/@taiga-ui/icons/src",
+                        "input": "taiga-ui/projects/icons/src",
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["taiga-ui/projects/core/styles", "taiga-ui/projects/styles"]
+                },
                 "styles": [
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-                    "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+                    "taiga-ui/projects/core/styles/taiga-ui-theme.less",
+                    "taiga-ui/projects/core/styles/taiga-ui-fonts.less",
+                    "taiga-ui/projects/styles/taiga-ui-global.less",
                     "apps/demo/src/styles.less"
                 ],
                 "scripts": [
@@ -69,7 +78,14 @@
                 },
                 "development": {}
             },
-            "defaultConfiguration": "production"
+            "defaultConfiguration": "production",
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "prebuild",
+                    "params": "ignore"
+                }
+            ]
         },
         "build-gh-pages": {
             "executor": "nx:run-commands",
@@ -94,10 +110,10 @@
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "demo:build:production"
+                    "browserTarget": "editor-demo:build:production"
                 },
                 "development": {
-                    "browserTarget": "demo:build:development"
+                    "browserTarget": "editor-demo:build:development"
                 }
             },
             "defaultConfiguration": "development"

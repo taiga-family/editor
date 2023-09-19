@@ -88,7 +88,7 @@ import {TuiLogoModule} from './modules/logo/logo.module';
 
                 return `${link}/${context.package.toLowerCase()}/src/lib/tui-editor/${(
                     context.header[0].toLowerCase() + context.header.slice(1)
-                ).replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}`;
+                ).replace(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
             },
         },
     ],

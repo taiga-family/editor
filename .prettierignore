@@ -1,4 +1,5 @@
 **/dist/**
 **/coverage/**
 package-lock.json
+taiga-ui/**
 .husky

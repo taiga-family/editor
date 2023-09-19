@@ -16,7 +16,7 @@
         "libsDir": "libs",
         "appsDir": "apps"
     },
-    "defaultProject": "demo",
+    "defaultProject": "editor-demo",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "namedInputs": {
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
