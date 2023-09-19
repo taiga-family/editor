@@ -1,4 +1,7 @@
-<div class="t-edit-link">
+<div
+    class="t-edit-link"
+    (mousedown)="$event.stopImmediatePropagation()"
+>
     <ng-container *ngIf="edit; else view">
         <label class="t-label">
             <div class="t-label-properties">
