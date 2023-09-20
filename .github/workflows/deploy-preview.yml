@@ -7,14 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
+        with:
+          submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0
       - uses: taiga-family/ci/actions/setup-node@1.13.0
-
-      - run: npx nx build demo
-
-      - name: Debug output
-        run: tree dist/demo/browser -P '*.html'
-
+      - run: npx nx build editor-demo
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         continue-on-error: true

@@ -1,5 +1,4 @@
 import {GLOBAL_DEFS_FOR_TERSER_WITH_AOT} from '@angular/compiler-cli';
-import {tuiIsObject} from '@taiga-ui/cdk';
 import TerserPlugin from 'terser-webpack-plugin';
 import {Configuration} from 'webpack';
 import {merge} from 'webpack-merge';
@@ -105,7 +104,9 @@ const config: Configuration = {
 export default (ngConfigs: Configuration): Configuration => {
     const ngRules = [...(ngConfigs.module?.rules || [])].map(rule => {
         if (
-            tuiIsObject(rule) &&
+            // eslint-disable-next-line @taiga-ui/experience/no-typeof
+            typeof rule === `object` &&
+            !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
                 pattern => rule.test instanceof RegExp && rule.test?.test(pattern),
             )

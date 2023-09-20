@@ -17,13 +17,26 @@
                 "command": "stylelint \"**/tui-editor/**/*.{css,less}\" --allow-empty-input"
             }
         },
+        "prebuild": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cd taiga-ui && npx nx run-many -t build -p i18n cdk core kit --parallel=false --output-style=stream"
+            }
+        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["{workspaceRoot}/dist/tui-editor"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "libs/tui-editor/ng-package.json"
-            }
+            },
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "prebuild",
+                    "params": "ignore"
+                }
+            ]
         },
         "test": {
             "executor": "@nx/jest:jest",

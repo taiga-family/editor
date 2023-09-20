@@ -14,8 +14,7 @@
     "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
     "contributors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Maksim Ivanov <splincodewd@yandex.ru>"
+        "Alex Inkin <alexander@inkin.ru>"
     ],
     "workspaces": [
         "apps/*",
@@ -24,10 +23,12 @@
     "scripts": {
         "postinstall": "husky install && ngcc --async",
         "*** Workflow ***": "",
-        "start": "nx run demo:serve",
-        "build": "nx run demo:build:production",
+        "start": "nx serve editor-demo",
+        "build": "nx run editor-demo:build:production",
         "test": "nx test",
-        "test:e2e": "nx e2e-ui demo-cypress",
+        "test:e2e": "nx e2e-ui editor-demo-cypress",
+        "submodule:update": "git submodule update --rebase --remote",
+        "submodule:reset": "git submodule | awk '{ git restore --staged $2 }' && git submodule update --init --recursive",
         "*** Format ***": "",
         "lint": "eslint .",
         "prettier": "prettier '**/*.{svg,yml,js,ts,html,md,less,json}'",
@@ -40,26 +41,34 @@
     },
     "commitlint": {
         "extends": [
-            "@commitlint/config-conventional"
+            "@taiga-ui/commitlint-config"
         ]
     },
     "lint-staged": {
-        "*.{js,ts,html,md,less,json}": [
-            "npm run lint -- --fix",
-            "prettier --write",
-            "git add"
-        ],
         "*.less": [
-            "stylelint --fix",
-            "git add"
+            "stylelint --fix"
+        ],
+        "*.{js,ts,html}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{svg,yml,md,less,json}": [
+            "prettier --write"
         ]
     },
+    "browserslist": [
+        "extends @taiga-ui/browserslist-config"
+    ],
     "prettier": "@taiga-ui/prettier-config",
     "eslintConfig": {
         "extends": [
-            "plugin:@taiga-ui/experience/all"
+            "plugin:@taiga-ui/experience/all",
+            "plugin:@taiga-ui/experience/taiga-naming-convention"
         ]
     },
+    "eslintIgnore": [
+        "taiga-ui"
+    ],
     "stylelint": {
         "extends": [
             "@taiga-ui/stylelint-config/taiga"
@@ -92,33 +101,36 @@
         "@angular/router": "12.2.17",
         "@commitlint/cli": "16.3.0",
         "@commitlint/config-conventional": "16.2.4",
+        "@maskito/angular": "1.7.0",
+        "@maskito/core": "1.7.0",
+        "@maskito/kit": "1.7.0",
         "@ng-web-apis/common": "3.0.2",
+        "@ng-web-apis/intersection-observer": "3.1.2",
+        "@ng-web-apis/mutation-observer": "3.0.2",
+        "@ng-web-apis/resize-observer": "3.0.2",
         "@ng-web-apis/universal": "3.0.3",
         "@nx/jest": "16.8.1",
         "@nx/node": "16.8.1",
         "@nx/workspace": "16.8.1",
         "@stackblitz/sdk": "1.9.0",
-        "@taiga-ui/addon-doc": "3.45.0",
-        "@taiga-ui/addon-mobile": "3.45.0",
-        "@taiga-ui/addon-preview": "3.45.0",
-        "@taiga-ui/cdk": "3.45.0",
-        "@taiga-ui/core": "3.45.0",
+        "@taiga-ui/browserslist-config": "0.2.0",
+        "@taiga-ui/commitlint-config": "0.2.1",
         "@taiga-ui/eslint-plugin-experience": "0.7.2",
-        "@taiga-ui/icons": "3.45.0",
-        "@taiga-ui/kit": "3.45.0",
         "@taiga-ui/prettier-config": "0.3.0",
         "@taiga-ui/stylelint-config": "0.4.0",
-        "@taiga-ui/styles": "3.45.0",
-        "@taiga-ui/testing": "3.45.0",
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/ng-dompurify": "3.0.0",
+        "@tinkoff/ng-event-plugins": "3.1.0",
+        "@tinkoff/ng-polymorpheus": "4.1.0",
         "@types/cypress-image-snapshot": "3.1.7",
         "@types/dompurify": "2.4.0",
         "@types/express": "4.17.17",
+        "@types/jasmine": "3.10.13",
         "@types/jest": "28.1.8",
         "@types/markdown-it": "12.2.3",
         "@types/node": "18.17.17",
         "@types/showdown": "2.0.1",
+        "@types/webpack-env": "1.18.1",
         "angular-http-server": "1.12.0",
         "core-js": "2.6.12",
         "cypress": "12.17.4",
@@ -129,6 +141,7 @@
         "highlight.js": "11.8.0",
         "http-server": "14.1.1",
         "husky": "7.0.4",
+        "jasmine": "4.6.0",
         "jest": "28.1.3",
         "jest-environment-jsdom": "28.1.3",
         "jest-preset-angular": "12.2.6",
@@ -136,16 +149,19 @@
         "lint-staged": "12.5.0",
         "markdown-it": "13.0.1",
         "marked": "1.2.9",
+        "ng-morph": "2.2.5",
         "ng-packagr": "12.2.7",
         "ngx-highlightjs": "5.0.0",
         "ngx-markdown": "12.1.0",
         "nx": "16.8.1",
         "nx-cloud": "16.4.0",
+        "parse5": "6.0.1",
         "prettier": "3.0.3",
         "rxjs": "6.6.7",
         "showdown": "2.1.0",
         "stylelint": "15.10.3",
         "terser-webpack-plugin": "5.3.9",
+        "text-mask-core": "5.1.2",
         "ts-jest": "28.0.8",
         "tslib": "2.6.2",
         "typescript": "4.3.2",

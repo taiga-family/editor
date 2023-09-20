@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.0.0
+        with:
+          submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0
       - uses: taiga-family/ci/actions/setup-node@1.13.0
-
-      - name: Build demo
-        run: npm run build
+      - run: npm run build
 
 concurrency:
   group: build-demo-${{ github.head_ref }}

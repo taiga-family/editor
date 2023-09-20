@@ -2,7 +2,8 @@
     "lib": {
         "entryFile": "index.ts",
         "styleIncludePaths": [
-            "../../../core/styles"
+            "../../../../taiga-ui/projects/styles",
+            "../../../../taiga-ui/projects/core/styles"
         ]
     }
 }

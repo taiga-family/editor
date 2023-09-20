@@ -5,5 +5,5 @@
         "module": "esnext",
         "types": ["jest"]
     },
-    "exclude": ["**/schematics/**/*", "apps/demo-cypress"]
+    "exclude": ["**/schematics/**/*", "apps/demo-cypress", "taiga-ui"]
 }

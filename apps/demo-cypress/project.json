@@ -1,5 +1,5 @@
 {
-    "name": "demo-cypress",
+    "name": "editor-demo-cypress",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "apps/demo-cypress/cypress",
     "projectType": "application",
