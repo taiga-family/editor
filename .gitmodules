@@ -1,4 +1,4 @@
 [submodule "taiga-ui"]
 	path = taiga-ui
-	url = git@github.com:taiga-family/taiga-ui.git
+	url = https://github.com/taiga-family/taiga-ui.git
 	branch = main
