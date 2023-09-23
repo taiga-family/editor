@@ -11,7 +11,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0
@@ -32,7 +32,7 @@ jobs:
     needs: [build-demo]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0
@@ -84,7 +84,7 @@ jobs:
     needs: [cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0

@@ -23,7 +23,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
           fetch-depth: 0

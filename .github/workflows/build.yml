@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build libs
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
       - uses: taiga-family/ci/actions/variables@1.13.0
