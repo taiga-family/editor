@@ -45,7 +45,7 @@ jobs:
         id: git
 
       - name: Reinstall node_modules
-        if: ${{ steps.git.outputs.modified != "false" }}
+        if: steps.git.outputs.modified == 'true'
         run: |
           echo "Run npm install..."
           rm -rf package-lock.json node_modules
@@ -53,7 +53,7 @@ jobs:
           git add .
 
       - name: Create Pull Request
-        if: ${{ steps.git.outputs.modified != "false" }}
+        if: steps.git.outputs.modified == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           delete-branch: true
