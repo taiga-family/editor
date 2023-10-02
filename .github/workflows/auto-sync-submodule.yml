@@ -11,47 +11,11 @@ jobs:
       - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
-      - name: Sync git submodule
-        run: |
-
-          git submodule deinit --all -f
-
-          git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
-          while read path_key path
-          do
-            rm -rf $path
-
-            git submodule update --recursive --init $path
-            git submodule update --recursive --remote $path
-            git add .
-
-            echo "${path} submodule update: "
-            ls -la $path
-            echo ""
-          done
-
-          if [[ `git status --porcelain` ]]; then
-            echo "We have new hash from git submodule"
-
-            rm package-lock.json
-            npm install --force --loglevel error --audit=false --fund=false
-            git add .
-
-          else
-            echo "Nothing to update"
-          fi
-
-      - uses: taiga-family/ci/actions/git-status@1.15.0
+      - uses: taiga-family/ci/actions/git-sync-submodule@1.16.0
+      - uses: taiga-family/ci/actions/git-status@1.16.0
         id: git
-
-      - name: Reinstall node_modules
+      - uses: taiga-family/ci/actions/npm-install@1.16.0
         if: steps.git.outputs.modified == 'true'
-        run: |
-          echo "Run npm install..."
-          rm -rf package-lock.json node_modules
-          npm install --force --loglevel error --audit=false --fund=false
-          git add .
-
       - name: Create Pull Request
         if: steps.git.outputs.modified == 'true'
         uses: peter-evans/create-pull-request@v5
@@ -59,5 +23,5 @@ jobs:
           delete-branch: true
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           branch: deps/submodule/${{ github.head_ref || github.ref_name }}
-          commit-message: 'chore(deps): update git submodule'
-          title: 'chore(deps): update git submodule'
+          commit-message: 'chore(deps): update taiga-ui submodule'
+          title: 'chore(deps): update taiga-ui submodule'
