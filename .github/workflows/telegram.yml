@@ -1,0 +1,25 @@
+name: 🤖 Telegram test
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-pr-body
+        run: |
+          body=$(cat README.md)
+          delimiter="$(openssl rand -hex 8)"
+          echo "body<<$delimiter" >> $GITHUB_OUTPUT
+          echo "$body" >> $GITHUB_OUTPUT
+          echo "$delimiter" >> $GITHUB_OUTPUT
+
+      - name: Telegram announce
+        uses: appleboy/telegram-action@v0.1.1
+        continue-on-error: true
+        with:
+          to: ${{ secrets.TELEGRAM_CHANNEL }}
+          token: ${{ secrets.TELEGRAM_CHANNEL_TOKEN }}
+          message: ${{ steps.get-pr-body.outputs.body }}
+          disable_web_page_preview: true
+          format: markdown
