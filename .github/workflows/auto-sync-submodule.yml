@@ -48,4 +48,5 @@ jobs:
           delete-branch: true
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           branch: deps/submodule/${{ github.head_ref || github.ref_name }}
+          commit-message: 'chore(deps): update git submodule'
           title: 'chore(deps): update git submodule'
