@@ -1,0 +1,51 @@
+name: 🤖 Auto sync submodule
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 23 */2 * *' # At 11:00 PM, every 2 days
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.0
+        with:
+          submodules: recursive
+
+      - name: Sync git submodule
+        run: |
+
+          git submodule deinit --all -f
+
+          git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
+          while read path_key path
+          do
+            rm -rf $path
+
+            git submodule update --recursive --init $path
+            git submodule update --recursive --remote $path
+            git add .
+
+            echo "${path} submodule update: "
+            ls -la $path
+            echo ""
+          done
+
+          if [[ `git status --porcelain` ]]; then
+            echo "We have new hash from git submodule"
+
+            rm package-lock.json
+            npm ci --loglevel error --audit=false --fund=false
+            git add .
+
+          else
+            echo "Nothing to update"
+          fi
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          delete-branch: true
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          branch: deps/submodule/${{ github.head_ref || github.ref_name }}
+          title: 'chore(deps): update git submodule'
