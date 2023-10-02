@@ -20,9 +20,19 @@ jobs:
       - name: Telegram announce
         uses: appleboy/telegram-action@v0.1.1
         continue-on-error: true
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         with:
           to: ${{ secrets.TELEGRAM_CHANNEL }}
           token: ${{ secrets.TELEGRAM_CHANNEL_TOKEN }}
-          message: ${{ steps.get-pr-body.outputs.body }}
+          message: |
+            ## Header
+
+            *1st line of your message with bold*
+            *2nd line of your message with bold, too*
+            Application: *Write something to be put inside your message*. The below lines still are part of your message.
+            Branch: *${{ github.ref }}*
+            Repository: *${{ github.repository }}*
+            Owner: *${{ github.repository_owner }}*
           disable_web_page_preview: true
           format: markdown
