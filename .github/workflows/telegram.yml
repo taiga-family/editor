@@ -9,13 +9,6 @@ jobs:
       - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
-      - id: get-pr-body
-        run: |
-          body=$(cat README.md)
-          delimiter="$(openssl rand -hex 8)"
-          echo "body<<$delimiter" >> $GITHUB_OUTPUT
-          echo "$body" >> $GITHUB_OUTPUT
-          echo "$delimiter" >> $GITHUB_OUTPUT
 
       - name: Telegram announce
         uses: appleboy/telegram-action@v0.1.1
@@ -35,4 +28,5 @@ jobs:
             Repository: *${{ github.repository }}*
             Owner: *${{ github.repository_owner }}*
           disable_web_page_preview: true
+          disable_notification: false
           format: markdown
