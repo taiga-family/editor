@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.5.1...@tinkoff/tui-editor@1.6.0) (2023-10-02)
+
+### Features
+
+- improve ux for touching edit link
+  ([6744776](https://github.com/taiga-family/tui-editor/commit/6744776da7071cd0a05bce23905b37265c323f8b))
+- nowrap text in editor links
+  ([0fdf555](https://github.com/taiga-family/tui-editor/commit/0fdf5555b4145eec06edbbb4c6d27de58ffbe7df))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [1.5.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.5.0...@tinkoff/tui-editor@1.5.1) (2023-09-06)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
