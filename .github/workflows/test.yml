@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
-      - uses: taiga-family/ci/actions/variables@1.13.1
-      - uses: taiga-family/ci/actions/setup-node@1.13.1
+      - uses: taiga-family/ci/actions/variables@1.16.0
+      - uses: taiga-family/ci/actions/setup-node@1.16.0
       - run: npx nx test tui-editor
       - uses: codecov/codecov-action@v3.1.4
         with:
