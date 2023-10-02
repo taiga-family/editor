@@ -35,7 +35,7 @@ jobs:
             echo "We have new hash from git submodule"
 
             rm package-lock.json
-            npm ci --loglevel error --audit=false --fund=false
+            npm install --force --loglevel error --audit=false --fund=false
             git add .
 
           else
