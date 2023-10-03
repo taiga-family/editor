@@ -128,7 +128,7 @@
         "@types/jasmine": "3.10.13",
         "@types/jest": "28.1.8",
         "@types/markdown-it": "12.2.3",
-        "@types/node": "18.18.1",
+        "@types/node": "18.18.3",
         "@types/showdown": "2.0.2",
         "@types/webpack-env": "1.18.2",
         "angular-http-server": "1.12.0",
