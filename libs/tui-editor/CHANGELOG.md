@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.6.1...@tinkoff/tui-editor@1.7.0) (2023-10-03)
+
+### Features
+
+- improve ui for color-edit component ([#257](https://github.com/taiga-family/tui-editor/issues/257))
+  ([b023a6a](https://github.com/taiga-family/tui-editor/commit/b023a6a9bfe40f143f04a454ba04f69e2bb2ab9c))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [1.6.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.6.0...@tinkoff/tui-editor@1.6.1) (2023-10-03)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
