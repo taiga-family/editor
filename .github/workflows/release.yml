@@ -54,6 +54,19 @@ jobs:
         if: always()
         run: npx nx publish tui-editor
 
+      - name: Get new version
+        id: info
+        run: |
+          echo "version=@tinkoff/tui-editor@$(node -p "require('./libs/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Announce to Telegram
+        uses: taiga-family/ci/actions/telegram/announce@1.19.0
+        with:
+          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
+          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
+          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
+          version: ${{ steps.info.outputs.version }}
+
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
