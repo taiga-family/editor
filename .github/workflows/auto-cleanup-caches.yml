@@ -15,11 +15,11 @@ jobs:
       - uses: actions/checkout@v4.1.0
         with:
           submodules: recursive
-      - uses: taiga-family/ci/actions/cleanup-cache@1.16.0
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@1.20.0
         if: github.event_name == 'push'
         with:
           branch-name: ${{ github.head_ref || github.ref_name }}
-      - uses: taiga-family/ci/actions/cleanup-cache@1.16.0
+      - uses: taiga-family/ci/actions/auto/cleanup-cache@1.20.0
         if: github.event_name == 'pull_request'
         with:
           branch-name: refs/pull/${{ github.event.pull_request.number }}/merge

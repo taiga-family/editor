@@ -30,11 +30,11 @@ jobs:
           persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup-node@1.16.0
-      - uses: taiga-family/ci/actions/setup-git@1.16.0
+      - uses: taiga-family/ci/actions/setup/node@1.20.0
+      - uses: taiga-family/ci/actions/setup/config/git@1.20.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup-npm@1.16.0
+      - uses: taiga-family/ci/actions/setup/config/npm@1.20.0
         with:
           token: ${{ secrets.NPM_TOKEN }}
 
@@ -47,20 +47,17 @@ jobs:
               npx lerna version --no-private
           fi
 
-      - name: Build
-        run: npx nx build tui-editor
+      - run: npx nx build tui-editor
 
-      - name: Publish
+      - run: npx nx publish tui-editor
         if: always()
-        run: npx nx publish tui-editor
 
-      - name: Get new version
-        id: info
+      - id: info
         run: |
           echo "version=@tinkoff/tui-editor@$(node -p "require('./libs/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        uses: taiga-family/ci/actions/telegram/announce@1.19.0
+        uses: taiga-family/ci/actions/messenger/telegram/announce@1.20.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
