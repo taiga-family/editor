@@ -11,13 +11,11 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
-        with:
-          submodules: recursive
-      - uses: taiga-family/ci/actions/setup/variables@1.20.0
-      - uses: taiga-family/ci/actions/run/rebase@1.20.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.23.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@1.20.0
+      - uses: taiga-family/ci/actions/setup/node@v1.23.0
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build editor-demo --output-path ${{ env.DIST }}
@@ -32,11 +30,9 @@ jobs:
     needs: [build-demo]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
-        with:
-          submodules: recursive
-      - uses: taiga-family/ci/actions/setup/variables@1.20.0
-      - uses: taiga-family/ci/actions/setup/node@1.20.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
+      - uses: taiga-family/ci/actions/setup/node@v1.23.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.2
@@ -84,10 +80,8 @@ jobs:
     needs: [cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
-        with:
-          submodules: recursive
-      - uses: taiga-family/ci/actions/setup/variables@1.20.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
 
       - name: Download artifacts / ${{ env.SNAPSHOTS_CACHE_KEY }}
         continue-on-error: true
