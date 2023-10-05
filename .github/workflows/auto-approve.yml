@@ -2,7 +2,7 @@ name: 🤖 Auto approve validation
 on: pull_request
 
 env:
-  JOBS_NAME: '[ "build", "build-demo", "lint", "tests" ]'
+  JOBS_NAME: '[ "Build package", "Build demo", "Lint", "Tests", "E2E result" ]'
 
 jobs:
   setup:
@@ -10,7 +10,10 @@ jobs:
     outputs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
       - id: matrix
+        if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         run: echo "value=$JOBS_NAME" >> $GITHUB_OUTPUT
 
   wait:
@@ -26,14 +29,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           job: ${{ matrix.value }}
 
-  result:
+  approve:
     needs: [wait]
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.23.0
       - uses: taiga-family/ci/actions/auto/approve/double@v1.23.0
-        if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         with:
           token1: ${{ secrets.GITHUB_TOKEN }}
           token2: ${{ secrets.TAIGA_FAMILY_APPROVE_BOT_PAT }}
