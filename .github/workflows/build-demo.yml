@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-demo:
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.23.0

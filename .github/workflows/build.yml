@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build libs
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
       - uses: taiga-family/ci/actions/setup/variables@v1.23.0

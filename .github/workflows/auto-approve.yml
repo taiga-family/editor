@@ -1,7 +1,52 @@
-name: 🤖 Auto approve by bot
+name: 🤖 Auto approve validation
 on: pull_request
 
+env:
+  JOBS_NAME: '["build", "build-demo", "lint", "tests"]'
+
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.value }}
+    steps:
+      - id: matrix
+        run: echo "value=$JOBS_NAME" >> $GITHUB_OUTPUT
+
+  wait:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        value: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - run: |
+          echo "${{ matrix.value }}"
+      - name: Wait for "${{ matrix.value }}" job to succeed
+        uses: fountainhead/action-wait-for-check@v1.1.0
+        id: waiter
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.value }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 10800
+          intervalSeconds: 15
+
+      - name: Do something with a passing build
+        if: steps.waiter.outputs.conclusion == 'success'
+        run: echo 'success'
+
+      - name: Do something with a failing build
+        if: steps.waiter.outputs.conclusion == 'failure'
+        run: echo 'failure'
+
+  result:
+    needs: [wait]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "approve"
+
   automated-pull-request:
     runs-on: ubuntu-latest
     permissions:
@@ -9,6 +54,54 @@ jobs:
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
       - uses: taiga-family/ci/actions/setup/variables@v1.23.0
+      - name: Wait for build to succeed
+        uses: fountainhead/action-wait-for-check@v1.1.0
+        id: wait1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 3600
+          intervalSeconds: 60
+      - name: Wait for build to succeed
+        if: steps.wait1.outputs.conclusion == 'success'
+        uses: fountainhead/action-wait-for-check@v1.1.0
+        id: wait2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build-demo
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 3600
+          intervalSeconds: 60
+      - name: Wait for build to succeed
+        if: steps.wait2.outputs.conclusion == 'success'
+        uses: fountainhead/action-wait-for-check@v1.1.0
+        id: wait3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: lint
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 3600
+          intervalSeconds: 60
+      - name: Wait for build to succeed
+        if: steps.wait3.outputs.conclusion == 'success'
+        uses: fountainhead/action-wait-for-check@v1.1.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: tests
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 3600
+          intervalSeconds: 60
+
+      - name: Do something with a passing build
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        run: echo 'success'
+
+      - name: Do something with a failing build
+        if: steps.wait-for-build.outputs.conclusion == 'failure'
+        run: echo 'failure'
+
       - uses: taiga-family/ci/actions/auto/approve/double@v1.23.0
         if: env.TAIGA_FAMILY_BOT_IS_AUTHOR == 'true'
         with:
