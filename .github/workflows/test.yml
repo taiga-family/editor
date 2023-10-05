@@ -7,7 +7,7 @@ on:
 
 jobs:
   tests:
-    name: Unit tests
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
