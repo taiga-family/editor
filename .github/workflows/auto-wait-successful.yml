@@ -9,9 +9,10 @@ on:
 jobs:
   on-success:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref != 'refs/heads/main' }}
     steps:
       - run: echo 'The triggering workflow passed'
+      - run: echo '${{ github.event.workflow_run.conclusion }}'
+      - run: echo '${{ github.ref }}'
       - uses: taiga-family/ci/actions/setup/checkout@v1.23.0
       - uses: taiga-family/ci/actions/setup/variables@v1.23.0
       - uses: taiga-family/ci/actions/auto/approve/double@v1.23.0
@@ -34,5 +35,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '⛔ Some jobs have fallen, we can’t set auto approve!'
+              body: '⛔ Some workflows failed, we can’t use auto approve for here!'
             })
