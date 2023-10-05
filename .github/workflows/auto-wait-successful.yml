@@ -1,0 +1,19 @@
+name: 🤖 Auto approve when success
+
+on:
+  workflow_run:
+    workflows: ['⚙️ Build demo', '⚙️ Build lib', '⚙️ Lint', '⚙️ Tests']
+    branches-ignore: [main]
+    types: [completed]
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
