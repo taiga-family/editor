@@ -1,6 +1,5 @@
 import {InjectionToken} from '@angular/core';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
-import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 
 /**
  * tui-color-selector i18n
@@ -11,21 +10,6 @@ export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, 
         factory: () => [`Solid color`, `Gradient`],
     },
 );
-
-export type EditorToolbarTexts =
-    | TuiEditorTool
-    | 'backColor'
-    | 'font'
-    | 'fontStyle'
-    | 'indent'
-    | 'justifyCenter'
-    | 'justifyFull'
-    | 'justifyLeft'
-    | 'justifyRight'
-    | 'orderedList'
-    | 'outdent'
-    | 'redo'
-    | 'unorderedList';
 
 /**
  * tui-editor-toolbar i18n
