@@ -2,7 +2,7 @@ name: 🤖 Auto sync submodule
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 23 */2 * *' # At 11:00 PM, every 2 days
+    - cron: '0 9 * * *'
 
 jobs:
   update:
@@ -19,7 +19,7 @@ jobs:
         if: steps.git.outputs.modified == 'true'
       - name: Create Pull Request
         if: steps.git.outputs.modified == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v5.0.2
         with:
           delete-branch: true
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

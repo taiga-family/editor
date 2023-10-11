@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
       - uses: taiga-family/ci/actions/setup/config/npm@v1.32.0
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.TINKOFF_SCOPE_NPM_TOKEN }}
 
       - name: Lerna update version of packages
         if: always()
