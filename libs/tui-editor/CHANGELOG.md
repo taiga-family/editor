@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.1 (2023-10-11)
+
+**Note:** Version bump only for package @tinkoff/tui-editor
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.7.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.6.1...@tinkoff/tui-editor@1.7.0) (2023-10-03)
 
 ### Features
