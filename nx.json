@@ -5,8 +5,8 @@
             "runner": "nx-cloud",
             "options": {
                 "parallel": 1,
-                "cacheableOperations": ["build", "test", "lint"],
-                "accessToken": "ZDYwZWVlOWMtYTU4ZS00YzNjLThjMDAtOWQzNTllOWIwNDJifHJlYWQtd3JpdGU="
+                "cacheableOperations": ["build", "test"],
+                "accessToken": "ZDA1ZmIwNTMtMGY2Yy00YTk4LWIxNzAtNDc0ZTg0MzFkMDk4fHJlYWQtd3JpdGU="
             }
         }
     },
@@ -33,7 +33,10 @@
             "inputs": ["default"]
         },
         "test": {
-            "inputs": ["default"]
+            "dependsOn": ["^test"]
+        },
+        "lint": {
+            "dependsOn": ["^lint"]
         }
     }
 }
