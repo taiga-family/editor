@@ -6,6 +6,7 @@
             "options": {
                 "parallel": 1,
                 "cacheableOperations": ["build", "test", "lint"]
+                "accessToken": "ZDYwZWVlOWMtYTU4ZS00YzNjLThjMDAtOWQzNTllOWIwNDJifHJlYWQtd3JpdGU="
             }
         }
     },
