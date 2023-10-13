@@ -121,7 +121,7 @@
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/ng-dompurify": "3.0.0",
         "@tinkoff/ng-event-plugins": "3.1.0",
-        "@tinkoff/ng-polymorpheus": "4.1.0",
+        "@tinkoff/ng-polymorpheus": "4.2.0",
         "@types/cypress-image-snapshot": "3.1.7",
         "@types/dompurify": "2.4.0",
         "@types/express": "4.17.19",
