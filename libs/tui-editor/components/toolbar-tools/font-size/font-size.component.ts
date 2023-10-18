@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {TuiEditorFontOption} from '@tinkoff/tui-editor/interfaces';
 import {
@@ -44,6 +45,8 @@ export class TuiFontSizeComponent {
     }
 
     setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
+        const color = this.editor.getFontColor();
+
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
@@ -56,6 +59,10 @@ export class TuiFontSizeComponent {
             this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph({fontSize: tuiPx(px || 0)});
+        }
+
+        if (color !== EDITOR_BLANK_COLOR) {
+            this.editor.setFontColor(color);
         }
     }
 
