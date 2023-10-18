@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {TuiEditorFontOption} from '@tinkoff/tui-editor/interfaces';
 import {
@@ -12,7 +13,6 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
 
 @Component({
     selector: 'tui-font-size',
