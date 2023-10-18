@@ -12,6 +12,7 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
 
 @Component({
     selector: 'tui-font-size',
@@ -44,6 +45,8 @@ export class TuiFontSizeComponent {
     }
 
     setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
+        const color = this.editor.getFontColor();
+
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
@@ -56,6 +59,10 @@ export class TuiFontSizeComponent {
             this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph({fontSize: tuiPx(px || 0)});
+        }
+
+        if (color !== EDITOR_BLANK_COLOR) {
+            this.editor.setFontColor(color);
         }
     }
 
