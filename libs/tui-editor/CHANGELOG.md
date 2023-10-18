@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.8.0 (2023-10-18)
+
+### Features
+
+- reuse previous font color when change font size ([#314](https://github.com/taiga-family/tui-editor/issues/314))
+  ([abd01e2](https://github.com/taiga-family/tui-editor/commit/abd01e2198e8be40808df3b2bcc5e0b0b1ed7916))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 1.7.1 (2023-10-11)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
