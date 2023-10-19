@@ -1,5 +1,5 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
-import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import {KeyboardShortcutCommand, mergeAttributes, Node, RawCommands} from '@tiptap/core';
 
 import {TUI_EDITOR_GROUP_DEFAULT_OPTIONS, TuiEditorGroupOptions} from './group.options';
 
@@ -135,8 +135,14 @@ export const createGroupExtension = (
             };
         },
 
-        addKeyboardShortcuts(): any {
-            return createOnEnter ? {Enter: () => this.editor.commands.setGroup()} : {};
+        addKeyboardShortcuts(): {
+            [key: string]: KeyboardShortcutCommand;
+        } {
+            return createOnEnter
+                ? {
+                      Enter: () => this.editor.commands.setGroup(),
+                  }
+                : {};
         },
     });
 };
