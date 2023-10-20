@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.8.2 (2023-10-20)
+
+### Bug Fixes
+
+- cannot convert undefined or null to object at getOwnPropertyDescriptors
+  ([2203aa7](https://github.com/taiga-family/tui-editor/commit/2203aa75cffe018f6cec4410cde20352b756c9e8))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 1.8.1 (2023-10-19)
 
 ### Bug Fixes
