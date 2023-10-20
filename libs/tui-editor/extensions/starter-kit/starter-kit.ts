@@ -1,4 +1,4 @@
-import {Extension} from '@tiptap/core';
+import {Extension, KeyboardShortcutCommand} from '@tiptap/core';
 import {Blockquote, BlockquoteOptions} from '@tiptap/extension-blockquote';
 import {Bold, BoldOptions} from '@tiptap/extension-bold';
 import {BulletList, BulletListOptions} from '@tiptap/extension-bullet-list';
@@ -86,7 +86,25 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.heading !== false) {
-            extensions.push(Heading.configure(options?.heading));
+            extensions.push(
+                Heading.configure({
+                    levels: [1, 2, 3, 4, 5, 6],
+                    ...options?.heading,
+                }).extend({
+                    addKeyboardShortcuts(): {
+                        [key: string]: KeyboardShortcutCommand;
+                    } {
+                        return this.options.levels.reduce(
+                            (items: any, level: any) => ({
+                                ...(items || {}),
+                                [`Mod-Alt-${level}`]: () =>
+                                    this?.editor.commands.toggleHeading({level}),
+                            }),
+                            {},
+                        );
+                    },
+                }),
+            );
         }
 
         if (options?.history !== false) {
