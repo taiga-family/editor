@@ -45,4 +45,7 @@ Thumbs.db
 **/cypress/**/screenshots/**
 **/cypress/**/snapshots/**
 
+# special dirs
 .ssl
+.angular
+.nx
