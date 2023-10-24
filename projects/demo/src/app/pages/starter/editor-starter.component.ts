@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+
 import {
     defaultEditorExtensions,
     defaultEditorTools,

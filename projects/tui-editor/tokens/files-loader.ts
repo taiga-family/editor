@@ -3,7 +3,7 @@ import {TuiHandler} from '@taiga-ui/cdk';
 import {
     TuiEditorAttachedFile,
     TuiEditorAttachOptions,
-} from '../interfaces';
+} from '@tinkoff/tui-editor/interfaces';
 import {Observable} from 'rxjs';
 
 /**

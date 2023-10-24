@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../tui-editor';
 
 @Component({
@@ -15,7 +16,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../tui
 })
 export class ExampleTuiEditorUploadFilesComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         './filesio.service.ts': import('./examples/1/filesio.service.ts?raw'),

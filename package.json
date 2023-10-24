@@ -117,6 +117,7 @@
         "@taiga-ui/eslint-plugin-experience": "0.11.1",
         "@taiga-ui/prettier-config": "0.4.0",
         "@taiga-ui/stylelint-config": "0.6.0",
+        "@taiga-ui/tsconfig": "0.2.3",
         "@testing-library/cypress": "9.0.0",
         "@tinkoff/ng-dompurify": "3.0.0",
         "@tinkoff/ng-event-plugins": "3.1.0",

@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditorResizable} from '../../components/editor-resizable';
+import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {
     TUI_IFRAME_EDITOR_OPTIONS,

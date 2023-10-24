@@ -8,8 +8,8 @@ import {
     Self,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditor} from '../../abstract';
-import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '../../tokens';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '@tinkoff/tui-editor/tokens';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';

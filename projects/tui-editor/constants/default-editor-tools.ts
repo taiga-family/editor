@@ -1,4 +1,4 @@
-import {TuiEditorTool} from '../enums';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 
 export const defaultEditorTools = [
     TuiEditorTool.Undo,

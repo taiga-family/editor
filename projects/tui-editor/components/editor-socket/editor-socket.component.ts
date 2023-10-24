@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
-import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor';
+import {TuiTiptapEditorDirective} from '@tinkoff/tui-editor/directives/tiptap-editor';
 
 @Component({
     selector: 'tui-editor-socket',

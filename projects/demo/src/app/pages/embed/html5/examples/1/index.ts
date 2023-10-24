@@ -8,6 +8,9 @@ import {
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_CYPRESS, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
@@ -16,8 +19,6 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '../../../../../../../../tui-editor';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-editor-embed-html5-example-1',

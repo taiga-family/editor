@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-editor';
 
 @Component({
@@ -27,9 +28,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
                         }),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('../../../../../../../tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
-                ),
+                import(
+                    '../../../../../../../tui-editor/extensions/background-color'
+                ).then(({BackgroundColor}) => BackgroundColor),
             ],
         },
     ],

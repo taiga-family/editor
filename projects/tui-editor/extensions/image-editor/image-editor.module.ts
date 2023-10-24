@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {TuiEditorResizableModule} from '../../components/editor-resizable';
+import {TuiEditorResizableModule} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {TuiImageEditorComponent} from './image-editor.component';
 

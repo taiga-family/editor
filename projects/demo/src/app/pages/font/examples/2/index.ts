@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+
 import {
     TUI_EDITOR_EXTENSIONS,
     tuiEditorOptionsProvider,

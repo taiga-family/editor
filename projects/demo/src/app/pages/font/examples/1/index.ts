@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {mergeAttributes} from '@tiptap/core';
+
 import {
     TUI_EDITOR_EXTENSIONS,
     tuiEditorOptionsProvider,
     TuiEditorTool,
 } from '../../../../../../../tui-editor';
-import {mergeAttributes} from '@tiptap/core';
 
 @Component({
     selector: 'tui-editor-font-example-1',

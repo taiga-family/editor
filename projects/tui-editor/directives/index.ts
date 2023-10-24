@@ -1,2 +1,2 @@
-export * from './image-preview';
-export * from './tiptap-editor';
+export * from '@tinkoff/tui-editor/directives/image-preview';
+export * from '@tinkoff/tui-editor/directives/tiptap-editor';

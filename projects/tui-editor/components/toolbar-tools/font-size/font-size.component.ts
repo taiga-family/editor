@@ -1,16 +1,16 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {AbstractTuiEditor} from '../../../abstract';
-import {EDITOR_BLANK_COLOR} from '../../../constants';
-import {TuiTiptapEditorService} from '../../../directives';
-import {TuiEditorFontOption} from '../../../interfaces';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
+import {TuiEditorFontOption} from '@tinkoff/tui-editor/interfaces';
 import {
     TUI_EDITOR_FONT_OPTIONS,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
-} from '../../../tokens';
+} from '@tinkoff/tui-editor/tokens';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

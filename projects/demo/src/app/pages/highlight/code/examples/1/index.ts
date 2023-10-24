@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 
 @Component({

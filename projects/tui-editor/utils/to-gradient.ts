@@ -1,5 +1,5 @@
 import {tuiParseColor} from '@taiga-ui/cdk';
-import {TuiParsedGradient} from '../interfaces';
+import {TuiParsedGradient} from '@tinkoff/tui-editor/interfaces';
 
 export function tuiToGradient({stops, side}: TuiParsedGradient): string {
     return `linear-gradient(${side}, ${stops

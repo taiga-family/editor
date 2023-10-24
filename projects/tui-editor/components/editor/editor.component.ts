@@ -25,23 +25,23 @@ import {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
-import {AbstractTuiEditor} from '../../abstract';
-import {TuiToolbarComponent} from '../toolbar';
-import {defaultEditorTools} from '../../constants';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {TuiToolbarComponent} from '@tinkoff/tui-editor/components/toolbar';
+import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
 import {
     TuiTiptapEditorDirective,
     TuiTiptapEditorService,
-} from '../../directives';
-import {TuiEditorTool} from '../../enums';
-import {TuiEditorAttachedFile} from '../../interfaces';
+} from '@tinkoff/tui-editor/directives';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
+import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import {
     TIPTAP_EDITOR,
     TUI_EDITOR_CONTENT_PROCESSOR,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditorOptions,
-} from '../../tokens';
-import {tuiIsSafeLinkRange} from '../../utils';
+} from '@tinkoff/tui-editor/tokens';
+import {tuiIsSafeLinkRange} from '@tinkoff/tui-editor/utils';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';

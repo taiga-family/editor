@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 
 @Component({
@@ -18,9 +19,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
                 import('../../../../../../../../tui-editor/extensions/font-color').then(
                     ({FontColor}) => FontColor,
                 ),
-                import('../../../../../../../../tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
-                ),
+                import(
+                    '../../../../../../../../tui-editor/extensions/background-color'
+                ).then(({BackgroundColor}) => BackgroundColor),
             ],
         },
     ],

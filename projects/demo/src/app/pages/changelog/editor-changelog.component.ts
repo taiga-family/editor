@@ -12,9 +12,7 @@ import {map, switchMap} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiChangelogComponent {
-    readonly changelog$ = of(
-        import('../../../../../tui-editor/CHANGELOG.md?raw'),
-    ).pipe(
+    readonly changelog$ = of(import('../../../../../tui-editor/CHANGELOG.md?raw')).pipe(
         switchMap(tuiRawLoad),
         map((value: string) =>
             new MarkdownIt()

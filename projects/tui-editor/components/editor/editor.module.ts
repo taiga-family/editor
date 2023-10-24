@@ -2,10 +2,10 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiActiveZoneModule, TuiItemModule} from '@taiga-ui/cdk';
 import {TuiDropdownModule, TuiScrollbarModule, TuiWrapperModule} from '@taiga-ui/core';
-import {TuiEditLinkModule} from '../edit-link';
-import {TuiEditorSocketModule} from '../editor-socket';
-import {TuiToolbarModule} from '../toolbar';
-import {TuiTiptapEditorModule} from '../../directives';
+import {TuiEditLinkModule} from '@tinkoff/tui-editor/components/edit-link';
+import {TuiEditorSocketModule} from '@tinkoff/tui-editor/components/editor-socket';
+import {TuiToolbarModule} from '@tinkoff/tui-editor/components/toolbar';
+import {TuiTiptapEditorModule} from '@tinkoff/tui-editor/directives';
 
 import {TuiEditorComponent} from './editor.component';
 import {TuiEditorPortalDirective} from './portal/editor-portal.directive';

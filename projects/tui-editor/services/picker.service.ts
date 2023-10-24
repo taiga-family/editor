@@ -2,7 +2,7 @@ import {DOCUMENT} from '@angular/common';
 import {ElementRef, Inject, Injectable, Self} from '@angular/core';
 import {TuiDestroyService, tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-import {tuiGetElementPoint} from '../utils';
+import {tuiGetElementPoint} from '@tinkoff/tui-editor/utils';
 import {Observable} from 'rxjs';
 import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
 

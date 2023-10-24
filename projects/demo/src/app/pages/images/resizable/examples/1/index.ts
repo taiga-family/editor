@@ -2,13 +2,14 @@ import {HttpClient} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
+import {Observable} from 'rxjs';
+import {switchMap, takeUntil} from 'rxjs/operators';
+
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
     TuiEditorTool,
 } from '../../../../../../../../tui-editor';
-import {Observable} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-editor-resizable-editor-example-1',

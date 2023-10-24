@@ -26,7 +26,7 @@ import {
     tuiGetGradientData,
     tuiParseGradient,
     tuiToGradient,
-} from '../../utils';
+} from '@tinkoff/tui-editor/utils';
 
 @Component({
     selector: 'tui-input-color',

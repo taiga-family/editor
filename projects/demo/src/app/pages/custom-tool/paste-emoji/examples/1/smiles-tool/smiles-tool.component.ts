@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+
 import {TuiTiptapEditorService} from '../../../../../../../../../tui-editor';
 
 @Component({

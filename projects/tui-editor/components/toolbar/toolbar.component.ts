@@ -24,11 +24,11 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {AbstractTuiEditor} from '../../abstract';
-import {defaultEditorTools} from '../../constants';
-import {TuiTiptapEditorService} from '../../directives';
-import {TuiEditorTool} from '../../enums';
-import {TuiEditorAttachedFile} from '../../interfaces';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
+import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
@@ -36,7 +36,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TUI_IMAGE_LOADER,
     TuiEditorOptions,
-} from '../../tokens';
+} from '@tinkoff/tui-editor/tokens';
 import {Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 

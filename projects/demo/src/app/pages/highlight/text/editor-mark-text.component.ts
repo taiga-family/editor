@@ -8,7 +8,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiEditorMarkTextComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };

@@ -1,4 +1,4 @@
-import {tuiParseNodeAttributes} from '../../utils';
+import {tuiParseNodeAttributes} from '@tinkoff/tui-editor/utils';
 import {getHTMLFromFragment} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
 

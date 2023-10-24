@@ -10,8 +10,8 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../tui-editor';
 
+import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../tui-editor';
 import {ExampleTuiEditorDraggableGroupsComponent} from './editor-groups.component';
 import {TuiEditorGroupExample1} from './examples/1';
 import {TuiEditorGroupExample2} from './examples/2';

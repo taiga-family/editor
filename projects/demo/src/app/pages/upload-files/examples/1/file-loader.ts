@@ -1,7 +1,7 @@
-import {TuiEditorAttachedFile} from '../../../../../../../tui-editor';
 import {forkJoin, Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
+import {TuiEditorAttachedFile} from '../../../../../../../tui-editor';
 import {FileIoService} from './filesio.service';
 
 export function fileLoader(

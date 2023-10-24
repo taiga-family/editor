@@ -1,6 +1,6 @@
 import {Injector} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiNodeView} from '../tiptap-node-view';
+import {TuiNodeView} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
 import {
     Attribute,
     mergeAttributes,

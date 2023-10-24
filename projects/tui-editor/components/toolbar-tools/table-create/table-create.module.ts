@@ -6,7 +6,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiTableSizeSelectorModule} from '../table-size-selector';
+import {TuiTableSizeSelectorModule} from '@tinkoff/tui-editor/components/toolbar-tools/table-size-selector';
 
 import {TuiTableCreateComponent} from './table-create.component';
 

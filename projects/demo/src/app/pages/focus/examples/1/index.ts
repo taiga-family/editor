@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-editor';
 
 @Component({
@@ -41,11 +42,11 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
                 import('../../../../../../../tui-editor/extensions/file-link').then(
                     ({TuiFileLink}) => TuiFileLink,
                 ),
-                import('../../../../../../../tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
-                ),
-                import('../../../../../../../tui-editor/extensions/table').then(({TuiTable}) =>
-                    TuiTable.configure({resizable: true}),
+                import(
+                    '../../../../../../../tui-editor/extensions/background-color'
+                ).then(({BackgroundColor}) => BackgroundColor),
+                import('../../../../../../../tui-editor/extensions/table').then(
+                    ({TuiTable}) => TuiTable.configure({resizable: true}),
                 ),
                 import('@tiptap/extension-table-row').then(
                     ({default: TableRow}) => TableRow,
@@ -59,9 +60,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
                 import('../../../../../../../tui-editor/extensions/indent-outdent').then(
                     ({TuiTabExtension}) => TuiTabExtension,
                 ),
-                import('../../../../../../../tui-editor/extensions/table-cell-background').then(
-                    ({TableCellBackground}) => TableCellBackground,
-                ),
+                import(
+                    '../../../../../../../tui-editor/extensions/table-cell-background'
+                ).then(({TableCellBackground}) => TableCellBackground),
                 import('../../../../../../../tui-editor/extensions/details').then(
                     ({TuiDetailsContent}) => TuiDetailsContent,
                 ),

@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiTiptapEditorService} from '../../../../../../../../tui-editor';
 import {distinctUntilChanged, map} from 'rxjs/operators';
+
+import {TuiTiptapEditorService} from '../../../../../../../../tui-editor';
 
 @Component({
     selector: 'font-size-tool',

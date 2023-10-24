@@ -16,13 +16,13 @@ import {
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/kit';
+
 import {
     TuiColorPickerModule,
     TuiColorSelectorModule,
     TuiInputColorModule,
     TuiPaletteModule,
 } from '../../../../../tui-editor';
-
 import {ExampleTuiColorPickerComponent} from './editor-input-color-picker.component';
 import {TuiColorPickerExample1} from './examples/1';
 import {TuiColorPickerExample2} from './examples/2';

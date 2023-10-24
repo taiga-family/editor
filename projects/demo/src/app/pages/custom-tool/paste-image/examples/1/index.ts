@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({

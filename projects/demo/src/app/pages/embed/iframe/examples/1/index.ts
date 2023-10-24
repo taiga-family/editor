@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/cor
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_CYPRESS, tuiPure} from '@taiga-ui/cdk';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 
 @Component({
@@ -16,9 +17,10 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
                 import('../../../../../../../../tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('../../../../../../../../tui-editor/extensions/iframe-editor').then(
-                    ({createIframeEditorExtension}) =>
-                        createIframeEditorExtension(injector),
+                import(
+                    '../../../../../../../../tui-editor/extensions/iframe-editor'
+                ).then(({createIframeEditorExtension}) =>
+                    createIframeEditorExtension(injector),
                 ),
             ],
         },

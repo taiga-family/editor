@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {tuiPure} from '@taiga-ui/cdk';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 
 @Component({

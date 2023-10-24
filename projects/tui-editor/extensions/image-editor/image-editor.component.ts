@@ -11,7 +11,7 @@ import {
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditorResizable} from '../../components/editor-resizable';
+import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {
     TUI_EDITOR_MAX_IMAGE_WIDTH,

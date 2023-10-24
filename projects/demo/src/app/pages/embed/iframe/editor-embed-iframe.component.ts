@@ -1,6 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../tui-editor';
+
+import {
+    defaultEditorExtensions,
+    TUI_EDITOR_EXTENSIONS,
+} from '../../../../../../tui-editor';
 
 @Component({
     selector: 'editor-embed-iframe',
@@ -16,7 +20,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../
 export class ExampleTuiEditorEmbedIframeComponent {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         LESS: import('./examples/1/index.less?raw'),
         'embed-tool/embed-tool.component.ts': import(
             './examples/1/embed-tool/embed-tool.component.ts?raw'

@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
+
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
@@ -7,7 +8,6 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '../../../../../../../tui-editor';
-
 import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
 

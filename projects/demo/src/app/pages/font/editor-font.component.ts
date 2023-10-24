@@ -8,18 +8,18 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 })
 export class ExampleTuiEditorFontComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
     readonly example2: TuiDocExample = {
-        TypeScript: import('./examples/2?raw'),
+        TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
     readonly example3: TuiDocExample = {
-        TypeScript: import('./examples/3?raw'),
+        TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         'font-size-tool/font-size-tool.component.ts': import(
             './examples/3/font-size-tool/font-size-tool.component.ts?raw'

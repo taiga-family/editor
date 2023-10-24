@@ -3,7 +3,11 @@ import {
     TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
     TuiDocExample,
 } from '@taiga-ui/addon-doc';
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../tui-editor';
+
+import {
+    defaultEditorExtensions,
+    TUI_EDITOR_EXTENSIONS,
+} from '../../../../../../tui-editor';
 
 @Component({
     selector: 'editor-markdown',
@@ -26,7 +30,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../
 })
 export class ExampleTuiEditorMarkdownComponent {
     readonly example1: TuiDocExample = {
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         'example.md': import('./examples/1/example.md?raw'),

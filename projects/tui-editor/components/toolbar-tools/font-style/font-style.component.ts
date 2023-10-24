@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {AbstractTuiEditor} from '../../../abstract';
-import {defaultEditorTools} from '../../../constants';
-import {TuiTiptapEditorService} from '../../../directives';
-import {TuiEditorTool} from '../../../enums';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 import {
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
-} from '../../../tokens';
+} from '@tinkoff/tui-editor/tokens';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

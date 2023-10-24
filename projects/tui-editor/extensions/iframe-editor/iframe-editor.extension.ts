@@ -1,5 +1,5 @@
 import {Injector} from '@angular/core';
-import {TuiNodeView} from '../tiptap-node-view';
+import {TuiNodeView} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
 import {
     Attribute,
     mergeAttributes,

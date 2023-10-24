@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {TuiNodeViewNgComponent} from '../../extensions/tiptap-node-view';
+import {TuiNodeViewNgComponent} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
 import {merge} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 

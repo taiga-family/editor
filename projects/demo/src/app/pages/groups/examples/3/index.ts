@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
+
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-editor';
 
 @Component({

@@ -1,4 +1,4 @@
-import {tuiEditLinkParseUrl} from '../../../index';
+import {tuiEditLinkParseUrl} from '@tinkoff/tui-editor';
 
 describe(`tuiEditLinkParseUrl`, () => {
     it(`mailto`, () => {

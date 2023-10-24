@@ -14,8 +14,8 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../../tui-editor';
 
+import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../../tui-editor';
 import {ExampleTuiEditorPasteEmojiToolComponent} from './editor-paste-emoji.component';
 import {TuiEditorPasteEmojiToolExample1} from './examples/1';
 import {ExampleTuiSmilesToolModule} from './examples/1/smiles-tool/smiles-tool.module';

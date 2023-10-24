@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, ValidationErrors} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiValidationError} from '@taiga-ui/cdk';
+
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_MAX_IMAGE_WIDTH,
@@ -16,7 +17,6 @@ import {
     TuiEditorComponent,
     TuiEditorTool,
 } from '../../../../../../../../tui-editor';
-
 import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
 

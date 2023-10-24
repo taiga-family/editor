@@ -1,4 +1,4 @@
-import {tuiParseNodeAttributes} from '../../utils';
+import {tuiParseNodeAttributes} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node} from '@tiptap/core';
 import {MarkSpec} from 'prosemirror-model';
 

@@ -1,6 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../tui-editor';
+
+import {
+    defaultEditorExtensions,
+    TUI_EDITOR_EXTENSIONS,
+} from '../../../../../../tui-editor';
 
 @Component({
     selector: 'editor-embed-youtube',
@@ -16,7 +20,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '../../../../../../
 export class ExampleTuiEditorEmbedComponent {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
-        TypeScript: import('./examples/1?raw'),
+        TypeScript: import('./examples/1/index.ts?raw'),
         LESS: import('./examples/1/index.less?raw'),
         'youtube-tool/youtube-tool.component.ts': import(
             './examples/1/youtube-tool/youtube-tool.component.ts?raw'

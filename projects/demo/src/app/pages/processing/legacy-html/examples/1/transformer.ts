@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
+
 import {tuiLegacyEditorConverter} from '../../../../../../../../tui-editor';
 
 @Injectable()

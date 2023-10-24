@@ -1,5 +1,5 @@
-import {TuiParsedGradient} from '../interfaces';
-import {TuiGradientDirection} from '../types';
+import {TuiParsedGradient} from '@tinkoff/tui-editor/interfaces';
+import {TuiGradientDirection} from '@tinkoff/tui-editor/types';
 
 //
 // TypeScript parser based on Dean Taylor's answer:

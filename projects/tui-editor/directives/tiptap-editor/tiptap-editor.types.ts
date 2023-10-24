@@ -4,10 +4,10 @@
  * don't use import directly as `import '@tiptap/*'` for provide types,
  * because the source code of `@tiptap` will be included in bundle
  */
-import type {BackgroundColor, FontColor} from '../../extensions';
-import type {TuiDetails} from '../../extensions/details';
-import type {TuiJumpAnchor} from '../../extensions/jump-anchor';
-import type {Youtube} from '../../extensions/youtube';
+import type {BackgroundColor, FontColor} from '@tinkoff/tui-editor/extensions';
+import type {TuiDetails} from '@tinkoff/tui-editor/extensions/details';
+import type {TuiJumpAnchor} from '@tinkoff/tui-editor/extensions/jump-anchor';
+import type {Youtube} from '@tinkoff/tui-editor/extensions/youtube';
 import type Highlight from '@tiptap/extension-highlight';
 import type {Image} from '@tiptap/extension-image';
 import type Link from '@tiptap/extension-link';
