@@ -1,1 +1,0 @@
-(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[2812],{52812:p=>{p.exports="```html\n<my-app></my-app>\n```\n"}}]);
