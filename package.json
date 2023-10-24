@@ -155,7 +155,7 @@
         "ngx-markdown": "12.1.0",
         "nx": "17.0.1",
         "nx-cloud": "16.5.2",
-        "parse5": "6.0.1",
+        "parse5": "7.1.2",
         "prettier": "3.0.3",
         "rxjs": "6.6.7",
         "showdown": "2.1.0",
