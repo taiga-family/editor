@@ -1,0 +1,11 @@
+{
+    "extends": "../../tsconfig.json",
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    },
+    "compilerOptions": {
+        "outDir": "../out-tsc/app"
+    },
+    "files": [
+      "./src/typings.d.ts", "./src/main.browser.ts", "./src/polyfills.ts"]
+}

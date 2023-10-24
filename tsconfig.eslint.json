@@ -7,6 +7,6 @@
         "module": "esnext",
         "incremental": true
     },
-    "include": ["apps/**/*.ts", "libs/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],
+    "include": ["projects/**/*.ts", "projects/**/*.ts", "scripts", "setup-jest.ts", "jest.config.ts", "*.spec.ts", "*.cy.ts"],
     "exclude": ["**/node_modules", "*.js"]
 }

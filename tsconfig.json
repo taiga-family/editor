@@ -28,7 +28,9 @@
         "target": "es2015",
         "module": "es2020",
         "lib": ["es2021", "dom"],
-        "typeRoots": ["node_modules/@types", "libs/tui-editor/types"],
+        "typeRoots": ["node_modules/@types",
+          "projects/tui-editor/types"
+        ],
         "types": ["ng-dev-mode"],
         "skipLibCheck": true,
         "downlevelIteration": true,
@@ -56,8 +58,8 @@
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo",
         "noImplicitOverride": true,
         "paths": {
-            "@tinkoff/tui-editor": ["libs/tui-editor/index"],
-            "@tinkoff/tui-editor/*": ["libs/tui-editor/*"],
+            "@tinkoff/tui-editor": ["projects/tui-editor/index"],
+            "@tinkoff/tui-editor/*": ["projects/tui-editor/*"],
             "@taiga-ui/kit": ["./taiga-ui/projects/kit/index"],
             "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
             "@taiga-ui/cdk": ["./taiga-ui/projects/cdk/index"],

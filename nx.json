@@ -16,8 +16,8 @@
         "defaultBase": "origin/main"
     },
     "workspaceLayout": {
-        "libsDir": "libs",
-        "appsDir": "apps"
+        "libsDir": "projects",
+        "appsDir": "projects"
     },
     "namedInputs": {
         "default": ["{projectRoot}/**/*", "sharedGlobals"],

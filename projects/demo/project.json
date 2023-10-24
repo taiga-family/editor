@@ -1,0 +1,129 @@
+{
+    "name": "editor-demo",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "projects/demo/src",
+    "prefix": "app",
+    "targets": {
+        "prebuild": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cd taiga-ui && npx nx build i18n --output-style=stream"
+            }
+        },
+        "build": {
+            "executor": "@angular-builders/custom-webpack:browser",
+            "options": {
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.config.ts"
+                },
+                "baseHref": "/",
+                "outputPath": "dist/demo/browser",
+                "index": "projects/demo/src/index.html",
+                "main": "projects/demo/src/main.browser.ts",
+                "polyfills": "projects/demo/src/polyfills.ts",
+                "tsConfig": "projects/demo/tsconfig.app.json",
+                "assets": [
+                    {
+                        "glob": "**/*",
+                        "input": "projects/demo/src/assets/",
+                        "output": "./assets/"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "taiga-ui/projects/icons/src",
+                        "output": "assets/taiga-ui/icons"
+                    }
+                ],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["taiga-ui/projects/core/styles", "taiga-ui/projects/styles"]
+                },
+                "styles": [
+                    "taiga-ui/projects/core/styles/taiga-ui-theme.less",
+                    "taiga-ui/projects/core/styles/taiga-ui-fonts.less",
+                    "taiga-ui/projects/styles/taiga-ui-global.less",
+                    "projects/demo/src/styles.less"
+                ],
+                "scripts": [
+                    "node_modules/marked/lib/marked.js",
+                    "node_modules/prismjs/prism.js",
+                    "node_modules/prismjs/components/prism-less.min.js",
+                    "node_modules/prismjs/components/prism-markup.min.js",
+                    "node_modules/prismjs/components/prism-typescript.min.js"
+                ],
+                "aot": true,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": false,
+                "sourceMap": true,
+                "optimization": false,
+                "namedChunks": true
+            },
+            "configurations": {
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "projects/demo/src/environments/environment.ts",
+                            "with": "projects/demo/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "aot": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true
+                },
+                "development": {}
+            },
+            "defaultConfiguration": "production",
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "prebuild",
+                    "params": "ignore"
+                }
+            ]
+        },
+        "build-gh-pages": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "commands": [
+                    "echo 'Github pages require special baseHref + 404.html'",
+                    "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
+                    "echo ------",
+                    "nx build editor-demo --base-href=/tui-editor/",
+                    "cp dist/demo/browser/index.html dist/demo/browser/404.html"
+                ]
+            }
+        },
+        "serve": {
+            "executor": "@angular-builders/custom-webpack:dev-server",
+            "options": {
+                "browserTarget": "demo:build",
+                "port": 3333,
+                "sslCert": ".ssl/localhost.pem",
+                "sslKey": ".ssl/localhost-key.pem"
+            },
+            "configurations": {
+                "production": {
+                    "browserTarget": "editor-demo:build:production"
+                },
+                "development": {
+                    "browserTarget": "editor-demo:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "serve-compiled": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "angular-http-server -p {args.port} --silent --path {args.path} & npx wait-on http://localhost:{args.port} --timeout 5000",
+                "forwardAllArgs": false
+            }
+        }
+    }
+}

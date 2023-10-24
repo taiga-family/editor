@@ -1,7 +1,7 @@
 {
     "$schema": "node_modules/lerna/schemas/lerna-schema.json",
     "version": "independent",
-    "packages": ["libs/*"],
+    "packages": ["projects/*"],
     "concurrency": 1,
     "stream": true,
     "npmClient": "npm",
@@ -13,7 +13,7 @@
         "**/dist/**",
         "**/tests/**",
         "**/*.spec.ts",
-        "**/apps/**",
+        "**/projects/**",
         "**/.github/**",
         "**/scripts/**",
         "**/CHANGELOG.md",

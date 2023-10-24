@@ -17,8 +17,7 @@
         "Alex Inkin <alexander@inkin.ru>"
     ],
     "workspaces": [
-        "apps/*",
-        "libs/*"
+        "projects/*"
     ],
     "scripts": {
         "postinstall": "husky install && ngcc --async",
@@ -36,8 +35,8 @@
         "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
         "*** Cypress ***": "",
-        "cy:open": "cypress open --project apps/demo-cypress/",
-        "cy:run": "cypress run --project apps/demo-cypress/"
+        "cy:open": "cypress open --project projects/demo-cypress/",
+        "cy:run": "cypress run --project projects/demo-cypress/"
     },
     "commitlint": {
         "extends": [

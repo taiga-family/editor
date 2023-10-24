@@ -1,0 +1,55 @@
+{
+    "name": "tui-editor",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "projects/tui-editor",
+    "projectType": "library",
+    "prefix": "tui",
+    "targets": {
+        "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/tui-editor/**/*\""
+            }
+        },
+        "stylelint": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "stylelint \"**/tui-editor/**/*.{css,less}\" --allow-empty-input"
+            }
+        },
+        "prebuild": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "cd taiga-ui && npx nx run-many -t build -p i18n cdk core kit --parallel=false --output-style=stream"
+            }
+        },
+        "build": {
+            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "outputs": ["{workspaceRoot}/dist/tui-editor"],
+            "options": {
+                "tsConfig": "tsconfig.build.json",
+                "project": "projects/tui-editor/ng-package.json"
+            },
+            "dependsOn": [
+                {
+                    "projects": "self",
+                    "target": "prebuild",
+                    "params": "ignore"
+                }
+            ]
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/tui-editor"],
+            "options": {
+                "jestConfig": "projects/tui-editor/jest.config.ts"
+            }
+        },
+        "publish": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "npm publish ./dist/tui-editor --access=public --ignore-scripts || echo \"already published\""
+            }
+        }
+    }
+}
