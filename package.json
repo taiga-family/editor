@@ -119,7 +119,7 @@
         "@taiga-ui/stylelint-config": "0.6.0",
         "@taiga-ui/tsconfig": "0.2.3",
         "@testing-library/cypress": "9.0.0",
-        "@tinkoff/ng-dompurify": "3.0.0",
+        "@tinkoff/ng-dompurify": "4.0.0",
         "@tinkoff/ng-event-plugins": "3.1.0",
         "@tinkoff/ng-polymorpheus": "4.2.0",
         "@types/cypress-image-snapshot": "3.1.8",
