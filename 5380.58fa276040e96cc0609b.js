@@ -1,1 +1,0 @@
-(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[5380],{5380:e=>{e.exports=".t-image-preview {\n    width: 100%;\n}\n"}}]);

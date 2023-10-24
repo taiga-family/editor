@@ -1,1 +1,0 @@
-(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[4671],{64671:e=>{e.exports="::ng-deep .marked {\n    padding: 0.3125rem;\n    border-radius: 0.3125rem;\n    margin: 0 0.3125rem;\n    box-shadow: 0 0 0 2px rgb(0 123 255 / 25%);\n    line-height: 2.6rem;\n}\n"}}]);

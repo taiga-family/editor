@@ -1,0 +1,1 @@
+(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[8645],{78645:e=>{e.exports=".invert {\n    color: inherit;\n    filter: invert(1);\n}\n"}}]);
