@@ -34,5 +34,6 @@
         "test": {
             "inputs": ["default"]
         }
-    }
+    },
+    "nxCloudAccessToken": "ZTE0MzJiOGUtM2FiMC00N2U3LWJjYTctMThjMjMxNDE1MTk3fHJlYWQtd3JpdGU="
 }
