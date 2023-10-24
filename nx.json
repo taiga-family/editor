@@ -1,11 +1,14 @@
 {
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "npmScope": "tui-editor",
+    "nxCloudAccessToken": "MzY4Mzk5YmMtMTJlOC00ZDMyLWFlY2UtZGFhM2RkZWQyYTYxfHJlYWQtd3JpdGU=",
+    "defaultProject": "editor-demo",
     "tasksRunnerOptions": {
         "default": {
             "runner": "nx-cloud",
             "options": {
-                "parallel": 1,
-                "cacheableOperations": ["build", "test", "lint"]
+                "cacheableOperations": ["test", "build"],
+                "parallel": 1
             }
         }
     },
@@ -16,8 +19,6 @@
         "libsDir": "libs",
         "appsDir": "apps"
     },
-    "defaultProject": "editor-demo",
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "namedInputs": {
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
         "sharedGlobals": [
@@ -26,14 +27,5 @@
             "{workspaceRoot}/tsconfig.*.json",
             "{workspaceRoot}/tsconfig.json"
         ]
-    },
-    "targetDefaults": {
-        "build": {
-            "inputs": ["default"]
-        },
-        "test": {
-            "inputs": ["default"]
-        }
-    },
-    "nxCloudAccessToken": "ZTE0MzJiOGUtM2FiMC00N2U3LWJjYTctMThjMjMxNDE1MTk3fHJlYWQtd3JpdGU="
+    }
 }
