@@ -71,7 +71,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         appCompTs.className = APP_COMP_META.CLASS_NAME;
 
         return stackblitz.openProject({
-            ...this.getStackblitzProjectConfig(),
+            ...(await this.getStackblitzProjectConfig()),
             title: `${component}-${sampleId}`,
             description: `TUI Editor example`,
             files: {
@@ -91,7 +91,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     ): Promise<void> {
         return stackblitz.openProject(
             {
-                ...this.getStackblitzProjectConfig(),
+                ...(await this.getStackblitzProjectConfig()),
                 title,
                 description,
                 files: {
@@ -118,13 +118,12 @@ export class TuiStackblitzService implements TuiCodeEditor {
         };
     }
 
-    private getStackblitzProjectConfig(): Pick<
-        Project,
-        'dependencies' | 'tags' | 'template'
+    private async getStackblitzProjectConfig(): Promise<
+        Pick<Project, 'dependencies' | 'tags' | 'template'>
     > {
         return {
             template: `angular-cli`,
-            dependencies: this.deps.get(),
+            dependencies: await this.deps.get(),
             tags: [`Angular`, `Taiga UI`, `Angular components`, `UI Kit`],
         };
     }

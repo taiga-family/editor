@@ -23,7 +23,10 @@
             "@taiga-ui/addon-mobile": ["./taiga-ui/projects/addon-mobile/index"],
             "@taiga-ui/addon-mobile/*": ["./taiga-ui/projects/addon-mobile/*"],
             "@taiga-ui/testing": ["./taiga-ui/projects/testing/index"],
-            "@taiga-ui/testing/*": ["./taiga-ui/projects/testing/*"]
+            "@taiga-ui/testing/*": ["./taiga-ui/projects/testing/*"],
+            "@taiga-ui/submodule-package": ["./taiga-ui/package.json"],
+            "@taiga-ui/submodule-demo-package": ["./taiga-ui/projects/demo/package.json"],
+            "@taiga-ui/submodule-cdk-package": ["./taiga-ui/projects/cdk/package.json"]
         }
     }
 }

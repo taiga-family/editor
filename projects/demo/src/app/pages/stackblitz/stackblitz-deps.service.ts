@@ -1,59 +1,44 @@
 import {Injectable} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
-@Injectable({
-    providedIn: `root`,
-})
+@Injectable({providedIn: `root`})
 export class StackblitzDepsService {
-    readonly angular = {
-        '@angular/cdk': `12.x.x`,
-        '@angular/core': `12.x.x`,
-        '@angular/common': `12.x.x`,
-        '@angular/compiler': `12.x.x`,
-        '@angular/forms': `12.x.x`,
-        '@angular/localize': `12.x.x`,
-        '@angular/platform-browser': `12.x.x`,
-        '@angular/platform-browser-dynamic': `12.x.x`,
-        '@angular/animations': `12.x.x`,
-        '@angular/router': `12.x.x`,
-    };
+    async get(): Promise<Record<string, string>> {
+        const {dependencies: demoDeps} = await import(`@taiga-ui/submodule-demo-package`);
+        const {dependencies: cdkDeps} = await import(`@taiga-ui/submodule-cdk-package`);
+        const {dependencies, devDependencies} = await import(
+            `@taiga-ui/submodule-package`
+        );
 
-    readonly taiga = {
-        '@taiga-ui/cdk': `3.x.x`,
-        '@taiga-ui/i18n': `3.x.x`,
-        '@taiga-ui/core': `3.x.x`,
-        '@taiga-ui/kit': `3.x.x`,
-        '@taiga-ui/icons': `3.x.x`,
-        '@taiga-ui/styles': `3.x.x`,
-    };
-
-    readonly tinkoff = {
-        '@tinkoff/tui-editor': `1.x.x`,
-        '@tinkoff/ng-polymorpheus': `4.x.x`,
-        '@tinkoff/ng-dompurify': `4.x.x`,
-        '@tinkoff/ng-event-plugins': `3.x.x`,
-    };
-
-    readonly webApis = {
-        '@ng-web-apis/common': `3.x.x`,
-        '@ng-web-apis/intersection-observer': `3.x.x`,
-        '@ng-web-apis/resize-observer': `3.x.x`,
-        '@ng-web-apis/mutation-observer': `3.x.x`,
-    };
-
-    readonly common = {
-        'zone.js': `0.11.8`,
-        dompurify: `2.4.5`,
-        typescript: `4.3.5`,
-        rxjs: `6.6.7`,
-    };
-
-    get(): Record<string, string> {
         return {
-            ...this.angular,
-            ...this.taiga,
-            ...this.webApis,
-            ...this.common,
-            ...this.tinkoff,
+            '@angular/cdk': dependencies[`@angular/cdk`],
+            '@angular/core': dependencies[`@angular/core`],
+            '@angular/common': dependencies[`@angular/common`],
+            '@angular/compiler': dependencies[`@angular/compiler`],
+            '@angular/forms': dependencies[`@angular/forms`],
+            '@angular/localize': dependencies[`@angular/localize`],
+            '@angular/platform-browser': dependencies[`@angular/platform-browser`],
+            '@angular/platform-browser-dynamic':
+                dependencies[`@angular/platform-browser-dynamic`],
+            '@angular/animations': dependencies[`@angular/animations`],
+            '@angular/router': dependencies[`@angular/router`],
+            '@taiga-ui/cdk': TUI_VERSION,
+            '@taiga-ui/i18n': TUI_VERSION,
+            '@taiga-ui/core': TUI_VERSION,
+            '@taiga-ui/kit': TUI_VERSION,
+            '@taiga-ui/icons': TUI_VERSION,
+            '@taiga-ui/styles': TUI_VERSION,
+            '@ng-web-apis/common': cdkDeps[`@ng-web-apis/common`],
+            '@ng-web-apis/resize-observer': cdkDeps[`@ng-web-apis/resize-observer`],
+            '@ng-web-apis/mutation-observer': cdkDeps[`@ng-web-apis/mutation-observer`],
+            'zone.js': dependencies[`zone.js`],
+            dompurify: demoDeps.dompurify,
+            typescript: devDependencies.typescript,
+            rxjs: dependencies.rxjs,
+            '@tinkoff/tui-editor': `1.x.x`,
+            '@tinkoff/ng-polymorpheus': cdkDeps[`@tinkoff/ng-polymorpheus`],
+            '@tinkoff/ng-dompurify': demoDeps[`@tinkoff/ng-dompurify`],
+            '@tinkoff/ng-event-plugins': cdkDeps[`@tinkoff/ng-event-plugins`],
         };
     }
 }
