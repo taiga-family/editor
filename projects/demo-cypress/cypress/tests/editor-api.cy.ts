@@ -262,7 +262,8 @@ describe(`Editor API`, () => {
             cy.get(`@wrapper`)
                 .find(`button[automation-id="toolbar__ordering-list-button"]`)
                 .click({force: true});
-            cy.get(`tui-dropdown`)
+            cy.get(`.t-dropdown-list`)
+                .eq(0)
                 .find(`button[automation-id="${automationId}"]`)
                 .click({force: true});
         }
