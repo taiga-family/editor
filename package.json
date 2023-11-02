@@ -148,7 +148,7 @@
         "lerna": "7.4.2",
         "lint-staged": "15.0.2",
         "markdown-it": "13.0.2",
-        "marked": "9.1.4",
+        "marked": "9.1.5",
         "ng-morph": "4.0.0",
         "ng-packagr": "12.2.7",
         "ngx-highlightjs": "5.0.0",
