@@ -21,7 +21,7 @@
         <ng-template #formatDropdown>
             <div class="t-dropdown">
                 <button
-                    *ngIf="isEnabled(TuiEditorTool.Bold)"
+                    *ngIf="isEnabled(editorTool.Bold)"
                     appearance="icon"
                     size="s"
                     tuiIconButton
@@ -33,7 +33,7 @@
                     (click)="editor.toggleBold()"
                 ></button>
                 <button
-                    *ngIf="isEnabled(TuiEditorTool.Italic)"
+                    *ngIf="isEnabled(editorTool.Italic)"
                     appearance="icon"
                     size="s"
                     tuiIconButton
@@ -45,7 +45,7 @@
                     (click)="editor.toggleItalic()"
                 ></button>
                 <button
-                    *ngIf="isEnabled(TuiEditorTool.Underline)"
+                    *ngIf="isEnabled(editorTool.Underline)"
                     appearance="icon"
                     size="s"
                     tuiIconButton
@@ -57,7 +57,7 @@
                     (click)="editor.toggleUnderline()"
                 ></button>
                 <button
-                    *ngIf="isEnabled(TuiEditorTool.Strikethrough)"
+                    *ngIf="isEnabled(editorTool.Strikethrough)"
                     appearance="icon"
                     size="s"
                     tuiIconButton

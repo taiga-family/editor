@@ -13,8 +13,8 @@ export interface TuiEditorResizableContainer {
 export abstract class AbstractTuiEditorResizable<
     T extends TuiEditorResizableContainer,
 > extends TuiNodeViewNgComponent {
-    protected _height = 0;
-    protected _width = 0;
+    protected currentHeight = 0;
+    protected currentWidth = 0;
 
     protected constructor(
         protected readonly doc: Document,
@@ -25,7 +25,7 @@ export abstract class AbstractTuiEditorResizable<
         merge(tuiTypedFromEvent(doc, `touchend`), tuiTypedFromEvent(doc, `mouseup`))
             .pipe(takeUntil(destroy$))
             .subscribe(() =>
-                this.updateAttributes({width: this.width, height: this.height}),
+                this.updateAttributes({width: this.width, height: this.currentHeight}),
             );
     }
 
@@ -34,11 +34,11 @@ export abstract class AbstractTuiEditorResizable<
     }
 
     get width(): number | string | null {
-        return this._width || this.attrs.width || null;
+        return this.currentWidth || this.attrs.width || null;
     }
 
     get height(): number | string | null {
-        return this._height || this.attrs.height || null;
+        return this.currentHeight || this.attrs.height || null;
     }
 
     abstract updateSize([width, height]: readonly [width: number, height: number]): void;

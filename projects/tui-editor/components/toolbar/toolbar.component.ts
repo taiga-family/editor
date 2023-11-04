@@ -75,7 +75,7 @@ export class TuiToolbarComponent {
     @Output()
     readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
-    readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
+    readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
 
     toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
 
