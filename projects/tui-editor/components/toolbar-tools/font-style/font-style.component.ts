@@ -26,7 +26,7 @@ export class TuiFontStyleComponent {
         this.toolsSet = new Set(value);
     }
 
-    readonly TuiEditorTool: typeof TuiEditorTool = TuiEditorTool;
+    readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
 
     readonly fontStyleState$ = combineLatest([
         this.editor.isActive$('bold'),

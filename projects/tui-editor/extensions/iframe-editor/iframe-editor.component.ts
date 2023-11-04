@@ -34,12 +34,12 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
     }
 
     updateSize([width, height]: readonly [width: number, height: number]): void {
-        this._width = Math.max(
+        this.currentWidth = Math.max(
             this.options.minWidth,
             Math.min(this.options.maxWidth, width),
         );
 
-        this._height = Math.max(
+        this.currentHeight = Math.max(
             this.options.minHeight,
             Math.min(this.options.maxHeight, height),
         );

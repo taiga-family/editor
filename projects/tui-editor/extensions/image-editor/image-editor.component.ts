@@ -83,7 +83,7 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         const minWidth = this.minWidth ?? this.options.minWidth;
         const maxWidth = this.maxWidth ?? this.options.maxWidth;
 
-        this._width = Math.max(minWidth, Math.min(maxWidth, width));
+        this.currentWidth = Math.max(minWidth, Math.min(maxWidth, width));
     }
 
     private selectFakeText(): void {

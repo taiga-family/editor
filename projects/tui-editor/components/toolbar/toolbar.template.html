@@ -20,7 +20,7 @@
     class="t-tools-wrapper"
 >
     <div
-        *ngIf="enabled(TuiEditorTool.Undo)"
+        *ngIf="enabled(editorTool.Undo)"
         class="t-block"
     >
         <button
@@ -57,7 +57,7 @@
         ></button>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Size)"
+        *ngIf="enabled(editorTool.Size)"
         class="t-block"
     >
         <tui-font-size
@@ -77,19 +77,19 @@
         ></tui-font-style>
 
         <tui-align-content
-            *ngIf="enabled(TuiEditorTool.Align)"
+            *ngIf="enabled(editorTool.Align)"
             tuiItem
             class="t-tool t-wrapper"
         ></tui-align-content>
 
         <tui-list-configs
-            *ngIf="enabled(TuiEditorTool.List)"
+            *ngIf="enabled(editorTool.List)"
             tuiItem
             class="t-tool t-wrapper"
         ></tui-list-configs>
 
         <button
-            *ngIf="enabled(TuiEditorTool.Quote)"
+            *ngIf="enabled(editorTool.Quote)"
             #button
             appearance="icon"
             automation-id="toolbar__quote-button"
@@ -108,7 +108,7 @@
             (click)="toggleQuote()"
         ></button>
         <tui-hosted-dropdown
-            *ngIf="enabled(TuiEditorTool.Link)"
+            *ngIf="enabled(editorTool.Link)"
             #link
             tuiItem
             class="t-wrapper"
@@ -139,7 +139,7 @@
             </ng-template>
         </tui-hosted-dropdown>
         <tui-hosted-dropdown
-            *ngIf="enabled(TuiEditorTool.Anchor)"
+            *ngIf="enabled(editorTool.Anchor)"
             #anchor
             class="t-wrapper"
             [canOpen]="canOpenAnchor"
@@ -165,7 +165,7 @@
                 ></tui-edit-link>
             </ng-template>
         </tui-hosted-dropdown>
-        <ng-container *ngIf="enabled(TuiEditorTool.Attach)">
+        <ng-container *ngIf="enabled(editorTool.Attach)">
             <button
                 #button
                 appearance="icon"
@@ -194,11 +194,11 @@
         </ng-container>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Sub) || enabled(TuiEditorTool.Sup)"
+        *ngIf="enabled(editorTool.Sub) || enabled(editorTool.Sup)"
         class="t-block"
     >
         <button
-            *ngIf="enabled(TuiEditorTool.Sub)"
+            *ngIf="enabled(editorTool.Sub)"
             #button
             appearance="icon"
             size="s"
@@ -215,7 +215,7 @@
             (click)="toggleSubscript()"
         ></button>
         <button
-            *ngIf="enabled(TuiEditorTool.Sup)"
+            *ngIf="enabled(editorTool.Sup)"
             #button
             appearance="icon"
             size="s"
@@ -233,18 +233,18 @@
         ></button>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Color) || enabled(TuiEditorTool.Hilite)"
+        *ngIf="enabled(editorTool.Color) || enabled(editorTool.Hilite)"
         class="t-block"
     >
         <tui-text-color
-            *ngIf="enabled(TuiEditorTool.Color)"
+            *ngIf="enabled(editorTool.Color)"
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
         ></tui-text-color>
 
         <tui-highlight-color
-            *ngIf="enabled(TuiEditorTool.Hilite)"
+            *ngIf="enabled(editorTool.Hilite)"
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
@@ -255,13 +255,13 @@
         class="t-block"
     >
         <tui-code
-            *ngIf="enabled(TuiEditorTool.Code)"
+            *ngIf="enabled(editorTool.Code)"
             tuiItem
             class="t-tool t-wrapper"
         ></tui-code>
 
         <button
-            *ngIf="enabled(TuiEditorTool.Tex)"
+            *ngIf="enabled(editorTool.Tex)"
             #button
             appearance="icon"
             size="s"
@@ -277,7 +277,7 @@
             (click)="onTeX()"
         ></button>
         <div
-            *ngIf="enabled(TuiEditorTool.Img)"
+            *ngIf="enabled(editorTool.Img)"
             tuiItem
             class="t-wrapper"
         >
@@ -306,7 +306,7 @@
             />
         </div>
         <button
-            *ngIf="enabled(TuiEditorTool.HR)"
+            *ngIf="enabled(editorTool.HR)"
             #button
             appearance="icon"
             size="s"
@@ -323,7 +323,7 @@
         ></button>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Clear)"
+        *ngIf="enabled(editorTool.Clear)"
         class="t-block"
     >
         <button
@@ -343,7 +343,7 @@
         ></button>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Details)"
+        *ngIf="enabled(editorTool.Details)"
         class="t-block"
     >
         <tui-details
@@ -357,7 +357,7 @@
         ></tui-details-remove>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Group)"
+        *ngIf="enabled(editorTool.Group)"
         class="t-block"
     >
         <tui-editor-group-tool
@@ -365,14 +365,14 @@
             class="t-tool t-tool_margin"
         ></tui-editor-group-tool>
         <tui-table-cell-color
-            *ngIf="!enabled(TuiEditorTool.Table)"
+            *ngIf="!enabled(editorTool.Table)"
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
         ></tui-table-cell-color>
     </div>
     <div
-        *ngIf="enabled(TuiEditorTool.Table)"
+        *ngIf="enabled(editorTool.Table)"
         class="t-block"
     >
         <tui-table-create
