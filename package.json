@@ -30,7 +30,7 @@
         "submodule:reset": "git submodule | awk '{ git restore --staged $2 }' && git submodule update --init --recursive",
         "*** Format ***": "",
         "lint": "eslint .",
-        "prettier": "prettier !package-lock.json !taiga-ui/** .  --ignore-path .gitignore",
+        "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "format": "npm run prettier -- --write",
         "stylelint": "stylelint '**/*.{less,css}' --config package.json",
         "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json",
