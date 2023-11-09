@@ -14,6 +14,7 @@ import {
 @Component({
     selector: 'tui-editor-resizable-editor-example-1',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
         {
@@ -30,7 +31,6 @@ import {
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorResizableEditorExample1 {
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';

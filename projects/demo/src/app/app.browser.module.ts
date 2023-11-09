@@ -30,7 +30,6 @@ import {TUI_LOGO_CONTENT} from './modules/logo/logo.component';
 import {TuiLogoModule} from './modules/logo/logo.module';
 
 @NgModule({
-    bootstrap: [TuiAppComponent],
     imports: [
         BrowserModule.withServerTransition({
             appId: `demo`,
@@ -92,5 +91,6 @@ import {TuiLogoModule} from './modules/logo/logo.module';
             },
         },
     ],
+    bootstrap: [TuiAppComponent],
 })
 export class AppBrowserModule {}

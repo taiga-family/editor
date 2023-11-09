@@ -11,6 +11,7 @@ import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 @Component({
     selector: 'tui-editor-legacy-html-example-1',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -21,7 +22,6 @@ import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
             useClass: ExampleEditorConvertLegacyHtmlTransformer,
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorLegacyHtmlExample1 {
     control = new FormControl(
