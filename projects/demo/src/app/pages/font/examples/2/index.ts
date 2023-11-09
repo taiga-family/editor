@@ -10,6 +10,7 @@ import {
 @Component({
     selector: 'tui-editor-font-example-2',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiEditorOptionsProvider({
             fontOptions: () =>
@@ -34,7 +35,6 @@ import {
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorFontExample2 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];

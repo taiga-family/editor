@@ -15,6 +15,7 @@ import {FileIoService} from './filesio.service';
     selector: 'tui-editor-upload-files-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -40,7 +41,6 @@ import {FileIoService} from './filesio.service';
             useFactory: fileLoader,
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorUploadFilesExample1 {
     @ViewChild(TuiEditorComponent)

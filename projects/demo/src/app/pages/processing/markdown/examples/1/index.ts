@@ -14,13 +14,13 @@ import {
     selector: 'tui-editor-markdown-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_CONTENT_PROCESSOR,
             useValue: (markdown: string): string => new MarkdownIt().render(markdown),
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorEditorExample1 implements OnInit {
     readonly builtInTools = [

@@ -12,6 +12,8 @@ import {
     selector: 'tui-editor-font-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiEditorOptionsProvider({
             fontOptions: () => [
@@ -97,8 +99,6 @@ import {
             ],
         },
     ],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorFontExample1 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];

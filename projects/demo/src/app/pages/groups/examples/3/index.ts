@@ -8,6 +8,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
     selector: 'tui-editor-groups-example-3',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
         {
@@ -29,7 +30,6 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorGroupExample3 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];

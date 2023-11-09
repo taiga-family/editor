@@ -25,8 +25,8 @@ import {
     selector: 'tui-image-editor',
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
-    providers: [TuiDestroyService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TuiDestroyService],
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
     @HostBinding('attr.contenteditable')

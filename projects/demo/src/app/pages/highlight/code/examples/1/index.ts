@@ -8,6 +8,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
     selector: 'tui-editor-code-block-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -18,7 +19,6 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorCodeBlockExample1 implements OnInit {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];

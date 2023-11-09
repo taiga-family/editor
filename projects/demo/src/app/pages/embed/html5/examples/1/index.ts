@@ -24,6 +24,7 @@ import {
     selector: 'tui-editor-embed-html5-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -95,7 +96,6 @@ import {
         class: 'html5-editor-example',
         '[class._cypress]': 'isCypress',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorEmbedHtml5Example1 {
     @ViewChild(TuiEditorComponent)

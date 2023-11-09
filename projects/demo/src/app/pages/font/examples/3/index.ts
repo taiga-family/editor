@@ -6,6 +6,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
 @Component({
     selector: 'tui-editor-font-example-3',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -22,7 +23,6 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorFontExample3 {
     readonly builtInTools = [TuiEditorTool.Undo];

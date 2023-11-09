@@ -23,6 +23,7 @@ import {ImgbbService} from './imgbb.service';
 @Component({
     selector: 'tui-editor-upload-images-example-1',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiDestroyService,
         {
@@ -55,7 +56,6 @@ import {ImgbbService} from './imgbb.service';
             deps: [ImgbbService],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorUploadingImagesExample1 {
     @ViewChild(TuiEditorComponent, {static: true})

@@ -8,6 +8,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
     selector: 'tui-editor-paste-image-tool-example-1',
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -25,7 +26,6 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
             ],
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorPasteImageToolExample1 {
     readonly builtInTools = [TuiEditorTool.Undo];

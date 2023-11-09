@@ -11,6 +11,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 @Component({
     selector: 'tui-editor-cleanup-html-example-1',
     templateUrl: './index.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
@@ -21,7 +22,6 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
             useClass: ExampleEditorCleanupHtmlTransformer,
         },
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorCleanupHtmlExample1 {
     control = new FormControl(

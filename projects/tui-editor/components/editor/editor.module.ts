@@ -12,11 +12,6 @@ import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
 import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
 
 @NgModule({
-    declarations: [
-        TuiEditorComponent,
-        TuiEditorPortalHostComponent,
-        TuiEditorPortalDirective,
-    ],
     imports: [
         TuiItemModule,
         CommonModule,
@@ -28,6 +23,11 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiDropdownModule,
         TuiTiptapEditorModule,
         TuiEditorSocketModule,
+    ],
+    declarations: [
+        TuiEditorComponent,
+        TuiEditorPortalHostComponent,
+        TuiEditorPortalDirective,
     ],
     exports: [TuiEditorComponent],
 })
