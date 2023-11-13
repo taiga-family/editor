@@ -10,9 +10,9 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.39.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.39.1
-      - uses: taiga-family/ci/actions/setup/node@v1.39.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.42.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.42.0
+      - uses: taiga-family/ci/actions/setup/node@v1.42.0
       - run: npm run build
 
 concurrency:
