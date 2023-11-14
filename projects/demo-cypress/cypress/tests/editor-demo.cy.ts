@@ -1,7 +1,7 @@
 import {DEMO_PATHS, isEmbedPage} from '../support/helpers/demo-paths';
 
 describe(`Demo`, () => {
-    for (const path of DEMO_PATHS) {
+    DEMO_PATHS.forEach(path => {
         it(path, () => {
             cy.tuiVisit(path, {hideScrollbar: true});
 
@@ -56,5 +56,5 @@ describe(`Demo`, () => {
                 });
             });
         });
-    }
+    });
 });

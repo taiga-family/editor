@@ -32,38 +32,33 @@ import {
 
 describe(`Editor API`, () => {
     describe(`Check fonts in light and dark mode`, () => {
-        for (const [index, {enableNightMode}] of [
-            {enableNightMode: true},
-            {enableNightMode: false},
-        ].entries()) {
-            it(`check font in editor, enableNightMode is ${enableNightMode}`, () => {
-                tuiVisitEditorApiPage({enableNightMode});
-                tuiClearEditor();
+        Array.from([{enableNightMode: true}, {enableNightMode: false}].entries()).forEach(
+            ([index, {enableNightMode}]) => {
+                it(`check font in editor, enableNightMode is ${enableNightMode}`, () => {
+                    tuiVisitEditorApiPage({enableNightMode});
+                    tuiClearEditor();
 
-                for (const [position, type] of [
-                    `Small`,
-                    `Normal`,
-                    `Large`,
-                    `Subtitle`,
-                    `Title`,
-                ].entries()) {
-                    const screenshot = `${
-                        index + 1
-                    }-1-night-mode-enabled-${enableNightMode}-font-${position}-${type}`;
+                    Array.from(
+                        [`Small`, `Normal`, `Large`, `Subtitle`, `Title`].entries(),
+                    ).forEach(([position, type]) => {
+                        const screenshot = `${
+                            index + 1
+                        }-1-night-mode-enabled-${enableNightMode}-font-${position}-${type}`;
 
-                    tuiOpenFontTool()
-                        .findByAutomationId(`tui_font__${type.toLowerCase()}`)
-                        .tuiWaitBeforeScreenshot()
-                        .click({force: true});
+                        tuiOpenFontTool()
+                            .findByAutomationId(`tui_font__${type.toLowerCase()}`)
+                            .tuiWaitBeforeScreenshot()
+                            .click({force: true});
 
-                    tuiGetContentEditable()
-                        .type(`${type}{enter}`)
-                        .tuiWaitBeforeScreenshot();
+                        tuiGetContentEditable()
+                            .type(`${type}{enter}`)
+                            .tuiWaitBeforeScreenshot();
 
-                    tuiGetScreenshotArea().matchImageSnapshot(screenshot);
-                }
-            });
-        }
+                        tuiGetScreenshotArea().matchImageSnapshot(screenshot);
+                    });
+                });
+            },
+        );
     });
 
     describe(`Dark mode`, () => {
@@ -295,7 +290,7 @@ describe(`Editor API`, () => {
     });
 
     describe(`Check editor styles without important`, () => {
-        for (const {name, content} of [
+        [
             {
                 name: `blockquote`,
                 content: HTML_EDITOR_EXAMPLE_BLOCKQUOTE,
@@ -308,7 +303,7 @@ describe(`Editor API`, () => {
                 name: `table`,
                 content: HTML_EDITOR_EXAMPLE_TABLE,
             },
-        ]) {
+        ].forEach(({name, content}) => {
             it(name, () => {
                 tuiVisitEditorApiPage({content, skipDecodingUrl: true});
 
@@ -319,11 +314,11 @@ describe(`Editor API`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`tui-editor-socket.tui-example-${name}`);
             });
-        }
+        });
     });
 
     describe(`Heading styles`, () => {
-        for (const heading of [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`]) {
+        [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`].forEach(heading => {
             it(heading, () => {
                 tuiVisitEditorApiPage();
                 tuiClearEditor();
@@ -340,7 +335,7 @@ describe(`Editor API`, () => {
                     .tuiWaitBeforeScreenshot()
                     .matchImageSnapshot(`tui-editor-socket.tui-example-${heading}`);
             });
-        }
+        });
     });
 
     describe(`Details inside list`, () => {

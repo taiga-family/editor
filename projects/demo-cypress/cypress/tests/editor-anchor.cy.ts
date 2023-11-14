@@ -14,26 +14,21 @@ describe(`Editor's anchors`, () => {
     });
 
     describe(`anchors`, () => {
-        for (const anchor of [
-            `moser`,
-            `thirlwell`,
-            `briggs`,
-            `introduction`,
-            `knowles`,
-            `war`,
-        ]) {
-            it(`anchor is #${anchor}`, () => {
-                cy.get(`@example`)
-                    .wait(5000)
-                    .find(`a[href="#${anchor}"]`)
-                    .eq(1)
-                    .click({force: true})
-                    .wait(5000);
+        [`moser`, `thirlwell`, `briggs`, `introduction`, `knowles`, `war`].forEach(
+            anchor => {
+                it(`anchor is #${anchor}`, () => {
+                    cy.get(`@example`)
+                        .wait(5000)
+                        .find(`a[href="#${anchor}"]`)
+                        .eq(1)
+                        .click({force: true})
+                        .wait(5000);
 
-                cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`anchor-${anchor}`, {
-                    capture: `viewport`,
+                    cy.tuiWaitBeforeScreenshot().matchImageSnapshot(`anchor-${anchor}`, {
+                        capture: `viewport`,
+                    });
                 });
-            });
-        }
+            },
+        );
     });
 });

@@ -11,7 +11,7 @@ export function tuiLegacyEditorConverter(content: string): string {
 }
 
 function migration(element: Element): void {
-    for (const child of Array.from(element.children)) {
+    Array.from(element.children).forEach(child => {
         if (child.children.length) {
             migration(child);
         }
@@ -49,7 +49,7 @@ function migration(element: Element): void {
                 migrateFontHighlight(child);
             }
         }
-    }
+    });
 }
 
 function migrateHeading(selector: string, element: Element): void {
