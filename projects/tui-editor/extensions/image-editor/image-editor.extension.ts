@@ -129,7 +129,7 @@ function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
         event.preventDefault();
     }
 
-    for (const image of images) {
+    images.forEach(image => {
         const reader = new FileReader();
 
         reader.onload = readerEvent => {
@@ -146,7 +146,7 @@ function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
         };
 
         reader.readAsDataURL(image);
-    }
+    });
 }
 
 export function tuiCreateImageEditorExtension<T, K>({
