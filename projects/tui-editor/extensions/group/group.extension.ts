@@ -138,11 +138,7 @@ export const createGroupExtension = (
         addKeyboardShortcuts(): {
             [key: string]: KeyboardShortcutCommand;
         } {
-            return createOnEnter
-                ? {
-                      Enter: () => this.editor.commands.setGroup(),
-                  }
-                : {};
+            return createOnEnter ? {Enter: this.editor.commands.setGroup} : {};
         },
     });
 };
