@@ -56,6 +56,7 @@ export class TuiNodeView extends NodeView<
      * @caretaker note:
      * Class constructor NodeView cannot be invoked without 'new'
      */
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(
         component: Type<TuiNodeViewNgComponent>,
         props: NodeViewRendererProps,
