@@ -10,26 +10,6 @@ interface TuiEditLinkParsed {
     prefix: string;
 }
 
-export function tuiEditLinkParseUrl(url: string = ``): TuiEditLinkParsed {
-    if (url.startsWith(HASH_PREFIX)) {
-        return {prefix: HASH_PREFIX, path: url.slice(1)};
-    }
-
-    const [prefix = ``, path = ``] = url.includes(OSI_PROTOCOL_DIVIDER)
-        ? splitOsiProtocol(url)
-        : splitSimpleProtocol(url);
-
-    if (path.includes(SIMPLE_PROTOCOL_DIVIDER)) {
-        const [protocol, otherPart] = splitSimpleProtocol(path);
-
-        if (protocol && otherPart) {
-            return {prefix: protocol, path: otherPart};
-        }
-    }
-
-    return {prefix, path: prefix === `` ? url : path};
-}
-
 function splitOsiProtocol(url: string = ``): Array<string | undefined> {
     const protocolPosition = url.indexOf(OSI_PROTOCOL_DIVIDER) ?? -1;
     const [prefix, path] =
@@ -48,4 +28,24 @@ function splitSimpleProtocol(url: string = ``): Array<string | undefined> {
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
 
     return prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
+}
+
+export function tuiEditLinkParseUrl(url: string = ``): TuiEditLinkParsed {
+    if (url.startsWith(HASH_PREFIX)) {
+        return {prefix: HASH_PREFIX, path: url.slice(1)};
+    }
+
+    const [prefix = ``, path = ``] = url.includes(OSI_PROTOCOL_DIVIDER)
+        ? splitOsiProtocol(url)
+        : splitSimpleProtocol(url);
+
+    if (path.includes(SIMPLE_PROTOCOL_DIVIDER)) {
+        const [protocol, otherPart] = splitSimpleProtocol(path);
+
+        if (protocol && otherPart) {
+            return {prefix: protocol, path: otherPart};
+        }
+    }
+
+    return {prefix, path: prefix === `` ? url : path};
 }

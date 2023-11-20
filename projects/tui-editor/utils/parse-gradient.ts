@@ -38,6 +38,12 @@ const REGEXP_ARRAY = [
     `\\s*)?`,
 ];
 
+function getPosition(match: string, stops: number): string {
+    const fallback = stops === 1 ? `100%` : `${stops}%`;
+
+    return match?.includes(`%`) ? match : fallback;
+}
+
 export function tuiParseGradient(input: string): TuiParsedGradient {
     const stopsRegexp = new RegExp(REGEXP_ARRAY.join(``), `gi`);
     const stopsString =
@@ -67,10 +73,4 @@ export function tuiParseGradient(input: string): TuiParsedGradient {
         stops,
         side,
     };
-}
-
-function getPosition(match: string, stops: number): string {
-    const fallback = stops === 1 ? `100%` : `${stops}%`;
-
-    return match?.includes(`%`) ? match : fallback;
 }

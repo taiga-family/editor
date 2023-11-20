@@ -3,6 +3,10 @@ import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '@taiga-ui/addon-doc';
 
 import {TsFileComponentParser, TsFileModuleParser, TsFileParser} from './classes';
 
+type FileName = string;
+
+type FileContent = string;
+
 export function processTs(fileContent: string): string {
     const tsFileContent = new TsFileParser(fileContent);
 
@@ -50,10 +54,6 @@ export const prepareLess = (content: string): string =>
 
 export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
     `src/app/${stringsPart.join(``)}${path}`;
-
-type FileName = string;
-
-type FileContent = string;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,
