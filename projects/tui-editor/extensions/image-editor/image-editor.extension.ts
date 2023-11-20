@@ -46,6 +46,47 @@ const DEFAULT_IMAGE_ATTRS = {
     },
 };
 
+function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
+    const dataTransfer =
+        event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
+    const images = Array.from(dataTransfer?.files ?? []).filter(file =>
+        /image/i.test(file.type),
+    );
+
+    if (images.length) {
+        event.preventDefault();
+    }
+
+    images.forEach(image => {
+        const reader = new FileReader();
+
+        reader.onload = readerEvent => {
+            const node = view.state.schema.nodes.imageEditor.create({
+                src: readerEvent.target?.result,
+            });
+            const transaction = view.state.tr.replaceSelectionWith(node);
+
+            /**
+             * @note:
+             * workaround for `Applying a mismatched transaction`
+             */
+            setTimeout(() => view.dispatch(transaction));
+        };
+
+        reader.readAsDataURL(image);
+    });
+}
+
+export function tuiCreateImageEditorExtension<T, K>({
+    injector,
+    draggable,
+}: {
+    draggable?: boolean;
+    injector: Injector;
+}): Node {
+    return createImageEditorExtension<T, K>(injector, {draggable});
+}
+
 /**
  * @deprecated: use {@link tuiCreateImageEditorExtension}
  */
@@ -116,45 +157,4 @@ export function createImageEditorExtension<T, K>(
             ];
         },
     });
-}
-
-function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
-    const dataTransfer =
-        event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
-    const images = Array.from(dataTransfer?.files ?? []).filter(file =>
-        /image/i.test(file.type),
-    );
-
-    if (images.length) {
-        event.preventDefault();
-    }
-
-    images.forEach(image => {
-        const reader = new FileReader();
-
-        reader.onload = readerEvent => {
-            const node = view.state.schema.nodes.imageEditor.create({
-                src: readerEvent.target?.result,
-            });
-            const transaction = view.state.tr.replaceSelectionWith(node);
-
-            /**
-             * @note:
-             * workaround for `Applying a mismatched transaction`
-             */
-            setTimeout(() => view.dispatch(transaction));
-        };
-
-        reader.readAsDataURL(image);
-    });
-}
-
-export function tuiCreateImageEditorExtension<T, K>({
-    injector,
-    draggable,
-}: {
-    draggable?: boolean;
-    injector: Injector;
-}): Node {
-    return createImageEditorExtension<T, K>(injector, {draggable});
 }

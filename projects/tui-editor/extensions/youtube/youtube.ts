@@ -1,12 +1,5 @@
 import YoutubeExtension from '@tiptap/extension-youtube';
 
-export interface TuiYoutubeOptions {
-    height?: number | string;
-    src: string;
-    start?: number;
-    width?: number | string;
-}
-
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         youtube: {
@@ -21,6 +14,13 @@ declare module '@tiptap/core' {
             }) => ReturnType;
         };
     }
+}
+
+export interface TuiYoutubeOptions {
+    height?: number | string;
+    src: string;
+    start?: number;
+    width?: number | string;
 }
 
 export const Youtube = YoutubeExtension.extend({}).configure({

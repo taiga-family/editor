@@ -1,10 +1,6 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
 
-export interface TuiDetailsOptions {
-    readonly HTMLAttributes: Record<string, unknown>;
-}
-
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         details: {
@@ -12,6 +8,10 @@ declare module '@tiptap/core' {
             setDetails: () => ReturnType;
         };
     }
+}
+
+export interface TuiDetailsOptions {
+    readonly HTMLAttributes: Record<string, unknown>;
 }
 
 export const TuiDetails = Node.create<TuiDetailsOptions>({

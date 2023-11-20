@@ -1,15 +1,3 @@
-/**
- * @description:
- * This converter help you to painlessly migrate old tags to the tui-editor[new]
- */
-export function tuiLegacyEditorConverter(content: string): string {
-    const tree = new DOMParser().parseFromString(content, `text/html`);
-
-    migration(tree.body);
-
-    return tree.body.innerHTML;
-}
-
 function migration(element: Element): void {
     Array.from(element.children).forEach(child => {
         if (child.children.length) {
@@ -93,4 +81,16 @@ function migrateFontHighlight(element: Element): void {
     span.setAttribute(`style`, `color: ${element.getAttribute(`color`)}`);
     span.innerHTML = element.innerHTML;
     element.parentElement?.replaceChild(span, element);
+}
+
+/**
+ * @description:
+ * This converter help you to painlessly migrate old tags to the tui-editor[new]
+ */
+export function tuiLegacyEditorConverter(content: string): string {
+    const tree = new DOMParser().parseFromString(content, `text/html`);
+
+    migration(tree.body);
+
+    return tree.body.innerHTML;
 }
