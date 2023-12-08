@@ -149,7 +149,7 @@
         "jest-preset-angular": "12.2.6",
         "lerna": "8.0.0",
         "lint-staged": "15.2.0",
-        "markdown-it": "13.0.2",
+        "markdown-it": "14.0.0",
         "marked": "11.0.1",
         "ng-morph": "4.0.5",
         "ng-packagr": "12.2.7",
