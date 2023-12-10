@@ -72,8 +72,11 @@
     ],
     "stylelint": {
         "extends": [
-            "@taiga-ui/stylelint-config/taiga"
+            "@taiga-ui/stylelint-config"
         ],
+        "rules": {
+            "selector-class-pattern": "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(ProseMirror.*)|(hljs.*)$"
+        },
         "ignoreFiles": [
             "**/demo/**",
             "**/dist/**",
