@@ -72,8 +72,11 @@
     ],
     "stylelint": {
         "extends": [
-            "@taiga-ui/stylelint-config/taiga"
+            "@taiga-ui/stylelint-config"
         ],
+        "rules": {
+            "selector-class-pattern": "^(_.*)|(t-.*)|(tui-.*)|(ng-.*)|(ProseMirror.*)|(hljs.*)$"
+        },
         "ignoreFiles": [
             "**/demo/**",
             "**/dist/**",
@@ -161,7 +164,7 @@
         "prettier": "3.1.0",
         "rxjs": "6.6.7",
         "showdown": "2.1.0",
-        "stylelint": "15.11.0",
+        "stylelint": "16.0.1",
         "terser-webpack-plugin": "5.3.9",
         "text-mask-core": "5.1.2",
         "ts-jest": "29.1.1",
