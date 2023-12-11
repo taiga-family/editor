@@ -3,6 +3,7 @@ export const enum TuiDemoPath {
     Anchors = `anchors`,
     Changelog = `changelog`,
     ColorPicker = `color-picker`,
+    AngularContenteditableAccessor = `angular-contenteditable-accessor`,
     ColorPickerTool = `custom-tool/color-picker`,
     EmbedHtml5 = `embed/html5`,
     EmbedIframe = `embed/iframe`,

@@ -22,6 +22,12 @@ export const DEMO_PAGES: TuiDocPages = [
         keywords: `release, change, changelog, archive, history`,
     },
     {
+        section: `Documentation`,
+        title: `Contenteditable accessor`,
+        route: TuiDemoPath.AngularContenteditableAccessor,
+        keywords: `contenteditable, accessor, angular contenteditable accessor`,
+    },
+    {
         section: `Examples`,
         title: `ColorPicker`,
         route: TuiDemoPath.ColorPicker,

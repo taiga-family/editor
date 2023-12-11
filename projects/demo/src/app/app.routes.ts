@@ -33,6 +33,18 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.AngularContenteditableAccessor,
+        loadChildren: async () =>
+            (
+                await import(
+                    `./pages/angular-contenteditable-accessor/angular-contenteditable-accessor.module`
+                )
+            ).ExampleAngularContenteditableAccessorModule,
+        data: {
+            title: `Angular contenteditable accessor`,
+        },
+    },
+    {
         path: TuiDemoPath.Font,
         loadChildren: async () =>
             (await import(`./pages/font/editor-font.module`)).ExampleTuiEditorFontModule,

@@ -1,0 +1,98 @@
+<tui-doc-page
+    header="Editor"
+    type="components"
+>
+    <h2>This is a demo for ContenteditableValueAccessor</h2>
+
+    <p>
+        This accessor allows you to use Angular forms with contenteditable elements with ease. It has zero dependencies,
+        other than Angular itself as peer and works with Angular 4+ in all modern browsers, including
+        <strong>Internet Explorer 11</strong>
+        .
+    </p>
+
+    <h3>Setup</h3>
+
+    <p>
+        Simply import
+        <code>ContenteditableValueAccessorModule</code>
+        along with either Angular's form modules and use like that:
+    </p>
+    <pre>
+  <code>
+    &lt;div [(ngModel)]="model" contenteditable&gt;&lt;/div&gt;
+  </code>
+</pre>
+    <pre>
+  <code>
+    &lt;div [formControl]="control" contenteditable&gt;&lt;/div&gt;
+  </code>
+</pre>
+    <pre>
+  <code>
+    &lt;form [formGroup]="group"&gt;
+      &lt;div formControlName="control" contenteditable&gt;&lt;/div&gt;
+    &lt;/form&gt;
+  </code>
+</pre>
+
+    <h3>Examples</h3>
+
+    <h4>
+        ngModel
+        <button (click)="onToggleModelDisabled()">Toggle disabled</button>
+        <button (click)="onModelSetValue()">Set value</button>
+    </h4>
+    <p>
+        <i>
+            Tip: You can apply disabled styles by
+            <code>[contenteditable="false"]</code>
+            CSS selector
+        </i>
+    </p>
+    <label>Write here:</label>
+    <p
+        contenteditable
+        [disabled]="disabled"
+        [(ngModel)]="model"
+    ></p>
+    <label>Result:</label>
+    <p [textContent]="model"></p>
+
+    <h4>
+        formControl
+        <button (click)="onToggleControlDisabled()">Toggle disabled</button>
+        <button (click)="onControlSetValue()">Set value</button>
+    </h4>
+    <p>
+        <i>
+            Tip: updateOn FormHooks also work, this example is set to
+            <code>'blur'</code>
+        </i>
+    </p>
+    <label>Write here:</label>
+    <p
+        contenteditable
+        [formControl]="control"
+    ></p>
+    <label>Result:</label>
+    <p [textContent]="control.value"></p>
+
+    <h4>
+        formControlName
+        <button (click)="onToggleNameDisabled()">Toggle disabled</button>
+        <button (click)="onNameSetValue()">Set value</button>
+    </h4>
+    <p>
+        <i>Tip: disabling parent FormGroup/FormArray also works</i>
+    </p>
+    <label>Write here:</label>
+    <form [formGroup]="group">
+        <p
+            contenteditable
+            formControlName="control"
+        ></p>
+    </form>
+    <label>Result:</label>
+    <p [textContent]="group.value.control"></p>
+</tui-doc-page>
