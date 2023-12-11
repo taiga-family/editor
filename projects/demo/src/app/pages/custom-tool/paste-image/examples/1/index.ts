@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
 import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({
@@ -14,10 +14,10 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('../../../../../../../../tui-editor/extensions/image-editor').then(
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
                     ({tuiCreateImageEditorExtension}) =>
                         tuiCreateImageEditorExtension({injector}).extend(
                             IMAGE_CLIPBOARD_PASTE_EXTENSION,

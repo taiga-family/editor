@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {mergeAttributes} from '@tiptap/core';
-
 import {
     TUI_EDITOR_EXTENSIONS,
     tuiEditorOptionsProvider,
     TuiEditorTool,
-} from '../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+import {mergeAttributes} from '@tiptap/core';
 
 @Component({
     selector: 'tui-editor-font-example-1',
@@ -52,7 +51,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(

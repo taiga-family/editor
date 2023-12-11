@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-font-example-3',
@@ -11,13 +10,13 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../tui-edi
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('../../../../../../../tui-editor/extensions/font-size').then(
+                import('@tinkoff/tui-editor/extensions/font-size').then(
                     ({TuiFontSize}) => TuiFontSize,
                 ),
             ],

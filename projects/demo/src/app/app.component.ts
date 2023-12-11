@@ -9,9 +9,8 @@ import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import pkg from '@tinkoff/tui-editor/package.json';
 import {Observable} from 'rxjs';
-
-import pkg from '../../../tui-editor/package.json';
 
 @Component({
     selector: 'tui-app',

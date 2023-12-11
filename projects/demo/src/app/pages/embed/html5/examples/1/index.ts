@@ -8,9 +8,6 @@ import {
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_CYPRESS, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
@@ -18,7 +15,9 @@ import {
     TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorTool,
-} from '../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'tui-editor-embed-html5-example-1',
@@ -30,26 +29,26 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (_injector: Injector) => [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('../../../../../../../../tui-editor/extensions/link').then(
+                import('@tinkoff/tui-editor/extensions/link').then(
                     ({TuiLink}) => TuiLink,
                 ),
-                import('../../../../../../../../tui-editor/extensions/jump-anchor').then(
+                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
-                import('../../../../../../../../tui-editor/extensions/file-link').then(
+                import('@tinkoff/tui-editor/extensions/file-link').then(
                     ({TuiFileLink}) => TuiFileLink,
                 ),
-                import('../../../../../../../../tui-editor/extensions/media').then(
+                import('@tinkoff/tui-editor/extensions/media').then(
                     ({TuiVideo}) => TuiVideo,
                 ),
-                import('../../../../../../../../tui-editor/extensions/media').then(
+                import('@tinkoff/tui-editor/extensions/media').then(
                     ({TuiAudio}) => TuiAudio,
                 ),
-                import('../../../../../../../../tui-editor/extensions/media').then(
+                import('@tinkoff/tui-editor/extensions/media').then(
                     ({TuiSource}) => TuiSource,
                 ),
             ],

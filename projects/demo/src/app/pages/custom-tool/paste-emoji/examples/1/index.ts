@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-paste-emoji-tool-example-1',
@@ -12,7 +11,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('./smiles-tool/emoji.extension').then(

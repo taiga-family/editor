@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-
-import {defaultEditorColors} from '../../../../../../../tui-editor';
+import {defaultEditorColors} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-color-picker-example-1',

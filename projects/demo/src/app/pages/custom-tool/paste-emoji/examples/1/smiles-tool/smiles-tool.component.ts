@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-
-import {TuiTiptapEditorService} from '../../../../../../../../../tui-editor';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'smiles-tool',

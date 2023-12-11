@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-
 import {
     defaultEditorExtensions,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
-} from '../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+
 import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 
 @Component({

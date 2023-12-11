@@ -10,8 +10,8 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
-import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../../tui-editor';
 import {ExampleTuiEditorEmbedIframeComponent} from './editor-embed-iframe.component';
 import {TuiEditorEmbedIframeExample1} from './examples/1';
 import {ExampleTuiEmbedToolModule} from './examples/1/embed-tool/embed-tool.module';

@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {distinctUntilChanged, map, share} from 'rxjs/operators';
-
 import {
     AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
     TuiEditorOptions,
     TuiTiptapEditorService,
-} from '../../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+import {distinctUntilChanged, map, share} from 'rxjs/operators';
 
 @Component({
     selector: 'custom-color-picker',

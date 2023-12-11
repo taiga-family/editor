@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
-
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-preview-images-example-1',
@@ -14,12 +13,12 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('../../../../../../../../tui-editor/extensions/image-editor').then(
-                    ({createImageEditorExtension}) =>
-                        createImageEditorExtension(injector),
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                    ({tuiCreateImageEditorExtension}) =>
+                        tuiCreateImageEditorExtension({injector}),
                 ),
             ],
         },

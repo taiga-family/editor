@@ -7,12 +7,12 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-
 import {
     TuiColorPickerModule,
     TuiColorSelectorModule,
     TuiPaletteModule,
-} from '../../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+
 import {CustomColorPickerComponent} from './custom-color-picker.component';
 
 @NgModule({

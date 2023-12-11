@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-mark-text-example-1',
@@ -16,7 +15,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>

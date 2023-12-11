@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {tuiPure} from '@taiga-ui/cdk';
-
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-embed-youtube-example-1',
@@ -14,10 +13,10 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('../../../../../../../../tui-editor/extensions/youtube').then(
+                import('@tinkoff/tui-editor/extensions/youtube').then(
                     ({Youtube}) => Youtube,
                 ),
             ],

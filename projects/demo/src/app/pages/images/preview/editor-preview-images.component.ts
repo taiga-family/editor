@@ -1,10 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-
-import {
-    defaultEditorExtensions,
-    TUI_EDITOR_EXTENSIONS,
-} from '../../../../../../tui-editor';
+import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'editor-preview-images',

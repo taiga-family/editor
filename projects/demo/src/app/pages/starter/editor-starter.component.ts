@@ -1,13 +1,12 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
-
 import {
     defaultEditorExtensions,
     defaultEditorTools,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
-} from '../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'editor-starter-page',

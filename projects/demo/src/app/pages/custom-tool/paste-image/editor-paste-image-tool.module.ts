@@ -14,8 +14,8 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
-import {TuiEditorModule, TuiEditorSocketModule} from '../../../../../../tui-editor';
 import {ExampleTuiEditorPasteImageToolComponent} from './editor-paste-image-tool.component';
 import {TuiEditorPasteImageToolExample1} from './examples/1';
 import {ExampleTuiPasteImageToolModule} from './examples/1/image-tool/image-tool.module';

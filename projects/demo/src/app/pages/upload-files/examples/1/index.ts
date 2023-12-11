@@ -1,13 +1,13 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorTool,
-} from '../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+
 import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
 
@@ -20,17 +20,17 @@ import {FileIoService} from './filesio.service';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('../../../../../../../tui-editor/extensions/link').then(
+                import('@tinkoff/tui-editor/extensions/link').then(
                     ({TuiLink}) => TuiLink,
                 ),
-                import('../../../../../../../tui-editor/extensions/jump-anchor').then(
+                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
-                import('../../../../../../../tui-editor/extensions/file-link').then(
+                import('@tinkoff/tui-editor/extensions/file-link').then(
                     ({TuiFileLink}) => TuiFileLink,
                 ),
             ],

@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {AbstractControl, FormControl, ValidationErrors} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiValidationError} from '@taiga-ui/cdk';
-
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_MAX_IMAGE_WIDTH,
@@ -16,7 +15,8 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorComponent,
     TuiEditorTool,
-} from '../../../../../../../../tui-editor';
+} from '@tinkoff/tui-editor';
+
 import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
 
@@ -30,10 +30,10 @@ import {ImgbbService} from './imgbb.service';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('../../../../../../../../tui-editor/extensions/image-editor').then(
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),

@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/cor
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_CYPRESS, tuiPure} from '@taiga-ui/cdk';
-
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-embed-iframe-example-1',
@@ -15,13 +14,12 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '../../../../../../../../tui-
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('../../../../../../../../tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import(
-                    '../../../../../../../../tui-editor/extensions/iframe-editor'
-                ).then(({createIframeEditorExtension}) =>
-                    createIframeEditorExtension(injector),
+                import('@tinkoff/tui-editor/extensions/iframe-editor').then(
+                    ({createIframeEditorExtension}) =>
+                        createIframeEditorExtension(injector),
                 ),
             ],
         },
