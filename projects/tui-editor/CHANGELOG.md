@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.9.0 (2023-12-11)
+
+### Features
+
+- add angular content editable accessor
+  ([01e0f1e](https://github.com/taiga-family/tui-editor/commit/01e0f1eb5e72819d8eb32a63398114e3bfd2b2d1))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 1.8.4 (2023-11-16)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
