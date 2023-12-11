@@ -18,8 +18,8 @@
     ],
     "workspaces": [
         "projects/*",
-        "taiga-ui",
-        "taiga-ui/*"
+        "taiga-ui/*",
+        "taiga-ui/projects/*"
     ],
     "scripts": {
         "postinstall": "husky install && ngcc --async",
