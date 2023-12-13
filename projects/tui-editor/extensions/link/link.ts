@@ -1,6 +1,7 @@
 import {tuiParseNodeAttributes} from '@tinkoff/tui-editor/utils';
-import {getHTMLFromFragment} from '@tiptap/core';
+import {getHTMLFromFragment, markPasteRule} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
+import {find} from 'linkifyjs';
 
 export const TuiLink = Link.extend({
     addAttributes() {
@@ -42,6 +43,22 @@ export const TuiLink = Link.extend({
                 },
         };
     },
-}).configure({
-    openOnClick: false,
-});
+
+    addPasteRules() {
+        return [
+            markPasteRule({
+                find: text =>
+                    find(text)
+                        .filter(link => this.options.validate?.(link.value) ?? true)
+                        .filter(link => link.isLink)
+                        .map(link => ({
+                            text: link.value,
+                            index: link.start,
+                            data: link,
+                        })),
+                type: this.type,
+                getAttributes: match => ({href: match.data?.href}),
+            }),
+        ];
+    },
+}).configure({openOnClick: false});
