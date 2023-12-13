@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.10.0 (2023-12-13)
+
+### Features
+
+- support copy paste multiple links ([#610](https://github.com/taiga-family/tui-editor/issues/610))
+  ([f261eff](https://github.com/taiga-family/tui-editor/commit/f261effd5bf6ada05d079a06a0915aba60178904))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.9.0 (2023-12-11)
 
 ### Features
