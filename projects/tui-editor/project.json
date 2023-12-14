@@ -32,7 +32,6 @@
             },
             "dependsOn": [
                 {
-                    "projects": "self",
                     "target": "prebuild",
                     "params": "ignore"
                 }

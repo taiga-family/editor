@@ -41,9 +41,11 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# cypress
-**/cypress/**/screenshots/**
-**/cypress/**/snapshots/**
+/projects/demo-playwright/tests-results/
+/projects/demo-playwright/tests-report/
+/projects/demo-playwright/snapshots/
+/projects/demo-playwright/playwright/.cache/
+
 
 # special dirs
 **/.ssl

@@ -4,6 +4,9 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "lib": ["es2021", "dom"],
+        "target": "ES2017",
+        "module": "ES2020",
+        "useDefineForClassFields": false,
         "typeRoots": ["node_modules/@types", "projects/tui-editor/types"],
         "paths": {
             "@tinkoff/tui-editor": ["./projects/tui-editor/index"],
@@ -12,6 +15,8 @@
             "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
             "@taiga-ui/cdk": ["./taiga-ui/projects/cdk/index"],
             "@taiga-ui/cdk/*": ["./taiga-ui/projects/cdk/*"],
+            "@taiga-ui/styles": ["./taiga-ui/projects/styles/index"],
+            "@taiga-ui/styles/*": ["./taiga-ui/projects/styles/*"],
             "@taiga-ui/core": ["./taiga-ui/projects/core/index"],
             "@taiga-ui/core/*": ["./taiga-ui/projects/core/*"],
             "@taiga-ui/i18n": ["./taiga-ui/projects/i18n/index"],
