@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
@@ -65,7 +65,7 @@ export class TuiEditorStarterPageComponent {
 
     tools = this.toolsVariants[0];
 
-    constructor(@Inject(TUI_IS_CYPRESS) readonly isCypress: boolean) {}
+    constructor(@Inject(TUI_IS_E2E) readonly isE2E: boolean) {}
 
     get disabled(): boolean {
         return this.control.disabled;

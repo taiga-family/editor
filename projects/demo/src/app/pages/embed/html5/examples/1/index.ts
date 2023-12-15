@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {TUI_IS_CYPRESS, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
@@ -93,7 +93,7 @@ import {map} from 'rxjs/operators';
     ],
     host: {
         class: 'html5-editor-example',
-        '[class._cypress]': 'isCypress',
+        '[class._e2e]': 'isE2E',
     },
 })
 export class TuiEditorEmbedHtml5Example1 {
@@ -111,14 +111,14 @@ export class TuiEditorEmbedHtml5Example1 {
             <p>Here is video: </p>
 
             <video controls="controls" width="100%" preload="${
-                this.isCypress ? 'none' : 'auto'
+                this.isE2E ? 'none' : 'auto'
             }" controlsList="nodownload">
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
             </video>
 
             <p>Here is audio: </p>
             <audio controls style="width: 100%" preload="${
-                this.isCypress ? 'none' : 'auto'
+                this.isE2E ? 'none' : 'auto'
             }" controlsList="nodownload">
               <source src="https://www.w3docs.com/build/audios/audio.mp3" type="audio/mp3">
             </audio>
@@ -129,13 +129,13 @@ export class TuiEditorEmbedHtml5Example1 {
     );
 
     constructor(
-        @Inject(TUI_IS_CYPRESS) readonly isCypress: boolean,
+        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     ) {}
 
     @tuiPure
-    safe(content: string): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(content);
+    safe(content: string | null): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
     }
 
     attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {

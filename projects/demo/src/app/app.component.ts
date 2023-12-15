@@ -8,20 +8,16 @@ import {
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
-import {TUI_IS_CYPRESS} from '@taiga-ui/cdk';
 import pkg from '@tinkoff/tui-editor/package.json';
 import {Observable} from 'rxjs';
 
 @Component({
-    selector: 'tui-app',
+    selector: 'app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAppComponent implements OnInit {
-    @HostBinding('class._is-cypress-mode')
-    readonly isCypressMode = this.isCypress;
-
     @HostBinding('class._loaded')
     readonly pageLoadedInit = '0';
 
@@ -31,7 +27,6 @@ export class TuiAppComponent implements OnInit {
     version = pkg.version;
 
     constructor(
-        @Inject(TUI_IS_CYPRESS) private readonly isCypress: boolean,
         @Inject(TUI_DOC_PAGE_LOADED) private readonly pageLoaded$: Observable<boolean>,
         @Inject(Router) protected readonly router: Router,
         @Inject(LOCAL_STORAGE) protected readonly storage: Storage,

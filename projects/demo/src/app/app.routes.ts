@@ -236,9 +236,9 @@ export const appRoutes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes, {
-            initialNavigation: `enabledBlocking`,
-            relativeLinkResolution: `corrected`,
             scrollPositionRestoration: `enabled`,
+            anchorScrolling: `enabled`,
+            scrollOffset: [0, 64],
         }),
     ],
     exports: [RouterModule],
