@@ -11,7 +11,6 @@ import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiMarkerIconModule} from '@taiga-ui/kit';
 import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
-import {HighlightModule} from 'ngx-highlightjs';
 
 import {TuiEditorStarterPageComponent} from './editor-starter.component';
 
@@ -19,7 +18,6 @@ import {TuiEditorStarterPageComponent} from './editor-starter.component';
     imports: [
         CommonModule,
         TuiAddonDocModule,
-        HighlightModule,
         TuiIslandModule,
         TuiLinkModule,
         TuiMarkerIconModule,

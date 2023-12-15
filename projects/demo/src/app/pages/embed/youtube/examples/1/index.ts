@@ -42,7 +42,7 @@ export class TuiEditorEmbedYoutubeExample1 {
      * TUI_SANITIZER doesn't support iframe inside content
      */
     @tuiPure
-    safe(content: string): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(content);
+    safe(content: string | null): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
     }
 }
