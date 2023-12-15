@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[8817],{78817:n=>{n.exports="```json5\n{\n  //...\n  assets: [\n    {\n      glob: '**/*',\n      input: 'node_modules/@taiga-ui/icons/src',\n      output: 'assets/taiga-ui/icons',\n    },\n  ],\n}\n```\n"}}]);
