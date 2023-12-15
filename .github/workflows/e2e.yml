@@ -2,36 +2,10 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
-env:
-  PLAYWRIGHT_SNAPSHOTS_PATH: ./projects/demo-playwright/tests-results
-
 jobs:
-  build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    name: Build demo
-    runs-on: ubuntu-latest
-    steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.2
-        with:
-          fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.2
-      - uses: taiga-family/ci/actions/run/rebase@v1.45.2
-        continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.45.2
-
-      - name: Building demo-app of git-branch without cache
-        run: npx nx build editor-demo --output-path ${{ env.DIST }}
-
-      - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v3.3.2
-        with:
-          path: dist/demo
-          key: ${{ env.CACHE_DIST_KEY }}
-
-  playwright:
+  e2e:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
-    needs: [build-demo]
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.45.2
       - uses: taiga-family/ci/actions/setup/variables@v1.45.2
@@ -40,11 +14,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v3.3.2
-        with:
-          path: dist/demo
-          key: ${{ env.CACHE_DIST_KEY }}
+      - name: Building demo-app of git-branch without cache
+        run: npx nx build editor-demo --output-path ${{ env.DIST }}
 
       - name: Serve ${{ env.DIST }} in background
         run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
@@ -60,15 +31,7 @@ jobs:
           git clone \
                 --depth 1 \
                 --branch snapshots/demo/next/${{ github.base_ref }} \
-                https://github.com/taiga-family/taiga-ui.git ${{ env.DIST_NEXT }}
-
-      - name: Find and replace baseHref for next snapshot
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: '<base href="./">'
-          replace: '<base href="/">'
-          include: '${{ env.DIST_NEXT }}/index.html'
-          regex: false
+                https://github.com/taiga-family/tui-editor.git ${{ env.DIST_NEXT }}
 
       - name: Serve ${{ env.DIST_NEXT }} in background
         run: npx nx serve-compiled demo --path ${{ env.DIST_NEXT }} --port ${{ env.NG_SERVER_PORT }}
@@ -82,31 +45,7 @@ jobs:
 
       - name: Debug output
         continue-on-error: true
-        run: tree ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}
-
-      - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        uses: actions/upload-artifact@v4.0.0
-        with:
-          path: ${{ env.PLAYWRIGHT_SNAPSHOTS_PATH }}/**/*.diff.png
-          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-          if-no-files-found: ignore
-          retention-days: 1
-
-  result:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    name: E2E result
-    needs: [playwright]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.45.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.45.2
-
-      - name: Download artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-        continue-on-error: true
-        uses: actions/download-artifact@v4.0.0
-        with:
-          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
-          path: ./total/playwright
+        run: tree ./projects/demo-playwright/tests-results
 
       - name: Check if diff-output exists
         id: diff-checker

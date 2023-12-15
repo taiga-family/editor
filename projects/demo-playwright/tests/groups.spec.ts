@@ -19,39 +19,37 @@ test.describe(`Groups`, () => {
         );
 
         await page
-            .locator(
-                `#draggable-groups button[automation-id="toolbar__group-add-button"]`,
-            )
-            .click();
-        await page.locator(`body`).click();
+            .locator(`#draggable-groups [automation-id="toolbar__group-add-button"]`)
+            .focus();
+        await page.keyboard.press(`Enter`);
 
         await expect(page.locator(`#draggable-groups tui-editor`)).toHaveScreenshot(
             `Groups-03.png`,
         );
 
+        await page.locator(`[contenteditable]`).nth(0).focus();
         await page.keyboard.press(`Meta+A`);
         await page.keyboard.press(`Backspace`);
-        await page.locator(`body`).click();
 
         await expect(page.locator(`#draggable-groups tui-editor`)).toHaveScreenshot(
             `Groups-04.png`,
         );
 
         await page
-            .locator(
-                `#draggable-groups button[automation-id="toolbar__group-add-button"]`,
-            )
-            .click();
+            .locator(`#draggable-groups [automation-id="toolbar__group-add-button"]`)
+            .focus();
+        await page.keyboard.press(`Enter`);
 
+        await page.locator(`[contenteditable]`).nth(0).focus();
         await page.keyboard.type(`12345`);
-        await page.locator(`body`).click();
+
         await page
-            .locator(
-                `#draggable-groups button[automation-id="toolbar__group-add-button"]`,
-            )
-            .click();
+            .locator(`#draggable-groups [automation-id="toolbar__group-add-button"]`)
+            .focus();
+        await page.keyboard.press(`Enter`);
+
+        await page.locator(`[contenteditable]`).nth(0).focus();
         await page.keyboard.type(`456`);
-        await page.locator(`body`).click();
         await expect(page.locator(`#draggable-groups tui-editor`)).toHaveScreenshot(
             `Groups-05.png`,
         );

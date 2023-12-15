@@ -3,7 +3,7 @@ import {expect, test} from '@playwright/test';
 import {tuiGoto} from '../utils';
 
 test.describe(`ColorPicker`, () => {
-    test(`closes tool's dropdown if opened new tool's dropdown`, async ({page}) => {
+    test(`open color picker`, async ({page}) => {
         await tuiGoto(page, `/color-picker`);
 
         await expect(page.locator(`example-tui-color-picker`)).toHaveScreenshot(

@@ -1,10 +1,4 @@
 import {defineConfig, devices} from '@playwright/test';
-import {ViewportSize} from 'playwright-core';
-
-const DEFAULT_VIEWPORT: ViewportSize = {
-    width: 720,
-    height: 1024,
-};
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -23,7 +17,6 @@ export default defineConfig({
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
         trace: `on-first-retry`,
-        viewport: DEFAULT_VIEWPORT,
         contextOptions: {
             reducedMotion: `reduce`,
         },
@@ -33,7 +26,10 @@ export default defineConfig({
             name: `chromium`,
             use: {
                 ...devices[`Desktop Chrome HiDPI`],
-                viewport: DEFAULT_VIEWPORT,
+                viewport: {
+                    width: 720,
+                    height: 1024,
+                },
             },
         },
     ],

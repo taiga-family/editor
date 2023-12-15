@@ -51,5 +51,7 @@ export async function tuiGoto(
         await page.locator(`tui-doc-navigation`).evaluate(el => el.remove());
     }
 
+    await page.waitForTimeout(1000);
+
     return response;
 }
