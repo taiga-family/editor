@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[5776],{45776:e=>{e.exports="```html\n<my-app></my-app>\n```\n"}}]);

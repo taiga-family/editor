@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[2180],{92180:e=>{e.exports='```html\n<html lang="en">\n  <head>\n    <title>Taiga UI</title>\n    <link\n      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap"\n      rel="stylesheet"\n    />\n  </head>\n  <body>\n    <my-app></my-app>\n  </body>\n</html>\n```\n'}}]);
