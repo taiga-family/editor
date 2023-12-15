@@ -12,7 +12,7 @@
             }
         },
         "build": {
-            "executor": "@angular-builders/custom-webpack:browser",
+            "executor": "@nx/angular:webpack-browser",
             "options": {
                 "customWebpackConfig": {
                     "path": "projects/demo/webpack.config.ts"
@@ -35,22 +35,12 @@
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
-                "stylePreprocessorOptions": {
-                    "includePaths": ["taiga-ui/projects/core/styles", "taiga-ui/projects/styles"]
-                },
                 "styles": [
                     "taiga-ui/projects/core/styles/taiga-ui-theme.less",
                     "taiga-ui/projects/core/styles/taiga-ui-fonts.less",
-                    "taiga-ui/projects/styles/taiga-ui-global.less",
                     "projects/demo/src/styles.less"
                 ],
-                "scripts": [
-                    "node_modules/marked/marked.min.js",
-                    "node_modules/prismjs/prism.js",
-                    "node_modules/prismjs/components/prism-less.min.js",
-                    "node_modules/prismjs/components/prism-markup.min.js",
-                    "node_modules/prismjs/components/prism-typescript.min.js"
-                ],
+                "scripts": [],
                 "aot": true,
                 "vendorChunk": true,
                 "extractLicenses": false,
@@ -81,7 +71,6 @@
             "defaultConfiguration": "production",
             "dependsOn": [
                 {
-                    "projects": "self",
                     "target": "prebuild",
                     "params": "ignore"
                 }
@@ -101,19 +90,19 @@
             }
         },
         "serve": {
-            "executor": "@angular-builders/custom-webpack:dev-server",
+            "executor": "@nx/angular:dev-server",
             "options": {
-                "browserTarget": "demo:build",
+                "buildTarget": "demo:build",
                 "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
             },
             "configurations": {
                 "production": {
-                    "browserTarget": "editor-demo:build:production"
+                    "buildTarget": "editor-demo:build:production"
                 },
                 "development": {
-                    "browserTarget": "editor-demo:build:development"
+                    "buildTarget": "editor-demo:build:development"
                 }
             },
             "defaultConfiguration": "development"

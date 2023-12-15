@@ -5,10 +5,6 @@
     ],
     "dest": "../../dist/tui-editor",
     "lib": {
-        "entryFile": "index.ts",
-        "styleIncludePaths": [
-            "../../taiga-ui/projects/core/styles",
-            "../../taiga-ui/projects/styles"
-        ]
+        "entryFile": "index.ts"
     }
 }
