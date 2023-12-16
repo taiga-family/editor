@@ -2,7 +2,7 @@ name: 🤖 Auto approve validation
 on: pull_request
 
 env:
-  JOBS_NAME: '[ "Build package", "Build demo", "Lint", "Tests", "E2E result" ]'
+  JOBS_NAME: '[ "Build package", "Build demo", "Lint", "Tests", "E2E" ]'
 
 jobs:
   setup:
