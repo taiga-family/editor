@@ -1,8 +1,18 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiColorSelectorModule} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-color-picker-example-2',
+    imports: [
+        TuiActiveZoneModule,
+        TuiColorSelectorModule,
+        TuiHostedDropdownModule,
+        TuiButtonModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

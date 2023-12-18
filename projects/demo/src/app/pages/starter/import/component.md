@@ -3,6 +3,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-edito
 // ...
 
 @Component({
+  standalone: true,
   // ...
 })
 export class AppComponent {

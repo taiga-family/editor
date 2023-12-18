@@ -1,10 +1,17 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-groups-example-1',
+    imports: [TuiEditorModule, ReactiveFormsModule, TuiEditorSocketModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

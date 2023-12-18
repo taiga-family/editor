@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import {defaultEditorExtensions, defaultEditorTools, TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
+  standalone: true,
   selector: `my-app`,
   templateUrl: `./app.component.html`,
   styleUrls: [`./app.component.less`],

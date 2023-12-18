@@ -1,17 +1,20 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {tuiRawLoad} from '@taiga-ui/addon-doc';
+import {TuiDocPageModule, tuiRawLoad} from '@taiga-ui/addon-doc';
 import MarkdownIt from 'markdown-it';
 import {of} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 @Component({
+    standalone: true,
     selector: 'changelog',
+    imports: [AsyncPipe, TuiDocPageModule],
     templateUrl: './editor-changelog.template.html',
     styleUrls: ['./editor-changelog.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiChangelogComponent {
+export default class TuiChangelogComponent {
     readonly changelog$ = of(import('../../../../../tui-editor/CHANGELOG.md?raw')).pipe(
         switchMap(tuiRawLoad),
         map((value: string) =>

@@ -1,11 +1,22 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {TUI_IS_E2E, tuiPure} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_IS_E2E, TuiItemModule, tuiPure} from '@taiga-ui/cdk';
+import {TuiSvgModule} from '@taiga-ui/core';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
+
+import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-embed-iframe-example-1',
+    imports: [
+        ExampleTuiEmbedToolComponent,
+        TuiSvgModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        TuiItemModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

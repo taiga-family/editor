@@ -1,13 +1,25 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiItemModule} from '@taiga-ui/cdk';
+import {TuiButtonModule} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
+    TuiEditorModule,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-mark-text-example-1',
+    imports: [
+        TuiButtonModule,
+        TuiItemModule,
+        TuiEditorSocketModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

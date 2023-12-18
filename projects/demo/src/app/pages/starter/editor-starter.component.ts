@@ -1,15 +1,34 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TuiDocCodeModule,
+    TuiDocDemoModule,
+    TuiDocDocumentationModule,
+    TuiDocPageModule,
+} from '@taiga-ui/addon-doc';
+import {TUI_IS_E2E, TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
     defaultEditorExtensions,
     defaultEditorTools,
     TUI_EDITOR_EXTENSIONS,
+    TuiEditorModule,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'editor-starter-page',
+    imports: [
+        TuiDocCodeModule,
+        TuiDocPageModule,
+        TuiDocDemoModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        TuiAutoFocusModule,
+        TuiEditorSocketModule,
+        TuiDocDocumentationModule,
+    ],
     templateUrl: './editor-starter.template.html',
     styleUrls: ['./editor-starter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,7 +39,7 @@ import {
         },
     ],
 })
-export class TuiEditorStarterPageComponent {
+export default class TuiEditorStarterPageComponent {
     readonly exampleModule = import('./import/import-module.md?raw');
     readonly exampleHtml = import('./import/insert-template.md?raw');
     readonly exampleComponent = import('./import/component.md?raw');

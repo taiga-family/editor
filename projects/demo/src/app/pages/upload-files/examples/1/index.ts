@@ -1,10 +1,14 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiLoaderModule} from '@taiga-ui/core';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorAttachedFile,
     TuiEditorComponent,
+    TuiEditorModule,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -12,7 +16,15 @@ import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-upload-files-example-1',
+    imports: [
+        TuiEditorSocketModule,
+        TuiLoaderModule,
+        TuiEditorModule,
+        AsyncPipe,
+        ReactiveFormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

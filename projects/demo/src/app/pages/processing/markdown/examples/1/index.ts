@@ -1,13 +1,21 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TUI_EDITOR_CONTENT_PROCESSOR, TuiEditorTool} from '@tinkoff/tui-editor';
+import {
+    TUI_EDITOR_CONTENT_PROCESSOR,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-markdown-example-1',
+    imports: [TuiEditorModule, NgIf, ReactiveFormsModule, TuiEditorSocketModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

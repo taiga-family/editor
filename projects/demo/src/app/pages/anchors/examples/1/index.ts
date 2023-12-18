@@ -1,9 +1,16 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-anchors-example-1',
+    imports: [TuiEditorSocketModule, TuiEditorModule, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

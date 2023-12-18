@@ -1,17 +1,26 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
+    TuiEditorModule,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-resizable-editor-example-1',
+    imports: [
+        TuiEditorSocketModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

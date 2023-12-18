@@ -1,9 +1,25 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {FormsModule} from '@angular/forms';
+import {TuiActiveZoneModule, TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {
+    TuiButtonModule,
+    TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
+} from '@taiga-ui/core';
+import {TuiInputInlineModule} from '@taiga-ui/kit';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'embed-tool',
+    imports: [
+        FormsModule,
+        TuiAutoFocusModule,
+        TuiInputInlineModule,
+        TuiActiveZoneModule,
+        TuiButtonModule,
+        TuiHostedDropdownModule,
+    ],
     templateUrl: './embed-tool.template.html',
     styleUrls: ['./embed-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

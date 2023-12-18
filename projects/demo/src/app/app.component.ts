@@ -5,19 +5,30 @@ import {
     Inject,
     OnInit,
 } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {TUI_DOC_PAGE_LOADED, TuiDocMainModule} from '@taiga-ui/addon-doc';
+import {TuiPreviewModule} from '@taiga-ui/addon-preview';
+import {TuiLinkModule, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
 import pkg from '@tinkoff/tui-editor/package.json';
 import {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'app',
+    imports: [
+        RouterLink,
+        TuiRootModule,
+        TuiModeModule,
+        TuiLinkModule,
+        TuiDocMainModule,
+        TuiPreviewModule, // TODO: why?
+    ],
     templateUrl: './app.component.html',
     styleUrls: ['./app.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAppComponent implements OnInit {
+export class AppComponent implements OnInit {
     @HostBinding('class._loaded')
     readonly pageLoadedInit = '0';
 

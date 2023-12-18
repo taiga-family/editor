@@ -1,8 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {defaultEditorColors} from '@tinkoff/tui-editor';
+import {FormsModule} from '@angular/forms';
+import {TuiTextfieldControllerModule} from '@taiga-ui/core';
+import {defaultEditorColors, TuiInputColorModule} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-color-picker-example-1',
+    imports: [TuiTextfieldControllerModule, TuiInputColorModule, FormsModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
