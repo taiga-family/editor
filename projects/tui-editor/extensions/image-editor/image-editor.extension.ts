@@ -25,11 +25,11 @@ declare module '@tiptap/core' {
     }
 }
 
-const IMAGE_EDITOR_PARSE_META = [{tag: `img[data-type="image-editor"]`}];
+const IMAGE_EDITOR_PARSE_META = [{tag: 'img[data-type="image-editor"]'}];
 
 const DEFAULT_IMAGE_ATTRS = {
     src: {
-        default: ``,
+        default: '',
         keepOnSplit: false,
     },
     width: {
@@ -37,11 +37,11 @@ const DEFAULT_IMAGE_ATTRS = {
         keepOnSplit: false,
     },
     alt: {
-        default: ``,
+        default: '',
         keepOnSplit: false,
     },
     title: {
-        default: ``,
+        default: '',
         keepOnSplit: false,
     },
 };
@@ -98,8 +98,8 @@ export function createImageEditorExtension<T, K>(
     const enableDraggable = tuiIsPresent(draggable) ? draggable : true;
 
     return Image.extend({
-        name: `imageEditor`,
-        group: `inline`,
+        name: 'imageEditor',
+        group: 'inline',
         inline: true,
         atom: true,
         priority: 0,
@@ -114,7 +114,7 @@ export function createImageEditorExtension<T, K>(
             return {
                 ...DEFAULT_IMAGE_ATTRS,
                 draggable: {
-                    default: enableDraggable ? `` : null,
+                    default: enableDraggable ? '' : null,
                     keepOnSplit: false,
                 },
             };
@@ -122,8 +122,8 @@ export function createImageEditorExtension<T, K>(
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             return [
-                `img`,
-                mergeAttributes(HTMLAttributes, {'data-type': `image-editor`}),
+                'img',
+                mergeAttributes(HTMLAttributes, {'data-type': 'image-editor'}),
             ];
         },
 

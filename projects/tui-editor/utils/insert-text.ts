@@ -10,8 +10,8 @@ import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
  * @param text text to be inserted
  */
 export function tuiInsertText(doc: Document, text: string): void {
-    if (doc.queryCommandSupported(`insertText`)) {
-        doc.execCommand(`insertText`, false, text);
+    if (doc.queryCommandSupported('insertText')) {
+        doc.execCommand('insertText', false, text);
 
         return;
     }
@@ -22,12 +22,12 @@ export function tuiInsertText(doc: Document, text: string): void {
         throw new TuiDocumentSelectionException();
     }
 
-    doc.execCommand(`ms-beginUndoUnit`);
+    doc.execCommand('ms-beginUndoUnit');
 
     const range = selection.getRangeAt(0);
 
     range.deleteContents();
     range.insertNode(doc.createTextNode(text));
 
-    doc.execCommand(`ms-endUndoUnit`);
+    doc.execCommand('ms-endUndoUnit');
 }

@@ -23,13 +23,13 @@ declare module '@tiptap/core' {
 
 export const createIframeEditorExtension = (injector: Injector): Node =>
     Node.create({
-        name: `iframe`,
-        group: `block`,
+        name: 'iframe',
+        group: 'block',
         atom: true,
         draggable: false,
 
         parseHTML(): NodeSpec['parseDOM'] {
-            return [{tag: `iframe[data-type="iframe-editor"]`}];
+            return [{tag: 'iframe[data-type="iframe-editor"]'}];
         },
 
         addAttributes(): Record<keyof TuiEditableIframe, Attribute> {
@@ -37,35 +37,35 @@ export const createIframeEditorExtension = (injector: Injector): Node =>
                 src: {
                     default: null,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute(`src`),
+                    parseHTML: element => element.getAttribute('src'),
                 },
                 frameborder: {
                     default: 0,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute(`frameborder`),
+                    parseHTML: element => element.getAttribute('frameborder'),
                 },
                 width: {
-                    default: `100%`,
+                    default: '100%',
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute(`width`),
+                    parseHTML: element => element.getAttribute('width'),
                 },
                 height: {
                     default: null,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute(`height`),
+                    parseHTML: element => element.getAttribute('height'),
                 },
                 allowfullscreen: {
                     keepOnSplit: false,
                     default: this.options.allowFullscreen,
-                    parseHTML: element => element.getAttribute(`allowfullscreen`),
+                    parseHTML: element => element.getAttribute('allowfullscreen'),
                 },
             };
         },
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             return [
-                `iframe`,
-                mergeAttributes(HTMLAttributes, {'data-type': `iframe-editor`}),
+                'iframe',
+                mergeAttributes(HTMLAttributes, {'data-type': 'iframe-editor'}),
             ];
         },
 

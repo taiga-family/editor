@@ -9,8 +9,7 @@ import {
     TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
-import {Observable} from 'rxjs';
-import {switchMap, takeUntil} from 'rxjs/operators';
+import {Observable, switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,

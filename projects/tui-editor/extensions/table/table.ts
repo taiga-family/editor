@@ -43,12 +43,12 @@ export const TuiTable = Table.extend({
         }
 
         return [
-            `div`,
-            {class: `tui-table-wrapper`},
+            'div',
+            {class: 'tui-table-wrapper'},
             [
-                `table`,
+                'table',
                 mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-                [`tbody`, 0],
+                ['tbody', 0],
             ],
         ];
     },

@@ -9,7 +9,7 @@ export const IMAGE_CLIPBOARD_PASTE_EXTENSION: Partial<NodeConfig<unknown, unknow
                 props: {
                     handleDOMEvents: {
                         paste: (view: EditorView, event: ClipboardEvent) => {
-                            const url = event.clipboardData?.getData(`text/plain`) ?? ``;
+                            const url = event.clipboardData?.getData('text/plain') ?? '';
                             const isImage =
                                 /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(
                                     url,

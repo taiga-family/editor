@@ -22,16 +22,16 @@ export const createGroupExtension = (
     };
 
     return Node.create({
-        name: `group`,
+        name: 'group',
         draggable,
-        group: `block`,
-        content: nested ? `block+` : `block`,
+        group: 'block',
+        content: nested ? 'block+' : 'block',
 
         addAttributes() {
             return {
                 style: {
                     default: null,
-                    parseHTML: element => element.getAttribute(`style`),
+                    parseHTML: element => element.getAttribute('style'),
                     renderHTML: attributes => {
                         if (!attributes.style) {
                             return {};
@@ -44,32 +44,32 @@ export const createGroupExtension = (
         },
 
         parseHTML() {
-            return [{tag: `div[data-type="group"]`}];
+            return [{tag: 'div[data-type="group"]'}];
         },
 
         renderHTML({HTMLAttributes}) {
-            return [`div`, mergeAttributes(HTMLAttributes, {'data-type': `group`}), 0];
+            return ['div', mergeAttributes(HTMLAttributes, {'data-type': 'group'}), 0];
         },
 
         addNodeView() {
             return ({HTMLAttributes, node}) => {
-                const dom = document.createElement(`div`);
-                const content = document.createElement(`div`);
+                const dom = document.createElement('div');
+                const content = document.createElement('div');
 
                 dom.classList.add(groupNodeClass);
-                content.setAttribute(`data-type`, `group`);
+                content.setAttribute('data-type', 'group');
 
                 if (HTMLAttributes.style) {
                     (node.attrs as any).style = HTMLAttributes.style;
-                    content.setAttribute(`style`, HTMLAttributes.style);
+                    content.setAttribute('style', HTMLAttributes.style);
                 }
 
                 if (draggable) {
-                    const pointer = document.createElement(`div`);
+                    const pointer = document.createElement('div');
 
                     pointer.classList.add(groupPointerNodeClass);
-                    pointer.innerHTML = ``;
-                    pointer.contentEditable = `false`;
+                    pointer.innerHTML = '';
+                    pointer.contentEditable = 'false';
 
                     dom.append(pointer, content);
                 } else {
@@ -87,8 +87,8 @@ export const createGroupExtension = (
                     ({commands, state}) => {
                         this.editor.chain().focus().run();
 
-                        const content = tuiGetSelectedContent(state, ``);
-                        const wrapped = content.trim().startsWith(`<p>`)
+                        const content = tuiGetSelectedContent(state, '');
+                        const wrapped = content.trim().startsWith('<p>')
                             ? content
                             : `<p>${content}</p>`;
                         const result = `<div data-type="group">${wrapped}</div>`;

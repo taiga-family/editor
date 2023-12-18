@@ -25,8 +25,8 @@ export interface TuiYoutubeOptions {
 
 export const Youtube = YoutubeExtension.extend({}).configure({
     autoplay: false,
-    ccLanguage: `en`,
-    interfaceLanguage: `en`,
+    ccLanguage: 'en',
+    interfaceLanguage: 'en',
     allowFullscreen: true,
     disableKBcontrols: true,
 });

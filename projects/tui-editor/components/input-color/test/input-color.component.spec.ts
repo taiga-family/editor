@@ -13,10 +13,10 @@ class TestComponent {
     @ViewChild(TuiInputColorComponent)
     component!: TuiInputColorComponent;
 
-    color = `#0000ff`;
+    color = '#0000ff';
 }
 
-describe(`InputColor`, () => {
+describe('InputColor', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;
 
@@ -31,16 +31,16 @@ describe(`InputColor`, () => {
         fixture.detectChanges();
     });
 
-    it(`Plain string for single color`, () => {
+    it('Plain string for single color', () => {
         expect(testComponent.component.background).toBe(testComponent.color);
     });
 
-    it(`Sanitized value for gradient`, async () => {
-        testComponent.color = `linear-gradient(#ff0000, #00ff00)`;
+    it('Sanitized value for gradient', async () => {
+        testComponent.color = 'linear-gradient(#ff0000, #00ff00)';
         fixture.detectChanges();
 
         await fixture.whenStable();
 
-        expect(typeof testComponent.component.background).toBe(`object`);
+        expect(typeof testComponent.component.background).toBe('object');
     });
 });

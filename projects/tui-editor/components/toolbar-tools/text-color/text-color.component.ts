@@ -7,8 +7,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-text-color',

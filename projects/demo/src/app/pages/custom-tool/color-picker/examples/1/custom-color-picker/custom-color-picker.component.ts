@@ -9,7 +9,7 @@ import {
     TuiEditorOptions,
     TuiTiptapEditorService,
 } from '@tinkoff/tui-editor';
-import {distinctUntilChanged, map, share} from 'rxjs/operators';
+import {distinctUntilChanged, map, share} from 'rxjs';
 
 @Component({
     standalone: true,

@@ -26,8 +26,8 @@ export const appConfig: ApplicationConfig = {
         provideRouter(
             routes,
             withInMemoryScrolling({
-                scrollPositionRestoration: `enabled`,
-                anchorScrolling: `enabled`,
+                scrollPositionRestoration: 'enabled',
+                anchorScrolling: 'enabled',
             }),
         ),
         importProvidersFrom(
@@ -45,7 +45,7 @@ export const appConfig: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_TITLE,
-            useValue: `TUI Editor | `,
+            useValue: 'TUI Editor | ',
         },
         {
             provide: TUI_DOC_LOGO,
@@ -53,7 +53,7 @@ export const appConfig: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_DEFAULT_TABS,
-            useValue: [`Description and examples`, `API`],
+            useValue: ['Description and examples', 'API'],
         },
         {
             provide: TUI_DOC_PAGES,
@@ -62,13 +62,13 @@ export const appConfig: ApplicationConfig = {
         {
             provide: TUI_DOC_SOURCE_CODE,
             useValue: (context: TuiDocSourceCodePathOptions) => {
-                const link = `https://github.com/taiga-family/tui-editor/tree/main/libs`;
+                const link = 'https://github.com/taiga-family/tui-editor/tree/main/libs';
 
                 if (context.path) {
                     return `${link}/${context.path}`;
                 }
 
-                if (!context.package || context.package.toLowerCase() !== `kit`) {
+                if (!context.package || context.package.toLowerCase() !== 'kit') {
                     return null;
                 }
 

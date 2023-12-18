@@ -7,8 +7,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {combineLatest, Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {combineLatest, distinctUntilChanged, map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-table-cell-color',

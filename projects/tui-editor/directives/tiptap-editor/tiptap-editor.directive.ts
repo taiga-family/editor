@@ -11,8 +11,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '@tinkoff/tui-editor/tokens';
 import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, takeUntil} from 'rxjs';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 

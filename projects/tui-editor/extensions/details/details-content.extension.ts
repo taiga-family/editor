@@ -5,27 +5,27 @@ export interface TuiDetailContentOptions {
 }
 
 export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
-    name: `detailsContent`,
+    name: 'detailsContent',
 
-    content: `block+`,
+    content: 'block+',
 
-    group: `block`,
+    group: 'block',
 
     allowGapCursor: true,
 
     parseHTML() {
         return [
             {
-                tag: `div[data-type="details-content"]`,
+                tag: 'div[data-type="details-content"]',
             },
         ];
     },
 
     renderHTML({HTMLAttributes}) {
         return [
-            `div`,
+            'div',
             mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-                'data-type': `details-content`,
+                'data-type': 'details-content',
             }),
             0,
         ];

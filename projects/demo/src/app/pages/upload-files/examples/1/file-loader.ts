@@ -1,6 +1,5 @@
 import {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
-import {forkJoin, Observable} from 'rxjs';
-import {finalize} from 'rxjs/operators';
+import {finalize, forkJoin, Observable} from 'rxjs';
 
 import {FileIoService} from './filesio.service';
 

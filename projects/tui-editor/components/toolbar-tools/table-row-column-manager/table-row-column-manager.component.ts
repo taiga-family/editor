@@ -8,8 +8,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 // TODO: change type in v4.0
 // eslint-disable-next-line no-restricted-syntax

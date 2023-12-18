@@ -17,8 +17,7 @@ import {
     TuiEditorModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, Observable} from 'rxjs';
 
 @Component({
     standalone: true,

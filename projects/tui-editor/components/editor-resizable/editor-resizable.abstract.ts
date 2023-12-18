@@ -1,8 +1,7 @@
 import {Directive} from '@angular/core';
 import {TuiDestroyService, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiNodeViewNgComponent} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
-import {merge} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {merge, takeUntil} from 'rxjs';
 
 export interface TuiEditorResizableContainer {
     height?: number | string | null;
@@ -22,7 +21,7 @@ export abstract class AbstractTuiEditorResizable<
     ) {
         super();
 
-        merge(tuiTypedFromEvent(doc, `touchend`), tuiTypedFromEvent(doc, `mouseup`))
+        merge(tuiTypedFromEvent(doc, 'touchend'), tuiTypedFromEvent(doc, 'mouseup'))
             .pipe(takeUntil(destroy$))
             .subscribe(() =>
                 this.updateAttributes({width: this.width, height: this.currentHeight}),
@@ -30,7 +29,7 @@ export abstract class AbstractTuiEditorResizable<
     }
 
     get attrs(): T {
-        return (this.node?.attrs as T) || {src: ``};
+        return (this.node?.attrs as T) || {src: ''};
     }
 
     get width(): number | string | null {

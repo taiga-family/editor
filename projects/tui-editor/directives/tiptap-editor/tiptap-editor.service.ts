@@ -13,8 +13,7 @@ import {tuiGetMarkRange, tuiParseStyle} from '@tinkoff/tui-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
 import {MarkType} from 'prosemirror-model';
 import {EditorState} from 'prosemirror-state';
-import {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import {distinctUntilChanged, map, Observable, startWith} from 'rxjs';
 
 import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';
 
@@ -50,14 +49,14 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editorRef.subscribe(editor => {
             this.editor = editor;
 
-            editor.on(`transaction`, () => {
+            editor.on('transaction', () => {
                 this.stateChange$.next();
             });
 
-            editor.on(`update`, () => {
+            editor.on('update', () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
-                const value: string = tuiIsEmptyParagraph(json) ? `` : content;
+                const value: string = tuiIsEmptyParagraph(json) ? '' : content;
 
                 this.valueChange$.next(value);
             });
@@ -77,40 +76,40 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     getFontColor(): string {
-        return this.editor.getAttributes(`textStyle`).fontColor || EDITOR_BLANK_COLOR;
+        return this.editor.getAttributes('textStyle').fontColor || EDITOR_BLANK_COLOR;
     }
 
     getFontSize(): number {
-        return parseInt(this.editor.getAttributes(`textStyle`).fontSize, 10);
+        return parseInt(this.editor.getAttributes('textStyle').fontSize, 10);
     }
 
     setFontSize(size: number): void {
         this.editor
             .chain()
-            .setMark(`textStyle`, {fontSize: tuiPx(size)})
+            .setMark('textStyle', {fontSize: tuiPx(size)})
             .run();
     }
 
     getBackgroundColor(): string {
-        return this.editor?.getAttributes(`textStyle`).backgroundColor || `transparent`;
+        return this.editor?.getAttributes('textStyle').backgroundColor || 'transparent';
     }
 
     getCellColor(): string {
         return (
-            this.editor.getAttributes(`tableCell`).background ||
-            this.editor.getAttributes(`tableHeader`).background
+            this.editor.getAttributes('tableCell').background ||
+            this.editor.getAttributes('tableHeader').background
         );
     }
 
     getGroupColor(): string {
-        if (this.editor.isActive(`group`)) {
-            const style = this.editor.getAttributes(`group`)?.style ?? ``;
+        if (this.editor.isActive('group')) {
+            const style = this.editor.getAttributes('group')?.style ?? '';
             const styles = tuiParseStyle(style);
 
-            return styles[`background-color`] ?? styles[`background`] ?? ``;
+            return styles['background-color'] ?? styles['background'] ?? '';
         }
 
-        return ``;
+        return '';
     }
 
     onAlign(align: string): void {
@@ -186,11 +185,11 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     sinkListItem(): void {
-        this.editor.chain().focus().sinkListItem(`listItem`).run();
+        this.editor.chain().focus().sinkListItem('listItem').run();
     }
 
     liftListItem(): void {
-        this.editor.chain().focus().liftListItem(`listItem`).run();
+        this.editor.chain().focus().liftListItem('listItem').run();
     }
 
     isActive(nameOrAttributes: Record<string, string> | string): boolean {
@@ -285,7 +284,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor.chain().focus().setParagraph().run();
 
         if (options) {
-            this.editor.chain().setMark(`textStyle`, options).run();
+            this.editor.chain().setMark('textStyle', options).run();
         }
     }
 
@@ -314,7 +313,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setValue(value: string): void {
-        if (value === this.html || (value === `` && this.html === `<p></p>`)) {
+        if (value === this.html || (value === '' && this.html === '<p></p>')) {
             return;
         }
 
@@ -373,7 +372,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     setAnchor(anchor: string): void {
-        this.editor.commands.setAnchor(anchor.replace(`#`, ``));
+        this.editor.commands.setAnchor(anchor.replace('#', ''));
     }
 
     removeAnchor(): void {

@@ -11,34 +11,34 @@ export function processTs(fileContent: string): string {
     const tsFileContent = new TsFileParser(fileContent);
 
     if (tsFileContent.hasNgComponent) {
-        tsFileContent.addImport(`ChangeDetectionStrategy`, `@angular/core`);
+        tsFileContent.addImport('ChangeDetectionStrategy', '@angular/core');
     }
 
     return tsFileContent
         .toString()
-        .replace(/import {encapsulation} from '.*';\n/gm, ``)
-        .replace(/import {changeDetection} from '.*';\n/gm, ``)
-        .replace(/\n +encapsulation,/gm, ``)
+        .replace(/import {encapsulation} from '.*';\n/gm, '')
+        .replace(/import {changeDetection} from '.*';\n/gm, '')
+        .replace(/\n +encapsulation,/gm, '')
         .replace(
             /changeDetection,/gm,
-            `changeDetection: ChangeDetectionStrategy.OnPush,`,
+            'changeDetection: ChangeDetectionStrategy.OnPush,',
         );
 }
 
 export function processLess(fileContent: string): string {
     return fileContent.replace(
-        `@import 'taiga-ui-local';`,
-        `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
+        "@import 'taiga-ui-local';",
+        "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );
 }
 
 export function isTS(fileName: string): boolean {
-    return fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.TS || fileName.endsWith(`.ts`);
+    return fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.TS || fileName.endsWith('.ts');
 }
 
 export function isLess(fileName: string): boolean {
     return (
-        fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS || `${fileName}`.endsWith(`.less`)
+        fileName === TUI_EXAMPLE_PRIMARY_FILE_NAME.LESS || `${fileName}`.endsWith('.less')
     );
 }
 
@@ -49,11 +49,11 @@ export function isPrimaryComponentFile(fileName: string): boolean {
 export const prepareLess = (content: string): string =>
     content.replace(
         /@import.+taiga-ui-local(.less)?';/g,
-        `@import '@taiga-ui/core/styles/taiga-ui-local.less';`,
+        "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );
 
-export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ``): string =>
-    `src/app/${stringsPart.join(``)}${path}`;
+export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ''): string =>
+    `src/app/${stringsPart.join('')}${path}`;
 
 export const getSupportFiles = <T extends Record<string, string>>(
     files: T,

@@ -10,7 +10,7 @@ declare module '@tiptap/core' {
 }
 
 export const TuiJumpAnchor = Mark.create({
-    name: `jumpAnchor`,
+    name: 'jumpAnchor',
     priority: 1000,
     keepOnSplit: false,
 
@@ -18,7 +18,7 @@ export const TuiJumpAnchor = Mark.create({
         return {
             id: {
                 default: null,
-                parseHTML: element => element.getAttribute(`id`),
+                parseHTML: element => element.getAttribute('id'),
                 renderHTML: attributes => {
                     if (!attributes.id) {
                         return {};
@@ -31,11 +31,11 @@ export const TuiJumpAnchor = Mark.create({
     },
 
     parseHTML() {
-        return [{tag: `a[data-type="jump-anchor"]`}];
+        return [{tag: 'a[data-type="jump-anchor"]'}];
     },
 
     renderHTML({HTMLAttributes}) {
-        return [`a`, mergeAttributes({'data-type': `jump-anchor`}, HTMLAttributes), 0];
+        return ['a', mergeAttributes({'data-type': 'jump-anchor'}, HTMLAttributes), 0];
     },
 
     addCommands() {
@@ -44,8 +44,8 @@ export const TuiJumpAnchor = Mark.create({
                 id =>
                 ({chain}) =>
                     chain()
-                        .extendMarkRange(`jumpAnchor`)
-                        .setMark(`jumpAnchor`, {id})
+                        .extendMarkRange('jumpAnchor')
+                        .setMark('jumpAnchor', {id})
                         .run(),
 
             removeAnchor:

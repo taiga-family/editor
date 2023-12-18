@@ -9,8 +9,7 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import type {Extension, Mark, Node} from '@tiptap/core';
 import {Editor} from '@tiptap/core';
-import {combineLatest, Observable, ReplaySubject} from 'rxjs';
-import {map, shareReplay, take} from 'rxjs/operators';
+import {combineLatest, map, Observable, ReplaySubject, shareReplay, take} from 'rxjs';
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';
 
@@ -34,7 +33,7 @@ export const TUI_EDITOR_PROVIDERS = [
     {
         provide: INITIALIZATION_TIPTAP_CONTAINER,
         deps: [Renderer2],
-        useFactory: (renderer: Renderer2): HTMLElement => renderer.createElement(`div`),
+        useFactory: (renderer: Renderer2): HTMLElement => renderer.createElement('div'),
     },
     {
         provide: TIPTAP_EDITOR,

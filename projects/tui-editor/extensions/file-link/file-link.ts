@@ -10,7 +10,7 @@ declare module '@tiptap/core' {
 }
 
 export const TuiFileLink = Extension.create({
-    name: `fileLink`,
+    name: 'fileLink',
 
     addCommands() {
         return {
@@ -19,13 +19,13 @@ export const TuiFileLink = Extension.create({
                 ({state, chain}) => {
                     const {selection} = state;
                     const selectedSize = Math.abs(selection.to - selection.from);
-                    const whitespace = `<span style="font-size: 15px"> </span>`;
+                    const whitespace = '<span style="font-size: 15px"> </span>';
 
                     return (
                         selectedSize > 0
                             ? chain()
                                   .toggleMark(
-                                      `link`,
+                                      'link',
                                       {href: fileLink.link},
                                       {extendEmptyMarkRange: true},
                                   )
