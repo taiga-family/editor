@@ -1,11 +1,22 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiItemModule} from '@taiga-ui/cdk';
+import {TuiSvgModule} from '@taiga-ui/core';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
 
+import {ExampleTuiPasteImageToolComponent} from './image-tool/image-tool.component';
 import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-paste-image-tool-example-1',
+    imports: [
+        TuiSvgModule,
+        ExampleTuiPasteImageToolComponent,
+        TuiItemModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

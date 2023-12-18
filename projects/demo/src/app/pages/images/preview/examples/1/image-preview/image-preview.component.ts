@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,11 +6,13 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiPreviewDialogService} from '@taiga-ui/addon-preview';
-import {TuiDialogContext} from '@taiga-ui/core';
+import {TuiPreviewDialogService, TuiPreviewModule} from '@taiga-ui/addon-preview';
+import {TuiButtonModule, TuiDialogContext} from '@taiga-ui/core';
 
 @Component({
+    standalone: true,
     selector: 'image-preview-example',
+    imports: [TuiPreviewModule, TuiButtonModule, NgIf],
     templateUrl: './image-preview.template.html',
     styleUrls: ['./image-preview.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

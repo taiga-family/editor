@@ -1,9 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
+
+import {CustomColorPickerComponent} from './custom-color-picker/custom-color-picker.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-color-picker-tool-example-1',
+    imports: [CustomColorPickerComponent, TuiEditorModule, ReactiveFormsModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

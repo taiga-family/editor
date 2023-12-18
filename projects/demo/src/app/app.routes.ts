@@ -1,246 +1,213 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+/* eslint-disable @typescript-eslint/quotes */
+import type {Routes} from '@angular/router';
 
 import {TuiDemoPath} from './constants/demo-path';
 
-export const appRoutes: Routes = [
-    // Editor
+export const routes: Routes = [
     {
         path: TuiDemoPath.StarterKit,
-        loadChildren: async () =>
-            (await import(`./pages/starter/editor-starter.module`))
-                .ExampleTuiEditorStarterModule,
+        loadComponent: async () => import('./pages/starter/editor-starter.component'),
+        children: [
+            {
+                path: ':tab',
+                loadComponent: async () =>
+                    import('./pages/starter/editor-starter.component'),
+            },
+        ],
         data: {
-            title: `StarterKit`,
+            title: 'StarterKit',
         },
     },
     {
-        path: `stackblitz`,
-        loadChildren: async () =>
-            (await import(`./pages/stackblitz/starter/stackblitz-starter.module`))
-                .StackblitzStarterModule,
+        path: 'stackblitz',
+        loadComponent: async () =>
+            import('./pages/stackblitz/starter/stackblitz-starter.component'),
         data: {
-            title: `Stackblitz Starter`,
+            title: 'Stackblitz Starter',
         },
     },
     {
         path: TuiDemoPath.ColorPicker,
-        loadChildren: async () =>
-            (await import(`./pages/color-picker/editor-input-color-picker.module`))
-                .ExampleTuiEditorInputColorPickerModule,
+        loadComponent: async () =>
+            import('./pages/color-picker/editor-input-color-picker.component'),
+        children: [
+            {
+                path: ':tab',
+                loadComponent: async () =>
+                    import('./pages/color-picker/editor-input-color-picker.component'),
+            },
+        ],
         data: {
-            title: `Input color picker`,
+            title: 'Input color picker',
         },
     },
     {
         path: TuiDemoPath.AngularContenteditableAccessor,
-        loadChildren: async () =>
-            (
-                await import(
-                    `./pages/angular-contenteditable-accessor/angular-contenteditable-accessor.module`
-                )
-            ).ExampleAngularContenteditableAccessorModule,
+        loadComponent: async () =>
+            import(
+                './pages/angular-contenteditable-accessor/angular-contenteditable-accessor.component'
+            ),
         data: {
-            title: `Angular contenteditable accessor`,
+            title: 'Angular contenteditable accessor',
         },
     },
     {
         path: TuiDemoPath.Font,
-        loadChildren: async () =>
-            (await import(`./pages/font/editor-font.module`)).ExampleTuiEditorFontModule,
+        loadComponent: async () => import('./pages/font/editor-font.component'),
         data: {
-            title: `Font`,
+            title: 'Font',
         },
     },
     {
         path: TuiDemoPath.Anchors,
-        loadChildren: async () =>
-            (await import(`./pages/anchors/editor-anchors.module`))
-                .ExampleTuiEditorAnchorsModule,
+        loadComponent: async () => import('./pages/anchors/editor-anchors.component'),
         data: {
-            title: `Anchors`,
+            title: 'Anchors',
         },
     },
     {
         path: TuiDemoPath.Focus,
-        loadChildren: async () =>
-            (await import(`./pages/focus/editor-focus.module`))
-                .ExampleTuiEditorFocusModule,
+        loadComponent: async () => import('./pages/focus/editor-focus.component'),
         data: {
-            title: `Focus`,
+            title: 'Focus',
         },
     },
     {
         path: TuiDemoPath.Groups,
-        loadChildren: async () =>
-            (await import(`./pages/groups/editor-groups.module`))
-                .ExampleTuiEditorGroupsModule,
+        loadComponent: async () => import('./pages/groups/editor-groups.component'),
         data: {
-            title: `Groups`,
+            title: 'Groups',
         },
     },
     {
         path: TuiDemoPath.UploadFiles,
-        loadChildren: async () =>
-            (await import(`./pages/upload-files/editor-upload-files.module`))
-                .ExampleTuiEditorUploadFilesModule,
+        loadComponent: async () =>
+            import('./pages/upload-files/editor-upload-files.component'),
         data: {
-            title: `Upload files`,
+            title: 'Upload files',
         },
     },
     {
         path: TuiDemoPath.PasteEmojiTool,
-        loadChildren: async () =>
-            (await import(`./pages/custom-tool/paste-emoji/editor-paste-emoji.module`))
-                .ExampleTuiEditorPasteEmojiToolModule,
+        loadComponent: async () =>
+            import('./pages/custom-tool/paste-emoji/editor-paste-emoji.component'),
         data: {
-            title: `Editor — Paste emoji custom tool`,
+            title: 'Editor — Paste emoji custom tool',
         },
     },
     {
         path: TuiDemoPath.ColorPickerTool,
-        loadChildren: async () =>
-            (await import(`./pages/custom-tool/color-picker/editor-color-picker.module`))
-                .ExampleTuiEditorColorPickerToolModule,
+        loadComponent: async () =>
+            import('./pages/custom-tool/color-picker/editor-color-picker.component'),
         data: {
-            title: `Editor — Color picker custom tool`,
+            title: 'Editor — Color picker custom tool',
         },
     },
     {
         path: TuiDemoPath.PasteImageTool,
-        loadChildren: async () =>
-            (
-                await import(
-                    `./pages/custom-tool/paste-image/editor-paste-image-tool.module`
-                )
-            ).ExampleTuiEditorPasteImageToolModule,
+        loadComponent: async () =>
+            import('./pages/custom-tool/paste-image/editor-paste-image-tool.component'),
         data: {
-            title: `Editor — Paste image custom tool`,
+            title: 'Editor — Paste image custom tool',
         },
     },
     {
         path: TuiDemoPath.HighlightText,
-        loadChildren: async () =>
-            (await import(`./pages/highlight/text/editor-mark-text.module`))
-                .ExampleTuiEditorMarkTextModule,
+        loadComponent: async () =>
+            import('./pages/highlight/text/editor-mark-text.component'),
         data: {
-            title: `Editor — Highlight text`,
+            title: 'Editor — Highlight text',
         },
     },
     {
         path: TuiDemoPath.ProcessingLegacyHtml,
-        loadChildren: async () =>
-            (await import(`./pages/processing/legacy-html/editor-legacy-html.module`))
-                .ExampleTuiEditorLegacyHtmlModule,
+        loadComponent: async () =>
+            import('./pages/processing/legacy-html/editor-legacy-html.component'),
         data: {
-            title: `Editor — Legacy html`,
+            title: 'Editor — Legacy html',
         },
     },
     {
         path: TuiDemoPath.ProcessingCleanupHtml,
-        loadChildren: async () =>
-            (await import(`./pages/processing/cleanup-html/editor-cleanup-html.module`))
-                .ExampleTuiEditorCleanupHtmlModule,
+        loadComponent: async () =>
+            import('./pages/processing/cleanup-html/editor-cleanup-html.component'),
         data: {
-            title: `Editor — Cleanup html`,
+            title: 'Editor — Cleanup html',
         },
     },
     {
         path: TuiDemoPath.ProcessingMarkdown,
-        loadChildren: async () =>
-            (await import(`./pages/processing/markdown/editor-markdown.module`))
-                .ExampleTuiEditorMarkdownModule,
+        loadComponent: async () =>
+            import('./pages/processing/markdown/editor-markdown.component'),
         data: {
-            title: `Editor — Markdown`,
+            title: 'Editor — Markdown',
         },
     },
     {
         path: TuiDemoPath.HighlightCode,
-        loadChildren: async () =>
-            (await import(`./pages/highlight/code/editor-code-block.module`))
-                .ExampleTuiEditorCodeBlockModule,
+        loadComponent: async () =>
+            import('./pages/highlight/code/editor-code-block.component'),
         data: {
-            title: `Editor — Highlight code`,
+            title: 'Editor — Highlight code',
         },
     },
     {
         path: TuiDemoPath.ImagesResizable,
-        loadChildren: async () =>
-            (await import(`./pages/images/resizable/editor-resizable-images.module`))
-                .ExampleTuiEditorResizableImagesToolModule,
+        loadComponent: async () =>
+            import('./pages/images/resizable/editor-resizable-images.component'),
         data: {
-            title: `Editor  — Resizable images`,
+            title: 'Editor  — Resizable images',
         },
     },
     {
         path: TuiDemoPath.ImagesPreview,
-        loadChildren: async () =>
-            (await import(`./pages/images/preview/editor-preview-images.module`))
-                .ExampleTuiEditorPreviewImagesToolModule,
+        loadComponent: async () =>
+            import('./pages/images/preview/editor-preview-images.component'),
         data: {
-            title: `Editor  — Preview images`,
+            title: 'Editor  — Preview images',
         },
     },
     {
         path: TuiDemoPath.ImagesUpload,
-        loadChildren: async () =>
-            (await import(`./pages/images/upload/editor-upload-images.module`))
-                .ExampleTuiEditorUploadImagesModule,
+        loadComponent: async () =>
+            import('./pages/images/upload/editor-upload-images.component'),
         data: {
-            title: `Editor — Upload images`,
+            title: 'Editor — Upload images',
         },
     },
     {
         path: TuiDemoPath.EmbedYoutube,
-        loadChildren: async () =>
-            (await import(`./pages/embed/youtube/editor-embed-youtube.module`))
-                .ExampleTuiEditorEmbedYoutubeModule,
+        loadComponent: async () =>
+            import('./pages/embed/youtube/editor-embed-youtube.component'),
         data: {
-            title: `Editor — Youtube`,
+            title: 'Editor — YouTube',
         },
     },
     {
         path: TuiDemoPath.EmbedIframe,
-        loadChildren: async () =>
-            (await import(`./pages/embed/iframe/editor-embed-iframe.module`))
-                .ExampleTuiEditorEmbedIframeModule,
+        loadComponent: async () =>
+            import('./pages/embed/iframe/editor-embed-iframe.component'),
         data: {
-            title: `Editor — Iframe`,
+            title: 'Editor — Iframe',
         },
     },
     {
         path: TuiDemoPath.EmbedHtml5,
-        loadChildren: async () =>
-            (await import(`./pages/embed/html5/editor-embed-html5.module`))
-                .ExampleTuiEditorEmbedHtml5Module,
+        loadComponent: async () =>
+            import('./pages/embed/html5/editor-embed-html5.component'),
         data: {
-            title: `Editor — HTML5`,
+            title: 'Editor — HTML5',
         },
     },
-    // Other
     {
         path: TuiDemoPath.Changelog,
-        loadChildren: async () =>
-            (await import(`./pages/changelog/editor-changelog.module`))
-                .ExampleTuiEditorChangelogModule,
+        loadComponent: async () => import('./pages/changelog/editor-changelog.component'),
         data: {
-            title: `Changelog`,
+            title: 'Changelog',
         },
     },
     {
-        path: `**`,
+        path: '**',
         redirectTo: TuiDemoPath.StarterKit,
     },
 ];
-
-@NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes, {
-            scrollPositionRestoration: `enabled`,
-            anchorScrolling: `enabled`,
-            scrollOffset: [0, 64],
-        }),
-    ],
-    exports: [RouterModule],
-})
-export class TuiAppRoutingModule {}

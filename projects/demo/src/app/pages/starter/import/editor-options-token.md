@@ -10,6 +10,7 @@ const CUSTOM_EDITOR_OPTIONS: Partial<TuiEditorOptions> = {
 };
 
 @Component({
+  standalone: true,
   //...
   providers: [
     // ..

@@ -5,7 +5,7 @@ import {
     Injector,
     ViewChild,
 } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
@@ -14,13 +14,16 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorAttachedFile,
     TuiEditorComponent,
+    TuiEditorModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-embed-html5-example-1',
+    imports: [TuiEditorModule, ReactiveFormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

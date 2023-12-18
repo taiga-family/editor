@@ -1,15 +1,19 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
     defaultEditorExtensions,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
+    TuiEditorModule,
+    TuiEditorSocketModule,
 } from '@tinkoff/tui-editor';
 
 import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-cleanup-html-example-1',
+    imports: [TuiEditorModule, ReactiveFormsModule, TuiEditorSocketModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

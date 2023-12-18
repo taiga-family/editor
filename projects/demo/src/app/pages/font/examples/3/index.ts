@@ -1,9 +1,23 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
+
+import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-font-example-3',
+    imports: [
+        TuiEditorSocketModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        ExampleTuiFontSizeToolComponent,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

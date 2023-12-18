@@ -1,10 +1,28 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorImagePreviewModule,
+    TuiEditorModule,
+    TuiEditorSocketModule,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
+
+import {ImagePreviewExampleComponent} from './image-preview/image-preview.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-preview-images-example-1',
+    imports: [
+        ImagePreviewExampleComponent,
+        TuiEditorSocketModule,
+        TuiEditorImagePreviewModule,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        TuiPreviewModule,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,14 +6,28 @@ import {
     Injector,
     ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormControl, ValidationErrors} from '@angular/forms';
-import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiValidationError} from '@taiga-ui/cdk';
+import {
+    AbstractControl,
+    FormControl,
+    ReactiveFormsModule,
+    ValidationErrors,
+} from '@angular/forms';
+import {
+    TUI_IS_STACKBLITZ,
+    TuiDestroyService,
+    TuiValidationError,
+    TuiValidatorModule,
+} from '@taiga-ui/cdk';
+import {TuiErrorModule, TuiLoaderModule} from '@taiga-ui/core';
+import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_MAX_IMAGE_WIDTH,
     TUI_EDITOR_MIN_IMAGE_WIDTH,
     TUI_IMAGE_LOADER,
     TuiEditorComponent,
+    TuiEditorModule,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -21,7 +35,18 @@ import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-upload-images-example-1',
+    imports: [
+        TuiEditorSocketModule,
+        TuiErrorModule,
+        TuiEditorModule,
+        TuiLoaderModule,
+        AsyncPipe,
+        TuiValidatorModule,
+        ReactiveFormsModule,
+        TuiFieldErrorPipeModule,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

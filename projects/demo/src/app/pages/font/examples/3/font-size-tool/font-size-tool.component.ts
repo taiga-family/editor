@@ -1,11 +1,25 @@
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
+import {
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule,
+} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
+    standalone: true,
     selector: 'font-size-tool',
+    imports: [
+        TuiDataListModule,
+        NgForOf,
+        TuiButtonModule,
+        TuiHostedDropdownModule,
+        AsyncPipe,
+    ],
     templateUrl: './font-size-tool.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

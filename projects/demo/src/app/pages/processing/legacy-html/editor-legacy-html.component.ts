@@ -1,12 +1,24 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {RouterLink} from '@angular/router';
+import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
+
+import {TuiEditorLegacyHtmlExample1} from './examples/1';
 
 @Component({
+    standalone: true,
     selector: 'editor-legacy-html',
+    imports: [
+        TuiDocPageModule,
+        TuiLinkModule,
+        RouterLink,
+        TuiDocExampleModule,
+        TuiEditorLegacyHtmlExample1,
+    ],
     templateUrl: './editor-legacy-html.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiEditorProcessingContentComponent {
+export default class ExampleTuiEditorProcessingContentComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

@@ -1,13 +1,17 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
+    TuiEditorModule,
     tuiEditorOptionsProvider,
+    TuiEditorSocketModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-font-example-2',
+    imports: [TuiEditorModule, ReactiveFormsModule, TuiEditorSocketModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

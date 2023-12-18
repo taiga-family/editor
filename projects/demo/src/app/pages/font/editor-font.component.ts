@@ -1,12 +1,24 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+
+import {TuiEditorFontExample1} from './examples/1';
+import {TuiEditorFontExample2} from './examples/2';
+import {TuiEditorFontExample3} from './examples/3';
 
 @Component({
+    standalone: true,
     selector: 'editor-font',
+    imports: [
+        TuiEditorFontExample3,
+        TuiDocExampleModule,
+        TuiDocPageModule,
+        TuiEditorFontExample1,
+        TuiEditorFontExample2,
+    ],
     templateUrl: './editor-font.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiEditorFontComponent {
+export default class ExampleTuiEditorFontComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

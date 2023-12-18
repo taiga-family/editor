@@ -1,11 +1,22 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TuiItemModule, tuiPure} from '@taiga-ui/cdk';
+import {TuiSvgModule} from '@taiga-ui/core';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
+
+import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-embed-youtube-example-1',
+    imports: [
+        TuiSvgModule,
+        ExampleTuiYoutubeToolComponent,
+        TuiEditorModule,
+        ReactiveFormsModule,
+        TuiItemModule,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

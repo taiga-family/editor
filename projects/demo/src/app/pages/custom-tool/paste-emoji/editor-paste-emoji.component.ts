@@ -1,9 +1,21 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {RouterLink} from '@angular/router';
+import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
+import {TuiEditorPasteEmojiToolExample1} from './examples/1';
+
 @Component({
+    standalone: true,
     selector: 'editor-paste-emoji-tool',
+    imports: [
+        TuiEditorPasteEmojiToolExample1,
+        TuiDocPageModule,
+        TuiLinkModule,
+        RouterLink,
+        TuiDocExampleModule,
+    ],
     templateUrl: './editor-paste-emoji.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -13,7 +25,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-edito
         },
     ],
 })
-export class ExampleTuiEditorPasteEmojiToolComponent {
+export default class ExampleTuiEditorPasteEmojiToolComponent {
     readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),

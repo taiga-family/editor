@@ -1,9 +1,21 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {RouterLink} from '@angular/router';
+import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
+import {TuiEditorResizableEditorExample1} from './examples/1';
+
 @Component({
+    standalone: true,
     selector: 'editor-resizable-images',
+    imports: [
+        TuiEditorResizableEditorExample1,
+        TuiDocExampleModule,
+        TuiDocPageModule,
+        TuiLinkModule,
+        RouterLink,
+    ],
     templateUrl: './editor-resizable-images.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -13,7 +25,7 @@ import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-edito
         },
     ],
 })
-export class ExampleTuiEditorResizableImagesComponent {
+export default class ExampleTuiEditorResizableImagesComponent {
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

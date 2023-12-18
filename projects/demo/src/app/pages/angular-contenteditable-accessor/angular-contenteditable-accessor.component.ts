@@ -1,15 +1,18 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocPageModule} from '@taiga-ui/addon-doc';
 
 const html = '<b>HTML</b><p>with a paragraph</p><div>a div</div>and a plain text node';
 
 @Component({
+    standalone: true,
     selector: 'angular-contenteditable-accessor',
+    imports: [ReactiveFormsModule, FormsModule, TuiDocPageModule],
     templateUrl: './angular-contenteditable-accessor.template.html',
     styleUrls: ['./angular-contenteditable-accessor.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAngularContenteditableAccessorPageComponent {
+export default class TuiAngularContenteditableAccessorPageComponent {
     model = 'Initial value';
 
     disabled = true;
