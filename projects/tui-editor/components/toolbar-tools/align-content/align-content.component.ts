@@ -7,8 +7,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {combineLatest, map, Observable} from 'rxjs';
 
 @Component({
     selector: 'tui-align-content',

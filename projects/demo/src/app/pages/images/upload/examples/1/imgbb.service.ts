@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, from, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, from, map, Observable} from 'rxjs';
 
 /**
  * @description:
@@ -8,8 +7,8 @@ import {map} from 'rxjs/operators';
  * https://api.imgbb.com/
  */
 const imgbb = {
-    host: `https://api.imgbb.com`,
-    apiKey: `3c1615980dcf693b282c4b0fb608b28a`,
+    host: 'https://api.imgbb.com',
+    apiKey: '3c1615980dcf693b282c4b0fb608b28a',
     expiration: 300, // 5min lifetime
 };
 
@@ -29,7 +28,7 @@ interface ImgbbResponse {
 }
 
 @Injectable({
-    providedIn: `root`,
+    providedIn: 'root',
 })
 export class ImgbbService {
     readonly loading$ = new BehaviorSubject(false);
@@ -37,7 +36,7 @@ export class ImgbbService {
     private static createBody(base64: string): URLSearchParams {
         const formData = new FormData();
 
-        formData.append(`image`, base64.split(`,`).pop() || ``);
+        formData.append('image', base64.split(',').pop() || '');
 
         return new URLSearchParams(formData as any);
     }
@@ -51,9 +50,9 @@ export class ImgbbService {
             fetch(
                 `${imgbb.host}/1/upload?key=${imgbb.apiKey}&expiration=${imgbb.expiration}`,
                 {
-                    method: `POST`,
+                    method: 'POST',
                     body: ImgbbService.createBody(base64),
-                    headers: {'Content-Type': `application/x-www-form-urlencoded`},
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 },
             ).then(async (response: Response) => response.json()),
         ).pipe(map((response: ImgbbResponse) => response.data.url));

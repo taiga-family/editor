@@ -20,7 +20,8 @@ import {DomSanitizer} from '@angular/platform-browser';
  * just outputs control value as-is.
  */
 @Directive({
-    selector: `[contenteditable][formControlName], [contenteditable][formControl], [contenteditable][ngModel]`,
+    selector:
+        '[contenteditable][formControlName], [contenteditable][formControl], [contenteditable][ngModel]',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -56,7 +57,7 @@ export class ContenteditableValueAccessor
      * also disconnect MutationObserver as it is not needed if this
      * event works in current browser
      */
-    @HostListener(`input`)
+    @HostListener('input')
     onInput(): void {
         this.observer.disconnect();
         this.onChange(this.processValue(this.elementRef.nativeElement.innerHTML));
@@ -65,7 +66,7 @@ export class ContenteditableValueAccessor
     /*
      * Listen to blur event to mark control as touched
      */
-    @HostListener(`blur`)
+    @HostListener('blur')
     onBlur(): void {
         this.onTouched();
     }
@@ -96,7 +97,7 @@ export class ContenteditableValueAccessor
     writeValue(value: string | null): void {
         this.renderer.setProperty(
             this.elementRef.nativeElement,
-            `innerHTML`,
+            'innerHTML',
             this.processValue(value),
         );
     }
@@ -127,7 +128,7 @@ export class ContenteditableValueAccessor
     setDisabledState(disabled: boolean): void {
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
-            `contenteditable`,
+            'contenteditable',
             String(!disabled),
         );
     }
@@ -137,13 +138,13 @@ export class ContenteditableValueAccessor
      * also single <br> is replaced with empty string when passed to the control
      */
     private processValue(value: unknown): string {
-        const processed = String(value === null || value === undefined ? `` : value);
+        const processed = String(value === null || value === undefined ? '' : value);
 
         return (
             this.sanitizer.sanitize(
                 SecurityContext.HTML,
-                processed.trim() === `<br>` ? `` : processed,
-            ) ?? ``
+                processed.trim() === '<br>' ? '' : processed,
+            ) ?? ''
         );
     }
 

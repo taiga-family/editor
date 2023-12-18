@@ -10,8 +10,8 @@ import {TuiDocumentSelectionException} from '@taiga-ui/cdk';
  * @param html html to be inserted
  */
 export function tuiInsertHtml(doc: Document, html: string): void {
-    if (doc.queryCommandSupported(`insertHTML`)) {
-        doc.execCommand(`insertHTML`, false, html);
+    if (doc.queryCommandSupported('insertHTML')) {
+        doc.execCommand('insertHTML', false, html);
 
         return;
     }
@@ -22,7 +22,7 @@ export function tuiInsertHtml(doc: Document, html: string): void {
         throw new TuiDocumentSelectionException();
     }
 
-    doc.execCommand(`ms-beginUndoUnit`);
+    doc.execCommand('ms-beginUndoUnit');
 
     const range = selection.getRangeAt(0);
     const documentFragment = range.createContextualFragment(html);
@@ -30,5 +30,5 @@ export function tuiInsertHtml(doc: Document, html: string): void {
     range.deleteContents();
     range.insertNode(documentFragment);
 
-    doc.execCommand(`ms-endUndoUnit`);
+    doc.execCommand('ms-endUndoUnit');
 }

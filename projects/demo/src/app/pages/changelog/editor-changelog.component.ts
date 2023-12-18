@@ -2,8 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {TuiDocPageModule, tuiRawLoad} from '@taiga-ui/addon-doc';
 import MarkdownIt from 'markdown-it';
-import {of} from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import {map, of, switchMap} from 'rxjs';
 
 @Component({
     standalone: true,

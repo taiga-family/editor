@@ -7,11 +7,11 @@ import {Observable} from 'rxjs';
  */
 export const TUI_EDITOR_EXTENSIONS = new InjectionToken<
     ReadonlyArray<Promise<Extension | Mark | Node>>
->(`[TUI_EDITOR_EXTENSIONS]`);
+>('[TUI_EDITOR_EXTENSIONS]');
 
 /**
  * lazy extensions
  */
 export const LAZY_EDITOR_EXTENSIONS = new InjectionToken<
     Observable<ReadonlyArray<Extension | Mark | Node>>
->(`[LAZY_EDITOR_EXTENSIONS]`);
+>('[LAZY_EDITOR_EXTENSIONS]');

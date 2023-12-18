@@ -7,7 +7,7 @@ export const TuiLink = Link.extend({
     addAttributes() {
         return {
             ...this.parent?.(),
-            ...tuiParseNodeAttributes([`download`]),
+            ...tuiParseNodeAttributes(['download']),
         };
     },
 
@@ -24,8 +24,8 @@ export const TuiLink = Link.extend({
                         const sliced = getHTMLFromFragment(
                             selected.content,
                             state.schema,
-                        ).replace(/<\/?[^>]+(>|$)/g, ``);
-                        const forwardSymbolIsWhitespace = sliced === ` `;
+                        ).replace(/<\/?[^>]+(>|$)/g, '');
+                        const forwardSymbolIsWhitespace = sliced === ' ';
 
                         const toggleMark = chain().toggleMark(this.name, attributes, {
                             extendEmptyMarkRange: true,
@@ -36,7 +36,7 @@ export const TuiLink = Link.extend({
                                 ? toggleMark.setTextSelection(selection.to + 1)
                                 : toggleMark.setTextSelection(selection.to).insertContent(
                                       // require: `@tiptap/extension-text-style`
-                                      `<span style="font-size: 15px"> </span>`,
+                                      '<span style="font-size: 15px"> </span>',
                                   )
                         ).run();
                     }

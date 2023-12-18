@@ -37,8 +37,7 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {Observable} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {Observable, take, takeUntil} from 'rxjs';
 
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 

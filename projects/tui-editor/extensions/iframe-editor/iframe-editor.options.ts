@@ -19,7 +19,7 @@ export interface TuiEditableIframe {
  * Size of resizable iframe inside editor
  */
 export const TUI_IFRAME_EDITOR_OPTIONS = new InjectionToken<TuiEditableIframeOptions>(
-    `[TUI_IFRAME_EDITOR_OPTIONS]`,
+    '[TUI_IFRAME_EDITOR_OPTIONS]',
     {
         factory: () => ({
             minWidth: 100,

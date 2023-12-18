@@ -7,6 +7,6 @@ import {identity} from 'rxjs';
  * use {@link TUI_EDITOR_VALUE_TRANSFORMER}
  */
 export const TUI_EDITOR_CONTENT_PROCESSOR: InjectionToken<TuiStringHandler<string>> =
-    new InjectionToken<TuiStringHandler<string>>(`[TUI_EDITOR_CONTENT_PROCESSOR]`, {
+    new InjectionToken<TuiStringHandler<string>>('[TUI_EDITOR_CONTENT_PROCESSOR]', {
         factory: () => identity,
     });

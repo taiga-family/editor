@@ -3,8 +3,7 @@ import {ElementRef, Inject, Injectable, Self} from '@angular/core';
 import {TuiDestroyService, tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 import {tuiGetElementPoint} from '@tinkoff/tui-editor/utils';
-import {Observable} from 'rxjs';
-import {map, startWith, switchMap, takeUntil} from 'rxjs/operators';
+import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 
 @Injectable()
 export class TuiPickerService extends Observable<TuiPoint> {
@@ -13,14 +12,14 @@ export class TuiPickerService extends Observable<TuiPoint> {
         @Inject(ElementRef) {nativeElement}: ElementRef<HTMLElement>,
         @Inject(DOCUMENT) doc: Document,
     ) {
-        const point$ = tuiTypedFromEvent(nativeElement, `mousedown`).pipe(
+        const point$ = tuiTypedFromEvent(nativeElement, 'mousedown').pipe(
             tuiPreventDefault(),
             switchMap(event => {
-                const mouseMove$ = tuiTypedFromEvent(doc, `mousemove`).pipe(
+                const mouseMove$ = tuiTypedFromEvent(doc, 'mousemove').pipe(
                     map(({clientX, clientY}) =>
                         tuiGetElementPoint(clientX, clientY, nativeElement),
                     ),
-                    takeUntil(tuiTypedFromEvent(doc, `mouseup`)),
+                    takeUntil(tuiTypedFromEvent(doc, 'mouseup')),
                 );
 
                 return event.target === nativeElement

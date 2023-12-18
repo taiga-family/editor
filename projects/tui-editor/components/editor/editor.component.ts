@@ -43,8 +43,7 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import {tuiIsSafeLinkRange} from '@tinkoff/tui-editor/utils';
 import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
-import {delay, takeUntil} from 'rxjs/operators';
+import {delay, Observable, takeUntil} from 'rxjs';
 
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 

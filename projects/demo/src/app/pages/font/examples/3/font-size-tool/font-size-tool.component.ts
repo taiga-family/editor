@@ -8,7 +8,7 @@ import {
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({
     standalone: true,

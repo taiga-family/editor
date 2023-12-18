@@ -7,8 +7,8 @@ export interface TuiEditorGroupOptions {
 }
 
 export const TUI_EDITOR_GROUP_DEFAULT_OPTIONS: TuiEditorGroupOptions = {
-    groupNodeClass: `tui-group-node`,
-    groupPointerNodeClass: `tui-group-pointer`,
+    groupNodeClass: 'tui-group-node',
+    groupPointerNodeClass: 'tui-group-pointer',
     nested: true,
     draggable: true,
     createOnEnter: false,

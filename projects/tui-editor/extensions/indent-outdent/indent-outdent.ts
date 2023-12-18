@@ -1,11 +1,11 @@
 import {Editor, Extension, KeyboardShortcutCommand} from '@tiptap/core';
 
 export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
-    return editor.isActive(`bulletList`) || editor.isActive(`orderedList`);
+    return editor.isActive('bulletList') || editor.isActive('orderedList');
 }
 
 export const TuiTabExtension = Extension.create({
-    name: `indent`,
+    name: 'indent',
 
     addKeyboardShortcuts(): {
         [key: string]: KeyboardShortcutCommand;
@@ -14,7 +14,7 @@ export const TuiTabExtension = Extension.create({
             Tab: () =>
                 tuiIsOrderedOrBulletList(this.editor)
                     ? false
-                    : this.editor.commands.insertContent(`\t`),
+                    : this.editor.commands.insertContent('\t'),
         };
     },
 });
