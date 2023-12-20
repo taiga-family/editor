@@ -4,8 +4,8 @@ import {
     defaultEditorExtensions,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
 } from '@tinkoff/tui-editor';
 
 import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
@@ -13,7 +13,7 @@ import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 @Component({
     standalone: true,
     selector: 'tui-editor-legacy-html-example-1',
-    imports: [TuiEditorModule, ReactiveFormsModule, TuiEditorSocketModule],
+    imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

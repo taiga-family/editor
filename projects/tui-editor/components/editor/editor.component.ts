@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -18,14 +18,24 @@ import {
     AbstractTuiControl,
     AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
+    TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_DEFAULT_DURATION,
+    TuiDropdownDirective,
+    TuiDropdownOptionsDirective,
+    TuiDropdownSelectionDirective,
+    TuiScrollbarModule,
+    TuiWrapperModule,
+} from '@taiga-ui/core';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {TuiEditLinkComponent} from '@tinkoff/tui-editor/components/edit-link';
+import {TuiEditorSocketComponent} from '@tinkoff/tui-editor/components/editor-socket';
 import {TuiToolbarComponent} from '@tinkoff/tui-editor/components/toolbar';
 import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
 import {
@@ -46,9 +56,28 @@ import {Editor} from '@tiptap/core';
 import {delay, Observable, takeUntil} from 'rxjs';
 
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
+import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
+import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        TuiWrapperModule,
+        TuiActiveZoneDirective,
+        TuiScrollbarModule,
+        TuiDropdownOptionsDirective,
+        TuiDropdownDirective,
+        TuiEditLinkComponent,
+        TuiEditorPortalHostComponent,
+        TuiEditorPortalDirective,
+        TuiDropdownSelectionDirective,
+        TuiTiptapEditorDirective,
+        TuiEditorSocketComponent,
+        TuiToolbarComponent,
+    ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

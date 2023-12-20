@@ -1,4 +1,6 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TuiButtonModule, TuiHintModule} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -10,7 +12,9 @@ import {
 import {distinctUntilChanged, map, Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-group-tool',
+    imports: [TuiHintModule, TuiButtonModule, AsyncPipe],
     templateUrl: './group.component.html',
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

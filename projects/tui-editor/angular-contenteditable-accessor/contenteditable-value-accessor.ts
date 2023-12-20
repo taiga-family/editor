@@ -20,18 +20,18 @@ import {DomSanitizer} from '@angular/platform-browser';
  * just outputs control value as-is.
  */
 @Directive({
+    standalone: true,
     selector:
         '[contenteditable][formControlName], [contenteditable][formControl], [contenteditable][ngModel]',
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ContenteditableValueAccessor),
+            useExisting: forwardRef(() => TuiContenteditableValueAccessor),
             multi: true,
         },
     ],
 })
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export class ContenteditableValueAccessor
+export class TuiContenteditableValueAccessor
     implements ControlValueAccessor, AfterViewInit, OnDestroy
 {
     /*

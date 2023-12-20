@@ -1,11 +1,12 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-import {ContenteditableValueAccessorModule} from '../module';
+import {TuiContenteditableValueAccessor} from '@tinkoff/tui-editor/angular-contenteditable-accessor';
 
 describe('ContenteditableValueAccessor', () => {
     @Component({
+        standalone: true,
+        imports: [FormsModule, ReactiveFormsModule, TuiContenteditableValueAccessor],
         template: `
             <div
                 #modelEl
@@ -64,12 +65,7 @@ describe('ContenteditableValueAccessor', () => {
 
     beforeEach(done => {
         TestBed.configureTestingModule({
-            imports: [
-                FormsModule,
-                ReactiveFormsModule,
-                ContenteditableValueAccessorModule,
-            ],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
 
         fixture = TestBed.createComponent(TestComponent);

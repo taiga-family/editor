@@ -39,8 +39,5 @@ export default class ExampleTuiEditorEmbedIframeComponent {
         'embed-tool/embed-tool.styles.less': import(
             './examples/1/embed-tool/embed-tool.styles.less?raw'
         ),
-        'embed-tool/embed-tool.module.ts': import(
-            './examples/1/embed-tool/embed-tool.module.ts?raw'
-        ),
     };
 }

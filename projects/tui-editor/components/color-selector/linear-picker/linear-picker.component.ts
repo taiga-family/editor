@@ -12,6 +12,7 @@ import {TuiPickerService} from '@tinkoff/tui-editor/services';
 import {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-linear-picker',
     templateUrl: './linear-picker.template.html',
     styleUrls: ['./linear-picker.style.less'],

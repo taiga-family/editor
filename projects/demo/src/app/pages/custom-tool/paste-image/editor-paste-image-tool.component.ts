@@ -42,8 +42,5 @@ export default class ExampleTuiEditorPasteImageToolComponent {
         'image-tool/image-tool.styles.less': import(
             './examples/1/image-tool/image-tool.styles.less?raw'
         ),
-        'image-tool/image-tool.module.ts': import(
-            './examples/1/image-tool/image-tool.module.ts?raw'
-        ),
     };
 }

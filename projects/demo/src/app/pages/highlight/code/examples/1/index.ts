@@ -3,15 +3,15 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
     selector: 'tui-editor-code-block-example-1',
-    imports: [TuiEditorSocketModule, TuiEditorModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

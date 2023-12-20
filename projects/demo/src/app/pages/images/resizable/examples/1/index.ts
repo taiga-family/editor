@@ -5,8 +5,8 @@ import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import {Observable, switchMap, takeUntil} from 'rxjs';
@@ -15,10 +15,10 @@ import {Observable, switchMap, takeUntil} from 'rxjs';
     standalone: true,
     selector: 'tui-editor-resizable-editor-example-1',
     imports: [
-        TuiEditorSocketModule,
-        TuiEditorModule,
         ReactiveFormsModule,
         HttpClientModule,
+        TuiEditorSocketComponent,
+        TuiEditorComponent,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

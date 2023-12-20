@@ -1,3 +1,4 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,13 +6,40 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {MaskitoModule} from '@maskito/angular';
 import {MaskitoOptions} from '@maskito/core';
 import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
+import {
+    TuiDataListModule,
+    TuiDropdownOptionsDirective,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
+import {
+    TuiInputCountModule,
+    TuiSelectModule,
+    TuiValueAccessorModule,
+} from '@taiga-ui/kit';
 
 const HEX_MODE_LENGTH = 6;
 
 @Component({
+    standalone: true,
     selector: 'tui-color-edit',
+    imports: [
+        TuiSelectModule,
+        TuiDropdownOptionsDirective,
+        TuiTextfieldControllerModule,
+        FormsModule,
+        TuiDataListModule,
+        TuiPrimitiveTextfieldModule,
+        NgIf,
+        MaskitoModule,
+        TuiValueAccessorModule,
+        TuiInputCountModule,
+        NgForOf,
+    ],
     templateUrl: './color-edit.template.html',
     styleUrls: ['./color-edit.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

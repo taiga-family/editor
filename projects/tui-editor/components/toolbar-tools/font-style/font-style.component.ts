@@ -1,4 +1,6 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
@@ -12,7 +14,9 @@ import {
 import {combineLatest, map, Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-font-style',
+    imports: [TuiHintModule, TuiButtonModule, NgIf, TuiHostedDropdownModule, AsyncPipe],
     templateUrl: './font-style.template.html',
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

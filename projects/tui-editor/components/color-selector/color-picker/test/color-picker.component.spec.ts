@@ -1,9 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiColorPickerComponent, TuiColorPickerModule} from '@tinkoff/tui-editor';
+import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
+    imports: [TuiColorPickerComponent],
     template: `
         <tui-color-picker [(color)]="color"></tui-color-picker>
     `,
@@ -21,8 +22,7 @@ describe('ColorPicker', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiColorPickerModule, NoopAnimationsModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
 
         fixture = TestBed.createComponent(TestComponent);

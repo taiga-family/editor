@@ -24,9 +24,9 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: 'Documentation',
-        title: 'Contenteditable accessor',
+        title: 'Contenteditable',
         route: TuiDemoPath.AngularContenteditableAccessor,
-        keywords: 'contenteditable, accessor, angular contenteditable accessor',
+        keywords: 'contenteditable, accessor',
     },
     {
         section: 'Examples',

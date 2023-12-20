@@ -2,7 +2,10 @@ import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
+import {
+    AbstractTuiEditorResizable,
+    TuiEditorResizableComponent,
+} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {
     TUI_IFRAME_EDITOR_OPTIONS,
@@ -11,7 +14,9 @@ import {
 } from './iframe-editor.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-iframe-editor',
+    imports: [TuiEditorResizableComponent],
     templateUrl: './iframe-editor.component.html',
     styleUrls: ['./iframe-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

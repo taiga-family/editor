@@ -5,8 +5,7 @@ import {TuiButtonModule} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -16,9 +15,9 @@ import {
     imports: [
         TuiButtonModule,
         TuiItemModule,
-        TuiEditorSocketModule,
-        TuiEditorModule,
         ReactiveFormsModule,
+        TuiEditorSocketComponent,
+        TuiEditorComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -4,9 +4,9 @@ import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorImagePreviewModule,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorImagePreviewDirective,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -17,11 +17,11 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
     selector: 'tui-editor-preview-images-example-1',
     imports: [
         ImagePreviewExampleComponent,
-        TuiEditorSocketModule,
-        TuiEditorImagePreviewModule,
-        TuiEditorModule,
         ReactiveFormsModule,
         TuiPreviewModule,
+        TuiEditorSocketComponent,
+        TuiEditorImagePreviewDirective,
+        TuiEditorComponent,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

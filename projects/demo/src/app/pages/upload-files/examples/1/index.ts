@@ -7,8 +7,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorAttachedFile,
     TuiEditorComponent,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -19,11 +18,11 @@ import {FileIoService} from './filesio.service';
     standalone: true,
     selector: 'tui-editor-upload-files-example-1',
     imports: [
-        TuiEditorSocketModule,
         TuiLoaderModule,
-        TuiEditorModule,
         AsyncPipe,
         ReactiveFormsModule,
+        TuiEditorComponent,
+        TuiEditorSocketComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

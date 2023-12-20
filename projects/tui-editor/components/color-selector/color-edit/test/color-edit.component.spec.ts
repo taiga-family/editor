@@ -1,9 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiColorEditComponent, TuiColorEditModule} from '@tinkoff/tui-editor';
+import {TuiColorEditComponent} from '@tinkoff/tui-editor';
 
 @Component({
+    standalone: true,
+    imports: [TuiColorEditComponent],
     template: `
         <tui-color-edit [(color)]="color"></tui-color-edit>
     `,
@@ -21,8 +22,7 @@ describe('ColorEdit', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TuiColorEditModule, NoopAnimationsModule],
-            declarations: [TestComponent],
+            imports: [TestComponent],
         });
 
         fixture = TestBed.createComponent(TestComponent);

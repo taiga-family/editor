@@ -5,8 +5,8 @@ import {tuiRawLoad} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_CONTENT_PROCESSOR,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import MarkdownIt from 'markdown-it';
@@ -15,7 +15,7 @@ import {Converter} from 'showdown';
 @Component({
     standalone: true,
     selector: 'tui-editor-markdown-example-1',
-    imports: [TuiEditorModule, NgIf, ReactiveFormsModule, TuiEditorSocketModule],
+    imports: [NgIf, ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

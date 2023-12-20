@@ -10,5 +10,4 @@ export * from '@tinkoff/tui-editor/components/toolbar-tools/table-cell-color';
 export * from '@tinkoff/tui-editor/components/toolbar-tools/table-create';
 export * from '@tinkoff/tui-editor/components/toolbar-tools/table-merge-cells';
 export * from '@tinkoff/tui-editor/components/toolbar-tools/table-row-column-manager';
-export * from '@tinkoff/tui-editor/components/toolbar-tools/table-size-selector';
 export * from '@tinkoff/tui-editor/components/toolbar-tools/text-color';

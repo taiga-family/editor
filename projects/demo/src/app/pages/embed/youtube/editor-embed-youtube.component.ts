@@ -39,8 +39,5 @@ export default class ExampleTuiEditorEmbedComponent {
         'youtube-tool/youtube-tool.styles.less': import(
             './examples/1/youtube-tool/youtube-tool.styles.less?raw'
         ),
-        'youtube-tool/youtube-tool.module.ts': import(
-            './examples/1/youtube-tool/youtube-tool.module.ts?raw'
-        ),
     };
 }

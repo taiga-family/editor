@@ -39,8 +39,5 @@ export default class ExampleTuiEditorFontComponent {
         'font-size-tool/font-size-tool.template.html': import(
             './examples/3/font-size-tool/font-size-tool.template.html?raw'
         ),
-        'font-size-tool/font-size-tool.module.ts': import(
-            './examples/3/font-size-tool/font-size-tool.module.ts?raw'
-        ),
     };
 }

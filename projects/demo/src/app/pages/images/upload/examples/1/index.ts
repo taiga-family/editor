@@ -26,8 +26,7 @@ import {
     TUI_EDITOR_MIN_IMAGE_WIDTH,
     TUI_IMAGE_LOADER,
     TuiEditorComponent,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -38,14 +37,14 @@ import {ImgbbService} from './imgbb.service';
     standalone: true,
     selector: 'tui-editor-upload-images-example-1',
     imports: [
-        TuiEditorSocketModule,
         TuiErrorModule,
-        TuiEditorModule,
         TuiLoaderModule,
         AsyncPipe,
         TuiValidatorModule,
         ReactiveFormsModule,
         TuiFieldErrorPipeModule,
+        TuiEditorSocketComponent,
+        TuiEditorComponent,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

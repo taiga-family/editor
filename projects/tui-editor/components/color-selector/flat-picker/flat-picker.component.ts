@@ -12,6 +12,7 @@ import {TuiPickerService} from '@tinkoff/tui-editor/services';
 import {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-flat-picker',
     templateUrl: './flat-picker.template.html',
     styleUrls: ['./flat-picker.style.less'],

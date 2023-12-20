@@ -1,3 +1,4 @@
+import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +9,15 @@ import {
 } from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiGroupModule,
+    TuiHintModule,
+    TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
 import {
     TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES,
     TUI_EDITOR_OPTIONS,
@@ -16,6 +25,11 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import {TuiGradientDirection} from '@tinkoff/tui-editor/types';
 import {tuiGetGradientData, tuiParseGradient} from '@tinkoff/tui-editor/utils';
+
+import {TuiColorEditComponent} from './color-edit/color-edit.component';
+import {TuiColorPickerComponent} from './color-picker/color-picker.component';
+import {TuiLinearMultiPickerComponent} from './linear-multi-picker/linear-multi-picker.component';
+import {TuiPaletteComponent} from './palette/palette.component';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
@@ -34,7 +48,22 @@ const ICONS: Record<TuiGradientDirection, string> = {
 };
 
 @Component({
+    standalone: true,
     selector: 'tui-color-selector',
+    imports: [
+        NgIf,
+        TuiHostedDropdownModule,
+        TuiButtonModule,
+        TuiSvgModule,
+        TuiDataListModule,
+        NgForOf,
+        TuiHintModule,
+        TuiLinearMultiPickerComponent,
+        TuiColorPickerComponent,
+        TuiColorEditComponent,
+        TuiPaletteComponent,
+        TuiGroupModule,
+    ],
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

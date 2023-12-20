@@ -42,8 +42,5 @@ export default class ExampleTuiEditorPasteEmojiToolComponent {
         'smiles-tool/smiles-tool.styles.less': import(
             './examples/1/smiles-tool/smiles-tool.styles.less?raw'
         ),
-        'smiles-tool/smiles-tool.module.ts': import(
-            './examples/1/smiles-tool/smiles-tool.module.ts?raw'
-        ),
     };
 }

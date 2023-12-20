@@ -13,6 +13,7 @@ import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {
     AbstractTuiControl,
+    TuiActiveZoneDirective,
     TuiFocusableElementAccessor,
     TuiNativeFocusableElement,
     tuiPure,
@@ -20,8 +21,12 @@ import {
 import {
     tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
+    TuiPrimitiveTextfieldModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
+import {TuiColorSelectorComponent} from '@tinkoff/tui-editor/components/color-selector';
 import {
     tuiGetGradientData,
     tuiParseGradient,
@@ -29,7 +34,15 @@ import {
 } from '@tinkoff/tui-editor/utils';
 
 @Component({
+    standalone: true,
     selector: 'tui-input-color',
+    imports: [
+        TuiHostedDropdownModule,
+        TuiPrimitiveTextfieldModule,
+        TuiTextfieldControllerModule,
+        TuiColorSelectorComponent,
+        TuiActiveZoneDirective,
+    ],
     templateUrl: './input-color.template.html',
     styleUrls: ['./input-color.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

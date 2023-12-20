@@ -8,7 +8,7 @@ import {
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
 import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
-import {TuiColorPickerModule} from '@tinkoff/tui-editor';
+import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 
 import {TuiColorPickerExample1} from './examples/1';
 import {TuiColorPickerExample2} from './examples/2';
@@ -29,8 +29,8 @@ import {TuiColorPickerExample4} from './examples/4';
         TuiDocDemoModule,
         TuiDocDocumentationModule,
         TuiDocCodeModule,
-        TuiColorPickerModule,
         TuiLinkModule,
+        TuiColorPickerComponent,
     ],
     templateUrl: './editor-input-color-picker.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
