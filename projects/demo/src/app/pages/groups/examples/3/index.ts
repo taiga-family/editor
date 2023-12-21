@@ -20,18 +20,15 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/group').then(
-                    ({createGroupExtension}) =>
-                        createGroupExtension({
-                            draggable: false,
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({tuiCreateGroupExtension}) =>
+                    tuiCreateGroupExtension({
+                        draggable: false,
 
-                            // @note: you can override css styles with your own classes
-                            groupNodeClass: 'group',
-                            groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
-                        }),
+                        // @note: you can override css styles with your own classes
+                        groupNodeClass: 'group',
+                        groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
+                    }),
                 ),
             ],
         },

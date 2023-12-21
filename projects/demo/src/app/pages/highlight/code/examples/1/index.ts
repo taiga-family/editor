@@ -19,9 +19,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useFactory: () => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
             ],
         },
     ],

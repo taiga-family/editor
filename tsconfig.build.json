@@ -8,15 +8,14 @@
         "inlineSourceMap": true,
         "inlineSources": true,
         "paths": {
-            "@tinkoff/tui-editor/*": ["./dist/tui-editor/*"],
-            "@tinkoff/tui-editor": ["./dist/tui-editor/index"],
-            "@taiga-ui/kit": ["./taiga-ui/dist/kit/index"],
+            "@tinkoff/tui-editor": ["./dist/tui-editor"],
+            "@taiga-ui/kit": ["./taiga-ui/dist/kit"],
             "@taiga-ui/kit/*": ["./taiga-ui/dist/kit/*"],
-            "@taiga-ui/cdk": ["./taiga-ui/dist/cdk/index"],
+            "@taiga-ui/cdk": ["./taiga-ui/dist/cdk"],
             "@taiga-ui/cdk/*": ["./taiga-ui/dist/cdk/*"],
-            "@taiga-ui/core": ["./taiga-ui/dist/core/index"],
+            "@taiga-ui/core": ["./taiga-ui/dist/core"],
             "@taiga-ui/core/*": ["./taiga-ui/dist/core/*"],
-            "@taiga-ui/i18n": ["./taiga-ui/dist/i18n/index"],
+            "@taiga-ui/i18n": ["./taiga-ui/dist/i18n"],
             "@taiga-ui/i18n/*": ["./taiga-ui/dist/i18n/*"]
         }
     }

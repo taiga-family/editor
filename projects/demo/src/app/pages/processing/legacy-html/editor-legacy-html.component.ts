@@ -24,7 +24,7 @@ export default class ExampleTuiEditorProcessingContentComponent {
         HTML: import('./examples/1/index.html?raw'),
         './transformer.ts': import('./examples/1/transformer.ts?raw'),
         './legacy-editor.ts': import(
-            '../../../../../../tui-editor/utils/legacy-converter.ts?raw'
+            '../../../../../../tui-editor/src/utils/legacy-converter.ts?raw'
         ),
     };
 }

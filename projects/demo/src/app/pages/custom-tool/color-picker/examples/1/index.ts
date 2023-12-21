@@ -18,17 +18,13 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tinkoff/tui-editor/extensions/font-color').then(
-                    ({FontColor}) => FontColor,
-                ),
-                import('@tinkoff/tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
+                import('@tinkoff/tui-editor').then(({TuiFontColor}) => TuiFontColor),
+                import('@tinkoff/tui-editor').then(
+                    ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
             ],
         },

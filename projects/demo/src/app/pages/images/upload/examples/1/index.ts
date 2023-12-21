@@ -22,8 +22,7 @@ import {TuiErrorModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TUI_EDITOR_MAX_IMAGE_WIDTH,
-    TUI_EDITOR_MIN_IMAGE_WIDTH,
+    TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditorComponent,
     TuiEditorSocketComponent,
@@ -54,12 +53,9 @@ import {ImgbbService} from './imgbb.service';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
-                    ({createImageEditorExtension}) =>
-                        createImageEditorExtension(injector),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                    tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tiptap/extension-image').then(({default: Image}) =>
                     Image.configure({inline: true, allowBase64: true}),
@@ -67,12 +63,11 @@ import {ImgbbService} from './imgbb.service';
             ],
         },
         {
-            provide: TUI_EDITOR_MIN_IMAGE_WIDTH,
-            useValue: 150,
-        },
-        {
-            provide: TUI_EDITOR_MAX_IMAGE_WIDTH,
-            useValue: 400,
+            provide: TUI_IMAGE_EDITOR_OPTIONS,
+            useValue: {
+                minWidth: 100,
+                maxWidth: 400,
+            },
         },
         {
             provide: TUI_IMAGE_LOADER,

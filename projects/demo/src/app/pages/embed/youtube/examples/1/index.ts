@@ -28,12 +28,8 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/youtube').then(
-                    ({Youtube}) => Youtube,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({TuiYoutube}) => TuiYoutube),
             ],
         },
     ],

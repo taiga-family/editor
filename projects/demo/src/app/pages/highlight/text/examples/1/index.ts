@@ -26,9 +26,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
                     TextAlign.configure({types: ['heading', 'paragraph']}),
                 ),

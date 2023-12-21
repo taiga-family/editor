@@ -30,28 +30,14 @@ import {map, Observable} from 'rxjs';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (_injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/link').then(
-                    ({TuiLink}) => TuiLink,
-                ),
-                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
-                    ({TuiJumpAnchor}) => TuiJumpAnchor,
-                ),
-                import('@tinkoff/tui-editor/extensions/file-link').then(
-                    ({TuiFileLink}) => TuiFileLink,
-                ),
-                import('@tinkoff/tui-editor/extensions/media').then(
-                    ({TuiVideo}) => TuiVideo,
-                ),
-                import('@tinkoff/tui-editor/extensions/media').then(
-                    ({TuiAudio}) => TuiAudio,
-                ),
-                import('@tinkoff/tui-editor/extensions/media').then(
-                    ({TuiSource}) => TuiSource,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@tinkoff/tui-editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@tinkoff/tui-editor').then(({TuiVideo}) => TuiVideo),
+                import('@tinkoff/tui-editor').then(({TuiAudio}) => TuiAudio),
+                import('@tinkoff/tui-editor').then(({TuiSource}) => TuiSource),
             ],
         },
         {

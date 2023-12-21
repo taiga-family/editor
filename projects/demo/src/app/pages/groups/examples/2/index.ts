@@ -20,23 +20,20 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/group').then(
-                    ({createGroupExtension}) =>
-                        createGroupExtension({
-                            nested: false,
-                            draggable: false,
-                            createOnEnter: true,
-                            // @note: you can override css styles with your own classes
-                            groupNodeClass: 'filled-group',
-                            groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
-                        }),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({tuiCreateGroupExtension}) =>
+                    tuiCreateGroupExtension({
+                        nested: false,
+                        draggable: false,
+                        createOnEnter: true,
+                        // @note: you can override css styles with your own classes
+                        groupNodeClass: 'filled-group',
+                        groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
+                    }),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
+                import('@tinkoff/tui-editor').then(
+                    ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
             ],
         },
