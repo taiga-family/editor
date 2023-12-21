@@ -5,6 +5,7 @@ import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
 import {TuiEditorPortalService} from './editor-portal.service';
 
 @Directive({
+    standalone: true,
     selector: '[tuiEditorPortal]',
     providers: [
         {provide: TuiDropdownPortalService, useExisting: TuiEditorPortalService},

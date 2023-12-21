@@ -1,4 +1,6 @@
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -9,8 +11,18 @@ import {
 } from '@tinkoff/tui-editor/tokens';
 import {map, Observable} from 'rxjs';
 
+import {TuiTableSizeSelectorComponent} from './table-size-selector';
+
 @Component({
+    standalone: true,
     selector: 'tui-table-create',
+    imports: [
+        TuiHostedDropdownModule,
+        TuiHintModule,
+        TuiButtonModule,
+        AsyncPipe,
+        TuiTableSizeSelectorComponent,
+    ],
     templateUrl: './table-create.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

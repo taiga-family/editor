@@ -1,4 +1,5 @@
 export * from '@tinkoff/tui-editor/abstract';
+export * from '@tinkoff/tui-editor/angular-contenteditable-accessor';
 export * from '@tinkoff/tui-editor/components';
 export * from '@tinkoff/tui-editor/constants';
 export * from '@tinkoff/tui-editor/directives';

@@ -3,15 +3,15 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
     selector: 'tui-editor-groups-example-1',
-    imports: [TuiEditorModule, ReactiveFormsModule, TuiEditorSocketModule],
+    imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

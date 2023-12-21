@@ -11,7 +11,10 @@ import {
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
+import {
+    AbstractTuiEditorResizable,
+    TuiEditorResizableComponent,
+} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {
     TUI_EDITOR_MAX_IMAGE_WIDTH,
@@ -22,7 +25,9 @@ import {
 } from './image-editor.options';
 
 @Component({
+    standalone: true,
     selector: 'tui-image-editor',
+    imports: [TuiEditorResizableComponent],
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,3 +1,4 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,13 +19,37 @@ import {
     EMPTY_QUERY,
     tuiAssert,
     TuiDestroyService,
+    TuiFocusableModule,
     TuiHandler,
     TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
+    TuiItemModule,
 } from '@taiga-ui/cdk';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {
+    TuiButtonModule,
+    TuiHintModule,
+    TuiHostedDropdownComponent,
+    TuiHostedDropdownModule,
+} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {TuiEditLinkComponent} from '@tinkoff/tui-editor/components/edit-link';
+import {
+    TuiAlignContentComponent,
+    TuiCodeComponent,
+    TuiDetailsComponent,
+    TuiDetailsRemoveComponent,
+    TuiEditorGroupToolComponent,
+    TuiFontSizeComponent,
+    TuiListConfigsComponent,
+    TuiTableMergeCellsComponent,
+    TuiTableRowColumnManagerComponent,
+} from '@tinkoff/tui-editor/components/toolbar-tools';
+import {TuiFontStyleComponent} from '@tinkoff/tui-editor/components/toolbar-tools/font-style';
+import {TuiHighlightColorComponent} from '@tinkoff/tui-editor/components/toolbar-tools/highlight-color';
+import {TuiTableCellColorComponent} from '@tinkoff/tui-editor/components/toolbar-tools/table-cell-color';
+import {TuiTableCreateComponent} from '@tinkoff/tui-editor/components/toolbar-tools/table-create';
+import {TuiTextColorComponent} from '@tinkoff/tui-editor/components/toolbar-tools/text-color';
 import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
@@ -42,7 +67,33 @@ import {Observable, take, takeUntil} from 'rxjs';
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
 
 @Component({
+    standalone: true,
     selector: 'tui-toolbar',
+    imports: [
+        TuiTableCellColorComponent,
+        TuiTableMergeCellsComponent,
+        TuiTableCreateComponent,
+        NgIf,
+        TuiItemModule,
+        TuiButtonModule,
+        TuiHintModule,
+        TuiFocusableModule,
+        TuiTextColorComponent,
+        TuiHighlightColorComponent,
+        TuiEditLinkComponent,
+        TuiHostedDropdownModule,
+        TuiFontStyleComponent,
+        AsyncPipe,
+        TuiToolbarNavigationManagerDirective,
+        TuiDetailsComponent,
+        TuiDetailsRemoveComponent,
+        TuiEditorGroupToolComponent,
+        TuiTableRowColumnManagerComponent,
+        TuiCodeComponent,
+        TuiListConfigsComponent,
+        TuiAlignContentComponent,
+        TuiFontSizeComponent,
+    ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

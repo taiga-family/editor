@@ -48,7 +48,7 @@ export const routes: Routes = [
                 './pages/angular-contenteditable-accessor/angular-contenteditable-accessor.component'
             ),
         data: {
-            title: 'Angular contenteditable accessor',
+            title: 'Contenteditable accessor',
         },
     },
     {

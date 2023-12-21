@@ -1,3 +1,4 @@
+import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,7 +14,9 @@ import {TuiPickerService} from '@tinkoff/tui-editor/services';
 import {Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-linear-multi-picker',
+    imports: [NgForOf],
     templateUrl: './linear-multi-picker.template.html',
     styleUrls: ['./linear-multi-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

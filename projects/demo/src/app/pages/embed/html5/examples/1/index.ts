@@ -14,7 +14,6 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorAttachedFile,
     TuiEditorComponent,
-    TuiEditorModule,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import {map, Observable} from 'rxjs';
@@ -22,7 +21,7 @@ import {map, Observable} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-editor-embed-html5-example-1',
-    imports: [TuiEditorModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

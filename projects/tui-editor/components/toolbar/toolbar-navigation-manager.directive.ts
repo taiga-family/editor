@@ -8,6 +8,7 @@ import {
 } from '@taiga-ui/cdk';
 
 @Directive({
+    standalone: true,
     selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {

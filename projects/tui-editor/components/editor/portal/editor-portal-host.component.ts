@@ -6,6 +6,7 @@ import {
 } from '@taiga-ui/cdk';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-portal-host',
     template: `
         <ng-container #viewContainer></ng-container>

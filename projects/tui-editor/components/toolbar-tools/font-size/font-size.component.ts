@@ -1,5 +1,12 @@
+import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
+import {
+    TuiButtonModule,
+    TuiDataListModule,
+    TuiHintModule,
+    TuiHostedDropdownModule,
+} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
@@ -14,7 +21,19 @@ import {
 import {map, Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-font-size',
+    imports: [
+        NgStyle,
+        NgClass,
+        LowerCasePipe,
+        AsyncPipe,
+        NgForOf,
+        TuiDataListModule,
+        TuiHostedDropdownModule,
+        TuiButtonModule,
+        TuiHintModule,
+    ],
     templateUrl: './font-size.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

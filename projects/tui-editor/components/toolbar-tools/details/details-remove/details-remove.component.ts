@@ -1,4 +1,6 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TuiButtonModule, TuiHintModule} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -10,7 +12,9 @@ import {
 import {distinctUntilChanged, map, Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-details-remove',
+    imports: [AsyncPipe, NgIf, TuiButtonModule, TuiHintModule],
     templateUrl: './details-remove.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -4,9 +4,11 @@ import {Inject, Injectable} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
-import type {TuiEditableIframe} from '@tinkoff/tui-editor/extensions/iframe-editor';
-import type {TuiEditableImage} from '@tinkoff/tui-editor/extensions/image-editor';
-import type {TuiYoutubeOptions} from '@tinkoff/tui-editor/extensions/youtube';
+import type {
+    TuiEditableIframe,
+    TuiEditableImage,
+    TuiYoutubeOptions,
+} from '@tinkoff/tui-editor/extensions';
 import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import {TIPTAP_EDITOR} from '@tinkoff/tui-editor/tokens';
 import {tuiGetMarkRange, tuiParseStyle} from '@tinkoff/tui-editor/utils';

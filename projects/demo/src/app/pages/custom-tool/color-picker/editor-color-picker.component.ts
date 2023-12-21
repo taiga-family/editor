@@ -31,8 +31,5 @@ export default class ExampleTuiEditorColorPickerToolComponent {
         './custom-color-picker/custom-color-picker.component.html': import(
             './examples/1/custom-color-picker/custom-color-picker.component.html?raw'
         ),
-        './custom-color-picker/custom-color-picker.module.ts': import(
-            './examples/1/custom-color-picker/custom-color-picker.module.ts?raw'
-        ),
     };
 }

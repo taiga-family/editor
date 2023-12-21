@@ -16,6 +16,7 @@ import {Observable, takeUntil} from 'rxjs';
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
 @Directive({
+    standalone: true,
     selector: '[tuiTiptapEditor]',
     providers: [TuiDestroyService],
 })

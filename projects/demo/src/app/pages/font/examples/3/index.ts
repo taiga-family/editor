@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiItemModule} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorModule,
-    TuiEditorSocketModule,
+    TuiEditorComponent,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
@@ -13,10 +14,11 @@ import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.c
     standalone: true,
     selector: 'tui-editor-font-example-3',
     imports: [
-        TuiEditorSocketModule,
-        TuiEditorModule,
         ReactiveFormsModule,
         ExampleTuiFontSizeToolComponent,
+        TuiEditorSocketComponent,
+        TuiEditorComponent,
+        TuiItemModule,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

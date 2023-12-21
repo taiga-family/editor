@@ -2,7 +2,11 @@ import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItemModule} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorModule, TuiEditorTool} from '@tinkoff/tui-editor';
+import {
+    TUI_EDITOR_EXTENSIONS,
+    TuiEditorComponent,
+    TuiEditorTool,
+} from '@tinkoff/tui-editor';
 
 import {ExampleTuiPasteImageToolComponent} from './image-tool/image-tool.component';
 import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
@@ -14,8 +18,8 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
         TuiSvgModule,
         ExampleTuiPasteImageToolComponent,
         TuiItemModule,
-        TuiEditorModule,
         ReactiveFormsModule,
+        TuiEditorComponent,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

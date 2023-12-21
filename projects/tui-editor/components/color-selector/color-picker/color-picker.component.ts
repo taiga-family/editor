@@ -10,8 +10,13 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
 
+import {TuiFlatPickerComponent} from '../flat-picker/flat-picker.component';
+import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component';
+
 @Component({
+    standalone: true,
     selector: 'tui-color-picker',
+    imports: [TuiFlatPickerComponent, TuiLinearPickerComponent],
     templateUrl: './color-picker.template.html',
     styleUrls: ['./color-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

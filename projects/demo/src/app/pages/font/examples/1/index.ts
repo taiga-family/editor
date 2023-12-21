@@ -2,9 +2,9 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorModule,
+    TuiEditorComponent,
     tuiEditorOptionsProvider,
-    TuiEditorSocketModule,
+    TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import {mergeAttributes} from '@tiptap/core';
@@ -12,7 +12,7 @@ import {mergeAttributes} from '@tiptap/core';
 @Component({
     standalone: true,
     selector: 'tui-editor-font-example-1',
-    imports: [TuiEditorSocketModule, TuiEditorModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

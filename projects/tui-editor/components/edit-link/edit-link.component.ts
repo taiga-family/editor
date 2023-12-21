@@ -1,4 +1,4 @@
-import {DOCUMENT} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +8,15 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import {FormsModule} from '@angular/forms';
+import {TuiAutoFocusModule, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import {
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiScrollbarModule,
+    TuiSvgModule,
+} from '@taiga-ui/core';
+import {TuiInputInlineModule} from '@taiga-ui/kit';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
@@ -23,10 +31,27 @@ import {
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
 
+import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';
+import {TuiShortUrlPipe} from './pipes/short-url.pipe';
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
 @Component({
+    standalone: true,
     selector: 'tui-edit-link',
+    imports: [
+        NgForOf,
+        TuiFilterAnchorsPipe,
+        TuiButtonModule,
+        TuiShortUrlPipe,
+        TuiLinkModule,
+        TuiSvgModule,
+        FormsModule,
+        NgIf,
+        TuiScrollbarModule,
+        AsyncPipe,
+        TuiAutoFocusModule,
+        TuiInputInlineModule,
+    ],
     templateUrl: './edit-link.template.html',
     styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

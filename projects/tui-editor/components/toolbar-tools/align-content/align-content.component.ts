@@ -1,4 +1,7 @@
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -10,7 +13,16 @@ import {
 import {combineLatest, map, Observable} from 'rxjs';
 
 @Component({
+    standalone: true,
     selector: 'tui-align-content',
+    imports: [
+        TuiHintModule,
+        TuiButtonModule,
+        TuiHostedDropdownModule,
+        AsyncPipe,
+        TuiLetModule,
+        NgIf,
+    ],
     templateUrl: './align-content.template.html',
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

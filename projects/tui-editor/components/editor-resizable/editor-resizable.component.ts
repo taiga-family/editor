@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,10 +7,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {tuiIsNumber, tuiPx} from '@taiga-ui/cdk';
+import {tuiIsNumber, tuiPx, TuiResizerModule} from '@taiga-ui/cdk';
 
 @Component({
+    standalone: true,
     selector: 'tui-editor-resizable',
+    imports: [TuiResizerModule, NgIf],
     templateUrl: './editor-resizable.component.html',
     styleUrls: ['./editor-resizable.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
