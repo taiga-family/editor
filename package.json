@@ -33,8 +33,7 @@
         "lint": "eslint .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "format": "npm run prettier -- --write",
-        "stylelint": "stylelint '**/*.{less,css}' --config package.json",
-        "typecheck": "tsc --noEmit --skipLibCheck --incremental false --tsBuildInfoFile null --project tsconfig.spec.json"
+        "stylelint": "stylelint '**/*.{less,css}' --config package.json"
     },
     "commitlint": {
         "extends": [

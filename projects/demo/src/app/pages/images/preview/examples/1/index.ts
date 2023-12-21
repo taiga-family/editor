@@ -31,12 +31,9 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
-                    ({tuiCreateImageEditorExtension}) =>
-                        tuiCreateImageEditorExtension({injector}),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                    tuiCreateImageEditorExtension({injector}),
                 ),
             ],
         },

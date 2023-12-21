@@ -29,14 +29,11 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
-                    ({tuiCreateImageEditorExtension}) =>
-                        tuiCreateImageEditorExtension({injector}).extend(
-                            IMAGE_CLIPBOARD_PASTE_EXTENSION,
-                        ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                    tuiCreateImageEditorExtension({injector}).extend(
+                        IMAGE_CLIPBOARD_PASTE_EXTENSION,
+                    ),
                 ),
             ],
         },

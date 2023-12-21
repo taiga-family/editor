@@ -19,20 +19,16 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-placeholder').then(({Placeholder}) =>
                     Placeholder.configure({
                         emptyNodeClass: 't-editor-placeholder',
-                        // eslint-disable-next-line @typescript-eslint/quotes
                         placeholder: "Type '/' for command", // Notion like
                         includeChildren: true,
                     }),
                 ),
-                import('@tinkoff/tui-editor/extensions/group').then(
-                    ({createGroupExtension}) =>
-                        createGroupExtension({nested: false, createOnEnter: true}),
+                import('@tinkoff/tui-editor').then(({tuiCreateGroupExtension}) =>
+                    tuiCreateGroupExtension({nested: false, createOnEnter: true}),
                 ),
             ],
         },

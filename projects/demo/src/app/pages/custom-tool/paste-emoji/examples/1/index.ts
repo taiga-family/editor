@@ -27,9 +27,7 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
-                    ({StarterKit}) => StarterKit,
-                ),
+                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('./smiles-tool/emoji.extension').then(
                     ({EmojiExtension}) => EmojiExtension,
                 ),

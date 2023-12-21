@@ -19,8 +19,8 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit')
-                    .then(({StarterKit}) => StarterKit)
+                import('@tinkoff/tui-editor')
+                    .then(({TuiStarterKit}) => TuiStarterKit)
                     .then(extension => extension.configure({heading: {levels: [1, 2]}})),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
                     TextAlign.configure({types: ['heading', 'paragraph']}),
@@ -37,22 +37,14 @@ import {
                 import('@tiptap/extension-superscript').then(
                     ({default: Superscript}) => Superscript,
                 ),
-                import('@tinkoff/tui-editor/extensions/font-color').then(
-                    ({FontColor}) => FontColor,
+                import('@tinkoff/tui-editor').then(({TuiFontColor}) => TuiFontColor),
+                import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@tinkoff/tui-editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@tinkoff/tui-editor').then(
+                    ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
-                import('@tinkoff/tui-editor/extensions/link').then(
-                    ({TuiLink}) => TuiLink,
-                ),
-                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
-                    ({TuiJumpAnchor}) => TuiJumpAnchor,
-                ),
-                import('@tinkoff/tui-editor/extensions/file-link').then(
-                    ({TuiFileLink}) => TuiFileLink,
-                ),
-                import('@tinkoff/tui-editor/extensions/background-color').then(
-                    ({BackgroundColor}) => BackgroundColor,
-                ),
-                import('@tinkoff/tui-editor/extensions/table').then(({TuiTable}) =>
+                import('@tinkoff/tui-editor').then(({TuiTable}) =>
                     TuiTable.configure({resizable: true}),
                 ),
                 import('@tiptap/extension-table-row').then(
@@ -64,27 +56,20 @@ import {
                 import('@tiptap/extension-table-header').then(
                     ({TableHeader}) => TableHeader,
                 ),
-                import('@tinkoff/tui-editor/extensions/indent-outdent').then(
+                import('@tinkoff/tui-editor').then(
                     ({TuiTabExtension}) => TuiTabExtension,
                 ),
-                import('@tinkoff/tui-editor/extensions/table-cell-background').then(
+                import('@tinkoff/tui-editor').then(
                     ({TableCellBackground}) => TableCellBackground,
                 ),
-                import('@tinkoff/tui-editor/extensions/details').then(
+                import('@tinkoff/tui-editor').then(
                     ({TuiDetailsContent}) => TuiDetailsContent,
                 ),
-                import('@tinkoff/tui-editor/extensions/details').then(
-                    ({TuiDetails}) => TuiDetails,
-                ),
-                import('@tinkoff/tui-editor/extensions/details').then(
-                    ({TuiSummary}) => TuiSummary,
-                ),
-                import('@tinkoff/tui-editor/extensions/font-size').then(
-                    ({TuiFontSize}) => TuiFontSize,
-                ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
-                    ({createImageEditorExtension}) =>
-                        createImageEditorExtension(injector),
+                import('@tinkoff/tui-editor').then(({TuiDetails}) => TuiDetails),
+                import('@tinkoff/tui-editor').then(({TuiSummary}) => TuiSummary),
+                import('@tinkoff/tui-editor').then(({TuiFontSize}) => TuiFontSize),
+                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                    tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tiptap/extension-focus').then(({FocusClasses}) =>
                     FocusClasses.configure({
