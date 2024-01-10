@@ -17,9 +17,9 @@
         "Alex Inkin <alexander@inkin.ru>"
     ],
     "workspaces": [
-        "taiga-ui",
-        "taiga-ui/projects/*",
-        "projects/*"
+        "projects/*",
+        "taiga-ui/*",
+        "taiga-ui/projects/*"
     ],
     "scripts": {
         "postinstall": "husky install && ngcc --async",
@@ -149,7 +149,6 @@
         "ng-morph": "4.0.6",
         "ng-packagr": "15.2.2",
         "ngx-highlightjs": "8.0.0",
-        "ngx-markdown": "12.1.0",
         "nx": "17.2.8",
         "parse5": "6.0.1",
         "prettier": "3.2.2",

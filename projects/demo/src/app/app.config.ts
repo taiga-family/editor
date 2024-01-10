@@ -1,5 +1,4 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {HttpClient} from '@angular/common/http';
 import {importProvidersFrom} from '@angular/core';
 import {ApplicationConfig} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
@@ -14,7 +13,6 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TUI_SANITIZER, TuiDialogModule, TuiRootModule} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
-import {MarkdownModule} from 'ngx-markdown';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
@@ -30,11 +28,7 @@ export const appConfig: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        importProvidersFrom(
-            TuiRootModule,
-            TuiDialogModule,
-            MarkdownModule.forRoot({loader: HttpClient}),
-        ),
+        importProvidersFrom(TuiRootModule, TuiDialogModule),
         {
             provide: TUI_SANITIZER,
             useClass: NgDompurifySanitizer,

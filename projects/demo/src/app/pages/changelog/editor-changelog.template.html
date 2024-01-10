@@ -1,6 +1,6 @@
 <tui-doc-page header="Changelog">
     <div
-        class="changelog"
-        [innerHTML]="changelog$ | async"
+        class="t-changelog"
+        [innerHTML]="changelog | tuiMarkdown: mapper | async"
     ></div>
 </tui-doc-page>
