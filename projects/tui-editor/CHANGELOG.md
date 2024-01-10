@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.11.0 (2024-01-10)
+
+**Note:** Version bump only for package @tinkoff/tui-editor
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.10.0 (2023-12-13)
 
 ### Features
