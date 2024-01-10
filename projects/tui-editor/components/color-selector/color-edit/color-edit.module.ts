@@ -9,7 +9,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiInputCountModule,
+    TuiInputNumberModule,
     TuiSelectModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/kit';
@@ -26,8 +26,8 @@ import {TuiColorEditComponent} from './color-edit.component';
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
         TuiDropdownModule,
-        TuiInputCountModule,
         TuiDataListModule,
+        TuiInputNumberModule,
     ],
     declarations: [TuiColorEditComponent],
     exports: [TuiColorEditComponent],
