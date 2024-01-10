@@ -29,41 +29,45 @@
     (valueChange)="onHexChange($event)"
 ></tui-primitive-textfield>
 <ng-template #rgb>
-    <tui-input-count
+    <tui-input-number
+        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
-        [hideButtons]="true"
         [max]="255"
+        [min]="0"
         [ngModel]="color[0]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange($event, color[1], color[2], color[3])"
-    ></tui-input-count>
-    <tui-input-count
+    ></tui-input-number>
+    <tui-input-number
+        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
-        [hideButtons]="true"
         [max]="255"
+        [min]="0"
         [ngModel]="color[1]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], $event, color[2], color[3])"
-    ></tui-input-count>
-    <tui-input-count
+    ></tui-input-number>
+    <tui-input-number
+        decimal="never"
         tuiTextfieldSize="m"
         class="t-rgb"
-        [hideButtons]="true"
         [max]="255"
+        [min]="0"
         [ngModel]="color[2]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], color[1], $event, color[3])"
-    ></tui-input-count>
+    ></tui-input-number>
 </ng-template>
-<tui-input-count
+<tui-input-number
+    decimal="never"
     tuiTextfieldPostfix="%"
     tuiTextfieldSize="m"
     class="t-opacity tui-group__auto-width-item"
-    [hideButtons]="true"
     [max]="100"
+    [min]="0"
     [ngModel]="opacity"
     [tuiTextfieldLabelOutside]="true"
     (ngModelChange)="onRgbChange(color[0], color[1], color[2], $event / 100)"
-></tui-input-count>
+></tui-input-number>
