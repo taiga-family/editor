@@ -24,7 +24,7 @@ jobs:
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
-      - name: Publish next snapshots
+      - name: Publish v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
