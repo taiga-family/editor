@@ -12,6 +12,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/config/git@v1.50.5
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+      - run: git config --global core.hooksPath /dev/null
       - uses: taiga-family/ci/actions/git/sync-submodule@v1.50.5
       - uses: taiga-family/ci/actions/git/status@v1.50.5
         id: git

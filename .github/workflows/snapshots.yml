@@ -1,21 +1,46 @@
 name: 🚀 Snapshots
 on:
   push:
-    branches: [main]
+    branches: [main, 'v[0-9]+.x']
 
 jobs:
   snapshots-next:
+    if: ${{ !contains(github.head_ref) }}
+    name: next
     runs-on: ubuntu-latest
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
       - uses: taiga-family/ci/actions/setup/variables@v1.50.5
       - uses: taiga-family/ci/actions/setup/node@v1.50.5
+
       - run: npx nx build editor-demo
-      - uses: s0/git-publish-subdir-action@v2.6.0
+      - run: tree ${{ env.DIST }} -P '*.html'
+      - name: Publish snapshots
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          FOLDER: ${{ env.DIST }}/next
+          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+  snapshots-of-release:
+    if: ${{ contains(github.head_ref) }}
+    name: production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
+      - uses: taiga-family/ci/actions/setup/variables@v1.50.5
+      - uses: taiga-family/ci/actions/setup/node@v1.50.5
+        id: nodejs-workspace
+
+      - run: npx nx build editor-demo
+      - run: tree ${{ env.DIST }} -P '*.html'
+      - name: Publish snapshots
+        uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
-          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
+          BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:

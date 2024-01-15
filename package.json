@@ -22,7 +22,7 @@
         "taiga-ui/projects/*"
     ],
     "scripts": {
-        "postinstall": "husky install && ngcc --async",
+        "postinstall": "husky install",
         "*** Workflow ***": "",
         "start": "nx serve editor-demo",
         "build": "nx run editor-demo:build:production",
