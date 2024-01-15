@@ -22,6 +22,14 @@ test.describe('ColorPicker', () => {
 
         await page.locator('#dropdown [automation-id="color-picker__button"]').click();
 
+        // changeToHex
+        await page
+            .locator('tui-color-edit')
+            .locator('tui-select')
+            .locator('[automation-id="tui-primitive-textfield__native-input"]')
+            .click();
+        await page.locator('tui-data-list button:nth-of-type(2)').click();
+
         // setInputBox
         for (const index of [1, 2, 3]) {
             const input = page
@@ -31,14 +39,6 @@ test.describe('ColorPicker', () => {
             await input.focus();
             await input.fill('255');
         }
-
-        // changeToHex
-        await page
-            .locator('tui-color-edit')
-            .locator('tui-select')
-            .locator('[automation-id="tui-primitive-textfield__native-input"]')
-            .click();
-        await page.locator('tui-data-list button:nth-of-type(2)').click();
 
         await expect(page.locator('example-tui-color-picker')).toHaveScreenshot(
             'ColorPicker-03.png',
