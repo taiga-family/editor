@@ -17,7 +17,7 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
-    TuiInputCountModule,
+    TuiInputNumberModule,
     TuiSelectModule,
     TuiValueAccessorModule,
 } from '@taiga-ui/kit';
@@ -37,8 +37,8 @@ const HEX_MODE_LENGTH = 6;
         NgIf,
         MaskitoModule,
         TuiValueAccessorModule,
-        TuiInputCountModule,
         NgForOf,
+        TuiInputNumberModule,
     ],
     templateUrl: './color-edit.template.html',
     styleUrls: ['./color-edit.style.less'],
