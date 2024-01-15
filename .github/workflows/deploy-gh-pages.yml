@@ -1,0 +1,35 @@
+name: 🚀 Deploy to Github Pages
+on:
+  workflow_run:
+    workflows: ['🚀 Snapshots']
+    types:
+      - completed
+
+jobs:
+  deploy-gh-pages:
+    if: ${{ contains(github.event.workflow_run.head_branch, 'main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
+      - uses: taiga-family/ci/actions/setup/variables@v1.50.5
+
+      - name: Prepare demo before deploy from snapshots
+        run: |
+          git clone --depth 1 --branch snapshots/demo/v1.x ${{ env.REPO }} ${{ env.DIST }}
+          git clone --depth 1 --branch snapshots/demo/v2.x ${{ env.REPO }} ${{ env.DIST }}/v2
+          git clone --depth 1 --branch snapshots/demo/next/main ${{ env.REPO }} ${{ env.DIST }}/next
+
+      - name: Cleanup after clone snapshots
+        run: find ${{ env.DIST }} -name ".git" -exec rm -rf {} \; > /dev/null 2>&1 || echo "removed .git"
+
+      - name: Debug output
+        run: tree ${{ env.DIST }} -P '*.html'
+
+      - uses: taiga-family/ci/actions/deploy/github-pages@v1.50.5
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          folder: dist/demo/browser
+
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true
