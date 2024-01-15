@@ -22,33 +22,26 @@ test.describe('ColorPicker', () => {
 
         await page.locator('#dropdown [automation-id="color-picker__button"]').click();
 
-        await changeToHex();
-        await setInputBox(1, 255);
-        await setInputBox(2, 255);
-        await setInputBox(3, 255);
+        // setInputBox
+        for (const index of [1, 2, 3]) {
+            const input = page
+                .locator(`tui-color-edit tui-input-number:nth-of-type(${index})`)
+                .locator('[automation-id="tui-primitive-textfield__native-input"]');
+
+            await input.focus();
+            await input.fill('255');
+        }
+
+        // changeToHex
+        await page
+            .locator('tui-color-edit')
+            .locator('tui-select')
+            .locator('[automation-id="tui-primitive-textfield__native-input"]')
+            .click();
+        await page.locator('tui-data-list button:nth-of-type(2)').click();
 
         await expect(page.locator('example-tui-color-picker')).toHaveScreenshot(
             'ColorPicker-03.png',
         );
-
-        async function changeToHex(): Promise<void> {
-            await page
-                .locator('tui-color-edit')
-                .locator('tui-select')
-                .locator('[automation-id="tui-primitive-textfield__native-input"]')
-                .click();
-            await page.locator('tui-data-list button:nth-of-type(2)').click();
-        }
-
-        async function setInputBox(index: 1 | 2 | 3, value: number): Promise<void> {
-            await page
-                .locator(`tui-color-edit tui-input-count:nth-of-type(${index})`)
-                .locator('[automation-id="tui-primitive-textfield__native-input"]')
-                .focus();
-            await page
-                .locator(`tui-color-edit tui-input-count:nth-of-type(${index})`)
-                .locator('[automation-id="tui-primitive-textfield__native-input"]')
-                .fill(value.toString());
-        }
     });
 });
