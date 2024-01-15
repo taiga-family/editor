@@ -58,6 +58,7 @@
                             "with": "projects/demo/src/environments/environment.prod.ts"
                         }
                     ],
+                    "baseHref": "./",
                     "optimization": true,
                     "outputHashing": "all",
                     "sourceMap": false,
