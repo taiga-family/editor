@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[4992],{74992:o=>{o.exports="@import '@tinkoff/tui-editor/styles/tools-common.less';\n\n:host {\n    position: relative;\n}\n\n.t-color-save {\n    position: sticky;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    box-shadow: inset 0 1px var(--tui-base-03);\n    background: var(--tui-base-01);\n}\n"}}]);

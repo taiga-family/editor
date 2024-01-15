@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[9638],{89638:r=>{r.exports="```ts\nimport {platformBrowserDynamic} from '@angular/platform-browser-dynamic';\n\nimport {AppModule} from './app/app.module';\n\nplatformBrowserDynamic()\n  .bootstrapModule(AppModule)\n  .catch(err => console.error(err));\n```\n"}}]);
