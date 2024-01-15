@@ -86,7 +86,7 @@
                     "echo 'Github pages require special baseHref + 404.html'",
                     "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
                     "echo ------",
-                    "nx build editor-demo --base-href=/tui-editor/",
+                    "nx build editor-demo",
                     "cp dist/demo/browser/index.html dist/demo/browser/404.html"
                 ]
             }

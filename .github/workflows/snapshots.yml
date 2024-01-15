@@ -12,7 +12,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.50.5
         id: nodejs-workspace
 
-      - run: npx nx build editor-demo
+      - run: npx nx build-gh-pages editor-demo
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - name: Publish next snapshots
