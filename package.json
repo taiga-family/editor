@@ -14,7 +14,8 @@
     "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
     "contributors": [
-        "Alex Inkin <alexander@inkin.ru>"
+        "Alex Inkin <alexander@inkin.ru>",
+        "Maksim Ivanov <omaxphp@yandex.ru>"
     ],
     "workspaces": [
         "projects/*",
