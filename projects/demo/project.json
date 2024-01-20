@@ -25,6 +25,7 @@
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "assets": [
+                    "projects/demo/src/404.html",
                     {
                         "glob": "**/*",
                         "input": "projects/demo/src/assets/",
@@ -78,19 +79,6 @@
                 }
             ]
         },
-        "build-gh-pages": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "echo 'Github pages require special baseHref + 404.html'",
-                    "echo 'Read more: https://angular.io/guide/deployment#deploy-to-github-pages'",
-                    "echo ------",
-                    "nx build editor-demo",
-                    "cp dist/demo/browser/index.html dist/demo/browser/404.html"
-                ]
-            }
-        },
         "serve": {
             "executor": "@nx/angular:dev-server",
             "options": {
@@ -112,7 +100,7 @@
         "serve-compiled": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "angular-http-server -p {args.port} --silent --path {args.path} & npx wait-on http://localhost:{args.port} --timeout 5000",
+                "command": "http-server {args.path} --port {args.port} > /dev/null & npx wait-on http://127.0.0.1:{args.port} --timeout 300000",
                 "forwardAllArgs": false
             }
         }

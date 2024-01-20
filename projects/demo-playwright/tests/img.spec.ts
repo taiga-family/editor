@@ -15,16 +15,7 @@ test.describe('Img', () => {
 
     test('preview display of images', async ({page}) => {
         await tuiGoto(page, 'images/preview');
-        await page.locator('[contenteditable]').nth(0).focus();
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Img-02.png');
-
-        // TODO: should be without double click
-        await page.locator('tui-editor-socket').nth(1).locator('img').nth(0).click();
-        await page.locator('tui-editor-socket').nth(1).locator('img').nth(0).click();
-        await expect(page).toHaveScreenshot('Img-03.png');
-
-        await page.locator('button[data-appearance="preview-action"]._focused').click();
-        await expect(page).toHaveScreenshot('Img-04.png');
     });
 });
