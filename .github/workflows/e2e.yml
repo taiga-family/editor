@@ -19,7 +19,7 @@ jobs:
         run: npx nx build editor-demo --output-path ${{ env.DIST }}
 
       - name: Serve ${{ env.DIST }} in background
-        run: npx nx serve-compiled demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
+        run: npx nx serve-compiled editor-demo --path ${{ env.DIST }} --port ${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
         run: npx nx e2e demo-playwright -- --update-snapshots
