@@ -154,7 +154,7 @@
         "prettier": "3.2.4",
         "rxjs": "7.5.0",
         "showdown": "2.1.0",
-        "stylelint": "16.2.0",
+        "stylelint": "16.2.1",
         "terser-webpack-plugin": "5.3.10",
         "text-mask-core": "5.1.2",
         "ts-jest": "29.1.2",
