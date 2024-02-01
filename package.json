@@ -112,7 +112,7 @@
         "@nx/jest": "17.3.0",
         "@nx/node": "17.3.0",
         "@nx/workspace": "17.3.0",
-        "@playwright/test": "1.41.1",
+        "@playwright/test": "1.41.2",
         "@stackblitz/sdk": "1.9.0",
         "@taiga-ui/browserslist-config": "0.4.0",
         "@taiga-ui/commitlint-config": "0.5.3",
