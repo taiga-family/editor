@@ -68,12 +68,12 @@
         "prosemirror-view": "1.32.7"
     },
     "peerDependencies": {
-        "@angular/common": ">=15.0.0",
-        "@angular/core": ">=15.0.0",
-        "@angular/forms": ">=15.0.0",
-        "@angular/platform-browser": ">=15.0.0",
+        "@angular/common": "15.2.10",
+        "@angular/core": "15.2.10",
+        "@angular/forms": "15.2.10",
+        "@angular/platform-browser": "15.2.10",
         "@ng-web-apis/common": "3.0.6",
-        "rxjs": ">=6.0.0",
+        "rxjs": "7.5.0",
         "tslib": "2.6.2"
     }
 }
