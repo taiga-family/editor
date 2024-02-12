@@ -1,9 +1,7 @@
 {
     "extends": "../../tsconfig.json",
     "angularCompilerOptions": {
-        "compilationMode": "full",
-        "useDefineForClassFields": false,
-        "target": "ES2022"
+        "compilationMode": "full"
     },
     "compilerOptions": {
         "outDir": "../out-tsc/app"
