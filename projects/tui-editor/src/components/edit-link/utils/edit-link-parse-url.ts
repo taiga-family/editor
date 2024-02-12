@@ -11,7 +11,7 @@ interface TuiEditLinkParsed {
     prefix: string;
 }
 
-function splitOsiProtocol(url: string = ''): Array<string | undefined> {
+function splitOsiProtocol(url = ''): Array<string | undefined> {
     const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER) ?? -1;
     const [prefix, path] =
         protocolPosition > -1
@@ -31,13 +31,13 @@ function splitOsiProtocol(url: string = ''): Array<string | undefined> {
     return path?.includes('://') && result.length > 1 ? splitOsiProtocol(path) : result;
 }
 
-function splitSimpleProtocol(url: string = ''): Array<string | undefined> {
+function splitSimpleProtocol(url = ''): Array<string | undefined> {
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
 
     return prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
 }
 
-export function tuiEditLinkParseUrl(url: string = ''): TuiEditLinkParsed {
+export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
     if (url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)) {
         return {prefix: TUI_EDITOR_LINK_HASH_PREFIX, path: url.slice(1)};
     }

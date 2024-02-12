@@ -41,7 +41,7 @@ export class TuiToolbarNavigationManagerDirective {
         }
     }
 
-    findFirstFocusableTool(reversed: boolean = false): TuiNativeFocusableElement | null {
+    findFirstFocusableTool(reversed = false): TuiNativeFocusableElement | null {
         const tools = reversed
             ? this.toolsContainers.slice().reverse()
             : this.toolsContainers;
