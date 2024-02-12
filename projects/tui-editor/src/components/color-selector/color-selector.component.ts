@@ -12,7 +12,7 @@ import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
-    TuiGroupModule,
+    TuiGroupDirective,
     TuiHintModule,
     TuiHostedDropdownComponent,
     TuiHostedDropdownModule,
@@ -60,7 +60,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
         TuiColorPickerComponent,
         TuiColorEditComponent,
         TuiPaletteComponent,
-        TuiGroupModule,
+        TuiGroupDirective,
     ],
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],

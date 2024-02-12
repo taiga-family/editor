@@ -91,9 +91,7 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
                     levels: [1, 2, 3, 4, 5, 6],
                     ...options?.heading,
                 }).extend({
-                    addKeyboardShortcuts(): {
-                        [key: string]: KeyboardShortcutCommand;
-                    } {
+                    addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {
                         return this.options.levels.reduce(
                             (items: any, level: any) => ({
                                 ...(items || {}),

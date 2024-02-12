@@ -1,9 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {
-    AbstractTuiPortalHostComponent,
-    AbstractTuiPortalService,
-    TuiDropdownPortalService,
-} from '@taiga-ui/cdk';
+import {TuiPortalsComponent, TuiPortalService} from '@taiga-ui/cdk';
+import {TuiDropdownService} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -14,11 +11,11 @@ import {
     styleUrls: ['./editor-portal-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {provide: AbstractTuiPortalService, useExisting: TuiDropdownPortalService},
+        {provide: TuiPortalService, useExisting: TuiDropdownService},
         {
-            provide: AbstractTuiPortalHostComponent,
+            provide: TuiPortalsComponent,
             useExisting: TuiEditorPortalHostComponent,
         },
     ],
 })
-export class TuiEditorPortalHostComponent extends AbstractTuiPortalHostComponent {}
+export class TuiEditorPortalHostComponent extends TuiPortalsComponent {}

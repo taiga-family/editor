@@ -151,9 +151,7 @@ export const tuiCreateGroupExtension = (
             };
         },
 
-        addKeyboardShortcuts(): {
-            [key: string]: KeyboardShortcutCommand;
-        } {
+        addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {
             return createOnEnter ? {Enter: this.editor.commands.setGroup} : {};
         },
     });

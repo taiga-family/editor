@@ -52,7 +52,7 @@ export const prepareLess = (content: string): string =>
         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );
 
-export const appPrefix = (stringsPart: TemplateStringsArray, path: string = ''): string =>
+export const appPrefix = (stringsPart: TemplateStringsArray, path = ''): string =>
     `src/app/${stringsPart.join('')}${path}`;
 
 export const getSupportFiles = <T extends Record<string, string>>(
