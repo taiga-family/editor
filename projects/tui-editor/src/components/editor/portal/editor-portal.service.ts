@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AbstractTuiPortalService} from '@taiga-ui/cdk';
+import {TuiPortalService} from '@taiga-ui/cdk';
 
 @Injectable()
-export class TuiEditorPortalService extends AbstractTuiPortalService {}
+export class TuiEditorPortalService extends TuiPortalService {}

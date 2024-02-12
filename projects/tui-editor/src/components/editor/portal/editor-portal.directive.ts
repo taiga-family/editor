@@ -1,6 +1,5 @@
 import {Directive, ElementRef, Inject} from '@angular/core';
-import {TuiDropdownPortalService} from '@taiga-ui/cdk';
-import {tuiAsViewport, TuiRectAccessor} from '@taiga-ui/core';
+import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core';
 
 import {TuiEditorPortalService} from './editor-portal.service';
 
@@ -8,7 +7,7 @@ import {TuiEditorPortalService} from './editor-portal.service';
     standalone: true,
     selector: '[tuiEditorPortal]',
     providers: [
-        {provide: TuiDropdownPortalService, useExisting: TuiEditorPortalService},
+        {provide: TuiDropdownService, useExisting: TuiEditorPortalService},
         tuiAsViewport(TuiEditorPortalDirective),
     ],
 })
