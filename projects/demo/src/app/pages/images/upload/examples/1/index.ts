@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Inject,
+    INJECTOR,
     Injector,
     ViewChild,
 } from '@angular/core';
@@ -28,7 +29,7 @@ import {ImgbbService} from './imgbb.service';
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
+            deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,

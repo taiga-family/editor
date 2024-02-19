@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
@@ -9,7 +9,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
+            deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,

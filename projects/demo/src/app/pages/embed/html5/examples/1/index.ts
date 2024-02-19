@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Inject,
+    INJECTOR,
     Injector,
     ViewChild,
 } from '@angular/core';
@@ -27,7 +28,7 @@ import {map} from 'rxjs/operators';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
+            deps: [INJECTOR],
             useFactory: (_injector: Injector) => [
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,

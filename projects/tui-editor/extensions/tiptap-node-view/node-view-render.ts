@@ -80,6 +80,8 @@ export class TuiNodeView extends NodeView<
             deleteNode: () => this.deleteNode(),
         };
 
+        this.editor.on(`selectionUpdate`, this.handleSelectionUpdate.bind(this));
+
         // create renderer
         this.renderer = new TuiComponentRenderer(this.component, injector, props);
 
@@ -101,6 +103,8 @@ export class TuiNodeView extends NodeView<
             this.contentDOMElement.style.whiteSpace = `inherit`;
             this.renderer.detectChanges();
         }
+
+        this.appendContendDom();
     }
 
     override get dom(): HTMLElement {
@@ -111,8 +115,6 @@ export class TuiNodeView extends NodeView<
         if (this.node.isLeaf) {
             return null;
         }
-
-        this.maybeMoveContentDOM();
 
         return this.contentDOMElement;
     }
@@ -133,9 +135,19 @@ export class TuiNodeView extends NodeView<
         this.node = node;
         this.decorations = decorations;
         this.renderer.updateProps({node, decorations});
-        this.maybeMoveContentDOM();
+        this.appendContendDom();
 
         return true;
+    }
+
+    handleSelectionUpdate(): void {
+        const {from, to} = this.editor.state.selection;
+
+        if (from <= this.getPos() && to >= this.getPos() + this.node.nodeSize) {
+            this.selectNode();
+        } else {
+            this.deselectNode();
+        }
     }
 
     selectNode(): void {
@@ -148,9 +160,11 @@ export class TuiNodeView extends NodeView<
 
     destroy(): void {
         this.renderer.destroy();
+        this.editor.off(`selectionUpdate`, this.handleSelectionUpdate.bind(this));
+        this.contentDOMElement = null;
     }
 
-    private maybeMoveContentDOM(): void {
+    private appendContendDom(): void {
         const contentElement = this.dom.querySelector(`[data-node-view-content]`);
 
         if (

@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    INJECTOR,
+    Injector,
+} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure} from '@taiga-ui/cdk';
@@ -12,7 +18,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
+            deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,

@@ -1,3 +1,6 @@
+/**
+ * @deprecated, use {@link TUI_EDITOR_DEFAULT_EXTENSIONS}
+ */
 export const defaultEditorExtensions = [
     import(`@tinkoff/tui-editor/extensions/starter-kit`)
         .then(({StarterKit}) => StarterKit)
@@ -44,3 +47,5 @@ export const defaultEditorExtensions = [
         ({TuiFontSize}) => TuiFontSize,
     ),
 ];
+
+export const TUI_EDITOR_DEFAULT_EXTENSIONS = defaultEditorExtensions;

@@ -73,7 +73,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         pseudoMobile = false,
         waitRenderedFont,
         clock = Date.UTC(2018, 10, 1),
-        rootSelector = `tui-app`,
+        rootSelector = `app`,
     } = options;
 
     if (clock) {
@@ -151,7 +151,7 @@ export function tuiVisit(path: string, options: TuiVisitOptions = {}): void {
         waitAllRequests(`@icons`);
     }
 
-    cy.get(`${rootSelector}._is-cypress-mode`).as(`app`);
+    cy.get(`${rootSelector}`).as(`app`);
 
     if (stopAnimation) {
         cy.get(`@app`).invoke(`addClass`, `_stop-animation`);

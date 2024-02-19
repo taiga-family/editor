@@ -1,5 +1,12 @@
 import {HttpClient} from '@angular/common/http';
-import {ChangeDetectionStrategy, Component, Inject, Injector, Self} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    INJECTOR,
+    Injector,
+    Self,
+} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
 import {
@@ -18,7 +25,7 @@ import {switchMap, takeUntil} from 'rxjs/operators';
         TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
+            deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,

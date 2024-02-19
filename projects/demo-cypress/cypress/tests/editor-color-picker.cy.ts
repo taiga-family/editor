@@ -40,8 +40,9 @@ describe(`Editor's color picker`, () => {
     }
 
     function setInputBox(index: 1 | 2 | 3, value: number): void {
-        cy.get(`tui-color-edit tui-input-count:nth-of-type(${index})`)
+        cy.get(`tui-color-edit`)
             .findByAutomationId(`tui-primitive-textfield__native-input`)
+            .eq(index)
             .type(value.toString(), {force: true});
     }
 });
