@@ -1,6 +1,7 @@
 import {Injector} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {TuiNodeView} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
+import {TUI_IMAGE_LOADER} from '@tinkoff/tui-editor/tokens';
 import {
     Attribute,
     mergeAttributes,
@@ -13,6 +14,7 @@ import {Image} from '@tiptap/extension-image';
 import {Plugin} from '@tiptap/pm/state';
 import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
 import {EditorView} from 'prosemirror-view';
+import {take, takeWhile} from 'rxjs/operators';
 
 import {TuiImageEditorComponent} from './image-editor.component';
 import type {TuiEditableImage} from './image-editor.options';
@@ -46,35 +48,39 @@ const DEFAULT_IMAGE_ATTRS = {
     },
 };
 
-function pasteImage(view: EditorView, event: ClipboardEvent | DragEvent): void {
-    const dataTransfer =
-        event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
-    const images = Array.from(dataTransfer?.files ?? []).filter(file =>
-        /image/i.test(file.type),
-    );
+function pasteImage(injector: Injector) {
+    return (view: EditorView, event: ClipboardEvent | DragEvent): void => {
+        const dataTransfer =
+            event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
+        const imagesFiles = Array.from(dataTransfer?.files ?? []).filter(file =>
+            /image/i.test(file.type),
+        );
 
-    if (images.length) {
-        event.preventDefault();
-    }
+        if (imagesFiles.length) {
+            event.preventDefault();
+        }
 
-    images.forEach(image => {
-        const reader = new FileReader();
+        const loader = injector.get(TUI_IMAGE_LOADER);
 
-        reader.onload = readerEvent => {
-            const node = view.state.schema.nodes.imageEditor.create({
-                src: readerEvent.target?.result,
-            });
-            const transaction = view.state.tr.replaceSelectionWith(node);
+        imagesFiles.forEach(file => {
+            loader(file)
+                .pipe(
+                    take(1),
+                    // eslint-disable-next-line rxjs/no-ignored-takewhile-value
+                    takeWhile(() => !view.isDestroyed),
+                )
+                .subscribe(src => {
+                    const node = view.state.schema.nodes.imageEditor.create({src});
+                    const transaction = view.state.tr.replaceSelectionWith(node);
 
-            /**
-             * @note:
-             * workaround for `Applying a mismatched transaction`
-             */
-            setTimeout(() => view.dispatch(transaction));
-        };
-
-        reader.readAsDataURL(image);
-    });
+                    setTimeout?.(() => {
+                        if (!view.isDestroyed) {
+                            view.dispatch(transaction);
+                        }
+                    });
+                });
+        });
+    };
 }
 
 export function tuiCreateImageEditorExtension<T, K>({
@@ -149,8 +155,8 @@ export function createImageEditorExtension<T, K>(
                 new Plugin({
                     props: {
                         handleDOMEvents: {
-                            paste: pasteImage,
-                            drop: pasteImage,
+                            paste: pasteImage(injector),
+                            drop: pasteImage(injector),
                         },
                     },
                 }),
