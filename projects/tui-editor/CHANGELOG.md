@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.12.0 (2024-02-19)
+
+### Bug Fixes
+
+- use image loader when using drag-and-drop images ([#791](https://github.com/taiga-family/tui-editor/issues/791))
+  ([38f7bf5](https://github.com/taiga-family/tui-editor/commit/38f7bf588536919a9f0d18b4201b857b74fbe5d7))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.11.0 (2024-01-10)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
