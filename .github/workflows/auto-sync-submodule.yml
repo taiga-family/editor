@@ -8,14 +8,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.7
-      - uses: taiga-family/ci/actions/setup/config/git@v1.51.7
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.8
+      - uses: taiga-family/ci/actions/setup/config/git@v1.51.8
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/git/sync-submodule@v1.51.7
-      - uses: taiga-family/ci/actions/git/status@v1.51.7
+      - uses: taiga-family/ci/actions/git/sync-submodule@v1.51.8
+      - uses: taiga-family/ci/actions/git/status@v1.51.8
         id: git
-      - uses: taiga-family/ci/actions/run/npm/install@v1.51.7
+      - uses: taiga-family/ci/actions/run/npm/install@v1.51.8
         if: steps.git.outputs.modified == 'true'
       - name: Create Pull Request
         if: steps.git.outputs.modified == 'true'
