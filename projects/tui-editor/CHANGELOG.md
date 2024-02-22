@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.13.0 (2024-02-22)
+
+### Bug Fixes
+
+- undo operation should work when updating attributes ([#793](https://github.com/taiga-family/tui-editor/issues/793))
+  ([1d27675](https://github.com/taiga-family/tui-editor/commit/1d276756d2f58e46edad1512f7016b8e7c6c5c65))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.12.0 (2024-02-19)
 
 ### Bug Fixes
