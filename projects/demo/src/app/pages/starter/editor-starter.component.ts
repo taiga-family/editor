@@ -1,9 +1,15 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    INJECTOR,
+    Injector,
+} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {
-    defaultEditorExtensions,
-    defaultEditorTools,
+    TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
+    TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
@@ -16,7 +22,14 @@ import {
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultEditorExtensions,
+            deps: [INJECTOR],
+            useFactory: (injector: Injector) => [
+                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                    ({tuiCreateImageEditorExtension}) =>
+                        tuiCreateImageEditorExtension({injector}),
+                ),
+            ],
         },
     ],
 })
@@ -54,7 +67,7 @@ export class TuiEditorStarterPageComponent {
     pseudoHovered: boolean | null = null;
 
     readonly toolsVariants: readonly TuiEditorTool[][] = [
-        defaultEditorTools,
+        TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
         [
             TuiEditorTool.Bold,
             TuiEditorTool.Italic,

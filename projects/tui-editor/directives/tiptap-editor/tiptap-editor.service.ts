@@ -50,17 +50,18 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editorRef.subscribe(editor => {
             this.editor = editor;
 
-            editor.on(`transaction`, () => {
+            const update = (): void => {
                 this.stateChange$.next();
-            });
 
-            editor.on(`update`, () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
                 const value: string = tuiIsEmptyParagraph(json) ? `` : content;
 
                 this.valueChange$.next(value);
-            });
+            };
+
+            editor.on(`transaction`, update.bind(this));
+            editor.on(`update`, update.bind(this));
         });
     }
 

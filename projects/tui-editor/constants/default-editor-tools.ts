@@ -1,5 +1,8 @@
 import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 
+/**
+ * @deprecated use {@link TUI_EDITOR_DEFAULT_EDITOR_TOOLS}
+ */
 export const defaultEditorTools = [
     TuiEditorTool.Undo,
     TuiEditorTool.Size,
@@ -23,3 +26,5 @@ export const defaultEditorTools = [
     TuiEditorTool.Table,
     TuiEditorTool.Details,
 ];
+
+export const TUI_EDITOR_DEFAULT_EDITOR_TOOLS = defaultEditorTools;

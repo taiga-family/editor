@@ -1,5 +1,5 @@
 ```ts
-import {TuiEditorModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TUI_EDITOR_EXTENSIONS, TUI_EDITOR_DEFAULT_EXTENSIONS} from '@tinkoff/tui-editor';
 // ...
 
 @NgModule({
@@ -17,7 +17,13 @@ import {TuiEditorModule} from '@tinkoff/tui-editor';
     },
     {
       provide: TUI_EDITOR_EXTENSIONS,
-      useValue: defaultEditorExtensions,
+      deps: [INJECTOR],
+      useFactory: (injector: Injector) => [
+        ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+        import('@tinkoff/tui-editor/extensions/image-editor').then(({tuiCreateImageEditorExtension}) =>
+          tuiCreateImageEditorExtension({injector}),
+        ),
+      ],
     },
   ],
 })

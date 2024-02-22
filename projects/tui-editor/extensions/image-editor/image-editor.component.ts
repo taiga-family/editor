@@ -6,7 +6,6 @@ import {
     HostBinding,
     HostListener,
     Inject,
-    Self,
 } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
@@ -59,15 +58,12 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly minWidth: number | null,
         @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly maxWidth: number | null,
         @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly options: TuiImageEditorOptions,
-        @Inject(DOCUMENT) doc: Document,
+        @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Self()
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
         @Inject(WINDOW) private readonly win: Window,
     ) {
-        super(doc, destroy$);
+        super();
     }
 
     @HostListener('document:click.silent', ['$event.target'])
@@ -84,6 +80,10 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         const maxWidth = this.maxWidth ?? this.options.maxWidth;
 
         this.currentWidth = Math.max(minWidth, Math.min(maxWidth, width));
+        this.attrs.width = this.currentWidth;
+
+        // force update
+        this.editor.commands.setContent(this.editor.getJSON());
     }
 
     private selectFakeText(): void {
