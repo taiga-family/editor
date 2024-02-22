@@ -1,0 +1,1 @@
+(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[6847],{26847:e=>{e.exports=".hint {\n    color: var(--tui-base-05);\n    height: 100%;\n    display: flex;\n    align-items: center;\n}\n"}}]);
