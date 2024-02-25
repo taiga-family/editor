@@ -108,8 +108,8 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
         if (options?.history !== false) {
             extensions.push(
                 History.configure({
-                    depth: 10,
-                    newGroupDelay: 100,
+                    depth: 100,
+                    newGroupDelay: 500,
                     ...options?.history,
                 }),
             );

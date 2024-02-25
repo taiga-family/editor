@@ -2,8 +2,8 @@ import {Provider} from '@angular/core';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 import {
-    defaultEditorColors,
     EDITOR_BLANK_COLOR,
+    TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
 } from '../constants/default-editor-colors';
 import {tuiDefaultFontOptionsHandler} from '../constants/default-font-options-handler';
 import {
@@ -69,7 +69,7 @@ export interface TuiEditorOptions {
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: 'no',
     spellcheck: false,
-    colors: defaultEditorColors,
+    colors: TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
     blankColor: EDITOR_BLANK_COLOR,
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
     fontOptions: tuiDefaultFontOptionsHandler,

@@ -37,7 +37,7 @@ import {Editor} from '@tiptap/core';
 import {delay, Observable, takeUntil} from 'rxjs';
 
 import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
-import {defaultEditorTools} from '../../constants/default-editor-tools';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../enums/editor-tool';
@@ -93,7 +93,7 @@ export class TuiEditorComponent
     exampleText = '';
 
     @Input()
-    tools: readonly TuiEditorTool[] = defaultEditorTools;
+    tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
 
     @Output()
     readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();

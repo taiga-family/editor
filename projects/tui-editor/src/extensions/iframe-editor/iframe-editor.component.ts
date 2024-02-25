@@ -1,5 +1,4 @@
-import {DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
@@ -27,13 +26,9 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
 
     constructor(
         @Inject(TUI_IFRAME_EDITOR_OPTIONS) readonly options: TuiEditableIframeOptions,
-        @Inject(DOCUMENT) doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Self()
-        @Inject(TuiDestroyService)
-        destroy$: TuiDestroyService,
     ) {
-        super(doc, destroy$);
+        super();
     }
 
     updateSize([width, height]: readonly [width: number, height: number]): void {
@@ -46,5 +41,11 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
             this.options.minHeight,
             Math.min(this.options.maxHeight, height),
         );
+
+        this.attrs.width = this.currentWidth;
+        this.attrs.height = this.currentHeight;
+
+        // force update
+        this.editor.commands.setContent(this.editor.getJSON());
     }
 }

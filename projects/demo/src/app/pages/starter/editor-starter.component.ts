@@ -8,8 +8,8 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
-    defaultEditorExtensions,
-    defaultEditorTools,
+    TUI_EDITOR_DEFAULT_EXTENSIONS,
+    TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorSocketComponent,
@@ -35,7 +35,7 @@ import {
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultEditorExtensions,
+            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
         },
     ],
 })
@@ -73,7 +73,7 @@ export default class TuiEditorStarterPageComponent {
     pseudoHovered: boolean | null = null;
 
     readonly toolsVariants: readonly TuiEditorTool[][] = [
-        defaultEditorTools,
+        TUI_EDITOR_DEFAULT_TOOLS,
         [
             TuiEditorTool.Bold,
             TuiEditorTool.Italic,

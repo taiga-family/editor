@@ -5,7 +5,7 @@ import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {combineLatest, map, Observable} from 'rxjs';
 
 import {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
-import {defaultEditorTools} from '../../../constants/default-editor-tools';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../../enums/editor-tool';
 import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../../tokens/editor-options';
@@ -20,7 +20,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleComponent {
-    private toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
+    private toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input()
     set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {
