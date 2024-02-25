@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TuiItemModule, tuiPure} from '@taiga-ui/cdk';
@@ -35,6 +35,8 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
     ],
 })
 export class TuiEditorEmbedYoutubeExample1 {
+    private readonly sanitizer = inject(DomSanitizer);
+
     readonly builtInTools = [TuiEditorTool.Undo];
     readonly control = new FormControl(
         `
@@ -46,8 +48,6 @@ export class TuiEditorEmbedYoutubeExample1 {
     `,
         Validators.required,
     );
-
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
     /**
      * TUI_SANITIZER doesn't support iframe inside content

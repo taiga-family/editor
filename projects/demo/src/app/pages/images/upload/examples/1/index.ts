@@ -2,7 +2,7 @@ import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
+    inject,
     Injector,
     ViewChild,
 } from '@angular/core';
@@ -80,17 +80,16 @@ export class TuiEditorUploadingImagesExample1 {
     @ViewChild(TuiEditorComponent, {static: true})
     private readonly editor?: TuiEditorComponent;
 
+    private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
+    readonly doc = inject(DOCUMENT);
+    readonly imgbbService = inject(ImgbbService);
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     control = new FormControl('');
 
-    constructor(
-        @Inject(DOCUMENT) readonly doc: Document,
-        @Inject(ImgbbService) readonly imgbbService: ImgbbService,
-        @Inject(TUI_IS_STACKBLITZ) private readonly isStackblitz: boolean,
-    ) {
+    constructor() {
         this.control.patchValue(
             `
                 <img data-type="image-editor" src="${this.relativePath}assets/images/lumberjack.png" width="300">

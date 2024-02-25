@@ -1,14 +1,10 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
-import {
-    TUI_IFRAME_EDITOR_OPTIONS,
-    TuiEditableIframe,
-    TuiEditableIframeOptions,
-} from './iframe-editor.options';
+import {TUI_IFRAME_EDITOR_OPTIONS, TuiEditableIframe} from './iframe-editor.options';
 
 @Component({
     standalone: true,
@@ -20,15 +16,11 @@ import {
     providers: [TuiDestroyService],
 })
 export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEditableIframe> {
+    private readonly sanitizer = inject(DomSanitizer);
+    readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
+
     get src(): SafeResourceUrl {
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
-    }
-
-    constructor(
-        @Inject(TUI_IFRAME_EDITOR_OPTIONS) readonly options: TuiEditableIframeOptions,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {
-        super();
     }
 
     updateSize([width, height]: readonly [width: number, height: number]): void {

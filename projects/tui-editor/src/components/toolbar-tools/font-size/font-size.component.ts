@@ -1,6 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -8,14 +8,12 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {map, Observable} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {EDITOR_BLANK_COLOR} from '../../../constants/default-editor-colors';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorFontOption} from '../../../interfaces/editor-font-option';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
 @Component({
@@ -36,21 +34,14 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontSizeComponent {
+    private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
+    readonly options = inject(TUI_EDITOR_OPTIONS);
+    readonly editor = inject(TuiTiptapEditorService);
+    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
         this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
 
     readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
-
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_FONT_OPTIONS)
-        private readonly fontOptionsTexts$: Observable<
-            TuiLanguageEditor['editorFontOptions']
-        >,
-    ) {}
 
     setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         const color = this.editor.getFontColor();

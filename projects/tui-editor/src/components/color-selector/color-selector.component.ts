@@ -3,7 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -19,7 +19,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';
 import {TuiGradientDirection} from '../../types/gradient-direction';
 import {tuiGetGradientData} from '../../utils/get-gradient-data';
@@ -67,6 +67,8 @@ const ICONS: Record<TuiGradientDirection, string> = {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorSelectorComponent {
+    private readonly sanitizer = inject(DomSanitizer);
+
     private stops = new Map(DEFAULT_STEPS);
     private currentStop = 0;
     private direction: TuiGradientDirection = 'to bottom';
@@ -82,6 +84,9 @@ export class TuiColorSelectorComponent {
     @Output()
     readonly colorChange = new EventEmitter<string>();
 
+    readonly options = inject(TUI_EDITOR_OPTIONS);
+    readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
+
     color: [number, number, number, number] = [0, 0, 0, 1];
 
     currentMode = this.modes[0];
@@ -96,12 +101,6 @@ export class TuiColorSelectorComponent {
         'to top left',
         'to top',
     ];
-
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES) readonly modes: [string, string],
-    ) {}
 
     get palette(): Map<string, string> {
         return this.filterPalette(this.colors, this.isGradient);

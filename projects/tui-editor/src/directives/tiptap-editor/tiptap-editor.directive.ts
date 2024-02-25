@@ -1,17 +1,7 @@
-import {
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    Output,
-    Renderer2,
-    Self,
-} from '@angular/core';
+import {Directive, ElementRef, inject, Input, Output, Renderer2} from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {Editor} from '@tiptap/core';
-import {Observable, takeUntil} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
@@ -21,6 +11,11 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
     providers: [TuiDestroyService],
 })
 export class TuiTiptapEditorDirective {
+    private readonly el = inject(ElementRef);
+    private readonly renderer = inject(Renderer2);
+    protected editor = inject(TuiTiptapEditorService);
+    protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
+
     @Input()
     set value(value: string) {
         this.editor.setValue(value);
@@ -37,16 +32,11 @@ export class TuiTiptapEditorDirective {
     @Output()
     readonly stateChange = this.editor.stateChange$;
 
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(INITIALIZATION_TIPTAP_CONTAINER) readonly editorContainer: HTMLElement,
-        @Inject(TIPTAP_EDITOR) private readonly editorLoaded$: Observable<Editor>,
-        @Self() @Inject(TuiDestroyService) destroy$: TuiDestroyService,
-    ) {
-        this.editorLoaded$.pipe(takeUntil(destroy$)).subscribe(() => {
-            this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
-        });
+    constructor() {
+        inject(TIPTAP_EDITOR)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(() => {
+                this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
+            });
     }
 }

@@ -5,8 +5,11 @@ import {map, Observable} from 'rxjs';
 /**
  * Image loader handler
  */
-export const TUI_IMAGE_LOADER: InjectionToken<TuiHandler<File, Observable<string>>> =
-    new InjectionToken<TuiHandler<File, Observable<string>>>('[TUI_IMAGE_LOADER]', {
+export const TUI_IMAGE_LOADER: InjectionToken<
+    TuiHandler<Blob | File, Observable<string>>
+> = new InjectionToken<TuiHandler<Blob | File, Observable<string>>>(
+    '[TUI_IMAGE_LOADER]',
+    {
         factory: () => file => {
             const fileReader = new FileReader();
 
@@ -16,4 +19,5 @@ export const TUI_IMAGE_LOADER: InjectionToken<TuiHandler<File, Observable<string
                 map(() => String(fileReader.result)),
             );
         },
-    });
+    },
+);

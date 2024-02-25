@@ -1,13 +1,11 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {combineLatest, map, Observable} from 'rxjs';
+import {combineLatest, map} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
 @Component({
@@ -26,6 +24,10 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentComponent {
+    readonly options = inject(TUI_EDITOR_OPTIONS);
+    readonly editor = inject(TuiTiptapEditorService);
+    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+
     readonly alignState$ = combineLatest([
         this.editor.isActive$({textAlign: 'left'}),
         this.editor.isActive$({textAlign: 'right'}),
@@ -39,11 +41,4 @@ export class TuiAlignContentComponent {
             justify,
         })),
     );
-
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-    ) {}
 }

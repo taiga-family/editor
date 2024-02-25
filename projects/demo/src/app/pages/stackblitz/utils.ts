@@ -16,10 +16,10 @@ export function processTs(fileContent: string): string {
 
     return tsFileContent
         .toString()
-        .replace(/import {encapsulation} from '.*';\n/gm, '')
-        .replace(/import {changeDetection} from '.*';\n/gm, '')
-        .replace(/\n +encapsulation,/gm, '')
-        .replace(
+        .replaceAll(/import {encapsulation} from '.*';\n/gm, '')
+        .replaceAll(/import {changeDetection} from '.*';\n/gm, '')
+        .replaceAll(/\n +encapsulation,/gm, '')
+        .replaceAll(
             /changeDetection,/gm,
             'changeDetection: ChangeDetectionStrategy.OnPush,',
         );
@@ -47,7 +47,7 @@ export function isPrimaryComponentFile(fileName: string): boolean {
 }
 
 export const prepareLess = (content: string): string =>
-    content.replace(
+    content.replaceAll(
         /@import.+taiga-ui-local(.less)?';/g,
         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
     );

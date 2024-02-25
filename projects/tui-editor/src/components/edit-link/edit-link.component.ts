@@ -4,12 +4,12 @@ import {
     Component,
     EventEmitter,
     HostListener,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAutoFocusModule, TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
+import {TuiAutoFocusModule, tuiIsElement} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -18,7 +18,6 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 
-import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_HTTPS_PREFIX,
@@ -26,7 +25,7 @@ import {
     TuiEditorLinkProtocol,
 } from '../../constants/default-link-options-handler';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_LINK_TEXTS} from '../../tokens/i18n';
 import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';
 import {TuiShortUrlPipe} from './pipes/short-url.pipe';
@@ -54,7 +53,10 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLinkComponent {
+    private readonly doc = inject(DOCUMENT);
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
+    private readonly editor = inject(TuiTiptapEditorService);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Output()
     readonly addLink = new EventEmitter<string>();
@@ -70,14 +72,7 @@ export class TuiEditLinkComponent {
 
     anchorIds = this.getAllAnchorsIds();
 
-    constructor(
-        @Inject(DOCUMENT)
-        private readonly doc: Document,
-        @Inject(TUI_EDITOR_LINK_TEXTS)
-        readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
-        @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-    ) {}
+    readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
     get defaultProtocol(): TuiEditorLinkProtocol {
         return this.options.linkOptions?.protocol ?? TUI_EDITOR_LINK_HTTPS_PREFIX;

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
@@ -40,13 +40,14 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
     ],
 })
 export class TuiEditorPreviewImagesExample1 {
+    private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     control = new FormControl('');
 
-    constructor(@Inject(TUI_IS_STACKBLITZ) private readonly isStackblitz: boolean) {
+    constructor() {
         this.control.patchValue(
             `<p>Small image</p><img data-type="image-editor" src="${this.relativePath}assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="${this.relativePath}assets/images/big-wallpaper.jpg" width="500">`,
         );

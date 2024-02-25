@@ -1,12 +1,11 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {
     AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
     TuiColorSelectorComponent,
-    TuiEditorOptions,
     TuiTiptapEditorService,
 } from '@tinkoff/tui-editor';
 import {distinctUntilChanged, map, share} from 'rxjs';
@@ -26,6 +25,8 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomColorPickerComponent {
+    private readonly defaultOptions = inject(TUI_EDITOR_OPTIONS);
+
     @Input()
     colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
@@ -33,9 +34,11 @@ export class CustomColorPickerComponent {
     icon?: string;
 
     @Input()
-    type!: 'BackgroundColor' | 'FontColor';
+    type: 'BackgroundColor' | 'FontColor' = 'FontColor';
 
     selectedColor = '';
+
+    readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);
 
     readonly fontColor$ = this.editor.stateChange$.pipe(
         map(() =>
@@ -46,12 +49,6 @@ export class CustomColorPickerComponent {
         distinctUntilChanged(),
         share(),
     );
-
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS)
-        private readonly defaultOptions: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-    ) {}
 
     onValueChange(color: string): void {
         this.selectedColor = color;

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TuiDocCodeModule,
@@ -46,6 +46,7 @@ export default class TuiEditorStarterPageComponent {
     readonly exampleEditorOptionsToken = import('./import/editor-options-token.md?raw');
     readonly exampleStyles = import('./import/styles.less.md?raw');
     readonly exampleIcons = import('./import/angular.json.md?raw');
+    readonly isE2E = inject(TUI_IS_E2E);
 
     readonly control = new FormControl(`
         <h2>What is Lorem Ipsum?</h2>
@@ -83,8 +84,6 @@ export default class TuiEditorStarterPageComponent {
     ];
 
     tools = this.toolsVariants[0];
-
-    constructor(@Inject(TUI_IS_E2E) readonly isE2E: boolean) {}
 
     get disabled(): boolean {
         return this.control.disabled;

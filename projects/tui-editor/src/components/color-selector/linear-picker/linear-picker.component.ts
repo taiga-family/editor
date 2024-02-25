@@ -2,13 +2,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
-import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs';
 
 import {TuiPickerService} from '../../../services/picker.service';
 
@@ -27,11 +26,13 @@ export class TuiLinearPickerComponent {
     @Output()
     readonly valueChange = new EventEmitter<number>();
 
-    constructor(@Inject(TuiPickerService) point$: Observable<TuiPoint>) {
-        point$.subscribe(([x]) => {
-            this.value = x;
-            this.valueChange.emit(x);
-        });
+    constructor() {
+        inject(TuiPickerService)
+            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .subscribe(([x]) => {
+                this.value = x;
+                this.valueChange.emit(x);
+            });
     }
 
     get left(): number {

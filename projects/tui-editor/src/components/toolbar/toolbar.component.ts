@@ -7,12 +7,10 @@ import {
     EventEmitter,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Output,
     QueryList,
-    Self,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -21,8 +19,6 @@ import {
     tuiAssert,
     TuiDestroyService,
     TuiFocusableModule,
-    TuiHandler,
-    TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
     TuiItemModule,
 } from '@taiga-ui/cdk';
@@ -32,15 +28,13 @@ import {
     TuiHostedDropdownComponent,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {Observable, take, takeUntil} from 'rxjs';
+import {take, takeUntil} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../enums/editor-tool';
 import {TuiEditorAttachedFile} from '../../interfaces/attached';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
@@ -107,6 +101,15 @@ export class TuiToolbarComponent {
     @ViewChild(TuiToolbarNavigationManagerDirective)
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
 
+    private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
+    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly imageLoader = inject(TUI_IMAGE_LOADER);
+
+    private readonly el: HTMLElement | null =
+        inject(ElementRef, {optional: true})?.nativeElement ?? null;
+
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+
     @Input()
     colors: ReadonlyMap<string, string> = this.options.colors;
 
@@ -124,6 +127,9 @@ export class TuiToolbarComponent {
     readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
     readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
+    readonly editor = inject(TuiTiptapEditorService);
+    readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
+    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
     toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
@@ -132,31 +138,9 @@ export class TuiToolbarComponent {
         this.toolsSet = new Set(value);
     }
 
-    constructor(
-        @Optional()
-        @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(TUI_IMAGE_LOADER)
-        private readonly imageLoader: TuiHandler<File, Observable<string>>,
-        @Inject(TUI_ATTACH_FILES_OPTIONS)
-        readonly attachOptions: TuiInjectionTokenType<typeof TUI_ATTACH_FILES_OPTIONS>,
-        @Optional()
-        @Inject(TUI_ATTACH_FILES_LOADER)
-        private readonly filesLoader: TuiInjectionTokenType<
-            typeof TUI_ATTACH_FILES_LOADER
-        > | null,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Self()
-        @Inject(TuiDestroyService)
-        private readonly destroy$: TuiDestroyService,
-    ) {}
-
     get focused(): boolean {
         return (
-            tuiIsNativeFocusedIn(this.el.nativeElement) ||
+            tuiIsNativeFocusedIn(this.el) ||
             !!this.dropdowns.find(({nativeElement}) =>
                 tuiIsNativeFocusedIn(nativeElement),
             )

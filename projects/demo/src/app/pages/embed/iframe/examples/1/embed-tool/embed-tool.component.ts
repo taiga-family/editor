@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneModule, TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
@@ -28,13 +28,10 @@ export class ExampleTuiEmbedToolComponent {
     @ViewChild('dropdown')
     private readonly dropdown?: TuiHostedDropdownComponent;
 
+    private readonly editor = inject(TuiTiptapEditorService);
+
     placeholder = 'https://my-embed.site.com/etc1235';
     url = '';
-
-    constructor(
-        @Inject(TuiTiptapEditorService)
-        private readonly editor: TuiTiptapEditorService,
-    ) {}
 
     embedSource(src: string): void {
         if (src) {

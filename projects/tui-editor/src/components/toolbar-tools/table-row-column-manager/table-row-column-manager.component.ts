@@ -1,5 +1,5 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -7,12 +7,10 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {map, Observable} from 'rxjs';
+import {map} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TABLE_COMMANDS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
 // TODO: change type in v4.0
@@ -51,20 +49,16 @@ export class TuiTableRowColumnManagerComponent {
         [TuiTableCommands.DeleteRow]: () => this.editor.deleteRow(),
     };
 
+    readonly options = inject(TUI_EDITOR_OPTIONS);
+    readonly editor = inject(TuiTiptapEditorService);
+    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
+
     readonly isActive$ = this.editor.isActive$('table');
 
     readonly rowsColumnsManagingText$ = this.texts$.pipe(
         map(texts => texts.rowsColumnsManaging),
     );
-
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-        @Inject(TUI_EDITOR_TABLE_COMMANDS)
-        readonly tableCommandTexts$: Observable<TuiLanguageEditor['editorTableCommands']>,
-    ) {}
 
     onTableOption(command: TuiTableCommands): void {
         this.commandsRegistry[command]();

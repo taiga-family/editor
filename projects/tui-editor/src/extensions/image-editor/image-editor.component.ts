@@ -1,11 +1,10 @@
-import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     HostBinding,
     HostListener,
-    Inject,
+    inject,
 } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
@@ -13,11 +12,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
-import {
-    TUI_IMAGE_EDITOR_OPTIONS,
-    TuiEditableImage,
-    TuiImageEditorOptions,
-} from './image-editor.options';
+import {TUI_IMAGE_EDITOR_OPTIONS, TuiEditableImage} from './image-editor.options';
 
 @Component({
     standalone: true,
@@ -29,10 +24,16 @@ import {
     providers: [TuiDestroyService],
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly el = inject(ElementRef);
+    private readonly win = inject(WINDOW);
+
     @HostBinding('attr.contenteditable')
     contenteditable = true;
 
     focused = false;
+
+    readonly options = inject(TUI_IMAGE_EDITOR_OPTIONS);
 
     @HostBinding('attr.data-drag-handle')
     get dragHandle(): '' | null {
@@ -53,16 +54,6 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
 
     get src(): SafeResourceUrl {
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
-    }
-
-    constructor(
-        @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly options: TuiImageEditorOptions,
-        @Inject(DOCUMENT) private readonly doc: Document,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
-        @Inject(WINDOW) private readonly win: Window,
-    ) {
-        super();
     }
 
     @HostListener('document:click.silent', ['$event.target'])
@@ -87,7 +78,7 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
     }
 
     private selectFakeText(): void {
-        const range = this.doc.createRange();
+        const range = this.win.document.createRange();
 
         this.el.nativeElement.querySelector('p')?.focus();
 

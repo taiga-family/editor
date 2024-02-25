@@ -1,12 +1,10 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {map, Observable} from 'rxjs';
+import {map} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 import {TuiTableSizeSelectorComponent} from './table-size-selector/table-size-selector.component';
 
@@ -24,14 +22,11 @@ import {TuiTableSizeSelectorComponent} from './table-size-selector/table-size-se
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCreateComponent {
-    readonly insertTableText$ = this.texts$.pipe(map(texts => texts.insertTable));
+    readonly options = inject(TUI_EDITOR_OPTIONS);
+    readonly editor = inject(TuiTiptapEditorService);
+    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    constructor(
-        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
-        readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
-    ) {}
+    readonly insertTableText$ = this.texts$.pipe(map(texts => texts.insertTable));
 
     addTable({rows, cols}: {cols: number; rows: number}): void {
         this.editor.enter(); // @note: clear previous styles

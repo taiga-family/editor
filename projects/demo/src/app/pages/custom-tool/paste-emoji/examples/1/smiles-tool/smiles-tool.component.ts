@@ -1,5 +1,5 @@
 import {NgForOf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
@@ -13,6 +13,8 @@ import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiSmilesToolComponent {
+    private readonly editor = inject(TuiTiptapEditorService);
+
     /* More smiles: https://www.w3schools.com/charsets/ref_emoji.asp */
     readonly smiles = [
         '&#129409;',
@@ -28,11 +30,6 @@ export class ExampleTuiSmilesToolComponent {
         '&#128522;',
         '&#128640;',
     ];
-
-    constructor(
-        @Inject(TuiTiptapEditorService)
-        private readonly editor: TuiTiptapEditorService,
-    ) {}
 
     insertSmile(smile: string): void {
         this.editor

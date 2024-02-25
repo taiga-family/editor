@@ -1,6 +1,6 @@
 import './tiptap-editor.types';
 
-import {Inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import type {Editor, Range} from '@tiptap/core';
 import {MarkType} from 'prosemirror-model';
@@ -22,6 +22,8 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 @Injectable()
 export class TuiTiptapEditorService extends AbstractTuiEditor {
+    private readonly editorRef = inject(TIPTAP_EDITOR);
+
     get isFocused(): boolean {
         return this.editor.isFocused;
     }
@@ -44,7 +46,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     editor!: Editor;
 
-    constructor(@Inject(TIPTAP_EDITOR) private readonly editorRef: Observable<Editor>) {
+    constructor() {
         super();
 
         this.editorRef.subscribe(editor => {

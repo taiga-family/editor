@@ -68,7 +68,7 @@ export const appConfig: ApplicationConfig = {
 
                 return `${link}/${context.package.toLowerCase()}/src/lib/tui-editor/${(
                     context.header[0].toLowerCase() + context.header.slice(1)
-                ).replace(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
+                ).replaceAll(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
             },
         },
     ],

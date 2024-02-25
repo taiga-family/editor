@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     HostBinding,
-    Inject,
+    inject,
     OnInit,
 } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
@@ -11,7 +11,6 @@ import {TUI_DOC_PAGE_LOADED, TuiDocMainModule} from '@taiga-ui/addon-doc';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TuiLinkModule, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
 import pkg from '@tinkoff/tui-editor/package.json';
-import {Observable} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -29,6 +28,10 @@ import {Observable} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+    private readonly pageLoaded$ = inject(TUI_DOC_PAGE_LOADED);
+    protected readonly router = inject(Router);
+    protected readonly storage = inject(LOCAL_STORAGE);
+
     @HostBinding('class._loaded')
     readonly pageLoadedInit = '0';
 
@@ -36,12 +39,6 @@ export class AppComponent implements OnInit {
     readonly pageLoaded = this.pageLoaded$;
 
     version = pkg.version;
-
-    constructor(
-        @Inject(TUI_DOC_PAGE_LOADED) private readonly pageLoaded$: Observable<boolean>,
-        @Inject(Router) protected readonly router: Router,
-        @Inject(LOCAL_STORAGE) protected readonly storage: Storage,
-    ) {}
 
     ngOnInit(): void {
         void this.replaceEnvInURI();

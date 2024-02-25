@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiLoaderModule} from '@taiga-ui/core';
 import {
@@ -49,6 +49,8 @@ export class TuiEditorUploadFilesExample1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 
+    readonly fileIoService = inject(FileIoService);
+
     readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Link,
@@ -56,8 +58,6 @@ export class TuiEditorUploadFilesExample1 {
     ];
 
     control = new FormControl('');
-
-    constructor(@Inject(FileIoService) readonly fileIoService: FileIoService) {}
 
     /**
      * @note: attach file as a link

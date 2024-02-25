@@ -44,7 +44,7 @@ export const TuiBackgroundColor = Extension.create<BackgroundColorOptions>({
                                   }
                                 : {},
                         parseHTML: ({style}) =>
-                            style.backgroundColor.replace(/['"]+/g, ''),
+                            style.backgroundColor.replaceAll(/['"]+/g, ''),
                         keepOnSplit: false,
                     },
                 },

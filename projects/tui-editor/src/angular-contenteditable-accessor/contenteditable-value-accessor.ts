@@ -4,7 +4,7 @@ import {
     ElementRef,
     forwardRef,
     HostListener,
-    Inject,
+    inject,
     OnDestroy,
     Renderer2,
     SecurityContext,
@@ -34,6 +34,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class TuiContenteditableValueAccessor
     implements ControlValueAccessor, AfterViewInit, OnDestroy
 {
+    private readonly elementRef = inject(ElementRef);
+    private readonly renderer = inject(Renderer2);
+    private readonly sanitizer = inject(DomSanitizer);
+
     /*
      * MutationObserver IE11 fallback (as opposed to input event for modern browsers).
      * When mutation removes a tag, i.e. delete is pressed on the last remaining character
@@ -45,12 +49,6 @@ export class TuiContenteditableValueAccessor
             this.onChange(this.processValue(this.elementRef.nativeElement.innerHTML));
         });
     });
-
-    constructor(
-        @Inject(ElementRef) private readonly elementRef: ElementRef,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {}
 
     /*
      * Listen to input events to write innerHTML value into control,
