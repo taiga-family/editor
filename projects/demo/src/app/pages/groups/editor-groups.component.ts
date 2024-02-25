@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
 import {TuiEditorGroupExample1} from './examples/1';
 import {TuiEditorGroupExample2} from './examples/2';
@@ -25,7 +25,7 @@ import {TuiEditorGroupExample3} from './examples/3';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultEditorExtensions,
+            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
         },
     ],
 })

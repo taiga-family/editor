@@ -36,7 +36,7 @@ import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {Observable, take, takeUntil} from 'rxjs';
 
 import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
-import {defaultEditorTools} from '../../constants/default-editor-tools';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../enums/editor-tool';
 import {TuiEditorAttachedFile} from '../../interfaces/attached';
@@ -125,7 +125,7 @@ export class TuiToolbarComponent {
 
     readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
+    toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input()
     set tools(value: readonly TuiEditorTool[]) {

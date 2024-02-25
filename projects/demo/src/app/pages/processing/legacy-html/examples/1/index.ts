@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
-    defaultEditorExtensions,
+    TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditorComponent,
@@ -19,7 +19,7 @@ import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: defaultEditorExtensions,
+            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
         },
         {
             provide: TUI_EDITOR_VALUE_TRANSFORMER,

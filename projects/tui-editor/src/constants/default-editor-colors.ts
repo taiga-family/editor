@@ -1,4 +1,4 @@
-export const defaultEditorColors = new Map([
+export const TUI_EDITOR_DEFAULT_EDITOR_TOOLS = new Map([
     ['color-black-100', '#909090'],
     ['color-black-200', '#666666'],
     ['color-black-300', '#333333'],

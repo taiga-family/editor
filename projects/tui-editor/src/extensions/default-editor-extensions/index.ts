@@ -12,7 +12,7 @@ import {TuiStarterKit} from '../starter-kit';
 import {TuiTable} from '../table';
 import {TableCellBackground} from '../table-cell-background';
 
-export const defaultEditorExtensions: ReadonlyArray<
+export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     Extension | Mark | Node | Promise<Extension | Mark | Node>
 > = [
     TuiStarterKit.configure({heading: {levels: [1, 2, 3, 4, 5, 6]}}),

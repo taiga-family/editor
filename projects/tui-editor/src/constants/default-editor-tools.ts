@@ -1,6 +1,6 @@
 import {TuiEditorTool} from '../enums/editor-tool';
 
-export const defaultEditorTools = [
+export const TUI_EDITOR_DEFAULT_TOOLS = [
     TuiEditorTool.Undo,
     TuiEditorTool.Size,
     TuiEditorTool.Bold,
