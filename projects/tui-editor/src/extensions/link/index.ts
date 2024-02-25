@@ -25,7 +25,7 @@ export const TuiLink = Link.extend({
                         const sliced = getHTMLFromFragment(
                             selected.content,
                             state.schema,
-                        ).replace(/<\/?[^>]+(>|$)/g, '');
+                        ).replaceAll(/<\/?[^>]+(>|$)/g, '');
                         const forwardSymbolIsWhitespace = sliced === ' ';
 
                         const toggleMark = chain().toggleMark(this.name, attributes, {

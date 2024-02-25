@@ -1,15 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {
     AbstractTuiControl,
@@ -57,21 +53,12 @@ export class TuiInputColorComponent
     @ViewChild(TuiHostedDropdownComponent)
     private readonly dropdown?: TuiHostedDropdownComponent;
 
+    private readonly domSanitizer = inject(DomSanitizer);
+
     @Input()
     colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     open = false;
-
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(DomSanitizer) private readonly domSanitizer: DomSanitizer,
-    ) {
-        super(control, cdr);
-    }
 
     get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
@@ -90,11 +77,6 @@ export class TuiInputColorComponent
     @HostListener('click')
     onClick(): void {
         this.open = !this.open;
-    }
-
-    /** deprecated use 'value' setter */
-    onValueChange(textValue: string): void {
-        this.value = textValue;
     }
 
     onFocused(focused: boolean): void {

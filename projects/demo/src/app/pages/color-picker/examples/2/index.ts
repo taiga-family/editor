@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
@@ -18,9 +18,9 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerExample2 {
-    color = '#ffdd2d';
+    private readonly sanitizer = inject(DomSanitizer);
 
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
+    color = '#ffdd2d';
 
     get background(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(this.color);

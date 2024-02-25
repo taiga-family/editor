@@ -1,29 +1,23 @@
 import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ElementRef,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     OnDestroy,
-    Optional,
     Output,
-    Self,
     ViewChild,
 } from '@angular/core';
-import {NgControl} from '@angular/forms';
 import {
     AbstractTuiControl,
-    AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
-    TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
@@ -33,8 +27,7 @@ import {
     TuiScrollbarModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {Editor} from '@tiptap/core';
-import {delay, Observable, takeUntil} from 'rxjs';
+import {delay, takeUntil} from 'rxjs';
 
 import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
@@ -42,9 +35,8 @@ import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-ed
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../enums/editor-tool';
 import {TuiEditorAttachedFile} from '../../interfaces/attached';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '../../tokens/editor-options';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_CONTENT_PROCESSOR} from '../../tokens/editor-processor';
-import {TUI_EDITOR_VALUE_TRANSFORMER} from '../../tokens/editor-value-transformer';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
 import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
 import {TuiEditLinkComponent} from '../edit-link/edit-link.component';
@@ -89,6 +81,16 @@ export class TuiEditorComponent
     @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
 
+    private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
+    private readonly doc = inject(DOCUMENT);
+
+    protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
+
+    protected sub = this.editorLoaded$
+        .pipe(delay(0), takeUntil(this.destroy$))
+        .subscribe(() => this.patchContentEditableElement());
+
     @Input()
     exampleText = '';
 
@@ -103,29 +105,7 @@ export class TuiEditorComponent
 
     focused = false;
 
-    constructor(
-        @Optional()
-        @Self()
-        @Inject(NgControl)
-        control: NgControl | null,
-        @Inject(ChangeDetectorRef) cdr: ChangeDetectorRef,
-        @Inject(TIPTAP_EDITOR) readonly editorLoaded$: Observable<Editor | null>,
-        @Inject(TuiTiptapEditorService) readonly editorService: AbstractTuiEditor,
-        @Inject(TUI_EDITOR_CONTENT_PROCESSOR)
-        private readonly contentProcessor: TuiStringHandler<string>,
-        @Inject(DOCUMENT)
-        private readonly doc: Document,
-        @Optional()
-        @Inject(TUI_EDITOR_VALUE_TRANSFORMER)
-        transformer: AbstractTuiValueTransformer<string> | null,
-        @Inject(TUI_EDITOR_OPTIONS) private readonly options: TuiEditorOptions,
-    ) {
-        super(control, cdr, transformer);
-
-        this.editorLoaded$
-            .pipe(delay(0), takeUntil(this.destroy$))
-            .subscribe(() => this.patchContentEditableElement());
-    }
+    readonly editorService = inject(TuiTiptapEditorService);
 
     get nativeFocusableElement(): HTMLDivElement | null {
         return this.computedDisabled

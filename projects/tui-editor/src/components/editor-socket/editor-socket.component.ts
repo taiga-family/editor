@@ -4,9 +4,8 @@ import {
     Component,
     ElementRef,
     HostListener,
-    Inject,
+    inject,
     Input,
-    Optional,
     Renderer2,
     Sanitizer,
     SecurityContext,
@@ -29,10 +28,17 @@ import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-ed
     },
 })
 export class TuiEditorSocketComponent {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+    private readonly renderer = inject(Renderer2);
+    private readonly sanitizer = inject(Sanitizer);
+    private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
+    private readonly document = inject(DOCUMENT);
+    private readonly editor = inject(TuiTiptapEditorDirective, {optional: true});
+
     @Input()
     set content(content: string) {
         this.renderer.setProperty(
-            this.el.nativeElement,
+            this.el,
             'innerHTML',
             this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(
@@ -42,20 +48,6 @@ export class TuiEditorSocketComponent {
                 : this.sanitizer.sanitize(SecurityContext.HTML, content ?? ''),
         );
     }
-
-    constructor(
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
-        @Inject(Renderer2) private readonly renderer: Renderer2,
-        @Inject(Sanitizer) private readonly sanitizer: Sanitizer,
-        @Optional()
-        @Inject(TUI_SANITIZER)
-        private readonly tuiSanitizer: Sanitizer | null,
-        @Inject(DOCUMENT)
-        private readonly document: Document,
-        @Optional()
-        @Inject(TuiTiptapEditorDirective)
-        private readonly editor: TuiTiptapEditorDirective | null,
-    ) {}
 
     /**
      * @description:

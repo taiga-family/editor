@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Inject} from '@angular/core';
+import {Directive, ElementRef, HostListener, inject} from '@angular/core';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
@@ -12,12 +12,10 @@ import {
     selector: '[tuiToolbarNavigationManager]',
 })
 export class TuiToolbarNavigationManagerDirective {
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {}
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     private get toolsContainers(): readonly HTMLElement[] {
-        return Array.from(
-            this.el.nativeElement.querySelectorAll<HTMLElement>('[tuiItem]'),
-        );
+        return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiItem]'));
     }
 
     @HostListener('keydown.arrowRight.prevent', ['false'])
@@ -74,7 +72,7 @@ export class TuiToolbarNavigationManagerDirective {
             lookedInside ||
             tuiGetClosestFocusable({
                 initial: wrapper,
-                root: this.el.nativeElement,
+                root: this.el,
                 previous: true,
                 keyboard: false,
             })
@@ -86,7 +84,7 @@ export class TuiToolbarNavigationManagerDirective {
             ? wrapper
             : tuiGetClosestFocusable({
                   initial: wrapper,
-                  root: this.el.nativeElement,
+                  root: this.el,
                   keyboard: false,
               });
     }

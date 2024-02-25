@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneModule, TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {
@@ -28,6 +28,8 @@ export class ExampleTuiYoutubeToolComponent {
     @ViewChild('dropdown')
     private readonly dropdown?: TuiHostedDropdownComponent;
 
+    private readonly editor = inject(TuiTiptapEditorService);
+
     youtubeLogo =
         '<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC \'-//W3C//DTD SVG 1.1//EN\'' +
         '  \'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\'><svg height="24px" style="enable-background:new 0 0' +
@@ -36,11 +38,6 @@ export class ExampleTuiYoutubeToolComponent {
 
     placeholder = 'https://www.youtube.com/embed/j2_NnV7nU6s';
     url = '';
-
-    constructor(
-        @Inject(TuiTiptapEditorService)
-        private readonly editor: TuiTiptapEditorService,
-    ) {}
 
     insertYoutubeVideo(src: string): void {
         if (src) {

@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Inject} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core';
 
 import {TuiEditorPortalService} from './editor-portal.service';
@@ -12,13 +12,11 @@ import {TuiEditorPortalService} from './editor-portal.service';
     ],
 })
 export class TuiEditorPortalDirective extends TuiRectAccessor {
+    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
+
     readonly type = 'viewport';
 
-    constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {
-        super();
-    }
-
     getClientRect(): ClientRect {
-        return this.el.nativeElement.getBoundingClientRect();
+        return this.el.getBoundingClientRect();
     }
 }

@@ -43,7 +43,7 @@ export const TuiFontColor = Extension.create<FontColorOptions>({
                                       style: `color: ${fontColor}`,
                                   }
                                 : {},
-                        parseHTML: ({style}) => style.color.replace(/['"]+/g, ''),
+                        parseHTML: ({style}) => style.color.replaceAll(/['"]+/g, ''),
                         keepOnSplit: false,
                     },
                 },

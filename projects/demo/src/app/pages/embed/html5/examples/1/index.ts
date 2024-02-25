@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
+    inject,
     Injector,
     ViewChild,
 } from '@angular/core';
@@ -87,6 +87,10 @@ export class TuiEditorEmbedHtml5Example1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 
+    private readonly sanitizer = inject(DomSanitizer);
+
+    readonly isE2E = inject(TUI_IS_E2E);
+
     readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Link,
@@ -114,11 +118,6 @@ export class TuiEditorEmbedHtml5Example1 {
             `,
         Validators.required,
     );
-
-    constructor(
-        @Inject(TUI_IS_E2E) readonly isE2E: boolean,
-        @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    ) {}
 
     @tuiPure
     safe(content: string | null): SafeHtml {

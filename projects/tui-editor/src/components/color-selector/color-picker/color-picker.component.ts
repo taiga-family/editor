@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -22,6 +22,8 @@ import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerComponent {
+    private readonly sanitizer = inject(DomSanitizer);
+
     @Input()
     set color(color: [h: number, s: number, v: number, opacity: number]) {
         if (
@@ -48,8 +50,6 @@ export class TuiColorPickerComponent {
     hue = 0;
 
     opacity = 1;
-
-    constructor(@Inject(DomSanitizer) private readonly sanitizer: DomSanitizer) {}
 
     get currentColor(): [h: number, s: number, v: number] {
         return this.getCurrentColor(this.hue, this.point);

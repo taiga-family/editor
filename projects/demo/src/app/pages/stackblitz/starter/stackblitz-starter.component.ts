@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 import {TuiLoaderModule} from '@taiga-ui/core';
 
@@ -15,9 +15,7 @@ import {appPrefix} from '../utils';
     providers: [TuiStackblitzService],
 })
 export default class StackblitzStarterComponent implements OnInit {
-    constructor(
-        @Inject(TuiStackblitzService) private readonly stackblitz: TuiStackblitzService,
-    ) {}
+    private readonly stackblitz = inject(TuiStackblitzService);
 
     async ngOnInit(): Promise<void> {
         await this.openStackblitz();

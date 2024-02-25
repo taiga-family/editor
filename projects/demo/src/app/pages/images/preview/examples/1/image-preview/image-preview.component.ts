@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    Inject,
+    inject,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -18,15 +18,12 @@ import {TuiButtonModule, TuiDialogContext} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImagePreviewExampleComponent {
+    private readonly dialogs = inject(TuiPreviewDialogService);
+
     @ViewChild('previewImages')
     template?: TemplateRef<TuiDialogContext>;
 
     image?: HTMLImageElement;
-
-    constructor(
-        @Inject(TuiPreviewDialogService)
-        private readonly dialogs: TuiPreviewDialogService,
-    ) {}
 
     showImage(image: HTMLImageElement): void {
         this.image = image;

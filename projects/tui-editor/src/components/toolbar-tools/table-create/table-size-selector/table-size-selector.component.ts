@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
+    inject,
     Output,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
@@ -22,6 +22,8 @@ const MIN_DISTANCE_PX = 70;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableSizeSelectorComponent {
+    private readonly win = inject(WINDOW);
+
     @Output()
     readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
 
@@ -29,8 +31,6 @@ export class TuiTableSizeSelectorComponent {
         rows: 1,
         cols: 1,
     };
-
-    constructor(@Inject(WINDOW) private readonly win: Window) {}
 
     get columnsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);
