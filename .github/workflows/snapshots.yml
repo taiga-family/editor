@@ -7,9 +7,9 @@ jobs:
   snapshots:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.51.11
-      - uses: taiga-family/ci/actions/setup/variables@v1.51.11
-      - uses: taiga-family/ci/actions/setup/node@v1.51.11
+      - uses: taiga-family/ci/actions/setup/checkout@v1.51.12
+      - uses: taiga-family/ci/actions/setup/variables@v1.51.12
+      - uses: taiga-family/ci/actions/setup/node@v1.51.12
         id: nodejs-workspace
 
       - run: npx nx build editor-demo
