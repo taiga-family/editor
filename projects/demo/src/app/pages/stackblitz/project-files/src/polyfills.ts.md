@@ -1,3 +1,0 @@
-```ts
-import 'zone.js';
-```

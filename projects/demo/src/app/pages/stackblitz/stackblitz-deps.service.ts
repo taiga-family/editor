@@ -1,22 +1,17 @@
 import {Injectable} from '@angular/core';
-// import {TUI_VERSION} from '@taiga-ui/cdk';
 
 @Injectable({providedIn: 'root'})
 export class StackblitzDepsService {
-    async get(): Promise<Record<string, string>> {
-        // const {dependencies: demoDeps} = await import('@taiga-ui/submodule-demo-package');
-        // const {dependencies: cdkDeps} = await import('@taiga-ui/submodule-cdk-package');
-        const {devDependencies} = await import('@taiga-ui/submodule-package');
-
+    get(): Record<string, string> {
         return {
-            '@angular/cdk': devDependencies['@angular/cdk'],
-            '@angular/compiler': devDependencies['@angular/cdk'],
-            '@angular/core': devDependencies['@angular/core'],
-            '@angular/common': devDependencies['@angular/common'],
-            '@angular/forms': devDependencies['@angular/forms'],
-            '@angular/platform-browser': devDependencies['@angular/platform-browser'],
-            '@angular/animations': devDependencies['@angular/animations'],
-            '@angular/router': devDependencies['@angular/router'],
+            '@angular/cdk': '17.x.x',
+            '@angular/compiler': '17.x.x',
+            '@angular/core': '17.x.x',
+            '@angular/common': '17.x.x',
+            '@angular/forms': '17.x.x',
+            '@angular/platform-browser': '17.x.x',
+            '@angular/animations': '17.x.x',
+            '@angular/router': '17.x.x',
             '@taiga-ui/cdk': 'latest',
             '@taiga-ui/i18n': 'latest',
             '@taiga-ui/core': 'latest',
@@ -24,16 +19,14 @@ export class StackblitzDepsService {
             '@taiga-ui/icons': 'latest',
             '@taiga-ui/styles': 'latest',
             '@ng-web-apis/common': 'latest',
-            '@ng-web-apis/resize-observer': 'latest',
             '@ng-web-apis/mutation-observer': 'latest',
-            // 'zone.js': demoDeps['zone.js'],
-            // dompurify: demoDeps.dompurify,
-            typescript: devDependencies.typescript,
-            // rxjs: dependencies.rxjs,
+            '@ng-web-apis/resize-observer': 'latest',
+            '@tinkoff/ng-event-plugins': 'latest',
+            '@tinkoff/ng-polymorpheus': 'latest',
+            '@tinkoff/ng-dompurify': 'latest',
+            dompurify: 'latest',
+            typescript: '5.3.x',
             '@tinkoff/tui-editor': '1.x.x',
-            // '@tinkoff/ng-polymorpheus': cdkDeps['@tinkoff/ng-polymorpheus'],
-            // '@tinkoff/ng-dompurify': demoDeps['@tinkoff/ng-dompurify'],
-            // '@tinkoff/ng-event-plugins': cdkDeps['@tinkoff/ng-event-plugins'],
         };
     }
 }

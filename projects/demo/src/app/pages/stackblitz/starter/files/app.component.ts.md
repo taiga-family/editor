@@ -1,10 +1,19 @@
 ```ts
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {defaultEditorExtensions, defaultEditorTools, TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiRootModule} from '@taiga-ui/core';
+import {
+  defaultEditorExtensions,
+  defaultEditorTools,
+  TUI_EDITOR_EXTENSIONS,
+  TuiEditorModule,
+  TuiEditorSocketModule,
+  TuiEditorTool,
+} from '@tinkoff/tui-editor';
 
 @Component({
   standalone: true,
+  imports: [TuiRootModule, TuiEditorModule, TuiEditorSocketModule, FormsModule, ReactiveFormsModule],
   selector: `my-app`,
   templateUrl: `./app.component.html`,
   styleUrls: [`./app.component.less`],
