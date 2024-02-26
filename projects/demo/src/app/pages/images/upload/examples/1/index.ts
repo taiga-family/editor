@@ -16,7 +16,7 @@ import {
     TUI_IS_STACKBLITZ,
     TuiDestroyService,
     TuiValidationError,
-    TuiValidatorModule,
+    TuiValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiErrorModule, TuiLoaderModule} from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
@@ -39,7 +39,7 @@ import {ImgbbService} from './imgbb.service';
         TuiErrorModule,
         TuiLoaderModule,
         AsyncPipe,
-        TuiValidatorModule,
+        TuiValidatorDirective,
         ReactiveFormsModule,
         TuiFieldErrorPipeModule,
         TuiEditorSocketComponent,
