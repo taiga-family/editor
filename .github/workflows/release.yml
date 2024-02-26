@@ -15,6 +15,7 @@ on:
           - patch
           - minor
           - major
+          - prepatch
 
 jobs:
   run-release:
@@ -45,7 +46,14 @@ jobs:
 
       - run: npx nx build tui-editor
 
-      - run: npx nx publish tui-editor
+      - run: |
+          if [[ "${{ github.event.inputs.mode }}" != "prepatch" ]]; then
+            npx nx publish tui-editor --tag stable
+          fi
+
+          if [[ "${{ github.event.inputs.mode }}" == "prepatch" ]]; then
+              npx nx publish tui-editor --tag alpha
+          fi
         if: always()
 
       - id: info
