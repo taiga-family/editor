@@ -14,7 +14,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.51.11
       - uses: taiga-family/ci/actions/setup/node@v1.51.11
       - run: npx nx test tui-editor
-      - uses: codecov/codecov-action@v4.0.2
+      - uses: codecov/codecov-action@v4.1.0
         with:
           directory: ./coverage/tui-editor
           flags: tui-editor
