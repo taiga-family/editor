@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[2609],{2609:e=>{e.exports="```ts\nimport 'zone.js';\n```\n"}}]);
