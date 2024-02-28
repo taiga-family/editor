@@ -60,12 +60,14 @@ export interface TuiEditorOptions {
     };
     readonly linkOptions?: TuiEditorLinkOptions;
     readonly spellcheck: boolean;
+    readonly enableDefaultStyles: boolean;
     readonly translate: 'no' | 'yes';
 }
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: `no`,
     spellcheck: false,
+    enableDefaultStyles: true,
     colors: defaultEditorColors,
     blankColor: EDITOR_BLANK_COLOR,
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
