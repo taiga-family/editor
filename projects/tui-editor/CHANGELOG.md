@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.14.0 (2024-02-28)
+
+### Bug Fixes
+
+- strange behaviour on Windows ([#821](https://github.com/taiga-family/tui-editor/issues/821))
+  ([420a19c](https://github.com/taiga-family/tui-editor/commit/420a19cea534f288ab7eef6ff85ce714b2e2787d))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.13.0 (2024-02-22)
 
 ### Bug Fixes
