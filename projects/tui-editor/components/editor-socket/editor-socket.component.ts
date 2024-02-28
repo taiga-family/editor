@@ -15,6 +15,7 @@ import {
 import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 import {TuiTiptapEditorDirective} from '@tinkoff/tui-editor/directives/tiptap-editor';
+import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@tinkoff/tui-editor/tokens';
 
 @Component({
     selector: 'tui-editor-socket',
@@ -23,7 +24,7 @@ import {TuiTiptapEditorDirective} from '@tinkoff/tui-editor/directives/tiptap-ed
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-editor-socket',
+        '[class.tui-editor-socket]': 'options.enableDefaultStyles',
     },
 })
 export class TuiEditorSocketComponent {
@@ -53,6 +54,7 @@ export class TuiEditorSocketComponent {
         @Optional()
         @Inject(TuiTiptapEditorDirective)
         private readonly editor: TuiTiptapEditorDirective | null,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
     ) {}
 
     /**
