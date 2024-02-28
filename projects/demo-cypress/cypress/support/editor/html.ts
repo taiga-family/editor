@@ -2,10 +2,6 @@ export const HTML_EDITOR_BASIC_EXAMPLE = `<p><strong>WYSIWYG</strong> (<em>What 
 
 export const HTML_EDITOR_EXAMPLE_UL = `<ul><li>1</li><li>2</li></ul><ol><li>A</li><li>B</li></ol>`;
 
-export const HTML_EDITOR_EXAMPLE_DETAILS = `<div class="t-details-wrapper t-details-wrapper_rendered"><details data-opened="true"><summary><p><span>Details</span></p></summary><div data-type="details-content"><h1>Title</h1><h2>Subtitle</h2><p><span style="font-size: 17px">Large</span></p><p><span style="font-size: 15px">Normal</span></p><p><span style="font-size: 13px">Small</span></p></div></details><button class="t-details-arrow"></button></div><p></p>`;
-
-export const HTML_EDITOR_EXAMPLE_LEGACY_DETAILS = `<div class="details-wrapper details-wrapper_rendered"><details data-opened="true"><summary><p><span>Details</span></p></summary><div data-type="details-content"><h1>Title</h1><h2>Subtitle</h2><p><span style="font-size: 17px">Large</span></p><p><span style="font-size: 15px">Normal</span></p><p><span style="font-size: 13px">Small</span></p></div></details><button class="details-arrow"></button></div><p></p>`;
-
 export const HTML_EDITOR_EXAMPLE_HIGHLIGHT_BLOCK = `<pre><code>Hello world</code></pre><p><code>Tell me please, why?</code></p><pre><code>export class MyName { readonly a = 5; }</code></pre><pre><code>https://github.com/taiga-family/taiga-ui</code></pre><p></p>`;
 
 export const HTML_EDITOR_EXAMPLE_BLOCKQUOTE = `<blockquote><p>123123123a</p><p>112323</p></blockquote><p></p>`;
