@@ -15,6 +15,7 @@ import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_SANITIZER} from '@taiga-ui/core';
 
 import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-editor.directive';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 
 @Component({
     standalone: true,
@@ -24,7 +25,7 @@ import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-ed
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 'tui-editor-socket',
+        '[class.tui-editor-socket]': 'options.enableDefaultStyles',
     },
 })
 export class TuiEditorSocketComponent {
@@ -34,6 +35,7 @@ export class TuiEditorSocketComponent {
     private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
     private readonly document = inject(DOCUMENT);
     private readonly editor = inject(TuiTiptapEditorDirective, {optional: true});
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
     set content(content: string) {
