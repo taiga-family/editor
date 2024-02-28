@@ -4,6 +4,7 @@ on:
 
 env:
   CYPRESS_failOnSnapshotDiff: 0
+  NODE_OPTIONS: '--max-old-space-size=12000'
   CYPRESS_SNAPSHOTS_PATH: /projects/demo-cypress/cypress/snapshots
 
 jobs:

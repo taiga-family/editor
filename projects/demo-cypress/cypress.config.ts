@@ -28,7 +28,6 @@ export const TUI_CYPRESS_CONFIG: Cypress.ConfigOptions = {
         runMode: 0, // Configure retry attempts for `cypress run`
         openMode: 0, // Configure retry attempts for `cypress open`
     },
-    numTestsKeptInMemory: 0,
     env: {
         waitBeforeScreenshot: 1000,
         waitBeforeAction: 50,
