@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.15.0 (2024-02-28)
+
+### Features
+
+- add `enableDefaultStyles` option ([#823](https://github.com/taiga-family/tui-editor/issues/823))
+  ([defc64e](https://github.com/taiga-family/tui-editor/commit/defc64e604cb9361ab1fab03572cf9181a52aee0))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.14.0 (2024-02-28)
 
 ### Bug Fixes
