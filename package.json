@@ -1,6 +1,6 @@
 {
     "name": "tui-editor",
-    "version": "1.11.0",
+    "version": "1.15.0",
     "private": true,
     "description": "Rich text editor extension with related Taiga UI components",
     "keywords": [
