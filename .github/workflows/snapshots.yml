@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "version=$(node -p "require('./projects/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Publish v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x snapshots
+      - name: Publish v${{ steps.info.outputs.version }}.x snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
