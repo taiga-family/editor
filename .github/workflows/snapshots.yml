@@ -10,7 +10,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.50.5
       - uses: taiga-family/ci/actions/setup/variables@v1.50.5
       - uses: taiga-family/ci/actions/setup/node@v1.50.5
-        id: nodejs-workspace
 
       - run: npx nx build-gh-pages editor-demo
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -23,12 +22,16 @@ jobs:
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
+      - id: info
+        run: |
+          echo "version=$(node -p "require('./projects/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
+
       - name: Publish v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x snapshots
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
           FOLDER: ${{ env.DIST }}
-          BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
+          BRANCH: snapshots/demo/v${{ steps.info.outputs.version }}.x
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
