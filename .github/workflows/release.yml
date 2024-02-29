@@ -58,7 +58,7 @@ jobs:
 
       - id: info
         run: |
-          echo "version=@tinkoff/tui-editor@$(node -p "require('./projects/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
+          echo "version=v$(node -p "require('./projects/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.51.12
