@@ -13,7 +13,7 @@ import {TuiAutoFocusModule, tuiIsElement} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
@@ -43,10 +43,10 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         TuiSvgModule,
         FormsModule,
         NgIf,
-        TuiScrollbarModule,
         AsyncPipe,
         TuiAutoFocusModule,
         TuiInputInlineModule,
+        TuiScrollbarComponent,
     ],
     templateUrl: './edit-link.template.html',
     styleUrls: ['./edit-link.style.less'],

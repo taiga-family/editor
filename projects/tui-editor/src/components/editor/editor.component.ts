@@ -24,7 +24,7 @@ import {
     TuiDropdownDirective,
     TuiDropdownOptionsDirective,
     TuiDropdownSelectionDirective,
-    TuiScrollbarModule,
+    TuiScrollbarComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
 import {delay, takeUntil} from 'rxjs';
@@ -54,7 +54,7 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         NgIf,
         TuiWrapperModule,
         TuiActiveZoneDirective,
-        TuiScrollbarModule,
+        TuiScrollbarComponent,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
         TuiEditLinkComponent,
