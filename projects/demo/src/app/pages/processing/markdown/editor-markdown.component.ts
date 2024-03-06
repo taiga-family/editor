@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
-    TuiDocExample,
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
@@ -39,7 +39,7 @@ import {TuiEditorEditorExample1} from './examples/1';
     ],
 })
 export default class ExampleTuiEditorMarkdownComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),

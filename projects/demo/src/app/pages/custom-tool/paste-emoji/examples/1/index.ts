@@ -36,6 +36,6 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
     ],
 })
 export class TuiEditorPasteEmojiToolExample1 {
-    readonly builtInTools = [TuiEditorTool.Undo];
-    readonly control = new FormControl('');
+    protected readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly control = new FormControl('');
 }

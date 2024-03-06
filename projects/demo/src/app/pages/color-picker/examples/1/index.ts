@@ -14,7 +14,7 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerExample1 {
-    color = '#ffdd2d';
+    protected color = '#ffdd2d';
 
-    readonly palette = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;
+    protected readonly palette = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;
 }

@@ -3,8 +3,8 @@
 // https://stackoverflow.com/a/20238168/2706426
 //
 
-import {TuiParsedGradient} from '../interfaces/parsed-gradient';
-import {TuiGradientDirection} from '../types/gradient-direction';
+import type {TuiParsedGradient} from '../interfaces/parsed-gradient';
+import type {TuiGradientDirection} from '../types/gradient-direction';
 
 // SETUP CODE
 const COMMA = '\\s*,\\s*'; // Allow space around comma.

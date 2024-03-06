@@ -4,11 +4,11 @@ import {tuiLegacyEditorConverter} from '@tinkoff/tui-editor';
 
 @Injectable()
 export class ExampleEditorConvertLegacyHtmlTransformer extends AbstractTuiValueTransformer<string> {
-    fromControlValue(controlValue: string): string {
+    public fromControlValue(controlValue: string): string {
         return tuiLegacyEditorConverter(controlValue);
     }
 
-    toControlValue(componentValue: string): string {
+    public toControlValue(componentValue: string): string {
         return componentValue;
     }
 }

@@ -35,7 +35,7 @@
             class="t-tool t-tool_margin"
             [disabled]="undoDisabled"
             [focusable]="false"
-            [icon]="options.icons.undo"
+            [icon]="icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
         ></button>
@@ -51,7 +51,7 @@
             class="t-tool t-tool_margin"
             [disabled]="redoDisabled"
             [focusable]="false"
-            [icon]="options.icons.redo"
+            [icon]="icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
         ></button>
@@ -102,7 +102,7 @@
             class="t-tool t-tool_margin"
             [disabled]="unorderedList || orderedList"
             [focusable]="false"
-            [icon]="options.icons.quote"
+            [icon]="icons.quote"
             [pseudoActive]="blockquote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
@@ -126,7 +126,7 @@
                 type="button"
                 class="t-tool"
                 [focusable]="link.open"
-                [icon]="options.icons.link"
+                [icon]="icons.link"
                 [pseudoActive]="link.open || a"
                 [tuiHint]="texts.link"
             ></button>
@@ -153,7 +153,7 @@
                 tuiIconButton
                 type="button"
                 [focusable]="false"
-                [icon]="options.icons.anchor"
+                [icon]="icons.anchor"
                 [pseudoActive]="anchor.open || jumpAnchor"
                 [tuiHint]="texts.insertAnchor"
             ></button>
@@ -177,7 +177,7 @@
                 type="button"
                 class="t-tool t-tool_margin"
                 [focusable]="false"
-                [icon]="options.icons.attach"
+                [icon]="icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
             ></button>
@@ -209,7 +209,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
-            [icon]="options.icons.sub"
+            [icon]="icons.sub"
             [pseudoActive]="subscript"
             [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
@@ -226,7 +226,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
-            [icon]="options.icons.sup"
+            [icon]="icons.sup"
             [pseudoActive]="superscript"
             [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
@@ -272,7 +272,7 @@
             type="button"
             class="t-tool"
             [focusable]="false"
-            [icon]="options.icons.tex"
+            [icon]="icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
         ></button>
@@ -291,7 +291,7 @@
                 type="button"
                 class="t-tool"
                 [focusable]="false"
-                [icon]="options.icons.image"
+                [icon]="icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
             ></button>
@@ -317,7 +317,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
-            [icon]="options.icons.hr"
+            [icon]="icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
         ></button>
@@ -337,7 +337,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [focusable]="false"
-            [icon]="options.icons.clear"
+            [icon]="icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"
         ></button>

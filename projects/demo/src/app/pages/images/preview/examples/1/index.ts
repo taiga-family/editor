@@ -43,9 +43,9 @@ export class TuiEditorPreviewImagesExample1 {
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
     constructor() {
         this.control.patchValue(

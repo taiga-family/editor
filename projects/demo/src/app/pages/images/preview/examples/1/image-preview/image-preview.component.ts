@@ -1,13 +1,9 @@
 import {NgIf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {TuiPreviewDialogService, TuiPreviewModule} from '@taiga-ui/addon-preview';
-import {TuiButtonModule, TuiDialogContext} from '@taiga-ui/core';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiButtonModule} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -21,11 +17,11 @@ export class ImagePreviewExampleComponent {
     private readonly dialogs = inject(TuiPreviewDialogService);
 
     @ViewChild('previewImages')
-    template?: TemplateRef<TuiDialogContext>;
+    protected template?: TemplateRef<TuiDialogContext>;
 
-    image?: HTMLImageElement;
+    protected image?: HTMLImageElement;
 
-    showImage(image: HTMLImageElement): void {
+    public showImage(image: HTMLImageElement): void {
         this.image = image;
         this.dialogs.open(this.template || '').subscribe();
     }

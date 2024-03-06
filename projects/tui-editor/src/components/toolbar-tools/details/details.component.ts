@@ -14,11 +14,11 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsComponent {
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    setDetails(): void {
+    protected setDetails(): void {
         this.editor.setDetails();
     }
 }

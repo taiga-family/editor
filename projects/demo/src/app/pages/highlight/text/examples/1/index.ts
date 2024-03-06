@@ -49,9 +49,9 @@ export class TuiEditorMarkTextExample1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 
-    readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly builtInTools = [TuiEditorTool.Undo];
 
-    control = new FormControl(
+    protected control = new FormControl(
         `
         <p>This isn’t highlighted.</p>
         <p>
@@ -63,7 +63,7 @@ export class TuiEditorMarkTextExample1 {
         `,
     );
 
-    toggleHighlight(): void {
+    protected toggleHighlight(): void {
         this.wysiwyg?.editor
             ?.getOriginTiptapEditor()
             .commands.toggleHighlight({color: '#c8eefc'});

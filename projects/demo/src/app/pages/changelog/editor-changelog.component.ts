@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocPageModule, TuiMarkdownPipe} from '@taiga-ui/addon-doc';
-import {TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
@@ -12,9 +12,9 @@ import {TuiStringHandler} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TuiChangelogComponent {
-    readonly changelog = import('../../../../../tui-editor/CHANGELOG.md?raw');
+    protected readonly changelog = import('../../../../../tui-editor/CHANGELOG.md?raw');
 
-    mapper: TuiStringHandler<string> = value =>
+    protected mapper: TuiStringHandler<string> = value =>
         value.replaceAll(
             'All notable changes to this project will be documented in this file. See\n[Conventional Commits](https://conventionalcommits.org) for commit guidelines.',
             '',

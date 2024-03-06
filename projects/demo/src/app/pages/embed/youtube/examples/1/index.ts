@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TuiItemModule, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {
@@ -37,8 +38,8 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
 export class TuiEditorEmbedYoutubeExample1 {
     private readonly sanitizer = inject(DomSanitizer);
 
-    readonly builtInTools = [TuiEditorTool.Undo];
-    readonly control = new FormControl(
+    protected readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly control = new FormControl(
         `
         <p>Editor now supports YouTube embeds!</p>
         <div data-youtube-video>
@@ -53,7 +54,7 @@ export class TuiEditorEmbedYoutubeExample1 {
      * TUI_SANITIZER doesn't support iframe inside content
      */
     @tuiPure
-    safe(content: string | null): SafeHtml {
+    protected safe(content: string | null): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
     }
 }

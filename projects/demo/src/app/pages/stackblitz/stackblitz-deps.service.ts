@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class StackblitzDepsService {
-    get(): Record<string, string> {
+    public get(): Record<string, string> {
         return {
             '@angular/cdk': '17.x.x',
             '@angular/compiler': '17.x.x',

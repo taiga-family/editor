@@ -36,9 +36,9 @@ import {
     ],
 })
 export class TuiEditorFontExample2 {
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
-    control = new FormControl(`
+    protected control = new FormControl(`
         <p><span style="font-size: 96px">96</span></p>
         <p><span style="font-size: 72px">72</span></p>
         <p><span style="font-size: 48px">48</span></p>

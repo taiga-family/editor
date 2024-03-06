@@ -1,4 +1,5 @@
 import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,18 +7,16 @@ import {
     EventEmitter,
     inject,
     Input,
-    OnDestroy,
     Output,
     ViewChild,
 } from '@angular/core';
+import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
     ALWAYS_FALSE_HANDLER,
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
-    TuiBooleanHandler,
-    TuiFocusableElementAccessor,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
@@ -29,12 +28,12 @@ import {
 } from '@taiga-ui/core';
 import {delay, takeUntil} from 'rxjs';
 
-import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
+import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
-import {TuiEditorTool} from '../../enums/editor-tool';
-import {TuiEditorAttachedFile} from '../../interfaces/attached';
+import type {TuiEditorTool} from '../../enums/editor-tool';
+import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_CONTENT_PROCESSOR} from '../../tokens/editor-processor';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
@@ -85,54 +84,40 @@ export class TuiEditorComponent
     private readonly options = inject(TUI_EDITOR_OPTIONS);
     private readonly doc = inject(DOCUMENT);
 
+    @Input()
+    public exampleText = '';
+
+    @Input()
+    public tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
+
+    @Output()
+    public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
+
+    public focused = false;
+
+    @ViewChild(TuiToolbarComponent)
+    protected readonly toolbar?: TuiToolbarComponent;
+
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
 
     protected sub = this.editorLoaded$
         .pipe(delay(0), takeUntil(this.destroy$))
         .subscribe(() => this.patchContentEditableElement());
 
-    @Input()
-    exampleText = '';
+    protected readonly editorService = inject(TuiTiptapEditorService);
 
-    @Input()
-    tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
+    public get editor(): AbstractTuiEditor | null {
+        return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
+    }
 
-    @Output()
-    readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
-
-    @ViewChild(TuiToolbarComponent)
-    readonly toolbar?: TuiToolbarComponent;
-
-    focused = false;
-
-    readonly editorService = inject(TuiTiptapEditorService);
-
-    get nativeFocusableElement(): HTMLDivElement | null {
+    public get nativeFocusableElement(): HTMLDivElement | null {
         return this.computedDisabled
             ? null
             : this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') ||
                   null;
     }
 
-    get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
-    }
-
-    get editor(): AbstractTuiEditor | null {
-        return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
-    }
-
-    get placeholderRaised(): boolean {
-        return (this.computedFocused && !this.readOnly) || this.hasValue;
-    }
-
-    get hasExampleText(): boolean {
-        return (
-            !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
-        );
-    }
-
-    override writeValue(value: string | null): void {
+    public override writeValue(value: string | null): void {
         if (value === this.value) {
             return;
         }
@@ -151,34 +136,52 @@ export class TuiEditorComponent
         }
     }
 
-    onActiveZone(focused: boolean): void {
+    public override ngOnDestroy(): void {
+        this.editor?.destroy();
+    }
+
+    protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+    }
+
+    protected get placeholderRaised(): boolean {
+        return (this.computedFocused && !this.readOnly) || this.hasValue;
+    }
+
+    protected get hasExampleText(): boolean {
+        return (
+            !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
+        );
+    }
+
+    protected onActiveZone(focused: boolean): void {
         this.focused = focused;
         this.updateFocused(focused);
         this.control?.updateValueAndValidity();
     }
 
-    onModelChange(value: string): void {
+    protected onModelChange(value: string): void {
         this.value = value;
     }
 
-    addAnchor(anchor: string): void {
+    protected addAnchor(anchor: string): void {
         this.editor?.setAnchor(anchor);
     }
 
-    removeAnchor(): void {
+    protected removeAnchor(): void {
         this.editor?.removeAnchor();
     }
 
-    addLink(link: string): void {
+    protected addLink(link: string): void {
         this.editor?.selectClosest();
         this.editor?.setLink(link);
     }
 
-    removeLink(): void {
+    protected removeLink(): void {
         this.editor?.unsetLink();
     }
 
-    focus(event: MouseEvent): void {
+    protected focus(event: MouseEvent): void {
         if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
             return;
         }
@@ -187,12 +190,23 @@ export class TuiEditorComponent
         this.nativeFocusableElement?.focus();
     }
 
-    override ngOnDestroy(): void {
-        this.editor?.destroy();
-    }
-
     protected getFallbackValue(): string {
         return '';
+    }
+
+    private get focusNode(): Node | null {
+        return this.doc.getSelection()?.focusNode ?? null;
+    }
+
+    private get hasValue(): boolean {
+        return !!this.value;
+    }
+
+    private get currentFocusedNodeIsImageAnchor(): boolean {
+        return (
+            this.focusNode?.nodeName === 'A' &&
+            ['IMG', 'TUI-IMAGE-EDITOR'].includes(this.focusNode?.childNodes[0]?.nodeName)
+        );
     }
 
     private readonly isSelectionLink = (range: Range): boolean =>
@@ -210,21 +224,6 @@ export class TuiEditorComponent
             !!range.startContainer.parentElement
                 ?.closest('a')
                 ?.contains(this.focusNode) && tuiIsSafeLinkRange(range)
-        );
-    }
-
-    private get focusNode(): Node | null {
-        return this.doc.getSelection()?.focusNode ?? null;
-    }
-
-    private get hasValue(): boolean {
-        return !!this.value;
-    }
-
-    private get currentFocusedNodeIsImageAnchor(): boolean {
-        return (
-            this.focusNode?.nodeName === 'A' &&
-            ['IMG', 'TUI-IMAGE-EDITOR'].includes(this.focusNode?.childNodes[0]?.nodeName)
         );
     }
 

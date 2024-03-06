@@ -102,9 +102,9 @@ import {mergeAttributes} from '@tiptap/core';
     ],
 })
 export class TuiEditorFontExample1 {
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
-    control = new FormControl(`
+    protected control = new FormControl(`
         <h1>This is a 1st level heading</h1>
         <h2>This is a 2nd level heading</h2>
         <h3>This is a 3rd level heading</h3>

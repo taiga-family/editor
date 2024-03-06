@@ -6,12 +6,8 @@ import {
     Injector,
     ViewChild,
 } from '@angular/core';
-import {
-    AbstractControl,
-    FormControl,
-    ReactiveFormsModule,
-    ValidationErrors,
-} from '@angular/forms';
+import type {AbstractControl, ValidationErrors} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_IS_STACKBLITZ,
     TuiDestroyService,
@@ -83,11 +79,11 @@ export class TuiEditorUploadingImagesExample1 {
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
-    readonly doc = inject(DOCUMENT);
-    readonly imgbbService = inject(ImgbbService);
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly doc = inject(DOCUMENT);
+    protected readonly imgbbService = inject(ImgbbService);
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
     constructor() {
         this.control.patchValue(
@@ -99,7 +95,7 @@ export class TuiEditorUploadingImagesExample1 {
         );
     }
 
-    readonly validator = ({value}: AbstractControl): ValidationErrors | null =>
+    protected readonly validator = ({value}: AbstractControl): ValidationErrors | null =>
         this.editor?.focused ||
         this.imgbbService.isLoading ||
         !this.doc.hasFocus() || // possible that file dialog is open

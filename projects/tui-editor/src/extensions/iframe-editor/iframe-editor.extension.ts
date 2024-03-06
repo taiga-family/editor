@@ -1,17 +1,16 @@
-import {Injector} from '@angular/core';
-import {
+import type {Injector} from '@angular/core';
+import type {
     Attribute,
-    mergeAttributes,
-    Node,
     NodeViewRenderer,
     NodeViewRendererProps,
     RawCommands,
 } from '@tiptap/core';
-import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import {mergeAttributes, Node} from '@tiptap/core';
+import type {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
 
 import {TuiNodeView} from '../tiptap-node-view';
 import {TuiIframeEditorComponent} from './iframe-editor.component';
-import {TuiEditableIframe} from './iframe-editor.options';
+import type {TuiEditableIframe} from './iframe-editor.options';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

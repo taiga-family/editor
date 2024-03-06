@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 import {
@@ -25,11 +26,11 @@ import {
     ],
 })
 export class TuiEditorCodeBlockExample1 implements OnInit {
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
-    async ngOnInit(): Promise<void> {
+    public async ngOnInit(): Promise<void> {
         const [code] = tuiTryParseMarkdownCodeBlock(
             await tuiRawLoad(import('./example.md?raw')),
         );

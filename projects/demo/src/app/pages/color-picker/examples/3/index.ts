@@ -12,15 +12,15 @@ import {BehaviorSubject} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerExample3 {
-    colors = new Map([
+    protected colors = new Map([
         ['blue', 'var(--tui-info-fill)'],
         ['green', 'var(--tui-success-fill)'],
         ['red', 'var(--tui-error-fill)'],
     ]);
 
-    color$ = new BehaviorSubject('var(--tui-success-fill)');
+    protected color$ = new BehaviorSubject('var(--tui-success-fill)');
 
-    updateColor(color: string): void {
+    protected updateColor(color: string): void {
         this.color$.next(color);
     }
 }

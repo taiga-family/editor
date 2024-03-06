@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
-import {BehaviorSubject, from, map, Observable} from 'rxjs';
+import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, from, map} from 'rxjs';
 
 /**
  * @description:
@@ -18,9 +19,9 @@ const fileIO = {
     providedIn: 'root',
 })
 export class FileIoService {
-    readonly loading$ = new BehaviorSubject(false);
+    public readonly loading$ = new BehaviorSubject(false);
 
-    upload(file: File): Observable<TuiEditorAttachedFile> {
+    public upload(file: File): Observable<TuiEditorAttachedFile> {
         const body = new FormData();
 
         body.append('file', file, file.name);

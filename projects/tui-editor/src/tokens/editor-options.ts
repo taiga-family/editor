@@ -1,4 +1,4 @@
-import {Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
 import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 import {
@@ -6,10 +6,8 @@ import {
     TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
 } from '../constants/default-editor-colors';
 import {tuiDefaultFontOptionsHandler} from '../constants/default-font-options-handler';
-import {
-    TUI_DEFAULT_LINK_OPTIONS,
-    TuiEditorLinkOptions,
-} from '../constants/default-link-options-handler';
+import type {TuiEditorLinkOptions} from '../constants/default-link-options-handler';
+import {TUI_DEFAULT_LINK_OPTIONS} from '../constants/default-link-options-handler';
 
 export interface TuiEditorOptions {
     readonly blankColor: string;

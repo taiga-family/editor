@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoModule} from '@maskito/angular';
-import {MaskitoOptions} from '@maskito/core';
+import type {MaskitoOptions} from '@maskito/core';
 import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
 import {
     TuiDataListModule,
@@ -46,32 +46,32 @@ const HEX_MODE_LENGTH = 6;
 })
 export class TuiColorEditComponent {
     @Input()
-    color: [number, number, number, number] = [0, 0, 0, 1];
+    public color: [number, number, number, number] = [0, 0, 0, 1];
 
     @Output()
-    readonly colorChange = new EventEmitter<[number, number, number, number]>();
+    public readonly colorChange = new EventEmitter<[number, number, number, number]>();
 
-    readonly hexMask: MaskitoOptions = {
+    protected readonly hexMask: MaskitoOptions = {
         mask: new RegExp(`^[A-F\\d]{0,${HEX_MODE_LENGTH}}$`, 'gi'),
     };
 
-    readonly modes = ['HEX', 'RGB'];
+    protected readonly modes = ['HEX', 'RGB'];
 
-    mode = this.modes[0];
+    protected mode = this.modes[0];
 
-    get isHex(): boolean {
+    protected get isHex(): boolean {
         return this.mode === this.modes[0];
     }
 
-    get hex(): string {
+    protected get hex(): string {
         return tuiRgbToHex(this.color[0], this.color[1], this.color[2]).replace('#', '');
     }
 
-    get opacity(): number {
+    protected get opacity(): number {
         return Math.round(this.color[3] * 100);
     }
 
-    onHexChange(hex: string): void {
+    protected onHexChange(hex: string): void {
         if (hex.length !== HEX_MODE_LENGTH) {
             return;
         }
@@ -81,7 +81,7 @@ export class TuiColorEditComponent {
         this.updateColor([rgb[0], rgb[1], rgb[2], this.color[3]]);
     }
 
-    onRgbChange(...rgba: [number, number, number, number]): void {
+    protected onRgbChange(...rgba: [number, number, number, number]): void {
         this.updateColor(rgba);
     }
 

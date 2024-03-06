@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {TuiInputColorComponent} from '@tinkoff/tui-editor';
 
@@ -12,9 +13,9 @@ import {TuiInputColorComponent} from '@tinkoff/tui-editor';
 })
 class TestComponent {
     @ViewChild(TuiInputColorComponent)
-    component!: TuiInputColorComponent;
+    protected component!: TuiInputColorComponent;
 
-    color = '#0000ff';
+    protected color = '#0000ff';
 }
 
 describe('InputColor', () => {

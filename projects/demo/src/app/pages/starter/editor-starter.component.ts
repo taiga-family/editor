@@ -40,15 +40,18 @@ import {
     ],
 })
 export default class TuiEditorStarterPageComponent {
-    readonly exampleModule = import('./import/import-module.md?raw');
-    readonly exampleHtml = import('./import/insert-template.md?raw');
-    readonly exampleComponent = import('./import/component.md?raw');
-    readonly exampleEditorOptionsToken = import('./import/editor-options-token.md?raw');
-    readonly exampleStyles = import('./import/styles.less.md?raw');
-    readonly exampleIcons = import('./import/angular.json.md?raw');
-    readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly exampleModule = import('./import/import-module.md?raw');
+    protected readonly exampleHtml = import('./import/insert-template.md?raw');
+    protected readonly exampleComponent = import('./import/component.md?raw');
+    protected readonly exampleEditorOptionsToken = import(
+        './import/editor-options-token.md?raw'
+    );
 
-    readonly control = new FormControl(`
+    protected readonly exampleStyles = import('./import/styles.less.md?raw');
+    protected readonly exampleIcons = import('./import/angular.json.md?raw');
+    protected readonly isE2E = inject(TUI_IS_E2E);
+
+    protected readonly control = new FormControl(`
         <h2>What is Lorem Ipsum?</h2>
         <p>
             <a
@@ -64,16 +67,16 @@ export default class TuiEditorStarterPageComponent {
         </p>
     `);
 
-    exampleText = '';
-    minHeight: number | null = null;
-    maxHeight: number | null = null;
-    readOnly = false;
-    focusable = true;
-    pseudoInvalid: boolean | null = null;
-    pseudoFocused: boolean | null = null;
-    pseudoHovered: boolean | null = null;
+    protected exampleText = '';
+    protected minHeight: number | null = null;
+    protected maxHeight: number | null = null;
+    protected readOnly = false;
+    protected focusable = true;
+    protected pseudoInvalid: boolean | null = null;
+    protected pseudoFocused: boolean | null = null;
+    protected pseudoHovered: boolean | null = null;
 
-    readonly toolsVariants: readonly TuiEditorTool[][] = [
+    protected readonly toolsVariants: readonly TuiEditorTool[][] = [
         TUI_EDITOR_DEFAULT_TOOLS,
         [
             TuiEditorTool.Bold,
@@ -83,13 +86,13 @@ export default class TuiEditorStarterPageComponent {
         ],
     ];
 
-    tools = this.toolsVariants[0];
+    protected tools = this.toolsVariants[0];
 
-    get disabled(): boolean {
+    protected get disabled(): boolean {
         return this.control.disabled;
     }
 
-    set disabled(value: boolean) {
+    protected set disabled(value: boolean) {
         if (value) {
             this.control.disable();
         } else {

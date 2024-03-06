@@ -7,21 +7,22 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {
     TuiButtonModule,
     TuiDataListModule,
     TuiGroupDirective,
     TuiHintModule,
-    TuiHostedDropdownComponent,
     TuiHostedDropdownModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';
-import {TuiGradientDirection} from '../../types/gradient-direction';
+import type {TuiGradientDirection} from '../../types/gradient-direction';
 import {tuiGetGradientData} from '../../utils/get-gradient-data';
 import {tuiParseGradient} from '../../utils/parse-gradient';
 import {TuiColorEditComponent} from './color-edit/color-edit.component';
@@ -68,30 +69,21 @@ const ICONS: Record<TuiGradientDirection, string> = {
 })
 export class TuiColorSelectorComponent {
     private readonly sanitizer = inject(DomSanitizer);
-
     private stops = new Map(DEFAULT_STEPS);
     private currentStop = 0;
     private direction: TuiGradientDirection = 'to bottom';
 
     @Input()
-    colors: ReadonlyMap<string, string> = new Map<string, string>();
-
-    @Input('color')
-    set colorSetter(color: string) {
-        this.parse(color);
-    }
+    public colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     @Output()
-    readonly colorChange = new EventEmitter<string>();
+    public readonly colorChange = new EventEmitter<string>();
 
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
-
-    color: [number, number, number, number] = [0, 0, 0, 1];
-
-    currentMode = this.modes[0];
-
-    readonly buttons: readonly TuiGradientDirection[] = [
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
+    protected color: [number, number, number, number] = [0, 0, 0, 1];
+    protected currentMode = this.modes[0];
+    protected readonly buttons: readonly TuiGradientDirection[] = [
         'to top right',
         'to right',
         'to bottom right',
@@ -102,48 +94,53 @@ export class TuiColorSelectorComponent {
         'to top',
     ];
 
-    get palette(): Map<string, string> {
+    @Input('color')
+    public set colorSetter(color: string) {
+        this.parse(color);
+    }
+
+    protected get palette(): Map<string, string> {
         return this.filterPalette(this.colors, this.isGradient);
     }
 
-    get stopsKeys(): number[] {
+    protected get stopsKeys(): number[] {
         return this.getStopsKeys(this.stops);
     }
 
-    get currentColor(): [number, number, number, number] {
+    protected get currentColor(): [number, number, number, number] {
         return this.isGradient ? this.getStop(this.currentStop) : this.color;
     }
 
-    get gradient(): SafeStyle {
+    protected get gradient(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(this.getGradient('to right'));
     }
 
-    get isGradient(): boolean {
+    protected get isGradient(): boolean {
         return this.currentMode === this.modes[1];
     }
 
-    getIcon(direction: TuiGradientDirection): string {
+    protected getIcon(direction: TuiGradientDirection): string {
         return ICONS[direction];
     }
 
-    isModeActive(mode: string): boolean {
+    protected isModeActive(mode: string): boolean {
         return this.currentMode === mode;
     }
 
-    isDirectionActive(direction: TuiGradientDirection): boolean {
+    protected isDirectionActive(direction: TuiGradientDirection): boolean {
         return this.direction === direction;
     }
 
-    onPalettePick(color: string): void {
+    protected onPalettePick(color: string): void {
         this.updateColor(color);
     }
 
-    onDirectionChange(direction: TuiGradientDirection): void {
+    protected onDirectionChange(direction: TuiGradientDirection): void {
         this.direction = direction;
         this.updateColor(this.getGradient(direction));
     }
 
-    onModeSelect(mode: string, dropdown: TuiHostedDropdownComponent): void {
+    protected onModeSelect(mode: string, dropdown: TuiHostedDropdownComponent): void {
         this.currentMode = mode;
         dropdown.open = false;
         this.updateColor(
@@ -153,11 +150,11 @@ export class TuiColorSelectorComponent {
         );
     }
 
-    onIndexChange(index: number): void {
+    protected onIndexChange(index: number): void {
         this.currentStop = this.stopsKeys[index];
     }
 
-    onColorChange(color: [number, number, number, number]): void {
+    protected onColorChange(color: [number, number, number, number]): void {
         if (!this.isGradient) {
             this.updateColor(`rgba(${color.join(', ')})`);
 
@@ -168,7 +165,7 @@ export class TuiColorSelectorComponent {
         this.updateColor(this.getGradient(this.direction));
     }
 
-    onStopsChange(stopsKeys: readonly number[]): void {
+    protected onStopsChange(stopsKeys: readonly number[]): void {
         const removed = this.stopsKeys.find(item => !stopsKeys.includes(item));
         const added = stopsKeys.find(item => !this.stopsKeys.includes(item));
 

@@ -16,23 +16,28 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorGroupToolComponent {
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    readonly insertGroupText$ = this.texts$.pipe(map(texts => texts.insertGroup));
-    readonly removeGroupText$ = this.texts$.pipe(map(texts => texts.removeGroup));
+    protected readonly insertGroupText$ = this.texts$.pipe(
+        map(texts => texts.insertGroup),
+    );
 
-    readonly disabled$ = this.editor.stateChange$.pipe(
+    protected readonly removeGroupText$ = this.texts$.pipe(
+        map(texts => texts.removeGroup),
+    );
+
+    protected readonly disabled$ = this.editor.stateChange$.pipe(
         map(() => !this.editor.isActive('group')),
         distinctUntilChanged(),
     );
 
-    addGroup(): void {
+    protected addGroup(): void {
         this.editor.setGroup();
     }
 
-    removeGroup(): void {
+    protected removeGroup(): void {
         this.editor.removeGroup();
     }
 }

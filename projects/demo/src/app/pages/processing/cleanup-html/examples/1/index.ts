@@ -28,7 +28,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
     ],
 })
 export class TuiEditorCleanupHtmlExample1 {
-    control = new FormControl(
+    protected control = new FormControl(
         '<p class="t-content">TipTap Editor</p>',
         Validators.required,
     );

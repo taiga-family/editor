@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, TuiItemModule, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgModule} from '@taiga-ui/core';
 import {
@@ -41,9 +42,9 @@ export class TuiEditorEmbedIframeExample1 {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly builtInTools = [TuiEditorTool.Undo];
 
-    readonly control = new FormControl(
+    protected readonly control = new FormControl(
         `
         <p>Here is an online IDE:</p>
         <iframe
@@ -73,7 +74,7 @@ export class TuiEditorEmbedIframeExample1 {
     );
 
     @tuiPure
-    safe(content: string | null): SafeHtml {
+    protected safe(content: string | null): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
     }
 }

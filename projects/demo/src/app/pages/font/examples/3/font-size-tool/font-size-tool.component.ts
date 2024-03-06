@@ -27,18 +27,14 @@ export class ExampleTuiFontSizeToolComponent {
     private readonly editor = inject(TuiTiptapEditorService);
     private readonly win = inject(WINDOW);
 
-    readonly sizes = [8, 9, 10, 11, 12, 14, 16, 18, 24, 30];
+    protected readonly sizes = [8, 9, 10, 11, 12, 14, 16, 18, 24, 30];
 
-    readonly size$ = this.editor.stateChange$.pipe(
+    protected readonly size$ = this.editor.stateChange$.pipe(
         map(() => this.fontSize),
         distinctUntilChanged(),
     );
 
-    setFontSize(size: number): void {
-        this.editor.setFontSize(size);
-    }
-
-    get fontSize(): number {
+    protected get fontSize(): number {
         return (
             this.editor.getFontSize() ||
             this.getDefaultFontSize(this.editor.getOriginTiptapEditor()?.view?.dom) ||
@@ -46,7 +42,11 @@ export class ExampleTuiFontSizeToolComponent {
         );
     }
 
-    increase(): void {
+    protected setFontSize(size: number): void {
+        this.editor.setFontSize(size);
+    }
+
+    protected increase(): void {
         const newIndex = this.currentIndex + 1;
 
         if (newIndex <= this.sizes.length - 1) {
@@ -56,7 +56,7 @@ export class ExampleTuiFontSizeToolComponent {
         }
     }
 
-    decrease(): void {
+    protected decrease(): void {
         const newIndex = this.currentIndex - 1;
 
         if (newIndex > 0) {

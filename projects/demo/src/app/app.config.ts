@@ -1,15 +1,15 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {importProvidersFrom} from '@angular/core';
-import {ApplicationConfig} from '@angular/platform-browser';
+import type {ApplicationConfig} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
-    TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_SANITIZER, TuiDialogModule, TuiRootModule} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';

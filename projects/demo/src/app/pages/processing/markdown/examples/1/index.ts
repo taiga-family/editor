@@ -1,5 +1,6 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -27,23 +28,23 @@ import {Converter} from 'showdown';
     ],
 })
 export class TuiEditorEditorExample1 implements OnInit {
-    readonly builtInTools = [
+    protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,
         TuiEditorTool.Link,
         TuiEditorTool.Anchor,
     ];
 
-    control: FormControl = new FormControl('');
+    protected control: FormControl = new FormControl('');
 
-    @tuiPure
-    toMarkdown(html: string): string {
-        return new Converter().makeMarkdown(html);
-    }
-
-    async ngOnInit(): Promise<void> {
+    public async ngOnInit(): Promise<void> {
         const md = await tuiRawLoad(import('./example.md?raw'));
 
         this.control.patchValue(md);
+    }
+
+    @tuiPure
+    protected toMarkdown(html: string): string {
+        return new Converter().makeMarkdown(html);
     }
 }

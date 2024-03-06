@@ -1,4 +1,4 @@
-import {Extension, Mark, Node} from '@tiptap/core';
+import type {Extension, Mark, Node} from '@tiptap/core';
 
 import {TuiBackgroundColor} from '../background-color';
 import {TuiDetails, TuiDetailsContent, TuiSummary} from '../details';

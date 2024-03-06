@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 
 import {TuiEditorFontExample1} from './examples/1';
 import {TuiEditorFontExample2} from './examples/2';
@@ -19,18 +20,18 @@ import {TuiEditorFontExample3} from './examples/3';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ExampleTuiEditorFontComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
-    readonly example2: TuiDocExample = {
+    protected readonly example2: TuiDocExample = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
     };
 
-    readonly example3: TuiDocExample = {
+    protected readonly example3: TuiDocExample = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
         'font-size-tool/font-size-tool.component.ts': import(

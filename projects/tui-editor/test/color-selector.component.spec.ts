@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -14,14 +15,14 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 })
 class TestComponent {
     @ViewChild(TuiColorSelectorComponent)
-    component!: TuiColorSelectorComponent;
+    protected component!: TuiColorSelectorComponent;
 
-    colors = new Map([
+    protected colors = new Map([
         ['hap', '#ff0000'],
         ['ica', 'linear-gradient(red, blue)'],
     ]);
 
-    color = '#0000ff';
+    protected color = '#0000ff';
 }
 
 describe('ColorSelector', () => {

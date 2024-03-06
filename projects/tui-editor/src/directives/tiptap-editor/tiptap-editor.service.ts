@@ -3,16 +3,17 @@ import './tiptap-editor.types';
 import {inject, Injectable} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import type {Editor, Range} from '@tiptap/core';
-import {MarkType} from 'prosemirror-model';
+import type {MarkType} from 'prosemirror-model';
 import {EditorState} from 'prosemirror-state';
-import {distinctUntilChanged, map, Observable, startWith} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {distinctUntilChanged, map, startWith} from 'rxjs';
 
 import {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {EDITOR_BLANK_COLOR} from '../../constants/default-editor-colors';
-import {TuiEditableIframe} from '../../extensions/iframe-editor/iframe-editor.options';
-import {TuiEditableImage} from '../../extensions/image-editor/image-editor.options';
-import {TuiYoutubeOptions} from '../../extensions/youtube';
-import {TuiEditorAttachedFile} from '../../interfaces/attached';
+import type {TuiEditableIframe} from '../../extensions/iframe-editor/iframe-editor.options';
+import type {TuiEditableImage} from '../../extensions/image-editor/image-editor.options';
+import type {TuiYoutubeOptions} from '../../extensions/youtube';
+import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
 import {tuiGetMarkRange} from '../../utils/get-mark-range';
 import {tuiParseStyle} from '../../utils/parse-style';
@@ -24,27 +25,7 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
 export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef = inject(TIPTAP_EDITOR);
 
-    get isFocused(): boolean {
-        return this.editor.isFocused;
-    }
-
-    get html(): string {
-        return this.editor.getHTML();
-    }
-
-    get editable(): boolean {
-        return this.editor.isEditable;
-    }
-
-    set editable(editable: boolean) {
-        this.editor.setEditable(editable, false);
-    }
-
-    get state(): EditorState {
-        return this.editor.state;
-    }
-
-    editor!: Editor;
+    protected editor!: Editor;
 
     constructor() {
         super();
@@ -67,45 +48,65 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         });
     }
 
-    getOriginTiptapEditor(): Editor {
+    public get isFocused(): boolean {
+        return this.editor.isFocused;
+    }
+
+    public get html(): string {
+        return this.editor.getHTML();
+    }
+
+    public get editable(): boolean {
+        return this.editor.isEditable;
+    }
+
+    public set editable(editable: boolean) {
+        this.editor.setEditable(editable, false);
+    }
+
+    public get state(): EditorState {
+        return this.editor.state;
+    }
+
+    public getOriginTiptapEditor(): Editor {
         return this.editor;
     }
 
-    undoDisabled(): boolean {
+    public undoDisabled(): boolean {
         return !this.editor.can().undo();
     }
 
-    redoDisabled(): boolean {
+    public redoDisabled(): boolean {
         return !this.editor.can().redo();
     }
 
-    getFontColor(): string {
+    public getFontColor(): string {
         return this.editor.getAttributes('textStyle').fontColor || EDITOR_BLANK_COLOR;
     }
 
-    getFontSize(): number {
+    public getFontSize(): number {
         return parseInt(this.editor.getAttributes('textStyle').fontSize, 10);
     }
 
-    setFontSize(size: number): void {
+    public setFontSize(size: number): void {
         this.editor
             .chain()
             .setMark('textStyle', {fontSize: tuiPx(size)})
             .run();
     }
 
-    getBackgroundColor(): string {
+    public getBackgroundColor(): string {
         return this.editor?.getAttributes('textStyle').backgroundColor || 'transparent';
     }
 
-    getCellColor(): string {
+    public getCellColor(): string {
         return (
             this.editor.getAttributes('tableCell').background ||
             this.editor.getAttributes('tableHeader').background
         );
     }
 
-    getGroupColor(): string {
+    public getGroupColor(): string {
         if (this.editor.isActive('group')) {
             const style = this.editor.getAttributes('group')?.style ?? '';
             const styles = tuiParseStyle(style);
@@ -116,11 +117,11 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         return '';
     }
 
-    onAlign(align: string): void {
+    public onAlign(align: string): void {
         this.editor.chain().focus().setTextAlign(align).run();
     }
 
-    setImage(src: string): void {
+    public setImage(src: string): void {
         this.editor
             .chain()
             .focus()
@@ -143,64 +144,66 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             .run();
     }
 
-    undo(): void {
+    public undo(): void {
         this.editor.chain().undo().run();
     }
 
-    redo(): void {
+    public redo(): void {
         this.editor.chain().redo().run();
     }
 
-    setHorizontalRule(): void {
+    public setHorizontalRule(): void {
         this.editor.chain().focus().setHorizontalRule().run();
     }
 
-    removeFormat(): void {
+    public removeFormat(): void {
         this.editor.commands.unsetAllMarks();
         this.editor.commands.clearNodes();
     }
 
-    setFontColor(color: string): void {
+    public setFontColor(color: string): void {
         this.editor.chain().focus().setFontColor(color).run();
     }
 
-    setBackgroundColor(color: string): void {
+    public setBackgroundColor(color: string): void {
         this.editor.chain().focus().setBackgroundColor(color).run();
     }
 
-    toggleUnderline(): void {
+    public toggleUnderline(): void {
         this.editor.chain().focus().toggleUnderline().run();
     }
 
-    toggleStrike(): void {
+    public toggleStrike(): void {
         this.editor.chain().focus().toggleStrike().run();
     }
 
-    toggleOrderedList(): void {
+    public toggleOrderedList(): void {
         this.editor.chain().focus().toggleOrderedList().run();
     }
 
-    toggleUnorderedList(): void {
+    public toggleUnorderedList(): void {
         this.editor.chain().focus().toggleBulletList().run();
     }
 
-    togglePre(): void {
+    public togglePre(): void {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
-    sinkListItem(): void {
+    public sinkListItem(): void {
         this.editor.chain().focus().sinkListItem('listItem').run();
     }
 
-    liftListItem(): void {
+    public liftListItem(): void {
         this.editor.chain().focus().liftListItem('listItem').run();
     }
 
-    isActive(nameOrAttributes: Record<string, string> | string): boolean {
+    public isActive(nameOrAttributes: Record<string, string> | string): boolean {
         return this.editor.isActive(nameOrAttributes);
     }
 
-    isActive$(nameOrAttributes: Record<string, string> | string): Observable<boolean> {
+    public isActive$(
+        nameOrAttributes: Record<string, string> | string,
+    ): Observable<boolean> {
         return this.stateChange$.pipe(
             startWith(null),
             map(() => this.isActive(nameOrAttributes)),
@@ -208,83 +211,83 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         );
     }
 
-    toggleBold(): void {
+    public toggleBold(): void {
         this.editor.chain().focus().toggleBold().run();
     }
 
-    toggleCode(): void {
+    public toggleCode(): void {
         this.editor.chain().focus().toggleCode().run();
     }
 
-    toggleItalic(): void {
+    public toggleItalic(): void {
         this.editor.chain().focus().toggleItalic().run();
     }
 
-    toggleBlockquote(): void {
+    public toggleBlockquote(): void {
         this.editor.chain().focus().toggleBlockquote().run();
     }
 
-    toggleSubscript(): void {
+    public toggleSubscript(): void {
         this.editor.chain().focus().toggleSubscript().run();
     }
 
-    toggleSuperscript(): void {
+    public toggleSuperscript(): void {
         this.editor.chain().focus().toggleSuperscript().run();
     }
 
-    toggleCodeBlock(): void {
+    public toggleCodeBlock(): void {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
-    insertTable(cols: number, rows: number): void {
+    public insertTable(cols: number, rows: number): void {
         this.editor.chain().focus().insertTable({cols, rows}).run();
     }
 
-    addColumnAfter(): void {
+    public addColumnAfter(): void {
         this.editor.chain().focus().addColumnAfter().run();
     }
 
-    addColumnBefore(): void {
+    public addColumnBefore(): void {
         this.editor.chain().focus().addColumnBefore().run();
     }
 
-    addRowAfter(): void {
+    public addRowAfter(): void {
         this.editor.chain().focus().addRowAfter().run();
     }
 
-    addRowBefore(): void {
+    public addRowBefore(): void {
         this.editor.chain().focus().addRowBefore().run();
     }
 
-    deleteColumn(): void {
+    public deleteColumn(): void {
         this.editor.chain().focus().deleteColumn().run();
     }
 
-    deleteRow(): void {
+    public deleteRow(): void {
         this.editor.chain().focus().deleteRow().run();
     }
 
-    mergeCells(): void {
+    public mergeCells(): void {
         this.editor.chain().focus().mergeCells().run();
     }
 
-    splitCell(): void {
+    public splitCell(): void {
         this.editor.chain().focus().splitCell().run();
     }
 
-    canMergeCells(): boolean {
+    public canMergeCells(): boolean {
         return this.editor.can().mergeCells();
     }
 
-    canSplitCells(): boolean {
+    public canSplitCells(): boolean {
         return this.editor.can().splitCell();
     }
 
-    setHeading(level: Level): void {
+    public setHeading(level: Level): void {
         this.editor.chain().focus().setHeading({level}).run();
     }
 
-    setParagraph(options?: {fontSize: string}): void {
+    public setParagraph(options?: {fontSize: string}): void {
         this.editor.chain().focus().setParagraph().run();
 
         if (options) {
@@ -292,31 +295,31 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         }
     }
 
-    setHardBreak(): void {
+    public setHardBreak(): void {
         this.editor.chain().setHardBreak().run();
     }
 
-    setTextSelection(value: Range | number): void {
+    public setTextSelection(value: Range | number): void {
         this.editor.commands.setTextSelection(value);
     }
 
-    toggleLink(href: string): void {
+    public toggleLink(href: string): void {
         this.editor.chain().focus().toggleLink({href}).run();
     }
 
-    setLink(href: string): void {
+    public setLink(href: string): void {
         this.editor.chain().focus().setLink({href}).run();
     }
 
-    unsetLink(): void {
+    public unsetLink(): void {
         this.editor.chain().focus().unsetLink().run();
     }
 
-    focus(): void {
+    public focus(): void {
         this.editor.chain().focus().run();
     }
 
-    setValue(value: string): void {
+    public setValue(value: string): void {
         if (value === this.html || (value === '' && this.html === '<p></p>')) {
             return;
         }
@@ -333,15 +336,15 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         );
     }
 
-    destroy(): void {
+    public destroy(): void {
         this.editor.destroy();
     }
 
-    setCellColor(color: string): void {
+    public setCellColor(color: string): void {
         this.editor.chain().focus().setCellBackground(color).run();
     }
 
-    selectClosest(): void {
+    public selectClosest(): void {
         const pos = this.editor.state.selection.anchor;
         const {schema, doc} = this.editor.state;
         const range = tuiGetMarkRange(doc.resolve(pos), schema.marks.link);
@@ -351,55 +354,55 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         }
     }
 
-    enter(): void {
+    public enter(): void {
         this.editor.commands.enter();
     }
 
-    setDetails(): void {
+    public setDetails(): void {
         this.editor.commands.setDetails();
     }
 
-    removeDetails(): void {
+    public removeDetails(): void {
         this.editor.commands.removeDetails();
     }
 
-    setGroup(): void {
+    public setGroup(): void {
         this.editor.commands.setGroup();
     }
 
-    removeGroup(): void {
+    public removeGroup(): void {
         this.editor.commands.removeGroup();
     }
 
-    setGroupHilite(color: string): void {
+    public setGroupHilite(color: string): void {
         this.editor.commands.setGroupHilite(color);
     }
 
-    setAnchor(anchor: string): void {
+    public setAnchor(anchor: string): void {
         this.editor.commands.setAnchor(anchor.replace('#', ''));
     }
 
-    removeAnchor(): void {
+    public removeAnchor(): void {
         this.editor.commands.removeAnchor();
     }
 
-    setFileLink(preview: TuiEditorAttachedFile): void {
+    public setFileLink(preview: TuiEditorAttachedFile): void {
         this.editor.commands.setFileLink(preview);
     }
 
-    setYoutubeVideo(options: TuiYoutubeOptions): void {
+    public setYoutubeVideo(options: TuiYoutubeOptions): void {
         this.editor.commands.setYoutubeVideo(options as any);
     }
 
-    setIframe(options: TuiEditableIframe): void {
+    public setIframe(options: TuiEditableIframe): void {
         this.editor.commands.setIframe(options);
     }
 
-    removeEmptyTextStyle(): void {
+    public removeEmptyTextStyle(): void {
         this.editor.commands.removeEmptyTextStyle();
     }
 
-    toggleMark(
+    public toggleMark(
         typeOrName: MarkType | string,
         attributes?: Record<string, any>,
         options?: {extendEmptyMarkRange?: boolean},

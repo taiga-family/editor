@@ -1,20 +1,14 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    ApplicationRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    ElementRef,
-    Injector,
-    Type,
-} from '@angular/core';
-import {
+import type {ComponentRef, Injector, Type} from '@angular/core';
+import {ApplicationRef, ComponentFactoryResolver, ElementRef} from '@angular/core';
+import type {
     DecorationWithType,
     Editor,
-    NodeView,
     NodeViewProps,
     NodeViewRendererOptions,
     NodeViewRendererProps,
 } from '@tiptap/core';
+import {NodeView} from '@tiptap/core';
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
 
@@ -40,30 +34,30 @@ export class TuiComponentRenderer<C, P> {
         applicationRef.attachView(this.componentRef.hostView);
     }
 
-    get instance(): C {
-        return this.componentRef.instance;
-    }
-
-    get el(): ElementRef {
+    public get el(): ElementRef {
         return this.componentRef.injector.get(ElementRef);
     }
 
-    get dom(): HTMLElement {
+    public get dom(): HTMLElement {
         return this.el.nativeElement;
     }
 
-    updateProps<T extends P>(props: Partial<T>): void {
+    public updateProps<T extends P>(props: Partial<T>): void {
         Object.entries(props).forEach(([key, value]) => {
             this.instance[key as keyof C] = value as C[keyof C];
         });
     }
 
-    detectChanges(): void {
+    public detectChanges(): void {
         this.componentRef.changeDetectorRef.detectChanges();
     }
 
-    destroy(): void {
+    public destroy(): void {
         this.componentRef.destroy();
+    }
+
+    protected get instance(): C {
+        return this.componentRef.instance;
     }
 }
 
@@ -73,14 +67,14 @@ export class TuiComponentRenderer<C, P> {
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
 export class TuiNodeViewNgComponent implements NodeViewProps {
-    editor!: NodeViewProps['editor'];
-    node!: NodeViewProps['node'];
-    decorations!: NodeViewProps['decorations'];
-    selected!: NodeViewProps['selected'];
-    extension!: NodeViewProps['extension'];
-    getPos!: NodeViewProps['getPos'];
-    updateAttributes!: NodeViewProps['updateAttributes'];
-    deleteNode!: NodeViewProps['deleteNode'];
+    public editor!: NodeViewProps['editor'];
+    public node!: NodeViewProps['node'];
+    public decorations!: NodeViewProps['decorations'];
+    public selected!: NodeViewProps['selected'];
+    public extension!: NodeViewProps['extension'];
+    public getPos!: NodeViewProps['getPos'];
+    public updateAttributes!: NodeViewProps['updateAttributes'];
+    public deleteNode!: NodeViewProps['deleteNode'];
 }
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
@@ -102,8 +96,8 @@ export class TuiNodeView extends NodeView<
     Editor,
     TuiNodeViewRendererOptions
 > {
-    renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
-    contentDOMElement: HTMLElement | null = null;
+    protected renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
+    protected contentDOMElement: HTMLElement | null = null;
 
     /**
      * @caretaker note:
@@ -118,7 +112,19 @@ export class TuiNodeView extends NodeView<
         super(component, props, options);
     }
 
-    override mount(): void {
+    public override get dom(): HTMLElement {
+        return this.renderer.dom;
+    }
+
+    public override get contentDOM(): HTMLElement | null {
+        if (this.node.isLeaf) {
+            return null;
+        }
+
+        return this.contentDOMElement;
+    }
+
+    public override mount(): void {
         const injector = this.options.injector;
         const doc = injector.get(DOCUMENT);
 
@@ -160,19 +166,7 @@ export class TuiNodeView extends NodeView<
         this.appendContendDom();
     }
 
-    override get dom(): HTMLElement {
-        return this.renderer.dom;
-    }
-
-    override get contentDOM(): HTMLElement | null {
-        if (this.node.isLeaf) {
-            return null;
-        }
-
-        return this.contentDOMElement;
-    }
-
-    update(node: ProseMirrorNode, decorations: DecorationWithType[]): boolean {
+    protected update(node: ProseMirrorNode, decorations: DecorationWithType[]): boolean {
         if (this.options.update) {
             return this.options.update(node, decorations);
         }
@@ -193,7 +187,7 @@ export class TuiNodeView extends NodeView<
         return true;
     }
 
-    handleSelectionUpdate(): void {
+    protected handleSelectionUpdate(): void {
         const {from, to} = this.editor.state.selection;
 
         if (from <= this.getPos() && to >= this.getPos() + this.node.nodeSize) {
@@ -203,15 +197,15 @@ export class TuiNodeView extends NodeView<
         }
     }
 
-    selectNode(): void {
+    protected selectNode(): void {
         this.renderer.updateProps({selected: true});
     }
 
-    deselectNode(): void {
+    protected deselectNode(): void {
         this.renderer.updateProps({selected: false});
     }
 
-    destroy(): void {
+    protected destroy(): void {
         this.renderer.destroy();
         this.editor.off('selectionUpdate', this.handleSelectionUpdate.bind(this));
         this.contentDOMElement = null;

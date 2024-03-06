@@ -5,6 +5,7 @@ import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui
 import {combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
+import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 import {TuiPaletteComponent} from '../../color-selector/palette/palette.component';
@@ -27,15 +28,15 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCellColorComponent {
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
-    colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly colorText$ = this.texts$.pipe(
+    protected readonly colorText$ = this.texts$.pipe(
         map(
             texts =>
                 (this.editor.isActive('group') && texts.hiliteGroup) ||
@@ -44,12 +45,12 @@ export class TuiTableCellColorComponent {
         ),
     );
 
-    readonly isActive$ = combineLatest([
+    protected readonly isActive$ = combineLatest([
         this.editor.isActive$('table'),
         this.editor.isActive$('group'),
     ]).pipe(map(([table, group]) => table || group));
 
-    readonly color$ = this.editor.stateChange$.pipe(
+    protected readonly color$ = this.editor.stateChange$.pipe(
         map(
             () =>
                 this.editor.getCellColor() ||
@@ -59,11 +60,15 @@ export class TuiTableCellColorComponent {
         distinctUntilChanged(),
     );
 
-    isBlankColor(color: string): boolean {
+    protected get icons(): TuiEditorOptions['icons'] {
+        return this.options.icons;
+    }
+
+    protected isBlankColor(color: string): boolean {
         return color === this.options.blankColor;
     }
 
-    setCellColor(color: string): void {
+    protected setCellColor(color: string): void {
         if (this.editor.isActive('group')) {
             this.editor.setGroupHilite(color);
         } else if (this.editor.isActive('table')) {

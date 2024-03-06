@@ -40,13 +40,13 @@ import {
     ],
 })
 export class TuiEditorGroupExample2 {
-    readonly builtInTools = [
+    protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Group,
         TuiEditorTool.Hilite,
     ];
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
     constructor() {
         this.control.patchValue(

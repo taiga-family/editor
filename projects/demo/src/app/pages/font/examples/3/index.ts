@@ -36,9 +36,9 @@ import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.c
     ],
 })
 export class TuiEditorFontExample3 {
-    readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly builtInTools = [TuiEditorTool.Undo];
 
-    control = new FormControl(`
+    protected control = new FormControl(`
         <p>Hello</p>
         <p><span style="font-size: 24px">Hello world</span></p>
     `);

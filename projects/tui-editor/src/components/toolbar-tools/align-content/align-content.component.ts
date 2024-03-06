@@ -24,11 +24,11 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentComponent {
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly alignState$ = combineLatest([
+    protected readonly alignState$ = combineLatest([
         this.editor.isActive$({textAlign: 'left'}),
         this.editor.isActive$({textAlign: 'right'}),
         this.editor.isActive$({textAlign: 'center'}),

@@ -2,10 +2,10 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiLoaderModule} from '@taiga-ui/core';
+import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
@@ -49,22 +49,22 @@ export class TuiEditorUploadFilesExample1 {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 
-    readonly fileIoService = inject(FileIoService);
+    protected readonly fileIoService = inject(FileIoService);
 
-    readonly builtInTools = [
+    protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Link,
         TuiEditorTool.Attach,
     ];
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
     /**
      * @note: attach file as a link
      * you can also implement your own file mapping mechanism
      * because you have all the necessary data for this
      */
-    attach(files: TuiEditorAttachedFile[]): void {
+    protected attach(files: TuiEditorAttachedFile[]): void {
         files.forEach(file => this.wysiwyg?.editor?.setFileLink(file));
     }
 }

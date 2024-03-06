@@ -1,5 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, NgIf} from '@angular/common';
+import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,7 +11,6 @@ import {
     inject,
     Input,
     Output,
-    QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -22,18 +22,15 @@ import {
     tuiIsNativeFocusedIn,
     TuiItemModule,
 } from '@taiga-ui/cdk';
-import {
-    TuiButtonModule,
-    TuiHintModule,
-    TuiHostedDropdownComponent,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {take, takeUntil} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TuiEditorTool} from '../../enums/editor-tool';
-import {TuiEditorAttachedFile} from '../../interfaces/attached';
+import type {TuiEditorAttachedFile} from '../../interfaces/attached';
+import type {TuiEditorOptions} from '../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {
     TUI_ATTACH_FILES_LOADER,
@@ -104,41 +101,44 @@ export class TuiToolbarComponent {
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
     private readonly destroy$ = inject(TuiDestroyService, {self: true});
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     private readonly el: HTMLElement | null =
         inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     @Input()
-    colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
     @Input()
     @HostBinding('class._disabled')
-    disabled = false;
+    public disabled = false;
 
     @Output()
-    readonly linkAdded = new EventEmitter<string>();
+    public readonly linkAdded = new EventEmitter<string>();
 
     @Output()
-    readonly texClicked = new EventEmitter<void>();
+    public readonly texClicked = new EventEmitter<void>();
 
     @Output()
-    readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
+    public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
-    readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
+    protected toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input()
-    set tools(value: readonly TuiEditorTool[]) {
+    public set tools(value: readonly TuiEditorTool[]) {
         this.toolsSet = new Set(value);
     }
 
-    get focused(): boolean {
+    protected get icons(): TuiEditorOptions['icons'] {
+        return this.options.icons;
+    }
+
+    protected get focused(): boolean {
         return (
             tuiIsNativeFocusedIn(this.el) ||
             !!this.dropdowns.find(({nativeElement}) =>
@@ -147,51 +147,51 @@ export class TuiToolbarComponent {
         );
     }
 
-    get focusable(): boolean {
+    protected get focusable(): boolean {
         return !this.focused && !this.disabled;
     }
 
-    get unorderedList(): boolean {
+    protected get unorderedList(): boolean {
         return this.editor.isActive('bulletList');
     }
 
-    get orderedList(): boolean {
+    protected get orderedList(): boolean {
         return this.editor.isActive('orderedList');
     }
 
-    get blockquote(): boolean {
+    protected get blockquote(): boolean {
         return this.editor.isActive('blockquote');
     }
 
-    get a(): boolean {
+    protected get a(): boolean {
         return this.editor.isActive('link');
     }
 
-    get jumpAnchor(): boolean {
+    protected get jumpAnchor(): boolean {
         return this.editor.isActive('jumpAnchor');
     }
 
-    get canOpenAnchor(): boolean {
+    protected get canOpenAnchor(): boolean {
         return !this.a && !this.jumpAnchor;
     }
 
-    get undoDisabled(): boolean {
+    protected get undoDisabled(): boolean {
         return this.editor.undoDisabled();
     }
 
-    get redoDisabled(): boolean {
+    protected get redoDisabled(): boolean {
         return this.editor.redoDisabled();
     }
 
-    get subscript(): boolean {
+    protected get subscript(): boolean {
         return this.editor.isActive('subscript');
     }
 
-    get superscript(): boolean {
+    protected get superscript(): boolean {
         return this.editor.isActive('superscript');
     }
 
-    get formatEnabled(): boolean {
+    protected get formatEnabled(): boolean {
         return (
             this.enabled(TuiEditorTool.Bold) ||
             this.enabled(TuiEditorTool.Italic) ||
@@ -200,7 +200,7 @@ export class TuiToolbarComponent {
         );
     }
 
-    get firstBigBlockEnabled(): boolean {
+    protected get firstBigBlockEnabled(): boolean {
         return (
             this.formatEnabled ||
             this.enabled(TuiEditorTool.Align) ||
@@ -212,7 +212,7 @@ export class TuiToolbarComponent {
         );
     }
 
-    get secondBigBlockEnabled(): boolean {
+    protected get secondBigBlockEnabled(): boolean {
         return (
             this.enabled(TuiEditorTool.Code) ||
             this.enabled(TuiEditorTool.Tex) ||
@@ -222,7 +222,7 @@ export class TuiToolbarComponent {
     }
 
     @HostListener('mousedown', ['$event', '$event.target'])
-    onMouseDown(event: MouseEvent, target: HTMLElement): void {
+    protected onMouseDown(event: MouseEvent, target: HTMLElement): void {
         if (target.closest('button')) {
             return;
         }
@@ -231,15 +231,15 @@ export class TuiToolbarComponent {
         this.editor.focus();
     }
 
-    onBottomFocus(): void {
+    protected onBottomFocus(): void {
         this.focusLast();
     }
 
-    onTopFocus(): void {
+    protected onTopFocus(): void {
         this.focusFirst();
     }
 
-    onImage(input: HTMLInputElement): void {
+    protected onImage(input: HTMLInputElement): void {
         const file = input.files?.[0];
 
         input.value = '';
@@ -253,7 +253,7 @@ export class TuiToolbarComponent {
             .subscribe(image => this.addImage(image));
     }
 
-    onAttach(input: HTMLInputElement): void {
+    protected onAttach(input: HTMLInputElement): void {
         const files = Array.from(input.files || []);
 
         input.value = '';
@@ -273,11 +273,11 @@ export class TuiToolbarComponent {
             .subscribe(attachedFiles => this.fileAttached.emit(attachedFiles));
     }
 
-    onTeX(): void {
+    protected onTeX(): void {
         this.texClicked.emit();
     }
 
-    onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
+    protected onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
         hosted.open = false;
 
         if (url) {
@@ -285,7 +285,7 @@ export class TuiToolbarComponent {
         }
     }
 
-    setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
+    protected setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
         hosted.open = false;
 
         if (anchor) {
@@ -294,43 +294,43 @@ export class TuiToolbarComponent {
         }
     }
 
-    removeAnchor(): void {
+    protected removeAnchor(): void {
         this.editor.removeAnchor();
     }
 
-    enabled(tool: TuiEditorTool): boolean {
+    protected enabled(tool: TuiEditorTool): boolean {
         return this.toolsSet.has(tool);
     }
 
-    undo(): void {
+    protected undo(): void {
         this.editor.undo();
     }
 
-    redo(): void {
+    protected redo(): void {
         this.editor.redo();
     }
 
-    insertHorizontalRule(): void {
+    protected insertHorizontalRule(): void {
         this.editor.setHorizontalRule();
     }
 
-    removeFormat(): void {
+    protected removeFormat(): void {
         this.editor.removeFormat();
     }
 
-    toggleOrderedList(): void {
+    protected toggleOrderedList(): void {
         this.editor.toggleOrderedList();
     }
 
-    toggleQuote(): void {
+    protected toggleQuote(): void {
         this.editor.toggleBlockquote();
     }
 
-    toggleSubscript(): void {
+    protected toggleSubscript(): void {
         this.editor.toggleSubscript();
     }
 
-    toggleSuperscript(): void {
+    protected toggleSuperscript(): void {
         this.editor.toggleSuperscript();
     }
 

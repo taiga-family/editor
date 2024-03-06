@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
@@ -20,9 +21,9 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 export class TuiColorPickerExample2 {
     private readonly sanitizer = inject(DomSanitizer);
 
-    color = '#ffdd2d';
+    protected color = '#ffdd2d';
 
-    get background(): SafeStyle {
+    protected get background(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(this.color);
     }
 }

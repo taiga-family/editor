@@ -49,18 +49,18 @@ export class TuiTableRowColumnManagerComponent {
         [TuiTableCommands.DeleteRow]: () => this.editor.deleteRow(),
     };
 
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
 
-    readonly isActive$ = this.editor.isActive$('table');
+    protected readonly isActive$ = this.editor.isActive$('table');
 
-    readonly rowsColumnsManagingText$ = this.texts$.pipe(
+    protected readonly rowsColumnsManagingText$ = this.texts$.pipe(
         map(texts => texts.rowsColumnsManaging),
     );
 
-    onTableOption(command: TuiTableCommands): void {
+    protected onTableOption(command: TuiTableCommands): void {
         this.commandsRegistry[command]();
     }
 }

@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -11,9 +12,9 @@ import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 })
 class TestComponent {
     @ViewChild(TuiColorPickerComponent)
-    component!: TuiColorPickerComponent;
+    protected component!: TuiColorPickerComponent;
 
-    color = [0, 255, 0, 1];
+    protected color = [0, 255, 0, 1];
 }
 
 describe('ColorPicker', () => {

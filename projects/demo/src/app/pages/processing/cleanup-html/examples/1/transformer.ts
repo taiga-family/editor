@@ -3,11 +3,11 @@ import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
 
 @Injectable()
 export class ExampleEditorCleanupHtmlTransformer extends AbstractTuiValueTransformer<string> {
-    fromControlValue(controlValue: string): string {
+    public fromControlValue(controlValue: string): string {
         return controlValue;
     }
 
-    toControlValue(componentValue: string): string {
+    public toControlValue(componentValue: string): string {
         const tree = new DOMParser().parseFromString(componentValue, 'text/html');
 
         tree.body.querySelectorAll('*').forEach(element => {

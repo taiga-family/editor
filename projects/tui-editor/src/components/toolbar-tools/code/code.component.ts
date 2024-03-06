@@ -27,18 +27,18 @@ import {TUI_EDITOR_CODE_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiCodeComponent {
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly codeOptionsTexts$ = inject(TUI_EDITOR_CODE_OPTIONS);
-    readonly hintText$ = this.texts$.pipe(map(texts => texts.code));
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly codeOptionsTexts$ = inject(TUI_EDITOR_CODE_OPTIONS);
+    protected readonly hintText$ = this.texts$.pipe(map(texts => texts.code));
 
-    readonly insideCode$ = this.editor.stateChange$.pipe(
+    protected readonly insideCode$ = this.editor.stateChange$.pipe(
         map(() => this.editor.isActive('code') || this.editor.isActive('codeBlock')),
         distinctUntilChanged(),
     );
 
-    onCode(isCodeBlock: boolean): void {
+    protected onCode(isCodeBlock: boolean): void {
         if (isCodeBlock) {
             this.editor.toggleCodeBlock();
         } else {

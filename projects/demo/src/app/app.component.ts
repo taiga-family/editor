@@ -1,10 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    HostBinding,
-    inject,
-    OnInit,
-} from '@angular/core';
+import type {OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED, TuiDocMainModule} from '@taiga-ui/addon-doc';
@@ -29,18 +24,18 @@ import pkg from '@tinkoff/tui-editor/package.json';
 })
 export class AppComponent implements OnInit {
     private readonly pageLoaded$ = inject(TUI_DOC_PAGE_LOADED);
-    protected readonly router = inject(Router);
-    protected readonly storage = inject(LOCAL_STORAGE);
 
     @HostBinding('class._loaded')
-    readonly pageLoadedInit = '0';
+    protected readonly pageLoadedInit = '0';
 
     @HostBinding('$.class._loaded')
-    readonly pageLoaded = this.pageLoaded$;
+    protected readonly pageLoaded = this.pageLoaded$;
 
-    version = pkg.version;
+    protected readonly router = inject(Router);
+    protected readonly storage = inject(LOCAL_STORAGE);
+    protected version = pkg.version;
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         void this.replaceEnvInURI();
     }
 
