@@ -6,14 +6,10 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {
-    AbstractTuiControl,
-    TuiActiveZoneDirective,
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
-    tuiPure,
-} from '@taiga-ui/cdk';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
+import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
+import {AbstractTuiControl, TuiActiveZoneDirective, tuiPure} from '@taiga-ui/cdk';
 import {
     tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
@@ -56,30 +52,30 @@ export class TuiInputColorComponent
     private readonly domSanitizer = inject(DomSanitizer);
 
     @Input()
-    colors: ReadonlyMap<string, string> = new Map<string, string>();
+    public colors: ReadonlyMap<string, string> = new Map<string, string>();
 
-    open = false;
+    protected open = false;
 
-    get nativeFocusableElement(): TuiNativeFocusableElement | null {
+    public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
             ? null
             : this.textfield.nativeFocusableElement;
     }
 
-    get focused(): boolean {
+    public get focused(): boolean {
         return !!this.dropdown && this.dropdown.focused;
     }
 
-    get background(): SafeStyle {
+    protected get background(): SafeStyle {
         return this.sanitize(this.value, this.domSanitizer);
     }
 
     @HostListener('click')
-    onClick(): void {
+    protected onClick(): void {
         this.open = !this.open;
     }
 
-    onFocused(focused: boolean): void {
+    protected onFocused(focused: boolean): void {
         this.updateFocused(focused);
     }
 

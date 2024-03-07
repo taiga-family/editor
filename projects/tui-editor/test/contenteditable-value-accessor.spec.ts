@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiContenteditableValueAccessor} from '@tinkoff/tui-editor';
 
@@ -30,18 +31,18 @@ describe('ContenteditableValueAccessor', () => {
     })
     class TestComponent {
         @ViewChild('modelEl', {read: ElementRef})
-        readonly modelElementRef?: ElementRef<HTMLElement>;
+        protected readonly modelElementRef?: ElementRef<HTMLElement>;
 
         @ViewChild('controlEl', {read: ElementRef})
-        readonly controlElementRef?: ElementRef<HTMLElement>;
+        protected readonly controlElementRef?: ElementRef<HTMLElement>;
 
         @ViewChild('nameEl', {read: ElementRef})
-        readonly nameElementRef?: ElementRef<HTMLElement>;
+        protected readonly nameElementRef?: ElementRef<HTMLElement>;
 
-        disabled = false;
-        model = 'Initial model';
-        readonly control = new FormControl();
-        readonly group = new FormGroup({
+        protected disabled = false;
+        protected model = 'Initial model';
+        protected readonly control = new FormControl();
+        protected readonly group = new FormGroup({
             control: new FormControl('Initial value'),
         });
     }

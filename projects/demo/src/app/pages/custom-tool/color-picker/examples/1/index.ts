@@ -31,7 +31,7 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
     ],
 })
 export class TuiEditorColorPickerToolExample1 {
-    readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly builtInTools = [TuiEditorTool.Undo];
 
-    readonly control = new FormControl('');
+    protected readonly control = new FormControl('');
 }

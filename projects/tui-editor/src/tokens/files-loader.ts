@@ -1,8 +1,8 @@
 import {InjectionToken} from '@angular/core';
-import {TuiHandler} from '@taiga-ui/cdk';
-import {Observable} from 'rxjs';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
 
-import {TuiEditorAttachedFile, TuiEditorAttachOptions} from '../interfaces/attached';
+import type {TuiEditorAttachedFile, TuiEditorAttachOptions} from '../interfaces/attached';
 
 /**
  * files loader options

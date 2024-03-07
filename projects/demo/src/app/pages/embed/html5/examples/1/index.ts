@@ -6,17 +6,19 @@ import {
     ViewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorAttachedFile,
     TuiEditorComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
-import {map, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -89,15 +91,15 @@ export class TuiEditorEmbedHtml5Example1 {
 
     private readonly sanitizer = inject(DomSanitizer);
 
-    readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
-    readonly builtInTools = [
+    protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Link,
         TuiEditorTool.Attach,
     ];
 
-    readonly control = new FormControl(
+    protected readonly control = new FormControl(
         `
             <p>Here is video: </p>
 
@@ -120,11 +122,11 @@ export class TuiEditorEmbedHtml5Example1 {
     );
 
     @tuiPure
-    safe(content: string | null): SafeHtml {
+    protected safe(content: string | null): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
     }
 
-    attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
+    protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
         const tag = `${file.attrs?.type ?? ''}`.split('/')[0];
 
         this.wysiwyg?.editor

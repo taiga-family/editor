@@ -24,15 +24,15 @@ import {TuiPickerService} from '../../../services/picker.service';
 })
 export class TuiLinearMultiPickerComponent {
     @Input()
-    value = [0, 1];
+    public value = [0, 1];
 
     @Output()
-    readonly valueChange = new EventEmitter<number[]>();
+    public readonly valueChange = new EventEmitter<number[]>();
 
     @Output()
-    readonly indexChange = new EventEmitter<number>();
+    public readonly indexChange = new EventEmitter<number>();
 
-    index = NaN;
+    protected index = NaN;
 
     constructor() {
         inject(TuiPickerService)
@@ -41,15 +41,15 @@ export class TuiLinearMultiPickerComponent {
     }
 
     @HostListener('document:mouseup')
-    onMouseUp(): void {
+    protected onMouseUp(): void {
         this.index = NaN;
     }
 
-    onMouseDown(index: number): void {
+    protected onMouseDown(index: number): void {
         this.updateIndex(index);
     }
 
-    onClick(index: number): void {
+    protected onClick(index: number): void {
         if (this.value.length > 2) {
             this.updateValue(this.value.filter((_, i) => i !== index));
         }

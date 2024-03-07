@@ -1,4 +1,4 @@
-import {TuiGradientDirection} from '../types/gradient-direction';
+import type {TuiGradientDirection} from '../types/gradient-direction';
 
 export interface TuiParsedGradient {
     readonly side: TuiGradientDirection;

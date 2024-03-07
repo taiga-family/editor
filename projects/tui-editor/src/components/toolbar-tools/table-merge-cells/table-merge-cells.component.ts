@@ -15,24 +15,24 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableMergeCellsComponent {
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly canMergeCells$ = this.editor.stateChange$.pipe(
+    protected readonly canMergeCells$ = this.editor.stateChange$.pipe(
         map(() => this.editor.canMergeCells()),
         distinctUntilChanged(),
     );
 
-    readonly canSplitCells$ = this.editor.stateChange$.pipe(
+    protected readonly canSplitCells$ = this.editor.stateChange$.pipe(
         map(() => this.editor.canSplitCells()),
         distinctUntilChanged(),
     );
 
-    mergeCells(): void {
+    protected mergeCells(): void {
         this.editor.mergeCells();
     }
 
-    splitCell(): void {
+    protected splitCell(): void {
         this.editor.splitCell();
     }
 }

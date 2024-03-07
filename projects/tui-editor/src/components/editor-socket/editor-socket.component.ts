@@ -38,7 +38,7 @@ export class TuiEditorSocketComponent {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
-    set content(content: string) {
+    public set content(content: string) {
         this.renderer.setProperty(
             this.el,
             'innerHTML',
@@ -57,7 +57,7 @@ export class TuiEditorSocketComponent {
      * More information: https://rogerkeays.com/blog/using-base-href-with-anchors
      */
     @HostListener('click', ['$event'])
-    click(event: Event): void {
+    protected click(event: Event): void {
         if (this.editor || !tuiIsElement(event.target)) {
             return;
         }

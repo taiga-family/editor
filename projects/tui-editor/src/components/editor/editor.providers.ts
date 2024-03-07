@@ -1,7 +1,7 @@
 import {Renderer2} from '@angular/core';
-import type {Extension, Mark, Node} from '@tiptap/core';
-import {Editor} from '@tiptap/core';
-import {combineLatest, map, Observable, ReplaySubject, shareReplay, take} from 'rxjs';
+import type {Editor, Extension, Mark, Node} from '@tiptap/core';
+import type {Observable} from 'rxjs';
+import {combineLatest, map, ReplaySubject, shareReplay, take} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {

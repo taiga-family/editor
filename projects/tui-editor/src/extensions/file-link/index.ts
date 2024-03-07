@@ -1,6 +1,6 @@
 import {Extension} from '@tiptap/core';
 
-import {TuiEditorAttachedFile} from '../../interfaces/attached';
+import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

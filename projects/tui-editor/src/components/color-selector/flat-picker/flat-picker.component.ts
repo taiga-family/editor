@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 import {takeUntil} from 'rxjs';
 
 import {TuiPickerService} from '../../../services/picker.service';
@@ -22,10 +22,10 @@ import {TuiPickerService} from '../../../services/picker.service';
 })
 export class TuiFlatPickerComponent {
     @Input()
-    value: TuiPoint = [0, 0];
+    public value: TuiPoint = [0, 0];
 
     @Output()
-    readonly valueChange = new EventEmitter<[number, number]>();
+    public readonly valueChange = new EventEmitter<[number, number]>();
 
     constructor() {
         inject(TuiPickerService)
@@ -36,11 +36,11 @@ export class TuiFlatPickerComponent {
             });
     }
 
-    get left(): number {
+    protected get left(): number {
         return this.value[0] * 100;
     }
 
-    get top(): number {
+    protected get top(): number {
         return this.value[1] * 100;
     }
 }

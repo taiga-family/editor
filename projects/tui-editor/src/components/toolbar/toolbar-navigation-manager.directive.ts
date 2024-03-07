@@ -1,10 +1,10 @@
 import {Directive, ElementRef, HostListener, inject} from '@angular/core';
+import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
     tuiIsNativeFocusedIn,
     tuiIsNativeMouseFocusable,
-    TuiNativeFocusableElement,
 } from '@taiga-ui/cdk';
 
 @Directive({
@@ -14,13 +14,27 @@ import {
 export class TuiToolbarNavigationManagerDirective {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    private get toolsContainers(): readonly HTMLElement[] {
-        return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiItem]'));
+    public findFirstFocusableTool(reversed = false): TuiNativeFocusableElement | null {
+        const tools = reversed
+            ? this.toolsContainers.slice().reverse()
+            : this.toolsContainers;
+
+        for (const el of tools) {
+            const focusableElement = tuiIsNativeMouseFocusable(el)
+                ? el
+                : tuiGetClosestFocusable({initial: el, root: el, keyboard: false});
+
+            if (focusableElement) {
+                return focusableElement;
+            }
+        }
+
+        return null;
     }
 
     @HostListener('keydown.arrowRight.prevent', ['false'])
     @HostListener('keydown.arrowLeft.prevent', ['true'])
-    onHorizontalNavigation(toPrevious: boolean): void {
+    protected onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
         const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
 
@@ -39,22 +53,8 @@ export class TuiToolbarNavigationManagerDirective {
         }
     }
 
-    findFirstFocusableTool(reversed = false): TuiNativeFocusableElement | null {
-        const tools = reversed
-            ? this.toolsContainers.slice().reverse()
-            : this.toolsContainers;
-
-        for (const el of tools) {
-            const focusableElement = tuiIsNativeMouseFocusable(el)
-                ? el
-                : tuiGetClosestFocusable({initial: el, root: el, keyboard: false});
-
-            if (focusableElement) {
-                return focusableElement;
-            }
-        }
-
-        return null;
+    private get toolsContainers(): readonly HTMLElement[] {
+        return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiItem]'));
     }
 
     private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {

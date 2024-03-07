@@ -24,11 +24,11 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiListConfigsComponent {
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly listState$ = combineLatest([
+    protected readonly listState$ = combineLatest([
         this.editor.isActive$('orderedList'),
         this.editor.isActive$('bulletList'),
     ]).pipe(
@@ -38,11 +38,11 @@ export class TuiListConfigsComponent {
         })),
     );
 
-    sinkListItem(): void {
+    protected sinkListItem(): void {
         this.editor.sinkListItem();
     }
 
-    liftListItem(): void {
+    protected liftListItem(): void {
         this.editor.liftListItem();
     }
 }

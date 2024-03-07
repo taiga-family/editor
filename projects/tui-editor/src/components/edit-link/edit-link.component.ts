@@ -18,11 +18,13 @@ import {
 } from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 
+import type {
+    TuiEditorLinkPrefix,
+    TuiEditorLinkProtocol,
+} from '../../constants/default-link-options-handler';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_HTTPS_PREFIX,
-    TuiEditorLinkPrefix,
-    TuiEditorLinkProtocol,
 } from '../../constants/default-link-options-handler';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -56,60 +58,57 @@ export class TuiEditLinkComponent {
     private readonly doc = inject(DOCUMENT);
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
     private readonly editor = inject(TuiTiptapEditorService);
+
+    @Output()
+    public readonly addLink = new EventEmitter<string>();
+
+    @Output()
+    public readonly removeLink = new EventEmitter<void>();
+
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Output()
-    readonly addLink = new EventEmitter<string>();
+    protected url: string = this.getHrefOrAnchorId();
 
-    @Output()
-    readonly removeLink = new EventEmitter<void>();
+    protected edit = !this.url;
 
-    url: string = this.getHrefOrAnchorId();
+    protected prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
 
-    edit = !this.url;
+    protected anchorIds = this.getAllAnchorsIds();
 
-    prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
-
-    anchorIds = this.getAllAnchorsIds();
-
-    readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
-
-    get defaultProtocol(): TuiEditorLinkProtocol {
-        return this.options.linkOptions?.protocol ?? TUI_EDITOR_LINK_HTTPS_PREFIX;
-    }
+    protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
     @Input()
-    set anchorMode(mode: boolean) {
+    public set anchorMode(mode: boolean) {
         this.isOnlyAnchorMode = mode;
         this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();
     }
 
-    get anchorMode(): boolean {
+    public get anchorMode(): boolean {
         return this.isOnlyAnchorMode;
     }
 
-    get prefixIsHashMode(): boolean {
+    protected get defaultProtocol(): TuiEditorLinkProtocol {
+        return this.options.linkOptions?.protocol ?? TUI_EDITOR_LINK_HTTPS_PREFIX;
+    }
+
+    protected get prefixIsHashMode(): boolean {
         return this.prefix === TUI_EDITOR_LINK_HASH_PREFIX;
     }
 
-    get hasUrl(): boolean {
+    protected get hasUrl(): boolean {
         return !!this.url;
     }
 
-    get href(): string {
+    protected get href(): string {
         return `${this.prefix}${this.url}`;
     }
 
-    get showAnchorsList(): boolean {
+    protected get showAnchorsList(): boolean {
         return !this.anchorMode && this.edit && this.anchorIds.length > 0;
     }
 
-    private get isViewMode(): boolean {
-        return !this.edit;
-    }
-
     @HostListener('document:selectionchange')
-    onSelectionChange(): void {
+    protected onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
             this.anchorMode = this.detectAnchorMode();
@@ -117,22 +116,22 @@ export class TuiEditLinkComponent {
     }
 
     @HostListener('mousedown', ['$event'])
-    onMouseDown(event: MouseEvent): void {
+    protected onMouseDown(event: MouseEvent): void {
         if (tuiIsElement(event.target) && !event.target.matches('a, button, input')) {
             event.preventDefault();
         }
     }
 
-    setAnchor(anchor: string): void {
+    protected setAnchor(anchor: string): void {
         this.url = anchor;
         this.changePrefix(true);
     }
 
-    changePrefix(isPrefix: boolean): void {
+    protected changePrefix(isPrefix: boolean): void {
         this.prefix = isPrefix ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
     }
 
-    onSave(): void {
+    protected onSave(): void {
         if (this.url) {
             this.addLink.emit(this.href);
         } else {
@@ -140,7 +139,7 @@ export class TuiEditLinkComponent {
         }
     }
 
-    onBackspace(): void {
+    protected onBackspace(): void {
         if (!this.url) {
             this.prefix = this.isOnlyAnchorMode
                 ? TUI_EDITOR_LINK_HASH_PREFIX
@@ -148,20 +147,24 @@ export class TuiEditLinkComponent {
         }
     }
 
-    onEdit(): void {
+    protected onEdit(): void {
         this.edit = true;
     }
 
-    onRemove(): void {
+    protected onRemove(): void {
         this.removeLink.emit();
     }
 
-    onChange(url: string): void {
+    protected onChange(url: string): void {
         this.url = this.removePrefix(url);
     }
 
-    onClear(): void {
+    protected onClear(): void {
         this.url = '';
+    }
+
+    private get isViewMode(): boolean {
+        return !this.edit;
     }
 
     private makeDefaultPrefix(): TuiEditorLinkPrefix {

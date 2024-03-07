@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, from, map, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {BehaviorSubject, from, map} from 'rxjs';
 
 /**
  * @description:
@@ -31,7 +32,7 @@ interface ImgbbResponse {
     providedIn: 'root',
 })
 export class ImgbbService {
-    readonly loading$ = new BehaviorSubject(false);
+    public readonly loading$ = new BehaviorSubject(false);
 
     private static createBody(base64: string): URLSearchParams {
         const formData = new FormData();
@@ -41,11 +42,11 @@ export class ImgbbService {
         return new URLSearchParams(formData as any);
     }
 
-    get isLoading(): boolean {
+    public get isLoading(): boolean {
         return this.loading$.getValue();
     }
 
-    save(base64: string): Observable<string> {
+    public save(base64: string): Observable<string> {
         return from(
             fetch(
                 `${imgbb.host}/1/upload?key=${imgbb.apiKey}&expiration=${imgbb.expiration}`,

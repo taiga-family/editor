@@ -5,6 +5,7 @@ import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
+import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 import {TuiPaletteComponent} from '../../color-selector/palette/palette.component';
@@ -26,18 +27,22 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTextColorComponent {
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
-    colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly fontColor$ = this.editor.stateChange$.pipe(
+    protected readonly fontColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getFontColor() || this.options.blankColor),
         distinctUntilChanged(),
     );
 
-    readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
+    protected readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
+
+    protected get icons(): TuiEditorOptions['icons'] {
+        return this.options.icons;
+    }
 }

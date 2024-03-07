@@ -20,18 +20,12 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 export class TuiFontStyleComponent {
     private toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
-    @Input()
-    set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {
-        this.toolsSet = new Set(value);
-    }
+    protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
-
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-
-    readonly fontStyleState$ = combineLatest([
+    protected readonly fontStyleState$ = combineLatest([
         this.editor.isActive$('bold'),
         this.editor.isActive$('italic'),
         this.editor.isActive$('underline'),
@@ -45,7 +39,12 @@ export class TuiFontStyleComponent {
         })),
     );
 
-    isEnabled(tool: TuiEditorTool): boolean {
+    @Input()
+    public set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {
+        this.toolsSet = new Set(value);
+    }
+
+    protected isEnabled(tool: TuiEditorTool): boolean {
         return this.toolsSet.has(tool);
     }
 }

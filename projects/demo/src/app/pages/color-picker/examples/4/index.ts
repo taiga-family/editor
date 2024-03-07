@@ -24,7 +24,7 @@ import {TuiInputModule} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorPickerExample4 {
-    readonly mask = {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]};
+    protected readonly mask = {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]};
 
-    value = '#ffdd2d';
+    protected value = '#ffdd2d';
 }

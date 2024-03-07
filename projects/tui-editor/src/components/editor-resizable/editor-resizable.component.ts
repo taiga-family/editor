@@ -19,24 +19,26 @@ import {tuiIsNumber, tuiPx, TuiResizerModule} from '@taiga-ui/cdk';
 })
 export class TuiEditorResizableComponent {
     @Input()
-    autoHeight = false;
+    public autoHeight = false;
 
     @Input()
-    width: number | string | null = null;
+    public width: number | string | null = null;
 
     @Input()
-    height: number | string | null = null;
+    public height: number | string | null = null;
 
     @Output()
-    readonly sizeChange = new EventEmitter<readonly [width: number, height: number]>();
+    public readonly sizeChange = new EventEmitter<
+        readonly [width: number, height: number]
+    >();
 
     @HostBinding('style.width')
-    get hostWidth(): number | string | null {
+    protected get hostWidth(): number | string | null {
         return tuiIsNumber(this.width) ? tuiPx(this.width) : this.width;
     }
 
     @HostBinding('style.height')
-    get hostHeight(): number | string | null {
+    protected get hostHeight(): number | string | null {
         if (this.autoHeight) {
             return null;
         }

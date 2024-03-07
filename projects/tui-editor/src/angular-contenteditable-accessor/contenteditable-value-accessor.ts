@@ -1,15 +1,15 @@
+import type {AfterViewInit, OnDestroy} from '@angular/core';
 import {
-    AfterViewInit,
     Directive,
     ElementRef,
     forwardRef,
     HostListener,
     inject,
-    OnDestroy,
     Renderer2,
     SecurityContext,
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import type {ControlValueAccessor} from '@angular/forms';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 
 /*
@@ -51,28 +51,9 @@ export class TuiContenteditableValueAccessor
     });
 
     /*
-     * Listen to input events to write innerHTML value into control,
-     * also disconnect MutationObserver as it is not needed if this
-     * event works in current browser
-     */
-    @HostListener('input')
-    onInput(): void {
-        this.observer.disconnect();
-        this.onChange(this.processValue(this.elementRef.nativeElement.innerHTML));
-    }
-
-    /*
-     * Listen to blur event to mark control as touched
-     */
-    @HostListener('blur')
-    onBlur(): void {
-        this.onTouched();
-    }
-
-    /*
      * To support IE11 MutationObserver is used to monitor changes to the content
      */
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.observer.observe(this.elementRef.nativeElement, {
             characterData: true,
             childList: true,
@@ -83,7 +64,7 @@ export class TuiContenteditableValueAccessor
     /*
      * Disconnect MutationObserver IE11 fallback on destroy
      */
-    ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.observer.disconnect();
     }
 
@@ -92,7 +73,7 @@ export class TuiContenteditableValueAccessor
      *
      * @see {@link ControlValueAccessor#writeValue}
      */
-    writeValue(value: string | null): void {
+    public writeValue(value: string | null): void {
         this.renderer.setProperty(
             this.elementRef.nativeElement,
             'innerHTML',
@@ -105,7 +86,7 @@ export class TuiContenteditableValueAccessor
      *
      * @see {@link ControlValueAccessor#registerOnChange}
      */
-    registerOnChange(onChange: (value: string) => void): void {
+    public registerOnChange(onChange: (value: string) => void): void {
         this.onChange = onChange;
     }
 
@@ -114,7 +95,7 @@ export class TuiContenteditableValueAccessor
      *
      * @see {@link ControlValueAccessor#registerOnTouched}
      */
-    registerOnTouched(onTouched: () => void): void {
+    public registerOnTouched(onTouched: () => void): void {
         this.onTouched = onTouched;
     }
 
@@ -123,12 +104,31 @@ export class TuiContenteditableValueAccessor
      *
      * @see {@link ControlValueAccessor#setDisabledState}
      */
-    setDisabledState(disabled: boolean): void {
+    public setDisabledState(disabled: boolean): void {
         this.renderer.setAttribute(
             this.elementRef.nativeElement,
             'contenteditable',
             String(!disabled),
         );
+    }
+
+    /*
+     * Listen to input events to write innerHTML value into control,
+     * also disconnect MutationObserver as it is not needed if this
+     * event works in current browser
+     */
+    @HostListener('input')
+    protected onInput(): void {
+        this.observer.disconnect();
+        this.onChange(this.processValue(this.elementRef.nativeElement.innerHTML));
+    }
+
+    /*
+     * Listen to blur event to mark control as touched
+     */
+    @HostListener('blur')
+    protected onBlur(): void {
+        this.onTouched();
     }
 
     /*

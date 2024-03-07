@@ -1,4 +1,5 @@
-import {KeyValue, KeyValuePipe, NgForOf} from '@angular/common';
+import type {KeyValue} from '@angular/common';
+import {KeyValuePipe, NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,12 +19,12 @@ import {TuiHintModule} from '@taiga-ui/core';
 })
 export class TuiPaletteComponent {
     @Input()
-    colors: ReadonlyMap<string, string> = new Map<string, string>();
+    public colors: ReadonlyMap<string, string> = new Map<string, string>();
 
     @Output()
-    readonly selectedColor = new EventEmitter<string>();
+    public readonly selectedColor = new EventEmitter<string>();
 
-    originalOrder = (
+    protected originalOrder = (
         _a: KeyValue<string, string>,
         _b: KeyValue<string, string>,
     ): number => 0;

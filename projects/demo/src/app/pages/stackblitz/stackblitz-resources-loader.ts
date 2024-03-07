@@ -9,7 +9,7 @@ interface TuiProjectFiles {
 }
 
 export abstract class AbstractTuiStackblitzResourcesLoader {
-    static async getProjectFiles(): Promise<TuiProjectFiles> {
+    public static async getProjectFiles(): Promise<TuiProjectFiles> {
         const [configsContent, mainTsContent, indexHtmlContent, stylesContent]: string[] =
             await Promise.all(
                 [

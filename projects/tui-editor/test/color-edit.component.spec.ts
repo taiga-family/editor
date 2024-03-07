@@ -1,5 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 import {TuiColorEditComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -11,9 +12,9 @@ import {TuiColorEditComponent} from '@tinkoff/tui-editor';
 })
 class TestComponent {
     @ViewChild(TuiColorEditComponent)
-    component!: TuiColorEditComponent;
+    protected component!: TuiColorEditComponent;
 
-    color = [255, 0, 0, 1];
+    protected color = [255, 0, 0, 1];
 }
 
 describe('ColorEdit', () => {

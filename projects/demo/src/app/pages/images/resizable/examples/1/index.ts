@@ -41,13 +41,13 @@ export class TuiEditorResizableEditorExample1 {
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
-    readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
-    base64Image$ = inject(HttpClient)
+    protected base64Image$ = inject(HttpClient)
         .get(`${this.relativePath}assets/images/lumberjack.png`, {responseType: 'blob'})
         .pipe(switchMap(file => this.imageLoader(file)));
 
-    control = new FormControl('');
+    protected control = new FormControl('');
 
     constructor() {
         this.base64Image$

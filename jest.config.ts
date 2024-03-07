@@ -1,4 +1,4 @@
-import {Config} from 'jest';
+import type {Config} from 'jest';
 import {resolve} from 'path';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
@@ -28,17 +28,6 @@ const config: Config = {
     testEnvironment: 'jsdom',
 
     /**
-     * A set of global variables that need
-     * to be available in all test environments.
-     */
-    globals: {
-        'ts-jest': {
-            tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
-            isolatedModules: true,
-        },
-    },
-
-    /**
      * Jest will run .mjs and .js files with nearest package.json's type
      * field set to module as ECMAScript Modules. If you have any other files
      * that should run with native ESM, you need to specify their file extension here.
@@ -55,7 +44,15 @@ const config: Config = {
      * A map from regular expressions to paths to transformers.
      */
     transform: {
-        '^.+\\.(ts|js|mjs|html|svg)$': 'jest-preset-angular',
+        '^.+\\.(ts|js|mjs|html|svg)$': [
+            'jest-preset-angular',
+            {
+                tsconfig: resolve(__dirname, 'tsconfig.spec.json'),
+                stringifyContentPathRegex: '\\.html$',
+                isolatedModules: true,
+                diagnostics: true,
+            },
+        ],
     },
     transformIgnorePatterns: ['node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito)'],
 

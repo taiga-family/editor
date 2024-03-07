@@ -8,11 +8,12 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {map, Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 import {EDITOR_BLANK_COLOR} from '../../../constants/default-editor-colors';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TuiEditorFontOption} from '../../../interfaces/editor-font-option';
+import type {TuiEditorFontOption} from '../../../interfaces/editor-font-option';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
@@ -35,15 +36,16 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
 })
 export class TuiFontSizeComponent {
     private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
-        this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly fontsOptions$: Observable<
+        ReadonlyArray<Partial<TuiEditorFontOption>>
+    > = this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
 
-    readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
+    protected readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
 
-    setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
+    protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         const color = this.editor.getFontColor();
 
         this.clearPreviousTextStyles();

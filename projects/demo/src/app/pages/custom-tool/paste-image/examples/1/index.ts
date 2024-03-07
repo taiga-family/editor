@@ -40,6 +40,6 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
     ],
 })
 export class TuiEditorPasteImageToolExample1 {
-    readonly builtInTools = [TuiEditorTool.Undo];
-    readonly control = new FormControl('');
+    protected readonly builtInTools = [TuiEditorTool.Undo];
+    protected readonly control = new FormControl('');
 }

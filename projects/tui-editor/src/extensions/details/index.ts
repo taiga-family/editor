@@ -1,4 +1,5 @@
-import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import type {RawCommands} from '@tiptap/core';
+import {mergeAttributes, Node} from '@tiptap/core';
 
 import {tuiDeleteNode} from '../../utils/delete-nodes';
 import {tuiGetSelectedContent} from '../../utils/get-selected-content';

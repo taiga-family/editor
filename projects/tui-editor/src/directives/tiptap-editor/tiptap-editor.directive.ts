@@ -13,24 +13,15 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
 export class TuiTiptapEditorDirective {
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
-    protected editor = inject(TuiTiptapEditorService);
+    private readonly editor = inject(TuiTiptapEditorService);
+
+    @Output()
+    public readonly valueChange = this.editor.valueChange$;
+
+    @Output()
+    public readonly stateChange = this.editor.stateChange$;
+
     protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
-
-    @Input()
-    set value(value: string) {
-        this.editor.setValue(value);
-    }
-
-    @Input()
-    set editable(editable: boolean) {
-        this.editor.editable = editable;
-    }
-
-    @Output()
-    readonly valueChange = this.editor.valueChange$;
-
-    @Output()
-    readonly stateChange = this.editor.stateChange$;
 
     constructor() {
         inject(TIPTAP_EDITOR)
@@ -38,5 +29,15 @@ export class TuiTiptapEditorDirective {
             .subscribe(() => {
                 this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
             });
+    }
+
+    @Input()
+    public set value(value: string) {
+        this.editor.setValue(value);
+    }
+
+    @Input()
+    public set editable(editable: boolean) {
+        this.editor.editable = editable;
     }
 }

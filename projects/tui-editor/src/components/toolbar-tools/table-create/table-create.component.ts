@@ -22,13 +22,15 @@ import {TuiTableSizeSelectorComponent} from './table-size-selector/table-size-se
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCreateComponent {
-    readonly options = inject(TUI_EDITOR_OPTIONS);
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
-    readonly insertTableText$ = this.texts$.pipe(map(texts => texts.insertTable));
+    protected readonly insertTableText$ = this.texts$.pipe(
+        map(texts => texts.insertTable),
+    );
 
-    addTable({rows, cols}: {cols: number; rows: number}): void {
+    protected addTable({rows, cols}: {cols: number; rows: number}): void {
         this.editor.enter(); // @note: clear previous styles
 
         const prevLine = this.editor.state.selection.anchor;

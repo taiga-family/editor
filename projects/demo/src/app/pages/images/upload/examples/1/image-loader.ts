@@ -1,6 +1,7 @@
-import {delay, finalize, fromEvent, map, Observable, switchMap} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {delay, finalize, fromEvent, map, switchMap} from 'rxjs';
 
-import {ImgbbService} from './imgbb.service';
+import type {ImgbbService} from './imgbb.service';
 
 export function imageLoader(service: ImgbbService): (file: File) => Observable<string> {
     return (file: File) => {

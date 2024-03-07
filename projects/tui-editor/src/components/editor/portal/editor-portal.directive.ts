@@ -14,9 +14,9 @@ import {TuiEditorPortalService} from './editor-portal.service';
 export class TuiEditorPortalDirective extends TuiRectAccessor {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    readonly type = 'viewport';
+    public readonly type = 'viewport';
 
-    getClientRect(): ClientRect {
+    public getClientRect(): ClientRect {
         return this.el.getBoundingClientRect();
     }
 }

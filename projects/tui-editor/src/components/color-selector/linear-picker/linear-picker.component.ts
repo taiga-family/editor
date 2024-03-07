@@ -21,10 +21,10 @@ import {TuiPickerService} from '../../../services/picker.service';
 })
 export class TuiLinearPickerComponent {
     @Input()
-    value = 0;
+    public value = 0;
 
     @Output()
-    readonly valueChange = new EventEmitter<number>();
+    public readonly valueChange = new EventEmitter<number>();
 
     constructor() {
         inject(TuiPickerService)
@@ -35,7 +35,7 @@ export class TuiLinearPickerComponent {
             });
     }
 
-    get left(): number {
+    protected get left(): number {
         return this.value * 100;
     }
 }

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {TuiDocExample, TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import type {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 
 import {TuiEditorColorPickerToolExample1} from './examples/1';
@@ -19,7 +20,7 @@ import {TuiEditorColorPickerToolExample1} from './examples/1';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ExampleTuiEditorColorPickerToolComponent {
-    readonly example1: TuiDocExample = {
+    protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
         './custom-color-picker/custom-color-picker.component.ts': import(

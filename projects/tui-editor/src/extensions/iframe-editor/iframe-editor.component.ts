@@ -1,10 +1,12 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import type {SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
-import {TUI_IFRAME_EDITOR_OPTIONS, TuiEditableIframe} from './iframe-editor.options';
+import type {TuiEditableIframe} from './iframe-editor.options';
+import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
 @Component({
     standalone: true,
@@ -17,13 +19,9 @@ import {TUI_IFRAME_EDITOR_OPTIONS, TuiEditableIframe} from './iframe-editor.opti
 })
 export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEditableIframe> {
     private readonly sanitizer = inject(DomSanitizer);
-    readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
+    protected readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
 
-    get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
-    }
-
-    updateSize([width, height]: readonly [width: number, height: number]): void {
+    public updateSize([width, height]: readonly [width: number, height: number]): void {
         this.currentWidth = Math.max(
             this.options.minWidth,
             Math.min(this.options.maxWidth, width),
@@ -39,5 +37,9 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
 
         // force update
         this.editor.commands.setContent(this.editor.getJSON());
+    }
+
+    protected get src(): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
     }
 }

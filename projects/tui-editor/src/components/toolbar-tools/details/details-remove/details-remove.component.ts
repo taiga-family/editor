@@ -15,16 +15,16 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsRemoveComponent {
-    readonly editor = inject(TuiTiptapEditorService);
-    readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    readonly disabled$ = this.editor.stateChange$.pipe(
+    protected readonly disabled$ = this.editor.stateChange$.pipe(
         map(() => !this.editor.isActive('details')),
         distinctUntilChanged(),
     );
 
-    removeDetails(): void {
+    protected removeDetails(): void {
         this.editor.removeDetails();
     }
 }

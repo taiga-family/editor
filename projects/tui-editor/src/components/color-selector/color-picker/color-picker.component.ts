@@ -6,9 +6,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import type {SafeStyle} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
-import {TuiPoint} from '@taiga-ui/core';
+import type {TuiPoint} from '@taiga-ui/core';
 
 import {TuiFlatPickerComponent} from '../flat-picker/flat-picker.component';
 import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component';
@@ -24,8 +25,17 @@ import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component
 export class TuiColorPickerComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
+    @Output()
+    public readonly colorChange = new EventEmitter<
+        [h: number, s: number, v: number, opacity: number]
+    >();
+
+    protected point: TuiPoint = [0, 1];
+    protected hue = 0;
+    protected opacity = 1;
+
     @Input()
-    set color(color: [h: number, s: number, v: number, opacity: number]) {
+    public set color(color: [h: number, s: number, v: number, opacity: number]) {
         if (
             this.currentColor.every((item, index) => item === color[index]) &&
             color[3] === this.opacity
@@ -40,26 +50,15 @@ export class TuiColorPickerComponent {
         this.point = [s, 1 - v / 255];
     }
 
-    @Output()
-    readonly colorChange = new EventEmitter<
-        [h: number, s: number, v: number, opacity: number]
-    >();
-
-    point: TuiPoint = [0, 1];
-
-    hue = 0;
-
-    opacity = 1;
-
-    get currentColor(): [h: number, s: number, v: number] {
+    protected get currentColor(): [h: number, s: number, v: number] {
         return this.getCurrentColor(this.hue, this.point);
     }
 
-    get base(): string {
+    protected get base(): string {
         return `rgb(${tuiHsvToRgb(this.hue * 360, 1, 255)})`;
     }
 
-    get gradient(): SafeStyle {
+    protected get gradient(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(
             `linear-gradient(to right, rgba(${this.currentColor.join(
                 ',',
@@ -67,17 +66,17 @@ export class TuiColorPickerComponent {
         );
     }
 
-    onPointChange(point: TuiPoint): void {
+    protected onPointChange(point: TuiPoint): void {
         this.point = point;
         this.updateColor();
     }
 
-    onHueChange(hue: number): void {
+    protected onHueChange(hue: number): void {
         this.hue = hue;
         this.updateColor();
     }
 
-    onOpacityChange(opacity: number): void {
+    protected onOpacityChange(opacity: number): void {
         this.opacity = tuiRound(opacity, 2);
         this.updateColor();
     }

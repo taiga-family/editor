@@ -16,7 +16,7 @@ export class ExampleTuiSmilesToolComponent {
     private readonly editor = inject(TuiTiptapEditorService);
 
     /* More smiles: https://www.w3schools.com/charsets/ref_emoji.asp */
-    readonly smiles = [
+    protected readonly smiles = [
         '&#129409;',
         '&#9200;',
         '&#9749;',
@@ -31,7 +31,7 @@ export class ExampleTuiSmilesToolComponent {
         '&#128640;',
     ];
 
-    insertSmile(smile: string): void {
+    protected insertSmile(smile: string): void {
         this.editor
             .getOriginTiptapEditor()
             .chain()

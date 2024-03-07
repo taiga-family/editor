@@ -1,6 +1,8 @@
 import {InjectionToken} from '@angular/core';
-import {TuiHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import {map, Observable} from 'rxjs';
+import type {TuiHandler} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 /**
  * Image loader handler

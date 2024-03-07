@@ -13,13 +13,13 @@ const html = '<b>HTML</b><p>with a paragraph</p><div>a div</div>and a plain text
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class TuiAngularContenteditableAccessorPageComponent {
-    model = 'Initial value';
+    protected model = 'Initial value';
 
-    disabled = true;
+    protected disabled = true;
 
-    readonly control = new FormControl('Initial value', {updateOn: 'blur'});
+    protected readonly control = new FormControl('Initial value', {updateOn: 'blur'});
 
-    readonly group = new FormGroup({
+    protected readonly group = new FormGroup({
         control: new FormControl('Initial value'),
     });
 
@@ -27,15 +27,15 @@ export default class TuiAngularContenteditableAccessorPageComponent {
         this.group.disable();
     }
 
-    onToggleModelDisabled(): void {
+    protected onToggleModelDisabled(): void {
         this.disabled = !this.disabled;
     }
 
-    onModelSetValue(): void {
+    protected onModelSetValue(): void {
         this.model = html;
     }
 
-    onToggleControlDisabled(): void {
+    protected onToggleControlDisabled(): void {
         if (this.control.disabled) {
             this.control.enable();
         } else {
@@ -43,11 +43,11 @@ export default class TuiAngularContenteditableAccessorPageComponent {
         }
     }
 
-    onControlSetValue(): void {
+    protected onControlSetValue(): void {
         this.control.setValue(html);
     }
 
-    onToggleNameDisabled(): void {
+    protected onToggleNameDisabled(): void {
         if (this.group.disabled) {
             this.group.enable();
         } else {
@@ -55,7 +55,7 @@ export default class TuiAngularContenteditableAccessorPageComponent {
         }
     }
 
-    onNameSetValue(): void {
+    protected onNameSetValue(): void {
         this.group.patchValue({
             control: html,
         });

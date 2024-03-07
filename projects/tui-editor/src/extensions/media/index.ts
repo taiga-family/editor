@@ -1,5 +1,5 @@
 import {mergeAttributes, Node} from '@tiptap/core';
-import {MarkSpec} from 'prosemirror-model';
+import type {MarkSpec} from 'prosemirror-model';
 
 import {TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES} from '../../constants/default-html5-media-attributes';
 import {tuiGetNestedNodes} from '../../utils/get-nested-nodes';

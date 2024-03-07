@@ -25,32 +25,32 @@ export class TuiTableSizeSelectorComponent {
     private readonly win = inject(WINDOW);
 
     @Output()
-    readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
+    public readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
 
-    tableSize = {
+    protected tableSize = {
         rows: 1,
         cols: 1,
     };
 
-    get columnsNumber(): number {
+    protected get columnsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);
     }
 
-    get rowsNumber(): number {
+    protected get rowsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.rows + 1), MAX_ROWS_NUMBER);
     }
 
-    tableSelectHovered(x: number, y: number): boolean {
+    protected tableSelectHovered(x: number, y: number): boolean {
         return x < this.tableSize.rows && y < this.tableSize.cols;
     }
 
-    updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
+    protected updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
         if (tuiGetViewportWidth(this.win) - event.clientX > MIN_DISTANCE_PX) {
             this.tableSize = {rows, cols};
         }
     }
 
-    select(): void {
+    protected select(): void {
         this.selectSize.emit(this.tableSize);
     }
 }
