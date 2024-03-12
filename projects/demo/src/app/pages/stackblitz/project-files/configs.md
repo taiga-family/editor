@@ -13,12 +13,11 @@
       "prefix": "my-app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/demo",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.less"]
@@ -45,7 +44,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {"browserTarget": "demo:build"}
+          "options": {
+            "browserTarget": "demo:build"
+          }
         }
       }
     }
@@ -66,10 +67,10 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "es2020",
+    "module": "es2017",
+    "target": "es2017",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es5",
     "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
   },
