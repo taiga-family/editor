@@ -14,6 +14,7 @@ export const DEMO_PAGES: TuiDocPages = [
         title: `Playground`,
         keywords: `reproduce, issue, bug, sandbox, playground, test, stackblitz`,
         route: TuiDemoPath.Stackblitz,
+        target: `_blank`,
     },
     {
         section: `Documentation`,

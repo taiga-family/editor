@@ -1,9 +1,24 @@
 ```ts
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import 'zone.js';
 
-import {AppModule} from './app/app.module';
+import {importProvidersFrom} from '@angular/core';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
+import {tuiSvgOptionsProvider, TUI_SANITIZER, TuiRootModule} from '@taiga-ui/core';
+import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {AppComponent} from './app/app.component';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+    importProvidersFrom(TuiRootModule),
+    tuiSvgOptionsProvider({
+      path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
+    }),
+    {
+      provide: TUI_SANITIZER,
+      useClass: NgDompurifySanitizer,
+    },
+  ],
+}).catch(err => console.error(err));
 ```
