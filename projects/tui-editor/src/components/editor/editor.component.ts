@@ -134,6 +134,10 @@ export class TuiEditorComponent
                 emitViewToModelChange: false,
             });
         }
+
+        if (!this.focused) {
+            this.doc.getSelection()?.removeAllRanges();
+        }
     }
 
     public override ngOnDestroy(): void {
