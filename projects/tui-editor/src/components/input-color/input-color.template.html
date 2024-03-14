@@ -17,7 +17,7 @@
         [(value)]="value"
         (focusedChange)="onFocused($event)"
     >
-        <ng-content></ng-content>
+        <ng-content />
     </tui-primitive-textfield>
 </tui-hosted-dropdown>
 
@@ -36,5 +36,5 @@
         [colors]="colors"
         [tuiActiveZoneParent]="activeZone"
         [(color)]="value"
-    ></tui-color-selector>
+    />
 </ng-template>

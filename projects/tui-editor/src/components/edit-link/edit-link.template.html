@@ -25,7 +25,6 @@
                     (keydown.prevent.enter)="onSave()"
                 >
                     <ng-container *ngIf="texts$ | async as text">
-                        <!-- eslint-disable @html-eslint/indent -->
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     </ng-container>
                 </tui-input-inline>
@@ -36,7 +35,7 @@
             [class.t-cleaner_hidden]="!hasUrl"
             [src]="options.icons.popupLinkRemove"
             (click)="onClear()"
-        ></tui-svg>
+        />
         <button
             appearance="icon"
             shape="rounded"
