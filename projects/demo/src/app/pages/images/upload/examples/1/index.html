@@ -7,16 +7,16 @@
         [formControl]="control"
         [tools]="builtInTools"
         [tuiValidator]="validator"
-    ></tui-editor>
+    />
 </tui-loader>
 
 <tui-error
     [error]="[] | tuiFieldError | async"
     [formControl]="control"
-></tui-error>
+/>
 
 <h4>HTML:</h4>
-<tui-editor-socket [content]="control.value || ''"></tui-editor-socket>
+<tui-editor-socket [content]="control.value || ''" />
 
 <h4>Text:</h4>
 <p>{{ control.value }}</p>

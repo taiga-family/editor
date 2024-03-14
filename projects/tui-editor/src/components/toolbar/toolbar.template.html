@@ -4,7 +4,7 @@
 >
     <!-- @note: this is a html huck to avoid autofocus, if the parent element is a label  -->
 </button>
-<ng-container *ngIf="editor.stateChange$ | async"></ng-container>
+<ng-container *ngIf="editor.stateChange$ | async" />
 <div
     [tuiFocusable]="focusable"
     (focus)="onTopFocus()"
@@ -63,7 +63,7 @@
         <tui-font-size
             tuiItem
             class="t-tool t-wrapper"
-        ></tui-font-size>
+        />
     </div>
     <div
         *ngIf="firstBigBlockEnabled"
@@ -74,19 +74,19 @@
             tuiItem
             class="t-tool t-wrapper"
             [enabledTools]="toolsSet"
-        ></tui-font-style>
+        />
 
         <tui-align-content
             *ngIf="enabled(editorTool.Align)"
             tuiItem
             class="t-tool t-wrapper"
-        ></tui-align-content>
+        />
 
         <tui-list-configs
             *ngIf="enabled(editorTool.List)"
             tuiItem
             class="t-tool t-wrapper"
-        ></tui-list-configs>
+        />
 
         <button
             *ngIf="enabled(editorTool.Quote)"
@@ -135,7 +135,7 @@
                     #dropdown
                     (addLink)="onLink(link, $event)"
                     (removeLink)="onLink(link)"
-                ></tui-edit-link>
+                />
             </ng-template>
         </tui-hosted-dropdown>
         <tui-hosted-dropdown
@@ -162,7 +162,7 @@
                     [anchorMode]="true"
                     (addLink)="setAnchor(anchor, $event)"
                     (removeLink)="removeAnchor()"
-                ></tui-edit-link>
+                />
             </ng-template>
         </tui-hosted-dropdown>
         <ng-container *ngIf="enabled(editorTool.Attach)">
@@ -241,14 +241,14 @@
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
-        ></tui-text-color>
+        />
 
         <tui-highlight-color
             *ngIf="enabled(editorTool.Hilite)"
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
-        ></tui-highlight-color>
+        />
     </div>
     <div
         *ngIf="secondBigBlockEnabled"
@@ -258,7 +258,7 @@
             *ngIf="enabled(editorTool.Code)"
             tuiItem
             class="t-tool t-wrapper"
-        ></tui-code>
+        />
 
         <button
             *ngIf="enabled(editorTool.Tex)"
@@ -349,12 +349,12 @@
         <tui-details
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-details>
+        />
 
         <tui-details-remove
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-details-remove>
+        />
     </div>
     <div
         *ngIf="enabled(editorTool.Group)"
@@ -363,13 +363,13 @@
         <tui-editor-group-tool
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-editor-group-tool>
+        />
         <tui-table-cell-color
             *ngIf="!enabled(editorTool.Table)"
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
-        ></tui-table-cell-color>
+        />
     </div>
     <div
         *ngIf="enabled(editorTool.Table)"
@@ -378,25 +378,25 @@
         <tui-table-create
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-table-create>
+        />
 
         <tui-table-row-column-manager
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-table-row-column-manager>
+        />
 
         <tui-table-merge-cells
             tuiItem
             class="t-tool t-tool_margin"
-        ></tui-table-merge-cells>
+        />
 
         <tui-table-cell-color
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
-        ></tui-table-cell-color>
+        />
     </div>
     <div class="t-block">
-        <ng-content></ng-content>
+        <ng-content />
     </div>
 </section>

@@ -3,7 +3,7 @@
     [formControl]="control"
     [tools]="builtInTools"
     (fileAttached)="attach($event)"
-></tui-editor>
+/>
 
 <h4>HTML:</h4>
 <div [innerHTML]="safe(control.value)"></div>

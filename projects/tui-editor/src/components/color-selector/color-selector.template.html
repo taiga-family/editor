@@ -17,7 +17,7 @@
             class="t-arrow"
             [class.t-arrow_rotated]="dropdown.open"
             [src]="options.icons.colorSelectorDropdownChevron"
-        ></tui-svg>
+        />
     </ng-template>
     <ng-template #menu>
         <tui-data-list
@@ -39,7 +39,7 @@
                     *ngIf="isModeActive(mode)"
                     class="t-checkmark"
                     [src]="options.icons.colorSelectorDropdownCheck"
-                ></tui-svg>
+                />
             </button>
         </tui-data-list>
     </ng-template>
@@ -55,7 +55,7 @@
             [value]="stopsKeys"
             (indexChange)="onIndexChange($event)"
             (valueChange)="onStopsChange($event)"
-        ></tui-linear-multi-picker>
+        />
     </div>
     <div class="t-buttons">
         <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
@@ -77,17 +77,17 @@
 <tui-color-picker
     [color]="currentColor"
     (colorChange)="onColorChange($event)"
-></tui-color-picker>
+/>
 <tui-color-edit
     *ngIf="!isGradient"
     tuiGroup
     class="t-edit"
     [color]="color"
     (colorChange)="onColorChange($event)"
-></tui-color-edit>
+/>
 <tui-palette
     *ngIf="palette.size"
     class="t-palette"
     [colors]="palette"
     (selectedColor)="onPalettePick($event)"
-></tui-palette>
+/>

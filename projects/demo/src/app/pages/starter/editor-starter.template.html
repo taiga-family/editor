@@ -24,7 +24,7 @@
             <tui-editor-socket
                 class="tui-example"
                 [content]="control.value || ''"
-            ></tui-editor-socket>
+            />
 
             <h4>Text:</h4>
             <p>{{ control.value }}</p>
@@ -87,11 +87,11 @@
         <tui-doc-documentation heading="How to install">
             <p>Install core-based packages:</p>
 
-            <tui-doc-code code="npm i &#64;taiga-ui/{cdk,core,kit,icons}"></tui-doc-code>
+            <tui-doc-code code="npm i &#64;taiga-ui/{cdk,core,kit,icons}" />
 
             <p>Install editor:</p>
 
-            <tui-doc-code code="npm i &#64;tinkoff/tui-editor"></tui-doc-code>
+            <tui-doc-code code="npm i &#64;tinkoff/tui-editor" />
 
             <p>
                 Don't forget that Taiga UI is fully-tree-shakable.
@@ -107,7 +107,7 @@
                     <tui-doc-code
                         filename="styles.less"
                         [code]="exampleStyles"
-                    ></tui-doc-code>
+                    />
                 </li>
 
                 <li>
@@ -116,7 +116,7 @@
                     <tui-doc-code
                         filename="angular.json"
                         [code]="exampleIcons"
-                    ></tui-doc-code>
+                    />
                 </li>
 
                 <li>
@@ -129,7 +129,7 @@
                     <tui-doc-code
                         filename="app.module.ts"
                         [code]="exampleModule"
-                    ></tui-doc-code>
+                    />
                 </li>
 
                 <li>
@@ -138,14 +138,14 @@
                     <tui-doc-code
                         filename="app.component.html"
                         [code]="exampleHtml"
-                    ></tui-doc-code>
+                    />
                 </li>
 
                 <li>
                     <tui-doc-code
                         filename="app.component.ts"
                         [code]="exampleComponent"
-                    ></tui-doc-code>
+                    />
                 </li>
             </ol>
         </tui-doc-documentation>
@@ -160,7 +160,7 @@
         <p>
             <strong>Usage:</strong>
         </p>
-        <tui-doc-code [code]="exampleEditorOptionsToken"></tui-doc-code>
+        <tui-doc-code [code]="exampleEditorOptionsToken" />
 
         <p>
             <strong>Description of the available configurations:</strong>

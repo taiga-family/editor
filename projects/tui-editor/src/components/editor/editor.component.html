@@ -17,13 +17,13 @@
             [tools]="tools"
             (fileAttached)="fileAttached.emit($event)"
         >
-            <ng-content select="tools"></ng-content>
+            <ng-content select="tools" />
         </tui-toolbar>
         <div
             class="t-placeholder"
             [class.t-placeholder_raised]="placeholderRaised"
         >
-            <ng-content></ng-content>
+            <ng-content />
         </div>
         <div
             *ngIf="hasExampleText"
@@ -51,7 +51,7 @@
                 [value]="value"
                 (stateChange)="(0)"
                 (valueChange)="onModelChange($event)"
-            ></tui-editor-socket>
+            />
         </div>
 
         <ng-template #dropdown>
@@ -59,9 +59,9 @@
                 #link
                 (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
                 (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
-            ></tui-edit-link>
+            />
         </ng-template>
 
-        <tui-editor-portal-host></tui-editor-portal-host>
+        <tui-editor-portal-host />
     </tui-scrollbar>
 </div>

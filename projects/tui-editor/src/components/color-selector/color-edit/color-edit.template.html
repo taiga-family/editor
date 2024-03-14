@@ -27,7 +27,7 @@
     [tuiTextfieldLabelOutside]="true"
     [value]="hex"
     (valueChange)="onHexChange($event)"
-></tui-primitive-textfield>
+/>
 <ng-template #rgb>
     <tui-input-number
         decimal="never"
@@ -38,7 +38,7 @@
         [ngModel]="color[0]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange($event, color[1], color[2], color[3])"
-    ></tui-input-number>
+    />
     <tui-input-number
         decimal="never"
         tuiTextfieldSize="m"
@@ -48,7 +48,7 @@
         [ngModel]="color[1]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], $event, color[2], color[3])"
-    ></tui-input-number>
+    />
     <tui-input-number
         decimal="never"
         tuiTextfieldSize="m"
@@ -58,7 +58,7 @@
         [ngModel]="color[2]"
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], color[1], $event, color[3])"
-    ></tui-input-number>
+    />
 </ng-template>
 <tui-input-number
     decimal="never"
@@ -70,4 +70,4 @@
     [ngModel]="opacity"
     [tuiTextfieldLabelOutside]="true"
     (ngModelChange)="onRgbChange(color[0], color[1], color[2], $event / 100)"
-></tui-input-number>
+/>
