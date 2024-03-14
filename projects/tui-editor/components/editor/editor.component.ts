@@ -146,6 +146,10 @@ export class TuiEditorComponent
                 emitViewToModelChange: false,
             });
         }
+
+        if (!this.focused) {
+            this.doc.getSelection()?.removeAllRanges();
+        }
     }
 
     onActiveZone(focused: boolean): void {
