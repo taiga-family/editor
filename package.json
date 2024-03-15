@@ -128,7 +128,7 @@
         "@types/node": "20.11.27",
         "@types/showdown": "2.0.6",
         "@types/webpack-env": "1.18.4",
-        "core-js": "2.6.12",
+        "core-js": "3.36.0",
         "dompurify": "3.0.9",
         "eslint": "8.57.0",
         "express": "4.18.3",
