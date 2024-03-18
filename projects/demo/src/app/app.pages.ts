@@ -48,6 +48,12 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: 'Examples',
+        title: 'Appearance',
+        route: TuiDemoPath.Appearance,
+        keywords: 'editor, appearance, wysiwyg, редактор, текст, html, rich, text',
+    },
+    {
+        section: 'Examples',
         title: 'Groups',
         route: TuiDemoPath.Groups,
         keywords:

@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-restricted-syntax
 export const enum TuiDemoPath {
     Anchors = 'anchors',
+    Appearance = 'appearance',
     Changelog = 'changelog',
     ColorPicker = 'color-picker',
     AngularContenteditableAccessor = 'angular-contenteditable-accessor',
