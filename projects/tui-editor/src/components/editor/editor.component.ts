@@ -81,7 +81,6 @@ export class TuiEditorComponent
     private readonly el?: ElementRef<HTMLElement>;
 
     private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
-    private readonly options = inject(TUI_EDITOR_OPTIONS);
     private readonly doc = inject(DOCUMENT);
 
     @Input()
@@ -98,6 +97,7 @@ export class TuiEditorComponent
     @ViewChild(TuiToolbarComponent)
     protected readonly toolbar?: TuiToolbarComponent;
 
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
 
     protected sub = this.editorLoaded$

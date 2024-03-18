@@ -40,6 +40,12 @@ export const routes: Routes = [
         title: 'Anchors',
     }),
     route({
+        path: TuiDemoPath.Appearance,
+        loadComponent: async () =>
+            import('./pages/appearance/editor-appearence.component'),
+        title: 'Appearance',
+    }),
+    route({
         path: TuiDemoPath.Focus,
         loadComponent: async () => import('./pages/focus/editor-focus.component'),
         title: 'Focus',
