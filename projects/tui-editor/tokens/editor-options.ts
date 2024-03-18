@@ -9,6 +9,7 @@ import {
 } from '@tinkoff/tui-editor/constants';
 
 export interface TuiEditorOptions {
+    readonly appearence: string;
     readonly blankColor: string;
     readonly colors: ReadonlyMap<string, string>;
     readonly fontOptions: typeof tuiDefaultFontOptionsHandler;
@@ -66,6 +67,7 @@ export interface TuiEditorOptions {
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: `no`,
+    appearence: `textfield`,
     spellcheck: false,
     enableDefaultStyles: true,
     colors: defaultEditorColors,

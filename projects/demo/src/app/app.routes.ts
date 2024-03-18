@@ -62,6 +62,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.Appearance,
+        loadChildren: async () =>
+            (await import(`./pages/appearance/editor-appearence.module`))
+                .ExampleTuiEditorAppearanceModule,
+        data: {
+            title: `Appearance`,
+        },
+    },
+    {
         path: TuiDemoPath.Focus,
         loadChildren: async () =>
             (await import(`./pages/focus/editor-focus.module`))

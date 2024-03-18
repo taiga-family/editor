@@ -95,7 +95,7 @@ export class TuiEditorComponent
         @Optional()
         @Inject(TUI_EDITOR_VALUE_TRANSFORMER)
         transformer: AbstractTuiValueTransformer<string> | null,
-        @Inject(TUI_EDITOR_OPTIONS) private readonly options: TuiEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
     ) {
         super(control, cdr, transformer);
 
