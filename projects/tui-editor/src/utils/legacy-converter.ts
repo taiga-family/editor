@@ -41,46 +41,52 @@ function migration(element: Element): void {
 }
 
 function migrateHeading(selector: string, element: Element): void {
-    const heading = document.createElement(selector);
+    if (globalThis.document) {
+        const heading = document.createElement(selector);
 
-    heading.innerHTML = element.innerHTML;
+        heading.innerHTML = element.innerHTML;
 
-    if (element.parentElement?.tagName === 'P') {
-        const newRef = element.parentElement?.parentElement?.insertBefore(
-            heading,
-            element.parentElement,
-        );
+        if (element.parentElement?.tagName === 'P') {
+            const newRef = element.parentElement?.parentElement?.insertBefore(
+                heading,
+                element.parentElement,
+            );
 
-        element.parentElement?.removeChild(element);
+            element.parentElement?.removeChild(element);
 
-        if (newRef?.nextSibling && !newRef?.nextSibling?.textContent?.trim()) {
-            newRef.nextSibling?.parentElement?.removeChild(newRef.nextSibling);
+            if (newRef?.nextSibling && !newRef?.nextSibling?.textContent?.trim()) {
+                newRef.nextSibling?.parentElement?.removeChild(newRef.nextSibling);
+            }
+        } else {
+            element.parentElement?.replaceChild(heading, element);
         }
-    } else {
-        element.parentElement?.replaceChild(heading, element);
     }
 }
 
 function migrateParagraph(fontSize: string, element: Element): void {
-    const p = document.createElement('p');
-    const span = document.createElement('span');
+    if (globalThis.document) {
+        const p = document.createElement('p');
+        const span = document.createElement('span');
 
-    span.setAttribute('style', `font-size: ${fontSize}`);
-    span.innerHTML = element.innerHTML;
-    p.append(span);
+        span.setAttribute('style', `font-size: ${fontSize}`);
+        span.innerHTML = element.innerHTML;
+        p.append(span);
 
-    element.parentElement?.replaceChild(
-        element.parentElement.tagName === 'P' ? span : p,
-        element,
-    );
+        element.parentElement?.replaceChild(
+            element.parentElement.tagName === 'P' ? span : p,
+            element,
+        );
+    }
 }
 
 function migrateFontHighlight(element: Element): void {
-    const span = document.createElement('span');
+    if (globalThis.document) {
+        const span = document.createElement('span');
 
-    span.setAttribute('style', `color: ${element.getAttribute('color')}`);
-    span.innerHTML = element.innerHTML;
-    element.parentElement?.replaceChild(span, element);
+        span.setAttribute('style', `color: ${element.getAttribute('color')}`);
+        span.innerHTML = element.innerHTML;
+        element.parentElement?.replaceChild(span, element);
+    }
 }
 
 /**

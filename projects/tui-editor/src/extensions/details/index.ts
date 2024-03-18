@@ -64,27 +64,30 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     },
 
     addNodeView() {
-        return ({node}) => {
-            const wrapper = document.createElement('div');
-            const details = document.createElement('details');
-            const button = document.createElement('button');
+        return ({node}): any => {
+            if (globalThis.document) {
+                const wrapper = document.createElement('div');
+                const details = document.createElement('details');
+                const button = document.createElement('button');
 
-            wrapper.className = 't-details-wrapper';
-            button.className = 't-details-arrow';
+                wrapper.className = 't-details-wrapper';
+                button.className = 't-details-arrow';
 
-            details.open = node.attrs.opened;
+                details.open = node.attrs.opened;
 
-            button.addEventListener('click', () => {
-                details.open = !details.open;
-                (node.attrs as unknown as Record<string, unknown>).opened = details.open;
-            });
+                button.addEventListener('click', () => {
+                    details.open = !details.open;
+                    (node.attrs as unknown as Record<string, unknown>).opened =
+                        details.open;
+                });
 
-            wrapper.append(details, button);
+                wrapper.append(details, button);
 
-            return {
-                dom: wrapper,
-                contentDOM: details,
-            };
+                return {
+                    dom: wrapper,
+                    contentDOM: details,
+                };
+            }
         };
     },
 
