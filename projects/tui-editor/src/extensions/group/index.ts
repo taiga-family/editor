@@ -69,31 +69,33 @@ export const tuiCreateGroupExtension = (
         },
 
         addNodeView() {
-            return ({HTMLAttributes, node}) => {
-                const dom = document.createElement('div');
-                const content = document.createElement('div');
+            return ({HTMLAttributes, node}): any => {
+                if (globalThis.document) {
+                    const dom = document.createElement('div');
+                    const content = document.createElement('div');
 
-                dom.classList.add(groupNodeClass);
-                content.setAttribute('data-type', 'group');
+                    dom.classList.add(groupNodeClass);
+                    content.setAttribute('data-type', 'group');
 
-                if (HTMLAttributes.style) {
-                    (node.attrs as any).style = HTMLAttributes.style;
-                    content.setAttribute('style', HTMLAttributes.style);
+                    if (HTMLAttributes.style) {
+                        (node.attrs as any).style = HTMLAttributes.style;
+                        content.setAttribute('style', HTMLAttributes.style);
+                    }
+
+                    if (draggable) {
+                        const pointer = document.createElement('div');
+
+                        pointer.classList.add(groupPointerNodeClass);
+                        pointer.innerHTML = '';
+                        pointer.contentEditable = 'false';
+
+                        dom.append(pointer, content);
+                    } else {
+                        dom.append(content);
+                    }
+
+                    return {dom, contentDOM: content};
                 }
-
-                if (draggable) {
-                    const pointer = document.createElement('div');
-
-                    pointer.classList.add(groupPointerNodeClass);
-                    pointer.innerHTML = '';
-                    pointer.contentEditable = 'false';
-
-                    dom.append(pointer, content);
-                } else {
-                    dom.append(content);
-                }
-
-                return {dom, contentDOM: content};
             };
         },
 

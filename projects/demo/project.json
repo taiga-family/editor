@@ -5,7 +5,7 @@
     "sourceRoot": "projects/demo/src",
     "prefix": "app",
     "targets": {
-        "prebuild": {
+        "i18n": {
             "executor": "nx:run-commands",
             "options": {
                 "command": "cd taiga-ui && npx nx build i18n --output-style=stream"
@@ -69,12 +69,15 @@
                     "vendorChunk": false,
                     "buildOptimizer": true
                 },
+                "ssr": {
+                    "baseHref": "/"
+                },
                 "development": {}
             },
             "defaultConfiguration": "production",
             "dependsOn": [
                 {
-                    "target": "prebuild",
+                    "target": "i18n",
                     "params": "ignore"
                 }
             ]
@@ -96,6 +99,48 @@
                 }
             },
             "defaultConfiguration": "development"
+        },
+        "server": {
+            "executor": "@angular-builders/custom-webpack:server",
+            "options": {
+                "customWebpackConfig": {
+                    "path": "projects/demo/webpack.server.config.ts"
+                },
+                "outputPath": "dist/demo/server",
+                "main": "projects/demo/server.ts",
+                "tsConfig": "projects/demo/tsconfig.server.json",
+                "sourceMap": true,
+                "optimization": false
+            },
+            "configurations": {
+                "production": {
+                    "outputHashing": "media",
+                    "sourceMap": false,
+                    "optimization": true
+                },
+                "development": {}
+            },
+            "defaultConfiguration": "production"
+        },
+        "prerender": {
+            "executor": "@nguniversal/builders:prerender",
+            "outputs": ["{workspaceRoot}/dist/demo"],
+            "options": {
+                "browserTarget": "editor-demo:build:ssr",
+                "serverTarget": "editor-demo:server:production",
+                "routesFile": "projects/demo/routes.txt",
+                "guessRoutes": false
+            },
+            "configurations": {
+                "production": {}
+            },
+            "defaultConfiguration": "production",
+            "dependsOn": [
+                {
+                    "target": "i18n",
+                    "params": "ignore"
+                }
+            ]
         }
     }
 }

@@ -80,12 +80,14 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
     }
 
     private selectFakeText(): void {
-        const range = this.win.document.createRange();
+        if (this.win.document) {
+            const range = this.win.document.createRange();
 
-        this.el.nativeElement.querySelector('p')?.focus();
+            this.el.nativeElement.querySelector('p')?.focus();
 
-        range.selectNode(this.el.nativeElement);
-        this.win.getSelection()?.removeAllRanges();
-        this.win.getSelection()?.addRange(range);
+            range.selectNode(this.el.nativeElement);
+            this.win.getSelection()?.removeAllRanges();
+            this.win.getSelection()?.addRange(range);
+        }
     }
 }
