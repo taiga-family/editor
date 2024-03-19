@@ -10,9 +10,9 @@ jobs:
     name: Build package
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.54.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.54.2
-      - uses: taiga-family/ci/actions/setup/node@v1.54.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.54.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.54.4
+      - uses: taiga-family/ci/actions/setup/node@v1.54.4
       - run: npx nx build tui-editor
 
 concurrency:
