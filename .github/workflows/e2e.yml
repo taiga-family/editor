@@ -18,7 +18,7 @@ jobs:
       - name: Building demo-app of git-branch without cache
         run: npx nx build editor-demo --output-path ${{ env.DIST }}
 
-      - uses: jacobtomlinson/gha-find-replace@v2
+      - uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '<base href="./">'
           replace: '<base href="/">'
@@ -39,7 +39,7 @@ jobs:
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/taiga-family/tui-editor.git ${{ env.DIST_NEXT }}
 
-      - uses: jacobtomlinson/gha-find-replace@v2
+      - uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '<base href="./">'
           replace: '<base href="/">'
