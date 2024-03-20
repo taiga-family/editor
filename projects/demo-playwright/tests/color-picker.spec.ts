@@ -6,15 +6,15 @@ test.describe('ColorPicker', () => {
     test('open color picker', async ({page}) => {
         await tuiGoto(page, '/color-picker');
 
-        await expect(page.locator('example-tui-color-picker')).toHaveScreenshot(
-            'ColorPicker-01.png',
-        );
+        await expect(
+            page.locator('#input .t-example .t-content_visible'),
+        ).toHaveScreenshot('ColorPicker-01.png');
 
         await page.locator('#dropdown [automation-id="color-picker__button"]').click();
 
-        await expect(page.locator('example-tui-color-picker')).toHaveScreenshot(
-            'ColorPicker-02.png',
-        );
+        await expect(
+            page.locator('#input .t-example .t-content_visible'),
+        ).toHaveScreenshot('ColorPicker-02.png');
     });
 
     test('opened color picker and change rgb', async ({page}) => {
@@ -40,8 +40,8 @@ test.describe('ColorPicker', () => {
             await input.fill('255');
         }
 
-        await expect(page.locator('example-tui-color-picker')).toHaveScreenshot(
-            'ColorPicker-03.png',
-        );
+        await expect(
+            page.locator('#dropdown .t-example .t-content_visible'),
+        ).toHaveScreenshot('ColorPicker-03.png');
     });
 });

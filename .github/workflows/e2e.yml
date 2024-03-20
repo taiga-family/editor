@@ -16,7 +16,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Building demo-app of git-branch without cache
-        run: npx nx build editor-demo --output-path ${{ env.DIST }}
+        run: npx nx prerender editor-demo
 
       - uses: jacobtomlinson/gha-find-replace@v3
         with:

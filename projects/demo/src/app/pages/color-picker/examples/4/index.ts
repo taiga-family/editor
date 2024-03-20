@@ -10,7 +10,6 @@ import {TuiInputModule} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'tui-color-picker-example-4',
     imports: [
         TuiSvgModule,
         FormsModule,
@@ -23,7 +22,7 @@ import {TuiInputModule} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorPickerExample4 {
+export default class ExampleComponent {
     protected readonly mask = {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]};
 
     protected value = '#ffdd2d';

@@ -17,8 +17,7 @@ export const routes: Routes = [
     }),
     route({
         path: TuiDemoPath.ColorPicker,
-        loadComponent: async () =>
-            import('./pages/color-picker/editor-input-color-picker.component'),
+        loadComponent: async () => import('./pages/color-picker'),
         title: 'Input color picker',
     }),
     route({
