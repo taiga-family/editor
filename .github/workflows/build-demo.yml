@@ -10,9 +10,9 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.55.1
-      - uses: taiga-family/ci/actions/setup/node@v1.55.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.55.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.55.2
+      - uses: taiga-family/ci/actions/setup/node@v1.55.2
       - run: npx nx build editor-demo # production mode
       - run: npx nx prerender editor-demo # ssr mode
 
