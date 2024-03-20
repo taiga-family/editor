@@ -7,7 +7,6 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
-    selector: 'tui-color-picker-example-2',
     imports: [
         TuiActiveZoneModule,
         TuiHostedDropdownModule,
@@ -18,7 +17,7 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorPickerExample2 {
+export default class ExampleComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected color = '#ffdd2d';

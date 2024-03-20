@@ -6,12 +6,11 @@ import {BehaviorSubject} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-color-picker-example-3',
     imports: [AsyncPipe, TuiButtonModule, TuiHostedDropdownModule, TuiPaletteComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorPickerExample3 {
+export default class ExampleComponent {
     protected colors = new Map([
         ['blue', 'var(--tui-info-fill)'],
         ['green', 'var(--tui-success-fill)'],
