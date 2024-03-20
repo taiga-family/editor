@@ -46,6 +46,7 @@ Thumbs.db
 /projects/demo-playwright/snapshots/
 /projects/demo-playwright/playwright/.cache/
 
+routes.txt
 
 # special dirs
 **/.ssl

@@ -122,6 +122,12 @@
             },
             "defaultConfiguration": "production"
         },
+        "generate-routes-file": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./projects/demo/generate-routes.ts"
+            }
+        },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/demo"],
@@ -138,6 +144,10 @@
             "dependsOn": [
                 {
                     "target": "i18n",
+                    "params": "ignore"
+                },
+                {
+                    "target": "generate-routes-file",
                     "params": "ignore"
                 }
             ]
