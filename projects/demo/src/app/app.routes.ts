@@ -152,6 +152,12 @@ export const routes: Routes = [
         title: 'Editor — HTML5',
     }),
     route({
+        path: TuiDemoPath.ToolbarBottom,
+        loadComponent: async () =>
+            import('./pages/toolbar/bottom/editor-toolbar-bottom.component'),
+        title: 'Editor — Toolbar',
+    }),
+    route({
         path: TuiDemoPath.Changelog,
         loadComponent: async () => import('./pages/changelog/editor-changelog.component'),
         title: 'Changelog',

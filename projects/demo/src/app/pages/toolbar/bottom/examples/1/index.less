@@ -1,0 +1,31 @@
+.editor {
+    min-height: 200px;
+    max-height: 200px;
+
+    ::ng-deep [data-appearance] {
+        tui-toolbar {
+            position: absolute;
+            width: calc(100% - 0.25rem);
+            bottom: 0;
+            z-index: 1;
+            left: 0.125rem;
+
+            .t-tools-wrapper {
+                box-shadow: 0 -0.0625rem 0.0625rem var(--tui-base-03);
+            }
+        }
+
+        tui-scrollbar {
+            margin-bottom: 2.875rem;
+            padding: 0;
+        }
+
+        .t-placeholder {
+            margin-top: 1.625rem;
+        }
+
+        .t-block:last-child {
+            margin-left: auto;
+        }
+    }
+}
