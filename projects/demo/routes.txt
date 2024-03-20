@@ -1,3 +1,0 @@
-/
-/starter-kit
-/angular-contenteditable-accessor
