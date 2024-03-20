@@ -24,4 +24,5 @@ export const TuiDemoPath = {
     Stackblitz: 'stackblitz',
     StarterKit: 'starter-kit',
     UploadFiles: 'upload-files',
+    ToolbarBottom: 'toolbar/bottom',
 } as const;

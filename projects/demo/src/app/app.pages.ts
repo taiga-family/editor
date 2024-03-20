@@ -200,4 +200,17 @@ export const DEMO_PAGES: TuiDocPages = [
             },
         ],
     },
+    {
+        section: 'Examples',
+        title: 'Toolbar',
+        subPages: [
+            {
+                section: 'Examples',
+                title: 'Align bottom',
+                keywords:
+                    'editor, toolbar, bottom, wysiwyg, редактор, текст, подсветка, html, rich, text',
+                route: `/${TuiDemoPath.ToolbarBottom}`,
+            },
+        ],
+    },
 ];
