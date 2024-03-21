@@ -13,7 +13,7 @@ import {
 import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
 import {ExampleTuiEditorFocusComponent} from './editor-toolbar-bottom.component';
-import {TuiEditorFocusExample1} from './examples/1';
+import {TuiEditorToolbarBottomExample1} from './examples/1';
 
 @NgModule({
     imports: [
@@ -30,6 +30,6 @@ import {TuiEditorFocusExample1} from './examples/1';
         TuiEditorSocketModule,
         RouterModule.forChild(tuiGenerateRoutes(ExampleTuiEditorFocusComponent)),
     ],
-    declarations: [TuiEditorFocusExample1, ExampleTuiEditorFocusComponent],
+    declarations: [TuiEditorToolbarBottomExample1, ExampleTuiEditorFocusComponent],
 })
 export class ExampleToolbarBottomModule {}

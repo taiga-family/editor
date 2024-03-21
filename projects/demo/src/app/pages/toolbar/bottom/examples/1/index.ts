@@ -24,7 +24,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
         },
     ],
 })
-export class TuiEditorFocusExample1 {
+export class TuiEditorToolbarBottomExample1 {
     readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Link, TuiEditorTool.Img];
 
     readonly control = new FormControl('');
