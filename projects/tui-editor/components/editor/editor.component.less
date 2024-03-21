@@ -61,3 +61,11 @@
     box-sizing: border-box;
     flex: 1;
 }
+
+.t-floating {
+    &,
+    ::ng-deep .t-tools-wrapper {
+        max-width: var(--tui-floating-toolbar-max-width, 31.25rem);
+        flex-wrap: nowrap;
+    }
+}

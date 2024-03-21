@@ -1,17 +1,7 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "npmScope": "tui-editor",
-    "nxCloudAccessToken": "MzY4Mzk5YmMtMTJlOC00ZDMyLWFlY2UtZGFhM2RkZWQyYTYxfHJlYWQtd3JpdGU=",
     "defaultProject": "editor-demo",
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "nx-cloud",
-            "options": {
-                "cacheableOperations": ["test", "build"],
-                "parallel": 1
-            }
-        }
-    },
     "affected": {
         "defaultBase": "origin/main"
     },

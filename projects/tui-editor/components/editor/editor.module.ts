@@ -7,6 +7,7 @@ import {TuiEditorSocketModule} from '@tinkoff/tui-editor/components/editor-socke
 import {TuiToolbarModule} from '@tinkoff/tui-editor/components/toolbar';
 import {TuiTiptapEditorModule} from '@tinkoff/tui-editor/directives';
 
+import {TuiDropdownToolbarDirective} from './dropdown/dropdown-toolbar.directive';
 import {TuiEditorComponent} from './editor.component';
 import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
 import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
@@ -27,6 +28,7 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
     declarations: [
         TuiEditorComponent,
         TuiEditorPortalHostComponent,
+        TuiDropdownToolbarDirective,
         TuiEditorPortalDirective,
     ],
     exports: [TuiEditorComponent],

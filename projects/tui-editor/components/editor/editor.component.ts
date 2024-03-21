@@ -18,6 +18,7 @@ import {
     AbstractTuiControl,
     AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
+    ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
@@ -72,6 +73,9 @@ export class TuiEditorComponent
     @Input()
     tools: readonly TuiEditorTool[] = defaultEditorTools;
 
+    @Input()
+    floatingToolbar = false;
+
     @Output()
     readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
 
@@ -112,6 +116,10 @@ export class TuiEditorComponent
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        if (this.floatingToolbar) {
+            return ALWAYS_TRUE_HANDLER;
+        }
+
         return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
     }
 
@@ -127,6 +135,13 @@ export class TuiEditorComponent
         return (
             !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
         );
+    }
+
+    get isLinkSelected(): boolean {
+        const node = this.doc.getSelection()?.focusNode?.parentNode;
+        const element = node?.nodeName.toLowerCase();
+
+        return element === 'a' || !!node?.parentElement?.closest('tui-edit-link');
     }
 
     override writeValue(value: string | null): void {
