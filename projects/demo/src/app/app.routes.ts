@@ -11,8 +11,7 @@ export const routes: Routes = [
     }),
     route({
         path: 'stackblitz',
-        loadComponent: async () =>
-            import('./pages/stackblitz/starter/stackblitz-starter.component'),
+        loadComponent: async () => import('./pages/stackblitz/starter'),
         title: 'Stackblitz Starter',
     }),
     route({
@@ -22,143 +21,122 @@ export const routes: Routes = [
     }),
     route({
         path: TuiDemoPath.AngularContenteditableAccessor,
-        loadComponent: async () =>
-            import(
-                './pages/angular-contenteditable-accessor/angular-contenteditable-accessor.component'
-            ),
+        loadComponent: async () => import('./pages/angular-contenteditable-accessor'),
         title: 'Contenteditable accessor',
     }),
     route({
         path: TuiDemoPath.Font,
-        loadComponent: async () => import('./pages/font/editor-font.component'),
+        loadComponent: async () => import('./pages/font'),
         title: 'Font',
     }),
     route({
         path: TuiDemoPath.Anchors,
-        loadComponent: async () => import('./pages/anchors/editor-anchors.component'),
+        loadComponent: async () => import('./pages/anchors'),
         title: 'Anchors',
     }),
     route({
         path: TuiDemoPath.Appearance,
-        loadComponent: async () =>
-            import('./pages/appearance/editor-appearence.component'),
+        loadComponent: async () => import('./pages/appearance'),
         title: 'Appearance',
     }),
     route({
         path: TuiDemoPath.Focus,
-        loadComponent: async () => import('./pages/focus/editor-focus.component'),
+        loadComponent: async () => import('./pages/focus'),
         title: 'Focus',
     }),
     route({
         path: TuiDemoPath.Groups,
-        loadComponent: async () => import('./pages/groups/editor-groups.component'),
+        loadComponent: async () => import('./pages/groups'),
         title: 'Groups',
     }),
     route({
         path: TuiDemoPath.UploadFiles,
-        loadComponent: async () =>
-            import('./pages/upload-files/editor-upload-files.component'),
+        loadComponent: async () => import('./pages/upload-files'),
         title: 'Upload files',
     }),
     route({
         path: TuiDemoPath.PasteEmojiTool,
-        loadComponent: async () =>
-            import('./pages/custom-tool/paste-emoji/editor-paste-emoji.component'),
+        loadComponent: async () => import('./pages/custom-tool/paste-emoji'),
         title: 'Editor — Paste emoji custom tool',
     }),
     route({
         path: TuiDemoPath.ColorPickerTool,
-        loadComponent: async () =>
-            import('./pages/custom-tool/color-picker/editor-color-picker.component'),
+        loadComponent: async () => import('./pages/custom-tool/color-picker'),
         title: 'Editor — Color picker custom tool',
     }),
     route({
         path: TuiDemoPath.PasteImageTool,
-        loadComponent: async () =>
-            import('./pages/custom-tool/paste-image/editor-paste-image-tool.component'),
+        loadComponent: async () => import('./pages/custom-tool/paste-image'),
         title: 'Editor — Paste image custom tool',
     }),
     route({
         path: TuiDemoPath.PasteImageTool,
-        loadComponent: async () =>
-            import('./pages/custom-tool/paste-image/editor-paste-image-tool.component'),
+        loadComponent: async () => import('./pages/custom-tool/paste-image'),
         title: 'Editor — Paste image custom tool',
     }),
     route({
         path: TuiDemoPath.HighlightText,
-        loadComponent: async () =>
-            import('./pages/highlight/text/editor-mark-text.component'),
+        loadComponent: async () => import('./pages/highlight/text'),
         title: 'Editor — Highlight text',
     }),
     route({
         path: TuiDemoPath.ProcessingLegacyHtml,
-        loadComponent: async () =>
-            import('./pages/processing/legacy-html/editor-legacy-html.component'),
+        loadComponent: async () => import('./pages/processing/legacy-html'),
         title: 'Editor — Legacy html',
     }),
     route({
         path: TuiDemoPath.ProcessingCleanupHtml,
-        loadComponent: async () =>
-            import('./pages/processing/cleanup-html/editor-cleanup-html.component'),
+        loadComponent: async () => import('./pages/processing/cleanup-html'),
         title: 'Editor — Cleanup html',
     }),
     route({
         path: TuiDemoPath.ProcessingMarkdown,
-        loadComponent: async () =>
-            import('./pages/processing/markdown/editor-markdown.component'),
+        loadComponent: async () => import('./pages/processing/markdown'),
         title: 'Editor — Markdown',
     }),
     route({
         path: TuiDemoPath.HighlightCode,
-        loadComponent: async () =>
-            import('./pages/highlight/code/editor-code-block.component'),
+        loadComponent: async () => import('./pages/highlight/code'),
         title: 'Editor — Highlight code',
     }),
     route({
         path: TuiDemoPath.ImagesResizable,
-        loadComponent: async () =>
-            import('./pages/images/resizable/editor-resizable-images.component'),
+        loadComponent: async () => import('./pages/images/resizable'),
         title: 'Editor  — Resizable images',
     }),
     route({
         path: TuiDemoPath.ImagesPreview,
-        loadComponent: async () =>
-            import('./pages/images/preview/editor-preview-images.component'),
+        loadComponent: async () => import('./pages/images/preview'),
         title: 'Editor  — Preview images',
     }),
     route({
         path: TuiDemoPath.ImagesUpload,
-        loadComponent: async () =>
-            import('./pages/images/upload/editor-upload-images.component'),
+        loadComponent: async () => import('./pages/images/upload'),
         title: 'Editor — Upload images',
     }),
     route({
         path: TuiDemoPath.EmbedYoutube,
-        loadComponent: async () =>
-            import('./pages/embed/youtube/editor-embed-youtube.component'),
+        loadComponent: async () => import('./pages/embed/youtube'),
         title: 'Editor — YouTube',
     }),
     route({
         path: TuiDemoPath.EmbedIframe,
-        loadComponent: async () =>
-            import('./pages/embed/iframe/editor-embed-iframe.component'),
+        loadComponent: async () => import('./pages/embed/iframe'),
         title: 'Editor — Iframe',
     }),
     route({
         path: TuiDemoPath.EmbedHtml5,
-        loadComponent: async () =>
-            import('./pages/embed/html5/editor-embed-html5.component'),
+        loadComponent: async () => import('./pages/embed/html5'),
         title: 'Editor — HTML5',
     }),
     route({
         path: TuiDemoPath.ToolbarBottom,
-        loadComponent: async () =>
-            import('./pages/toolbar/bottom/editor-toolbar-bottom.component'),
+        loadComponent: async () => import('./pages/toolbar/bottom'),
         title: 'Editor — Toolbar',
     }),
     route({
         path: TuiDemoPath.Changelog,
-        loadComponent: async () => import('./pages/changelog/editor-changelog.component'),
+        loadComponent: async () => import('./pages/changelog'),
         title: 'Changelog',
     }),
     {

@@ -5,19 +5,18 @@ import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorEmbedIframeExample1} from './examples/1';
+import {TuiEditorUploadFilesExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-embed-iframe',
     imports: [
-        TuiEditorEmbedIframeExample1,
         TuiDocExampleModule,
+        TuiEditorUploadFilesExample1,
         TuiDocPageModule,
         TuiLinkModule,
         RouterLink,
     ],
-    templateUrl: './editor-embed-iframe.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -26,19 +25,12 @@ import {TuiEditorEmbedIframeExample1} from './examples/1';
         },
     ],
 })
-export default class ExampleTuiEditorEmbedIframeComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
-        'embed-tool/embed-tool.component.ts': import(
-            './examples/1/embed-tool/embed-tool.component.ts?raw'
-        ),
-        'embed-tool/embed-tool.template.html': import(
-            './examples/1/embed-tool/embed-tool.template.html?raw'
-        ),
-        'embed-tool/embed-tool.styles.less': import(
-            './examples/1/embed-tool/embed-tool.styles.less?raw'
-        ),
+        './filesio.service.ts': import('./examples/1/filesio.service.ts?raw'),
+        './file-loader.ts': import('./examples/1/file-loader.ts?raw'),
     };
 }

@@ -10,12 +10,12 @@ import {appPrefix} from '../utils';
     standalone: true,
     selector: 'demo-stackblitz-starter',
     imports: [TuiLoaderModule],
-    templateUrl: './stackblitz-starter.component.html',
-    styleUrls: ['./stackblitz-starter.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })
-export default class StackblitzStarterComponent implements OnInit {
+export default class ExampleComponent implements OnInit {
     private readonly stackblitz = inject(TuiStackblitzService);
 
     public async ngOnInit(): Promise<void> {

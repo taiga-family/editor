@@ -11,7 +11,6 @@ import {TuiEditorGroupExample3} from './examples/3';
 
 @Component({
     standalone: true,
-    selector: 'editor-groups',
     imports: [
         TuiEditorGroupExample3,
         TuiDocExampleModule,
@@ -21,7 +20,7 @@ import {TuiEditorGroupExample3} from './examples/3';
         TuiLinkModule,
         RouterLink,
     ],
-    templateUrl: './editor-groups.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -30,7 +29,7 @@ import {TuiEditorGroupExample3} from './examples/3';
         },
     ],
 })
-export default class ExampleTuiEditorDraggableGroupsComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

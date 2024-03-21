@@ -3,26 +3,31 @@ import {RouterLink} from '@angular/router';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
+import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorMarkTextExample1} from './examples/1';
+import {TuiEditorFocusExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-mark-text',
     imports: [
-        TuiEditorMarkTextExample1,
+        TuiEditorFocusExample1,
         TuiDocExampleModule,
         RouterLink,
         TuiLinkModule,
         TuiDocPageModule,
     ],
-    templateUrl: './editor-mark-text.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: TUI_EDITOR_EXTENSIONS,
+            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
+        },
+    ],
 })
-export default class ExampleTuiEditorMarkTextComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 }

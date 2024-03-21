@@ -5,13 +5,12 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
-    selector: 'changelog',
     imports: [AsyncPipe, TuiDocPageModule, TuiMarkdownPipe],
-    templateUrl: './editor-changelog.template.html',
-    styleUrls: ['./editor-changelog.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TuiChangelogComponent {
+export default class ExampleComponent {
     protected readonly changelog = import('../../../../../tui-editor/CHANGELOG.md?raw');
 
     protected mapper: TuiStringHandler<string> = value =>

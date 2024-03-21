@@ -1,15 +1,22 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
+import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorAppearanceExample1} from './examples/1';
+import {TuiEditorUploadingImagesExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-anchors',
-    imports: [TuiAddonDocModule, TuiEditorAppearanceExample1],
-    templateUrl: './editor-appearence.component.html',
+    imports: [
+        TuiDocExampleModule,
+        TuiEditorUploadingImagesExample1,
+        TuiDocPageModule,
+        TuiLinkModule,
+        RouterLink,
+    ],
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -18,10 +25,11 @@ import {TuiEditorAppearanceExample1} from './examples/1';
         },
     ],
 })
-export default class ExampleTuiEditorToolbarComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        'image-loader.ts': import('./examples/1/image-loader.ts?raw'),
+        'imgbb.service.ts': import('./examples/1/imgbb.service.ts?raw'),
     };
 }

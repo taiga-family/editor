@@ -5,19 +5,19 @@ import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorUploadingImagesExample1} from './examples/1';
+import {TuiEditorAnchorsExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-upload-images',
+    selector: 'editor-anchors',
     imports: [
+        TuiEditorAnchorsExample1,
         TuiDocExampleModule,
-        TuiEditorUploadingImagesExample1,
-        TuiDocPageModule,
-        TuiLinkModule,
         RouterLink,
+        TuiLinkModule,
+        TuiDocPageModule,
     ],
-    templateUrl: './editor-upload-images.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -26,11 +26,9 @@ import {TuiEditorUploadingImagesExample1} from './examples/1';
         },
     ],
 })
-export default class ExampleTuiEditorUploadingImagesComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        'image-loader.ts': import('./examples/1/image-loader.ts?raw'),
-        'imgbb.service.ts': import('./examples/1/imgbb.service.ts?raw'),
     };
 }

@@ -7,7 +7,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TsFileComponentParser} from './classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
-import {StackblitzEditButtonComponent} from './starter/stackblitz-edit-button.component';
+import {StackblitzEditButtonComponent} from './starter/edit-button/stackblitz-edit-button.component';
 import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
 const APP_COMP_META = {

@@ -4,25 +4,24 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 
-import {TuiEditorCleanupHtmlExample1} from './examples/1';
+import {TuiEditorMarkTextExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-cleanup-html',
     imports: [
-        TuiEditorCleanupHtmlExample1,
+        TuiEditorMarkTextExample1,
         TuiDocExampleModule,
-        TuiLinkModule,
         RouterLink,
+        TuiLinkModule,
         TuiDocPageModule,
     ],
-    templateUrl: './editor-cleanup-html.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleTuiEditorCleanupHtmlComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        './transformer.ts': import('./examples/1/transformer.ts?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 }
