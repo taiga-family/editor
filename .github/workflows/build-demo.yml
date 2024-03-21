@@ -13,8 +13,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.55.2
       - uses: taiga-family/ci/actions/setup/variables@v1.55.2
       - uses: taiga-family/ci/actions/setup/node@v1.55.2
-      - run: npx nx build editor-demo # production mode
-      - run: npx nx prerender editor-demo # ssr mode
+      - run: npx nx prerender editor-demo
 
 concurrency:
   group: build-demo-${{ github.head_ref }}

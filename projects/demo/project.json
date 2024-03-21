@@ -132,7 +132,7 @@
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/demo"],
             "options": {
-                "browserTarget": "editor-demo:build:ssr",
+                "browserTarget": "editor-demo:build:production,ssr",
                 "serverTarget": "editor-demo:server:production",
                 "routesFile": "projects/demo/routes.txt",
                 "guessRoutes": false
