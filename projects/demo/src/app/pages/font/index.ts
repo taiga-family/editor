@@ -8,7 +8,6 @@ import {TuiEditorFontExample3} from './examples/3';
 
 @Component({
     standalone: true,
-    selector: 'editor-font',
     imports: [
         TuiEditorFontExample3,
         TuiDocExampleModule,
@@ -16,10 +15,10 @@ import {TuiEditorFontExample3} from './examples/3';
         TuiEditorFontExample1,
         TuiEditorFontExample2,
     ],
-    templateUrl: './editor-font.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleTuiEditorFontComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

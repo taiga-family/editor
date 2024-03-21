@@ -5,19 +5,18 @@ import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorEmbedYoutubeExample1} from './examples/1';
+import {TuiEditorPreviewImagesExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-embed-youtube',
     imports: [
-        TuiEditorEmbedYoutubeExample1,
+        TuiEditorPreviewImagesExample1,
         TuiDocExampleModule,
         TuiDocPageModule,
-        RouterLink,
         TuiLinkModule,
+        RouterLink,
     ],
-    templateUrl: './editor-embed-youtube.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -26,19 +25,18 @@ import {TuiEditorEmbedYoutubeExample1} from './examples/1';
         },
     ],
 })
-export default class ExampleTuiEditorEmbedComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
-        HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        'youtube-tool/youtube-tool.component.ts': import(
-            './examples/1/youtube-tool/youtube-tool.component.ts?raw'
+        HTML: import('./examples/1/index.html?raw'),
+        'image-preview/image-preview.template.html': import(
+            './examples/1/image-preview/image-preview.template.html?raw'
         ),
-        'youtube-tool/youtube-tool.template.html': import(
-            './examples/1/youtube-tool/youtube-tool.template.html?raw'
+        'image-preview/image-preview.style.less': import(
+            './examples/1/image-preview/image-preview.style.less?raw'
         ),
-        'youtube-tool/youtube-tool.styles.less': import(
-            './examples/1/youtube-tool/youtube-tool.styles.less?raw'
+        'image-preview/image-preview.component.ts': import(
+            './examples/1/image-preview/image-preview.component.ts?raw'
         ),
     };
 }

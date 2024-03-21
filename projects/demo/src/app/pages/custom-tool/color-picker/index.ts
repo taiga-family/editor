@@ -8,7 +8,6 @@ import {TuiEditorColorPickerToolExample1} from './examples/1';
 
 @Component({
     standalone: true,
-    selector: 'editor-color-picker-tool',
     imports: [
         TuiEditorColorPickerToolExample1,
         TuiDocExampleModule,
@@ -16,10 +15,10 @@ import {TuiEditorColorPickerToolExample1} from './examples/1';
         TuiLinkModule,
         TuiDocPageModule,
     ],
-    templateUrl: './editor-color-picker.component.html',
+    templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleTuiEditorColorPickerToolComponent {
+export default class ExampleComponent {
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),

@@ -37,7 +37,6 @@ export default class ExampleComponent {
     protected readonly component2 = loadComponent(import('./examples/2'));
     protected readonly component3 = loadComponent(import('./examples/3'));
     protected readonly component4 = loadComponent(import('./examples/4'));
-
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 

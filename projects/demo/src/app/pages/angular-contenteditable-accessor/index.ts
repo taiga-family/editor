@@ -6,13 +6,12 @@ const html = '<b>HTML</b><p>with a paragraph</p><div>a div</div>and a plain text
 
 @Component({
     standalone: true,
-    selector: 'angular-contenteditable-accessor',
     imports: [ReactiveFormsModule, FormsModule, TuiDocPageModule],
-    templateUrl: './angular-contenteditable-accessor.template.html',
-    styleUrls: ['./angular-contenteditable-accessor.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TuiAngularContenteditableAccessorPageComponent {
+export default class ExampleComponent {
     protected model = 'Initial value';
 
     protected disabled = true;
