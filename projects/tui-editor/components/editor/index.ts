@@ -1,3 +1,4 @@
+export * from './dropdown/dropdown-toolbar.directive';
 export * from './editor.component';
 export * from './editor.module';
 export * from './editor.providers';

@@ -2,27 +2,27 @@ import {
     ChangeDetectionStrategy,
     Component,
     Inject,
-    INJECTOR,
     Injector,
+    ViewEncapsulation,
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {TuiDialogService} from '@taiga-ui/core';
 import {
     TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
 @Component({
-    selector: 'editor-starter-page',
-    templateUrl: './editor-starter.template.html',
-    styleUrls: ['./editor-starter.style.less'],
+    selector: 'tui-editor-toolbar-floating-example-1',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [INJECTOR],
+            deps: [Injector],
             useFactory: (injector: Injector) => [
                 ...TUI_EDITOR_DEFAULT_EXTENSIONS,
                 import('@tinkoff/tui-editor/extensions/image-editor').then(
@@ -33,13 +33,8 @@ import {
         },
     ],
 })
-export class TuiEditorStarterPageComponent {
-    readonly exampleModule = import('./import/import-module.md?raw');
-    readonly exampleHtml = import('./import/insert-template.md?raw');
-    readonly exampleComponent = import('./import/component.md?raw');
-    readonly exampleEditorOptionsToken = import('./import/editor-options-token.md?raw');
-    readonly exampleStyles = import('./import/styles.less.md?raw');
-    readonly exampleIcons = import('./import/angular.json.md?raw');
+export class TuiEditorToolbarFloatingExample1 {
+    readonly builtInTools = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;
 
     readonly control = new FormControl(`
         <h2>What is Lorem Ipsum?</h2>
@@ -57,39 +52,9 @@ export class TuiEditorStarterPageComponent {
         </p>
     `);
 
-    exampleText = '';
-    minHeight: number | null = null;
-    maxHeight: number | null = null;
-    readOnly = false;
-    focusable = true;
-    floating = false;
-    pseudoInvalid: boolean | null = null;
-    pseudoFocused: boolean | null = null;
-    pseudoHovered: boolean | null = null;
+    constructor(@Inject(TuiDialogService) private readonly dialog: TuiDialogService) {}
 
-    readonly toolsVariants: readonly TuiEditorTool[][] = [
-        TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
-        [
-            TuiEditorTool.Bold,
-            TuiEditorTool.Italic,
-            TuiEditorTool.Strikethrough,
-            TuiEditorTool.HR,
-        ],
-    ];
-
-    tools = this.toolsVariants[0];
-
-    constructor(@Inject(TUI_IS_E2E) readonly isE2E: boolean) {}
-
-    get disabled(): boolean {
-        return this.control.disabled;
-    }
-
-    set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-        } else {
-            this.control.enable();
-        }
+    send(): void {
+        this.dialog.open(this.control.value).subscribe();
     }
 }

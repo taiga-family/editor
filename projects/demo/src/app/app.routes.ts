@@ -146,6 +146,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.ToolbarFloating,
+        loadChildren: async () =>
+            (await import(`./pages/toolbar/floating/editor-toolbar-floating.module`))
+                .ExampleToolbarFloatingModule,
+        data: {
+            title: `Editor — Toolbar`,
+        },
+    },
+    {
         path: TuiDemoPath.ProcessingLegacyHtml,
         loadChildren: async () =>
             (await import(`./pages/processing/legacy-html/editor-legacy-html.module`))

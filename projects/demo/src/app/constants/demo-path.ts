@@ -3,6 +3,7 @@ export const enum TuiDemoPath {
     Anchors = `anchors`,
     Appearance = `appearance`,
     ToolbarBottom = `toolbar/bottom`,
+    ToolbarFloating = `toolbar/floating`,
     Changelog = `changelog`,
     ColorPicker = `color-picker`,
     AngularContenteditableAccessor = `angular-contenteditable-accessor`,
