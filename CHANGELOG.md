@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.18.0 (2024-03-22)
+
+### Features
+
+- support floating toolbar ([#901](https://github.com/taiga-family/tui-editor/issues/901))
+  ([e335879](https://github.com/taiga-family/tui-editor/commit/e335879b5226f11eb43adcfa0d4bcebb710f1ecc))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.17.0 (2024-03-14)
 
 ### Bug Fixes
