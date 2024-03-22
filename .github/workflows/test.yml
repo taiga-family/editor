@@ -10,9 +10,9 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.55.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.55.2
-      - uses: taiga-family/ci/actions/setup/node@v1.55.2
+      - uses: taiga-family/ci/actions/setup/checkout@v1.55.3
+      - uses: taiga-family/ci/actions/setup/variables@v1.55.3
+      - uses: taiga-family/ci/actions/setup/node@v1.55.3
       - run: npx nx test tui-editor
       - uses: codecov/codecov-action@v4.1.0
         with:
