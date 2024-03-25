@@ -9,17 +9,9 @@ import {
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorEditorExample1} from './examples/1';
-
 @Component({
     standalone: true,
-    imports: [
-        TuiEditorEditorExample1,
-        TuiDocExampleModule,
-        TuiDocPageModule,
-        TuiLinkModule,
-        RouterLink,
-    ],
+    imports: [TuiDocExampleModule, TuiDocPageModule, TuiLinkModule, RouterLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -38,6 +30,7 @@ import {TuiEditorEditorExample1} from './examples/1';
     ],
 })
 export default class ExampleComponent {
+    protected readonly component1 = import('./examples/1');
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

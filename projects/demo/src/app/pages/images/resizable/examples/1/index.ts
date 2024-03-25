@@ -13,7 +13,6 @@ import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-resizable-editor-example-1',
     imports: [
         ReactiveFormsModule,
         HttpClientModule,
@@ -36,7 +35,7 @@ import {switchMap, takeUntil} from 'rxjs';
         },
     ],
 })
-export class TuiEditorResizableEditorExample1 {
+export default class ExampleComponent {
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
@@ -55,7 +54,7 @@ export class TuiEditorResizableEditorExample1 {
             .subscribe(src => {
                 this.control.patchValue(
                     `
-                    <img data-type="image-editor" src="${src}" width="300">
+                    <img data-type="image-editor" src="${src}" width="300" alt="">
                     <p>Try to drag right border of image!</p>
                     <p>To change min/max size of image use token <code>TUI_IMAGE_EDITOR_OPTIONS</code>.
                 `,

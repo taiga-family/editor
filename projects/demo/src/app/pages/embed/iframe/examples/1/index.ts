@@ -14,7 +14,6 @@ import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-embed-iframe-example-1',
     imports: [
         ExampleTuiEmbedToolComponent,
         TuiSvgModule,
@@ -38,7 +37,7 @@ import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
         },
     ],
 })
-export class TuiEditorEmbedIframeExample1 {
+export default class ExampleComponent {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isE2E = inject(TUI_IS_E2E);
 

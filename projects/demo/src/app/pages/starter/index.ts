@@ -6,7 +6,7 @@ import {
     TuiDocDocumentationModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -24,13 +24,13 @@ import {
         TuiDocPageModule,
         TuiDocDemoModule,
         ReactiveFormsModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiDocDocumentationModule,
         TuiEditorSocketComponent,
         TuiEditorComponent,
     ],
-    templateUrl: './editor-starter.template.html',
-    styleUrls: ['./editor-starter.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

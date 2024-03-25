@@ -12,7 +12,6 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-cleanup-html-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +26,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
         },
     ],
 })
-export class TuiEditorCleanupHtmlExample1 {
+export default class ExampleComponent {
     protected control = new FormControl(
         '<p class="t-content">TipTap Editor</p>',
         Validators.required,

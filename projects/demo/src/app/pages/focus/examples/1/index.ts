@@ -9,7 +9,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-focus-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -88,7 +87,7 @@ import {
         },
     ],
 })
-export class TuiEditorFocusExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,

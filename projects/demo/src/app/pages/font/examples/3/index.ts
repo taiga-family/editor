@@ -12,7 +12,6 @@ import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.c
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-font-example-3',
     imports: [
         ReactiveFormsModule,
         ExampleTuiFontSizeToolComponent,
@@ -35,7 +34,7 @@ import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.c
         },
     ],
 })
-export class TuiEditorFontExample3 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected control = new FormControl(`

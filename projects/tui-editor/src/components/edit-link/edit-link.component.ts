@@ -9,7 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiAutoFocusModule, tuiIsElement} from '@taiga-ui/cdk';
+import {TuiAutoFocusDirective, tuiIsElement} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiLinkModule,
@@ -46,7 +46,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         FormsModule,
         NgIf,
         AsyncPipe,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         TuiInputInlineModule,
         TuiScrollbarComponent,
     ],

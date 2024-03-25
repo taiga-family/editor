@@ -30,7 +30,6 @@ import {ImgbbService} from './imgbb.service';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-upload-images-example-1',
     imports: [
         TuiErrorModule,
         TuiLoaderModule,
@@ -72,7 +71,7 @@ import {ImgbbService} from './imgbb.service';
         },
     ],
 })
-export class TuiEditorUploadingImagesExample1 {
+export default class ExampleComponent {
     @ViewChild(TuiEditorComponent, {static: true})
     private readonly editor?: TuiEditorComponent;
 

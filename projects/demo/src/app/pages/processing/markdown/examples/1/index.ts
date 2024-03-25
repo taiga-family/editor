@@ -15,7 +15,6 @@ import {Converter} from 'showdown';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-markdown-example-1',
     imports: [NgIf, ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -27,7 +26,7 @@ import {Converter} from 'showdown';
         },
     ],
 })
-export class TuiEditorEditorExample1 implements OnInit {
+export default class ExampleComponent implements OnInit {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,

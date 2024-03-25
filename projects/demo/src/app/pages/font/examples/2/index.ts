@@ -10,7 +10,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-font-example-2',
     imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,7 +34,7 @@ import {
         },
     ],
 })
-export class TuiEditorFontExample2 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
     protected control = new FormControl(`

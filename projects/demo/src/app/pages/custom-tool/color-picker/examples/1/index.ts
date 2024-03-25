@@ -10,7 +10,6 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-color-picker-tool-example-1',
     imports: [CustomColorPickerComponent, ReactiveFormsModule, TuiEditorComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +29,7 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
         },
     ],
 })
-export class TuiEditorColorPickerToolExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected readonly control = new FormControl('');

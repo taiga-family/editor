@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZoneModule, TuiAutoFocusModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
@@ -11,9 +11,9 @@ import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
     selector: 'youtube-tool',
     imports: [
         TuiInputInlineModule,
-        TuiAutoFocusModule,
+        TuiAutoFocusDirective,
         FormsModule,
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiHostedDropdownModule,
         TuiButtonModule,
     ],
