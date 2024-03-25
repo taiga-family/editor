@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[5496],{45496:o=>{o.exports='<tui-editor\n    [floatingToolbar]="true"\n    [formControl]="control"\n    [tools]="builtInTools"\n/>\n'}}]);
