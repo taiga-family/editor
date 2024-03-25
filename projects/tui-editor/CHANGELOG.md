@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.7-alpha.0 (2024-03-25)
+
+### Features
+
+- add floating toolbar ([#914](https://github.com/taiga-family/tui-editor/issues/914))
+  ([6b78a58](https://github.com/taiga-family/tui-editor/commit/6b78a58d56be440e2514244cec18bbb37f2be3f5))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.6-alpha.0 (2024-03-25)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
