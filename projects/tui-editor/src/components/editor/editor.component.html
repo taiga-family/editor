@@ -12,7 +12,7 @@
 >
     <div class="t-toolbar-wrapper">
         <tui-toolbar
-            *ngIf="editorLoaded && tools.length"
+            *ngIf="editorLoaded && tools.length && !floatingToolbar"
             [disabled]="!interactive"
             [tools]="tools"
             (fileAttached)="fileAttached.emit($event)"
@@ -33,35 +33,63 @@
         </div>
     </div>
 
-    <tui-scrollbar
-        *ngIf="editorLoaded"
-        tuiEditorPortal
-        class="t-scrollbar"
-        (mousedown)="focus($event)"
-    >
-        <div
-            tuiDropdownLimitWidth="auto"
-            tuiDropdownSelectionPosition="tag"
-            [tuiDropdown]="dropdown"
-            [tuiDropdownSelection]="dropdownSelectionHandler"
+    <ng-container *ngIf="editorLoaded">
+        <tui-scrollbar
+            *ngIf="floatingToolbar"
+            class="t-scrollbar"
+            (mousedown)="focus($event)"
         >
-            <tui-editor-socket
-                tuiTiptapEditor
-                [editable]="interactive"
-                [value]="value"
-                (stateChange)="(0)"
-                (valueChange)="onModelChange($event)"
-            />
-        </div>
+            <ng-container [ngTemplateOutlet]="editor" />
+        </tui-scrollbar>
+        <tui-scrollbar
+            *ngIf="!floatingToolbar"
+            tuiEditorPortal
+            class="t-scrollbar"
+            (mousedown)="focus($event)"
+        >
+            <ng-container [ngTemplateOutlet]="editor" />
+            <tui-editor-portal-host />
+        </tui-scrollbar>
 
-        <ng-template #dropdown>
-            <tui-edit-link
-                #link
-                (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
-                (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
-            />
+        <ng-template #editor>
+            <div
+                tuiDropdownLimitWidth="auto"
+                [tuiDropdown]="dropdown"
+                [tuiToolbarDropdown]="dropdownSelectionHandler"
+                [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
+            >
+                <tui-editor-socket
+                    tuiTiptapEditor
+                    [editable]="interactive"
+                    [value]="value"
+                    (stateChange)="(0)"
+                    (valueChange)="onModelChange($event)"
+                />
+            </div>
+
+            <ng-template
+                #dropdown
+                let-activeZone
+            >
+                <div [class.t-floating]="floatingToolbar">
+                    <tui-toolbar
+                        *ngIf="editorLoaded && tools.length && floatingToolbar"
+                        [disabled]="!interactive"
+                        [tools]="tools"
+                        [tuiActiveZoneParent]="activeZone"
+                        (fileAttached)="fileAttached.emit($event)"
+                    >
+                        <ng-content select="tools" />
+                    </tui-toolbar>
+
+                    <tui-edit-link
+                        *ngIf="!floatingToolbar || isLinkSelected"
+                        #link
+                        (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
+                        (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
+                    />
+                </div>
+            </ng-template>
         </ng-template>
-
-        <tui-editor-portal-host />
-    </tui-scrollbar>
+    </ng-container>
 </div>

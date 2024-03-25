@@ -25,4 +25,5 @@ export const TuiDemoPath = {
     StarterKit: 'starter-kit',
     UploadFiles: 'upload-files',
     ToolbarBottom: 'toolbar/bottom',
+    ToolbarFloating: 'toolbar/floating',
 } as const;

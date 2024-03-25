@@ -9,6 +9,7 @@ export * from './components/color-selector/palette/palette.component';
 export * from './components/edit-link/pipes/filter-anchors.pipe';
 export * from './components/edit-link/pipes/short-url.pipe';
 export * from './components/edit-link/utils/edit-link-parse-url';
+export * from './components/editor/dropdown/dropdown-toolbar.directive';
 export * from './components/editor/editor.component';
 export * from './components/editor/editor.providers';
 export * from './components/editor/portal/editor-portal.directive';

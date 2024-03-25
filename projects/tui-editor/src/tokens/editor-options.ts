@@ -3,7 +3,7 @@ import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
 
 import {
     EDITOR_BLANK_COLOR,
-    TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
+    TUI_EDITOR_DEFAULT_EDITOR_COLORS,
 } from '../constants/default-editor-colors';
 import {tuiDefaultFontOptionsHandler} from '../constants/default-font-options-handler';
 import type {TuiEditorLinkOptions} from '../constants/default-link-options-handler';
@@ -71,7 +71,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     appearence: 'textfield',
     spellcheck: false,
     enableDefaultStyles: true,
-    colors: TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
+    colors: TUI_EDITOR_DEFAULT_EDITOR_COLORS,
     blankColor: EDITOR_BLANK_COLOR,
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
     fontOptions: tuiDefaultFontOptionsHandler,
