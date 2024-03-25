@@ -1,7 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
+import {tuiPx} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
     TuiDataListModule,
@@ -52,7 +52,7 @@ export class TuiFontSizeComponent {
 
         if (headingLevel) {
             ngDevMode &&
-                tuiAssert.assert(
+                console.info(
                     !px,
                     'Do not use `px` together with `headingLevel`  because `px` value does not affect anything',
                 );

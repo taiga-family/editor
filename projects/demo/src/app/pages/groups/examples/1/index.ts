@@ -10,7 +10,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-groups-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +33,7 @@ import {
         },
     ],
 })
-export class TuiEditorGroupExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
 
     protected control = new FormControl('');

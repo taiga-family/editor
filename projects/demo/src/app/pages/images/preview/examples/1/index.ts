@@ -14,7 +14,6 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-preview-images-example-1',
     imports: [
         ImagePreviewExampleComponent,
         ReactiveFormsModule,
@@ -39,7 +38,7 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
         },
     ],
 })
-export class TuiEditorPreviewImagesExample1 {
+export default class ExampleComponent {
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 

@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiAssert,
     TuiDestroyService,
     TuiFocusableModule,
     tuiIsNativeFocusedIn,
@@ -263,10 +262,7 @@ export class TuiToolbarComponent {
         }
 
         ngDevMode &&
-            tuiAssert.assert(
-                !!this.filesLoader,
-                'Please provide TUI_ATTACH_FILES_LOADER',
-            );
+            console.info(!!this.filesLoader, 'Please provide TUI_ATTACH_FILES_LOADER');
 
         this.filesLoader?.(files)
             .pipe(take(1), takeUntil(this.destroy$))

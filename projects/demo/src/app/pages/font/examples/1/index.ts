@@ -11,7 +11,6 @@ import {mergeAttributes} from '@tiptap/core';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-font-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -101,7 +100,7 @@ import {mergeAttributes} from '@tiptap/core';
         },
     ],
 })
-export class TuiEditorFontExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
     protected control = new FormControl(`

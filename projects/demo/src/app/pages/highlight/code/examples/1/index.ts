@@ -11,7 +11,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-code-block-example-1',
     imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -25,7 +24,7 @@ import {
         },
     ],
 })
-export class TuiEditorCodeBlockExample1 implements OnInit {
+export default class ExampleComponent implements OnInit {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];
 
     protected control = new FormControl('');

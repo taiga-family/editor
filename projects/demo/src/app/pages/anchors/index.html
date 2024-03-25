@@ -2,31 +2,11 @@
     header="Editor"
     type="components"
 >
-    <p>
-        Rich Text Editor based on
-        <a
-            href="https://www.tiptap.dev/"
-            tuiLink
-        >
-            TipTap Editor
-        </a>
-        for using with Angular forms. For safety reasons use a
-        <a
-            fragment="sanitizer"
-            routerLink="/icons/bundled"
-            tuiLink
-        >
-            sanitizer
-        </a>
-        with this component.
-    </p>
-
     <tui-doc-example
         id="anchors"
         description="The anchor element defines a hyperlink, which is used to link to part of section"
         heading="Anchors"
+        [component]="component1"
         [content]="example1"
-    >
-        <tui-editor-anchors-example-1 />
-    </tui-doc-example>
+    />
 </tui-doc-page>

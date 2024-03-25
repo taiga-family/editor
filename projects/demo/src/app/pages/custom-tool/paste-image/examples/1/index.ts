@@ -13,7 +13,6 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-paste-image-tool-example-1',
     imports: [
         TuiSvgModule,
         ExampleTuiPasteImageToolComponent,
@@ -39,7 +38,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
         },
     ],
 })
-export class TuiEditorPasteImageToolExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl('');
 }

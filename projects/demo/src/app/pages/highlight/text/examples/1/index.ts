@@ -11,7 +11,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-mark-text-example-1',
     imports: [
         TuiButtonModule,
         TuiItemModule,
@@ -45,7 +44,7 @@ import {
         },
     ],
 })
-export class TuiEditorMarkTextExample1 {
+export default class ExampleComponent {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 

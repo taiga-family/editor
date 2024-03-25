@@ -5,17 +5,9 @@ import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorEmbedYoutubeExample1} from './examples/1';
-
 @Component({
     standalone: true,
-    imports: [
-        TuiEditorEmbedYoutubeExample1,
-        TuiDocExampleModule,
-        TuiDocPageModule,
-        RouterLink,
-        TuiLinkModule,
-    ],
+    imports: [TuiDocExampleModule, TuiDocPageModule, RouterLink, TuiLinkModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -26,6 +18,7 @@ import {TuiEditorEmbedYoutubeExample1} from './examples/1';
     ],
 })
 export default class ExampleComponent {
+    protected readonly component1 = import('./examples/1');
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),

@@ -2,31 +2,11 @@
     header="Editor"
     type="components"
 >
-    <p>
-        Rich Text Editor based on
-        <a
-            href="https://www.tiptap.dev/"
-            tuiLink
-        >
-            TipTap Editor
-        </a>
-        for using with Angular forms. For safety reasons use a
-        <a
-            fragment="sanitizer"
-            routerLink="/icons/bundled"
-            tuiLink
-        >
-            sanitizer
-        </a>
-        with this component.
-    </p>
-
     <tui-doc-example
         id="upload-file"
         description="100 uploads per day, 2GB file size limit, files auto-deleted after 1 download"
         heading="Upload files"
+        [component]="component1"
         [content]="example1"
-    >
-        <tui-editor-upload-files-example-1 />
-    </tui-doc-example>
+    />
 </tui-doc-page>

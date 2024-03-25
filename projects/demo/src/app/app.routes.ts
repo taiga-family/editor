@@ -6,7 +6,7 @@ import {TuiDemoPath} from './constants/demo-path';
 export const routes: Routes = [
     route({
         path: TuiDemoPath.StarterKit,
-        loadComponent: async () => import('./pages/starter/editor-starter.component'),
+        loadComponent: async () => import('./pages/starter'),
         title: 'StarterKit',
     }),
     route({

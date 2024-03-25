@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
     imports: [
-        TuiActiveZoneModule,
+        TuiActiveZoneDirective,
         TuiHostedDropdownModule,
         TuiButtonModule,
         TuiColorSelectorComponent,

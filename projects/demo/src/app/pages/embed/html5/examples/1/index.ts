@@ -22,7 +22,6 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-embed-html5-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -85,7 +84,7 @@ import {map} from 'rxjs';
         '[class._e2e]': 'isE2E',
     },
 })
-export class TuiEditorEmbedHtml5Example1 {
+export default class ExampleComponent {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 

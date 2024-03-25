@@ -13,7 +13,7 @@ import {
 import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
-    ALWAYS_FALSE_HANDLER,
+    TUI_FALSE_HANDLER,
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
@@ -145,7 +145,7 @@ export class TuiEditorComponent
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+        return this.focused ? this.isSelectionLink : TUI_FALSE_HANDLER;
     }
 
     protected get placeholderRaised(): boolean {

@@ -3,11 +3,9 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorAppearanceExample1} from './examples/1';
-
 @Component({
     standalone: true,
-    imports: [TuiAddonDocModule, TuiEditorAppearanceExample1],
+    imports: [TuiAddonDocModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -18,6 +16,8 @@ import {TuiEditorAppearanceExample1} from './examples/1';
     ],
 })
 export default class ExampleComponent {
+    protected readonly component1 = import('./examples/1');
+
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

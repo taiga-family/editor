@@ -9,7 +9,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-toolbar-bottom-example-1',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiButtonModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -26,7 +25,7 @@ import {
         },
     ],
 })
-export class TuiEditorToolbarBottomExample1 {
+export default class ExampleComponent {
     private readonly dialog = inject(TuiDialogService);
 
     protected readonly builtInTools = [

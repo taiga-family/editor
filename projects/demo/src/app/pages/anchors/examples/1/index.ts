@@ -9,7 +9,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-anchors-example-1',
     imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +31,7 @@ import {
         },
     ],
 })
-export class TuiEditorAnchorsExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,

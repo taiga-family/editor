@@ -5,21 +5,9 @@ import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
-import {TuiEditorGroupExample1} from './examples/1';
-import {TuiEditorGroupExample2} from './examples/2';
-import {TuiEditorGroupExample3} from './examples/3';
-
 @Component({
     standalone: true,
-    imports: [
-        TuiEditorGroupExample3,
-        TuiDocExampleModule,
-        TuiEditorGroupExample2,
-        TuiEditorGroupExample1,
-        TuiDocPageModule,
-        TuiLinkModule,
-        RouterLink,
-    ],
+    imports: [TuiDocExampleModule, TuiDocPageModule, TuiLinkModule, RouterLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -30,6 +18,9 @@ import {TuiEditorGroupExample3} from './examples/3';
     ],
 })
 export default class ExampleComponent {
+    protected readonly component1 = import('./examples/1');
+    protected readonly component2 = import('./examples/2');
+    protected readonly component3 = import('./examples/3');
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),

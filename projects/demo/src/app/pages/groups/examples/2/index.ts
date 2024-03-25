@@ -10,7 +10,6 @@ import {
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-groups-example-2',
     imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -39,7 +38,7 @@ import {
         },
     ],
 })
-export class TuiEditorGroupExample2 {
+export default class ExampleComponent {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Group,

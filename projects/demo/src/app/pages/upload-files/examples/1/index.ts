@@ -16,7 +16,6 @@ import {FileIoService} from './filesio.service';
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-upload-files-example-1',
     imports: [
         TuiLoaderModule,
         AsyncPipe,
@@ -45,7 +44,7 @@ import {FileIoService} from './filesio.service';
         },
     ],
 })
-export class TuiEditorUploadFilesExample1 {
+export default class ExampleComponent {
     @ViewChild(TuiEditorComponent)
     private readonly wysiwyg?: TuiEditorComponent;
 

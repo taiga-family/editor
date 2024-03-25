@@ -14,7 +14,6 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-embed-youtube-example-1',
     imports: [
         TuiSvgModule,
         ExampleTuiYoutubeToolComponent,
@@ -35,7 +34,7 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
         },
     ],
 })
-export class TuiEditorEmbedYoutubeExample1 {
+export default class ExampleComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly builtInTools = [TuiEditorTool.Undo];

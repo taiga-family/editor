@@ -12,7 +12,6 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
 
 @Component({
     standalone: true,
-    selector: 'tui-editor-paste-emoji-tool-example-1',
     imports: [
         TuiSvgModule,
         ExampleTuiSmilesToolComponent,
@@ -35,7 +34,7 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
         },
     ],
 })
-export class TuiEditorPasteEmojiToolExample1 {
+export default class ExampleComponent {
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl('');
 }
