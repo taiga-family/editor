@@ -87,6 +87,7 @@ export default class TuiEditorStarterPageComponent {
     ];
 
     protected tools = this.toolsVariants[0];
+    protected floating = false;
 
     protected get disabled(): boolean {
         return this.control.disabled;

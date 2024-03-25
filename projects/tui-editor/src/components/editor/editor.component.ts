@@ -1,4 +1,4 @@
-import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -14,6 +14,7 @@ import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk
 import {
     AbstractTuiControl,
     TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
@@ -22,7 +23,6 @@ import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
     TuiDropdownDirective,
     TuiDropdownOptionsDirective,
-    TuiDropdownSelectionDirective,
     TuiScrollbarComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -41,6 +41,7 @@ import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
 import {TuiEditLinkComponent} from '../edit-link/edit-link.component';
 import {TuiEditorSocketComponent} from '../editor-socket/editor-socket.component';
 import {TuiToolbarComponent} from '../toolbar/toolbar.component';
+import {TuiDropdownToolbarDirective} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
 import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
@@ -59,10 +60,11 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiEditLinkComponent,
         TuiEditorPortalHostComponent,
         TuiEditorPortalDirective,
-        TuiDropdownSelectionDirective,
         TuiTiptapEditorDirective,
         TuiEditorSocketComponent,
         TuiToolbarComponent,
+        NgTemplateOutlet,
+        TuiDropdownToolbarDirective,
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
@@ -85,6 +87,9 @@ export class TuiEditorComponent
 
     @Input()
     public exampleText = '';
+
+    @Input()
+    public floatingToolbar = false;
 
     @Input()
     public tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
@@ -145,6 +150,10 @@ export class TuiEditorComponent
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
+        if (this.floatingToolbar) {
+            return TUI_TRUE_HANDLER;
+        }
+
         return this.focused ? this.isSelectionLink : TUI_FALSE_HANDLER;
     }
 
@@ -156,6 +165,13 @@ export class TuiEditorComponent
         return (
             !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
         );
+    }
+
+    protected get isLinkSelected(): boolean {
+        const node = this.doc.getSelection()?.focusNode?.parentNode;
+        const element = node?.nodeName.toLowerCase();
+
+        return element === 'a' || !!node?.parentElement?.closest('tui-edit-link');
     }
 
     protected onActiveZone(focused: boolean): void {

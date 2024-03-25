@@ -6,6 +6,7 @@
         <tui-doc-demo [sticky]="false">
             <tui-editor
                 [exampleText]="exampleText"
+                [floatingToolbar]="floating"
                 [focusable]="focusable"
                 [formControl]="control"
                 [pseudoFocus]="pseudoFocused"
@@ -64,6 +65,13 @@
                 [(documentationPropertyValue)]="tools"
             >
                 Allowed edit tools
+            </ng-template>
+            <ng-template
+                documentationPropertyName="[floatingToolbar]"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="floating"
+            >
+                Floating toolbar
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
