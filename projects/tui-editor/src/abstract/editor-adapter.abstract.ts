@@ -47,6 +47,7 @@ export abstract class AbstractTuiEditor {
     public abstract toggleSubscript(): void;
     public abstract toggleSuperscript(): void;
     public abstract toggleCodeBlock(): void;
+    public abstract toggleTaskList(): void;
     public abstract liftListItem(): void;
     public abstract sinkListItem(): void;
     public abstract insertTable(rows: number, cols: number): void;
