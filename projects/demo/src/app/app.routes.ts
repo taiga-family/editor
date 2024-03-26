@@ -80,6 +80,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.Checkbox,
+        loadChildren: async () =>
+            (await import(`./pages/checkbox/editor-checkbox.module`))
+                .ExampleTuiEditorCheckboxModule,
+        data: {
+            title: `Checkbox`,
+        },
+    },
+    {
         path: TuiDemoPath.Groups,
         loadChildren: async () =>
             (await import(`./pages/groups/editor-groups.module`))

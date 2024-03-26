@@ -1,7 +1,7 @@
 <!-- @bad TODO: Keyboard navigation-->
 <ng-container *ngIf="texts$ | async as texts">
     <tui-hosted-dropdown
-        *tuiLet="listState$ | async as listState"
+        *tuiLet="listState$ | async as state"
         #list
         [content]="listDropdown"
     >
@@ -15,7 +15,7 @@
             type="button"
             [focusable]="list.open"
             [icon]="options.icons.listPreview"
-            [pseudoActive]="list?.open || listState?.unordered || listState?.ordered || false"
+            [pseudoActive]="list?.open || state?.unordered || state?.ordered || false"
             [tuiHint]="texts.list"
         ></button>
         <ng-template #listDropdown>
@@ -28,7 +28,7 @@
                     type="button"
                     class="t-option t-option_margin"
                     [icon]="options.icons.listUnOrdered"
-                    [pseudoActive]="!!listState?.unordered"
+                    [pseudoActive]="!!state?.unordered"
                     [tuiHint]="texts.unorderedList"
                     (click)="editor.toggleUnorderedList()"
                 ></button>
@@ -40,9 +40,20 @@
                     type="button"
                     class="t-option t-option_margin"
                     [icon]="options.icons.listOrdered"
-                    [pseudoActive]="!!listState?.ordered"
+                    [pseudoActive]="!!state?.ordered"
                     [tuiHint]="texts.orderedList"
                     (click)="editor.toggleOrderedList()"
+                ></button>
+                <button
+                    appearance="icon"
+                    automation-id="toolbar__task-list-button"
+                    size="s"
+                    tuiIconButton
+                    type="button"
+                    class="t-option t-option_margin"
+                    [icon]="options.icons.taskList"
+                    [pseudoActive]="!!state?.tasked"
+                    (click)="editor.toggleTaskList()"
                 ></button>
                 <button
                     appearance="icon"
@@ -51,7 +62,6 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [disabled]="(!listState?.ordered && !listState?.unordered) || false"
                     [icon]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     (click)="sinkListItem()"
@@ -63,7 +73,6 @@
                     tuiIconButton
                     type="button"
                     class="t-option"
-                    [disabled]="(!listState?.ordered && !listState?.unordered) || false"
                     [icon]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     (click)="liftListItem()"
