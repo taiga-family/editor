@@ -31,10 +31,12 @@ export class TuiListConfigsComponent {
     protected readonly listState$ = combineLatest([
         this.editor.isActive$('orderedList'),
         this.editor.isActive$('bulletList'),
+        this.editor.isActive$('taskList'),
     ]).pipe(
-        map(([ordered, unordered]) => ({
+        map(([ordered, unordered, tasked]) => ({
             ordered,
             unordered,
+            tasked,
         })),
     );
 

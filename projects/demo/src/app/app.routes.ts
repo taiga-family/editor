@@ -40,6 +40,11 @@ export const routes: Routes = [
         title: 'Appearance',
     }),
     route({
+        path: TuiDemoPath.Checkbox,
+        loadComponent: async () => import('./pages/checkbox'),
+        title: 'Checkbox',
+    }),
+    route({
         path: TuiDemoPath.Focus,
         loadComponent: async () => import('./pages/focus'),
         title: 'Focus',
