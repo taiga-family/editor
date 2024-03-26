@@ -2523,6 +2523,12 @@ MIT
 @tiptap/extension-table-row
 MIT
 
+@tiptap/extension-task-item
+MIT
+
+@tiptap/extension-task-list
+MIT
+
 @tiptap/extension-text
 MIT
 
