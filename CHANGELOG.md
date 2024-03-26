@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.19.0 (2024-03-26)
+
+### Features
+
+- add checkbox ([#919](https://github.com/taiga-family/tui-editor/issues/919))
+  ([96998c3](https://github.com/taiga-family/tui-editor/commit/96998c32913f7828602890b3b7b93811ca1e1df3))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.18.0 (2024-03-22)
 
 ### Features
