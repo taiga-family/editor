@@ -16,6 +16,8 @@ import {ListItem, ListItemOptions} from '@tiptap/extension-list-item';
 import {OrderedList, OrderedListOptions} from '@tiptap/extension-ordered-list';
 import {Paragraph, ParagraphOptions} from '@tiptap/extension-paragraph';
 import {Strike, StrikeOptions} from '@tiptap/extension-strike';
+import {TaskItem, TaskItemOptions} from '@tiptap/extension-task-item';
+import {TaskList, TaskListOptions} from '@tiptap/extension-task-list';
 import {Text} from '@tiptap/extension-text';
 
 export interface TuiStarterKitOptions {
@@ -33,6 +35,8 @@ export interface TuiStarterKitOptions {
     horizontalRule: Partial<HorizontalRuleOptions> | false;
     italic: Partial<ItalicOptions> | false;
     listItem: Partial<ListItemOptions> | false;
+    taskItem: Partial<TaskItemOptions> | false;
+    taskList: Partial<TaskListOptions> | false;
     orderedList: Partial<OrderedListOptions> | false;
     paragraph: Partial<ParagraphOptions> | false;
     strike: Partial<StrikeOptions> | false;
@@ -127,6 +131,19 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
 
         if (options?.listItem !== false) {
             extensions.push(ListItem.configure(options?.listItem));
+        }
+
+        if (options?.taskList !== false) {
+            extensions.push(TaskList.configure(options?.taskList));
+        }
+
+        if (options?.taskItem !== false) {
+            extensions.push(
+                TaskItem.configure({
+                    nested: true,
+                    ...options?.taskItem,
+                }),
+            );
         }
 
         if (options?.orderedList !== false) {

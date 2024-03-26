@@ -54,6 +54,12 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: `Examples`,
+        title: `Checkbox`,
+        route: TuiDemoPath.Checkbox,
+        keywords: `editor, checkbox, wysiwyg, редактор, текст, html, rich, text`,
+    },
+    {
+        section: `Examples`,
         title: `Groups`,
         route: TuiDemoPath.Groups,
         keywords: `editor, draggable, nested, hilite, groups, wysiwyg, редактор, текст, html, rich, text`,

@@ -186,12 +186,20 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor.chain().focus().toggleCodeBlock().run();
     }
 
+    toggleTaskList(): void {
+        this.editor.commands.toggleTaskList();
+    }
+
     sinkListItem(): void {
-        this.editor.chain().focus().sinkListItem(`listItem`).run();
+        const type = this.editor.isActive(`taskList`) ? `taskItem` : `listItem`;
+
+        this.editor.chain().focus().sinkListItem(type).run();
     }
 
     liftListItem(): void {
-        this.editor.chain().focus().liftListItem(`listItem`).run();
+        const type = this.editor.isActive(`taskList`) ? `taskItem` : `listItem`;
+
+        this.editor.chain().focus().liftListItem(type).run();
     }
 
     isActive(nameOrAttributes: Record<string, string> | string): boolean {

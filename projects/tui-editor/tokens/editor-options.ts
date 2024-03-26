@@ -37,6 +37,7 @@ export interface TuiEditorOptions {
         readonly insertTable: string;
         readonly link: string;
         readonly listOrdered: string;
+        readonly taskList: string;
         readonly listPreview: string;
         readonly listUnOrdered: string;
         readonly outdent: string;
@@ -106,6 +107,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         listPreview: `tuiIconListLarge`,
         listUnOrdered: `tuiIconListLarge`,
         listOrdered: `tuiIconOLLarge`,
+        taskList: `tuiIconCheckSquare`,
         indent: `tuiIconIndentLarge`,
         outdent: `tuiIconOutdentLarge`,
         fontSize: `tuiIconFontLarge`,
