@@ -42,7 +42,11 @@ import {
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
-import {tuiIsSafeLinkRange} from '@tinkoff/tui-editor/utils';
+import {
+    tuiGetSelectionState,
+    tuiIsSafeLinkRange,
+    TuiSelectionState,
+} from '@tinkoff/tui-editor/utils';
 import {Editor} from '@tiptap/core';
 import {Observable} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
@@ -120,7 +124,7 @@ export class TuiEditorComponent
             return ALWAYS_TRUE_HANDLER;
         }
 
-        return this.focused ? this.isSelectionLink : ALWAYS_FALSE_HANDLER;
+        return this.focused ? this.openDropdownWhen : ALWAYS_FALSE_HANDLER;
     }
 
     get editor(): AbstractTuiEditor | null {
@@ -139,9 +143,20 @@ export class TuiEditorComponent
 
     get isLinkSelected(): boolean {
         const node = this.doc.getSelection()?.focusNode?.parentNode;
-        const element = node?.nodeName.toLowerCase();
 
-        return element === 'a' || !!node?.parentElement?.closest('tui-edit-link');
+        return (
+            node?.nodeName.toLowerCase() === 'a' ||
+            node?.parentNode?.nodeName.toLowerCase() === 'a' ||
+            !!node?.parentElement?.closest('tui-edit-link')
+        );
+    }
+
+    get mentionSuggestions(): string {
+        const before = this.selectionState.before;
+
+        return before?.startsWith('@') && before.length > 1
+            ? before?.replace('@', '') || ''
+            : '';
     }
 
     override writeValue(value: string | null): void {
@@ -194,6 +209,10 @@ export class TuiEditorComponent
         this.editor?.unsetLink();
     }
 
+    get selectionState(): TuiSelectionState {
+        return tuiGetSelectionState(this.editor);
+    }
+
     focus(event: MouseEvent): void {
         if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
             return;
@@ -211,9 +230,10 @@ export class TuiEditorComponent
         return '';
     }
 
-    private readonly isSelectionLink = (range: Range): boolean =>
+    private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
-        this.currentFocusedNodeIsImageAnchor;
+        this.currentFocusedNodeIsImageAnchor ||
+        this.mentionSuggestions.length > 0;
 
     /**
      * @description:

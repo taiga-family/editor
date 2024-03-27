@@ -89,6 +89,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.Mention,
+        loadChildren: async () =>
+            (await import(`./pages/mention/editor-mention.module`))
+                .ExampleTuiEditorMentionModule,
+        data: {
+            title: `Mention`,
+        },
+    },
+    {
         path: TuiDemoPath.Groups,
         loadChildren: async () =>
             (await import(`./pages/groups/editor-groups.module`))

@@ -4,6 +4,7 @@ export * from './get-gradient-data';
 export * from './get-mark-range';
 export * from './get-nested-nodes';
 export * from './get-selected-content';
+export * from './get-selection-state';
 export * from './insert-html';
 export * from './insert-text';
 export * from './is-selection-in';
