@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.20.1 (2024-03-27)
+
+### Bug Fixes
+
+- use checked attribute
+  ([c296a02](https://github.com/taiga-family/tui-editor/commit/c296a027435dadb720d95d909f1ea08506e1fb61))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.20.0 (2024-03-27)
 
 ### Features
