@@ -45,6 +45,11 @@ export const routes: Routes = [
         title: 'Checkbox',
     }),
     route({
+        path: TuiDemoPath.Mention,
+        loadComponent: async () => import('./pages/mention'),
+        title: 'Mention',
+    }),
+    route({
         path: TuiDemoPath.Focus,
         loadComponent: async () => import('./pages/focus'),
         title: 'Focus',

@@ -37,6 +37,8 @@ import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_CONTENT_PROCESSOR} from '../../tokens/editor-processor';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
+import type {TuiSelectionState} from '../../utils/get-selection-state';
+import {tuiGetSelectionState} from '../../utils/get-selection-state';
 import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
 import {TuiEditLinkComponent} from '../edit-link/edit-link.component';
 import {TuiEditorSocketComponent} from '../editor-socket/editor-socket.component';
@@ -122,6 +124,18 @@ export class TuiEditorComponent
                   null;
     }
 
+    public get selectionState(): TuiSelectionState {
+        return tuiGetSelectionState(this.editor);
+    }
+
+    public get mentionSuggestions(): string {
+        const before = this.selectionState.before;
+
+        return before?.startsWith('@') && before.length > 1
+            ? before?.replace('@', '') || ''
+            : '';
+    }
+
     public override writeValue(value: string | null): void {
         if (value === this.value) {
             return;
@@ -154,7 +168,7 @@ export class TuiEditorComponent
             return TUI_TRUE_HANDLER;
         }
 
-        return this.focused ? this.isSelectionLink : TUI_FALSE_HANDLER;
+        return this.focused ? this.openDropdownWhen : TUI_FALSE_HANDLER;
     }
 
     protected get placeholderRaised(): boolean {
@@ -169,9 +183,12 @@ export class TuiEditorComponent
 
     protected get isLinkSelected(): boolean {
         const node = this.doc.getSelection()?.focusNode?.parentNode;
-        const element = node?.nodeName.toLowerCase();
 
-        return element === 'a' || !!node?.parentElement?.closest('tui-edit-link');
+        return (
+            node?.nodeName.toLowerCase() === 'a' ||
+            node?.parentNode?.nodeName.toLowerCase() === 'a' ||
+            !!node?.parentElement?.closest('tui-edit-link')
+        );
     }
 
     protected onActiveZone(focused: boolean): void {
@@ -229,9 +246,10 @@ export class TuiEditorComponent
         );
     }
 
-    private readonly isSelectionLink = (range: Range): boolean =>
+    private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
-        this.currentFocusedNodeIsImageAnchor;
+        this.currentFocusedNodeIsImageAnchor ||
+        this.mentionSuggestions.length > 0;
 
     /**
      * @description:

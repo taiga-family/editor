@@ -29,75 +29,81 @@ export const DEMO_PAGES: TuiDocPages = [
         keywords: 'contenteditable, accessor',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'ColorPicker',
         route: TuiDemoPath.ColorPicker,
         keywords: 'цвет, выбор, градиент, gradient, палитра, input, inputcolor',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Font',
         route: TuiDemoPath.Font,
         keywords: 'editor, font, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Anchors',
         route: TuiDemoPath.Anchors,
         keywords: 'editor, anchors, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Checkbox',
         route: TuiDemoPath.Checkbox,
         keywords: 'editor, checkbox, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Appearance',
         route: TuiDemoPath.Appearance,
         keywords: 'editor, appearance, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
+        title: 'Mention',
+        route: TuiDemoPath.Mention,
+        keywords: 'editor, mention, wysiwyg, редактор, текст, html, rich, text',
+    },
+    {
+        section: 'Documentation',
         title: 'Groups',
         route: TuiDemoPath.Groups,
         keywords:
             'editor, draggable, nested, hilite, groups, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Focus',
         route: TuiDemoPath.Focus,
         keywords: 'editor, focus, focusable, wysiwyg, редактор, фокус, html, rich, text',
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Custom tool',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Paste emoji',
                 keywords:
                     'editor, custom, tool, emoji, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.PasteEmojiTool}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Color picker',
                 keywords:
                     'editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text',
                 route: `/${TuiDemoPath.ColorPickerTool}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Paste image',
                 keywords:
                     'editor, paste image, tool, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.PasteImageTool}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Font size tool',
                 keywords:
                     'editor, custom font size tool, tool, wysiwyg, редактор, выбрать размер, html, rich, text',
@@ -107,18 +113,18 @@ export const DEMO_PAGES: TuiDocPages = [
         ],
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Highlight',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Mark text',
                 keywords:
                     'editor, highlight, text, wysiwyg, редактор, текст, подсветка, html, rich, text',
                 route: `/${TuiDemoPath.HighlightText}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Code block',
                 keywords:
                     'editor, highlight, code, block, pre, wysiwyg, редактор, текст, подсветка, html, rich, text',
@@ -127,25 +133,25 @@ export const DEMO_PAGES: TuiDocPages = [
         ],
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Processing',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Legacy html',
                 keywords:
                     'editor, processing, content, legacy html, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ProcessingLegacyHtml}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Cleanup html',
                 keywords:
                     'editor, processing, content, cleanup html, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ProcessingCleanupHtml}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Markdown',
                 keywords: 'editor, markdown, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ProcessingMarkdown}`,
@@ -153,25 +159,25 @@ export const DEMO_PAGES: TuiDocPages = [
         ],
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Images',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Resizable',
                 keywords:
                     'editor, resizable, image, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ImagesResizable}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Preview images',
                 keywords:
                     'editor, preview, images, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ImagesPreview}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Upload',
                 keywords:
                     'editor, upload, images, wysiwyg, редактор, текст, html, rich, text',
@@ -180,25 +186,25 @@ export const DEMO_PAGES: TuiDocPages = [
         ],
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Embed',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Youtube',
                 keywords:
                     'editor, embed, video player, audio player, youtube, wysiwyg, редактор, плейер, плеер, ютуб, текст, html, rich, text',
                 route: `/${TuiDemoPath.EmbedYoutube}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Iframe',
                 keywords:
                     'editor, embed, iframe, wysiwyg, редактор, айфрейм, html, rich, text',
                 route: `/${TuiDemoPath.EmbedIframe}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'HTML5',
                 keywords:
                     'editor, embed, video player, audio player, html5, wysiwyg, редактор, плеер, html, rich, text',
@@ -207,18 +213,18 @@ export const DEMO_PAGES: TuiDocPages = [
         ],
     },
     {
-        section: 'Examples',
+        section: 'Documentation',
         title: 'Toolbar',
         subPages: [
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Align bottom',
                 keywords:
                     'editor, toolbar, bottom, wysiwyg, редактор, текст, подсветка, html, rich, text',
                 route: `/${TuiDemoPath.ToolbarBottom}`,
             },
             {
-                section: 'Examples',
+                section: 'Documentation',
                 title: 'Floating',
                 keywords:
                     'editor, toolbar, floating, wysiwyg, редактор, текст, подсветка, html, rich, text',

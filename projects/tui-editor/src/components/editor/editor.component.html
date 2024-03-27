@@ -83,11 +83,15 @@
                     </tui-toolbar>
 
                     <tui-edit-link
-                        *ngIf="!floatingToolbar || isLinkSelected"
+                        *ngIf="isLinkSelected"
                         #link
                         (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
                         (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
                     />
+
+                    <ng-container *ngIf="mentionSuggestions">
+                        <ng-content select="mention" />
+                    </ng-container>
                 </div>
             </ng-template>
         </ng-template>

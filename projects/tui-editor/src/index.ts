@@ -64,6 +64,7 @@ export * from './extensions/indent-outdent';
 export * from './extensions/jump-anchor';
 export * from './extensions/link';
 export * from './extensions/media';
+export * from './extensions/mention';
 export * from './extensions/starter-kit';
 export * from './extensions/table';
 export * from './extensions/table-cell-background';
