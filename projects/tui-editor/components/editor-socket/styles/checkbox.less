@@ -38,7 +38,7 @@ ul[data-type] {
         }
     }
 
-    li[data-checked='true'] > label > input[type='checkbox'] {
+    li > label > input[type='checkbox']:checked {
         background: var(--tui-primary, #526ed3);
         color: var(--tui-primary-text, #fff);
 
@@ -48,7 +48,7 @@ ul[data-type] {
         }
     }
 
-    li[data-checked='false'] > label > input[type='checkbox'] {
+    li > label > input[type='checkbox'] {
         box-shadow: inset 0 0 0 1px var(--tui-base-04);
         color: var(--tui-text-01);
     }
