@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.20.0 (2024-03-27)
+
+### Features
+
+- add mention extension ([#926](https://github.com/taiga-family/tui-editor/issues/926))
+  ([955ebff](https://github.com/taiga-family/tui-editor/commit/955ebffb32d9515531ed6c518bd3bb448429c82d))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.19.0 (2024-03-26)
 
 ### Features
