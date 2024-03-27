@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.9-alpha.0 (2024-03-27)
+
+### Bug Fixes
+
+- use checked attribute
+  ([d33026f](https://github.com/taiga-family/tui-editor/commit/d33026f9192a5dd9ab4c39e30955790cf42f1147))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.8-alpha.0 (2024-03-26)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
