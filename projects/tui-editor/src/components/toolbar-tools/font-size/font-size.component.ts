@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
@@ -51,12 +50,6 @@ export class TuiFontSizeComponent {
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
-            ngDevMode &&
-                console.info(
-                    !px,
-                    'Do not use `px` together with `headingLevel`  because `px` value does not affect anything',
-                );
-
             this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph({fontSize: tuiPx(px || 0)});

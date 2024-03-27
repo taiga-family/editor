@@ -1,0 +1,26 @@
+<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    <ng-container ngProjectAs="mention">
+        <tui-data-list>
+            <button
+                *ngFor="let item of getFilteredItems(items, this.wysiwyg?.mentionSuggestions)"
+                tuiOption
+                (click)="setMention(item)"
+            >
+                {{ item.name }}
+                <tui-avatar
+                    size="s"
+                    [src]="item.avatar || (item.name | tuiInitials)"
+                />
+            </button>
+        </tui-data-list>
+    </ng-container>
+</tui-editor>
+
+<h4>HTML:</h4>
+<tui-editor-socket [content]="control.value || ''" />
+
+<h4>Text:</h4>
+<p>{{ control.value }}</p>
