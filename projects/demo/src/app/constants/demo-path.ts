@@ -3,6 +3,7 @@ export const enum TuiDemoPath {
     Anchors = `anchors`,
     Appearance = `appearance`,
     Checkbox = `checkbox`,
+    Mention = `mention`,
     ToolbarBottom = `toolbar/bottom`,
     ToolbarFloating = `toolbar/floating`,
     Changelog = `changelog`,

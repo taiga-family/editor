@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
-import {tuiAssert, tuiPx} from '@taiga-ui/cdk';
+import {tuiPx} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {EDITOR_BLANK_COLOR} from '@tinkoff/tui-editor/constants';
@@ -50,12 +50,6 @@ export class TuiFontSizeComponent {
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
-            ngDevMode &&
-                tuiAssert.assert(
-                    !px,
-                    'Do not use `px` together with `headingLevel`  because `px` value does not affect anything',
-                );
-
             this.editor.setHeading(headingLevel);
         } else {
             this.editor.setParagraph({fontSize: tuiPx(px || 0)});
