@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
+import {MaskitoDirective} from '@maskito/angular';
+import type {MaskitoOptions} from '@maskito/core';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl, TuiActiveZoneDirective, tuiPure} from '@taiga-ui/cdk';
 import {
@@ -24,6 +26,8 @@ import {tuiParseGradient} from '../../utils/parse-gradient';
 import {tuiToGradient} from '../../utils/to-gradient';
 import {TuiColorSelectorComponent} from '../color-selector/color-selector.component';
 
+type MaskMode = 'gradient' | 'hex' | 'rgb';
+
 @Component({
     standalone: true,
     selector: 'tui-input-color',
@@ -33,6 +37,7 @@ import {TuiColorSelectorComponent} from '../color-selector/color-selector.compon
         TuiTextfieldControllerModule,
         TuiColorSelectorComponent,
         TuiActiveZoneDirective,
+        MaskitoDirective,
     ],
     templateUrl: './input-color.template.html',
     styleUrls: ['./input-color.style.less'],
@@ -70,9 +75,22 @@ export class TuiInputColorComponent
         return this.sanitize(this.value, this.domSanitizer);
     }
 
+    protected get mode(): MaskMode {
+        if (this.value.startsWith('#')) {
+            return 'hex';
+        }
+
+        return this.value.startsWith('rgb') ? 'rgb' : 'gradient';
+    }
+
     @HostListener('click')
     protected onClick(): void {
         this.open = !this.open;
+    }
+
+    @tuiPure
+    protected maskitoOptions(mode: MaskMode): MaskitoOptions | null {
+        return mode === 'hex' ? {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]} : null;
     }
 
     protected onFocused(focused: boolean): void {
