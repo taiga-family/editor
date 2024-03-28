@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {MaskitoModule} from '@maskito/angular';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiHostedDropdownModule,
@@ -18,6 +19,7 @@ import {TuiInputColorComponent} from './input-color.component';
         TuiHostedDropdownModule,
         TuiColorSelectorModule,
         TuiActiveZoneModule,
+        MaskitoModule,
     ],
     declarations: [TuiInputColorComponent],
     exports: [TuiInputColorComponent],
