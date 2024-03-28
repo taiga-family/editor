@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {MaskitoOptions} from '@maskito/core';
 import {
     AbstractTuiControl,
     TuiFocusableElementAccessor,
@@ -27,6 +28,8 @@ import {
     tuiParseGradient,
     tuiToGradient,
 } from '@tinkoff/tui-editor/utils';
+
+type MaskMode = 'gradient' | 'hex' | 'rgb';
 
 @Component({
     selector: 'tui-input-color',
@@ -75,9 +78,22 @@ export class TuiInputColorComponent
         return this.sanitize(this.value, this.domSanitizer);
     }
 
+    get mode(): MaskMode {
+        if (this.value.startsWith('#')) {
+            return 'hex';
+        }
+
+        return this.value.startsWith('rgb') ? 'rgb' : 'gradient';
+    }
+
     @HostListener('click')
     onClick(): void {
         this.open = !this.open;
+    }
+
+    @tuiPure
+    maskitoOptions(mode: MaskMode): MaskitoOptions | null {
+        return mode === 'hex' ? {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]} : null;
     }
 
     /** deprecated use 'value' setter */
