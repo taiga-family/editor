@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.21.0 (2024-03-28)
+
+### Features
+
+- add hex pattern in color picker ([#929](https://github.com/taiga-family/tui-editor/issues/929))
+  ([a4ec210](https://github.com/taiga-family/tui-editor/commit/a4ec210815652b91cd18d64c3b12ec15cba9d984))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 1.20.1 (2024-03-27)
 
 ### Bug Fixes
