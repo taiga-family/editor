@@ -8,6 +8,7 @@ export * from '@tinkoff/tui-editor/extensions/iframe-editor';
 export * from '@tinkoff/tui-editor/extensions/image-editor';
 export * from '@tinkoff/tui-editor/extensions/indent-outdent';
 export * from '@tinkoff/tui-editor/extensions/link';
+export * from '@tinkoff/tui-editor/extensions/markdown';
 export * from '@tinkoff/tui-editor/extensions/media';
 export * from '@tinkoff/tui-editor/extensions/mention';
 export * from '@tinkoff/tui-editor/extensions/starter-kit';

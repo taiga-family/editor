@@ -141,9 +141,21 @@ export const DEMO_PAGES: TuiDocPages = [
                 keywords: `editor, processing, content, cleanup html, wysiwyg, редактор, текст, html, rich, text`,
                 route: `/${TuiDemoPath.ProcessingCleanupHtml}`,
             },
+        ],
+    },
+    {
+        section: `Documentation`,
+        title: `Markdown`,
+        subPages: [
             {
                 section: `Documentation`,
-                title: `Markdown`,
+                title: `Extension`,
+                keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
+                route: `/${TuiDemoPath.ProcessingMarkdownExtension}`,
+            },
+            {
+                section: `Documentation`,
+                title: `Custom parsing`,
                 keywords: `editor, markdown, wysiwyg, редактор, текст, html, rich, text`,
                 route: `/${TuiDemoPath.ProcessingMarkdown}`,
             },
