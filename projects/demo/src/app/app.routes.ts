@@ -200,6 +200,18 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.ProcessingMarkdownExtension,
+        loadChildren: async () =>
+            (
+                await import(
+                    `./pages/processing/markdown-extension/editor-markdown-extension.module`
+                )
+            ).ExampleTuiEditorMarkdownExtensionModule,
+        data: {
+            title: `Editor — Markdown extension`,
+        },
+    },
+    {
         path: TuiDemoPath.HighlightCode,
         loadChildren: async () =>
             (await import(`./pages/highlight/code/editor-code-block.module`))

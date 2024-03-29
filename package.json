@@ -163,6 +163,7 @@
         "nx-cloud": "16.5.2",
         "parse5": "6.0.1",
         "prettier": "3.1.1",
+        "prosemirror-markdown": "1.11.2",
         "rxjs": "6.6.7",
         "showdown": "2.1.0",
         "stylelint": "16.0.2",
