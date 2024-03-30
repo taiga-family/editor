@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.10-alpha.0 (2024-03-30)
+
+### Features
+
+- add markdown extension ([#937](https://github.com/taiga-family/tui-editor/issues/937))
+  ([df32291](https://github.com/taiga-family/tui-editor/commit/df32291dc60257bfa8ad3ea9c6c68fc614635dad))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.9-alpha.0 (2024-03-27)
 
 ### Bug Fixes
