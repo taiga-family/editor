@@ -101,6 +101,8 @@ export class TuiEditorComponent
 
     public focused = false;
 
+    public readonly editorService = inject(TuiTiptapEditorService);
+
     @ViewChild(TuiToolbarComponent)
     protected readonly toolbar?: TuiToolbarComponent;
 
@@ -110,8 +112,6 @@ export class TuiEditorComponent
     protected sub = this.editorLoaded$
         .pipe(delay(0), takeUntil(this.destroy$))
         .subscribe(() => this.patchContentEditableElement());
-
-    protected readonly editorService = inject(TuiTiptapEditorService);
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;

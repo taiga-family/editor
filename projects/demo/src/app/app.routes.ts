@@ -105,6 +105,11 @@ export const routes: Routes = [
         title: 'Editor — Markdown',
     }),
     route({
+        path: TuiDemoPath.ProcessingMarkdownExtension,
+        loadComponent: async () => import('./pages/processing/markdown-extension'),
+        title: 'Editor — Markdown',
+    }),
+    route({
         path: TuiDemoPath.HighlightCode,
         loadComponent: async () => import('./pages/highlight/code'),
         title: 'Editor — Highlight code',

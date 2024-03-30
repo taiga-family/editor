@@ -23,6 +23,7 @@ export const TuiDemoPath = {
     ProcessingCleanupHtml: 'processing/cleanup-html',
     ProcessingLegacyHtml: 'processing/legacy-html',
     ProcessingMarkdown: 'processing/markdown',
+    ProcessingMarkdownExtension: 'processing/markdown-extension',
     Stackblitz: 'stackblitz',
     StarterKit: 'starter-kit',
     UploadFiles: 'upload-files',
