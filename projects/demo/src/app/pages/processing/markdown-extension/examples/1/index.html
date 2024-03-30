@@ -1,0 +1,15 @@
+<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    Placeholder
+</tui-editor>
+
+<tui-textarea
+    class="tui-space_top-5"
+    [ngModel]="markdown"
+    [style.min-height.rem]="30"
+    (ngModelChange)="markdown$.next($event)"
+>
+    Markdown
+</tui-textarea>
