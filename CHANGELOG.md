@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.23.0 (2024-04-01)
+
+### Bug Fixes
+
+- incorrect dropdown behaviour ([#940](https://github.com/taiga-family/tui-editor/issues/940))
+  ([3634bba](https://github.com/taiga-family/tui-editor/commit/3634bba0bb45aa58122258c7103a5915e723ef19))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.22.0 (2024-03-29)
 
 ### Features
