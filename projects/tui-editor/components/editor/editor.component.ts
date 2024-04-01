@@ -142,12 +142,14 @@ export class TuiEditorComponent
     }
 
     get isLinkSelected(): boolean {
-        const node = this.doc.getSelection()?.focusNode?.parentNode;
+        const focusElement = this.doc.getSelection()?.focusNode;
+        const parentFocusElement = focusElement?.parentNode;
 
         return (
-            node?.nodeName.toLowerCase() === 'a' ||
-            node?.parentNode?.nodeName.toLowerCase() === 'a' ||
-            !!node?.parentElement?.closest('tui-edit-link')
+            parentFocusElement?.nodeName.toLowerCase() === 'a' ||
+            parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
+            focusElement?.nodeName.toLowerCase() === 'a' ||
+            !!parentFocusElement?.parentElement?.closest('tui-edit-link')
         );
     }
 
