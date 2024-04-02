@@ -2,7 +2,7 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetModule} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -31,7 +31,7 @@ export enum TuiTableCommands {
         NgForOf,
         TuiDataListModule,
         AsyncPipe,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
         TuiHostedDropdownModule,
         TuiLetModule,

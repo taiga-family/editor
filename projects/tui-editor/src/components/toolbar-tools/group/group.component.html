@@ -5,8 +5,7 @@
     tuiHintDescribe
     tuiIconButton
     type="button"
-    [focusable]="false"
-    [icon]="options.icons.groupAdd"
+    [iconLeft]="options.icons.groupAdd"
     [tuiHint]="insertGroupText$ | async"
     (click)="addGroup()"
 ></button>
@@ -19,8 +18,7 @@
     tuiIconButton
     type="button"
     [disabled]="!!(disabled$ | async)"
-    [focusable]="false"
-    [icon]="options.icons.groupRemove"
+    [iconLeft]="options.icons.groupRemove"
     [tuiHint]="removeGroupText$ | async"
     (click)="removeGroup()"
 ></button>

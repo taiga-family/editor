@@ -13,9 +13,7 @@
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            [focusable]="list.open"
-            [icon]="options.icons.listPreview"
-            [pseudoActive]="list?.open || state?.unordered || state?.ordered || false"
+            [iconLeft]="options.icons.listPreview"
             [tuiHint]="texts.list"
         ></button>
         <ng-template #listDropdown>
@@ -27,8 +25,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.listUnOrdered"
-                    [pseudoActive]="!!state?.unordered"
+                    [iconLeft]="options.icons.listUnOrdered"
                     [tuiHint]="texts.unorderedList"
                     (click)="editor.toggleUnorderedList()"
                 ></button>
@@ -39,8 +36,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.listOrdered"
-                    [pseudoActive]="!!state?.ordered"
+                    [iconLeft]="options.icons.listOrdered"
                     [tuiHint]="texts.orderedList"
                     (click)="editor.toggleOrderedList()"
                 ></button>
@@ -51,8 +47,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.taskList"
-                    [pseudoActive]="!!state?.tasked"
+                    [iconLeft]="options.icons.taskList"
                     (click)="editor.toggleTaskList()"
                 ></button>
                 <button
@@ -62,7 +57,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.indent"
+                    [iconLeft]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     (click)="sinkListItem()"
                 ></button>
@@ -73,7 +68,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option"
-                    [icon]="options.icons.outdent"
+                    [iconLeft]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     (click)="liftListItem()"
                 ></button>

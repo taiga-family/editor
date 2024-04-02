@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {combineLatest, map} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';
@@ -12,7 +12,13 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-font-style',
-    imports: [TuiHintModule, TuiButtonModule, NgIf, TuiHostedDropdownModule, AsyncPipe],
+    imports: [
+        TuiHintModule,
+        TuiButtonDirective,
+        NgIf,
+        TuiHostedDropdownModule,
+        AsyncPipe,
+    ],
     templateUrl: './font-style.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

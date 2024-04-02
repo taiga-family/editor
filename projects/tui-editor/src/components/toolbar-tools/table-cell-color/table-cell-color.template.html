@@ -14,9 +14,7 @@
             tuiIconButton
             type="button"
             [disabled]="!isActive"
-            [focusable]="colorSelect.open"
-            [icon]="icons.paint"
-            [pseudoActive]="colorSelect.open"
+            [iconLeft]="icons.paint"
             [tuiHint]="colorText$ | async"
         ></button>
         <div

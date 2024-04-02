@@ -34,8 +34,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="undoDisabled"
-            [focusable]="false"
-            [icon]="icons.undo"
+            [iconLeft]="icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
         ></button>
@@ -50,8 +49,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="redoDisabled"
-            [focusable]="false"
-            [icon]="icons.redo"
+            [iconLeft]="icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
         ></button>
@@ -101,9 +99,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="unorderedList || orderedList"
-            [focusable]="false"
-            [icon]="icons.quote"
-            [pseudoActive]="blockquote"
+            [iconLeft]="icons.quote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
@@ -125,9 +121,7 @@
                 tuiIconButton
                 type="button"
                 class="t-tool"
-                [focusable]="link.open"
-                [icon]="icons.link"
-                [pseudoActive]="link.open || a"
+                [iconLeft]="icons.link"
                 [tuiHint]="texts.link"
             ></button>
             <ng-template #linkDropdown>
@@ -152,9 +146,7 @@
                 tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
-                [focusable]="false"
-                [icon]="icons.anchor"
-                [pseudoActive]="anchor.open || jumpAnchor"
+                [iconLeft]="icons.anchor"
                 [tuiHint]="texts.insertAnchor"
             ></button>
             <ng-template #anchorDropdown>
@@ -176,8 +168,7 @@
                 tuiItem
                 type="button"
                 class="t-tool t-tool_margin"
-                [focusable]="false"
-                [icon]="icons.attach"
+                [iconLeft]="icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
             ></button>
@@ -208,9 +199,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
-            [icon]="icons.sub"
-            [pseudoActive]="subscript"
+            [iconLeft]="icons.sub"
             [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
         ></button>
@@ -225,9 +214,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
-            [icon]="icons.sup"
-            [pseudoActive]="superscript"
+            [iconLeft]="icons.sup"
             [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
         ></button>
@@ -271,8 +258,7 @@
             tuiItem
             type="button"
             class="t-tool"
-            [focusable]="false"
-            [icon]="icons.tex"
+            [iconLeft]="icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
         ></button>
@@ -290,8 +276,7 @@
                 tuiIconButton
                 type="button"
                 class="t-tool"
-                [focusable]="false"
-                [icon]="icons.image"
+                [iconLeft]="icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
             ></button>
@@ -316,8 +301,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
-            [icon]="icons.hr"
+            [iconLeft]="icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
         ></button>
@@ -336,8 +320,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
-            [icon]="icons.clear"
+            [iconLeft]="icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"
         ></button>

@@ -2,7 +2,7 @@ import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/comm
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -27,7 +27,7 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
         NgForOf,
         TuiDataListModule,
         TuiHostedDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
     ],
     templateUrl: './font-size.template.html',

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/co
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 
@@ -15,7 +15,7 @@ import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
         TuiInputInlineModule,
         TuiActiveZoneDirective,
         TuiHostedDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
     ],
     templateUrl: './image-tool.template.html',
     styleUrls: ['./image-tool.styles.less'],

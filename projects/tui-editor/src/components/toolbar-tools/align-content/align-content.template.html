@@ -13,9 +13,7 @@
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            [focusable]="align.open"
-            [icon]="options.icons.textAlignPreview"
-            [pseudoActive]="align.open"
+            [iconLeft]="options.icons.textAlignPreview"
             [tuiHint]="texts.justify"
         ></button>
         <ng-template #alignDropdown>
@@ -26,8 +24,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.textAlignLeft"
-                    [pseudoActive]="!!alignState?.left"
+                    [iconLeft]="options.icons.textAlignLeft"
                     [tuiHint]="texts.justifyLeft"
                     (click)="editor.onAlign('left')"
                 ></button>
@@ -37,8 +34,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.textAlignCenter"
-                    [pseudoActive]="!!alignState?.center"
+                    [iconLeft]="options.icons.textAlignCenter"
                     [tuiHint]="texts.justifyCenter"
                     (click)="editor.onAlign('center')"
                 ></button>
@@ -48,8 +44,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.textAlignRight"
-                    [pseudoActive]="!!alignState?.right"
+                    [iconLeft]="options.icons.textAlignRight"
                     [tuiHint]="texts.justifyRight"
                     (click)="editor.onAlign('right')"
                 ></button>
@@ -59,8 +54,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [icon]="options.icons.textAlignJustify"
-                    [pseudoActive]="!!alignState?.justify"
+                    [iconLeft]="options.icons.textAlignJustify"
                     [tuiHint]="texts.justifyFull"
                     (click)="editor.onAlign('justify')"
                 ></button>

@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@tinkoff/tui-editor';
 import {
     TUI_EDITOR_OPTIONS,
@@ -16,7 +16,7 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     imports: [
         TuiActiveZoneDirective,
         TuiHostedDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         AsyncPipe,
         TuiColorSelectorComponent,
     ],

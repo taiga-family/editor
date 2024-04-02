@@ -22,7 +22,7 @@ import {
     TuiItemModule,
 } from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {take, takeUntil} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
@@ -63,7 +63,7 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
         TuiTableCreateComponent,
         NgIf,
         TuiItemModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
         TuiFocusableModule,
         TuiTextColorComponent,
