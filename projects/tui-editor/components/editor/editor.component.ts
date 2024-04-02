@@ -86,6 +86,7 @@ export class TuiEditorComponent
     @ViewChild(TuiToolbarComponent)
     readonly toolbar?: TuiToolbarComponent;
 
+    hasMentionPlugin = false;
     focused = false;
 
     constructor(
@@ -107,9 +108,15 @@ export class TuiEditorComponent
     ) {
         super(control, cdr, transformer);
 
-        this.editorLoaded$
-            .pipe(delay(0), takeUntil(this.destroy$))
-            .subscribe(() => this.patchContentEditableElement());
+        this.editorLoaded$.pipe(delay(0), takeUntil(this.destroy$)).subscribe(() => {
+            this.hasMentionPlugin = !!this.editorService
+                .getOriginTiptapEditor()
+                .extensionManager.extensions.find(
+                    extension => extension.name === 'mention',
+                );
+
+            this.patchContentEditableElement();
+        });
     }
 
     get nativeFocusableElement(): HTMLDivElement | null {
@@ -159,6 +166,10 @@ export class TuiEditorComponent
         return before?.startsWith('@') && before.length > 1
             ? before?.replace('@', '') || ''
             : '';
+    }
+
+    get isMentionMode(): boolean {
+        return this.hasMentionPlugin && this.selectionState.before?.startsWith('@');
     }
 
     override writeValue(value: string | null): void {
@@ -235,7 +246,7 @@ export class TuiEditorComponent
     private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
         this.currentFocusedNodeIsImageAnchor ||
-        this.mentionSuggestions.length > 0;
+        this.isMentionMode;
 
     /**
      * @description:

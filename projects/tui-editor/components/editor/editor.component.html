@@ -89,7 +89,7 @@
                         (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
                     ></tui-edit-link>
 
-                    <ng-container *ngIf="mentionSuggestions">
+                    <ng-container *ngIf="isMentionMode">
                         <ng-content select="mention"></ng-content>
                     </ng-container>
                 </div>
