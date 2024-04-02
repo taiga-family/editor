@@ -22,6 +22,8 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
     ],
 })
 export class TuiDropdownToolbarDirective extends TuiDropdownSelectionDirective {
+    private previousTagPosition: DOMRect | null = null;
+
     protected override readonly stream$ = combineLatest([
         this.handler$,
         this.selection$.pipe(
@@ -61,11 +63,18 @@ export class TuiDropdownToolbarDirective extends TuiDropdownSelectionDirective {
                     ? commonAncestorContainer
                     : commonAncestorContainer.parentNode;
 
-                return element && tuiIsElement(element)
-                    ? this.doc
-                          .querySelector('.ProseMirror-selectednode')
-                          ?.getBoundingClientRect() || element.getBoundingClientRect()
-                    : EMPTY_CLIENT_RECT;
+                if (element?.parentElement?.closest('tui-dropdown')) {
+                    return this.previousTagPosition ?? EMPTY_CLIENT_RECT;
+                }
+
+                this.previousTagPosition =
+                    element && tuiIsElement(element)
+                        ? this.doc
+                              .querySelector('.ProseMirror-selectednode')
+                              ?.getBoundingClientRect() || element.getBoundingClientRect()
+                        : EMPTY_CLIENT_RECT;
+
+                return this.previousTagPosition;
             }
             case 'word':
                 return tuiGetWordRange(this.range).getBoundingClientRect();
