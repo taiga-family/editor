@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.24.0 (2024-04-02)
+
+### Bug Fixes
+
+- support preview full list of mention suggestion ([#944](https://github.com/taiga-family/tui-editor/issues/944))
+  ([e602062](https://github.com/taiga-family/tui-editor/commit/e602062da5e2adb1772b30d26b1e2d3098cda7f6))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.23.0 (2024-04-01)
 
 ### Bug Fixes
