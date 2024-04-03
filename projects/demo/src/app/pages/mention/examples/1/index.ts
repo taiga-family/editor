@@ -56,7 +56,7 @@ export default class ExampleComponent {
     ];
 
     protected control = new FormControl(`
-        <p><span data-type="mention">@a.inkin</span> FYI</p>
+        <p><span class="my-mention" data-type="mention">@a.inkin</span> FYI</p>
     `);
 
     protected readonly items: readonly User[] = [
@@ -90,7 +90,7 @@ export default class ExampleComponent {
             return;
         }
 
-        const replaceText = `<span data-type="mention">@${item.login}</span>&nbsp;`;
+        const replaceText = `<span class="my-mention" data-type="mention">@${item.login}</span>&nbsp;`;
         const to = editor.state.selection.to;
         const from =
             editor.state.selection.from -

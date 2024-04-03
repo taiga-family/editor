@@ -99,6 +99,7 @@ export class TuiEditorComponent
     @Output()
     public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
 
+    public hasMentionPlugin = false;
     public focused = false;
 
     public readonly editorService = inject(TuiTiptapEditorService);
@@ -111,7 +112,15 @@ export class TuiEditorComponent
 
     protected sub = this.editorLoaded$
         .pipe(delay(0), takeUntil(this.destroy$))
-        .subscribe(() => this.patchContentEditableElement());
+        .subscribe(() => {
+            this.hasMentionPlugin = !!this.editorService
+                .getOriginTiptapEditor()
+                .extensionManager.extensions.find(
+                    extension => extension.name === 'mention',
+                );
+
+            this.patchContentEditableElement();
+        });
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
@@ -134,6 +143,10 @@ export class TuiEditorComponent
         return before?.startsWith('@') && before.length > 1
             ? before?.replace('@', '') || ''
             : '';
+    }
+
+    public get isMentionMode(): boolean {
+        return this.hasMentionPlugin && this.selectionState.before?.startsWith('@');
     }
 
     public override writeValue(value: string | null): void {
@@ -249,7 +262,7 @@ export class TuiEditorComponent
     private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
         this.currentFocusedNodeIsImageAnchor ||
-        this.mentionSuggestions.length > 0;
+        this.isMentionMode;
 
     /**
      * @description:
