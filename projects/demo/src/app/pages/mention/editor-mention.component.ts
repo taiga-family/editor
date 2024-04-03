@@ -11,5 +11,7 @@ export class ExampleTuiEditorMentionComponent {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
+        'mention.ts': import('./examples/1/mention/index.ts?raw'),
+        'mention.html': import('./examples/1/mention/index.html?raw'),
     };
 }

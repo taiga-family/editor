@@ -1,17 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 
-interface User {
-    name: string;
-    avatar: string;
-    login: string;
-}
+import {User} from './mention';
 
 @Component({
     selector: 'tui-editor-mention-example-1',
@@ -47,30 +42,6 @@ export class TuiEditorMentionExample1 {
     control = new FormControl(`
         <p><span class="my-mention" data-type="mention">@a.inkin</span> FYI</p>
     `);
-
-    readonly items: readonly User[] = [
-        {
-            name: 'Alexander Inkin',
-            avatar: 'https://taiga-ui.dev/assets/images/avatar.jpg',
-            login: 'a.inkin',
-        },
-        {
-            name: 'Roman Sedov',
-            avatar: '',
-            login: 'r.sedov',
-        },
-    ];
-
-    @tuiPure
-    getFilteredItems(items: readonly User[], search?: string): readonly User[] {
-        return search?.length
-            ? items.filter(
-                  ({name, login}) =>
-                      login.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()) ||
-                      name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()),
-              )
-            : items;
-    }
 
     setMention(item: User): void {
         const editor = this.wysiwyg?.editor?.getOriginTiptapEditor();
