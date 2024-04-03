@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[6205],{36205:e=>{e.exports=":host {\n    ::ng-deep span[data-type='mention'] {\n        border: 1px solid var(--tui-base-08);\n        border-radius: 0.4rem;\n        padding: 0.1rem 0.3rem;\n        cursor: default;\n    }\n}\n"}}]);
