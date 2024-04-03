@@ -27,8 +27,8 @@ export class ExampleTuiPasteImageToolComponent {
 
     private readonly editor = inject(TuiTiptapEditorService);
 
-    // eslint-disable-next-line @typescript-eslint/quotes
-    protected youtubeLogo = `https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg`;
+    protected youtubeLogo =
+        'https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg';
 
     protected placeholder = 'https://image.com/etc.png';
 
