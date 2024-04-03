@@ -52,8 +52,8 @@ describe('tuiEditLinkParseUrl', () => {
         });
 
         expect(tuiEditLinkParseUrl('/hello.com/a/b/c')).toEqual({
-            prefix: '',
-            path: '/hello.com/a/b/c',
+            prefix: '/',
+            path: 'hello.com/a/b/c',
         });
     });
 
@@ -138,6 +138,18 @@ describe('tuiEditLinkParseUrl', () => {
         expect(tuiEditLinkParseUrl('ftp://ftp.example:21')).toEqual({
             prefix: 'ftp://',
             path: 'ftp.example:21',
+        });
+    });
+
+    it('relative', () => {
+        expect(tuiEditLinkParseUrl('/hello/world')).toEqual({
+            prefix: '/',
+            path: 'hello/world',
+        });
+
+        expect(tuiEditLinkParseUrl('./hello/world')).toEqual({
+            prefix: './',
+            path: 'hello/world',
         });
     });
 });

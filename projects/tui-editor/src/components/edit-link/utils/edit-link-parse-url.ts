@@ -54,5 +54,13 @@ export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
         }
     }
 
+    if (url.startsWith('/') && !url.startsWith('//')) {
+        return {prefix: url.slice(0, 1), path: url.slice(1)};
+    }
+
+    if (url.startsWith('./')) {
+        return {prefix: url.slice(0, 2), path: url.slice(2)};
+    }
+
     return {prefix, path: prefix === '' ? url : path};
 }

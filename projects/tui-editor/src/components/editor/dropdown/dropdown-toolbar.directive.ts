@@ -38,6 +38,7 @@ export class TuiDropdownToolbarDirective
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {
+    private previousTagPosition: DOMRect | null = null;
     private range = inject(TUI_RANGE);
     private readonly doc = inject(DOCUMENT);
     private readonly selection$ = inject(TUI_SELECTION_STREAM);
@@ -98,9 +99,18 @@ export class TuiDropdownToolbarDirective
                     ? commonAncestorContainer
                     : commonAncestorContainer.parentNode;
 
-                return element && tuiIsElement(element)
-                    ? element.getBoundingClientRect()
-                    : EMPTY_CLIENT_RECT;
+                if (element?.parentElement?.closest('tui-dropdown')) {
+                    return this.previousTagPosition ?? EMPTY_CLIENT_RECT;
+                }
+
+                this.previousTagPosition =
+                    element && tuiIsElement(element)
+                        ? this.doc
+                              .querySelector('.ProseMirror-selectednode')
+                              ?.getBoundingClientRect() || element.getBoundingClientRect()
+                        : EMPTY_CLIENT_RECT;
+
+                return this.previousTagPosition;
             }
             case 'word':
                 return tuiGetWordRange(this.range).getBoundingClientRect();

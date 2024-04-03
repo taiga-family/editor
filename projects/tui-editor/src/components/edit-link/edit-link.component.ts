@@ -214,7 +214,11 @@ export class TuiEditLinkComponent {
     private removePrefix(url: string): string {
         const fullPath =
             url.startsWith(TUI_EDITOR_LINK_HASH_PREFIX) ||
-            this.prefix === TUI_EDITOR_LINK_HASH_PREFIX
+            this.prefix === TUI_EDITOR_LINK_HASH_PREFIX ||
+            url.startsWith('/') ||
+            url.startsWith('./') ||
+            url.startsWith('http') ||
+            url.startsWith('://')
                 ? url
                 : `${this.prefix ?? ''}${url}`;
 
