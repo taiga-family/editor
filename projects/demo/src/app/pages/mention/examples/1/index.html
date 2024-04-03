@@ -3,20 +3,11 @@
     [tools]="builtInTools"
 >
     <ng-container ngProjectAs="mention">
-        <tui-data-list (mouseleave.capture)="$event.stopPropagation()">
-            <button
-                *ngFor="let item of getFilteredItems(items, this.wysiwyg?.mentionSuggestions)"
-                tuiOption
-                (click)="setMention(item)"
-                (keydown.enter)="setMention(item)"
-            >
-                {{ item.name }}
-                <tui-avatar
-                    size="s"
-                    [src]="item.avatar || (item.name | tuiInitials)"
-                />
-            </button>
-        </tui-data-list>
+        <mentions
+            *ngIf="wysiwyg?.isMentionMode"
+            [mentionSuggestions]="wysiwyg?.mentionSuggestions"
+            (setMention)="setMention($event)"
+        />
     </ng-container>
 </tui-editor>
 

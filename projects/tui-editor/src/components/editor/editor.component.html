@@ -89,7 +89,7 @@
                         (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
                     />
 
-                    <ng-container *ngIf="mentionSuggestions">
+                    <ng-container *ngIf="isMentionMode">
                         <ng-content select="mention" />
                     </ng-container>
                 </div>
