@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.11-alpha.0 (2024-04-03)
+
+### Features
+
+- drop legacy button ([#946](https://github.com/taiga-family/tui-editor/issues/946))
+  ([254a7a3](https://github.com/taiga-family/tui-editor/commit/254a7a3a6dd0aaf77cc61ab4c9999ba4c8a2c2ff))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.10-alpha.0 (2024-03-30)
 
 ### Features
