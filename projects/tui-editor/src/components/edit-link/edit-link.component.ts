@@ -11,7 +11,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocusDirective, tuiIsElement} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiLinkModule,
     TuiScrollbarComponent,
     TuiSvgModule,
@@ -39,7 +39,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     imports: [
         NgForOf,
         TuiFilterAnchorsPipe,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiShortUrlPipe,
         TuiLinkModule,
         TuiSvgModule,

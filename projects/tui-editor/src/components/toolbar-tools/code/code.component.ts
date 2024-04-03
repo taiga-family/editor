@@ -1,7 +1,7 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHintModule,
     TuiHostedDropdownModule,
@@ -18,7 +18,7 @@ import {TUI_EDITOR_CODE_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     imports: [
         NgForOf,
         AsyncPipe,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHintModule,
         TuiDataListModule,
         TuiHostedDropdownModule,

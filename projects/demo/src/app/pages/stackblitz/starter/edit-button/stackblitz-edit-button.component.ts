@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiButtonModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'stackblitz-edit-button',
-    imports: [TuiButtonModule],
+    imports: [TuiButtonDirective],
     template: `
         <button
             appearance="flat"

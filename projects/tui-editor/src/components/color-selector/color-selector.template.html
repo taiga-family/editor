@@ -8,17 +8,10 @@
         size="s"
         tuiButton
         type="button"
-        [iconRight]="arrow"
+        [iconRight]="options.icons.colorSelectorDropdownChevron"
     >
         {{ currentMode }}
     </button>
-    <ng-template #arrow>
-        <tui-svg
-            class="t-arrow"
-            [class.t-arrow_rotated]="dropdown.open"
-            [src]="options.icons.colorSelectorDropdownChevron"
-        />
-    </ng-template>
     <ng-template #menu>
         <tui-data-list
             role="menu"
@@ -68,7 +61,7 @@
             type="button"
             class="t-direction"
             [class.t-direction_active]="isDirectionActive(button)"
-            [icon]="getIcon(button)"
+            [iconLeft]="getIcon(button)"
             [tuiHint]="button"
             (click)="onDirectionChange(button)"
         ></button>

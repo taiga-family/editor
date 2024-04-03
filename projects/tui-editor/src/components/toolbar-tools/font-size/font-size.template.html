@@ -10,9 +10,7 @@
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        [focusable]="fonts.open"
-        [icon]="options.icons.fontSize"
-        [pseudoActive]="fonts.open"
+        [iconLeft]="options.icons.fontSize"
         [tuiHint]="fontText$ | async"
     ></button>
     <ng-template #fontsDropdown>

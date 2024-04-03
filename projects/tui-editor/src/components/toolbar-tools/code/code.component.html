@@ -9,9 +9,7 @@
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        [focusable]="codes.open"
-        [icon]="options.icons.code"
-        [pseudoActive]="codes.open || (insideCode$ | async)"
+        [iconLeft]="options.icons.code"
         [tuiHint]="hintText$ | async"
     ></button>
     <ng-template #codesDropdown>

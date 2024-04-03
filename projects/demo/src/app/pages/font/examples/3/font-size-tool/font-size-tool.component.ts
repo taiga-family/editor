@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
@@ -16,7 +16,7 @@ import {distinctUntilChanged, map} from 'rxjs';
     imports: [
         TuiDataListModule,
         NgForOf,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiHostedDropdownModule,
         AsyncPipe,
     ],

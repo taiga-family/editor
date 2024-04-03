@@ -43,7 +43,6 @@ export default class ExampleComponent implements OnInit {
                     [appPrefix`app.component.html`]: appTemplate,
                     [appPrefix`app.component.ts`]: appComponent,
                     [appPrefix`app.component.less`]:
-                        // eslint-disable-next-line @typescript-eslint/quotes
                         "@import '@taiga-ui/core/styles/taiga-ui-local.less';",
                 },
             },

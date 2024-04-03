@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -10,7 +10,7 @@ import {TuiColorSelectorComponent} from '@tinkoff/tui-editor';
     imports: [
         TuiActiveZoneDirective,
         TuiHostedDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiColorSelectorComponent,
     ],
     templateUrl: './index.html',

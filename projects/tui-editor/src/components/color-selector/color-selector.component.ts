@@ -12,7 +12,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {
-    TuiButtonModule,
+    TuiButtonDirective,
     TuiDataListModule,
     TuiGroupDirective,
     TuiHintModule,
@@ -52,7 +52,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
     imports: [
         NgIf,
         TuiHostedDropdownModule,
-        TuiButtonModule,
+        TuiButtonDirective,
         TuiSvgModule,
         TuiDataListModule,
         NgForOf,
