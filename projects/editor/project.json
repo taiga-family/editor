@@ -1,20 +1,20 @@
 {
-    "name": "tui-editor",
+    "name": "editor",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/tui-editor",
+    "sourceRoot": "projects/editor",
     "projectType": "library",
     "prefix": "tui",
     "targets": {
         "lint": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/tui-editor/**/*\""
+                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/editor/**/*\""
             }
         },
         "stylelint": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "stylelint \"**/tui-editor/**/*.{css,less}\" --allow-empty-input"
+                "command": "stylelint \"**/editor/**/*.{css,less}\" --allow-empty-input"
             }
         },
         "prebuild": {
@@ -25,10 +25,10 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/tui-editor"],
+            "outputs": ["{workspaceRoot}/dist/editor"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/tui-editor/ng-package.json"
+                "project": "projects/editor/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -39,15 +39,15 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/tui-editor"],
+            "outputs": ["{workspaceRoot}/coverage/editor"],
             "options": {
-                "jestConfig": "projects/tui-editor/jest.config.ts"
+                "jestConfig": "projects/editor/jest.config.ts"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npm publish --tag {args.tag} ./dist/tui-editor --access=public --ignore-scripts || echo \"already published\""
+                "command": "npm publish --tag {args.tag} ./dist/editor --access=public --ignore-scripts || echo \"already published\""
             }
         }
     }

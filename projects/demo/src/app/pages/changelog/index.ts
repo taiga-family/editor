@@ -11,7 +11,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ExampleComponent {
-    protected readonly changelog = import('../../../../../tui-editor/CHANGELOG.md?raw');
+    protected readonly changelog = import('../../../../../editor/CHANGELOG.md?raw');
 
     protected mapper: TuiStringHandler<string> = value =>
         value.replaceAll(

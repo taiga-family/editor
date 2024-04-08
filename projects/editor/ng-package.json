@@ -6,7 +6,7 @@
     "allowedNonPeerDependencies": [
         "."
     ],
-    "dest": "../../dist/tui-editor",
+    "dest": "../../dist/editor",
     "lib": {
         "entryFile": "src/index.ts"
     }

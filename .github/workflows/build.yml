@@ -13,7 +13,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.55.8
       - uses: taiga-family/ci/actions/setup/variables@v1.55.8
       - uses: taiga-family/ci/actions/setup/node@v1.55.8
-      - run: npx nx build tui-editor
+      - run: npx nx build editor
 
 concurrency:
   group: build-${{ github.head_ref }}
