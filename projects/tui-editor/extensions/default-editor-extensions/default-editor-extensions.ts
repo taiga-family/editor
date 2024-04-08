@@ -29,8 +29,10 @@ export const defaultEditorExtensions = [
     import(`@tinkoff/tui-editor/extensions/table`).then(({TuiTable}) =>
         TuiTable.configure({resizable: true}),
     ),
+    import(`@tinkoff/tui-editor/extensions/table-cell`).then(
+        ({TuiTableCell}) => TuiTableCell,
+    ),
     import(`@tiptap/extension-table-row`).then(({default: TableRow}) => TableRow),
-    import(`@tiptap/extension-table-cell`).then(({default: TableCell}) => TableCell),
     import(`@tiptap/extension-table-header`).then(({TableHeader}) => TableHeader),
     import(`@tinkoff/tui-editor/extensions/indent-outdent`).then(
         ({TuiTabExtension}) => TuiTabExtension,
