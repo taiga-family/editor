@@ -17,8 +17,8 @@ jobs:
       - uses: codecov/codecov-action@v4.2.0
         with:
           directory: ./coverage/editor
-          flags: tui-editor
-          name: tui-editor
+          flags: editor
+          name: editor
 
 concurrency:
   group: test-${{ github.head_ref }}
