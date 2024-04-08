@@ -12,7 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiAutoFocusDirective, tuiIsElement} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiLinkModule,
+    TuiLinkDirective,
     TuiScrollbarComponent,
     TuiSvgModule,
 } from '@taiga-ui/core';
@@ -41,7 +41,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         TuiFilterAnchorsPipe,
         TuiButtonDirective,
         TuiShortUrlPipe,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiSvgModule,
         FormsModule,
         NgIf,

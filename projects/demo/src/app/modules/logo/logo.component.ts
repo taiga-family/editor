@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiSvgModule} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
     standalone: true,
     selector: 'logo',
-    imports: [TuiSvgModule, RouterLink, TuiLinkModule],
+    imports: [TuiSvgModule, RouterLink, TuiLinkDirective],
     templateUrl: './logo.template.html',
     styleUrls: ['./logo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

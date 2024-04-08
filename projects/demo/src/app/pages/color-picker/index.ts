@@ -7,7 +7,7 @@ import {
     TuiDocExampleModule,
     TuiDocPageModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
 import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -19,7 +19,7 @@ import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
         TuiDocDemoModule,
         TuiDocDocumentationModule,
         TuiDocCodeModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         TuiColorPickerComponent,
     ],
     templateUrl: './index.html',

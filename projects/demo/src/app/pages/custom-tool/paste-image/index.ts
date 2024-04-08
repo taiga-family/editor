@@ -6,14 +6,14 @@ import {
     TuiDocPageModule,
     TuiTextCodeModule,
 } from '@taiga-ui/addon-doc';
-import {TuiLinkModule} from '@taiga-ui/core';
+import {TuiLinkDirective} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
     imports: [
         TuiDocPageModule,
-        TuiLinkModule,
+        TuiLinkDirective,
         RouterLink,
         TuiDocExampleModule,
         TuiTextCodeModule,

@@ -50,12 +50,11 @@
     </ng-container>
     <ng-template #view>
         <a
-            iconAlign="left"
             target="_blank"
             tuiLink
             class="t-link"
             [href]="href"
-            [icon]="prefixIsHashMode ? 'tuiIconHash' : 'tuiIconExternalLink'"
+            [iconLeft]="prefixIsHashMode ? 'tuiIconHash' : 'tuiIconExternalLink'"
         >
             {{ url | tuiShortUrl }}
         </a>
