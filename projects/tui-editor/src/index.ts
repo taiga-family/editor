@@ -68,6 +68,7 @@ export * from './extensions/media';
 export * from './extensions/mention';
 export * from './extensions/starter-kit';
 export * from './extensions/table';
+export * from './extensions/table-cell';
 export * from './extensions/table-cell-background';
 export * from './extensions/tiptap-node-view';
 export * from './extensions/youtube';
