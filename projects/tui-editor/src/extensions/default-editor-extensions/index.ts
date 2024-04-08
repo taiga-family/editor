@@ -10,6 +10,7 @@ import {TuiJumpAnchor} from '../jump-anchor';
 import {TuiLink} from '../link';
 import {TuiStarterKit} from '../starter-kit';
 import {TuiTable} from '../table';
+import {TuiTableCell} from '../table-cell';
 import {TableCellBackground} from '../table-cell-background';
 
 export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
@@ -32,8 +33,8 @@ export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     TuiFileLink,
     TuiBackgroundColor,
     TuiTable.configure({resizable: true}),
+    TuiTableCell,
     import('@tiptap/extension-table-row').then(({TableRow}) => TableRow),
-    import('@tinkoff/tui-editor').then(({TuiTableCell}) => TuiTableCell),
     import('@tiptap/extension-table-header').then(({TableHeader}) => TableHeader),
     TuiTabExtension,
     TableCellBackground,
