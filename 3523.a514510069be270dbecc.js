@@ -1,1 +1,0 @@
-(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[3523],{33523:(t,e,i)=>{i.r(e),i.d(e,{TuiTableCell:()=>s});var r=i(11046);const s=i(71397).default.extend({renderHTML({HTMLAttributes:t}){const e=(0,r.mergeAttributes)(this.options.HTMLAttributes,t);return e.colwidth&&(e.style=`width: ${e.colwidth}px`),["td",e,0]}})}}]);
