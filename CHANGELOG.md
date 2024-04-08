@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.25.0 (2024-04-08)
+
+### Bug Fixes
+
+- incorrect column's width after cell merging ([#962](https://github.com/taiga-family/tui-editor/issues/962))
+  ([3f58640](https://github.com/taiga-family/tui-editor/commit/3f5864092cd4b1314949f3de1eefbce468bb336c))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.24.0 (2024-04-02)
 
 ### Bug Fixes
