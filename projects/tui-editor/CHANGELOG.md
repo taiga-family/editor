@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.25.1 (2024-04-08)
+
+### Bug Fixes
+
+- import problem ([5f2bbc8](https://github.com/taiga-family/tui-editor/commit/5f2bbc8182119839232314caafff3d7c1f678356))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.25.0 (2024-04-08)
 
 ### Bug Fixes
