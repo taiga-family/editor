@@ -13,5 +13,6 @@ export * from '@tinkoff/tui-editor/extensions/media';
 export * from '@tinkoff/tui-editor/extensions/mention';
 export * from '@tinkoff/tui-editor/extensions/starter-kit';
 export * from '@tinkoff/tui-editor/extensions/table';
+export * from '@tinkoff/tui-editor/extensions/table-cell';
 export * from '@tinkoff/tui-editor/extensions/table-cell-background';
 export * from '@tinkoff/tui-editor/extensions/tiptap-node-view';
