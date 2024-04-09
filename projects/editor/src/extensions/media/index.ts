@@ -1,5 +1,5 @@
 import {mergeAttributes, Node} from '@tiptap/core';
-import type {MarkSpec} from 'prosemirror-model';
+import type {NodeSpec} from '@tiptap/pm/model';
 
 import {TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES} from '../../constants/default-html5-media-attributes';
 import {tuiGetNestedNodes} from '../../utils/get-nested-nodes';
@@ -14,7 +14,7 @@ export const TuiAudio = Node.create({
         return tuiParseNodeAttributes(TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES);
     },
 
-    parseHTML(): MarkSpec['parseDOM'] {
+    parseHTML(): NodeSpec['parseDOM'] {
         return [{tag: 'audio'}];
     },
 
@@ -38,7 +38,7 @@ export const TuiSource = Node.create({
         ]);
     },
 
-    parseHTML(): MarkSpec['parseDOM'] {
+    parseHTML(): NodeSpec['parseDOM'] {
         return [{tag: 'source'}];
     },
 
@@ -56,7 +56,7 @@ export const TuiVideo = Node.create({
         return tuiParseNodeAttributes(TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES);
     },
 
-    parseHTML(): MarkSpec['parseDOM'] {
+    parseHTML(): NodeSpec['parseDOM'] {
         return [{tag: 'video'}];
     },
 
