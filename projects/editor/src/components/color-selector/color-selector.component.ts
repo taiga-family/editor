@@ -17,7 +17,7 @@ import {
     TuiGroupDirective,
     TuiHintModule,
     TuiHostedDropdownModule,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -53,7 +53,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
         NgIf,
         TuiHostedDropdownModule,
         TuiButtonDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         TuiDataListModule,
         NgForOf,
         TuiHintModule,

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItemModule} from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
@@ -14,7 +14,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 @Component({
     standalone: true,
     imports: [
-        TuiSvgModule,
+        TuiSvgComponent,
         ExampleTuiPasteImageToolComponent,
         TuiItemModule,
         ReactiveFormsModule,

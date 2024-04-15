@@ -14,7 +14,7 @@ import {
     TuiButtonDirective,
     TuiLinkDirective,
     TuiScrollbarComponent,
-    TuiSvgModule,
+    TuiSvgComponent,
 } from '@taiga-ui/core';
 import {TuiInputInlineModule} from '@taiga-ui/kit';
 
@@ -42,7 +42,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         TuiButtonDirective,
         TuiShortUrlPipe,
         TuiLinkDirective,
-        TuiSvgModule,
+        TuiSvgComponent,
         FormsModule,
         NgIf,
         AsyncPipe,

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MaskitoModule} from '@maskito/angular';
 import {
-    TuiSvgModule,
+    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -11,7 +11,7 @@ import {TuiInputModule} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        TuiSvgModule,
+        TuiSvgComponent,
         FormsModule,
         TuiInputModule,
         MaskitoModule,

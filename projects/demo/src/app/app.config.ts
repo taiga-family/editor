@@ -11,8 +11,9 @@ import {
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
 } from '@taiga-ui/addon-doc';
-import {TUI_SANITIZER, TuiDialogModule, TuiRootModule} from '@taiga-ui/core';
+import {TUI_SANITIZER, TuiDialogModule} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
@@ -28,7 +29,8 @@ export const appConfig: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        importProvidersFrom(TuiRootModule, TuiDialogModule),
+        importProvidersFrom(TuiDialogModule),
+        NG_EVENT_PLUGINS,
         {
             provide: TUI_SANITIZER,
             useClass: NgDompurifySanitizer,
