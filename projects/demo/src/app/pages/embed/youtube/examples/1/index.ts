@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiItemModule, tuiPure} from '@taiga-ui/cdk';
-import {TuiSvgModule} from '@taiga-ui/core';
+import {TuiSvgComponent} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
@@ -15,7 +15,7 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
 @Component({
     standalone: true,
     imports: [
-        TuiSvgModule,
+        TuiSvgComponent,
         ExampleTuiYoutubeToolComponent,
         ReactiveFormsModule,
         TuiItemModule,

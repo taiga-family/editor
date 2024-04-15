@@ -4,7 +4,7 @@ import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED, TuiDocMainModule} from '@taiga-ui/addon-doc';
 import {TuiPreviewModule} from '@taiga-ui/addon-preview';
-import {TuiLinkDirective, TuiModeModule, TuiRootModule} from '@taiga-ui/core';
+import {TuiLinkDirective, TuiRootComponent} from '@taiga-ui/core';
 import pkg from '@tinkoff/tui-editor/package.json';
 
 @Component({
@@ -12,8 +12,7 @@ import pkg from '@tinkoff/tui-editor/package.json';
     selector: 'app',
     imports: [
         RouterLink,
-        TuiRootModule,
-        TuiModeModule,
+        TuiRootComponent,
         TuiLinkDirective,
         TuiDocMainModule,
         TuiPreviewModule, // TODO: why?
