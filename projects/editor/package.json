@@ -14,9 +14,9 @@
     "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@maskito/angular": ">=2.2.0",
-        "@maskito/core": ">=2.2.0",
-        "@maskito/kit": ">=2.2.0",
+        "@maskito/angular": ">=2.3.1",
+        "@maskito/core": ">=2.3.1",
+        "@maskito/kit": ">=2.3.1",
         "@tiptap/core": ">=2.3.0",
         "@tiptap/extension-blockquote": ">=2.3.0",
         "@tiptap/extension-bold": ">=2.3.0",
