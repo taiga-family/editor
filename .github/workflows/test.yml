@@ -14,7 +14,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.55.10
       - uses: taiga-family/ci/actions/setup/node@v1.55.10
       - run: npx nx test editor
-      - uses: codecov/codecov-action@v4.3.0
+      - uses: codecov/codecov-action@v4.3.1
         with:
           directory: ./coverage/editor
           flags: editor
