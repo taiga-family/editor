@@ -6,8 +6,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {takeUntil} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 import {TuiPickerService} from '../../../services/picker.service';
 
@@ -17,7 +16,7 @@ import {TuiPickerService} from '../../../services/picker.service';
     templateUrl: './linear-picker.template.html',
     styleUrls: ['./linear-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiPickerService],
+    providers: [TuiPickerService],
 })
 export class TuiLinearPickerComponent {
     @Input()
@@ -28,7 +27,7 @@ export class TuiLinearPickerComponent {
 
     constructor() {
         inject(TuiPickerService)
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(takeUntilDestroyed())
             .subscribe(([x]) => {
                 this.value = x;
                 this.valueChange.emit(x);

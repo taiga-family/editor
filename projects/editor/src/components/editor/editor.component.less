@@ -23,8 +23,13 @@
 }
 
 .t-placeholder {
-    .textfield-placeholder();
-
+    display: block;
+    user-select: none;
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-02);
+    pointer-events: none;
+    will-change: transform;
+    transform: translateY(0);
     margin: 1rem 1rem -1rem;
     min-height: 1.625rem;
     width: 95%;

@@ -1,7 +1,13 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    inject,
+    ViewChild,
+} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiTextareaModule} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -9,7 +15,7 @@ import {
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
 import type {Editor} from '@tiptap/core';
-import {debounceTime, Subject, takeUntil} from 'rxjs';
+import {debounceTime, Subject} from 'rxjs';
 
 const markdown = `# h1 Heading 😎
 
@@ -55,14 +61,13 @@ const markdown = `# h1 Heading 😎
                 ),
             ],
         },
-        TuiDestroyService,
     ],
 })
 export default class ExampleComponent implements OnInit {
     @ViewChild(TuiEditorComponent)
     private readonly editorRef?: TuiEditorComponent;
 
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
 
     protected markdown$ = new Subject<string>();
 
@@ -72,7 +77,7 @@ export default class ExampleComponent implements OnInit {
 
     public ngOnInit(): void {
         this.markdown$
-            .pipe(debounceTime(500), takeUntil(this.destroy$))
+            .pipe(debounceTime(500), takeUntilDestroyed(this.destroyRef))
             .subscribe(value => this.editor?.commands.setContent(value));
     }
 

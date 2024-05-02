@@ -9,7 +9,6 @@ import {
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
@@ -23,7 +22,6 @@ import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
     private readonly sanitizer = inject(DomSanitizer);

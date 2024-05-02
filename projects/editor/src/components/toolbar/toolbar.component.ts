@@ -4,6 +4,7 @@ import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     EventEmitter,
     HostBinding,
@@ -14,16 +15,16 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     EMPTY_QUERY,
-    TuiDestroyService,
     TuiFocusableModule,
     tuiIsNativeFocusedIn,
     TuiItemModule,
 } from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {take, takeUntil} from 'rxjs';
+import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
@@ -85,7 +86,6 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService],
     host: {
         role: 'toolbar',
     },
@@ -98,7 +98,7 @@ export class TuiToolbarComponent {
     private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
 
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
-    private readonly destroy$ = inject(TuiDestroyService, {self: true});
+    private readonly destroyRef = inject(DestroyRef);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
@@ -248,7 +248,7 @@ export class TuiToolbarComponent {
         }
 
         this.imageLoader(file)
-            .pipe(take(1), takeUntil(this.destroy$))
+            .pipe(take(1), takeUntilDestroyed(this.destroyRef))
             .subscribe(image => this.addImage(image));
     }
 
@@ -265,7 +265,7 @@ export class TuiToolbarComponent {
             console.info(!!this.filesLoader, 'Please provide TUI_ATTACH_FILES_LOADER');
 
         this.filesLoader?.(files)
-            .pipe(take(1), takeUntil(this.destroy$))
+            .pipe(take(1), takeUntilDestroyed(this.destroyRef))
             .subscribe(attachedFiles => this.fileAttached.emit(attachedFiles));
     }
 

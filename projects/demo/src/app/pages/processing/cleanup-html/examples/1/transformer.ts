@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
+import {TuiValueTransformer} from '@taiga-ui/cdk';
 
 @Injectable()
-export class ExampleEditorCleanupHtmlTransformer extends AbstractTuiValueTransformer<string> {
+export class ExampleEditorCleanupHtmlTransformer extends TuiValueTransformer<string> {
     public fromControlValue(controlValue: string): string {
         return controlValue;
     }
