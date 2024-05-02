@@ -1,5 +1,6 @@
 import type {Editor} from '@tiptap/core';
 import MarkdownIt from 'markdown-it';
+// @ts-ignore
 import type {RenderRule} from 'markdown-it/lib/renderer';
 
 import {tuiElementFromString, tuiExtractElement, tuiUnwrapElement} from '../util/dom';

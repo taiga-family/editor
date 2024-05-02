@@ -1,3 +1,4 @@
+// @ts-ignore
 import type Token from 'markdown-it/lib/token';
 
 let disableCheckboxes = true;

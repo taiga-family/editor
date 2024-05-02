@@ -1,5 +1,5 @@
+import type {StateInline} from 'markdown-it';
 import markdownIt from 'markdown-it';
-import type StateInline from 'markdown-it/lib/rules_inline/state_inline';
 
 const md = markdownIt();
 
