@@ -131,7 +131,7 @@
         "@types/showdown": "2.0.6",
         "@types/webpack-env": "1.18.4",
         "core-js": "3.36.1",
-        "dompurify": "3.1.0",
+        "dompurify": "3.1.2",
         "express": "4.19.2",
         "highlight.js": "11.5.1",
         "husky": "9.0.11",
