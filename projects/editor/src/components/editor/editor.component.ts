@@ -10,6 +10,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
 import {
     AbstractTuiControl,
@@ -26,7 +27,7 @@ import {
     TuiScrollbarComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {delay, takeUntil} from 'rxjs';
+import {delay} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
@@ -111,7 +112,7 @@ export class TuiEditorComponent
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
 
     protected sub = this.editorLoaded$
-        .pipe(delay(0), takeUntil(this.destroy$))
+        .pipe(delay(0), takeUntilDestroyed())
         .subscribe(() => {
             this.hasMentionPlugin = !!this.editorService
                 .getOriginTiptapEditor()
@@ -172,7 +173,7 @@ export class TuiEditorComponent
         }
     }
 
-    public override ngOnDestroy(): void {
+    public ngOnDestroy(): void {
         this.editor?.destroy();
     }
 

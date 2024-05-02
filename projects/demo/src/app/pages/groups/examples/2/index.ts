@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDestroyService} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
@@ -15,7 +14,6 @@ import {
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [

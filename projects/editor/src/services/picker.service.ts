@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {ElementRef, inject, Injectable} from '@angular/core';
-import {TuiDestroyService, tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 
@@ -34,7 +35,7 @@ export class TuiPickerService extends Observable<TuiPoint> {
                       )
                     : mouseMove$;
             }),
-            takeUntil(inject(TuiDestroyService, {self: true})),
+            takeUntilDestroyed(),
         );
 
         super(subscriber => point$.subscribe(subscriber));

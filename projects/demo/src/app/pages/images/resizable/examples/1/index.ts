@@ -1,7 +1,8 @@
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_STACKBLITZ, TuiDestroyService} from '@taiga-ui/cdk';
+import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
@@ -9,7 +10,7 @@ import {
     TuiEditorSocketComponent,
     TuiEditorTool,
 } from '@tinkoff/tui-editor';
-import {switchMap, takeUntil} from 'rxjs';
+import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -22,7 +23,6 @@ import {switchMap, takeUntil} from 'rxjs';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
@@ -49,16 +49,14 @@ export default class ExampleComponent {
     protected control = new FormControl('');
 
     constructor() {
-        this.base64Image$
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
-            .subscribe(src => {
-                this.control.patchValue(
-                    `
+        this.base64Image$.pipe(takeUntilDestroyed()).subscribe(src => {
+            this.control.patchValue(
+                `
                     <img data-type="image-editor" src="${src}" width="300" alt="">
                     <p>Try to drag right border of image!</p>
                     <p>To change min/max size of image use token <code>TUI_IMAGE_EDITOR_OPTIONS</code>.
                 `,
-                );
-            });
+            );
+        });
     }
 }

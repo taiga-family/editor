@@ -8,8 +8,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiDestroyService} from '@taiga-ui/cdk';
-import {takeUntil} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 import {TuiPickerService} from '../../../services/picker.service';
 
@@ -20,7 +19,7 @@ import {TuiPickerService} from '../../../services/picker.service';
     templateUrl: './linear-multi-picker.template.html',
     styleUrls: ['./linear-multi-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TuiDestroyService, TuiPickerService],
+    providers: [TuiPickerService],
 })
 export class TuiLinearMultiPickerComponent {
     @Input()
@@ -36,7 +35,7 @@ export class TuiLinearMultiPickerComponent {
 
     constructor() {
         inject(TuiPickerService)
-            .pipe(takeUntil(inject(TuiDestroyService, {self: true})))
+            .pipe(takeUntilDestroyed())
             .subscribe(([x]) => this.onPicker(x));
     }
 

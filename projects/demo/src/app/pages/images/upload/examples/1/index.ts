@@ -10,7 +10,6 @@ import type {AbstractControl, ValidationErrors} from '@angular/forms';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_IS_STACKBLITZ,
-    TuiDestroyService,
     TuiValidationError,
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
@@ -43,7 +42,6 @@ import {ImgbbService} from './imgbb.service';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        TuiDestroyService,
         {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
@@ -100,7 +98,5 @@ export default class ExampleComponent {
         !this.doc.hasFocus() || // possible that file dialog is open
         value.length
             ? null
-            : {
-                  empty: new TuiValidationError('ERROR: content must not be empty'),
-              };
+            : {empty: new TuiValidationError('ERROR: content must not be empty')};
 }
