@@ -1,6 +1,6 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
     TuiDataListModule,
@@ -34,7 +34,7 @@ export enum TuiTableCommands {
         TuiButtonDirective,
         TuiHintModule,
         TuiHostedDropdownModule,
-        TuiLetModule,
+        TuiLetDirective,
     ],
     templateUrl: './table-row-column-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

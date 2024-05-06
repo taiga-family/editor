@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiInputColorComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -17,7 +18,6 @@ class TestComponent {
 
     protected color = '#0000ff';
 }
-
 describe('InputColor', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;

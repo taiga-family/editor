@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiActiveZoneDirective, TuiLetModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
 
@@ -16,7 +16,7 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
     imports: [
         TuiHostedDropdownModule,
         AsyncPipe,
-        TuiLetModule,
+        TuiLetDirective,
         TuiButtonDirective,
         TuiHintModule,
         NgIf,

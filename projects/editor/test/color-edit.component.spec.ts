@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {TuiColorEditComponent} from '@tinkoff/tui-editor';
 
 @Component({
@@ -16,7 +17,6 @@ class TestComponent {
 
     protected color = [255, 0, 0, 1];
 }
-
 describe('ColorEdit', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: TestComponent;

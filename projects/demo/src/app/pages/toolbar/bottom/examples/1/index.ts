@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
 import {
@@ -16,8 +16,7 @@ import {
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (_injector: Injector) => [
+            useValue: [
                 import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
                 import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),

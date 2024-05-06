@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiEditLinkParseUrl} from '@tinkoff/tui-editor';
 
 describe('tuiEditLinkParseUrl', () => {

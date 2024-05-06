@@ -1,6 +1,7 @@
+// cspell:disable
+import {describe, expect, it} from '@jest/globals';
 import {tuiLegacyEditorConverter} from '@tinkoff/tui-editor';
 
-// cspell:disable
 describe('tuiLegacyEditorConverter', () => {
     it('works', () => {
         const before = `WYSIWYG (What you see is what you get) — Rich Text Editor for using with Angular forms.

@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {tuiParseGradient} from '@tinkoff/tui-editor';
 
 describe('tuiParseGradient', () => {
