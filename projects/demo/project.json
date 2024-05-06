@@ -8,7 +8,7 @@
         "i18n": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "cd taiga-ui && npx nx build i18n --output-style=stream"
+                "command": "npx nx build i18n"
             }
         },
         "build": {

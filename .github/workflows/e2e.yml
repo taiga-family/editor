@@ -30,7 +30,7 @@ jobs:
           npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e demo-playwright -- --update-snapshots
+        run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
       - name: Download ${{ env.DIST_NEXT }} for serve locally
         run: |
