@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiLetModule} from '@taiga-ui/cdk';
+import {TuiLetDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {combineLatest, map} from 'rxjs';
 
@@ -16,7 +16,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
         TuiButtonDirective,
         TuiHostedDropdownModule,
         AsyncPipe,
-        TuiLetModule,
+        TuiLetDirective,
         NgIf,
     ],
     templateUrl: './align-content.template.html',
