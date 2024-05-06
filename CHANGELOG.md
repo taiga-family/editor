@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.16-alpha.0 (2024-05-06)
+
+**Note:** Version bump only for package tui-editor
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.15-alpha.0 (2024-05-02)
 
 **Note:** Version bump only for package tui-editor
