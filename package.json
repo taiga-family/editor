@@ -18,8 +18,8 @@
     ],
     "workspaces": [
         "projects/*",
-        "taiga-ui/*",
-        "taiga-ui/projects/*"
+        "taiga-ui/projects/*",
+        "taiga-ui"
     ],
     "scripts": {
         "prepare": "husky",
