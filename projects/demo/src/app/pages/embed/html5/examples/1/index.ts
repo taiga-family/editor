@@ -1,10 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    Injector,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -29,8 +23,7 @@ import {map} from 'rxjs';
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (_injector: Injector) => [
+            useValue: [
                 import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
                 import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
@@ -43,7 +36,6 @@ import {map} from 'rxjs';
         },
         {
             provide: TUI_ATTACH_FILES_LOADER,
-            deps: [],
             useFactory:
                 () =>
                 ([file]: File[]): Observable<
