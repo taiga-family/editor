@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.26.0 (2024-05-07)
+
+### Bug Fixes
+
+- reset counter list for nested li inside details ([#998](https://github.com/taiga-family/tui-editor/issues/998))
+  ([0482ffa](https://github.com/taiga-family/tui-editor/commit/0482ffa8cb8c95bed5d637517a48062113f19a58))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 1.25.1 (2024-04-08)
 
 ### Bug Fixes
