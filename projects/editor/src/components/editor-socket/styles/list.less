@@ -64,10 +64,30 @@ ol:not([data-type]) {
 ol:not([data-type]) > li:before {
     content: counters(item, '.') '.';
     display: block;
-    margin: 0 0.75rem 0 -1.5rem;
     counter-increment: item;
+    margin: 0 0.75rem 0 -1.5rem;
     color: var(--tui-base-05);
     vertical-align: top;
     float: left;
     white-space: nowrap;
+}
+
+/* TODO: need more investigate, how refactor for deep details-content */
+
+[data-type='details-content'] ol {
+    counter-reset: details-item;
+}
+
+[data-type='details-content'] ol:not([data-type]) > li:before {
+    content: counters(details-item, '.') '.';
+    counter-increment: details-item;
+}
+
+[data-type='details-content'] ol [data-type='details-content'] ol {
+    counter-reset: details-item2;
+}
+
+[data-type='details-content'] ol:not([data-type]) > li [data-type='details-content'] ol:not([data-type]) > li:before {
+    content: counters(details-item2, '.') '.';
+    counter-increment: details-item2;
 }
