@@ -9,8 +9,8 @@ jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.56.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.56.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.56.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.56.2
 
       - name: Prepare demo before deploy from snapshots
         run: |
@@ -24,7 +24,7 @@ jobs:
       - name: Debug output
         run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: taiga-family/ci/actions/deploy/github-pages@v1.56.1
+      - uses: taiga-family/ci/actions/deploy/github-pages@v1.56.2
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           folder: dist/demo/browser

@@ -24,14 +24,14 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.56.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.56.2
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@v1.56.1
-      - uses: taiga-family/ci/actions/setup/config/git@v1.56.1
+      - uses: taiga-family/ci/actions/setup/node@v1.56.2
+      - uses: taiga-family/ci/actions/setup/config/git@v1.56.2
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.56.1
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.56.2
         with:
           token: ${{ secrets.TINKOFF_SCOPE_NPM_TOKEN }}
 
@@ -61,7 +61,7 @@ jobs:
           echo "version=v$(node -p "require('./projects/editor/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.56.1
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.56.2
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
