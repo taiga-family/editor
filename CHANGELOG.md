@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.28.0 (2024-05-08)
+
+### Bug Fixes
+
+- drop constructor
+  ([d8b8052](https://github.com/taiga-family/tui-editor/commit/d8b805282ab2a3e72de52c772719ef29a1f41709))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.27.0 (2024-05-08)
 
 **Note:** Version bump only for package tui-editor
