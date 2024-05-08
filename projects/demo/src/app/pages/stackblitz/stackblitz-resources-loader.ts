@@ -2,7 +2,6 @@ import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 
 interface TuiProjectFiles {
     angularJson: string;
-    appModuleTs: string;
     indexHtml: string;
     mainTs: string;
     polyfills: string;
@@ -18,7 +17,6 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
             indexHtmlContent,
             polyfillsContent,
             stylesContent,
-            appModuleTsContent,
         ]: string[] = await Promise.all(
             [
                 import(`./project-files/configs.md?raw`),
@@ -26,7 +24,6 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
                 import(`./project-files/src/index.html.md?raw`),
                 import(`./project-files/src/polyfills.ts.md?raw`),
                 import(`./project-files/src/styles.less.md?raw`),
-                import(`./project-files/src/app/app.module.ts.md?raw`),
             ].map(tuiRawLoad),
         );
 
@@ -35,8 +32,7 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         const [indexHtml] = tuiTryParseMarkdownCodeBlock(indexHtmlContent);
         const [polyfills] = tuiTryParseMarkdownCodeBlock(polyfillsContent);
         const [styles] = tuiTryParseMarkdownCodeBlock(stylesContent);
-        const [appModuleTs] = tuiTryParseMarkdownCodeBlock(appModuleTsContent);
 
-        return {angularJson, tsconfig, mainTs, indexHtml, polyfills, appModuleTs, styles};
+        return {angularJson, tsconfig, mainTs, indexHtml, polyfills, styles};
     }
 }

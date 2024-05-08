@@ -3,18 +3,11 @@ import stackblitz, {OpenOptions, Project} from '@stackblitz/sdk';
 import {TuiCodeEditor} from '@taiga-ui/addon-doc';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
-import {TsFileComponentParser, TsFileModuleParser} from './classes';
+import {TsFileComponentParser} from './classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
 import {StackblitzEditButtonComponent} from './starter/stackblitz-edit-button.component';
-import {
-    appPrefix,
-    getComponentsClassNames,
-    getSupportFiles,
-    getSupportModules,
-    prepareLess,
-    prepareSupportFiles,
-} from './utils';
+import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
 const APP_COMP_META = {
     SELECTOR: `my-app`,
@@ -42,28 +35,9 @@ export class TuiStackblitzService implements TuiCodeEditor {
             return;
         }
 
-        const {appModuleTs} =
-            await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
-
-        const appModule = new TsFileModuleParser(appModuleTs);
         const appCompTs = new TsFileComponentParser(content.TypeScript);
         const supportFilesTuples = getSupportFiles(content);
-        const supportModulesTuples = getSupportModules(supportFilesTuples);
-        const supportCompClassNames = getComponentsClassNames(supportFilesTuples);
         const modifiedSupportFiles = prepareSupportFiles(supportFilesTuples);
-
-        supportCompClassNames.forEach(([fileName, className]) => {
-            const insideAnotherModule = supportModulesTuples.some(([_, module]) =>
-                module.hasDeclarationEntity(className),
-            );
-
-            if (insideAnotherModule) {
-                return;
-            }
-
-            appModule.addImport(className, `./${fileName}`);
-            appModule.addDeclaration(className);
-        });
 
         appCompTs.selector = APP_COMP_META.SELECTOR;
         appCompTs.templateUrl = APP_COMP_META.TEMPLATE_URL;
@@ -77,7 +51,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
             files: {
                 ...(await this.getBaseAngularProjectFiles()),
                 ...modifiedSupportFiles,
-                [appPrefix`app.module.ts`]: appModule.toString(),
                 [appPrefix`app.component.ts`]: appCompTs.toString(),
                 [appPrefix`app.component.html`]: `<tui-root>\n\n${content.HTML}\n</tui-root>`,
                 [appPrefix`app.component.less`]: prepareLess(content.LESS || ``),
@@ -104,7 +77,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     }
 
     private async getBaseAngularProjectFiles(): Promise<Project['files']> {
-        const {tsconfig, angularJson, mainTs, polyfills, indexHtml, styles, appModuleTs} =
+        const {tsconfig, angularJson, mainTs, polyfills, indexHtml, styles} =
             await AbstractTuiStackblitzResourcesLoader.getProjectFiles();
 
         return {
@@ -114,7 +87,6 @@ export class TuiStackblitzService implements TuiCodeEditor {
             'src/polyfills.ts': polyfills,
             'src/index.html': indexHtml,
             'src/styles.less': styles,
-            [appPrefix`app.module.ts`]: appModuleTs.toString(),
         };
     }
 
