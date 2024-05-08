@@ -27,7 +27,7 @@ declare module '@tiptap/core' {
     }
 }
 
-const IMAGE_EDITOR_PARSE_META = [{tag: `img[data-type="image-editor"]`}];
+const IMAGE_EDITOR_PARSE_META = [{tag: `img`}];
 
 const DEFAULT_IMAGE_ATTRS = {
     src: {
@@ -127,15 +127,19 @@ export function createImageEditorExtension<T, K>(
         },
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
-            return [
-                `img`,
-                mergeAttributes(HTMLAttributes, {'data-type': `image-editor`}),
-            ];
+            return [`img`, mergeAttributes(HTMLAttributes)];
         },
 
         addNodeView(): NodeViewRenderer {
             return (props: NodeViewRendererProps) =>
-                new TuiNodeView(TuiImageEditorComponent, props, {injector, ...props});
+                Reflect.construct(TuiNodeView, [
+                    TuiImageEditorComponent,
+                    props,
+                    {
+                        injector,
+                        ...props,
+                    },
+                ]);
         },
 
         addCommands(): Partial<RawCommands> {
