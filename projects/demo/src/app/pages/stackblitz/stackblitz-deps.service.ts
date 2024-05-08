@@ -25,6 +25,7 @@ export class StackblitzDepsService {
             '@tinkoff/ng-polymorpheus': 'latest',
             '@tinkoff/ng-dompurify': 'latest',
             dompurify: 'latest',
+            punycode: 'latest',
             typescript: '5.3.x',
             '@tinkoff/tui-editor': '1.x.x',
         };

@@ -1,10 +1,10 @@
 ```ts
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injector, INJECTOR} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRootModule} from '@taiga-ui/core';
 import {
-  defaultEditorExtensions,
-  defaultEditorTools,
+  TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
+  TUI_EDITOR_DEFAULT_EXTENSIONS,
   TUI_EDITOR_EXTENSIONS,
   TuiEditorModule,
   TuiEditorSocketModule,
@@ -21,13 +21,19 @@ import {
   providers: [
     {
       provide: TUI_EDITOR_EXTENSIONS,
-      useValue: defaultEditorExtensions,
+      deps: [INJECTOR],
+      useFactory: (injector: Injector) => [
+        ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+        import('@tinkoff/tui-editor/extensions/image-editor').then(({tuiCreateImageEditorExtension}) =>
+          tuiCreateImageEditorExtension({injector}),
+        ),
+      ],
     },
   ],
 })
 export class AppComponent {
   readonly control = new FormControl();
 
-  readonly tools: TuiEditorTool[] = defaultEditorTools;
+  readonly tools: TuiEditorTool[] = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;
 }
 ```
