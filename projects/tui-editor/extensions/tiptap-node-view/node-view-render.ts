@@ -5,7 +5,6 @@ import {
     Editor,
     NodeView,
     NodeViewProps,
-    NodeViewRenderer,
     NodeViewRendererOptions,
     NodeViewRendererProps,
 } from '@tiptap/core';
@@ -175,15 +174,4 @@ export class TuiNodeView extends NodeView<
             contentElement.appendChild(this.contentDOMElement);
         }
     }
-}
-
-/**
- * @deprecated
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export function TuiNodeViewRenderer(
-    component: Type<TuiNodeViewNgComponent>,
-    options: Partial<TuiNodeViewRendererOptions>,
-): NodeViewRenderer {
-    return (props: NodeViewRendererProps) => new TuiNodeView(component, props, options);
 }

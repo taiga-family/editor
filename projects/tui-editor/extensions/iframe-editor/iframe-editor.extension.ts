@@ -71,7 +71,11 @@ export const createIframeEditorExtension = (injector: Injector): Node =>
 
         addNodeView(): NodeViewRenderer {
             return (props: NodeViewRendererProps) =>
-                new TuiNodeView(TuiIframeEditorComponent, props, {injector, ...props});
+                Reflect.construct(TuiNodeView, [
+                    TuiIframeEditorComponent,
+                    props,
+                    {injector, ...props},
+                ]);
         },
 
         addCommands(): Partial<RawCommands> {
