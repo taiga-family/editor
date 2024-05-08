@@ -47,7 +47,7 @@ export default class ExampleComponent {
 
     constructor() {
         this.control.patchValue(
-            `<p>Small image</p><img data-type="image-editor" src="${this.relativePath}assets/images/lumberjack.png" width="300"><p>Big image</p><img data-type="image-editor" src="${this.relativePath}assets/images/big-wallpaper.jpg" width="500">`,
+            `<p>Small image</p><img src="${this.relativePath}assets/images/lumberjack.png" width="300" /><p>Big image</p><img src="${this.relativePath}assets/images/big-wallpaper.jpg" width="500" />`,
         );
     }
 }
