@@ -30,15 +30,15 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": false,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
-              "extractLicenses": true,
+              "extractLicenses": false,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": false
             }
           }
         },
@@ -59,25 +59,16 @@
 
 ```json
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
     "sourceMap": false,
     "declaration": false,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
     "experimentalDecorators": true,
-    "module": "es2017",
-    "target": "es2017",
+    "module": "es2020",
+    "target": "es6",
     "moduleResolution": "node",
     "importHelpers": true,
-    "typeRoots": ["node_modules/@types"],
     "lib": ["esnext", "dom"]
-  },
-  "angularCompilerOptions": {
-    "enableIvy": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
 }
 ```

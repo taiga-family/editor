@@ -6,7 +6,6 @@ import {
     NodeView,
     NodeViewProps,
     NodeViewRendererOptions,
-    NodeViewRendererProps,
 } from '@tiptap/core';
 import type {Node as ProseMirrorNode} from 'prosemirror-model';
 import type {Decoration} from 'prosemirror-view';
@@ -50,19 +49,6 @@ export class TuiNodeView extends NodeView<
 > {
     renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
     contentDOMElement: HTMLElement | null = null;
-
-    /**
-     * @caretaker note:
-     * Class constructor NodeView cannot be invoked without 'new'
-     */
-    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
-    constructor(
-        component: Type<TuiNodeViewNgComponent>,
-        props: NodeViewRendererProps,
-        options?: Partial<TuiNodeViewRendererOptions>,
-    ) {
-        super(component, props, options);
-    }
 
     override mount(): void {
         const injector = this.options.injector;
