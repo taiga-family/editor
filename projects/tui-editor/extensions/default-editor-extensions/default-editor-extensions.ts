@@ -13,9 +13,6 @@ export const defaultEditorExtensions = [
     import(`@tiptap/extension-subscript`).then(({default: Subscript}) => Subscript),
     import(`@tiptap/extension-superscript`).then(({default: Superscript}) => Superscript),
     import(`@tinkoff/tui-editor/extensions/font-color`).then(({FontColor}) => FontColor),
-    import(`@tiptap/extension-image`).then(({default: Image}) =>
-        Image.configure({inline: true, allowBase64: true}),
-    ),
     import(`@tinkoff/tui-editor/extensions/link`).then(({TuiLink}) => TuiLink),
     import(`@tinkoff/tui-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,

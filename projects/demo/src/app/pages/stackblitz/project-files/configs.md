@@ -64,8 +64,9 @@
     "declaration": false,
     "downlevelIteration": false,
     "experimentalDecorators": true,
-    "module": "es2020",
-    "target": "es6",
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "target": "es2022",
     "moduleResolution": "node",
     "importHelpers": true,
     "lib": ["esnext", "dom"]

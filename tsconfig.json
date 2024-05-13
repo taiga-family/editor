@@ -4,6 +4,8 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "lib": ["es2021", "dom"],
+        "module": "esnext",
+        "target": "es2021",
         "typeRoots": ["node_modules/@types", "projects/tui-editor/types"],
         "paths": {
             "@tinkoff/tui-editor": ["./projects/tui-editor/index"],
