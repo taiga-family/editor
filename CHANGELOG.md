@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.29.0 (2024-05-13)
+
+### Features
+
+- drop tiptap image extension favor own
+  ([81bf545](https://github.com/taiga-family/tui-editor/commit/81bf54544557680544d877b795d8e9e28ec4aba2))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.28.0 (2024-05-08)
 
 ### Bug Fixes
