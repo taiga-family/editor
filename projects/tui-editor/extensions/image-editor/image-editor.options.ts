@@ -1,8 +1,8 @@
 import {InjectionToken} from '@angular/core';
 
 export interface TuiImageEditorOptions {
-    maxWidth: number;
-    minWidth: number;
+    maxWidth: number | null;
+    minWidth: number | null;
 }
 
 export interface TuiEditableImage {
@@ -10,7 +10,7 @@ export interface TuiEditableImage {
     draggable?: '' | null;
     src: string;
     title?: string;
-    width?: number | string;
+    width?: number | string | null;
 }
 
 /**
@@ -44,7 +44,7 @@ export const TUI_IMAGE_EDITOR_OPTIONS = new InjectionToken<TuiImageEditorOptions
     `[TUI_IMAGE_EDITOR_OPTIONS]`,
     {
         factory: () => ({
-            minWidth: 100,
+            minWidth: null,
             maxWidth: Infinity,
         }),
     },

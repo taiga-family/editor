@@ -16,12 +16,12 @@
     <img
         contenteditable="false"
         [alt]="alt"
+        [attr.width]="width"
         [class.ProseMirror-selectednode]="focused"
         [src]="src"
-        [style.max-width.px]="options.maxWidth"
-        [style.min-width.px]="options.minWidth"
+        [style.max-width.px]="maxWidth"
+        [style.min-width.px]="minWidth"
         [title]="title"
-        [width]="width"
     />
 </tui-editor-resizable>
 <p

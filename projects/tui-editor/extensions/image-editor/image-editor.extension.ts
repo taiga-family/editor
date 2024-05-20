@@ -35,7 +35,7 @@ const DEFAULT_IMAGE_ATTRS = {
         keepOnSplit: false,
     },
     width: {
-        default: 300,
+        default: null,
         keepOnSplit: false,
     },
     alt: {

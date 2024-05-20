@@ -55,8 +55,8 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
     }
 
     constructor(
-        @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly minWidth: number | null,
-        @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly maxWidth: number | null,
+        @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly legacyMinWidth: number | null,
+        @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly legacyMaxWidth: number | null,
         @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly options: TuiImageEditorOptions,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
@@ -75,11 +75,16 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         }
     }
 
-    updateSize([width]: readonly [width: number, height: number]): void {
-        const minWidth = this.minWidth ?? this.options.minWidth;
-        const maxWidth = this.maxWidth ?? this.options.maxWidth;
+    get minWidth(): number {
+        return (this.legacyMinWidth ?? this.options.minWidth) || 0;
+    }
 
-        this.currentWidth = Math.max(minWidth, Math.min(maxWidth, width));
+    get maxWidth(): number {
+        return (this.legacyMaxWidth ?? this.options.maxWidth) || 0;
+    }
+
+    updateSize([width]: readonly [width: number, height: number]): void {
+        this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
 
         // force update
