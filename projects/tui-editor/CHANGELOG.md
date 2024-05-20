@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.31.0 (2024-05-20)
+
+### Features
+
+- drop default minimum size for images less than 300px
+  ([f52a8bc](https://github.com/taiga-family/tui-editor/commit/f52a8bcdb2a1f715f54fbe241582504678d3b095))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.30.0 (2024-05-13)
 
 **Note:** Version bump only for package @tinkoff/tui-editor
