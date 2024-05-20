@@ -39,12 +39,16 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         return null;
     }
 
-    public updateSize([width]: readonly [width: number, height: number]): void {
-        this.currentWidth = Math.max(
-            this.options.minWidth,
-            Math.min(this.options.maxWidth, width),
-        );
+    public get minWidth(): number {
+        return this.options.minWidth || 0;
+    }
 
+    public get maxWidth(): number {
+        return this.options.maxWidth || 0;
+    }
+
+    public updateSize([width]: readonly [width: number, height: number]): void {
+        this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
 
         // force update
