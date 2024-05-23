@@ -110,7 +110,7 @@
         "@nx/jest": "19.0.6",
         "@nx/node": "19.0.6",
         "@nx/workspace": "19.0.6",
-        "@playwright/test": "1.44.0",
+        "@playwright/test": "1.44.1",
         "@stackblitz/sdk": "1.10.0",
         "@swc-node/register": "1.9.1",
         "@swc/core": "1.5.7",
