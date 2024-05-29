@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
 import {
     TUI_IFRAME_EDITOR_OPTIONS,
@@ -24,6 +25,7 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
     constructor(
         @Inject(TUI_IFRAME_EDITOR_OPTIONS) readonly options: TuiEditableIframeOptions,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+        @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
     ) {
         super();
     }
@@ -42,7 +44,8 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
         this.attrs.width = this.currentWidth;
         this.attrs.height = this.currentHeight;
 
-        // force update
-        this.editor.commands.setContent(this.editor.getJSON());
+        this.el.nativeElement.dispatchEvent(
+            new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+        );
     }
 }

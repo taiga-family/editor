@@ -11,6 +11,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
 import {
     TUI_EDITOR_MAX_IMAGE_WIDTH,
@@ -87,8 +88,9 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
 
-        // force update
-        this.editor.commands.setContent(this.editor.getJSON());
+        this.el.nativeElement.dispatchEvent(
+            new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+        );
     }
 
     private selectFakeText(): void {

@@ -7,6 +7,7 @@ import {
     EventEmitter,
     Inject,
     Input,
+    NgZone,
     OnDestroy,
     Optional,
     Output,
@@ -24,11 +25,12 @@ import {
     TuiBooleanHandler,
     TuiFocusableElementAccessor,
     TuiStringHandler,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiToolbarComponent} from '@tinkoff/tui-editor/components/toolbar';
-import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
+import {defaultEditorTools, TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 import {
     TuiTiptapEditorDirective,
     TuiTiptapEditorService,
@@ -48,8 +50,8 @@ import {
     TuiSelectionState,
 } from '@tinkoff/tui-editor/utils';
 import {Editor} from '@tiptap/core';
-import {Observable} from 'rxjs';
-import {delay, takeUntil} from 'rxjs/operators';
+import {fromEvent, Observable} from 'rxjs';
+import {delay, takeUntil, throttleTime} from 'rxjs/operators';
 
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
@@ -105,6 +107,7 @@ export class TuiEditorComponent
         @Inject(TUI_EDITOR_VALUE_TRANSFORMER)
         transformer: AbstractTuiValueTransformer<string> | null,
         @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
+        @Inject(NgZone) private readonly zone: NgZone,
     ) {
         super(control, cdr, transformer);
 
@@ -116,6 +119,7 @@ export class TuiEditorComponent
                 );
 
             this.patchContentEditableElement();
+            this.listenResizeEvents();
         });
     }
 
@@ -283,5 +287,14 @@ export class TuiEditorComponent
             'spellcheck',
             String(this.options.spellcheck),
         );
+    }
+
+    private listenResizeEvents(): void {
+        this.el?.nativeElement &&
+            fromEvent(this.el?.nativeElement, TUI_EDITOR_RESIZE_EVENT)
+                .pipe(throttleTime(0), tuiZonefree(this.zone), takeUntil(this.destroy$))
+                .subscribe(() =>
+                    this.editorService.valueChange$.next(this.editorService.getHTML()),
+                );
     }
 }
