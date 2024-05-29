@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.32.0 (2024-05-29)
+
+### Bug Fixes
+
+- support resize multiple images inside single paragraph
+  ([d813f6c](https://github.com/taiga-family/tui-editor/commit/d813f6c6232cb05df261213509c94fe82f8eb95a))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # 1.31.0 (2024-05-20)
 
 ### Features
