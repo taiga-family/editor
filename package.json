@@ -113,7 +113,7 @@
         "@playwright/test": "1.44.1",
         "@stackblitz/sdk": "1.10.0",
         "@swc-node/register": "1.9.1",
-        "@swc/core": "1.5.7",
+        "@swc/core": "1.5.22",
         "@swc/helpers": "0.5.11",
         "@taiga-ui/browserslist-config": "0.6.0",
         "@taiga-ui/commitlint-config": "0.7.5",
