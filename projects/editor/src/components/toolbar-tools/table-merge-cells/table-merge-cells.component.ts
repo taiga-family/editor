@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHintModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -10,7 +10,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-table-merge-cells',
-    imports: [TuiLetDirective, AsyncPipe, NgIf, TuiButtonDirective, TuiHintModule],
+    imports: [TuiLetDirective, AsyncPipe, NgIf, TuiButtonDirective, TuiHint],
     templateUrl: './table-merge-cells.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {TuiDocExampleModule, TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 @Component({
     standalone: true,
-    imports: [TuiDocExampleModule, TuiDocPageModule],
+    imports: [TuiAddonDoc],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

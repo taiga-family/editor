@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {combineLatest, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -12,7 +12,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     standalone: true,
     selector: 'tui-align-content',
     imports: [
-        TuiHintModule,
+        TuiHint,
         TuiButtonDirective,
         TuiHostedDropdownModule,
         AsyncPipe,

@@ -7,12 +7,12 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiHintModule} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tui-palette',
-    imports: [KeyValuePipe, NgForOf, TuiHintModule],
+    imports: [KeyValuePipe, NgForOf, TuiHint],
     templateUrl: './palette.template.html',
     styleUrls: ['./palette.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

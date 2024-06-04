@@ -13,9 +13,9 @@ import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
+    TuiDataList,
     TuiGroupDirective,
-    TuiHintModule,
+    TuiHint,
     TuiHostedDropdownModule,
     TuiSvgComponent,
 } from '@taiga-ui/core';
@@ -54,9 +54,9 @@ const ICONS: Record<TuiGradientDirection, string> = {
         TuiHostedDropdownModule,
         TuiButtonDirective,
         TuiSvgComponent,
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
-        TuiHintModule,
+        TuiHint,
         TuiLinearMultiPickerComponent,
         TuiColorPickerComponent,
         TuiColorEditComponent,

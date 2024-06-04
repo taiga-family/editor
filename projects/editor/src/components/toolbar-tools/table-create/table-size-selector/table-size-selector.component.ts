@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiRepeatTimesModule} from '@taiga-ui/cdk';
+import {TuiRepeatTimesDirective} from '@taiga-ui/cdk';
 import {tuiGetViewportWidth} from '@taiga-ui/core';
 
 const MAX_COLS_NUMBER = 15;
@@ -16,7 +16,7 @@ const MIN_DISTANCE_PX = 70;
 @Component({
     standalone: true,
     selector: 'tui-table-size-selector',
-    imports: [TuiRepeatTimesModule],
+    imports: [TuiRepeatTimesDirective],
     templateUrl: './table-size-selector.template.html',
     styleUrls: ['./table-size-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

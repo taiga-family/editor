@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiDocPageModule} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 const html = '<b>HTML</b><p>with a paragraph</p><div>a div</div>and a plain text node';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, FormsModule, TuiDocPageModule],
+    imports: [ReactiveFormsModule, FormsModule, TuiAddonDoc],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

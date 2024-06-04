@@ -6,11 +6,11 @@
 </button>
 <ng-container *ngIf="editor.stateChange$ | async" />
 <div
-    [tuiFocusable]="focusable"
+    [tabIndex]="focusable ? 0 : -1"
     (focus)="onTopFocus()"
 ></div>
 <div
-    [tuiFocusable]="focusable"
+    [tabIndex]="focusable ? 0 : -1"
     (focus)="onBottomFocus()"
 ></div>
 <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
@@ -179,7 +179,7 @@
                 class="t-file-upload"
                 [accept]="attachOptions.accept"
                 [multiple]="attachOptions.multiple"
-                [tuiFocusable]="false"
+                [tabIndex]="-1"
                 (change)="onAttach(fileUpload)"
             />
         </ng-container>
@@ -286,7 +286,7 @@
                 accept="image/*"
                 type="file"
                 class="t-image"
-                [tuiFocusable]="false"
+                [tabIndex]="-1"
                 (change)="onImage(image)"
             />
         </div>

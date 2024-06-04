@@ -1,24 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TuiDocCodeModule,
-    TuiDocDemoModule,
-    TuiDocDocumentationModule,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective, TuiNotificationModule} from '@taiga-ui/core';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
+import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
 import {TuiColorPickerComponent} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
     imports: [
-        TuiDocPageModule,
-        TuiDocExampleModule,
-        TuiNotificationModule,
-        TuiDocDemoModule,
-        TuiDocDocumentationModule,
-        TuiDocCodeModule,
+        TuiAddonDoc,
+        TuiNotificationComponent,
         TuiLinkDirective,
         TuiColorPickerComponent,
     ],

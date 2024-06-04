@@ -13,8 +13,8 @@ import {
     TuiValidationError,
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
-import {TuiErrorModule, TuiLoaderModule} from '@taiga-ui/core';
-import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
+import {TuiErrorComponent, TuiLoaderComponent} from '@taiga-ui/core';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -30,12 +30,12 @@ import {ImgbbService} from './imgbb.service';
 @Component({
     standalone: true,
     imports: [
-        TuiErrorModule,
-        TuiLoaderModule,
+        TuiErrorComponent,
+        TuiLoaderComponent,
         AsyncPipe,
         TuiValidatorDirective,
         ReactiveFormsModule,
-        TuiFieldErrorPipeModule,
+        TuiFieldErrorPipe,
         TuiEditorSocketComponent,
         TuiEditorComponent,
     ],

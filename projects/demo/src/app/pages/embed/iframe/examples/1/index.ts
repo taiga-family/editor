@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/cor
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TUI_IS_E2E, TuiItemModule, tuiPure} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -18,7 +18,7 @@ import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
         ExampleTuiEmbedToolComponent,
         TuiSvgComponent,
         ReactiveFormsModule,
-        TuiItemModule,
+        TuiItemDirective,
         TuiEditorComponent,
     ],
     templateUrl: './index.html',

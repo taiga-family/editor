@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiAutoFocusDirective, tuiPure} from '@taiga-ui/cdk';
-import {TuiDataListModule, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 
 export interface User {
@@ -20,7 +20,7 @@ export interface User {
     standalone: true,
     selector: 'mentions',
     imports: [
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
         TuiInitialsPipe,
         TuiAvatarComponent,

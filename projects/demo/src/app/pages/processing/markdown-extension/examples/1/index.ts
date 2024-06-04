@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiTextareaModule} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,

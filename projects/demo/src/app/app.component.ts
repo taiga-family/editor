@@ -2,21 +2,15 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_DOC_PAGE_LOADED, TuiDocMainModule} from '@taiga-ui/addon-doc';
-import {TuiPreviewModule} from '@taiga-ui/addon-preview';
+import {TUI_DOC_PAGE_LOADED, TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiRootComponent} from '@taiga-ui/core';
+import {TuiPreview} from '@taiga-ui/kit';
 import pkg from '@tinkoff/tui-editor/package.json';
 
 @Component({
     standalone: true,
     selector: 'app',
-    imports: [
-        RouterLink,
-        TuiRootComponent,
-        TuiLinkDirective,
-        TuiDocMainModule,
-        TuiPreviewModule, // TODO: why?
-    ],
+    imports: [RouterLink, TuiRootComponent, TuiLinkDirective, TuiAddonDoc, TuiPreview],
     templateUrl: './app.component.html',
     styleUrls: ['./app.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

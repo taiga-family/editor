@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiPreviewModule} from '@taiga-ui/addon-preview';
 import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
+import {TuiPreview} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
@@ -17,7 +17,7 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
     imports: [
         ImagePreviewExampleComponent,
         ReactiveFormsModule,
-        TuiPreviewModule,
+        TuiPreview,
         TuiEditorSocketComponent,
         TuiEditorImagePreviewDirective,
         TuiEditorComponent,
