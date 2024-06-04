@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiLoaderModule} from '@taiga-ui/core';
+import {TuiLoaderComponent} from '@taiga-ui/core';
 import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
@@ -17,7 +17,7 @@ import {FileIoService} from './filesio.service';
 @Component({
     standalone: true,
     imports: [
-        TuiLoaderModule,
+        TuiLoaderComponent,
         AsyncPipe,
         ReactiveFormsModule,
         TuiEditorComponent,

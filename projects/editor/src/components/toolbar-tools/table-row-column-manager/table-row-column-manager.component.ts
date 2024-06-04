@@ -3,8 +3,8 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetDirective} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
-    TuiHintModule,
+    TuiDataList,
+    TuiHint,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import {map} from 'rxjs';
@@ -29,10 +29,10 @@ export enum TuiTableCommands {
     selector: 'tui-table-row-column-manager',
     imports: [
         NgForOf,
-        TuiDataListModule,
+        TuiDataList,
         AsyncPipe,
         TuiButtonDirective,
-        TuiHintModule,
+        TuiHint,
         TuiHostedDropdownModule,
         TuiLetDirective,
     ],

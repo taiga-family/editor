@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiItemModule} from '@taiga-ui/cdk';
+import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -15,7 +15,7 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
     imports: [
         TuiSvgComponent,
         ExampleTuiSmilesToolComponent,
-        TuiItemModule,
+        TuiItemDirective,
         ReactiveFormsModule,
         TuiEditorComponent,
     ],

@@ -2,8 +2,8 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
-    TuiHintModule,
+    TuiDataList,
+    TuiHint,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
@@ -19,8 +19,8 @@ import {TUI_EDITOR_CODE_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
         NgForOf,
         AsyncPipe,
         TuiButtonDirective,
-        TuiHintModule,
-        TuiDataListModule,
+        TuiHint,
+        TuiDataList,
         TuiHostedDropdownModule,
     ],
     templateUrl: './code.component.html',

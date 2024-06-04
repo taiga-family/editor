@@ -1,11 +1,9 @@
-import {TuiTsParserException} from '@taiga-ui/cdk';
-
 export class TsFileParser {
     constructor(protected rawFileContent: string) {
         const classesInside = rawFileContent.match(/export class/gi) || [];
 
         if (classesInside.length > 1) {
-            throw new TuiTsParserException();
+            throw new Error('parser error');
         }
 
         this.replaceMetaAssets();

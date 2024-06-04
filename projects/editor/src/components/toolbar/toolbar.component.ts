@@ -16,14 +16,9 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-    EMPTY_QUERY,
-    TuiFocusableModule,
-    tuiIsNativeFocusedIn,
-    TuiItemModule,
-} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItemDirective} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiButtonDirective, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint, TuiHostedDropdownModule} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
@@ -63,10 +58,9 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
         TuiTableMergeCellsComponent,
         TuiTableCreateComponent,
         NgIf,
-        TuiItemModule,
+        TuiItemDirective,
         TuiButtonDirective,
-        TuiHintModule,
-        TuiFocusableModule,
+        TuiHint,
         TuiTextColorComponent,
         TuiHighlightColorComponent,
         TuiEditLinkComponent,

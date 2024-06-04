@@ -3,8 +3,8 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import {
     TuiButtonDirective,
-    TuiDataListModule,
-    TuiHintModule,
+    TuiDataList,
+    TuiHint,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
@@ -25,10 +25,10 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
         LowerCasePipe,
         AsyncPipe,
         NgForOf,
-        TuiDataListModule,
+        TuiDataList,
         TuiHostedDropdownModule,
         TuiButtonDirective,
-        TuiHintModule,
+        TuiHint,
     ],
     templateUrl: './font-size.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,17 +1,13 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
-import {
-    TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
-    TuiDocExampleModule,
-    TuiDocPageModule,
-} from '@taiga-ui/addon-doc';
+import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR, TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiDocExampleModule, TuiDocPageModule, TuiLinkDirective, RouterLink],
+    imports: [TuiAddonDoc, TuiLinkDirective, RouterLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

@@ -16,7 +16,7 @@ import {
     TuiScrollbarComponent,
     TuiSvgComponent,
 } from '@taiga-ui/core';
-import {TuiInputInlineModule} from '@taiga-ui/kit';
+import {TuiInputInlineComponent} from '@taiga-ui/kit';
 
 import type {
     TuiEditorLinkPrefix,
@@ -47,7 +47,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         NgIf,
         AsyncPipe,
         TuiAutoFocusDirective,
-        TuiInputInlineModule,
+        TuiInputInlineComponent,
         TuiScrollbarComponent,
     ],
     templateUrl: './edit-link.template.html',

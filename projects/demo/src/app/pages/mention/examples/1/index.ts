@@ -1,7 +1,7 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataListModule, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -18,7 +18,7 @@ import {MentionsComponent} from './mention';
     imports: [
         TuiEditorComponent,
         ReactiveFormsModule,
-        TuiDataListModule,
+        TuiDataList,
         NgForOf,
         TuiAvatarComponent,
         TuiInitialsPipe,

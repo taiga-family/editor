@@ -1,7 +1,7 @@
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
-import {TuiLoaderModule} from '@taiga-ui/core';
+import {TuiLoaderComponent} from '@taiga-ui/core';
 
 import {TuiStackblitzService} from '../stackblitz.service';
 import {appPrefix} from '../utils';
@@ -9,7 +9,7 @@ import {appPrefix} from '../utils';
 @Component({
     standalone: true,
     selector: 'demo-stackblitz-starter',
-    imports: [TuiLoaderModule],
+    imports: [TuiLoaderComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

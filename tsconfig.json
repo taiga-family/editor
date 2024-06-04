@@ -20,6 +20,8 @@
             "@taiga-ui/core/*": ["./taiga-ui/projects/core/*"],
             "@taiga-ui/i18n": ["./taiga-ui/projects/i18n"],
             "@taiga-ui/i18n/*": ["./taiga-ui/projects/i18n/*"],
+            "@taiga-ui/legacy": ["./taiga-ui/projects/legacy"],
+            "@taiga-ui/legacy/*": ["./taiga-ui/projects/legacy/*"],
             "@taiga-ui/addon-doc": ["./taiga-ui/projects/addon-doc"],
             "@taiga-ui/addon-doc/*": ["./taiga-ui/projects/addon-doc/*"],
             "@taiga-ui/addon-preview": ["./taiga-ui/projects/addon-preview"],
