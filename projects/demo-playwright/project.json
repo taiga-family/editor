@@ -14,7 +14,7 @@
         "e2e-ui": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nx e2e demo-playwright -- --ui --debug --update-snapshots"
+                "command": "nx e2e editor-demo-playwright -- --ui --debug --update-snapshots"
             }
         }
     }

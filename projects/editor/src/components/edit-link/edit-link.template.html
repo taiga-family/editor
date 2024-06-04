@@ -19,7 +19,6 @@
                     tuiAutoFocus
                     class="t-input"
                     [class.t-input_filled]="hasUrl"
-                    [(ngModel)]="url"
                     (input)="onChange($any($event.target)?.value)"
                     (keydown.backspace)="onBackspace()"
                     (keydown.prevent.enter)="onSave()"
@@ -27,6 +26,7 @@
                     <ng-container *ngIf="texts$ | async as text">
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     </ng-container>
+                    <input [(ngModel)]="url" />
                 </tui-input-inline>
             </div>
         </label>
