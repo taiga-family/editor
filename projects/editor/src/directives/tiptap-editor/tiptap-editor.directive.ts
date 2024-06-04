@@ -13,13 +13,13 @@ export class TuiTiptapEditorDirective {
     private readonly renderer = inject(Renderer2);
     private readonly editor = inject(TuiTiptapEditorService);
 
+    protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
+
     @Output()
     public readonly valueChange = this.editor.valueChange$;
 
     @Output()
     public readonly stateChange = this.editor.stateChange$;
-
-    protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
 
     constructor() {
         inject(TIPTAP_EDITOR)

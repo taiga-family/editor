@@ -30,18 +30,17 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
 export class TuiHighlightColorComponent {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
-
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-
     protected readonly backgroundColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getBackgroundColor() || this.options.blankColor),
         distinctUntilChanged(),
     );
 
     protected readonly backColorText$ = this.texts$.pipe(map(texts => texts.backColor));
+
+    @Input()
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;

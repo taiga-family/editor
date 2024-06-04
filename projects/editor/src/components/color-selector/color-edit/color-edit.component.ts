@@ -45,19 +45,17 @@ const HEX_MODE_LENGTH = 6;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiColorEditComponent {
+    protected readonly modes = ['HEX', 'RGB'];
+    protected mode = this.modes[0];
+    protected readonly hexMask: MaskitoOptions = {
+        mask: new RegExp(`^[A-F\\d]{0,${HEX_MODE_LENGTH}}$`, 'gi'),
+    };
+
     @Input()
     public color: [number, number, number, number] = [0, 0, 0, 1];
 
     @Output()
     public readonly colorChange = new EventEmitter<[number, number, number, number]>();
-
-    protected readonly hexMask: MaskitoOptions = {
-        mask: new RegExp(`^[A-F\\d]{0,${HEX_MODE_LENGTH}}$`, 'gi'),
-    };
-
-    protected readonly modes = ['HEX', 'RGB'];
-
-    protected mode = this.modes[0];
 
     protected get isHex(): boolean {
         return this.mode === this.modes[0];

@@ -30,9 +30,6 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
 export class TuiTableCellColorComponent {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
-
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
@@ -59,6 +56,9 @@ export class TuiTableCellColorComponent {
         ),
         distinctUntilChanged(),
     );
+
+    @Input()
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;

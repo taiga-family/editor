@@ -29,18 +29,17 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
 export class TuiTextColorComponent {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
-
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-
     protected readonly fontColor$ = this.editor.stateChange$.pipe(
         map(() => this.editor.getFontColor() || this.options.blankColor),
         distinctUntilChanged(),
     );
 
     protected readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
+
+    @Input()
+    public colors: ReadonlyMap<string, string> = this.options.colors;
 
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;

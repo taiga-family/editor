@@ -30,12 +30,6 @@ export interface User {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MentionsComponent {
-    @Input()
-    public mentionSuggestions?: string;
-
-    @Output()
-    public setMention = new EventEmitter<User>();
-
     protected readonly items: readonly User[] = [
         {
             name: 'Alexander Inkin',
@@ -48,6 +42,12 @@ export class MentionsComponent {
             login: 'r.sedov',
         },
     ];
+
+    @Input()
+    public mentionSuggestions?: string;
+
+    @Output()
+    public setMention = new EventEmitter<User>();
 
     @tuiPure
     protected getFilteredItems(items: readonly User[], search?: string): readonly User[] {

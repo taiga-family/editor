@@ -73,12 +73,6 @@ export class TuiColorSelectorComponent {
     private currentStop = 0;
     private direction: TuiGradientDirection = 'to bottom';
 
-    @Input()
-    public colors: ReadonlyMap<string, string> = new Map<string, string>();
-
-    @Output()
-    public readonly colorChange = new EventEmitter<string>();
-
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
     protected color: [number, number, number, number] = [0, 0, 0, 1];
@@ -93,6 +87,12 @@ export class TuiColorSelectorComponent {
         'to top left',
         'to top',
     ];
+
+    @Input()
+    public colors: ReadonlyMap<string, string> = new Map<string, string>();
+
+    @Output()
+    public readonly colorChange = new EventEmitter<string>();
 
     @Input('color')
     public set colorSetter(color: string) {

@@ -105,6 +105,12 @@ export class TuiToolbarComponent {
     private readonly el: HTMLElement | null =
         inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
+    protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
+    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
+    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
+
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
 
@@ -120,13 +126,6 @@ export class TuiToolbarComponent {
 
     @Output()
     public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
-
-    protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
-    protected readonly editor = inject(TuiTiptapEditorService);
-    protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-
-    protected toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input()
     public set tools(value: readonly TuiEditorTool[]) {
