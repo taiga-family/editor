@@ -22,6 +22,8 @@ import {TuiPickerService} from '../../../services/picker.service';
     providers: [TuiPickerService],
 })
 export class TuiLinearMultiPickerComponent {
+    protected index = NaN;
+
     @Input()
     public value = [0, 1];
 
@@ -30,8 +32,6 @@ export class TuiLinearMultiPickerComponent {
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
-
-    protected index = NaN;
 
     constructor() {
         inject(TuiPickerService)

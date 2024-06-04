@@ -24,13 +24,13 @@ const MIN_DISTANCE_PX = 70;
 export class TuiTableSizeSelectorComponent {
     private readonly win = inject(WINDOW);
 
-    @Output()
-    public readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
-
     protected tableSize = {
         rows: 1,
         cols: 1,
     };
+
+    @Output()
+    public readonly selectSize = new EventEmitter<{cols: number; rows: number}>();
 
     protected get columnsNumber(): number {
         return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);

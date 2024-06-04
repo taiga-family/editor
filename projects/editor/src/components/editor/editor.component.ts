@@ -88,23 +88,6 @@ export class TuiEditorComponent
     private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
     private readonly doc = inject(DOCUMENT);
 
-    @Input()
-    public exampleText = '';
-
-    @Input()
-    public floatingToolbar = false;
-
-    @Input()
-    public tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
-
-    @Output()
-    public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
-
-    public hasMentionPlugin = false;
-    public focused = false;
-
-    public readonly editorService = inject(TuiTiptapEditorService);
-
     @ViewChild(TuiToolbarComponent)
     protected readonly toolbar?: TuiToolbarComponent;
 
@@ -122,6 +105,23 @@ export class TuiEditorComponent
 
             this.patchContentEditableElement();
         });
+
+    @Input()
+    public exampleText = '';
+
+    @Input()
+    public floatingToolbar = false;
+
+    @Input()
+    public tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
+
+    @Output()
+    public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
+
+    public hasMentionPlugin = false;
+    public focused = false;
+
+    public readonly editorService = inject(TuiTiptapEditorService);
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;

@@ -25,14 +25,14 @@ import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component
 export class TuiColorPickerComponent {
     private readonly sanitizer = inject(DomSanitizer);
 
+    protected point: TuiPoint = [0, 1];
+    protected hue = 0;
+    protected opacity = 1;
+
     @Output()
     public readonly colorChange = new EventEmitter<
         [h: number, s: number, v: number, opacity: number]
     >();
-
-    protected point: TuiPoint = [0, 1];
-    protected hue = 0;
-    protected opacity = 1;
 
     @Input()
     public set color(color: [h: number, s: number, v: number, opacity: number]) {

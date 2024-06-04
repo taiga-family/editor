@@ -59,23 +59,18 @@ export class TuiEditLinkComponent {
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
     private readonly editor = inject(TuiTiptapEditorService);
 
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected url: string = this.getHrefOrAnchorId();
+    protected edit = !this.url;
+    protected prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
+    protected anchorIds = this.getAllAnchorsIds();
+    protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
+
     @Output()
     public readonly addLink = new EventEmitter<string>();
 
     @Output()
     public readonly removeLink = new EventEmitter<void>();
-
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
-    protected url: string = this.getHrefOrAnchorId();
-
-    protected edit = !this.url;
-
-    protected prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
-
-    protected anchorIds = this.getAllAnchorsIds();
-
-    protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
     @Input()
     public set anchorMode(mode: boolean) {

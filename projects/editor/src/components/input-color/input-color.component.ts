@@ -56,10 +56,10 @@ export class TuiInputColorComponent
 
     private readonly domSanitizer = inject(DomSanitizer);
 
+    protected open = false;
+
     @Input()
     public colors: ReadonlyMap<string, string> = new Map<string, string>();
-
-    protected open = false;
 
     public get nativeFocusableElement(): TuiNativeFocusableElement | null {
         return this.computedDisabled || !this.textfield
