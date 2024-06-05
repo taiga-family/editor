@@ -1,7 +1,7 @@
 import {Injector} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {TuiNodeView} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
-import {TUI_IMAGE_LOADER} from '@tinkoff/tui-editor/tokens';
+import {TuiNodeView} from '@tbank/tui-editor/extensions/tiptap-node-view';
+import {TUI_IMAGE_LOADER} from '@tbank/tui-editor/tokens';
 import {
     Attribute,
     mergeAttributes,

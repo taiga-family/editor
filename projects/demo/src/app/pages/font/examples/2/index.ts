@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     tuiEditorOptionsProvider,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-font-example-2',
@@ -22,13 +22,13 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tinkoff/tui-editor/extensions/font-size').then(
+                import('@tbank/tui-editor/extensions/font-size').then(
                     ({TuiFontSize}) => TuiFontSize,
                 ),
             ],

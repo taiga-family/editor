@@ -8,7 +8,7 @@ import {
 import {FormControl, Validators} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-embed-iframe-example-1',
@@ -20,10 +20,10 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('@tinkoff/tui-editor/extensions/iframe-editor').then(
+                import('@tbank/tui-editor/extensions/iframe-editor').then(
                     ({createIframeEditorExtension}) =>
                         createIframeEditorExtension(injector),
                 ),

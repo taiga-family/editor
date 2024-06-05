@@ -11,7 +11,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiTextareaModule} from '@taiga-ui/kit';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
 
 import {ExampleTuiEditorMarkdownExtensionComponent} from './editor-markdown-extension.component';
 import {TuiEditorEditorExample1} from './examples/1';

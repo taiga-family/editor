@@ -1,4 +1,4 @@
-import {TuiGradientDirection} from '@tinkoff/tui-editor/types';
+import {TuiGradientDirection} from '@tbank/tui-editor/types';
 
 export interface TuiParsedGradient {
     readonly side: TuiGradientDirection;

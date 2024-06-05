@@ -1,5 +1,5 @@
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
-import {TuiEditorFontOption} from '@tinkoff/tui-editor/interfaces';
+import {TuiEditorFontOption} from '@tbank/tui-editor/interfaces';
 
 export function tuiDefaultFontOptionsHandler(
     texts: TuiLanguageEditor['editorFontOptions'],

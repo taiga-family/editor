@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-groups-example-1',
@@ -12,7 +12,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-placeholder').then(({Placeholder}) =>
@@ -23,7 +23,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                         includeChildren: true,
                     }),
                 ),
-                import('@tinkoff/tui-editor/extensions/group').then(
+                import('@tbank/tui-editor/extensions/group').then(
                     ({createGroupExtension}) =>
                         createGroupExtension({nested: false, createOnEnter: true}),
                 ),

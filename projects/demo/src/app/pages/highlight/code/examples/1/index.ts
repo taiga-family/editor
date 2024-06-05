@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-code-block-example-1',
@@ -12,7 +12,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useFactory: () => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
             ],

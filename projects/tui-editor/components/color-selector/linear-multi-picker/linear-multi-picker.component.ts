@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TuiPoint} from '@taiga-ui/core';
-import {TuiPickerService} from '@tinkoff/tui-editor/services';
+import {TuiPickerService} from '@tbank/tui-editor/services';
 import {Observable} from 'rxjs';
 
 @Component({

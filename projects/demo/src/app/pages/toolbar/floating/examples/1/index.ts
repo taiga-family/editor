@@ -11,7 +11,7 @@ import {
     TUI_EDITOR_DEFAULT_EDITOR_TOOLS,
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-toolbar-floating-example-1',
@@ -25,7 +25,7 @@ import {
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                import('@tbank/tui-editor/extensions/image-editor').then(
                     ({tuiCreateImageEditorExtension}) =>
                         tuiCreateImageEditorExtension({injector}),
                 ),

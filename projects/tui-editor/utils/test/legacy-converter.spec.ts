@@ -1,4 +1,4 @@
-import {tuiLegacyEditorConverter} from '@tinkoff/tui-editor';
+import {tuiLegacyEditorConverter} from '@tbank/tui-editor';
 
 // cspell:disable
 describe(`tuiLegacyEditorConverter`, () => {

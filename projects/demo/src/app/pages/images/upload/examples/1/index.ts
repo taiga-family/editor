@@ -16,7 +16,7 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
@@ -31,10 +31,10 @@ import {ImgbbService} from './imgbb.service';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                import('@tbank/tui-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),

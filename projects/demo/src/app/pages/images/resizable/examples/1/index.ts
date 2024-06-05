@@ -9,11 +9,7 @@ import {
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TUI_IS_STACKBLITZ, TuiDestroyService, TuiHandler} from '@taiga-ui/cdk';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TUI_IMAGE_LOADER,
-    TuiEditorTool,
-} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TUI_IMAGE_LOADER, TuiEditorTool} from '@tbank/tui-editor';
 import {Observable} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 
@@ -27,10 +23,10 @@ import {switchMap, takeUntil} from 'rxjs/operators';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                import('@tbank/tui-editor/extensions/image-editor').then(
                     ({tuiCreateImageEditorExtension}) =>
                         tuiCreateImageEditorExtension({injector}),
                 ),

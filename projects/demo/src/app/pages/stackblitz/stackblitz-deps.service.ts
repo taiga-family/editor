@@ -27,7 +27,7 @@ export class StackblitzDepsService {
             dompurify: `latest`,
             punycode: `latest`,
             typescript: `5.3.x`,
-            '@tinkoff/tui-editor': `1.x.x`,
+            '@tbank/tui-editor': `1.x.x`,
         };
     }
 }

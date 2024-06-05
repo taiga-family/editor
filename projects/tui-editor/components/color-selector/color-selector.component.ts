@@ -13,9 +13,9 @@ import {
     TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES,
     TUI_EDITOR_OPTIONS,
     TuiEditorOptions,
-} from '@tinkoff/tui-editor/tokens';
-import {TuiGradientDirection} from '@tinkoff/tui-editor/types';
-import {tuiGetGradientData, tuiParseGradient} from '@tinkoff/tui-editor/utils';
+} from '@tbank/tui-editor/tokens';
+import {TuiGradientDirection} from '@tbank/tui-editor/types';
+import {tuiGetGradientData, tuiParseGradient} from '@tbank/tui-editor/utils';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [

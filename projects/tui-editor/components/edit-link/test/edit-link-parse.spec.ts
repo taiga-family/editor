@@ -1,4 +1,4 @@
-import {tuiEditLinkParseUrl} from '@tinkoff/tui-editor';
+import {tuiEditLinkParseUrl} from '@tbank/tui-editor';
 
 describe(`tuiEditLinkParseUrl`, () => {
     it(`mailto`, () => {

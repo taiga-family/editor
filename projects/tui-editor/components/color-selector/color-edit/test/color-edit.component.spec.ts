@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiColorEditComponent, TuiColorEditModule} from '@tinkoff/tui-editor';
+import {TuiColorEditComponent, TuiColorEditModule} from '@tbank/tui-editor';
 
 @Component({
     template: `

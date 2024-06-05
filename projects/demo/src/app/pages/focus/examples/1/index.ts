@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-focus-example-1',
@@ -12,7 +12,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit')
+                import('@tbank/tui-editor/extensions/starter-kit')
                     .then(({StarterKit}) => StarterKit)
                     .then(extension => extension.configure({heading: {levels: [1, 2]}})),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
@@ -30,22 +30,20 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                 import('@tiptap/extension-superscript').then(
                     ({default: Superscript}) => Superscript,
                 ),
-                import('@tinkoff/tui-editor/extensions/font-color').then(
+                import('@tbank/tui-editor/extensions/font-color').then(
                     ({FontColor}) => FontColor,
                 ),
-                import('@tinkoff/tui-editor/extensions/link').then(
-                    ({TuiLink}) => TuiLink,
-                ),
-                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
+                import('@tbank/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tbank/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
-                import('@tinkoff/tui-editor/extensions/file-link').then(
+                import('@tbank/tui-editor/extensions/file-link').then(
                     ({TuiFileLink}) => TuiFileLink,
                 ),
-                import('@tinkoff/tui-editor/extensions/background-color').then(
+                import('@tbank/tui-editor/extensions/background-color').then(
                     ({BackgroundColor}) => BackgroundColor,
                 ),
-                import('@tinkoff/tui-editor/extensions/table').then(({TuiTable}) =>
+                import('@tbank/tui-editor/extensions/table').then(({TuiTable}) =>
                     TuiTable.configure({resizable: true}),
                 ),
                 import('@tiptap/extension-table-row').then(
@@ -57,25 +55,25 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                 import('@tiptap/extension-table-header').then(
                     ({TableHeader}) => TableHeader,
                 ),
-                import('@tinkoff/tui-editor/extensions/indent-outdent').then(
+                import('@tbank/tui-editor/extensions/indent-outdent').then(
                     ({TuiTabExtension}) => TuiTabExtension,
                 ),
-                import('@tinkoff/tui-editor/extensions/table-cell-background').then(
+                import('@tbank/tui-editor/extensions/table-cell-background').then(
                     ({TableCellBackground}) => TableCellBackground,
                 ),
-                import('@tinkoff/tui-editor/extensions/details').then(
+                import('@tbank/tui-editor/extensions/details').then(
                     ({TuiDetailsContent}) => TuiDetailsContent,
                 ),
-                import('@tinkoff/tui-editor/extensions/details').then(
+                import('@tbank/tui-editor/extensions/details').then(
                     ({TuiDetails}) => TuiDetails,
                 ),
-                import('@tinkoff/tui-editor/extensions/details').then(
+                import('@tbank/tui-editor/extensions/details').then(
                     ({TuiSummary}) => TuiSummary,
                 ),
-                import('@tinkoff/tui-editor/extensions/font-size').then(
+                import('@tbank/tui-editor/extensions/font-size').then(
                     ({TuiFontSize}) => TuiFontSize,
                 ),
-                import('@tinkoff/tui-editor/extensions/image-editor').then(
+                import('@tbank/tui-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),

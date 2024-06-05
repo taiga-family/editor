@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TUI_EDITOR_CONTENT_PROCESSOR, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_CONTENT_PROCESSOR, TuiEditorTool} from '@tbank/tui-editor';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 

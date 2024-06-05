@@ -1,6 +1,6 @@
 {
-    "name": "@tinkoff/tui-editor",
-    "version": "1.32.0",
+    "name": "@tbank/tui-editor",
+    "version": "1.31.0",
     "description": "Rich text editor extension package for Taiga UI",
     "keywords": [
         "angular",

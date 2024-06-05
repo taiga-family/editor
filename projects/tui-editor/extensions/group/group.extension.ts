@@ -1,4 +1,4 @@
-import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
+import {tuiDeleteNode, tuiGetSelectedContent} from '@tbank/tui-editor/utils';
 import {KeyboardShortcutCommand, mergeAttributes, Node, RawCommands} from '@tiptap/core';
 
 import {TUI_EDITOR_GROUP_DEFAULT_OPTIONS, TuiEditorGroupOptions} from './group.options';

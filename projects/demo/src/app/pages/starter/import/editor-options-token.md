@@ -1,5 +1,5 @@
 ```ts
-import {tuiEditorOptionsProvider, TuiEditorOptions} from '@tinkoff/tui-editor';
+import {tuiEditorOptionsProvider, TuiEditorOptions} from '@tbank/tui-editor';
 
 const CUSTOM_EDITOR_OPTIONS: Partial<TuiEditorOptions> = {
   colors: new Map([

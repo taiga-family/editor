@@ -10,7 +10,7 @@ import {
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {TuiLinkModule} from '@taiga-ui/core';
 import {TuiIslandModule, TuiMarkerIconModule} from '@taiga-ui/kit';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
 
 import {TuiEditorStarterPageComponent} from './editor-starter.component';
 

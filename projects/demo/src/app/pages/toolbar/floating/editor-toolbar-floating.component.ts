@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
+import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-editor';
 
 @Component({
     templateUrl: './editor-toolbar-floating.component.html',

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDialogService} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     selector: 'tui-editor-toolbar-bottom-example-1',
@@ -13,13 +13,11 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (_injector: Injector) => [
-                import('@tinkoff/tui-editor/extensions/starter-kit').then(
+                import('@tbank/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/link').then(
-                    ({TuiLink}) => TuiLink,
-                ),
+                import('@tbank/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
             ],
         },
     ],

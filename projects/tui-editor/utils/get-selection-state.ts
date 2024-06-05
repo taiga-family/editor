@@ -1,4 +1,4 @@
-import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {AbstractTuiEditor} from '@tbank/tui-editor/abstract';
 
 export interface TuiSelectionState {
     before: string;

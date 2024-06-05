@@ -1,12 +1,12 @@
 import {Renderer2} from '@angular/core';
-import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
+import {TuiTiptapEditorService} from '@tbank/tui-editor/directives';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
     LAZY_EDITOR_EXTENSIONS,
     LAZY_TIPTAP_EDITOR,
     TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
-} from '@tinkoff/tui-editor/tokens';
+} from '@tbank/tui-editor/tokens';
 import type {Extension, Mark, Node} from '@tiptap/core';
 import {Editor} from '@tiptap/core';
 import {combineLatest, Observable, ReplaySubject} from 'rxjs';

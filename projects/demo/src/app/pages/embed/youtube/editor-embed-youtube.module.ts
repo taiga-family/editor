@@ -10,7 +10,7 @@ import {
     TuiLinkModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
 
 import {ExampleTuiEditorEmbedComponent} from './editor-embed-youtube.component';
 import {TuiEditorEmbedYoutubeExample1} from './examples/1';

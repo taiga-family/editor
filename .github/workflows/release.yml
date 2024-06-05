@@ -1,4 +1,4 @@
-name: ⚠️ Release @tinkoff/tui-editor
+name: ⚠️ Release @tbank/tui-editor
 on:
   workflow_dispatch:
     inputs:
@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
       - uses: taiga-family/ci/actions/setup/config/npm@v1.50.4
         with:
-          token: ${{ secrets.TINKOFF_SCOPE_NPM_TOKEN }}
+          token: ${{ secrets.TBANK_SCOPE_NPM_TOKEN }}
 
       - name: Lerna update version of packages
         if: always()
@@ -59,7 +59,7 @@ jobs:
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: ${{ steps.info.outputs.version }}
-          textLink: '@tinkoff/tui-editor'
+          textLink: '@tbank/tui-editor'
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}

@@ -1,4 +1,4 @@
-import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
+import {TuiEditorAttachedFile} from '@tbank/tui-editor/interfaces';
 import {Extension} from '@tiptap/core';
 
 declare module '@tiptap/core' {

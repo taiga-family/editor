@@ -4,7 +4,7 @@ import {
     defaultEditorExtensions,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 

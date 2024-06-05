@@ -6,7 +6,7 @@ import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 import {TuiDataListModule} from '@taiga-ui/core';
 import {TuiAvatarModule, TuiInitialsModule} from '@taiga-ui/experimental';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
 
 import {ExampleTuiEditorMentionComponent} from './editor-mention.component';
 import {TuiEditorMentionExample1} from './examples/1';

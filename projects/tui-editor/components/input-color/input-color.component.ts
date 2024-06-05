@@ -27,7 +27,7 @@ import {
     tuiGetGradientData,
     tuiParseGradient,
     tuiToGradient,
-} from '@tinkoff/tui-editor/utils';
+} from '@tbank/tui-editor/utils';
 
 type MaskMode = 'gradient' | 'hex' | 'rgb';
 
