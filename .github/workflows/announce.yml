@@ -9,15 +9,15 @@ jobs:
     if: "contains(github.event.head_commit.message, 'chore(release)')"
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.60.0
-      - uses: taiga-family/ci/actions/setup/node@v1.60.0
+      - uses: taiga-family/ci/actions/setup/checkout@v1.60.1
+      - uses: taiga-family/ci/actions/setup/node@v1.60.1
 
       - id: info
         run: |
           echo "version=v$(node -p "require('./projects/editor/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.60.0
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.60.1
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
