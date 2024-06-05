@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[2280],{72280:o=>{o.exports="```ts\nimport {TuiColorPickerModule} from '@tinkoff/tui-editor';\n\n// ...\n\n@NgModule({\n  imports: [\n    // ...\n    TuiColorPickerModule,\n  ],\n  // ...\n})\nexport class MyModule {}\n```\n"}}]);
