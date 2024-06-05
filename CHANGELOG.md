@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.20-alpha.0 (2024-06-05)
+
+### Features
+
+- use tbank scope ([#1082](https://github.com/taiga-family/tui-editor/issues/1082))
+  ([9a98316](https://github.com/taiga-family/tui-editor/commit/9a9831662794c7c83a49f893d81e3fd411e5291e))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## 2.0.19-alpha.0 (2024-06-04)
 
 **Note:** Version bump only for package tui-editor
