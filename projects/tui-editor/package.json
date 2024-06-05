@@ -86,5 +86,8 @@
         "markdown-it": ">=14.1.0",
         "rxjs": ">=6.0.0",
         "tslib": "2.6.2"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
