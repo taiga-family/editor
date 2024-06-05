@@ -27,6 +27,9 @@ jobs:
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
       - uses: taiga-family/ci/actions/setup/node@v1.58.1
+        with:
+          validate-peer-deps: false
+
       - uses: taiga-family/ci/actions/setup/config/git@v1.58.1
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}

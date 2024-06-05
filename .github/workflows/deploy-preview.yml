@@ -9,6 +9,9 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
       - uses: taiga-family/ci/actions/setup/variables@v1.58.1
       - uses: taiga-family/ci/actions/setup/node@v1.58.1
+        with:
+          validate-peer-deps: false
+
       - run: npx nx build editor-demo
       - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0

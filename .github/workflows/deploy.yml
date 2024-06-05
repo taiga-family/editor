@@ -10,6 +10,9 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
       - uses: taiga-family/ci/actions/setup/variables@v1.58.1
       - uses: taiga-family/ci/actions/setup/node@v1.58.1
+        with:
+          validate-peer-deps: false
+
       - run: npx nx build-gh-pages editor-demo
       - uses: taiga-family/ci/actions/deploy/github-pages@v1.58.1
         with:

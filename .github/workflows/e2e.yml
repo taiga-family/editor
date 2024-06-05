@@ -16,6 +16,8 @@ jobs:
       - uses: taiga-family/ci/actions/run/rebase@v1.58.1
         continue-on-error: true
       - uses: taiga-family/ci/actions/setup/node@v1.58.1
+        with:
+          validate-peer-deps: false
 
       - name: Building demo-app of git-branch without cache
         run: npx nx build editor-demo --output-path ${{ env.DIST }}
@@ -33,6 +35,8 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
       - uses: taiga-family/ci/actions/setup/variables@v1.58.1
       - uses: taiga-family/ci/actions/setup/node@v1.58.1
+        with:
+          validate-peer-deps: false
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v3.3.2
