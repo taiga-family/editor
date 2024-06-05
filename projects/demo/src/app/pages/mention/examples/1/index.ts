@@ -8,7 +8,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import type {User} from './mention';
 import {MentionsComponent} from './mention';
@@ -33,12 +33,12 @@ import {MentionsComponent} from './mention';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tinkoff/tui-editor').then(({TuiMention}) => TuiMention),
+                import('@tbank/tui-editor').then(({TuiMention}) => TuiMention),
             ],
         },
     ],

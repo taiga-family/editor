@@ -9,7 +9,7 @@ import {
   TuiEditorModule,
   TuiEditorSocketModule,
   TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
   standalone: true,
@@ -24,7 +24,7 @@ import {
       deps: [INJECTOR],
       useFactory: (injector: Injector) => [
         ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-        import('@tinkoff/tui-editor/extensions/image-editor').then(({tuiCreateImageEditorExtension}) =>
+        import('@tbank/tui-editor/extensions/image-editor').then(({tuiCreateImageEditorExtension}) =>
           tuiCreateImageEditorExtension({injector}),
         ),
       ],

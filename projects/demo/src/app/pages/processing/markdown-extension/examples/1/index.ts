@@ -13,7 +13,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 import type {Editor} from '@tiptap/core';
 import {debounceTime, Subject} from 'rxjs';
 
@@ -47,7 +47,7 @@ const markdown = `# h1 Heading 😎
                 import('@tiptap/extension-image').then(({Image}) =>
                     Image.configure({inline: true}),
                 ),
-                import('@tinkoff/tui-editor').then(({TuiMarkdown}) =>
+                import('@tbank/tui-editor').then(({TuiMarkdown}) =>
                     TuiMarkdown.configure({
                         html: true, // Allow HTML input/output
                         tightLists: true, // No <p> inside <li> in markdown output

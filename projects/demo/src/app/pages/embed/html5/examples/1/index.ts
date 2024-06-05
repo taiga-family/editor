@@ -3,14 +3,14 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
+import type {TuiEditorAttachedFile} from '@tbank/tui-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -24,14 +24,14 @@ import {map} from 'rxjs';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tinkoff/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@tinkoff/tui-editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@tinkoff/tui-editor').then(({TuiVideo}) => TuiVideo),
-                import('@tinkoff/tui-editor').then(({TuiAudio}) => TuiAudio),
-                import('@tinkoff/tui-editor').then(({TuiSource}) => TuiSource),
+                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
+                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@tbank/tui-editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@tbank/tui-editor').then(({TuiVideo}) => TuiVideo),
+                import('@tbank/tui-editor').then(({TuiAudio}) => TuiAudio),
+                import('@tbank/tui-editor').then(({TuiSource}) => TuiSource),
             ],
         },
         {

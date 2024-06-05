@@ -1,5 +1,5 @@
 {
-    "name": "@tinkoff/tui-editor",
+    "name": "@tbank/tui-editor",
     "version": "2.0.19-alpha.0",
     "description": "Rich text editor extension package for Taiga UI",
     "keywords": [
@@ -74,5 +74,8 @@
         "prosemirror-transform": ">=1.9.0",
         "prosemirror-utils": ">=1.2.2",
         "prosemirror-view": ">=1.33.7"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

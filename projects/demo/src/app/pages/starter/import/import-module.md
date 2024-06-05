@@ -1,5 +1,5 @@
 ```ts
-import {TuiEditorModule} from '@tinkoff/tui-editor';
+import {TuiEditorModule} from '@tbank/tui-editor';
 // ...
 
 @NgModule({

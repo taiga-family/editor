@@ -9,7 +9,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 

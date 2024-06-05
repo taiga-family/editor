@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiPaletteComponent} from '@tinkoff/tui-editor';
+import {TuiPaletteComponent} from '@tbank/tui-editor';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({

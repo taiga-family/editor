@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {CustomColorPickerComponent} from './custom-color-picker/custom-color-picker.component';
 
@@ -17,12 +17,12 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tinkoff/tui-editor').then(({TuiFontColor}) => TuiFontColor),
-                import('@tinkoff/tui-editor').then(
+                import('@tbank/tui-editor').then(({TuiFontColor}) => TuiFontColor),
+                import('@tbank/tui-editor').then(
                     ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
             ],

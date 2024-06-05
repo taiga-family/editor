@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiColorEditComponent} from '@tinkoff/tui-editor';
+import {TuiColorEditComponent} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
