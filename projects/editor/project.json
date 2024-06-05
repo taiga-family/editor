@@ -20,7 +20,7 @@
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx nx run-many -t build -p i18n cdk core kit --output-style=stream"
+                "command": "npx nx run-many -t build -p i18n cdk core kit legacy --output-style=stream"
             }
         },
         "build": {

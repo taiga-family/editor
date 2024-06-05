@@ -16,7 +16,9 @@
             "@taiga-ui/core": ["./taiga-ui/dist/core"],
             "@taiga-ui/core/*": ["./taiga-ui/dist/core/*"],
             "@taiga-ui/i18n": ["./taiga-ui/dist/i18n"],
-            "@taiga-ui/i18n/*": ["./taiga-ui/dist/i18n/*"]
+            "@taiga-ui/i18n/*": ["./taiga-ui/dist/i18n/*"],
+            "@taiga-ui/legacy": ["./taiga-ui/dist/legacy"],
+            "@taiga-ui/legacy/*": ["./taiga-ui/dist/legacy/*"]
         }
     }
 }
