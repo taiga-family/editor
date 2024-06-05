@@ -21,8 +21,6 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
         with:
@@ -33,41 +31,20 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
       - uses: taiga-family/ci/actions/setup/config/npm@v1.58.1
         with:
-          token: ${{ secrets.TINKOFF_SCOPE_NPM_TOKEN }}
-
-      - name: Lerna update version of packages
-        if: always()
-        run: |
-          if [[ ${{ github.event.inputs.forcePush }} == "true" ]]; then
-            npx lerna version ${{ github.event.inputs.mode }} --no-private --force-publish
-          else
-              npx lerna version --no-private
-          fi
-
-      - run: npx nx build editor
+          token: ${{ secrets.TBANK_SCOPE_NPM_TOKEN }}
 
       - run: |
-          if [[ "${{ github.event.inputs.mode }}" != "prepatch" ]]; then
-            npx nx publish editor --tag stable
+          if [[ ${{ github.event.inputs.forcePush }} == "true" ]]; then
+
+            if [[ "${{ github.event.inputs.mode }}" != "prepatch" ]]; then
+              npx release-it "${{ github.event.inputs.mode }}" --increment --ci
+            else
+                npx release-it --preRelease=alpha --ci
+            fi
+
+          else
+              npx release-it --increment --ci
           fi
-
-          if [[ "${{ github.event.inputs.mode }}" == "prepatch" ]]; then
-              npx nx publish editor --tag alpha
-          fi
-        if: always()
-
-      - id: info
-        run: |
-          echo "version=v$(node -p "require('./projects/editor/package.json').version")" >> $GITHUB_OUTPUT
-
-      - name: Announce to Telegram
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.58.1
-        with:
-          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
-          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
-          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
-          version: ${{ steps.info.outputs.version }}
-          textLink: '@tbank/tui-editor'
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
