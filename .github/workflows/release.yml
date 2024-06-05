@@ -21,6 +21,8 @@ jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.60.0
         with:
@@ -33,6 +35,8 @@ jobs:
       - uses: taiga-family/ci/actions/setup/config/npm@v1.60.0
         with:
           token: ${{ secrets.TBANK_SCOPE_NPM_TOKEN }}
+
+      - run: git pull --rebase --recurse-submodules
 
       - run: |
           if [[ ${{ github.event.inputs.forcePush }} == "true" ]]; then
