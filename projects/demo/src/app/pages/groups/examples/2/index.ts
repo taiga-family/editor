@@ -5,7 +5,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
@@ -17,8 +17,8 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tinkoff/tui-editor').then(({tuiCreateGroupExtension}) =>
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({tuiCreateGroupExtension}) =>
                     tuiCreateGroupExtension({
                         nested: false,
                         draggable: false,
@@ -29,7 +29,7 @@ import {
                     }),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor').then(
+                import('@tbank/tui-editor').then(
                     ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
             ],

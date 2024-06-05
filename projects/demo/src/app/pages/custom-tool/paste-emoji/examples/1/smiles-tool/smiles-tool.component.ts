@@ -2,7 +2,7 @@ import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
+import {TuiTiptapEditorService} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,

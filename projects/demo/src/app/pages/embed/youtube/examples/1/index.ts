@@ -8,7 +8,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.component';
 
@@ -28,8 +28,8 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tinkoff/tui-editor').then(({TuiYoutube}) => TuiYoutube),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiYoutube}) => TuiYoutube),
             ],
         },
     ],

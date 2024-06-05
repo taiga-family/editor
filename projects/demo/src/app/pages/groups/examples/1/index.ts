@@ -5,7 +5,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
@@ -16,7 +16,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-placeholder').then(({Placeholder}) =>
                     Placeholder.configure({
                         emptyNodeClass: 't-editor-placeholder',
@@ -24,7 +24,7 @@ import {
                         includeChildren: true,
                     }),
                 ),
-                import('@tinkoff/tui-editor').then(({tuiCreateGroupExtension}) =>
+                import('@tbank/tui-editor').then(({tuiCreateGroupExtension}) =>
                     tuiCreateGroupExtension({nested: false, createOnEnter: true}),
                 ),
             ],

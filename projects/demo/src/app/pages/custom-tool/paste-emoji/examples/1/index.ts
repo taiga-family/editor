@@ -6,7 +6,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component';
 
@@ -26,7 +26,7 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('./smiles-tool/emoji.extension').then(
                     ({EmojiExtension}) => EmojiExtension,
                 ),

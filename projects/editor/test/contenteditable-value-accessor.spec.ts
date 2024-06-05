@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiContenteditableValueAccessor} from '@tinkoff/tui-editor';
+import {TuiContenteditableValueAccessor} from '@tbank/tui-editor';
 
 describe('ContenteditableValueAccessor', () => {
     @Component({

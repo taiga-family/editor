@@ -9,7 +9,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,

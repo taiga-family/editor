@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR, TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective} from '@taiga-ui/core';
-import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,

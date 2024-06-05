@@ -8,7 +8,7 @@ import {
     TuiEditorImagePreviewDirective,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {ImagePreviewExampleComponent} from './image-preview/image-preview.component';
 
@@ -29,8 +29,8 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

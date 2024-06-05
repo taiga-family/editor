@@ -6,7 +6,7 @@ import {
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditorComponent,
     TuiEditorSocketComponent,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 

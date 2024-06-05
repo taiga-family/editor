@@ -29,7 +29,7 @@
         "publish": {
             "yes": true,
             "registry": "https://registry.npmjs.org",
-            "message": "chore(release): publish @tinkoff/tui-editor"
+            "message": "chore(release): publish @tbank/tui-editor"
         }
     }
 }

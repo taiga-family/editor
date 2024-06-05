@@ -1,6 +1,6 @@
 // cspell:disable
 import {describe, expect, it} from '@jest/globals';
-import {tuiLegacyEditorConverter} from '@tinkoff/tui-editor';
+import {tuiLegacyEditorConverter} from '@tbank/tui-editor';
 
 describe('tuiLegacyEditorConverter', () => {
     it('works', () => {

@@ -5,7 +5,7 @@ import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED, TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiRootComponent} from '@taiga-ui/core';
 import {TuiPreview} from '@taiga-ui/kit';
-import pkg from '@tinkoff/tui-editor/package.json';
+import pkg from '@tbank/tui-editor/package.json';
 
 @Component({
     standalone: true,

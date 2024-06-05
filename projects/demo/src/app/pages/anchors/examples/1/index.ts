@@ -5,7 +5,7 @@ import {
     TuiEditorComponent,
     TuiEditorSocketComponent,
     TuiEditorTool,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
@@ -17,16 +17,16 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tinkoff/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-image').then(({default: Image}) =>
                     Image.configure({inline: true, allowBase64: true}),
                 ),
-                import('@tinkoff/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tinkoff/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
+                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
             ],
         },
     ],

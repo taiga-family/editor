@@ -4,7 +4,7 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/core';
 import {
     TUI_EDITOR_DEFAULT_EDITOR_COLORS,
     TuiInputColorComponent,
-} from '@tinkoff/tui-editor';
+} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,

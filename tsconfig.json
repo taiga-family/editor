@@ -9,7 +9,7 @@
         "useDefineForClassFields": false,
         "typeRoots": ["node_modules/@types"],
         "paths": {
-            "@tinkoff/tui-editor": ["./projects/editor/src"],
+            "@tbank/tui-editor": ["./projects/editor/src"],
             "@taiga-ui/kit": ["./taiga-ui/projects/kit"],
             "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
             "@taiga-ui/cdk": ["./taiga-ui/projects/cdk"],
