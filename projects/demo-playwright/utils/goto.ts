@@ -3,7 +3,6 @@ import {expect} from '@playwright/test';
 
 import {tuiMockDate} from './mock-date';
 import {tuiMockImages} from './mock-images';
-import {tuiWaitForFonts} from './wait-for-fonts';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
@@ -42,7 +41,6 @@ export async function tuiGoto(
     const response = await page.goto(url, playwrightGotoOptions);
 
     await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
-    await tuiWaitForFonts(page);
 
     if (hideHeader) {
         await page.locator('[tuidocheader]').evaluate(el => el.remove());
