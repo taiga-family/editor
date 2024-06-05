@@ -154,7 +154,7 @@
         "terser-webpack-plugin": "5.3.10",
         "text-mask-core": "5.1.2",
         "ts-jest": "29.1.4",
-        "tslib": "2.6.2",
+        "tslib": "2.6.3",
         "typescript": "5.0.4",
         "wait-on": "7.2.0",
         "webpack": "5.91.0",
