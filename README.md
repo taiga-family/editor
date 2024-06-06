@@ -8,9 +8,9 @@
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/@tbank/tui-editor.svg)](https://npmjs.com/package/@tbank/tui-editor)
+[![npm version](https://img.shields.io/npm/v/@tinkoff/tui-editor.svg)](https://npmjs.com/package/@tinkoff/tui-editor)
 [![All packages CI](https://github.com/taiga-family/tui-editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/tui-editor/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/tbank/tui-editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/tui-editor/tree/main/projects)
+[![codecov](https://codecov.io/gh/tinkoff/tui-editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/tui-editor/tree/main/projects)
 
 </div>
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TuiEditorAttachedFile} from '@tbank/tui-editor';
+import {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
 import {BehaviorSubject, from, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 

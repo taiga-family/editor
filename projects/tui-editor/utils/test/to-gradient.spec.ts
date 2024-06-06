@@ -1,4 +1,4 @@
-import {tuiToGradient} from '@tbank/tui-editor';
+import {tuiToGradient} from '@tinkoff/tui-editor';
 
 describe(`tuiToGradient`, () => {
     it(`test case 1`, () => {

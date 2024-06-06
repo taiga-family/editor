@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-mark-text-example-1',
@@ -15,7 +15,7 @@ import {
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>

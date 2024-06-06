@@ -1,4 +1,4 @@
-import {tuiDeleteNode, tuiGetSelectedContent} from '@tbank/tui-editor/utils';
+import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
 
 declare module '@tiptap/core' {

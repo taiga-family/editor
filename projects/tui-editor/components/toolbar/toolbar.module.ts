@@ -2,7 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {TuiFocusableModule, TuiItemDirective, TuiItemModule} from '@taiga-ui/cdk';
 import {TuiButtonModule, TuiHintModule, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiEditLinkModule} from '@tbank/tui-editor/components/edit-link';
+import {TuiEditLinkModule} from '@tinkoff/tui-editor/components/edit-link';
 import {
     TuiAlignContentModule,
     TuiCodeModule,
@@ -17,7 +17,7 @@ import {
     TuiTableMergeCellsModule,
     TuiTableRowColumnManagerModule,
     TuiTextColorModule,
-} from '@tbank/tui-editor/components/toolbar-tools';
+} from '@tinkoff/tui-editor/components/toolbar-tools';
 
 import {TuiToolbarComponent} from './toolbar.component';
 import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';

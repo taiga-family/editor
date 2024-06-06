@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     tuiEditorOptionsProvider,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 import {mergeAttributes} from '@tiptap/core';
 
 @Component({
@@ -51,7 +51,7 @@ import {mergeAttributes} from '@tiptap/core';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(

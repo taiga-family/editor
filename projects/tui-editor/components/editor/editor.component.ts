@@ -28,27 +28,27 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
-import {AbstractTuiEditor} from '@tbank/tui-editor/abstract';
-import {TuiToolbarComponent} from '@tbank/tui-editor/components/toolbar';
-import {defaultEditorTools, TUI_EDITOR_RESIZE_EVENT} from '@tbank/tui-editor/constants';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
+import {TuiToolbarComponent} from '@tinkoff/tui-editor/components/toolbar';
+import {defaultEditorTools, TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 import {
     TuiTiptapEditorDirective,
     TuiTiptapEditorService,
-} from '@tbank/tui-editor/directives';
-import {TuiEditorTool} from '@tbank/tui-editor/enums';
-import {TuiEditorAttachedFile} from '@tbank/tui-editor/interfaces';
+} from '@tinkoff/tui-editor/directives';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
+import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import {
     TIPTAP_EDITOR,
     TUI_EDITOR_CONTENT_PROCESSOR,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditorOptions,
-} from '@tbank/tui-editor/tokens';
+} from '@tinkoff/tui-editor/tokens';
 import {
     tuiGetSelectionState,
     tuiIsSafeLinkRange,
     TuiSelectionState,
-} from '@tbank/tui-editor/utils';
+} from '@tinkoff/tui-editor/utils';
 import {Editor} from '@tiptap/core';
 import {fromEvent, Observable} from 'rxjs';
 import {delay, takeUntil, throttleTime} from 'rxjs/operators';

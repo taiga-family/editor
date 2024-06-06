@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {TuiEditorResizableModule} from '@tbank/tui-editor/components/editor-resizable';
+import {TuiEditorResizableModule} from '@tinkoff/tui-editor/components/editor-resizable';
 
 import {TuiIframeEditorComponent} from './iframe-editor.component';
 

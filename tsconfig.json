@@ -8,8 +8,8 @@
         "target": "es2021",
         "typeRoots": ["node_modules/@types", "projects/tui-editor/types"],
         "paths": {
-            "@tbank/tui-editor": ["./projects/tui-editor/index"],
-            "@tbank/tui-editor/*": ["./projects/tui-editor/*"],
+            "@tinkoff/tui-editor": ["./projects/tui-editor/index"],
+            "@tinkoff/tui-editor/*": ["./projects/tui-editor/*"],
             "@taiga-ui/kit": ["./taiga-ui/projects/kit/index"],
             "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
             "@taiga-ui/cdk": ["./taiga-ui/projects/cdk/index"],

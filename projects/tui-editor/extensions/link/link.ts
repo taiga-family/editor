@@ -1,4 +1,4 @@
-import {tuiParseNodeAttributes} from '@tbank/tui-editor/utils';
+import {tuiParseNodeAttributes} from '@tinkoff/tui-editor/utils';
 import {getHTMLFromFragment, markPasteRule} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
 import {find} from 'linkifyjs';

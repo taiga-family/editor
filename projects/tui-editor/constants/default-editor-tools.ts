@@ -1,4 +1,4 @@
-import {TuiEditorTool} from '@tbank/tui-editor/enums';
+import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 
 /**
  * @deprecated use {@link TUI_EDITOR_DEFAULT_EDITOR_TOOLS}

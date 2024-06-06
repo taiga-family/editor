@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiTiptapEditorService} from '@tbank/tui-editor';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({

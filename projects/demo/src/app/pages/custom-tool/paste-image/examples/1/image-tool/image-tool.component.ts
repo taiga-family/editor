@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Inject, ViewChild} from '@angular/core';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiTiptapEditorService} from '@tbank/tui-editor';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'image-tool',

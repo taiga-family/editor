@@ -8,8 +8,8 @@
         "inlineSourceMap": true,
         "inlineSources": true,
         "paths": {
-            "@tbank/tui-editor/*": ["./dist/tui-editor/*"],
-            "@tbank/tui-editor": ["./dist/tui-editor/index"],
+            "@tinkoff/tui-editor/*": ["./dist/tui-editor/*"],
+            "@tinkoff/tui-editor": ["./dist/tui-editor/index"],
             "@taiga-ui/kit": ["./taiga-ui/dist/kit/index"],
             "@taiga-ui/kit/*": ["./taiga-ui/dist/kit/*"],
             "@taiga-ui/cdk": ["./taiga-ui/dist/cdk/index"],

@@ -7,7 +7,7 @@ import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
-import {TuiColorSelectorModule} from '@tbank/tui-editor/components/color-selector';
+import {TuiColorSelectorModule} from '@tinkoff/tui-editor/components/color-selector';
 
 import {TuiInputColorComponent} from './input-color.component';
 

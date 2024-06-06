@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file. See
 
 # 1.33.0 (2024-06-05)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -38,7 +38,7 @@ All notable changes to this project will be documented in this file. See
 
 # 1.30.0 (2024-05-13)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -71,7 +71,7 @@ All notable changes to this project will be documented in this file. See
 
 # 1.27.0 (2024-05-08)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -283,7 +283,7 @@ All notable changes to this project will be documented in this file. See
 
 # 1.11.0 (2024-01-10)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -316,7 +316,7 @@ All notable changes to this project will be documented in this file. See
 
 ## 1.8.4 (2023-11-16)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -325,7 +325,7 @@ All notable changes to this project will be documented in this file. See
 
 ## 1.8.3 (2023-10-31)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
@@ -370,14 +370,14 @@ All notable changes to this project will be documented in this file. See
 
 ## 1.7.1 (2023-10-11)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.7.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.6.1...@tbank/tui-editor@1.7.0) (2023-10-03)
+# [1.7.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.6.1...@tinkoff/tui-editor@1.7.0) (2023-10-03)
 
 ### Features
 
@@ -389,16 +389,16 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.6.1](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.6.0...@tbank/tui-editor@1.6.1) (2023-10-03)
+## [1.6.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.6.0...@tinkoff/tui-editor@1.6.1) (2023-10-03)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.6.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.5.1...@tbank/tui-editor@1.6.0) (2023-10-02)
+# [1.6.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.5.1...@tinkoff/tui-editor@1.6.0) (2023-10-02)
 
 ### Features
 
@@ -412,16 +412,16 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.5.1](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.5.0...@tbank/tui-editor@1.5.1) (2023-09-06)
+## [1.5.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.5.0...@tinkoff/tui-editor@1.5.1) (2023-09-06)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.5.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.4.0...@tbank/tui-editor@1.5.0) (2023-08-22)
+# [1.5.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.4.0...@tinkoff/tui-editor@1.5.0) (2023-08-22)
 
 ### Features
 
@@ -433,7 +433,7 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.4.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.3.1...@tbank/tui-editor@1.4.0) (2023-08-18)
+# [1.4.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.1...@tinkoff/tui-editor@1.4.0) (2023-08-18)
 
 ### Bug Fixes
 
@@ -445,7 +445,7 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.3.1](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.3.0...@tbank/tui-editor@1.3.1) (2023-08-18)
+## [1.3.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.3.0...@tinkoff/tui-editor@1.3.1) (2023-08-18)
 
 ### Bug Fixes
 
@@ -457,7 +457,7 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.3.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.2.0...@tbank/tui-editor@1.3.0) (2023-08-18)
+# [1.3.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.2.0...@tinkoff/tui-editor@1.3.0) (2023-08-18)
 
 ### Features
 
@@ -469,16 +469,16 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.2.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.1.0...@tbank/tui-editor@1.2.0) (2023-07-27)
+# [1.2.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.1.0...@tinkoff/tui-editor@1.2.0) (2023-07-27)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.1.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.0.1...@tbank/tui-editor@1.1.0) (2023-07-25)
+# [1.1.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.0.1...@tinkoff/tui-editor@1.1.0) (2023-07-25)
 
 ### Bug Fixes
 
@@ -490,7 +490,7 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.0.1](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@1.0.0...@tbank/tui-editor@1.0.1) (2023-07-07)
+## [1.0.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@1.0.0...@tinkoff/tui-editor@1.0.1) (2023-07-07)
 
 ### Bug Fixes
 
@@ -502,33 +502,33 @@ All notable changes to this project will be documented in this file. See
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.0.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@0.3.0...@tbank/tui-editor@1.0.0) (2023-07-06)
+# [1.0.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@0.3.0...@tinkoff/tui-editor@1.0.0) (2023-07-06)
 
-**Note:** Version bump only for package @tbank/tui-editor
-
-# Change Log
-
-All notable changes to this project will be documented in this file. See
-[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.3.0](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@0.2.2...@tbank/tui-editor@0.3.0) (2023-07-06)
-
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.2](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@0.2.1...@tbank/tui-editor@0.2.2) (2023-07-06)
+# [0.3.0](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@0.2.2...@tinkoff/tui-editor@0.3.0) (2023-07-06)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
 
 # Change Log
 
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.1](https://github.com/taiga-family/tui-editor/compare/@tbank/tui-editor@0.2.0...@tbank/tui-editor@0.2.1) (2023-07-06)
+## [0.2.2](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@0.2.1...@tinkoff/tui-editor@0.2.2) (2023-07-06)
 
-**Note:** Version bump only for package @tbank/tui-editor
+**Note:** Version bump only for package @tinkoff/tui-editor
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.1](https://github.com/taiga-family/tui-editor/compare/@tinkoff/tui-editor@0.2.0...@tinkoff/tui-editor@0.2.1) (2023-07-06)
+
+**Note:** Version bump only for package @tinkoff/tui-editor

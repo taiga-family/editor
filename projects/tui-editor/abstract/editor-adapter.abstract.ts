@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
-import type {TuiEditableIframe} from '@tbank/tui-editor/extensions/iframe-editor';
-import type {TuiYoutubeOptions} from '@tbank/tui-editor/extensions/youtube';
-import type {TuiEditorAttachedFile} from '@tbank/tui-editor/interfaces';
+import type {TuiEditableIframe} from '@tinkoff/tui-editor/extensions/iframe-editor';
+import type {TuiYoutubeOptions} from '@tinkoff/tui-editor/extensions/youtube';
+import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
 import type {EditorState} from 'prosemirror-state';

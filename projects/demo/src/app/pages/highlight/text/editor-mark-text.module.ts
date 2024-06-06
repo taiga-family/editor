@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TuiAddonDocModule, tuiGenerateRoutes} from '@taiga-ui/addon-doc';
 import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
 import {ExampleTuiEditorMarkTextComponent} from './editor-mark-text.component';
 import {TuiEditorMarkTextExample1} from './examples/1';

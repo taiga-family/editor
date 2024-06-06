@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {tuiEditorOptionsProvider} from '@tbank/tui-editor';
+import {tuiEditorOptionsProvider} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-appearance-example-1',

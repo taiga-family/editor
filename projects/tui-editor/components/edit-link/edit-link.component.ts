@@ -9,19 +9,19 @@ import {
     Output,
 } from '@angular/core';
 import {TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
-import {AbstractTuiEditor} from '@tbank/tui-editor/abstract';
+import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_HTTPS_PREFIX,
     TuiEditorLinkPrefix,
     TuiEditorLinkProtocol,
-} from '@tbank/tui-editor/constants';
-import {TuiTiptapEditorService} from '@tbank/tui-editor/directives';
+} from '@tinkoff/tui-editor/constants';
+import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {
     TUI_EDITOR_LINK_TEXTS,
     TUI_EDITOR_OPTIONS,
     TuiEditorOptions,
-} from '@tbank/tui-editor/tokens';
+} from '@tinkoff/tui-editor/tokens';
 
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 

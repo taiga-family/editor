@@ -12,7 +12,7 @@ import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'editor-starter-page',
@@ -25,7 +25,7 @@ import {
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@tbank/tui-editor/extensions/image-editor').then(
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
                     ({tuiCreateImageEditorExtension}) =>
                         tuiCreateImageEditorExtension({injector}),
                 ),

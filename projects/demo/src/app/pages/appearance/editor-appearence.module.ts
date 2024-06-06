@@ -14,7 +14,7 @@ import {
     TuiEditorModule,
     TuiEditorSocketModule,
     TuiToolbarModule,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 import {ExampleTuiEditorToolbarComponent} from './editor-appearence.component';
 import {TuiEditorAppearanceExample1} from './examples/1';

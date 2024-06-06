@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AbstractTuiValueTransformer} from '@taiga-ui/cdk';
-import {tuiLegacyEditorConverter} from '@tbank/tui-editor';
+import {tuiLegacyEditorConverter} from '@tinkoff/tui-editor';
 
 @Injectable()
 export class ExampleEditorConvertLegacyHtmlTransformer extends AbstractTuiValueTransformer<string> {

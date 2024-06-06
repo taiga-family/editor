@@ -1,4 +1,4 @@
-import {TuiEditorAttachedFile} from '@tbank/tui-editor';
+import {TuiEditorAttachedFile} from '@tinkoff/tui-editor';
 import {forkJoin, Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 

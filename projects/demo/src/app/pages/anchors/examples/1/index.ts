@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, INJECTOR, Injector} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
 
 @Component({
     selector: 'tui-editor-anchors-example-1',
@@ -11,19 +11,19 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tbank/tui-editor';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-image').then(({default: Image}) =>
                     Image.configure({inline: true, allowBase64: true}),
                 ),
-                import('@tbank/tui-editor/extensions/image-editor').then(
+                import('@tinkoff/tui-editor/extensions/image-editor').then(
                     ({createImageEditorExtension}) =>
                         createImageEditorExtension(injector),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tbank/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
-                import('@tbank/tui-editor/extensions/jump-anchor').then(
+                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),
             ],

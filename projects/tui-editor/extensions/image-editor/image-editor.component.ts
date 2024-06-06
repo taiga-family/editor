@@ -10,8 +10,8 @@ import {
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiDestroyService} from '@taiga-ui/cdk';
-import {AbstractTuiEditorResizable} from '@tbank/tui-editor/components/editor-resizable';
-import {TUI_EDITOR_RESIZE_EVENT} from '@tbank/tui-editor/constants';
+import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
 import {
     TUI_EDITOR_MAX_IMAGE_WIDTH,

@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {TuiNodeViewNgComponent} from '@tbank/tui-editor/extensions/tiptap-node-view';
+import {TuiNodeViewNgComponent} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
 
 export interface TuiEditorResizableContainer {
     height?: number | string | null;

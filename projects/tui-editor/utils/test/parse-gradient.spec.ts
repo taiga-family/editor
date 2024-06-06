@@ -1,4 +1,4 @@
-import {tuiParseGradient} from '@tbank/tui-editor';
+import {tuiParseGradient} from '@tinkoff/tui-editor';
 
 describe(`tuiParseGradient`, () => {
     it(`test case 1`, () => {

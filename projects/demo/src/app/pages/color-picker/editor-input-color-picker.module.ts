@@ -21,7 +21,7 @@ import {
     TuiColorSelectorModule,
     TuiInputColorModule,
     TuiPaletteModule,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 import {ExampleTuiColorPickerComponent} from './editor-input-color-picker.component';
 import {TuiColorPickerExample1} from './examples/1';

@@ -7,7 +7,7 @@ import {
     TuiHintModule,
     TuiHostedDropdownModule,
 } from '@taiga-ui/core';
-import {TuiPaletteModule} from '@tbank/tui-editor/components/color-selector';
+import {TuiPaletteModule} from '@tinkoff/tui-editor/components/color-selector';
 
 import {TuiTableCellColorComponent} from './table-cell-color.component';
 

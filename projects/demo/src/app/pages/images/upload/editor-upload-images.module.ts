@@ -13,7 +13,7 @@ import {
     TuiSvgModule,
 } from '@taiga-ui/core';
 import {TuiFieldErrorPipeModule} from '@taiga-ui/kit';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
 import {ExampleTuiEditorUploadingImagesComponent} from './editor-upload-images.component';
 import {TuiEditorUploadingImagesExample1} from './examples/1';

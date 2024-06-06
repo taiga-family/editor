@@ -11,7 +11,7 @@ import {
     TuiLoaderModule,
     TuiSvgModule,
 } from '@taiga-ui/core';
-import {TuiEditorModule, TuiEditorSocketModule} from '@tbank/tui-editor';
+import {TuiEditorModule, TuiEditorSocketModule} from '@tinkoff/tui-editor';
 
 import {ExampleTuiEditorUploadFilesComponent} from './editor-upload-files.component';
 import {TuiEditorUploadFilesExample1} from './examples/1';

@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_OPTIONS,
     TuiEditorOptions,
     TuiTiptapEditorService,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 import {distinctUntilChanged, map, share} from 'rxjs/operators';
 
 @Component({

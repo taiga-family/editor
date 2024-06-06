@@ -3,7 +3,7 @@ import {
     TUI_EDITOR_LINK_HASH_PREFIX as HASH_PREFIX,
     TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER as OSI_PROTOCOL_DIVIDER,
     TUI_EDITOR_LINK_SIMPLE_PROTOCOL_DIVIDER as SIMPLE_PROTOCOL_DIVIDER,
-} from '@tbank/tui-editor/constants';
+} from '@tinkoff/tui-editor/constants';
 
 interface TuiEditLinkParsed {
     path: string;

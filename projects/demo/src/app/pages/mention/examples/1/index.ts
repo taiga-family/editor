@@ -4,7 +4,7 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditorComponent,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 import {User} from './mention';
 
@@ -17,14 +17,14 @@ import {User} from './mention';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor/extensions/starter-kit').then(
+                import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('@tbank/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tbank/tui-editor/extensions/mention').then(
+                import('@tinkoff/tui-editor/extensions/mention').then(
                     ({TuiMention}) => TuiMention,
                 ),
             ],

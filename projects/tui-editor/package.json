@@ -1,5 +1,5 @@
 {
-    "name": "@tbank/tui-editor",
+    "name": "@tinkoff/tui-editor",
     "version": "1.33.0",
     "description": "Rich text editor extension package for Taiga UI",
     "keywords": [

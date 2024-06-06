@@ -11,7 +11,7 @@ import {
     TuiColorPickerModule,
     TuiColorSelectorModule,
     TuiPaletteModule,
-} from '@tbank/tui-editor';
+} from '@tinkoff/tui-editor';
 
 import {CustomColorPickerComponent} from './custom-color-picker.component';
 

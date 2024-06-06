@@ -6,7 +6,7 @@ import {
     TUI_DEFAULT_LINK_OPTIONS,
     tuiDefaultFontOptionsHandler,
     TuiEditorLinkOptions,
-} from '@tbank/tui-editor/constants';
+} from '@tinkoff/tui-editor/constants';
 
 export interface TuiEditorOptions {
     readonly appearence: string;
