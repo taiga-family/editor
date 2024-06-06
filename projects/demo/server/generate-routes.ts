@@ -14,15 +14,7 @@ const EXCEPTIONS: string[] = [TuiDemoPath.Stackblitz];
  */
 (function main(): void {
     const demoPathEnumContent = readFileSync(
-        join(
-            process.cwd(),
-            'projects',
-            'demo',
-            'src',
-            'app',
-            'constants',
-            'demo-path.ts',
-        ),
+        join(process.cwd(), 'projects', 'demo', 'src', 'app', 'shared', 'routes.ts'),
         'utf-8',
     );
 
