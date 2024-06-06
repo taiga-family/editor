@@ -1,4 +1,4 @@
-name: ⚠️ Release @tbank/tui-editor
+name: ⚠️ Release @tinkoff/tui-editor
 on:
   workflow_dispatch:
     inputs:
@@ -23,19 +23,16 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.50.4
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/node@v1.58.1
-        with:
-          validate-peer-deps: false
-
-      - uses: taiga-family/ci/actions/setup/config/git@v1.58.1
+      - uses: taiga-family/ci/actions/setup/node@v1.50.4
+      - uses: taiga-family/ci/actions/setup/config/git@v1.50.4
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.58.1
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.50.4
         with:
-          token: ${{ secrets.TBANK_SCOPE_NPM_TOKEN }}
+          token: ${{ secrets.TINKOFF_SCOPE_NPM_TOKEN }}
 
       - name: Lerna update version of packages
         if: always()
@@ -56,13 +53,13 @@ jobs:
           echo "version=v$(node -p "require('./projects/tui-editor/package.json').version")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.58.1
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.50.4
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: ${{ steps.info.outputs.version }}
-          textLink: '@tbank/tui-editor'
+          textLink: '@tinkoff/tui-editor'
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
