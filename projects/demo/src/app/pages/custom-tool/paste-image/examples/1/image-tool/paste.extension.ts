@@ -16,7 +16,7 @@ export const IMAGE_CLIPBOARD_PASTE_EXTENSION: Partial<NodeConfig<unknown, unknow
                                 );
 
                             if (isImage) {
-                                const node = view.state.schema.nodes.imageEditor.create({
+                                const node = view.state.schema.nodes.image.create({
                                     src: url,
                                 });
 
