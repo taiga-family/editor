@@ -12,9 +12,9 @@ import {WINDOW} from '@ng-web-apis/common';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
+import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import type {TuiEditableImage} from './image-editor.options';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
-import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 
 @Component({
     standalone: true,
