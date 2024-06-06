@@ -7,8 +7,8 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
     standalone: true,
     selector: 'logo',
     imports: [TuiSvgComponent, RouterLink, TuiLinkDirective],
-    templateUrl: './logo.template.html',
-    styleUrls: ['./logo.style.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiLogo {}

@@ -9,7 +9,7 @@ import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
 import {ngExpressEngine} from '@nguniversal/express-engine';
 import express from 'express';
 
-import bootstrap from './src/main.server';
+import bootstrap from '../src/main.server';
 
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
@@ -45,6 +45,6 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
     );
 }
 
-export * from './src/main.server';
+export * from '../src/main.server';
 
 export default bootstrap;

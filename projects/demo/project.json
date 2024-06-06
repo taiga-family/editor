@@ -14,7 +14,6 @@
         "build": {
             "executor": "@nx/angular:webpack-browser",
             "options": {
-                "allowedCommonJsDependencies": ["@tinkoff/ng-dompurify", "dompurify", "showdown", "text-mask-core"],
                 "customWebpackConfig": {
                     "path": "projects/demo/webpack.config.ts"
                 },
@@ -104,11 +103,11 @@
             "executor": "@angular-builders/custom-webpack:server",
             "options": {
                 "customWebpackConfig": {
-                    "path": "projects/demo/webpack.server.config.ts"
+                    "path": "projects/demo/server/webpack.server.config.ts"
                 },
                 "outputPath": "dist/demo/server",
-                "main": "projects/demo/server.ts",
-                "tsConfig": "projects/demo/tsconfig.server.json",
+                "main": "projects/demo/server/server.ts",
+                "tsConfig": "projects/demo/server/tsconfig.server.json",
                 "sourceMap": true,
                 "optimization": false
             },
@@ -125,7 +124,7 @@
         "generate-routes-file": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "ts-node ./projects/demo/generate-routes.ts"
+                "command": "ts-node ./projects/demo/server/generate-routes.ts"
             }
         },
         "prerender": {
@@ -134,7 +133,7 @@
             "options": {
                 "browserTarget": "editor-demo:build:production,ssr",
                 "serverTarget": "editor-demo:server:production",
-                "routesFile": "projects/demo/routes.txt",
+                "routesFile": "projects/demo/server/routes.txt",
                 "guessRoutes": false
             },
             "configurations": {

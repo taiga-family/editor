@@ -17,7 +17,7 @@ import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
-import {TUI_LOGO_CONTENT} from './modules/logo/logo.component';
+import {TUI_LOGO_CONTENT} from './shared/logo';
 
 export const appConfig: ApplicationConfig = {
     providers: [

@@ -2,7 +2,6 @@ export const TuiDemoPath = {
     Anchors: 'anchors',
     Appearance: 'appearance',
     Mention: 'mention',
-    Changelog: 'changelog',
     ColorPicker: 'color-picker',
     Checkbox: 'checkbox',
     AngularContenteditableAccessor: 'angular-contenteditable-accessor',

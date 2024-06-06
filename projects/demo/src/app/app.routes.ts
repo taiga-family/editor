@@ -1,7 +1,7 @@
 import type {Routes} from '@angular/router';
 import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
-import {TuiDemoPath} from './constants/demo-path';
+import {TuiDemoPath} from './shared/routes';
 
 export const routes: Routes = [
     route({
@@ -153,11 +153,6 @@ export const routes: Routes = [
         path: TuiDemoPath.ToolbarFloating,
         loadComponent: async () => import('./pages/toolbar/floating'),
         title: 'Editor — Toolbar',
-    }),
-    route({
-        path: TuiDemoPath.Changelog,
-        loadComponent: async () => import('./pages/changelog'),
-        title: 'Changelog',
     }),
     {
         path: '**',

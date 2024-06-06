@@ -12,7 +12,7 @@ import pkg from '@tbank/tui-editor/package.json';
     selector: 'app',
     imports: [RouterLink, TuiRootComponent, TuiLinkDirective, TuiAddonDoc, TuiPreview],
     templateUrl: './app.component.html',
-    styleUrls: ['./app.style.less'],
+    styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {

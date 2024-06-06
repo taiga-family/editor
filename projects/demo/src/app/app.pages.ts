@@ -1,6 +1,6 @@
 import type {TuiDocPages} from '@taiga-ui/addon-doc';
 
-import {TuiDemoPath} from './constants';
+import {TuiDemoPath} from './shared/routes';
 
 export const DEMO_PAGES: TuiDocPages = [
     {
@@ -16,12 +16,6 @@ export const DEMO_PAGES: TuiDocPages = [
         keywords: 'reproduce, issue, bug, sandbox, playground, test, stackblitz',
         route: TuiDemoPath.Stackblitz,
         target: '_blank',
-    },
-    {
-        section: 'Documentation',
-        title: 'Changelog',
-        route: TuiDemoPath.Changelog,
-        keywords: 'release, change, changelog, archive, history',
     },
     {
         section: 'Documentation',
