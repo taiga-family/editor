@@ -34,13 +34,12 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             this.editor = editor;
 
             const update = (): void => {
-                this.stateChange$.next();
-
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
                 const value: string = tuiIsEmptyParagraph(json) ? '' : content;
 
                 this.valueChange$.next(value);
+                this.stateChange$.next();
             };
 
             editor.on('transaction', update.bind(this));
@@ -416,5 +415,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         options?: {extendEmptyMarkRange?: boolean},
     ): void {
         this.editor.commands.toggleMark(typeOrName, attributes, options);
+    }
+
+    public getHTML(): string {
+        return this.getOriginTiptapEditor().getHTML() ?? '';
     }
 }

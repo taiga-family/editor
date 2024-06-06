@@ -3,10 +3,12 @@ import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     EventEmitter,
     inject,
     Input,
+    NgZone,
     Output,
     ViewChild,
 } from '@angular/core';
@@ -19,6 +21,7 @@ import {
     TuiActiveZoneDirective,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
+    tuiZonefree,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
@@ -27,10 +30,11 @@ import {
     TuiScrollbarComponent,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {delay} from 'rxjs';
+import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
+import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import type {TuiEditorTool} from '../../enums/editor-tool';
@@ -87,6 +91,8 @@ export class TuiEditor
 
     private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
     private readonly doc = inject(DOCUMENT);
+    private readonly zone = inject(NgZone);
+    private readonly destroy$ = inject(DestroyRef);
 
     @ViewChild(TuiToolbar)
     protected readonly toolbar?: TuiToolbar;
@@ -104,6 +110,7 @@ export class TuiEditor
                 );
 
             this.patchContentEditableElement();
+            this.listenResizeEvents();
         });
 
     @Input()
@@ -285,5 +292,18 @@ export class TuiEditor
             'spellcheck',
             String(this.options.spellcheck),
         );
+    }
+
+    private listenResizeEvents(): void {
+        this.el?.nativeElement &&
+            fromEvent(this.el?.nativeElement, TUI_EDITOR_RESIZE_EVENT)
+                .pipe(
+                    throttleTime(0),
+                    tuiZonefree(this.zone),
+                    takeUntilDestroyed(this.destroy$),
+                )
+                .subscribe(() =>
+                    this.editorService.valueChange$.next(this.editorService.getHTML()),
+                );
     }
 }

@@ -14,6 +14,7 @@ import {AbstractTuiEditorResizable} from '../../components/editor-resizable/edit
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
 import type {TuiEditableImage} from './image-editor.options';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
+import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 
 @Component({
     standalone: true,
@@ -51,8 +52,9 @@ export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage>
         this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
 
-        // force update
-        this.editor.commands.setContent(this.editor.getJSON());
+        this.el.nativeElement.dispatchEvent(
+            new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+        );
     }
 
     @HostBinding('attr.data-drag-handle')

@@ -96,4 +96,5 @@ export abstract class AbstractTuiEditor {
     public abstract setFileLink(preview: TuiEditorAttachedFile): void;
     public abstract setYoutubeVideo(options: TuiYoutubeOptions): void;
     public abstract setIframe(options: TuiEditableIframe): void;
+    public abstract getHTML(): string;
 }
