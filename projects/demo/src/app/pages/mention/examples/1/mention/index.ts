@@ -29,7 +29,7 @@ export interface User {
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MentionsComponent {
+export class Mentions {
     protected readonly items: readonly User[] = [
         {
             name: 'Alexander Inkin',

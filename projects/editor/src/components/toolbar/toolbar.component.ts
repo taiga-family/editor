@@ -33,49 +33,49 @@ import {
 } from '../../tokens/files-loader';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../tokens/i18n';
 import {TUI_IMAGE_LOADER} from '../../tokens/image-loader';
-import {TuiEditLinkComponent} from '../edit-link/edit-link.component';
-import {TuiAlignContentComponent} from '../toolbar-tools/align-content/align-content.component';
-import {TuiCodeComponent} from '../toolbar-tools/code/code.component';
-import {TuiDetailsComponent} from '../toolbar-tools/details/details.component';
-import {TuiDetailsRemoveComponent} from '../toolbar-tools/details/details-remove/details-remove.component';
-import {TuiFontSizeComponent} from '../toolbar-tools/font-size/font-size.component';
-import {TuiFontStyleComponent} from '../toolbar-tools/font-style/font-style.component';
-import {TuiEditorGroupToolComponent} from '../toolbar-tools/group/group.component';
-import {TuiHighlightColorComponent} from '../toolbar-tools/highlight-color/highlight-color.component';
-import {TuiListConfigsComponent} from '../toolbar-tools/list-configs/list-configs.component';
-import {TuiTableCellColorComponent} from '../toolbar-tools/table-cell-color/table-cell-color.component';
-import {TuiTableCreateComponent} from '../toolbar-tools/table-create/table-create.component';
-import {TuiTableMergeCellsComponent} from '../toolbar-tools/table-merge-cells/table-merge-cells.component';
-import {TuiTableRowColumnManagerComponent} from '../toolbar-tools/table-row-column-manager/table-row-column-manager.component';
-import {TuiTextColorComponent} from '../toolbar-tools/text-color/text-color.component';
-import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager.directive';
+import {TuiEditLink} from '../edit-link/edit-link.component';
+import {TuiAlignContent} from '../toolbar-tools/align-content/align-content.component';
+import {TuiCode} from '../toolbar-tools/code/code.component';
+import {TuiDetails} from '../toolbar-tools/details/details.component';
+import {TuiDetailsRemove} from '../toolbar-tools/details/details-remove/details-remove.component';
+import {TuiFontSize} from '../toolbar-tools/font-size/font-size.component';
+import {TuiFontStyle} from '../toolbar-tools/font-style/font-style.component';
+import {TuiEditorGroupTool} from '../toolbar-tools/group/group.component';
+import {TuiHighlightColor} from '../toolbar-tools/highlight-color/highlight-color.component';
+import {TuiListConfigs} from '../toolbar-tools/list-configs/list-configs.component';
+import {TuiTableCellColor} from '../toolbar-tools/table-cell-color/table-cell-color.component';
+import {TuiTableCreate} from '../toolbar-tools/table-create/table-create.component';
+import {TuiTableMergeCells} from '../toolbar-tools/table-merge-cells/table-merge-cells.component';
+import {TuiTableRowColumnManager} from '../toolbar-tools/table-row-column-manager/table-row-column-manager.component';
+import {TuiTextColor} from '../toolbar-tools/text-color/text-color.component';
+import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-toolbar',
     imports: [
-        TuiTableCellColorComponent,
-        TuiTableMergeCellsComponent,
-        TuiTableCreateComponent,
+        TuiTableCellColor,
+        TuiTableMergeCells,
+        TuiTableCreate,
         NgIf,
         TuiItemDirective,
         TuiButtonDirective,
         TuiHint,
-        TuiTextColorComponent,
-        TuiHighlightColorComponent,
-        TuiEditLinkComponent,
+        TuiTextColor,
+        TuiHighlightColor,
+        TuiEditLink,
         TuiHostedDropdownModule,
-        TuiFontStyleComponent,
+        TuiFontStyle,
         AsyncPipe,
-        TuiToolbarNavigationManagerDirective,
-        TuiDetailsComponent,
-        TuiDetailsRemoveComponent,
-        TuiEditorGroupToolComponent,
-        TuiTableRowColumnManagerComponent,
-        TuiCodeComponent,
-        TuiListConfigsComponent,
-        TuiAlignContentComponent,
-        TuiFontSizeComponent,
+        TuiToolbarNavigationManager,
+        TuiDetails,
+        TuiDetailsRemove,
+        TuiEditorGroupTool,
+        TuiTableRowColumnManager,
+        TuiCode,
+        TuiListConfigs,
+        TuiAlignContent,
+        TuiFontSize,
     ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
@@ -84,12 +84,12 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
         role: 'toolbar',
     },
 })
-export class TuiToolbarComponent {
+export class TuiToolbar {
     @ViewChildren('dropdown', {read: ElementRef})
     private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @ViewChild(TuiToolbarNavigationManagerDirective)
-    private readonly navigationManager?: TuiToolbarNavigationManagerDirective;
+    @ViewChild(TuiToolbarNavigationManager)
+    private readonly navigationManager?: TuiToolbarNavigationManager;
 
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
     private readonly destroyRef = inject(DestroyRef);

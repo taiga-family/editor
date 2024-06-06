@@ -8,7 +8,7 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
     standalone: true,
     selector: '[tuiTiptapEditor]',
 })
-export class TuiTiptapEditorDirective {
+export class TuiTiptapEditor {
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly editor = inject(TuiTiptapEditorService);

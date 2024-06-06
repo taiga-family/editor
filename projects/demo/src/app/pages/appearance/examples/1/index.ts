@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiEditorComponent, tuiEditorOptionsProvider} from '@tbank/tui-editor';
+import {TuiEditor, tuiEditorOptionsProvider} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiEditorComponent, ReactiveFormsModule, TuiActiveZoneDirective],
+    imports: [TuiEditor, ReactiveFormsModule, TuiActiveZoneDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
@@ -16,7 +16,7 @@ import {TuiEditorComponent, tuiEditorOptionsProvider} from '@tbank/tui-editor';
         }),
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly control = new FormControl('');
     protected readonly builtInTools = [];
 }

@@ -26,7 +26,7 @@ import {TUI_EDITOR_CODE_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     templateUrl: './code.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCodeComponent {
+export class TuiCode {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);

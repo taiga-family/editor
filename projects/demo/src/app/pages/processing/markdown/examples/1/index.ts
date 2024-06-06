@@ -6,8 +6,8 @@ import {tuiRawLoad} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_CONTENT_PROCESSOR,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 import MarkdownIt from 'markdown-it';
@@ -15,7 +15,7 @@ import {Converter} from 'showdown';
 
 @Component({
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
+    imports: [NgIf, ReactiveFormsModule, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +26,7 @@ import {Converter} from 'showdown';
         },
     ],
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,

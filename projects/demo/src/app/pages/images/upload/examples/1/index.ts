@@ -19,8 +19,8 @@ import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
@@ -36,8 +36,8 @@ import {ImgbbService} from './imgbb.service';
         TuiValidatorDirective,
         ReactiveFormsModule,
         TuiFieldErrorPipe,
-        TuiEditorSocketComponent,
-        TuiEditorComponent,
+        TuiEditorSocket,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -69,9 +69,9 @@ import {ImgbbService} from './imgbb.service';
         },
     ],
 })
-export default class ExampleComponent {
-    @ViewChild(TuiEditorComponent, {static: true})
-    private readonly editor?: TuiEditorComponent;
+export default class Example {
+    @ViewChild(TuiEditor, {static: true})
+    private readonly editor?: TuiEditor;
 
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';

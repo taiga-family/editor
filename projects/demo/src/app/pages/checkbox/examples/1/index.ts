@@ -2,14 +2,14 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiEditorComponent, ReactiveFormsModule, TuiEditorSocketComponent],
+    imports: [TuiEditor, ReactiveFormsModule, TuiEditorSocket],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +25,7 @@ import {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Size,

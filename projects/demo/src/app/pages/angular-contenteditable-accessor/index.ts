@@ -11,7 +11,7 @@ const html = '<b>HTML</b><p>with a paragraph</p><div>a div</div>and a plain text
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected model = 'Initial value';
 
     protected disabled = true;

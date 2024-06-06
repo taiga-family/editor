@@ -16,7 +16,7 @@ import {take, takeWhile} from 'rxjs';
 
 import {TUI_IMAGE_LOADER} from '../../tokens/image-loader';
 import {TuiNodeView} from '../tiptap-node-view';
-import {TuiImageEditorComponent} from './image-editor.component';
+import {TuiImageEditor} from './image-editor.component';
 import type {TuiEditableImage} from './image-editor.options';
 
 declare module '@tiptap/core' {
@@ -122,7 +122,7 @@ export function tuiCreateImageEditorExtension<T, K>({
         addNodeView(): NodeViewRenderer {
             return (props: NodeViewRendererProps) =>
                 Reflect.construct(TuiNodeView, [
-                    TuiImageEditorComponent,
+                    TuiImageEditor,
                     props,
                     {injector, ...props},
                 ]);

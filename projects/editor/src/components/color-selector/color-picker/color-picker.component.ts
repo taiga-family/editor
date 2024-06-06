@@ -11,28 +11,28 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {tuiHsvToRgb, tuiPure, tuiRgbToHsv, tuiRound} from '@taiga-ui/cdk';
 import type {TuiPoint} from '@taiga-ui/core';
 
-import {TuiFlatPickerComponent} from '../flat-picker/flat-picker.component';
-import {TuiLinearPickerComponent} from '../linear-picker/linear-picker.component';
+import {TuiFlatPicker} from '../flat-picker/flat-picker.component';
+import {TuiLinearPicker} from '../linear-picker/linear-picker.component';
 
 @Component({
     standalone: true,
     selector: 'tui-color-picker',
-    imports: [TuiFlatPickerComponent, TuiLinearPickerComponent],
+    imports: [TuiFlatPicker, TuiLinearPicker],
     templateUrl: './color-picker.template.html',
     styleUrls: ['./color-picker.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorPickerComponent {
+export class TuiColorPicker {
     private readonly sanitizer = inject(DomSanitizer);
-
-    protected point: TuiPoint = [0, 1];
-    protected hue = 0;
-    protected opacity = 1;
 
     @Output()
     public readonly colorChange = new EventEmitter<
         [h: number, s: number, v: number, opacity: number]
     >();
+
+    public point: TuiPoint = [0, 1];
+    public hue = 0;
+    public opacity = 1;
 
     @Input()
     public set color(color: [h: number, s: number, v: number, opacity: number]) {
@@ -50,15 +50,15 @@ export class TuiColorPickerComponent {
         this.point = [s, 1 - v / 255];
     }
 
-    protected get currentColor(): [h: number, s: number, v: number] {
+    public get currentColor(): [h: number, s: number, v: number] {
         return this.getCurrentColor(this.hue, this.point);
     }
 
-    protected get base(): string {
+    public get base(): string {
         return `rgb(${tuiHsvToRgb(this.hue * 360, 1, 255)})`;
     }
 
-    protected get gradient(): SafeStyle {
+    public get gradient(): SafeStyle {
         return this.sanitizer.bypassSecurityTrustStyle(
             `linear-gradient(to right, rgba(${this.currentColor.join(
                 ',',

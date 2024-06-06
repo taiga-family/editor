@@ -15,7 +15,7 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-e
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),

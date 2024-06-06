@@ -2,23 +2,19 @@ import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
-import {ExampleTuiPasteImageToolComponent} from './image-tool/image-tool.component';
+import {ExampleTuiPasteImageTool} from './image-tool/image-tool.component';
 import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({
     standalone: true,
     imports: [
         TuiSvgComponent,
-        ExampleTuiPasteImageToolComponent,
+        ExampleTuiPasteImageTool,
         TuiItemDirective,
         ReactiveFormsModule,
-        TuiEditorComponent,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -38,7 +34,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl('');
 }

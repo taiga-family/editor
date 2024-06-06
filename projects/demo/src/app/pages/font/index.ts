@@ -8,7 +8,7 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly component2 = import('./examples/2');
     protected readonly component3 = import('./examples/3');

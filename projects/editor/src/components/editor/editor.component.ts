@@ -31,7 +31,7 @@ import {delay} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
-import {TuiTiptapEditorDirective} from '../../directives/tiptap-editor/tiptap-editor.directive';
+import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import type {TuiEditorTool} from '../../enums/editor-tool';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
@@ -41,13 +41,13 @@ import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
 import type {TuiSelectionState} from '../../utils/get-selection-state';
 import {tuiGetSelectionState} from '../../utils/get-selection-state';
 import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
-import {TuiEditLinkComponent} from '../edit-link/edit-link.component';
-import {TuiEditorSocketComponent} from '../editor-socket/editor-socket.component';
-import {TuiToolbarComponent} from '../toolbar/toolbar.component';
+import {TuiEditLink} from '../edit-link/edit-link.component';
+import {TuiEditorSocket} from '../editor-socket/editor-socket.component';
+import {TuiToolbar} from '../toolbar/toolbar.component';
 import {TuiDropdownToolbarDirective} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
-import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.component';
+import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
 
 @Component({
     standalone: true,
@@ -60,12 +60,12 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
         TuiScrollbarComponent,
         TuiDropdownOptionsDirective,
         TuiDropdownDirective,
-        TuiEditLinkComponent,
-        TuiEditorPortalHostComponent,
+        TuiEditLink,
+        TuiEditorPortalHost,
         TuiEditorPortalDirective,
-        TuiTiptapEditorDirective,
-        TuiEditorSocketComponent,
-        TuiToolbarComponent,
+        TuiTiptapEditor,
+        TuiEditorSocket,
+        TuiToolbar,
         NgTemplateOutlet,
         TuiDropdownToolbarDirective,
     ],
@@ -73,23 +73,23 @@ import {TuiEditorPortalHostComponent} from './portal/editor-portal-host.componen
     styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsFocusableItemAccessor(TuiEditorComponent),
+        tuiAsFocusableItemAccessor(TuiEditor),
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
     ],
 })
-export class TuiEditorComponent
+export class TuiEditor
     extends AbstractTuiControl<string>
     implements OnDestroy, TuiFocusableElementAccessor
 {
-    @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
+    @ViewChild(TuiTiptapEditor, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
 
     private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
     private readonly doc = inject(DOCUMENT);
 
-    @ViewChild(TuiToolbarComponent)
-    protected readonly toolbar?: TuiToolbarComponent;
+    @ViewChild(TuiToolbar)
+    protected readonly toolbar?: TuiToolbar;
 
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);

@@ -13,7 +13,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     templateUrl: './details.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDetailsComponent {
+export class TuiDetails {
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

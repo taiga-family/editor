@@ -1,21 +1,16 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiPaletteComponent} from '@tbank/tui-editor';
+import {TuiPalette} from '@tbank/tui-editor';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        AsyncPipe,
-        TuiButtonDirective,
-        TuiHostedDropdownModule,
-        TuiPaletteComponent,
-    ],
+    imports: [AsyncPipe, TuiButtonDirective, TuiHostedDropdownModule, TuiPalette],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected colors = new Map([
         ['blue', 'var(--tui-info-fill)'],
         ['green', 'var(--tui-success-fill)'],

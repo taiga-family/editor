@@ -13,7 +13,7 @@ import {
 
 @Component({
   standalone: true,
-  imports: [TuiRootModule, TuiEditorModule, TuiEditorSocketModule, FormsModule, ReactiveFormsModule],
+  imports: [TuiRootComponent, TuiEditor, TuiEditorSocket, FormsModule, ReactiveFormsModule],
   selector: `my-app`,
   templateUrl: `./app.component.html`,
   styleUrls: [`./app.component.less`],
@@ -31,7 +31,7 @@ import {
     },
   ],
 })
-export class AppComponent {
+export class App {
   readonly control = new FormControl();
 
   readonly tools: TuiEditorTool[] = TUI_EDITOR_DEFAULT_EDITOR_TOOLS;

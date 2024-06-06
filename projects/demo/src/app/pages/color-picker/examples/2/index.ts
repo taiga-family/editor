@@ -3,7 +3,7 @@ import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiColorSelectorComponent} from '@tbank/tui-editor';
+import {TuiColorSelector} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
@@ -11,13 +11,13 @@ import {TuiColorSelectorComponent} from '@tbank/tui-editor';
         TuiActiveZoneDirective,
         TuiHostedDropdownModule,
         TuiButtonDirective,
-        TuiColorSelectorComponent,
+        TuiColorSelector,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected color = '#ffdd2d';

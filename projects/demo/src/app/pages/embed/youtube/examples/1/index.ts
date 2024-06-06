@@ -4,22 +4,18 @@ import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
-import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.component';
+import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
 @Component({
     standalone: true,
     imports: [
         TuiSvgComponent,
-        ExampleTuiYoutubeToolComponent,
+        ExampleTuiYoutubeTool,
         ReactiveFormsModule,
         TuiItemDirective,
-        TuiEditorComponent,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -34,7 +30,7 @@ import {ExampleTuiYoutubeToolComponent} from './youtube-tool/youtube-tool.compon
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
 
     protected readonly builtInTools = [TuiEditorTool.Undo];

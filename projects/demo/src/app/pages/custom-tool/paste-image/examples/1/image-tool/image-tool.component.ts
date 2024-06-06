@@ -21,7 +21,7 @@ import {TuiTiptapEditorService} from '@tbank/tui-editor';
     styleUrls: ['./image-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiPasteImageToolComponent {
+export class ExampleTuiPasteImageTool {
     @ViewChild('dropdown')
     private readonly dropdown?: TuiHostedDropdownComponent;
 

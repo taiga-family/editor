@@ -19,7 +19,7 @@ import {TuiPickerService} from '../../../services/picker.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
 })
-export class TuiFlatPickerComponent {
+export class TuiFlatPicker {
     @Input()
     public value: TuiPoint = [0, 0];
 

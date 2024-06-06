@@ -15,7 +15,7 @@ import {appPrefix} from '../utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     private readonly stackblitz = inject(TuiStackblitzService);
 
     public async ngOnInit(): Promise<void> {

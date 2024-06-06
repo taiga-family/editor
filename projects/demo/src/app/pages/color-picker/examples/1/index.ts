@@ -12,7 +12,7 @@ import {
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected color = '#ffdd2d';
 
     protected readonly palette = TUI_EDITOR_DEFAULT_EDITOR_COLORS;

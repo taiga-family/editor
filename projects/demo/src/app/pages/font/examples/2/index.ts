@@ -2,15 +2,15 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
+    TuiEditor,
     tuiEditorOptionsProvider,
-    TuiEditorSocketComponent,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
+    imports: [ReactiveFormsModule, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -29,12 +29,14 @@ import {
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tbank/tui-editor').then(({TuiFontSize}) => TuiFontSize),
+                import('@tbank/tui-editor').then(
+                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
+                ),
             ],
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
     protected control = new FormControl(`

@@ -44,7 +44,7 @@ const HEX_MODE_LENGTH = 6;
     styleUrls: ['./color-edit.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorEditComponent {
+export class TuiColorEdit {
     protected readonly modes = ['HEX', 'RGB'];
     protected mode = this.modes[0];
     protected readonly hexMask: MaskitoOptions = {
@@ -57,19 +57,19 @@ export class TuiColorEditComponent {
     @Output()
     public readonly colorChange = new EventEmitter<[number, number, number, number]>();
 
-    protected get isHex(): boolean {
+    public get isHex(): boolean {
         return this.mode === this.modes[0];
     }
 
-    protected get hex(): string {
+    public get hex(): string {
         return tuiRgbToHex(this.color[0], this.color[1], this.color[2]).replace('#', '');
     }
 
-    protected get opacity(): number {
+    public get opacity(): number {
         return Math.round(this.color[3] * 100);
     }
 
-    protected onHexChange(hex: string): void {
+    public onHexChange(hex: string): void {
         if (hex.length !== HEX_MODE_LENGTH) {
             return;
         }
@@ -79,7 +79,7 @@ export class TuiColorEditComponent {
         this.updateColor([rgb[0], rgb[1], rgb[2], this.color[3]]);
     }
 
-    protected onRgbChange(...rgba: [number, number, number, number]): void {
+    public onRgbChange(...rgba: [number, number, number, number]): void {
         this.updateColor(rgba);
     }
 

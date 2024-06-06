@@ -1,10 +1,10 @@
 import type {Extension, Mark, Node} from '@tiptap/core';
 
 import {TuiBackgroundColor} from '../background-color';
-import {TuiDetails, TuiDetailsContent, TuiSummary} from '../details';
+import {TuiDetailsContent, TuiDetailsExtension, TuiSummary} from '../details';
 import {TuiFileLink} from '../file-link';
 import {TuiFontColor} from '../font-color';
-import {TuiFontSize} from '../font-size';
+import {TuiFontSizeExtension} from '../font-size';
 import {TuiTabExtension} from '../indent-outdent';
 import {TuiJumpAnchor} from '../jump-anchor';
 import {TuiLink} from '../link';
@@ -40,7 +40,7 @@ export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     TableCellBackground,
     TuiDetailsContent,
     TuiDetailsContent,
-    TuiDetails,
+    TuiDetailsExtension,
     TuiSummary,
-    TuiFontSize,
+    TuiFontSizeExtension,
 ];

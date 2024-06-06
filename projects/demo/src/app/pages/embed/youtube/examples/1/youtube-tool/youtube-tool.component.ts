@@ -21,7 +21,7 @@ import {TuiTiptapEditorService} from '@tbank/tui-editor';
     styleUrls: ['./youtube-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiYoutubeToolComponent {
+export class ExampleTuiYoutubeTool {
     @ViewChild('dropdown')
     private readonly dropdown?: TuiHostedDropdownComponent;
 

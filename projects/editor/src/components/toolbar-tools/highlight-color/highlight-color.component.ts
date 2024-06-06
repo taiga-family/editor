@@ -8,7 +8,7 @@ import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-e
 import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
-import {TuiPaletteComponent} from '../../color-selector/palette/palette.component';
+import {TuiPalette} from '../../color-selector/palette/palette.component';
 
 @Component({
     standalone: true,
@@ -21,13 +21,13 @@ import {TuiPaletteComponent} from '../../color-selector/palette/palette.componen
         TuiHint,
         NgIf,
         TuiActiveZoneDirective,
-        TuiPaletteComponent,
+        TuiPalette,
     ],
     templateUrl: './highlight-color.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiHighlightColorComponent {
+export class TuiHighlightColor {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     protected readonly editor = inject(TuiTiptapEditorService);

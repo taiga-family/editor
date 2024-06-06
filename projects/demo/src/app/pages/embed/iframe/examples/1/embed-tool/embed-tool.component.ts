@@ -21,7 +21,7 @@ import {TuiTiptapEditorService} from '@tbank/tui-editor';
     styleUrls: ['./embed-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiEmbedToolComponent {
+export class ExampleTuiEmbedTool {
     @ViewChild('dropdown')
     private readonly dropdown?: TuiHostedDropdownComponent;
 

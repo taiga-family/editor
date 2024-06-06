@@ -39,7 +39,7 @@ export enum TuiTableCommands {
     templateUrl: './table-row-column-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableRowColumnManagerComponent {
+export class TuiTableRowColumnManager {
     private readonly commandsRegistry: Record<TuiTableCommands, () => void> = {
         [TuiTableCommands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
         [TuiTableCommands.InsertColumnBefore]: () => this.editor.addColumnBefore(),

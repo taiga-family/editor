@@ -22,7 +22,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly mask = {mask: ['#', ...new Array(6).fill(/[0-9a-f]/i)]};
 
     protected value = '#ffdd2d';

@@ -8,7 +8,7 @@ import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
+    TuiEditor,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 import type {Observable} from 'rxjs';
@@ -16,7 +16,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorComponent],
+    imports: [ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -76,9 +76,9 @@ import {map} from 'rxjs';
         '[class._e2e]': 'isE2E',
     },
 })
-export default class ExampleComponent {
-    @ViewChild(TuiEditorComponent)
-    private readonly wysiwyg?: TuiEditorComponent;
+export default class Example {
+    @ViewChild(TuiEditor)
+    private readonly wysiwyg?: TuiEditor;
 
     private readonly sanitizer = inject(DomSanitizer);
 

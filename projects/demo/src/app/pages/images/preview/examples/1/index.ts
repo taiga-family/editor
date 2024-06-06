@@ -4,23 +4,23 @@ import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
 import {TuiPreview} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorImagePreviewDirective,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorImagePreview,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
-import {ImagePreviewExampleComponent} from './image-preview/image-preview.component';
+import {ImagePreviewExample} from './image-preview/image-preview.component';
 
 @Component({
     standalone: true,
     imports: [
-        ImagePreviewExampleComponent,
+        ImagePreviewExample,
         ReactiveFormsModule,
         TuiPreview,
-        TuiEditorSocketComponent,
-        TuiEditorImagePreviewDirective,
-        TuiEditorComponent,
+        TuiEditorSocket,
+        TuiEditorImagePreview,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +37,7 @@ import {ImagePreviewExampleComponent} from './image-preview/image-preview.compon
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 

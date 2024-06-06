@@ -11,6 +11,6 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
     styleUrls: ['./logo.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiLogoComponent {}
+export class TuiLogo {}
 
-export const TUI_LOGO_CONTENT = new PolymorpheusComponent(TuiLogoComponent);
+export const TUI_LOGO_CONTENT = new PolymorpheusComponent(TuiLogo);

@@ -21,7 +21,7 @@ const MIN_DISTANCE_PX = 70;
     styleUrls: ['./table-size-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableSizeSelectorComponent {
+export class TuiTableSizeSelector {
     private readonly win = inject(WINDOW);
 
     protected tableSize = {

@@ -18,4 +18,4 @@ import {TuiButtonDirective} from '@taiga-ui/core';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StackblitzEditButtonComponent {}
+export class StackblitzEditButton {}

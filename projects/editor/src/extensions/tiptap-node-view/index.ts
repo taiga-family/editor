@@ -66,7 +66,7 @@ export class TuiComponentRenderer<C, P> {
  * Tiptap's {@link https://tiptap.dev/guide/node-views NodeView} from angular component.
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
-export class TuiNodeViewNgComponent implements NodeViewProps {
+export class TuiNodeViewNg implements NodeViewProps {
     public editor!: NodeViewProps['editor'];
     public node!: NodeViewProps['node'];
     public decorations!: NodeViewProps['decorations'];
@@ -92,11 +92,11 @@ export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/NodeViewRenderer.ts ngx-tiptap}
  */
 export class TuiNodeView extends NodeView<
-    Type<TuiNodeViewNgComponent>,
+    Type<TuiNodeViewNg>,
     Editor,
     TuiNodeViewRendererOptions
 > {
-    protected renderer!: TuiComponentRenderer<TuiNodeViewNgComponent, NodeViewProps>;
+    protected renderer!: TuiComponentRenderer<TuiNodeViewNg, NodeViewProps>;
     protected contentDOMElement: HTMLElement | null = null;
 
     /**
@@ -105,7 +105,7 @@ export class TuiNodeView extends NodeView<
      */
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(
-        component: Type<TuiNodeViewNgComponent>,
+        component: Type<TuiNodeViewNg>,
         props: NodeViewRendererProps,
         options?: Partial<TuiNodeViewRendererOptions>,
     ) {

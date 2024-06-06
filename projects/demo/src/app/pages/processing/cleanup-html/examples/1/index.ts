@@ -4,15 +4,15 @@ import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_VALUE_TRANSFORMER,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
 } from '@tbank/tui-editor';
 
 import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -26,7 +26,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected control = new FormControl(
         '<p class="t-content">TipTap Editor</p>',
         Validators.required,

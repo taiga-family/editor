@@ -6,7 +6,7 @@ import {map} from 'rxjs';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
-import {TuiTableSizeSelectorComponent} from './table-size-selector/table-size-selector.component';
+import {TuiTableSizeSelector} from './table-size-selector/table-size-selector.component';
 
 @Component({
     standalone: true,
@@ -16,12 +16,12 @@ import {TuiTableSizeSelectorComponent} from './table-size-selector/table-size-se
         TuiHint,
         TuiButtonDirective,
         AsyncPipe,
-        TuiTableSizeSelectorComponent,
+        TuiTableSizeSelector,
     ],
     templateUrl: './table-create.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableCreateComponent {
+export class TuiTableCreate {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);

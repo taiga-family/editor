@@ -19,7 +19,7 @@ import {distinctUntilChanged, map} from 'rxjs';
     templateUrl: './font-size-tool.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiFontSizeToolComponent {
+export class ExampleTuiFontSizeTool {
     private readonly editor = inject(TuiTiptapEditorService);
     private readonly win = inject(WINDOW);
 

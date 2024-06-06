@@ -7,7 +7,7 @@ import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {TsFileComponentParser} from './classes';
 import {StackblitzDepsService} from './stackblitz-deps.service';
 import {AbstractTuiStackblitzResourcesLoader} from './stackblitz-resources-loader';
-import {StackblitzEditButtonComponent} from './starter/edit-button/stackblitz-edit-button.component';
+import {StackblitzEditButton} from './starter/edit-button/stackblitz-edit-button.component';
 import {appPrefix, getSupportFiles, prepareLess, prepareSupportFiles} from './utils';
 
 const APP_COMP_META = {
@@ -22,7 +22,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
     private readonly deps = inject(StackblitzDepsService);
 
     public readonly name = 'Stackblitz';
-    public readonly content = new PolymorpheusComponent(StackblitzEditButtonComponent);
+    public readonly content = new PolymorpheusComponent(StackblitzEditButton);
 
     public async edit(
         component: string,

@@ -23,7 +23,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiAlignContentComponent {
+export class TuiAlignContent {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);

@@ -14,7 +14,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../../tokens/i18n';
     templateUrl: './details-remove.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDetailsRemoveComponent {
+export class TuiDetailsRemove {
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

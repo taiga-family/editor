@@ -30,26 +30,26 @@ describe('ContenteditableValueAccessor', () => {
             </form>
         `,
     })
-    class TestComponent {
+    class Test {
         @ViewChild('modelEl', {read: ElementRef})
-        protected readonly modelElementRef?: ElementRef<HTMLElement>;
+        public readonly modelElementRef?: ElementRef<HTMLElement>;
 
         @ViewChild('controlEl', {read: ElementRef})
-        protected readonly controlElementRef?: ElementRef<HTMLElement>;
+        public readonly controlElementRef?: ElementRef<HTMLElement>;
 
         @ViewChild('nameEl', {read: ElementRef})
-        protected readonly nameElementRef?: ElementRef<HTMLElement>;
+        public readonly nameElementRef?: ElementRef<HTMLElement>;
 
-        protected disabled = false;
-        protected model = 'Initial model';
-        protected readonly control = new FormControl();
-        protected readonly group = new FormGroup({
+        public disabled = false;
+        public model = 'Initial model';
+        public readonly control = new FormControl();
+        public readonly group = new FormGroup({
             control: new FormControl('Initial value'),
         });
     }
 
-    let fixture: ComponentFixture<TestComponent>;
-    let component: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let component: Test;
 
     const html = '<b>HTML</b>';
 
@@ -67,10 +67,10 @@ describe('ContenteditableValueAccessor', () => {
 
     beforeEach(done => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         component = fixture.componentInstance;
         fixture.detectChanges();
         void fixture.whenStable().then(() => {

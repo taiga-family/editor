@@ -1,21 +1,19 @@
 ```ts
 import {tuiEditorOptionsProvider, TuiEditorOptions} from '@tbank/tui-editor';
 
-const CUSTOM_EDITOR_OPTIONS: Partial<TuiEditorOptions> = {
-  colors: new Map([
-    ['red', 'rgba(244, 87, 37, 1)'],
-    ['blue', 'var(--tui-primary)'],
-  ]),
-  //...
-};
-
 @Component({
   standalone: true,
   //...
   providers: [
     // ..
-    tuiEditorOptionsProvider(CUSTOM_EDITOR_OPTIONS),
+    tuiEditorOptionsProvider({
+      colors: new Map([
+        ['red', 'rgba(244, 87, 37, 1)'],
+        ['blue', 'var(--tui-primary)'],
+      ]),
+      //...
+    }),
   ],
 })
-export class YourComponent {}
+export class My {}
 ```

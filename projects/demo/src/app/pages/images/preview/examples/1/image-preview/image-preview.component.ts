@@ -13,7 +13,7 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
     styleUrls: ['./image-preview.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImagePreviewExampleComponent {
+export class ImagePreviewExample {
     private readonly dialogs = inject(TuiPreviewDialogService);
 
     @ViewChild('previewImages')

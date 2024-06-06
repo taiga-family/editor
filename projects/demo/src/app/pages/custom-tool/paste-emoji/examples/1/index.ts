@@ -2,22 +2,18 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
-import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component';
+import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
 
 @Component({
     standalone: true,
     imports: [
         TuiSvgComponent,
-        ExampleTuiSmilesToolComponent,
+        ExampleTuiSmilesTool,
         TuiItemDirective,
         ReactiveFormsModule,
-        TuiEditorComponent,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -34,7 +30,7 @@ import {ExampleTuiSmilesToolComponent} from './smiles-tool/smiles-tool.component
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl('');
 }

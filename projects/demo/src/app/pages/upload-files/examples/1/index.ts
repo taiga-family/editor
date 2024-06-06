@@ -6,8 +6,8 @@ import type {TuiEditorAttachedFile} from '@tbank/tui-editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
@@ -20,8 +20,8 @@ import {FileIoService} from './filesio.service';
         TuiLoaderComponent,
         AsyncPipe,
         ReactiveFormsModule,
-        TuiEditorComponent,
-        TuiEditorSocketComponent,
+        TuiEditor,
+        TuiEditorSocket,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -44,9 +44,9 @@ import {FileIoService} from './filesio.service';
         },
     ],
 })
-export default class ExampleComponent {
-    @ViewChild(TuiEditorComponent)
-    private readonly wysiwyg?: TuiEditorComponent;
+export default class Example {
+    @ViewChild(TuiEditor)
+    private readonly wysiwyg?: TuiEditor;
 
     protected readonly fileIoService = inject(FileIoService);
 

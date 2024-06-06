@@ -9,11 +9,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 import type {Editor} from '@tiptap/core';
 import {debounceTime, Subject} from 'rxjs';
 
@@ -36,7 +32,7 @@ const markdown = `# h1 Heading 😎
 
 @Component({
     standalone: true,
-    imports: [TuiEditorComponent, ReactiveFormsModule, TuiTextareaModule, FormsModule],
+    imports: [TuiEditor, ReactiveFormsModule, TuiTextareaModule, FormsModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -63,9 +59,9 @@ const markdown = `# h1 Heading 😎
         },
     ],
 })
-export default class ExampleComponent implements OnInit {
-    @ViewChild(TuiEditorComponent)
-    private readonly editorRef?: TuiEditorComponent;
+export default class Example implements OnInit {
+    @ViewChild(TuiEditor)
+    private readonly editorRef?: TuiEditor;
 
     private readonly destroyRef = inject(DestroyRef);
 

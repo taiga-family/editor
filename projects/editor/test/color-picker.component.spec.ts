@@ -2,31 +2,31 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiColorPickerComponent} from '@tbank/tui-editor';
+import {TuiColorPicker} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiColorPickerComponent],
+    imports: [TuiColorPicker],
     template: `
         <tui-color-picker [(color)]="color"></tui-color-picker>
     `,
 })
-class TestComponent {
-    @ViewChild(TuiColorPickerComponent)
-    protected component!: TuiColorPickerComponent;
+class Test {
+    @ViewChild(TuiColorPicker)
+    public component!: TuiColorPicker;
 
-    protected color = [0, 255, 0, 1];
+    public color = [0, 255, 0, 1];
 }
 describe('ColorPicker', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

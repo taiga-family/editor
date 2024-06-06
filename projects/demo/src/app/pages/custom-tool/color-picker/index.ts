@@ -10,7 +10,7 @@ import {TuiLinkDirective} from '@taiga-ui/core';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly example1: TuiDocExample = {
         HTML: import('./examples/1/index.html?raw'),

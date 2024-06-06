@@ -1,16 +1,12 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
-import {CustomColorPickerComponent} from './custom-color-picker/custom-color-picker.component';
+import {CustomColorPicker} from './custom-color-picker/custom-color-picker.component';
 
 @Component({
     standalone: true,
-    imports: [CustomColorPickerComponent, ReactiveFormsModule, TuiEditorComponent],
+    imports: [CustomColorPicker, ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -29,7 +25,7 @@ import {CustomColorPickerComponent} from './custom-color-picker/custom-color-pic
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected readonly control = new FormControl('');

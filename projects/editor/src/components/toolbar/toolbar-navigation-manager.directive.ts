@@ -11,7 +11,7 @@ import {
     standalone: true,
     selector: '[tuiToolbarNavigationManager]',
 })
-export class TuiToolbarNavigationManagerDirective {
+export class TuiToolbarNavigationManager {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     public findFirstFocusableTool(reversed = false): TuiNativeFocusableElement | null {

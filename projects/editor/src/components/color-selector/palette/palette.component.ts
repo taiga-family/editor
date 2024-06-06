@@ -17,7 +17,7 @@ import {TuiHint} from '@taiga-ui/core';
     styleUrls: ['./palette.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiPaletteComponent {
+export class TuiPalette {
     @Input()
     public colors: ReadonlyMap<string, string> = new Map<string, string>();
 

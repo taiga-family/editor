@@ -5,7 +5,7 @@ import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@tbank/tui-editor';
 import {
     TUI_EDITOR_OPTIONS,
-    TuiColorSelectorComponent,
+    TuiColorSelector,
     TuiTiptapEditorService,
 } from '@tbank/tui-editor';
 import {distinctUntilChanged, map, share} from 'rxjs';
@@ -18,13 +18,13 @@ import {distinctUntilChanged, map, share} from 'rxjs';
         TuiHostedDropdownModule,
         TuiButtonDirective,
         AsyncPipe,
-        TuiColorSelectorComponent,
+        TuiColorSelector,
     ],
     templateUrl: './custom-color-picker.component.html',
     styleUrls: ['./custom-color-picker.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomColorPickerComponent {
+export class CustomColorPicker {
     private readonly defaultOptions = inject(TUI_EDITOR_OPTIONS);
 
     protected selectedColor = '';

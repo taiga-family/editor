@@ -2,16 +2,16 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
+    TuiEditor,
     tuiEditorOptionsProvider,
-    TuiEditorSocketComponent,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 import {mergeAttributes} from '@tiptap/core';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
@@ -100,7 +100,7 @@ import {mergeAttributes} from '@tiptap/core';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];
 
     protected control = new FormControl(`

@@ -25,10 +25,10 @@ import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';
 import type {TuiGradientDirection} from '../../types/gradient-direction';
 import {tuiGetGradientData} from '../../utils/get-gradient-data';
 import {tuiParseGradient} from '../../utils/parse-gradient';
-import {TuiColorEditComponent} from './color-edit/color-edit.component';
-import {TuiColorPickerComponent} from './color-picker/color-picker.component';
-import {TuiLinearMultiPickerComponent} from './linear-multi-picker/linear-multi-picker.component';
-import {TuiPaletteComponent} from './palette/palette.component';
+import {TuiColorEdit} from './color-edit/color-edit.component';
+import {TuiColorPicker} from './color-picker/color-picker.component';
+import {TuiLinearMultiPicker} from './linear-multi-picker/linear-multi-picker.component';
+import {TuiPalette} from './palette/palette.component';
 
 const EMPTY_STOP: [number, number, number, number] = [0, 0, 0, 0];
 const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> = [
@@ -57,27 +57,33 @@ const ICONS: Record<TuiGradientDirection, string> = {
         TuiDataList,
         NgForOf,
         TuiHint,
-        TuiLinearMultiPickerComponent,
-        TuiColorPickerComponent,
-        TuiColorEditComponent,
-        TuiPaletteComponent,
+        TuiLinearMultiPicker,
+        TuiColorPicker,
+        TuiColorEdit,
+        TuiPalette,
         TuiGroupDirective,
     ],
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiColorSelectorComponent {
+export class TuiColorSelector {
     private readonly sanitizer = inject(DomSanitizer);
     private stops = new Map(DEFAULT_STEPS);
     private currentStop = 0;
     private direction: TuiGradientDirection = 'to bottom';
 
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
-    protected color: [number, number, number, number] = [0, 0, 0, 1];
-    protected currentMode = this.modes[0];
-    protected readonly buttons: readonly TuiGradientDirection[] = [
+    @Input()
+    public colors: ReadonlyMap<string, string> = new Map<string, string>();
+
+    @Output()
+    public readonly colorChange = new EventEmitter<string>();
+
+    public readonly options = inject(TUI_EDITOR_OPTIONS);
+    public readonly modes = inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES);
+    public color: [number, number, number, number] = [0, 0, 0, 1];
+    public currentMode = this.modes[0];
+    public readonly buttons: readonly TuiGradientDirection[] = [
         'to top right',
         'to right',
         'to bottom right',
@@ -88,18 +94,12 @@ export class TuiColorSelectorComponent {
         'to top',
     ];
 
-    @Input()
-    public colors: ReadonlyMap<string, string> = new Map<string, string>();
-
-    @Output()
-    public readonly colorChange = new EventEmitter<string>();
-
     @Input('color')
     public set colorSetter(color: string) {
         this.parse(color);
     }
 
-    protected get palette(): Map<string, string> {
+    public get palette(): Map<string, string> {
         return this.filterPalette(this.colors, this.isGradient);
     }
 

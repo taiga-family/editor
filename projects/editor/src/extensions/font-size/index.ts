@@ -21,7 +21,7 @@ interface FontSizeOptions {
     types: string[];
 }
 
-export const TuiFontSize = Extension.create<FontSizeOptions>({
+export const TuiFontSizeExtension = Extension.create<FontSizeOptions>({
     name: 'fontSize',
 
     addOptions(): FontSizeOptions {

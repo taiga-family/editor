@@ -4,14 +4,14 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorSocketComponent, TuiEditorComponent],
+    imports: [ReactiveFormsModule, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +24,7 @@ import {
         },
     ],
 })
-export default class ExampleComponent implements OnInit {
+export default class Example implements OnInit {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];
 
     protected control = new FormControl('');

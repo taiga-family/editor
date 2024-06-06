@@ -3,20 +3,20 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItemDirective} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
-import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.component';
+import {ExampleTuiFontSizeTool} from './font-size-tool/font-size-tool.component';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        ExampleTuiFontSizeToolComponent,
-        TuiEditorSocketComponent,
-        TuiEditorComponent,
+        ExampleTuiFontSizeTool,
+        TuiEditorSocket,
+        TuiEditor,
         TuiItemDirective,
     ],
     templateUrl: './index.html',
@@ -29,12 +29,14 @@ import {ExampleTuiFontSizeToolComponent} from './font-size-tool/font-size-tool.c
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tbank/tui-editor').then(({TuiFontSize}) => TuiFontSize),
+                import('@tbank/tui-editor').then(
+                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
+                ),
             ],
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected control = new FormControl(`

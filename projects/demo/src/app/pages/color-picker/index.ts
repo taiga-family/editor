@@ -2,20 +2,15 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
-import {TuiColorPickerComponent} from '@tbank/tui-editor';
+import {TuiColorPicker} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAddonDoc,
-        TuiNotificationComponent,
-        TuiLinkDirective,
-        TuiColorPickerComponent,
-    ],
+    imports: [TuiAddonDoc, TuiNotificationComponent, TuiLinkDirective, TuiColorPicker],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly component2 = import('./examples/2');
     protected readonly component3 = import('./examples/3');

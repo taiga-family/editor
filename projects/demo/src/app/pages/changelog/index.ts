@@ -10,7 +10,7 @@ import type {TuiStringHandler} from '@taiga-ui/cdk';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly changelog = import('../../../../../editor/CHANGELOG.md?raw');
 
     protected mapper: TuiStringHandler<string> = value =>

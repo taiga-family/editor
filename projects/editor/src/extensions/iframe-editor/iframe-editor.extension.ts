@@ -9,7 +9,7 @@ import {mergeAttributes, Node} from '@tiptap/core';
 import type {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
 
 import {TuiNodeView} from '../tiptap-node-view';
-import {TuiIframeEditorComponent} from './iframe-editor.component';
+import {TuiIframeEditor} from './iframe-editor.component';
 import type {TuiEditableIframe} from './iframe-editor.options';
 
 declare module '@tiptap/core' {
@@ -71,7 +71,7 @@ export const createIframeEditorExtension = (injector: Injector): Node =>
         addNodeView(): NodeViewRenderer {
             return (props: NodeViewRendererProps) =>
                 Reflect.construct(TuiNodeView, [
-                    TuiIframeEditorComponent,
+                    TuiIframeEditor,
                     props,
                     {injector, ...props},
                 ]);

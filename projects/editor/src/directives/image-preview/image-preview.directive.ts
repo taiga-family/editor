@@ -5,7 +5,7 @@ import {Directive, EventEmitter, HostListener, Output} from '@angular/core';
     selector: 'tui-editor-socket[imagePreview]',
     host: {class: '_preview-image'},
 })
-export class TuiEditorImagePreviewDirective {
+export class TuiEditorImagePreview {
     @Output()
     public readonly imagePreview = new EventEmitter<HTMLImageElement>();
 

@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 
-import {TuiNodeViewNgComponent} from '../../extensions/tiptap-node-view';
+import {TuiNodeViewNg} from '../../extensions/tiptap-node-view';
 
 export interface TuiEditorResizableContainer {
     height?: number | string | null;
@@ -10,7 +10,7 @@ export interface TuiEditorResizableContainer {
 @Directive()
 export abstract class AbstractTuiEditorResizable<
     T extends TuiEditorResizableContainer,
-> extends TuiNodeViewNgComponent {
+> extends TuiNodeViewNg {
     protected currentHeight = 0;
     protected currentWidth = 0;
 

@@ -1,15 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiButtonDirective, TuiDialogService} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorComponent, TuiButtonDirective],
+    imports: [ReactiveFormsModule, TuiEditor, TuiButtonDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +20,7 @@ import {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialog = inject(TuiDialogService);
 
     protected readonly builtInTools = [

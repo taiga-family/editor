@@ -12,22 +12,22 @@ import {TuiInputColorComponent} from '@tbank/tui-editor';
         <tui-input-color [(ngModel)]="color"></tui-input-color>
     `,
 })
-class TestComponent {
+class Test {
     @ViewChild(TuiInputColorComponent)
-    protected component!: TuiInputColorComponent;
+    public component!: TuiInputColorComponent;
 
-    protected color = '#0000ff';
+    public color = '#0000ff';
 }
 describe('InputColor', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

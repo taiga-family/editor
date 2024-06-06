@@ -5,25 +5,25 @@ import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatarComponent} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
 import type {User} from './mention';
-import {MentionsComponent} from './mention';
+import {Mentions} from './mention';
 
 @Component({
     standalone: true,
     imports: [
-        TuiEditorComponent,
+        TuiEditor,
         ReactiveFormsModule,
         TuiDataList,
         NgForOf,
         TuiAvatarComponent,
         TuiInitialsPipe,
-        TuiEditorSocketComponent,
-        MentionsComponent,
+        TuiEditorSocket,
+        Mentions,
         NgIf,
     ],
     templateUrl: './index.html',
@@ -43,9 +43,9 @@ import {MentionsComponent} from './mention';
         },
     ],
 })
-export default class ExampleComponent {
-    @ViewChild(TuiEditorComponent)
-    protected readonly wysiwyg?: TuiEditorComponent;
+export default class Example {
+    @ViewChild(TuiEditor)
+    protected readonly wysiwyg?: TuiEditor;
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,

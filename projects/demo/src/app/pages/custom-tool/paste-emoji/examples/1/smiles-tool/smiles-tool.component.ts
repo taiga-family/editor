@@ -17,7 +17,7 @@ import {TuiTiptapEditorService} from '@tbank/tui-editor';
     styleUrls: ['./smiles-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiSmilesToolComponent {
+export class ExampleTuiSmilesTool {
     private readonly editor = inject(TuiTiptapEditorService);
 
     /* More smiles: https://www.w3schools.com/charsets/ref_emoji.asp */

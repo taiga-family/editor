@@ -1,14 +1,14 @@
 ```typescript
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-editor';
+import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-editor';
 // ...
 
 @Component({
   standalone: true,
   // ...
 })
-export class AppComponent {
+export class App {
   readonly control = new FormControl();
 
-  readonly tools: TuiEditorTool[] = defaultEditorTools;
+  readonly tools: TuiEditorTool[] = TUI_EDITOR_DEFAULT_EXTENSIONS;
 }
 ```

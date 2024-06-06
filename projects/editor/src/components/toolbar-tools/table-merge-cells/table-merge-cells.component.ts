@@ -14,7 +14,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     templateUrl: './table-merge-cells.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableMergeCellsComponent {
+export class TuiTableMergeCells {
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 

@@ -11,12 +11,12 @@ import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
+    TuiEditor,
 } from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiEditorComponent, ReactiveFormsModule],
+    imports: [TuiEditor, ReactiveFormsModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
@@ -34,7 +34,7 @@ import {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly dialog = inject(TuiDialogService);
 
     protected readonly builtInTools = TUI_EDITOR_DEFAULT_TOOLS;

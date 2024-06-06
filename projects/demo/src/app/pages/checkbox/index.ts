@@ -8,7 +8,7 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),

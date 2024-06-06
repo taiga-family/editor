@@ -2,14 +2,14 @@ import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorComponent, TuiEditorSocketComponent],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -64,7 +64,9 @@ import {
                 ),
                 import('@tbank/tui-editor').then(({TuiDetails}) => TuiDetails),
                 import('@tbank/tui-editor').then(({TuiSummary}) => TuiSummary),
-                import('@tbank/tui-editor').then(({TuiFontSize}) => TuiFontSize),
+                import('@tbank/tui-editor').then(
+                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
+                ),
                 import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
@@ -85,7 +87,7 @@ import {
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,

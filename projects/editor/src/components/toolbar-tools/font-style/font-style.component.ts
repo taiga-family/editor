@@ -17,7 +17,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiFontStyleComponent {
+export class TuiFontStyle {
     private toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
 
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;

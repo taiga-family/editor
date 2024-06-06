@@ -17,7 +17,7 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-e
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly component2 = import('./examples/2');
     protected readonly component3 = import('./examples/3');

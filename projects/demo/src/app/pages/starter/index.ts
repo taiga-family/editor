@@ -6,8 +6,8 @@ import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
@@ -18,8 +18,8 @@ import {
         TuiAddonDoc,
         ReactiveFormsModule,
         TuiAutoFocusDirective,
-        TuiEditorSocketComponent,
-        TuiEditorComponent,
+        TuiEditorSocket,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -31,10 +31,10 @@ import {
         },
     ],
 })
-export default class TuiEditorStarterPageComponent {
+export default class TuiEditorStarter {
     protected readonly exampleModule = import('./import/import-module.md?raw');
     protected readonly exampleHtml = import('./import/insert-template.md?raw');
-    protected readonly exampleComponent = import('./import/component.md?raw');
+    protected readonly Example = import('./import/component.md?raw');
     protected readonly exampleEditorOptionsToken = import(
         './import/editor-options-token.md?raw'
     );

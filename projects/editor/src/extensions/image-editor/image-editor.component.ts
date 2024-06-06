@@ -11,19 +11,19 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
-import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
+import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
 import type {TuiEditableImage} from './image-editor.options';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
 
 @Component({
     standalone: true,
     selector: 'tui-image-editor',
-    imports: [TuiEditorResizableComponent],
+    imports: [TuiEditorResizable],
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
+export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage> {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
     private readonly win = inject(WINDOW);

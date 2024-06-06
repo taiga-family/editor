@@ -17,7 +17,7 @@ import {tuiIsNumber, tuiPx, TuiResizerDirective} from '@taiga-ui/cdk';
     styleUrls: ['./editor-resizable.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiEditorResizableComponent {
+export class TuiEditorResizable {
     @Input()
     public autoHeight = false;
 

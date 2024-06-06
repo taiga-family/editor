@@ -4,8 +4,8 @@ import {TuiItemDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 
@@ -15,8 +15,8 @@ import {
         TuiButtonDirective,
         TuiItemDirective,
         ReactiveFormsModule,
-        TuiEditorSocketComponent,
-        TuiEditorComponent,
+        TuiEditorSocket,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -44,9 +44,9 @@ import {
         },
     ],
 })
-export default class ExampleComponent {
-    @ViewChild(TuiEditorComponent)
-    private readonly wysiwyg?: TuiEditorComponent;
+export default class Example {
+    @ViewChild(TuiEditor)
+    private readonly wysiwyg?: TuiEditor;
 
     protected readonly builtInTools = [TuiEditorTool.Undo];
 

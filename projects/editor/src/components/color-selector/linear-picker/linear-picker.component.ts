@@ -18,7 +18,7 @@ import {TuiPickerService} from '../../../services/picker.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
 })
-export class TuiLinearPickerComponent {
+export class TuiLinearPicker {
     @Input()
     public value = 0;
 

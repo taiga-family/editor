@@ -21,7 +21,7 @@ import {TuiPickerService} from '../../../services/picker.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
 })
-export class TuiLinearMultiPickerComponent {
+export class TuiLinearMultiPicker {
     protected index = NaN;
 
     @Input()

@@ -2,11 +2,11 @@ import {Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiColorSelectorComponent} from '@tbank/tui-editor';
+import {TuiColorSelector} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,
-    imports: [TuiColorSelectorComponent],
+    imports: [TuiColorSelector],
     template: `
         <tui-color-selector
             [colors]="colors"
@@ -14,27 +14,27 @@ import {TuiColorSelectorComponent} from '@tbank/tui-editor';
         ></tui-color-selector>
     `,
 })
-class TestComponent {
-    @ViewChild(TuiColorSelectorComponent)
-    protected component!: TuiColorSelectorComponent;
+class Test {
+    @ViewChild(TuiColorSelector)
+    public component!: TuiColorSelector;
 
-    protected colors = new Map([
+    public colors = new Map([
         ['hap', '#ff0000'],
         ['ica', 'linear-gradient(red, blue)'],
     ]);
 
-    protected color = '#0000ff';
+    public color = '#0000ff';
 }
 describe('ColorSelector', () => {
-    let fixture: ComponentFixture<TestComponent>;
-    let testComponent: TestComponent;
+    let fixture: ComponentFixture<Test>;
+    let testComponent: Test;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [TestComponent],
+            imports: [Test],
         });
 
-        fixture = TestBed.createComponent(TestComponent);
+        fixture = TestBed.createComponent(Test);
         testComponent = fixture.componentInstance;
         fixture.detectChanges();
     });

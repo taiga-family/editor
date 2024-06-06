@@ -17,7 +17,7 @@ export interface TuiDetailsOptions {
     readonly HTMLAttributes: Record<string, unknown>;
 }
 
-export const TuiDetails = Node.create<TuiDetailsOptions>({
+export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     name: 'details',
 
     addOptions() {

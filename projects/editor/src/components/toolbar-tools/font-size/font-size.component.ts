@@ -33,7 +33,7 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     templateUrl: './font-size.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiFontSizeComponent {
+export class TuiFontSize {
     private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);

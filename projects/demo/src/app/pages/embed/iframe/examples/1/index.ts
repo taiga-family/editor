@@ -4,22 +4,18 @@ import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditorComponent,
-    TuiEditorTool,
-} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 
-import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
+import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
     standalone: true,
     imports: [
-        ExampleTuiEmbedToolComponent,
+        ExampleTuiEmbedTool,
         TuiSvgComponent,
         ReactiveFormsModule,
         TuiItemDirective,
-        TuiEditorComponent,
+        TuiEditor,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -37,7 +33,7 @@ import {ExampleTuiEmbedToolComponent} from './embed-tool/embed-tool.component';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isE2E = inject(TUI_IS_E2E);
 

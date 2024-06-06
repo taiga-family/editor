@@ -3,19 +3,19 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
-import {TuiEditorResizableComponent} from '../../components/editor-resizable/editor-resizable.component';
+import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
 import type {TuiEditableIframe} from './iframe-editor.options';
 import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
 @Component({
     standalone: true,
     selector: 'tui-iframe-editor',
-    imports: [TuiEditorResizableComponent],
+    imports: [TuiEditorResizable],
     templateUrl: './iframe-editor.component.html',
     styleUrls: ['./iframe-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEditableIframe> {
+export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIframe> {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
 

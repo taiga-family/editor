@@ -54,7 +54,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiEditLinkComponent {
+export class TuiEditLink {
     private readonly doc = inject(DOCUMENT);
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
     private readonly editor = inject(TuiTiptapEditorService);

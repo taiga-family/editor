@@ -6,20 +6,15 @@ import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
-    TuiEditorComponent,
-    TuiEditorSocketComponent,
+    TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@tbank/tui-editor';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        HttpClientModule,
-        TuiEditorSocketComponent,
-        TuiEditorComponent,
-    ],
+    imports: [ReactiveFormsModule, HttpClientModule, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -35,7 +30,7 @@ import {switchMap} from 'rxjs';
         },
     ],
 })
-export default class ExampleComponent {
+export default class Example {
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
     private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';

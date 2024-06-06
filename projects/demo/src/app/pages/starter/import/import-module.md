@@ -2,12 +2,11 @@
 import {TuiEditorModule} from '@tbank/tui-editor';
 // ...
 
-@NgModule({
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+@Component({
+  standalone: true,
   imports: [
     // ..
-    TuiEditorModule,
+    TuiEditor,
     ReactiveFormsModule,
   ],
   providers: [
@@ -17,9 +16,9 @@ import {TuiEditorModule} from '@tbank/tui-editor';
     },
     {
       provide: TUI_EDITOR_EXTENSIONS,
-      useValue: defaultEditorExtensions,
+      useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
     },
   ],
 })
-export class AppModule {}
+export class App {}
 ```

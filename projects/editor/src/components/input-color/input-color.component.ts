@@ -24,7 +24,7 @@ import {
 import {tuiGetGradientData} from '../../utils/get-gradient-data';
 import {tuiParseGradient} from '../../utils/parse-gradient';
 import {tuiToGradient} from '../../utils/to-gradient';
-import {TuiColorSelectorComponent} from '../color-selector/color-selector.component';
+import {TuiColorSelector} from '../color-selector/color-selector.component';
 
 type MaskMode = 'gradient' | 'hex' | 'rgb';
 
@@ -35,7 +35,7 @@ type MaskMode = 'gradient' | 'hex' | 'rgb';
         TuiHostedDropdownModule,
         TuiPrimitiveTextfieldModule,
         TuiTextfieldControllerModule,
-        TuiColorSelectorComponent,
+        TuiColorSelector,
         TuiActiveZoneDirective,
         MaskitoDirective,
     ],
@@ -71,11 +71,11 @@ export class TuiInputColorComponent
         return !!this.dropdown && this.dropdown.focused;
     }
 
-    protected get background(): SafeStyle {
+    public get background(): SafeStyle {
         return this.sanitize(this.value, this.domSanitizer);
     }
 
-    protected get mode(): MaskMode {
+    public get mode(): MaskMode {
         if (this.value.startsWith('#')) {
             return 'hex';
         }
