@@ -18,9 +18,6 @@ import {
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-image').then(({default: Image}) =>
-                    Image.configure({inline: true, allowBase64: true}),
-                ),
                 import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),

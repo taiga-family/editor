@@ -93,7 +93,7 @@ export function tuiCreateImageEditorExtension<T, K>({
     const enableDraggable = tuiIsPresent(draggable) ? draggable : true;
 
     return Image.extend({
-        name: 'imageEditor',
+        name: 'image',
         group: 'inline',
         inline: true,
         atom: true,

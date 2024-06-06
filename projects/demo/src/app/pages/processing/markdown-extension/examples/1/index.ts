@@ -1,9 +1,10 @@
-import type {OnInit} from '@angular/core';
+import type {Injector, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
+    INJECTOR,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -38,10 +39,11 @@ const markdown = `# h1 Heading 😎
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
+            deps: [INJECTOR],
+            useFactory: (injector: Injector) => [
                 import('@tiptap/starter-kit').then(({StarterKit}) => StarterKit),
-                import('@tiptap/extension-image').then(({Image}) =>
-                    Image.configure({inline: true}),
+                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                    tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tbank/tui-editor').then(({TuiMarkdown}) =>
                     TuiMarkdown.configure({

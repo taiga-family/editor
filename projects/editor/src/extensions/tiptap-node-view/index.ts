@@ -67,14 +67,14 @@ export class TuiComponentRenderer<C, P> {
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
 export class TuiNodeViewNg implements NodeViewProps {
-    public editor!: NodeViewProps['editor'];
-    public node!: NodeViewProps['node'];
-    public decorations!: NodeViewProps['decorations'];
-    public selected!: NodeViewProps['selected'];
-    public extension!: NodeViewProps['extension'];
-    public getPos!: NodeViewProps['getPos'];
-    public updateAttributes!: NodeViewProps['updateAttributes'];
-    public deleteNode!: NodeViewProps['deleteNode'];
+    public declare editor: NodeViewProps['editor'];
+    public declare node: NodeViewProps['node'];
+    public declare decorations: NodeViewProps['decorations'];
+    public declare selected: NodeViewProps['selected'];
+    public declare extension: NodeViewProps['extension'];
+    public declare getPos: NodeViewProps['getPos'];
+    public declare updateAttributes: NodeViewProps['updateAttributes'];
+    public declare deleteNode: NodeViewProps['deleteNode'];
 }
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
@@ -96,7 +96,7 @@ export class TuiNodeView extends NodeView<
     Editor,
     TuiNodeViewRendererOptions
 > {
-    protected renderer!: TuiComponentRenderer<TuiNodeViewNg, NodeViewProps>;
+    protected declare renderer: TuiComponentRenderer<TuiNodeViewNg, NodeViewProps>;
     protected contentDOMElement: HTMLElement | null = null;
 
     /**

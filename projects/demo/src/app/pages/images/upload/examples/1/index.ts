@@ -50,9 +50,6 @@ import {ImgbbService} from './imgbb.service';
                 import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
-                import('@tiptap/extension-image').then(({default: Image}) =>
-                    Image.configure({inline: true, allowBase64: true}),
-                ),
             ],
         },
         {

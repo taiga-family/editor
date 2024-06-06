@@ -25,9 +25,6 @@ export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     import('@tiptap/extension-subscript').then(({Subscript}) => Subscript),
     import('@tiptap/extension-superscript').then(({Superscript}) => Superscript),
     TuiFontColor,
-    import('@tiptap/extension-image').then(({default: Image}) =>
-        Image.configure({inline: true, allowBase64: true}),
-    ),
     TuiLink,
     TuiJumpAnchor,
     TuiFileLink,
