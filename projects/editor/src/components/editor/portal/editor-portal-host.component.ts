@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk';
+import {TuiPortalsComponent, TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDropdownService} from '@taiga-ui/core';
 
 @Component({
@@ -13,9 +13,9 @@ import {TuiDropdownService} from '@taiga-ui/core';
     providers: [
         {provide: TuiPortalService, useExisting: TuiDropdownService},
         {
-            provide: TuiPortals,
+            provide: TuiPortalsComponent,
             useExisting: TuiEditorPortalHost,
         },
     ],
 })
-export class TuiEditorPortalHost extends TuiPortals {}
+export class TuiEditorPortalHost extends TuiPortalsComponent {}

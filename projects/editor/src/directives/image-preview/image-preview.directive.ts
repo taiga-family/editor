@@ -3,7 +3,9 @@ import {Directive, EventEmitter, HostListener, Output} from '@angular/core';
 @Directive({
     standalone: true,
     selector: 'tui-editor-socket[imagePreview]',
-    host: {class: '_preview-image'},
+    host: {
+        class: '_preview-image',
+    },
 })
 export class TuiEditorImagePreview {
     @Output()
