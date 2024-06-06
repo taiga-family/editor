@@ -70,7 +70,7 @@ function pasteImage(injector: Injector) {
                     takeWhile(() => !view.isDestroyed),
                 )
                 .subscribe(src => {
-                    const node = view.state.schema.nodes.imageEditor.create({src});
+                    const node = view.state.schema.nodes.image.create({src});
                     const transaction = view.state.tr.replaceSelectionWith(node);
 
                     setTimeout?.(() => {
