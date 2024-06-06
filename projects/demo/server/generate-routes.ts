@@ -35,7 +35,7 @@ const EXCEPTIONS: string[] = [TuiDemoPath.Stackblitz];
     routes.forEach(route => console.info(`**** ${route}`));
 
     writeFileSync(
-        join(process.cwd(), 'projects', 'demo', 'routes.txt'),
+        join(process.cwd(), 'projects', 'demo', 'server', 'routes.txt'),
         routes?.join('\n') || '',
     );
 })();
