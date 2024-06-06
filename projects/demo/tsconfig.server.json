@@ -1,0 +1,9 @@
+{
+    "extends": "../../tsconfig.json",
+    "files": [
+        "./src/main.server.ts", "server/server.ts", "./src/polyfills.ts"],
+    "include": ["src/**/*.d.ts"],
+    "angularCompilerOptions": {
+        "compilationMode": "full"
+    }
+}

@@ -107,7 +107,7 @@
                 },
                 "outputPath": "dist/demo/server",
                 "main": "projects/demo/server/server.ts",
-                "tsConfig": "projects/demo/server/tsconfig.server.json",
+                "tsConfig": "projects/demo/tsconfig.server.json",
                 "sourceMap": true,
                 "optimization": false
             },
