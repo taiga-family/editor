@@ -6,7 +6,7 @@ import {
     tuiEditorOptionsProvider,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 import {mergeAttributes} from '@tiptap/core';
 
 @Component({
@@ -54,7 +54,7 @@ import {mergeAttributes} from '@tiptap/core';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),

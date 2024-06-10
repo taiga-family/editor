@@ -1,5 +1,5 @@
 import {describe, expect, it} from '@jest/globals';
-import {tuiEditLinkParseUrl} from '@tbank/tui-editor';
+import {tuiEditLinkParseUrl} from '@taiga-ui/editor';
 
 describe('tuiEditLinkParseUrl', () => {
     it('mailto', () => {

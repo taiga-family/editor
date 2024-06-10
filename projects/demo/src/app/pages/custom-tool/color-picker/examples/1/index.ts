@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {CustomColorPicker} from './custom-color-picker/custom-color-picker.component';
 
@@ -13,12 +13,12 @@ import {CustomColorPicker} from './custom-color-picker/custom-color-picker.compo
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tbank/tui-editor').then(({TuiFontColor}) => TuiFontColor),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(({TuiFontColor}) => TuiFontColor),
+                import('@taiga-ui/editor').then(
                     ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
             ],

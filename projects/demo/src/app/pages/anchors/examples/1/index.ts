@@ -5,7 +5,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -17,13 +17,13 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
+                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
             ],
         },
     ],

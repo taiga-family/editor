@@ -4,7 +4,7 @@ import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
 import {TuiSvgComponent} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
@@ -25,8 +25,8 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

@@ -12,7 +12,7 @@ import {
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -27,7 +27,7 @@ import {
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

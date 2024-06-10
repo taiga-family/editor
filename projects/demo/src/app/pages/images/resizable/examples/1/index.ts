@@ -9,7 +9,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 import {switchMap} from 'rxjs';
 
 @Component({
@@ -22,8 +22,8 @@ import {switchMap} from 'rxjs';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

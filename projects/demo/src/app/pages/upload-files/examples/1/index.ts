@@ -2,14 +2,14 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiLoaderComponent} from '@taiga-ui/core';
-import type {TuiEditorAttachedFile} from '@tbank/tui-editor';
+import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
@@ -30,11 +30,11 @@ import {FileIoService} from './filesio.service';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@tbank/tui-editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
+                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
             ],
         },
         {

@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiDataList, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiTiptapEditorService} from '@tbank/tui-editor';
+import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({

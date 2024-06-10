@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@tbank/tui-editor';
 import type {Editor} from '@tiptap/core';
 import {debounceTime, Subject} from 'rxjs';
 
@@ -42,10 +42,10 @@ const markdown = `# h1 Heading 😎
             deps: [INJECTOR],
             useFactory: (injector: Injector) => [
                 import('@tiptap/starter-kit').then(({StarterKit}) => StarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
-                import('@tbank/tui-editor').then(({TuiMarkdown}) =>
+                import('@taiga-ui/editor').then(({TuiMarkdown}) =>
                     TuiMarkdown.configure({
                         html: true, // Allow HTML input/output
                         tightLists: true, // No <p> inside <li> in markdown output

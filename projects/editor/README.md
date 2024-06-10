@@ -13,7 +13,7 @@ npm i @taiga-ui/{cdk,core,kit}
 Install tui-editor:
 
 ```
-npm i @tbank/tui-editor
+npm i @taiga-ui/editor
 ```
 
 Don't forget that Taiga UI is fully-treeshakable. **You can import even just one entity from our library** and be sure

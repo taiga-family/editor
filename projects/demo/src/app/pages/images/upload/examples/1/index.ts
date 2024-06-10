@@ -14,7 +14,6 @@ import {
     TuiValidatorDirective,
 } from '@taiga-ui/cdk';
 import {TuiErrorComponent, TuiLoaderComponent} from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -22,7 +21,8 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
+import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
@@ -46,8 +46,8 @@ import {ImgbbService} from './imgbb.service';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

@@ -1,5 +1,5 @@
 ```ts
-import {tuiEditorOptionsProvider, TuiEditorOptions} from '@tbank/tui-editor';
+import {tuiEditorOptionsProvider, TuiEditorOptions} from '@taiga-ui/editor';
 
 @Component({
   standalone: true,

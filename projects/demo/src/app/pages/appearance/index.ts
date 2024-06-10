@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@tbank/tui-editor';
+import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,

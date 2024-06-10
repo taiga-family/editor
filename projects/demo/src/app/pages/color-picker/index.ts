@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
-import {TuiColorPicker} from '@tbank/tui-editor';
+import {TuiColorPicker} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,

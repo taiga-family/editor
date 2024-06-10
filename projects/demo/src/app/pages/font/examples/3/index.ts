@@ -6,7 +6,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 import {ExampleTuiFontSizeTool} from './font-size-tool/font-size-tool.component';
 
@@ -25,11 +25,11 @@ import {ExampleTuiFontSizeTool} from './font-size-tool/font-size-tool.component'
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(
                     ({TuiFontSizeExtension}) => TuiFontSizeExtension,
                 ),
             ],

@@ -1,4 +1,4 @@
-name: Release announce @tbank/tui-editor
+name: Release announce @taiga-ui/editor
 on:
   push:
     branches: [main]
@@ -23,7 +23,7 @@ jobs:
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: ${{ steps.info.outputs.version }}
-          textLink: '@tbank/tui-editor'
+          textLink: '@taiga-ui/editor'
 
 concurrency:
   group: announce-${{ github.workflow }}-${{ github.ref }}

@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
-import {TuiPreview} from '@taiga-ui/kit';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiEditorImagePreview,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
+import {TuiPreview} from '@taiga-ui/kit';
 
 import {ImagePreviewExample} from './image-preview/image-preview.component';
 
@@ -29,8 +29,8 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],

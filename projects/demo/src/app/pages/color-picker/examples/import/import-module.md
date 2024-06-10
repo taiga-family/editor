@@ -1,5 +1,5 @@
 ```ts
-import {TuiColorPickerModule} from '@tbank/tui-editor';
+import {TuiColorPickerModule} from '@taiga-ui/editor';
 
 // ...
 

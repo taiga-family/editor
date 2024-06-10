@@ -3,14 +3,14 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import type {TuiEditorAttachedFile} from '@tbank/tui-editor';
+import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -24,14 +24,14 @@ import {map} from 'rxjs';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@tbank/tui-editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@tbank/tui-editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@tbank/tui-editor').then(({TuiVideo}) => TuiVideo),
-                import('@tbank/tui-editor').then(({TuiAudio}) => TuiAudio),
-                import('@tbank/tui-editor').then(({TuiSource}) => TuiSource),
+                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
+                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@taiga-ui/editor').then(({TuiVideo}) => TuiVideo),
+                import('@taiga-ui/editor').then(({TuiAudio}) => TuiAudio),
+                import('@taiga-ui/editor').then(({TuiSource}) => TuiSource),
             ],
         },
         {

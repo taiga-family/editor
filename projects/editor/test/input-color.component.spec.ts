@@ -3,7 +3,7 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiInputColorComponent} from '@tbank/tui-editor';
+import {TuiInputColorComponent} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,

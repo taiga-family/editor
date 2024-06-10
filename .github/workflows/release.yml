@@ -1,4 +1,4 @@
-name: ⚠️ Release @tbank/tui-editor
+name: ⚠️ Release @taiga-ui/editor
 on:
   workflow_dispatch:
     inputs:
@@ -36,7 +36,7 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
       - uses: taiga-family/ci/actions/setup/config/npm@v1.60.1
         with:
-          token: ${{ secrets.TBANK_SCOPE_NPM_TOKEN }}
+          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
       - run: git pull --rebase --recurse-submodules
 

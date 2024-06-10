@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiEditor, tuiEditorOptionsProvider} from '@tbank/tui-editor';
+import {TuiEditor, tuiEditorOptionsProvider} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,

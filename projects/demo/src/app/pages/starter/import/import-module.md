@@ -1,5 +1,5 @@
 ```ts
-import {TuiEditorModule} from '@tbank/tui-editor';
+import {TuiEditorModule} from '@taiga-ui/editor';
 // ...
 
 @Component({

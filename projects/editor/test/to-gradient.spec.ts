@@ -1,5 +1,5 @@
 import {describe, expect, it} from '@jest/globals';
-import {tuiToGradient} from '@tbank/tui-editor';
+import {tuiToGradient} from '@taiga-ui/editor';
 
 describe('tuiToGradient', () => {
     it('test case 1', () => {

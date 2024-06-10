@@ -9,7 +9,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 

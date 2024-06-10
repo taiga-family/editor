@@ -6,7 +6,7 @@ import {
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditor,
     TuiEditorSocket,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 import {ExampleEditorCleanupHtmlTransformer} from './transformer';
 

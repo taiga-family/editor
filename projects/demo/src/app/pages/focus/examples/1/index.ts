@@ -5,7 +5,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-} from '@tbank/tui-editor';
+} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -18,7 +18,7 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             deps: [Injector],
             useFactory: (injector: Injector) => [
-                import('@tbank/tui-editor')
+                import('@taiga-ui/editor')
                     .then(({TuiStarterKit}) => TuiStarterKit)
                     .then(extension => extension.configure({heading: {levels: [1, 2]}})),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
@@ -36,14 +36,14 @@ import {
                 import('@tiptap/extension-superscript').then(
                     ({default: Superscript}) => Superscript,
                 ),
-                import('@tbank/tui-editor').then(({TuiFontColor}) => TuiFontColor),
-                import('@tbank/tui-editor').then(({TuiLink}) => TuiLink),
-                import('@tbank/tui-editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@tbank/tui-editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(({TuiFontColor}) => TuiFontColor),
+                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
+                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
+                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
+                import('@taiga-ui/editor').then(
                     ({TuiBackgroundColor}) => TuiBackgroundColor,
                 ),
-                import('@tbank/tui-editor').then(({TuiTable}) =>
+                import('@taiga-ui/editor').then(({TuiTable}) =>
                     TuiTable.configure({resizable: true}),
                 ),
                 import('@tiptap/extension-table-row').then(
@@ -55,19 +55,19 @@ import {
                 import('@tiptap/extension-table-header').then(
                     ({TableHeader}) => TableHeader,
                 ),
-                import('@tbank/tui-editor').then(({TuiTabExtension}) => TuiTabExtension),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(({TuiTabExtension}) => TuiTabExtension),
+                import('@taiga-ui/editor').then(
                     ({TableCellBackground}) => TableCellBackground,
                 ),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(
                     ({TuiDetailsContent}) => TuiDetailsContent,
                 ),
-                import('@tbank/tui-editor').then(({TuiDetails}) => TuiDetails),
-                import('@tbank/tui-editor').then(({TuiSummary}) => TuiSummary),
-                import('@tbank/tui-editor').then(
+                import('@taiga-ui/editor').then(({TuiDetails}) => TuiDetails),
+                import('@taiga-ui/editor').then(({TuiSummary}) => TuiSummary),
+                import('@taiga-ui/editor').then(
                     ({TuiFontSizeExtension}) => TuiFontSizeExtension,
                 ),
-                import('@tbank/tui-editor').then(({tuiCreateImageEditorExtension}) =>
+                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@tiptap/extension-focus').then(({FocusClasses}) =>

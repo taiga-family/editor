@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInlineComponent} from '@taiga-ui/kit';
-import {TuiTiptapEditorService} from '@tbank/tui-editor';
 
 @Component({
     standalone: true,

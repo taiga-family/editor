@@ -3,7 +3,7 @@ import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
-import {TuiColorSelector} from '@tbank/tui-editor';
+import {TuiColorSelector} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
