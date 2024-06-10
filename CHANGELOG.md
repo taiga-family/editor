@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.36.0](https://github.com/taiga-family/tui-editor/compare/v1.35.0...v1.36.0) (2024-06-10)
+
+### Bug Fixes
+
+- mark some peer dependencies as optional and remove some unnecessary peer dependencies
+  ([#1097](https://github.com/taiga-family/tui-editor/issues/1097))
+  ([2d71423](https://github.com/taiga-family/tui-editor/commit/2d71423e8d1c96ffc313684effbf915bc33f7da3))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.35.0](https://github.com/taiga-family/tui-editor/compare/v1.34.0...v1.35.0) (2024-06-06)
 
 **Note:** Version bump only for package tui-editor
