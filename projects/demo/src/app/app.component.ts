@@ -4,7 +4,8 @@ import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED, TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLinkDirective, TuiRootComponent} from '@taiga-ui/core';
-import pkg from '@taiga-ui/editor';
+// eslint-disable-next-line @taiga-ui/experience/no-deep-imports
+import pkg from '@taiga-ui/editor/package.json';
 import {TuiPreview} from '@taiga-ui/kit';
 
 @Component({
