@@ -34,9 +34,9 @@ export default class Example implements OnInit {
 
         return this.stackblitz.openStarter(
             {
-                title: 'TUI Editor Starter',
+                title: 'Editor Starter',
                 description:
-                    'A starter for TUI Editor\nDocumentation: https://taiga-family.github.io/editor',
+                    'A starter for Editor\nDocumentation: https://taiga-family.github.io/editor',
                 files: {
                     'src/index.html': indexHtml,
                     'src/styles.less': stylesLess,

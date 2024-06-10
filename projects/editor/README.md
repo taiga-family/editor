@@ -1,6 +1,6 @@
 # Taiga UI — Editor
 
-**TUI Editor** is a rich text editor extension with related Taiga UI components.
+**Editor** is a rich text editor extension with related Taiga UI components.
 
 ## How to install
 

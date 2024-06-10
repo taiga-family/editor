@@ -21,26 +21,26 @@
 </p>
 
 <p align="center">
-    <b>TUI Editor</b> is a rich text editor extension with related Taiga UI components.
+    <b>Editor</b> is a rich text editor extension with related Taiga UI components.
 </p>
 
 ## Contributing
 
-If you have suggestions for how **TUI Editor** could be improved, or want to report a bug, open an issue! We'd love all
+If you have suggestions for how **Editor** could be improved, or want to report a bug, open an issue! We'd love all
 and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## Maintained
 
-TUI Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used
+Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used
 by a large enterprise. This means you can rely on timely support and continuous development.
 
 ## License
 
 🆓 Feel free to use our library in your commercial and private applications
 
-**TUI Editor** package is covered by [Apache 2.0](/LICENSE)
+**Editor** package is covered by [Apache 2.0](/LICENSE)
 
 Read more about this license [here](https://choosealicense.com/licenses/apache-2.0/)
 

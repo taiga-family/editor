@@ -45,7 +45,7 @@ export class TuiStackblitzService implements TuiCodeEditor {
         return stackblitz.openProject({
             ...this.getStackblitzProjectConfig(),
             title: `${component}-${sampleId}`,
-            description: 'TUI Editor example',
+            description: 'Editor example',
             files: {
                 ...(await this.getBaseAngularProjectFiles()),
                 ...modifiedSupportFiles,

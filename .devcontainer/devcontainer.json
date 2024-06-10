@@ -1,5 +1,5 @@
 {
-    "name": "tui-editor dev container",
+    "name": "editor dev container",
     "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:18",
     "hostRequirements": {
         "memory": "8gb",

@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
         },
         {
             provide: TUI_DOC_TITLE,
-            useValue: 'TUI Editor | ',
+            useValue: 'Editor | ',
         },
         {
             provide: TUI_DOC_LOGO,
