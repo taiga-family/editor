@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateOptions, tuiProvideOptions} from '@taiga-ui/cdk';
+import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
 
 import {
     EDITOR_BLANK_COLOR,
@@ -125,7 +125,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     },
 };
 
-export const TUI_EDITOR_OPTIONS = tuiCreateOptions(TUI_EDITOR_DEFAULT_OPTIONS);
+export const TUI_EDITOR_OPTIONS = tuiCreateToken(TUI_EDITOR_DEFAULT_OPTIONS);
 
 export function tuiEditorOptionsProvider(options: Partial<TuiEditorOptions>): Provider {
     return tuiProvideOptions(TUI_EDITOR_OPTIONS, options, TUI_EDITOR_DEFAULT_OPTIONS);

@@ -1,12 +1,8 @@
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
-import {
-    TuiButtonDirective,
-    TuiDataList,
-    TuiHint,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDataList, TuiHint} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 

@@ -1,8 +1,9 @@
 import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

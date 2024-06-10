@@ -12,14 +12,14 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import type {TuiFocusableElementAccessor, TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {AbstractTuiControl, TuiActiveZoneDirective, tuiPure} from '@taiga-ui/cdk';
+import {tuiDropdownOptionsProvider} from '@taiga-ui/core';
 import {
-    tuiDropdownOptionsProvider,
     TuiHostedDropdownComponent,
     TuiHostedDropdownModule,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
-} from '@taiga-ui/core';
+} from '@taiga-ui/legacy';
 
 import {tuiGetGradientData} from '../../utils/get-gradient-data';
 import {tuiParseGradient} from '../../utils/parse-gradient';

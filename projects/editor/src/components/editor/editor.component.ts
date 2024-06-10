@@ -28,8 +28,8 @@ import {
     TuiDropdownDirective,
     TuiDropdownOptionsDirective,
     TuiScrollbarComponent,
-    TuiWrapperModule,
 } from '@taiga-ui/core';
+import {TuiWrapperModule} from '@taiga-ui/legacy';
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';

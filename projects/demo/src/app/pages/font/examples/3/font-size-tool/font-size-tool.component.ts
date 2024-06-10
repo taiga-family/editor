@@ -2,8 +2,9 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiDataList, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDataList} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({

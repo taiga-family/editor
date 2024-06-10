@@ -1,12 +1,8 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiLetDirective} from '@taiga-ui/cdk';
-import {
-    TuiButtonDirective,
-    TuiDataList,
-    TuiHint,
-    TuiHostedDropdownModule,
-} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiDataList, TuiHint} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';

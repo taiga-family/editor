@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
-import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiButtonDirective, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInlineComponent} from '@taiga-ui/kit';
+import {TuiHostedDropdownComponent, TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

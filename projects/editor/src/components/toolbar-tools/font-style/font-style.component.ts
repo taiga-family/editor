@@ -1,6 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiButtonDirective, TuiHint, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {combineLatest, map} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';

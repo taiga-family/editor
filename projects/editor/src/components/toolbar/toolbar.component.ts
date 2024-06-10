@@ -17,8 +17,9 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItemDirective} from '@taiga-ui/cdk';
-import type {TuiHostedDropdownComponent} from '@taiga-ui/core';
-import {TuiButtonDirective, TuiHint, TuiHostedDropdownModule} from '@taiga-ui/core';
+import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/legacy';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
