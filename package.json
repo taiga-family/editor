@@ -10,9 +10,9 @@
         "prosemirror",
         "tiptap"
     ],
-    "homepage": "https://taiga-family.github.io/tui-editor",
-    "bugs": "https://github.com/taiga-family/tui-editor/issues",
-    "repository": "https://github.com/taiga-family/tui-editor",
+    "homepage": "https://taiga-family.github.io/editor",
+    "bugs": "https://github.com/taiga-family/editor/issues",
+    "repository": "https://github.com/taiga-family/editor",
     "license": "Apache-2.0",
     "contributors": [
         "Alex Inkin <alexander@inkin.ru>"

@@ -36,7 +36,7 @@ export default class Example implements OnInit {
             {
                 title: 'TUI Editor Starter',
                 description:
-                    'A starter for TUI Editor\nDocumentation: https://taiga-family.github.io/tui-editor',
+                    'A starter for TUI Editor\nDocumentation: https://taiga-family.github.io/editor',
                 files: {
                     'src/index.html': indexHtml,
                     'src/styles.less': stylesLess,

@@ -58,7 +58,7 @@ export const appConfig: ApplicationConfig = {
         {
             provide: TUI_DOC_SOURCE_CODE,
             useValue: (context: TuiDocSourceCodePathOptions) => {
-                const link = 'https://github.com/taiga-family/tui-editor/tree/main/libs';
+                const link = 'https://github.com/taiga-family/editor/tree/main/libs';
 
                 if (context.path) {
                     return `${link}/${context.path}`;
@@ -68,7 +68,7 @@ export const appConfig: ApplicationConfig = {
                     return null;
                 }
 
-                return `${link}/${context.package.toLowerCase()}/src/lib/tui-editor/${(
+                return `${link}/${context.package.toLowerCase()}/src/lib/editor/${(
                     context.header[0].toLowerCase() + context.header.slice(1)
                 ).replaceAll(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
             },

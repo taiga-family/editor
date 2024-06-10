@@ -10,8 +10,8 @@
         "text",
         "editor"
     ],
-    "homepage": "https://github.com/taiga-family/tui-editor",
-    "repository": "https://github.com/taiga-family/tui-editor",
+    "homepage": "https://github.com/taiga-family/editor",
+    "repository": "https://github.com/taiga-family/editor",
     "license": "Apache-2.0",
     "peerDependencies": {
         "@maskito/angular": ">=2.4.0",

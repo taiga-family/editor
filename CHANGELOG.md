@@ -16,8 +16,8 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- use tbank scope ([#1082](https://github.com/taiga-family/tui-editor/issues/1082))
-  ([9a98316](https://github.com/taiga-family/tui-editor/commit/9a9831662794c7c83a49f893d81e3fd411e5291e))
+- use tbank scope ([#1082](https://github.com/taiga-family/editor/issues/1082))
+  ([9a98316](https://github.com/taiga-family/editor/commit/9a9831662794c7c83a49f893d81e3fd411e5291e))
 
 # Change Log
 
@@ -47,7 +47,7 @@ All notable changes to this project will be documented in this file. See
 ### Bug Fixes
 
 - show custom tools when basic tools skipped
-  ([0baf924](https://github.com/taiga-family/tui-editor/commit/0baf924817512fd2f0e66ec850dc620879c1e704))
+  ([0baf924](https://github.com/taiga-family/editor/commit/0baf924817512fd2f0e66ec850dc620879c1e704))
 
 # Change Log
 
@@ -103,8 +103,8 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- drop legacy button ([#946](https://github.com/taiga-family/tui-editor/issues/946))
-  ([254a7a3](https://github.com/taiga-family/tui-editor/commit/254a7a3a6dd0aaf77cc61ab4c9999ba4c8a2c2ff))
+- drop legacy button ([#946](https://github.com/taiga-family/editor/issues/946))
+  ([254a7a3](https://github.com/taiga-family/editor/commit/254a7a3a6dd0aaf77cc61ab4c9999ba4c8a2c2ff))
 
 # Change Log
 
@@ -115,8 +115,8 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- add markdown extension ([#937](https://github.com/taiga-family/tui-editor/issues/937))
-  ([df32291](https://github.com/taiga-family/tui-editor/commit/df32291dc60257bfa8ad3ea9c6c68fc614635dad))
+- add markdown extension ([#937](https://github.com/taiga-family/editor/issues/937))
+  ([df32291](https://github.com/taiga-family/editor/commit/df32291dc60257bfa8ad3ea9c6c68fc614635dad))
 
 # Change Log
 
@@ -128,7 +128,7 @@ All notable changes to this project will be documented in this file. See
 ### Bug Fixes
 
 - use checked attribute
-  ([d33026f](https://github.com/taiga-family/tui-editor/commit/d33026f9192a5dd9ab4c39e30955790cf42f1147))
+  ([d33026f](https://github.com/taiga-family/editor/commit/d33026f9192a5dd9ab4c39e30955790cf42f1147))
 
 # Change Log
 
@@ -148,8 +148,8 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- add floating toolbar ([#914](https://github.com/taiga-family/tui-editor/issues/914))
-  ([6b78a58](https://github.com/taiga-family/tui-editor/commit/6b78a58d56be440e2514244cec18bbb37f2be3f5))
+- add floating toolbar ([#914](https://github.com/taiga-family/editor/issues/914))
+  ([6b78a58](https://github.com/taiga-family/editor/commit/6b78a58d56be440e2514244cec18bbb37f2be3f5))
 
 # Change Log
 
@@ -169,8 +169,8 @@ All notable changes to this project will be documented in this file. See
 
 ### Features
 
-- ssr ([#874](https://github.com/taiga-family/tui-editor/issues/874))
-  ([c52ce74](https://github.com/taiga-family/tui-editor/commit/c52ce74ec12505896665fd0520ddf27e101f0ee8))
+- ssr ([#874](https://github.com/taiga-family/editor/issues/874))
+  ([c52ce74](https://github.com/taiga-family/editor/commit/c52ce74ec12505896665fd0520ddf27e101f0ee8))
 
 # Change Log
 

@@ -9,14 +9,14 @@
 <div align="center">
 
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/editor.svg)](https://npmjs.com/package/@taiga-ui/editor)
-[![All packages CI](https://github.com/taiga-family/tui-editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/tui-editor/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/taiga-ui/editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/tui-editor/tree/main/projects)
+[![All packages CI](https://github.com/taiga-family/editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/editor/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/taiga-ui/editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/editor/tree/main/projects)
 
 </div>
 
 <p align="center">
-    <a href="https://taiga-family.github.io/tui-editor">Documentation</a> •
-    <a href="https://github.com/taiga-family/tui-editor/issues/new/choose">Submit an Issue</a> •
+    <a href="https://taiga-family.github.io/editor">Documentation</a> •
+    <a href="https://github.com/taiga-family/editor/issues/new/choose">Submit an Issue</a> •
     <a href="https://t.me/taiga_ui">Contact Us</a>
 </p>
 

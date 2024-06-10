@@ -37,7 +37,7 @@ jobs:
           git clone \
                 --depth 1 \
                 --branch snapshots/demo/next/${{ github.base_ref }} \
-                https://github.com/taiga-family/tui-editor.git ${{ env.DIST_NEXT }}
+                https://github.com/taiga-family/editor.git ${{ env.DIST_NEXT }}
 
       - uses: jacobtomlinson/gha-find-replace@v3
         with:

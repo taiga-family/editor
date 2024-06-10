@@ -16,7 +16,7 @@ jobs:
 
       - id: info
         run: |
-          echo "version=$(node -p "require('./projects/tui-editor/package.json').version.split('.')?.[0]")" >> $GITHUB_OUTPUT
+          echo "version=$(node -p "require('./projects/editor/package.json').version.split('.')?.[0]")" >> $GITHUB_OUTPUT
 
       - name: Publish next snapshots
         if: ${{ contains(github.head_ref || github.ref_name, 'main') }}
