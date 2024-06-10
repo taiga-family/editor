@@ -889,6 +889,9 @@ Apache-2.0
 @taiga-ui/core
 Apache-2.0
 
+@taiga-ui/editor
+Apache-2.0
+
 @taiga-ui/i18n
 Apache-2.0
 
@@ -896,9 +899,6 @@ Apache-2.0
 Apache-2.0
 
 @taiga-ui/legacy
-Apache-2.0
-
-@tbank/tui-editor
 Apache-2.0
 
 @tinkoff/ng-dompurify
