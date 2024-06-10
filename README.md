@@ -26,15 +26,15 @@
 
 ## Contributing
 
-If you have suggestions for how **Editor** could be improved, or want to report a bug, open an issue! We'd love all
-and any contributions.
+If you have suggestions for how **Editor** could be improved, or want to report a bug, open an issue! We'd love all and
+any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## Maintained
 
-Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used
-by a large enterprise. This means you can rely on timely support and continuous development.
+Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used by a
+large enterprise. This means you can rely on timely support and continuous development.
 
 ## License
 
