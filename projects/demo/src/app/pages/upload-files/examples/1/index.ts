@@ -24,7 +24,9 @@ import {FileIoService} from './filesio.service';
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(
+                    ({TuiLink}) => TuiLink,
+                ),
                 import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),

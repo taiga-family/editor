@@ -33,7 +33,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                 import('@tinkoff/tui-editor/extensions/font-color').then(
                     ({FontColor}) => FontColor,
                 ),
-                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(
+                    ({TuiLink}) => TuiLink,
+                ),
                 import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),

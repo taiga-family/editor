@@ -22,7 +22,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                         createImageEditorExtension(injector),
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(
+                    ({TuiLink}) => TuiLink,
+                ),
                 import('@tinkoff/tui-editor/extensions/jump-anchor').then(
                     ({TuiJumpAnchor}) => TuiJumpAnchor,
                 ),

@@ -17,7 +17,9 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                     ({StarterKit}) => StarterKit,
                 ),
                 import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(
+                    ({TuiLink}) => TuiLink,
+                ),
             ],
         },
     ],

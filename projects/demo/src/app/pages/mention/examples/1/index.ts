@@ -20,7 +20,9 @@ import {User} from './mention';
                 import('@tinkoff/tui-editor/extensions/starter-kit').then(
                     ({StarterKit}) => StarterKit,
                 ),
-                import('@tinkoff/tui-editor/extensions/link').then(({TuiLink}) => TuiLink),
+                import('@tinkoff/tui-editor/extensions/link').then(
+                    ({TuiLink}) => TuiLink,
+                ),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),

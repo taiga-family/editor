@@ -17,7 +17,9 @@ export const defaultEditorExtensions = [
     import(`@tinkoff/tui-editor/extensions/jump-anchor`).then(
         ({TuiJumpAnchor}) => TuiJumpAnchor,
     ),
-    import(`@tinkoff/tui-editor/extensions/file-link`).then(({TuiFileLink}) => TuiFileLink),
+    import(`@tinkoff/tui-editor/extensions/file-link`).then(
+        ({TuiFileLink}) => TuiFileLink,
+    ),
     import(`@tinkoff/tui-editor/extensions/background-color`).then(
         ({BackgroundColor}) => BackgroundColor,
     ),
@@ -40,7 +42,9 @@ export const defaultEditorExtensions = [
     ),
     import(`@tinkoff/tui-editor/extensions/details`).then(({TuiDetails}) => TuiDetails),
     import(`@tinkoff/tui-editor/extensions/details`).then(({TuiSummary}) => TuiSummary),
-    import(`@tinkoff/tui-editor/extensions/font-size`).then(({TuiFontSize}) => TuiFontSize),
+    import(`@tinkoff/tui-editor/extensions/font-size`).then(
+        ({TuiFontSize}) => TuiFontSize,
+    ),
 ];
 
 export const TUI_EDITOR_DEFAULT_EXTENSIONS = defaultEditorExtensions;
