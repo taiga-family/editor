@@ -13,57 +13,79 @@
     "homepage": "https://github.com/taiga-family/tui-editor",
     "repository": "https://github.com/taiga-family/tui-editor",
     "license": "Apache-2.0",
+    "dependencies": {
+        "@maskito/angular": "1.9.0",
+        "@maskito/core": "1.9.0",
+        "@maskito/kit": "1.9.0",
+        "@tiptap/core": "2.1.13",
+        "@tiptap/extension-blockquote": "2.1.13",
+        "@tiptap/extension-bold": "2.1.13",
+        "@tiptap/extension-bubble-menu": "2.1.13",
+        "@tiptap/extension-bullet-list": "2.1.13",
+        "@tiptap/extension-code": "2.1.13",
+        "@tiptap/extension-code-block": "2.1.13",
+        "@tiptap/extension-document": "2.1.13",
+        "@tiptap/extension-dropcursor": "2.1.13",
+        "@tiptap/extension-focus": "2.1.13",
+        "@tiptap/extension-gapcursor": "2.1.13",
+        "@tiptap/extension-hard-break": "2.1.13",
+        "@tiptap/extension-heading": "2.1.13",
+        "@tiptap/extension-highlight": "2.1.13",
+        "@tiptap/extension-history": "2.1.13",
+        "@tiptap/extension-horizontal-rule": "2.1.13",
+        "@tiptap/extension-image": "2.1.13",
+        "@tiptap/extension-italic": "2.1.13",
+        "@tiptap/extension-link": "2.1.13",
+        "@tiptap/extension-list-item": "2.1.13",
+        "@tiptap/extension-ordered-list": "2.1.13",
+        "@tiptap/extension-paragraph": "2.1.13",
+        "@tiptap/extension-placeholder": "2.1.13",
+        "@tiptap/extension-strike": "2.1.13",
+        "@tiptap/extension-subscript": "2.1.13",
+        "@tiptap/extension-superscript": "2.1.13",
+        "@tiptap/extension-table": "2.1.13",
+        "@tiptap/extension-table-cell": "2.1.13",
+        "@tiptap/extension-table-header": "2.1.13",
+        "@tiptap/extension-table-row": "2.1.13",
+        "@tiptap/extension-task-item": "2.1.13",
+        "@tiptap/extension-task-list": "2.1.13",
+        "@tiptap/extension-text": "2.1.13",
+        "@tiptap/extension-text-align": "2.1.13",
+        "@tiptap/extension-text-style": "2.1.13",
+        "@tiptap/extension-underline": "2.1.13",
+        "@tiptap/extension-youtube": "2.1.13",
+        "@tiptap/pm": "2.1.13",
+        "@tiptap/prosemirror-tables": "1.1.4",
+        "@tiptap/starter-kit": "2.1.13",
+        "markdown-it": "14.1.0",
+        "prosemirror-collab": "1.3.1",
+        "prosemirror-commands": "1.5.2",
+        "prosemirror-dropcursor": "1.8.1",
+        "prosemirror-gapcursor": "1.3.2",
+        "prosemirror-history": "1.3.2",
+        "prosemirror-inputrules": "1.3.0",
+        "prosemirror-keymap": "1.2.2",
+        "prosemirror-markdown": "1.11.2",
+        "prosemirror-model": "1.19.3",
+        "prosemirror-schema-list": "1.3.0",
+        "prosemirror-state": "1.4.3",
+        "prosemirror-tables": "1.3.5",
+        "prosemirror-transform": "1.8.0",
+        "prosemirror-utils": "1.2.0",
+        "prosemirror-view": "1.32.6"
+    },
     "peerDependencies": {
         "@angular/common": ">=12.0.0",
         "@angular/core": ">=12.0.0",
         "@angular/forms": ">=12.0.0",
         "@angular/platform-browser": ">=12.0.0",
-        "@maskito/angular": "^1.9.0",
-        "@maskito/core": "^1.9.0",
-        "@maskito/kit": "^1.9.0",
-        "@ng-web-apis/common": "^3.0.6",
-        "@tiptap/core": "^2.1.13",
-        "@tiptap/extension-blockquote": "^2.1.13",
-        "@tiptap/extension-bold": "^2.1.13",
-        "@tiptap/extension-bubble-menu": "^2.1.13",
-        "@tiptap/extension-bullet-list": "^2.1.13",
-        "@tiptap/extension-code": "^2.1.13",
-        "@tiptap/extension-code-block": "^2.1.13",
-        "@tiptap/extension-document": "^2.1.13",
-        "@tiptap/extension-dropcursor": "^2.1.13",
-        "@tiptap/extension-focus": "^2.1.13",
-        "@tiptap/extension-gapcursor": "^2.1.13",
-        "@tiptap/extension-hard-break": "^2.1.13",
-        "@tiptap/extension-heading": "^2.1.13",
-        "@tiptap/extension-highlight": "^2.1.13",
-        "@tiptap/extension-history": "^2.1.13",
-        "@tiptap/extension-horizontal-rule": "^2.1.13",
-        "@tiptap/extension-image": "^2.1.13",
-        "@tiptap/extension-italic": "^2.1.13",
-        "@tiptap/extension-link": "^2.1.13",
-        "@tiptap/extension-list-item": "^2.1.13",
-        "@tiptap/extension-ordered-list": "^2.1.13",
-        "@tiptap/extension-paragraph": "^2.1.13",
-        "@tiptap/extension-placeholder": "^2.1.13",
-        "@tiptap/extension-strike": "^2.1.13",
-        "@tiptap/extension-subscript": "^2.1.13",
-        "@tiptap/extension-superscript": "^2.1.13",
-        "@tiptap/extension-table": "^2.1.13",
-        "@tiptap/extension-table-cell": "^2.1.13",
-        "@tiptap/extension-table-header": "^2.1.13",
-        "@tiptap/extension-table-row": "^2.1.13",
-        "@tiptap/extension-task-item": "^2.1.13",
-        "@tiptap/extension-task-list": "^2.1.13",
-        "@tiptap/extension-text": "^2.1.13",
-        "@tiptap/extension-text-align": "^2.1.13",
-        "@tiptap/extension-text-style": "^2.1.13",
-        "@tiptap/extension-underline": "^2.1.13",
-        "@tiptap/extension-youtube": "^2.1.13",
-        "@tiptap/pm": "^2.1.13",
-        "@tiptap/starter-kit": "^2.1.13",
-        "markdown-it": "^14.1.0",
+        "@maskito/angular": ">=1.9.0",
+        "@maskito/core": ">=1.9.0",
+        "@maskito/kit": ">=1.9.0",
+        "@ng-web-apis/common": "3.0.6",
+        "markdown-it": ">=14.1.0",
         "rxjs": ">=6.0.0",
-        "tslib": "^2.6.2"
+        "tslib": "2.6.2"
     },
     "peerDependenciesMeta": {
         "@maskito/angular": {
@@ -73,108 +95,6 @@
             "optional": true
         },
         "@maskito/kit": {
-            "optional": true
-        },
-        "@tiptap/extension-blockquote": {
-            "optional": true
-        },
-        "@tiptap/extension-bold": {
-            "optional": true
-        },
-        "@tiptap/extension-bubble-menu": {
-            "optional": true
-        },
-        "@tiptap/extension-bullet-list": {
-            "optional": true
-        },
-        "@tiptap/extension-code": {
-            "optional": true
-        },
-        "@tiptap/extension-code-block": {
-            "optional": true
-        },
-        "@tiptap/extension-dropcursor": {
-            "optional": true
-        },
-        "@tiptap/extension-focus": {
-            "optional": true
-        },
-        "@tiptap/extension-gapcursor": {
-            "optional": true
-        },
-        "@tiptap/extension-hard-break": {
-            "optional": true
-        },
-        "@tiptap/extension-heading": {
-            "optional": true
-        },
-        "@tiptap/extension-highlight": {
-            "optional": true
-        },
-        "@tiptap/extension-history": {
-            "optional": true
-        },
-        "@tiptap/extension-horizontal-rule": {
-            "optional": true
-        },
-        "@tiptap/extension-image": {
-            "optional": true
-        },
-        "@tiptap/extension-italic": {
-            "optional": true
-        },
-        "@tiptap/extension-link": {
-            "optional": true
-        },
-        "@tiptap/extension-list-item": {
-            "optional": true
-        },
-        "@tiptap/extension-ordered-list": {
-            "optional": true
-        },
-        "@tiptap/extension-placeholder": {
-            "optional": true
-        },
-        "@tiptap/extension-strike": {
-            "optional": true
-        },
-        "@tiptap/extension-subscript": {
-            "optional": true
-        },
-        "@tiptap/extension-superscript": {
-            "optional": true
-        },
-        "@tiptap/extension-table": {
-            "optional": true
-        },
-        "@tiptap/extension-table-cell": {
-            "optional": true
-        },
-        "@tiptap/extension-table-header": {
-            "optional": true
-        },
-        "@tiptap/extension-table-row": {
-            "optional": true
-        },
-        "@tiptap/extension-task-item": {
-            "optional": true
-        },
-        "@tiptap/extension-task-list": {
-            "optional": true
-        },
-        "@tiptap/extension-text-align": {
-            "optional": true
-        },
-        "@tiptap/extension-text-style": {
-            "optional": true
-        },
-        "@tiptap/extension-underline": {
-            "optional": true
-        },
-        "@tiptap/extension-youtube": {
-            "optional": true
-        },
-        "@tiptap/starter-kit": {
             "optional": true
         },
         "@types/markdown-it": {
