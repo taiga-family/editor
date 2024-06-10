@@ -4,7 +4,8 @@ import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
 import {TuiButtonDirective} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInlineComponent} from '@taiga-ui/kit';
-import {TuiHostedDropdownComponent, TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import type {TuiHostedDropdownComponent} from '@taiga-ui/legacy';
+import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
