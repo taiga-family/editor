@@ -1,4 +1,4 @@
-name: Release announce @taiga-ui/editor
+name: Release announce
 on:
   push:
     branches: [main]
@@ -15,6 +15,7 @@ jobs:
       - id: info
         run: |
           echo "version=v$(node -p "require('./projects/editor/package.json').version")" >> $GITHUB_OUTPUT
+          echo "name=$(node -p "require('./projects/editor/package.json').name")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.60.1
@@ -23,7 +24,7 @@ jobs:
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
           token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
           version: ${{ steps.info.outputs.version }}
-          textLink: '@taiga-ui/editor'
+          textLink: ${{ steps.info.outputs.name }}
 
 concurrency:
   group: announce-${{ github.workflow }}-${{ github.ref }}
