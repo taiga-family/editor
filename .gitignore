@@ -10,7 +10,6 @@
 
 # IDEs and editors
 .idea
-!.idea/icon.svg
 .project
 .classpath
 .c9/
