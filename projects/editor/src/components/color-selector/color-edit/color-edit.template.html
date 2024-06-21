@@ -1,6 +1,4 @@
 <tui-select
-    tuiDropdownAlign="left"
-    tuiDropdownLimitWidth="min"
     tuiTextfieldSize="m"
     class="t-select tui-group__auto-width-item"
     [tuiTextfieldLabelOutside]="true"
@@ -19,15 +17,19 @@
         </button>
     </tui-data-list>
 </tui-select>
-<tui-primitive-textfield
+<tui-textfield
     *ngIf="isHex; else rgb"
     tuiTextfieldSize="m"
     tuiValueAccessor
-    [maskito]="hexMask"
     [tuiTextfieldLabelOutside]="true"
-    [value]="hex"
-    (valueChange)="onHexChange($event)"
-/>
+>
+    <input
+        tuiTextfield
+        [maskito]="hexMask"
+        [ngModel]="hex"
+        (ngModelChange)="onHexChange($event)"
+    />
+</tui-textfield>
 <ng-template #rgb>
     <tui-input-number
         decimal="never"

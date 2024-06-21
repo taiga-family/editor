@@ -13,23 +13,23 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler, TuiFocusableElementAccessor} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
-    AbstractTuiControl,
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
-    TuiActiveZoneDirective,
-    tuiAsFocusableItemAccessor,
+    TuiActiveZone,
     tuiAutoFocusOptionsProvider,
+    TuiControl,
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
-    TuiDropdownDirective,
-    TuiDropdownOptionsDirective,
-    TuiScrollbarComponent,
+    TuiAppearance,
+    TuiDropdown,
+    TuiScrollbar,
+    TuiSurface,
 } from '@taiga-ui/core';
-import {TuiWrapperModule} from '@taiga-ui/legacy';
+import {TuiCardLarge} from '@taiga-ui/layout';
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
@@ -57,13 +57,12 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     standalone: true,
     selector: 'tui-editor',
     imports: [
+        TuiCardLarge,
         AsyncPipe,
         NgIf,
-        TuiWrapperModule,
-        TuiActiveZoneDirective,
-        TuiScrollbarComponent,
-        TuiDropdownOptionsDirective,
-        TuiDropdownDirective,
+        TuiActiveZone,
+        TuiScrollbar,
+        TuiDropdown,
         TuiEditLink,
         TuiEditorPortalHost,
         TuiEditorPortalDirective,
@@ -72,20 +71,18 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         TuiToolbar,
         NgTemplateOutlet,
         TuiDropdownToolbarDirective,
+        TuiSurface,
+        TuiAppearance,
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsFocusableItemAccessor(TuiEditor),
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
     ],
 })
-export class TuiEditor
-    extends AbstractTuiControl<string>
-    implements OnDestroy, TuiFocusableElementAccessor
-{
+export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild(TuiTiptapEditor, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
 
@@ -135,10 +132,13 @@ export class TuiEditor
     }
 
     public get nativeFocusableElement(): HTMLDivElement | null {
-        return this.computedDisabled
-            ? null
-            : this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') ||
-                  null;
+        return (
+            this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') || null
+        );
+    }
+
+    public get computedFocused(): boolean {
+        return (this.editor?.isFocused || this.focused) ?? false;
     }
 
     public get selectionState(): TuiSelectionState {
@@ -158,7 +158,7 @@ export class TuiEditor
     }
 
     public override writeValue(value: string | null): void {
-        if (value === this.value) {
+        if (value === this.value()) {
             return;
         }
 
@@ -167,12 +167,7 @@ export class TuiEditor
         super.writeValue(processed);
 
         if (processed !== value) {
-            this.control?.setValue(processed, {
-                onlySelf: false,
-                emitEvent: false,
-                emitModelToViewChange: false,
-                emitViewToModelChange: false,
-            });
+            // this.control?.reset(processed);
         }
 
         if (!this.focused) {
@@ -192,14 +187,8 @@ export class TuiEditor
         return this.focused ? this.openDropdownWhen : TUI_FALSE_HANDLER;
     }
 
-    protected get placeholderRaised(): boolean {
-        return (this.computedFocused && !this.readOnly) || this.hasValue;
-    }
-
     protected get hasExampleText(): boolean {
-        return (
-            !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
-        );
+        return !!this.exampleText && this.computedFocused && !this.value();
     }
 
     protected get isLinkSelected(): boolean {
@@ -214,12 +203,6 @@ export class TuiEditor
 
     protected onActiveZone(focused: boolean): void {
         this.focused = focused;
-        this.updateFocused(focused);
-        this.control?.updateValueAndValidity();
-    }
-
-    protected onModelChange(value: string): void {
-        this.value = value;
     }
 
     protected addAnchor(anchor: string): void {
@@ -239,7 +222,7 @@ export class TuiEditor
         this.editor?.unsetLink();
     }
 
-    protected focus(event: MouseEvent): void {
+    protected focus(event: any): void {
         if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
             return;
         }
@@ -254,10 +237,6 @@ export class TuiEditor
 
     private get focusNode(): Node | null {
         return this.doc.getSelection()?.focusNode ?? null;
-    }
-
-    private get hasValue(): boolean {
-        return !!this.value;
     }
 
     private get currentFocusedNodeIsImageAnchor(): boolean {

@@ -1,9 +1,9 @@
-<!-- @bad TODO: Keyboard navigation-->
 <ng-container *ngIf="texts$ | async as texts">
-    <tui-hosted-dropdown
+    <div
         *ngIf="fontStyleState$ | async as state"
         #format
-        [content]="formatDropdown"
+        [tuiDropdown]="formatDropdown"
+        [tuiDropdownOpen]="false"
     >
         <button
             appearance="icon"
@@ -64,5 +64,5 @@
                 ></button>
             </div>
         </ng-template>
-    </tui-hosted-dropdown>
+    </div>
 </ng-container>

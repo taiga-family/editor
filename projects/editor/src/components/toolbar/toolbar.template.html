@@ -103,13 +103,13 @@
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
-        <tui-hosted-dropdown
+        <div
             *ngIf="enabled(editorTool.Link)"
             #link
             tuiItem
             class="t-wrapper"
-            [canOpen]="canOpenAnchor"
-            [content]="linkDropdown"
+            [tuiDropdown]="linkDropdown"
+            [tuiDropdownOpen]="false"
         >
             <button
                 #button
@@ -131,13 +131,13 @@
                     (removeLink)="onLink(link)"
                 />
             </ng-template>
-        </tui-hosted-dropdown>
-        <tui-hosted-dropdown
+        </div>
+        <div
             *ngIf="enabled(editorTool.Anchor)"
             #anchor
             class="t-wrapper"
-            [canOpen]="canOpenAnchor"
-            [content]="anchorDropdown"
+            [tuiDropdown]="anchorDropdown"
+            [tuiDropdownOpen]="false"
         >
             <button
                 appearance="icon"
@@ -156,7 +156,7 @@
                     (removeLink)="removeAnchor()"
                 />
             </ng-template>
-        </tui-hosted-dropdown>
+        </div>
         <ng-container *ngIf="enabled(editorTool.Attach)">
             <button
                 #button

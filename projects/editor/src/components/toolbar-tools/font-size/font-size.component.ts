@@ -1,8 +1,7 @@
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiDataList, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -22,8 +21,8 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
         AsyncPipe,
         NgForOf,
         TuiDataList,
-        TuiHostedDropdownModule,
-        TuiButtonDirective,
+        TuiDropdown,
+        TuiButton,
         TuiHint,
     ],
     templateUrl: './font-size.template.html',

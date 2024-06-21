@@ -1,9 +1,9 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
-
+    position: relative;
     display: block;
+    isolation: isolate;
 }
 
 .t-flat {
@@ -40,19 +40,19 @@
             z-index: -1;
             background-image: linear-gradient(
                     45deg,
-                    var(--tui-base-03) 25%,
+                    var(--tui-background-neutral-1-hover) 25%,
                     transparent 25%,
                     transparent 75%,
-                    var(--tui-base-03) 75%,
-                    var(--tui-base-03)
+                    var(--tui-background-neutral-1-hover) 75%,
+                    var(--tui-background-neutral-1-hover)
                 ),
                 linear-gradient(
                     45deg,
-                    var(--tui-base-03) 25%,
+                    var(--tui-background-neutral-1-hover) 25%,
                     transparent 25%,
                     transparent 75%,
-                    var(--tui-base-03) 75%,
-                    var(--tui-base-03)
+                    var(--tui-background-neutral-1-hover) 75%,
+                    var(--tui-background-neutral-1-hover)
                 );
             background-size: 0.375rem 0.375rem;
             background-position:

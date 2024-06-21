@@ -1,9 +1,9 @@
-<!-- @bad TODO: Keyboard navigation-->
 <ng-container *ngIf="texts$ | async as texts">
-    <tui-hosted-dropdown
+    <div
         *tuiLet="alignState$ | async as alignState"
         #align
-        [content]="alignDropdown"
+        [tuiDropdown]="alignDropdown"
+        [tuiDropdownOpen]="false"
     >
         <button
             appearance="icon"
@@ -60,5 +60,5 @@
                 ></button>
             </div>
         </ng-template>
-    </tui-hosted-dropdown>
+    </div>
 </ng-container>

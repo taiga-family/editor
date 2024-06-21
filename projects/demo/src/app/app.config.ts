@@ -1,5 +1,4 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {importProvidersFrom} from '@angular/core';
 import type {ApplicationConfig} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -11,9 +10,9 @@ import {
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
 } from '@taiga-ui/addon-doc';
-import {TUI_SANITIZER, TuiDialogModule} from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
-import {NG_EVENT_PLUGINS} from '@tinkoff/ng-event-plugins';
+import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {TUI_SANITIZER} from '@taiga-ui/legacy';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
@@ -29,7 +28,6 @@ export const appConfig: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        importProvidersFrom(TuiDialogModule),
         NG_EVENT_PLUGINS,
         {
             provide: TUI_SANITIZER,

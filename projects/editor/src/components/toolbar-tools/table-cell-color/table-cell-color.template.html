@@ -1,10 +1,10 @@
 <ng-container *tuiLet="color$ | async as color">
-    <tui-hosted-dropdown
+    <div
         *tuiLet="isActive$ | async as isActive"
         #colorSelect
-        [canOpen]="!!isActive"
-        [content]="cellColorDropdown"
+        [tuiDropdown]="cellColorDropdown"
         [tuiDropdownMaxHeight]="999"
+        [tuiDropdownOpen]="false"
     >
         <button
             appearance="icon"
@@ -22,16 +22,12 @@
             class="t-plate t-plate_paint"
             [style.background]="color"
         ></div>
-        <ng-template
-            #cellColorDropdown
-            let-activeZone
-        >
+        <ng-template #cellColorDropdown>
             <tui-palette
                 class="t-color-picker"
                 [colors]="colors"
-                [tuiActiveZoneParent]="activeZone"
-                (selectedColor)="setCellColor($event); colorSelect.close()"
+                (selectedColor)="setCellColor($event)"
             />
         </ng-template>
-    </tui-hosted-dropdown>
+    </div>
 </ng-container>

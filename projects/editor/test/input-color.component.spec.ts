@@ -3,18 +3,18 @@ import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {beforeEach, describe, expect, it} from '@jest/globals';
-import {TuiInputColorComponent} from '@taiga-ui/editor';
+import {TuiInputColor} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiInputColorComponent],
+    imports: [FormsModule, TuiInputColor],
     template: `
         <tui-input-color [(ngModel)]="color"></tui-input-color>
     `,
 })
 class Test {
-    @ViewChild(TuiInputColorComponent)
-    public component!: TuiInputColorComponent;
+    @ViewChild(TuiInputColor)
+    public component!: TuiInputColor;
 
     public color = '#0000ff';
 }

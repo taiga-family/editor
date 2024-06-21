@@ -1,15 +1,15 @@
 <button
     appearance="flat"
-    iconLeft="tuiIconMinus"
+    iconLeft="@tui.minus"
     size="s"
     tuiIconButton
     type="button"
     (click)="decrease()"
 ></button>
-
-<tui-hosted-dropdown
+<div
     #fonts
-    [content]="fontsDropdown"
+    [tuiDropdown]="fontsDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="flat"
@@ -24,17 +24,17 @@
             <button
                 *ngFor="let size of sizes"
                 tuiOption
-                (click)="setFontSize(size); fonts.close()"
+                (click)="setFontSize(size)"
             >
                 {{ size }}
             </button>
         </tui-data-list>
     </ng-template>
-</tui-hosted-dropdown>
+</div>
 
 <button
     appearance="flat"
-    iconLeft="tuiIconPlus"
+    iconLeft="@tui.plus"
     size="s"
     tuiIconButton
     type="button"

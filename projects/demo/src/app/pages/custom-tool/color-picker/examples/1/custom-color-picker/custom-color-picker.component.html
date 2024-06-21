@@ -1,7 +1,8 @@
-<tui-hosted-dropdown
+<div
     #color
-    [content]="colorDropdown"
+    [tuiDropdown]="colorDropdown"
     [tuiDropdownMaxHeight]="999"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
@@ -37,4 +38,4 @@
             Use color
         </button>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

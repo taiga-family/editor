@@ -1,7 +1,6 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiButtonDirective, TuiDataList, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -11,14 +10,7 @@ import {TUI_EDITOR_CODE_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
 @Component({
     standalone: true,
     selector: 'tui-code',
-    imports: [
-        NgForOf,
-        AsyncPipe,
-        TuiButtonDirective,
-        TuiHint,
-        TuiDataList,
-        TuiHostedDropdownModule,
-    ],
+    imports: [NgForOf, AsyncPipe, TuiButton, TuiHint, TuiDataList, TuiDropdown],
     templateUrl: './code.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

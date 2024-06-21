@@ -1,8 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiActiveZone, TuiLet} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -15,13 +14,13 @@ import {TuiPalette} from '../../color-selector/palette/palette.component';
     standalone: true,
     selector: 'tui-highlight-color',
     imports: [
-        TuiHostedDropdownModule,
+        TuiDropdown,
         AsyncPipe,
-        TuiLetDirective,
-        TuiButtonDirective,
+        TuiLet,
+        TuiButton,
         TuiHint,
         NgIf,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
         TuiPalette,
     ],
     templateUrl: './highlight-color.template.html',

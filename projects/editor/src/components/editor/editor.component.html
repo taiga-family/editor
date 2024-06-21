@@ -1,13 +1,8 @@
 <div
     *ngIf="editorLoaded$ | async as editorLoaded"
-    tuiWrapper
+    tuiAppearance="flat"
     class="t-wrapper"
-    [appearance]="options.appearence"
-    [disabled]="disabled"
-    [focus]="computedFocused"
-    [hover]="pseudoHover"
-    [invalid]="computedInvalid"
-    [readOnly]="readOnly"
+    [tuiAppearanceFocus]="computedFocused"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="t-toolbar-wrapper">
@@ -21,13 +16,14 @@
         </tui-toolbar>
         <div
             class="t-placeholder"
-            [class.t-placeholder_raised]="placeholderRaised"
+            (mousedown)="focus($event)"
         >
             <ng-content />
         </div>
         <div
             *ngIf="hasExampleText"
             class="t-example-text"
+            (mousedown)="focus($event)"
         >
             {{ exampleText }}
         </div>
@@ -45,6 +41,7 @@
             *ngIf="!floatingToolbar"
             tuiEditorPortal
             class="t-scrollbar"
+            (keydown)="focus($event)"
             (mousedown)="focus($event)"
         >
             <ng-container [ngTemplateOutlet]="editor" />
@@ -60,23 +57,18 @@
             >
                 <tui-editor-socket
                     tuiTiptapEditor
-                    [editable]="interactive"
-                    [value]="value"
+                    [editable]="interactive()"
+                    [value]="value()"
                     (stateChange)="(0)"
-                    (valueChange)="onModelChange($event)"
                 />
             </div>
 
-            <ng-template
-                #dropdown
-                let-activeZone
-            >
+            <ng-template #dropdown>
                 <div [class.t-floating]="floatingToolbar">
                     <tui-toolbar
                         *ngIf="editorLoaded && floatingToolbar"
                         [disabled]="!interactive"
                         [tools]="tools"
-                        [tuiActiveZoneParent]="activeZone"
                         (fileAttached)="fileAttached.emit($event)"
                     >
                         <ng-content select="tools" />

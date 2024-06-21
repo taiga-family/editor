@@ -4,7 +4,7 @@
     .transition(background);
 
     &:hover {
-        background: var(--tui-secondary-hover);
+        background: var(--tui-background-neutral-1-hover);
     }
 }
 
@@ -17,7 +17,12 @@
 }
 
 .smile {
-    .clearbtn();
+    appearance: none;
+    border: 0;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
     .transition(background);
     flex: 1 0 21%;
     cursor: pointer;
@@ -26,6 +31,6 @@
     padding: 1rem;
 
     &:hover {
-        background: var(--tui-secondary-hover);
+        background: var(--tui-background-neutral-1-hover);
     }
 }

@@ -1,8 +1,8 @@
-<tui-hosted-dropdown
+<div
     *tuiLet="isActive$ | async as active"
     #tableCommand
-    [canOpen]="!!active"
-    [content]="tableOptionsDropdown"
+    [tuiDropdown]="tableOptionsDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
@@ -15,7 +15,7 @@
         [iconLeft]="options.icons.addRowTable"
         [tuiHint]="rowsColumnsManagingText$ | async"
     ></button>
-</tui-hosted-dropdown>
+</div>
 
 <ng-template #tableOptionsDropdown>
     <tui-data-list>

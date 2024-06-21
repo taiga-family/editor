@@ -1,18 +1,14 @@
-<tui-hosted-dropdown
-    tuiDropdownAlign="left"
-    [content]="palette"
-    [tuiDropdownMaxHeight]="999"
+<button
+    appearance=""
+    automation-id="color-picker__button"
+    tuiButton
+    type="button"
+    [style.background]="color$ | async"
+    [tuiDropdown]="palette"
+    [tuiDropdownOpen]="false"
 >
-    <button
-        appearance=""
-        automation-id="color-picker__button"
-        tuiButton
-        type="button"
-        [style.background]="color$ | async"
-    >
-        Palette only
-    </button>
-</tui-hosted-dropdown>
+    Palette only
+</button>
 <ng-template #palette>
     <tui-palette
         [colors]="colors"

@@ -1,22 +1,25 @@
-<tui-input
-    [maskito]="mask"
-    [tuiTextfieldIcon]="color"
-    [(ngModel)]="value"
->
-    Input color
-</tui-input>
-<ng-template #color>
+<tui-textfield>
+    <label tuiLabel>Input color</label>
+
     <input
-        tabindex="-1"
-        type="color"
+        tuiTextfield
+        [maskito]="mask"
         [(ngModel)]="value"
-        (click.stop)="(0)"
-        (mousedown.stop)="(0)"
     />
-    <tui-svg
-        appearance="icon"
-        src="tuiIconPaintOutline"
-        tuiWrapper
-    />
-    <hr [style.background]="value" />
-</ng-template>
+
+    <div
+        *ngIf="value"
+        class="paint"
+    >
+        <tui-icon icon="@tui.paintbrush" />
+
+        <input
+            type="color"
+            [(ngModel)]="value"
+            (click.stop)="(0)"
+            (mousedown.stop)="(0)"
+        />
+
+        <hr [style.background]="value" />
+    </div>
+</tui-textfield>

@@ -30,12 +30,17 @@
                 </tui-input-inline>
             </div>
         </label>
-        <tui-svg
-            class="t-cleaner"
-            [class.t-cleaner_hidden]="!hasUrl"
-            [src]="options.icons.popupLinkRemove"
+        <button
+            appearance="icon"
+            shape="rounded"
+            size="s"
+            title="Insert link"
+            tuiIconButton
+            type="button"
+            class="t-button"
+            [iconLeft]="options.icons.popupLinkRemove"
             (click)="onClear()"
-        />
+        ></button>
         <button
             appearance="icon"
             shape="rounded"
@@ -54,7 +59,7 @@
             tuiLink
             class="t-link"
             [href]="href"
-            [iconLeft]="prefixIsHashMode ? 'tuiIconHash' : 'tuiIconExternalLink'"
+            [iconLeft]="prefixIsHashMode ? '@tui.hash' : '@tui.external-link'"
         >
             {{ url | tuiShortUrl }}
         </a>

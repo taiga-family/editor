@@ -8,7 +8,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 
 import type {User} from './mention';
 import {Mentions} from './mention';
@@ -20,7 +20,7 @@ import {Mentions} from './mention';
         ReactiveFormsModule,
         TuiDataList,
         NgForOf,
-        TuiAvatarComponent,
+        TuiAvatar,
         TuiInitialsPipe,
         TuiEditorSocket,
         Mentions,

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
@@ -11,13 +11,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [
-        TuiButtonDirective,
-        TuiItemDirective,
-        ReactiveFormsModule,
-        TuiEditorSocket,
-        TuiEditor,
-    ],
+    imports: [TuiButton, TuiItem, ReactiveFormsModule, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

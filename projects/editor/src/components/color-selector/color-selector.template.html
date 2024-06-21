@@ -1,7 +1,8 @@
-<tui-hosted-dropdown
+<div
     #dropdown
     class="t-select"
-    [content]="menu"
+    [tuiDropdown]="menu"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance=""
@@ -36,7 +37,7 @@
             </button>
         </tui-data-list>
     </ng-template>
-</tui-hosted-dropdown>
+</div>
 <ng-container *ngIf="isGradient">
     <hr class="t-hr" />
     <div

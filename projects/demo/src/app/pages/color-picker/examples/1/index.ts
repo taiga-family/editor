@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TUI_EDITOR_DEFAULT_EDITOR_COLORS, TuiInputColorComponent} from '@taiga-ui/editor';
-import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TUI_EDITOR_DEFAULT_EDITOR_COLORS, TuiInputColor} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [TuiTextfieldControllerModule, FormsModule, TuiInputColorComponent],
+    imports: [TuiTextfield, FormsModule, TuiInputColor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

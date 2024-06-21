@@ -1,23 +1,12 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MaskitoModule} from '@maskito/angular';
-import {TuiSvgComponent} from '@taiga-ui/core';
-import {
-    TuiInputModule,
-    TuiTextfieldControllerModule,
-    TuiWrapperModule,
-} from '@taiga-ui/legacy';
+import {MaskitoDirective} from '@maskito/angular';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiSvgComponent,
-        FormsModule,
-        TuiInputModule,
-        MaskitoModule,
-        TuiTextfieldControllerModule,
-        TuiWrapperModule,
-    ],
+    imports: [TuiTextfield, FormsModule, MaskitoDirective, TuiIcon, NgIf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

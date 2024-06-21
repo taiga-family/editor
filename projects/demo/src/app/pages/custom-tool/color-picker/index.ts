@@ -1,18 +1,17 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective} from '@taiga-ui/core';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiAddonDoc, RouterLink, TuiLinkDirective],
+    imports: [TuiAddonDoc, RouterLink, TuiLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Example {
     protected readonly component1 = import('./examples/1');
-    protected readonly example1: TuiDocExample = {
+    protected readonly example1 = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
         './custom-color-picker/custom-color-picker.component.ts': import(

@@ -205,19 +205,4 @@ describe('ContenteditableValueAccessor', () => {
             });
         });
     });
-
-    describe('MutationObserver fallback', () => {
-        it('stops observing after Input event', done => {
-            modelEl().dispatchEvent(new Event('input'));
-            modelEl().appendChild(document.createElement('DIV'));
-            fixture.detectChanges();
-
-            setTimeout(() => {
-                void fixture.whenStable().then(() => {
-                    expect(component.model).toBe('Initial model');
-                    done();
-                });
-            });
-        });
-    });
 });

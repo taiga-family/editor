@@ -11,14 +11,13 @@ import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
 import {
-    TuiButtonDirective,
+    TuiButton,
     TuiDataList,
+    TuiDropdown,
     TuiGroupDirective,
     TuiHint,
-    TuiSvgComponent,
 } from '@taiga-ui/core';
-import type {TuiHostedDropdownComponent} from '@taiga-ui/legacy';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';
@@ -36,14 +35,14 @@ const DEFAULT_STEPS: ReadonlyArray<[number, [number, number, number, number]]> =
     [1, [255, 255, 255, 1]],
 ];
 const ICONS: Record<TuiGradientDirection, string> = {
-    'to top right': 'tuiIconArrowUpRight',
-    'to right': 'tuiIconArrowRight',
-    'to bottom right': 'tuiIconArrowDownRight',
-    'to bottom': 'tuiIconArrowDown',
-    'to bottom left': 'tuiIconArrowDownLeft',
-    'to left': 'tuiIconArrowLeft',
-    'to top left': 'tuiIconArrowUpLeft',
-    'to top': 'tuiIconArrowUp',
+    'to top right': '@tui.arrow-up-right',
+    'to right': '@tui.arrow-right',
+    'to bottom right': '@tui.arrow-down-right',
+    'to bottom': '@tui.arrow-down',
+    'to bottom left': '@tui.arrow-down-left',
+    'to left': '@tui.arrow-left',
+    'to top left': '@tui.arrow-up-left',
+    'to top': '@tui.arrow-up',
 };
 
 @Component({
@@ -51,8 +50,8 @@ const ICONS: Record<TuiGradientDirection, string> = {
     selector: 'tui-color-selector',
     imports: [
         NgIf,
-        TuiHostedDropdownModule,
-        TuiButtonDirective,
+        TuiDropdown,
+        TuiButton,
         TuiSvgComponent,
         TuiDataList,
         NgForOf,
@@ -140,7 +139,7 @@ export class TuiColorSelector {
         this.updateColor(this.getGradient(direction));
     }
 
-    protected onModeSelect(mode: string, dropdown: TuiHostedDropdownComponent): void {
+    protected onModeSelect(mode: string, dropdown: any): void {
         this.currentMode = mode;
         dropdown.open = false;
         this.updateColor(

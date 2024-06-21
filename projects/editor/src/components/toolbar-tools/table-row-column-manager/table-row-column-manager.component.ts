@@ -1,8 +1,7 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiDataList, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiLet} from '@taiga-ui/cdk';
+import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -23,15 +22,7 @@ export enum TuiTableCommands {
 @Component({
     standalone: true,
     selector: 'tui-table-row-column-manager',
-    imports: [
-        NgForOf,
-        TuiDataList,
-        AsyncPipe,
-        TuiButtonDirective,
-        TuiHint,
-        TuiHostedDropdownModule,
-        TuiLetDirective,
-    ],
+    imports: [NgForOf, TuiDataList, AsyncPipe, TuiButton, TuiHint, TuiDropdown, TuiLet],
     templateUrl: './table-row-column-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

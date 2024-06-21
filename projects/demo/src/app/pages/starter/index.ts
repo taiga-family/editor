@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TuiAutoFocusDirective} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -14,13 +14,7 @@ import {
 @Component({
     standalone: true,
     selector: 'editor-starter-page',
-    imports: [
-        TuiAddonDoc,
-        ReactiveFormsModule,
-        TuiAutoFocusDirective,
-        TuiEditorSocket,
-        TuiEditor,
-    ],
+    imports: [TuiAddonDoc, ReactiveFormsModule, TuiAutoFocus, TuiEditorSocket, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

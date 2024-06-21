@@ -16,10 +16,8 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
-import type {TuiHostedDropdownComponent} from '@taiga-ui/legacy';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItem} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
@@ -59,13 +57,13 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
         TuiTableMergeCells,
         TuiTableCreate,
         NgIf,
-        TuiItemDirective,
-        TuiButtonDirective,
+        TuiItem,
+        TuiButton,
         TuiHint,
         TuiTextColor,
         TuiHighlightColor,
         TuiEditLink,
-        TuiHostedDropdownModule,
+        TuiDropdown,
         TuiFontStyle,
         AsyncPipe,
         TuiToolbarNavigationManager,
@@ -267,7 +265,7 @@ export class TuiToolbar {
         this.texClicked.emit();
     }
 
-    protected onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
+    protected onLink(hosted: any, url?: string): void {
         hosted.open = false;
 
         if (url) {
@@ -275,7 +273,7 @@ export class TuiToolbar {
         }
     }
 
-    protected setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
+    protected setAnchor(hosted: any, anchor?: string): void {
         hosted.open = false;
 
         if (anchor) {
