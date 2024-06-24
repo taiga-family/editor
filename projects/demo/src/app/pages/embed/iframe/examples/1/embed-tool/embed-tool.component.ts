@@ -1,22 +1,20 @@
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZoneDirective, TuiAutoFocusDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiActiveZone, TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
-import {TuiInputInlineComponent} from '@taiga-ui/kit';
-import type {TuiHostedDropdownComponent} from '@taiga-ui/legacy';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'embed-tool',
     imports: [
         FormsModule,
-        TuiAutoFocusDirective,
-        TuiInputInlineComponent,
-        TuiActiveZoneDirective,
-        TuiButtonDirective,
-        TuiHostedDropdownModule,
+        TuiAutoFocus,
+        TuiInputInline,
+        TuiActiveZone,
+        TuiButton,
+        TuiDropdown,
     ],
     templateUrl: './embed-tool.template.html',
     styleUrls: ['./embed-tool.styles.less'],
@@ -24,7 +22,7 @@ import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 })
 export class ExampleTuiEmbedTool {
     @ViewChild('dropdown')
-    private readonly dropdown?: TuiHostedDropdownComponent;
+    private readonly dropdown?: any;
 
     private readonly editor = inject(TuiTiptapEditorService);
 

@@ -12,7 +12,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiIsElement} from '@taiga-ui/cdk';
-import {TUI_SANITIZER} from '@taiga-ui/core';
+import {TUI_SANITIZER} from '@taiga-ui/legacy';
 
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';

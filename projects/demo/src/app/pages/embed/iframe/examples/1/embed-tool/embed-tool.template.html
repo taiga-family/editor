@@ -1,26 +1,21 @@
-<tui-hosted-dropdown
+<div
     #dropdown
     tuiDropdownAlign="left"
     class="t-wrapper"
-    [content]="youtubeDropdown"
+    [tuiDropdown]="youtubeDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
         automation-id="embed-tool__button"
-        iconLeft="tuiIconCode"
+        iconLeft="@tui.code"
         size="s"
         tuiIconButton
         type="button"
         class="tool-button"
     ></button>
-    <ng-template
-        #youtubeDropdown
-        let-activeZone
-    >
-        <div
-            class="embed-tool-content"
-            [tuiActiveZoneParent]="activeZone"
-        >
+    <ng-template #youtubeDropdown>
+        <div class="embed-tool-content">
             <label class="t-label">
                 <div class="t-label-properties">Embed URL</div>
                 <div class="t-url">
@@ -37,4 +32,4 @@
             </label>
         </div>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

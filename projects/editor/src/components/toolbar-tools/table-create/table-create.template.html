@@ -1,8 +1,9 @@
-<tui-hosted-dropdown
+<div
     #table
     tuiDropdownAlign="left"
     tuiDropdownDirection="bottom"
-    [content]="tableDropdown"
+    [tuiDropdown]="tableDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
@@ -15,7 +16,7 @@
         [iconLeft]="options.icons.insertTable"
         [tuiHint]="insertTableText$ | async"
     ></button>
-</tui-hosted-dropdown>
+</div>
 
 <ng-template #tableDropdown>
     <tui-table-size-selector (selectSize)="addTable($event)" />

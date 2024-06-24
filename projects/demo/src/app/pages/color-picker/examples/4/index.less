@@ -1,20 +1,27 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.less';
-
-input {
-    .fullsize();
-    opacity: 0;
-    pointer-events: auto;
-    cursor: pointer;
-
-    &:hover + tui-svg {
-        opacity: 0.65;
-    }
-}
-
-hr {
+.paint {
     position: absolute;
-    width: 1.4rem;
-    height: 0.3rem;
-    bottom: 0.1rem;
-    border-radius: 0.125rem;
+    width: 24px;
+    height: 24px;
+    right: 48px;
+    pointer-events: auto;
+
+    input {
+        opacity: 0;
+        width: inherit;
+        height: inherit;
+        cursor: pointer;
+    }
+
+    tui-icon {
+        position: absolute;
+        pointer-events: none;
+    }
+
+    hr {
+        position: absolute;
+        width: 1.4rem;
+        height: 0.24rem;
+        bottom: -0.4rem;
+        border-radius: 0.125rem;
+    }
 }

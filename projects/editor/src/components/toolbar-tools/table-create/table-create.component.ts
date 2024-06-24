@@ -1,7 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -12,13 +11,7 @@ import {TuiTableSizeSelector} from './table-size-selector/table-size-selector.co
 @Component({
     standalone: true,
     selector: 'tui-table-create',
-    imports: [
-        TuiHostedDropdownModule,
-        TuiHint,
-        TuiButtonDirective,
-        AsyncPipe,
-        TuiTableSizeSelector,
-    ],
+    imports: [TuiDropdown, TuiHint, TuiButton, AsyncPipe, TuiTableSizeSelector],
     templateUrl: './table-create.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

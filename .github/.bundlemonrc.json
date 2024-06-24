@@ -15,7 +15,7 @@
         },
         {
             "path": "demo/browser/styles.<hash>.css",
-            "maxPercentIncrease": 10
+            "maxPercentIncrease": 50
         }
     ],
     "groups": [

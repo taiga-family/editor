@@ -1,6 +1,6 @@
 :host {
     font: var(--tui-font-text-m);
-    color: var(--tui-text-01);
+    color: var(--tui-text-primary);
 }
 
 .link {
@@ -8,7 +8,7 @@
 }
 
 .app-version {
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     font: var(--tui-font-text-xs);
     line-height: 1.25rem;
     transform: translateY(-0.5rem);

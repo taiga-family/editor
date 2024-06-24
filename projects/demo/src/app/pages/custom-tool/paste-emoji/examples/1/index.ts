@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiItemDirective} from '@taiga-ui/cdk';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiIcon} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
 
@@ -11,9 +12,10 @@ import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
     imports: [
         TuiSvgComponent,
         ExampleTuiSmilesTool,
-        TuiItemDirective,
+        TuiItem,
         ReactiveFormsModule,
         TuiEditor,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

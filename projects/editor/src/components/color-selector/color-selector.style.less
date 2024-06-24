@@ -1,9 +1,10 @@
+@import '@taiga-ui/legacy/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
-
+    position: relative;
     display: block;
+    isolation: isolate;
     width: 22.6rem;
 }
 
@@ -28,19 +29,19 @@
         z-index: -1;
         background-image: linear-gradient(
                 45deg,
-                var(--tui-base-03) 25%,
+                var(--tui-background-neutral-1-hover) 25%,
                 transparent 25%,
                 transparent 75%,
-                var(--tui-base-03) 75%,
-                var(--tui-base-03)
+                var(--tui-background-neutral-1-hover) 75%,
+                var(--tui-background-neutral-1-hover)
             ),
             linear-gradient(
                 45deg,
-                var(--tui-base-03) 25%,
+                var(--tui-background-neutral-1-hover) 25%,
                 transparent 25%,
                 transparent 75%,
-                var(--tui-base-03) 75%,
-                var(--tui-base-03)
+                var(--tui-background-neutral-1-hover) 75%,
+                var(--tui-background-neutral-1-hover)
             );
         background-size: 0.375rem 0.375rem;
         background-position:
@@ -54,7 +55,7 @@
     height: 1px;
     margin: 0 0 0 -1px;
     border: none;
-    background: var(--tui-base-03);
+    background: var(--tui-background-neutral-1-hover);
 }
 
 .t-gradient {
@@ -90,13 +91,13 @@
 }
 
 .t-direction {
-    color: var(--tui-text-02);
+    color: var(--tui-text-secondary);
     margin: 0 0.375rem;
 
     &:hover,
     &_active {
-        color: var(--tui-text-01);
-        background: var(--tui-secondary-hover);
+        color: var(--tui-text-primary);
+        background: var(--tui-background-neutral-1-hover);
     }
 }
 
@@ -106,5 +107,5 @@
 
 .t-palette {
     box-sizing: border-box;
-    box-shadow: inset 0 1px var(--tui-base-03);
+    box-shadow: inset 0 1px var(--tui-background-neutral-1-hover);
 }

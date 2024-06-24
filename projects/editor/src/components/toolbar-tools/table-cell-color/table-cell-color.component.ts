@@ -1,8 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiActiveZoneDirective, TuiLetDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective, TuiHint} from '@taiga-ui/core';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
+import {TuiActiveZone, TuiLet} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {combineLatest, distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -16,13 +15,13 @@ import {TuiPalette} from '../../color-selector/palette/palette.component';
     selector: 'tui-table-cell-color',
     imports: [
         AsyncPipe,
-        TuiLetDirective,
-        TuiHostedDropdownModule,
+        TuiLet,
+        TuiDropdown,
         TuiHint,
-        TuiButtonDirective,
+        TuiButton,
         NgIf,
         TuiPalette,
-        TuiActiveZoneDirective,
+        TuiActiveZone,
     ],
     templateUrl: './table-cell-color.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],

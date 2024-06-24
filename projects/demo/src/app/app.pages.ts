@@ -1,8 +1,8 @@
-import type {TuiDocPages} from '@taiga-ui/addon-doc';
+import type {TuiDocRoutePages} from '@taiga-ui/addon-doc';
 
 import {TuiDemoPath} from './shared/routes';
 
-export const DEMO_PAGES: TuiDocPages = [
+export const DEMO_PAGES: TuiDocRoutePages = [
     {
         section: 'Documentation',
         title: 'Starter Kit',

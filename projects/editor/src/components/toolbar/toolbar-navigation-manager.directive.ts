@@ -1,5 +1,4 @@
 import {Directive, ElementRef, HostListener, inject} from '@angular/core';
-import type {TuiNativeFocusableElement} from '@taiga-ui/cdk';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
@@ -14,7 +13,7 @@ import {
 export class TuiToolbarNavigationManager {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    public findFirstFocusableTool(reversed = false): TuiNativeFocusableElement | null {
+    public findFirstFocusableTool(reversed = false): any | null {
         const tools = reversed
             ? this.toolsContainers.slice().reverse()
             : this.toolsContainers;

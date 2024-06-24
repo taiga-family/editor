@@ -2,9 +2,10 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiItemDirective, tuiPure} from '@taiga-ui/cdk';
-import {TuiSvgComponent} from '@taiga-ui/core';
+import {TuiItem, tuiPure} from '@taiga-ui/cdk';
+import {TuiIcon} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
@@ -14,8 +15,9 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
         TuiSvgComponent,
         ExampleTuiYoutubeTool,
         ReactiveFormsModule,
-        TuiItemDirective,
+        TuiItem,
         TuiEditor,
+        TuiIcon,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiLinkDirective, TuiNotificationComponent} from '@taiga-ui/core';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiColorPicker} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [TuiAddonDoc, TuiNotificationComponent, TuiLinkDirective, TuiColorPicker],
+    imports: [TuiAddonDoc, TuiNotification, TuiLink, TuiColorPicker],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -18,23 +17,23 @@ export default class Example {
     protected readonly exampleModule = import('./examples/import/import-module.md?raw');
     protected readonly exampleHtml = import('./examples/import/insert-template.md?raw');
 
-    protected readonly example1: TuiDocExample = {
+    protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
     };
 
-    protected readonly example2: TuiDocExample = {
+    protected readonly example2 = {
         TypeScript: import('./examples/2/index.ts?raw'),
         HTML: import('./examples/2/index.html?raw'),
         LESS: import('./examples/2/index.less?raw'),
     };
 
-    protected readonly example3: TuiDocExample = {
+    protected readonly example3 = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
     };
 
-    protected readonly example4: TuiDocExample = {
+    protected readonly example4 = {
         TypeScript: import('./examples/4/index.ts?raw'),
         HTML: import('./examples/4/index.html?raw'),
         LESS: import('./examples/4/index.less?raw'),

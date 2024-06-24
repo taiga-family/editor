@@ -1,26 +1,19 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiActiveZoneDirective} from '@taiga-ui/cdk';
-import {TuiButtonDirective} from '@taiga-ui/core';
+import {TuiActiveZone} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_OPTIONS,
     TuiColorSelector,
     TuiTiptapEditorService,
 } from '@taiga-ui/editor';
-import {TuiHostedDropdownModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map, share} from 'rxjs';
 
 @Component({
     standalone: true,
     selector: 'custom-color-picker',
-    imports: [
-        TuiActiveZoneDirective,
-        TuiHostedDropdownModule,
-        TuiButtonDirective,
-        AsyncPipe,
-        TuiColorSelector,
-    ],
+    imports: [TuiActiveZone, TuiDropdown, TuiButton, AsyncPipe, TuiColorSelector],
     templateUrl: './custom-color-picker.component.html',
     styleUrls: ['./custom-color-picker.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

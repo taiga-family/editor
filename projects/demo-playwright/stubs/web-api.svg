@@ -1,6 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 512 512">
-    <!-- Mocked by Playwright -->
-
     <g>
         <title>background</title>
         <rect id="canvas_background" x="-1" y="-1" width="514" height="514" fill="none" />

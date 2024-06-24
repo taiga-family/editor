@@ -1,11 +1,13 @@
+@import '@taiga-ui/legacy/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
-    .createStackingContext();
-
+    position: relative;
     display: block;
+    isolation: isolate;
     font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-m);
+    outline: 1px solid var(--tui-border-normal);
     max-height: inherit;
     min-height: 10rem;
     box-sizing: border-box;
@@ -23,14 +25,15 @@
 }
 
 .t-placeholder {
+    position: absolute;
     display: block;
     user-select: none;
     font: var(--tui-font-text-s);
-    color: var(--tui-text-02);
-    pointer-events: none;
+    color: var(--tui-text-secondary);
     will-change: transform;
     transform: translateY(0);
     margin: 1rem 1rem -1rem;
+    pointer-events: auto;
     min-height: 1.625rem;
     width: 95%;
     font-size: 0.9375rem;
@@ -47,26 +50,23 @@
 .t-example-text {
     position: absolute;
     left: 1rem;
-    margin-top: 1.6rem;
-    color: var(--tui-base-06);
+    margin-top: 2.4rem;
+    color: var(--tui-text-secondary);
     letter-spacing: normal;
     text-transform: none;
-
-    &_light {
-        color: var(--tui-text-03-night);
-    }
-
-    &_dark {
-        color: var(--tui-text-03);
-    }
 }
 
 .t-scrollbar {
     display: flex;
     border-bottom: 0.3125rem solid transparent;
     padding-bottom: 1.3125rem;
+    margin-top: 1.6rem;
     box-sizing: border-box;
     flex: 1;
+}
+
+.t-toolbar-wrapper {
+    margin-bottom: 0.625rem;
 }
 
 .t-floating {

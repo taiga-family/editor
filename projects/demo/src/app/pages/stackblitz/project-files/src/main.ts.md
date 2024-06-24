@@ -5,7 +5,7 @@ import {importProvidersFrom} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {tuiSvgOptionsProvider, TUI_SANITIZER, TuiRootModule} from '@taiga-ui/core';
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
+import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {AppComponent} from './app/app.component';
 
 bootstrapApplication(AppComponent, {

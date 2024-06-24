@@ -13,7 +13,7 @@ import {
 
 @Component({
   standalone: true,
-  imports: [TuiRootComponent, TuiEditor, TuiEditorSocket, FormsModule, ReactiveFormsModule],
+  imports: [TuiRoot, TuiEditor, TuiEditorSocket, FormsModule, ReactiveFormsModule],
   selector: `my-app`,
   templateUrl: `./app.component.html`,
   styleUrls: [`./app.component.less`],

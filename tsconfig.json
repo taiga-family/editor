@@ -16,6 +16,8 @@
             "@taiga-ui/cdk/*": ["./taiga-ui/projects/cdk/*"],
             "@taiga-ui/styles": ["./taiga-ui/projects/styles"],
             "@taiga-ui/styles/*": ["./taiga-ui/projects/styles/*"],
+            "@taiga-ui/layout": ["./taiga-ui/projects/layout"],
+            "@taiga-ui/layout/*": ["./taiga-ui/projects/layout/*"],
             "@taiga-ui/core": ["./taiga-ui/projects/core"],
             "@taiga-ui/core/*": ["./taiga-ui/projects/core/*"],
             "@taiga-ui/i18n": ["./taiga-ui/projects/i18n"],

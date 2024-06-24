@@ -6,9 +6,9 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TuiAutoFocusDirective, tuiPure} from '@taiga-ui/cdk';
+import {TuiAutoFocus, tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatarComponent} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 
 export interface User {
     name: string;
@@ -19,13 +19,7 @@ export interface User {
 @Component({
     standalone: true,
     selector: 'mentions',
-    imports: [
-        TuiDataList,
-        NgForOf,
-        TuiInitialsPipe,
-        TuiAvatarComponent,
-        TuiAutoFocusDirective,
-    ],
+    imports: [TuiDataList, NgForOf, TuiInitialsPipe, TuiAvatar, TuiAutoFocus],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

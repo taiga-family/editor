@@ -2,7 +2,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_STACKBLITZ} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_LOADER,
@@ -32,13 +31,11 @@ import {switchMap} from 'rxjs';
 })
 export default class Example {
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
-    private readonly isStackblitz = inject(TUI_IS_STACKBLITZ);
-    private readonly relativePath = this.isStackblitz ? 'https://taiga-ui.dev/' : '';
 
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     protected base64Image$ = inject(HttpClient)
-        .get(`${this.relativePath}assets/images/lumberjack.png`, {responseType: 'blob'})
+        .get('assets/images/lumberjack.png', {responseType: 'blob'})
         .pipe(switchMap(file => this.imageLoader(file)));
 
     protected control = new FormControl('');

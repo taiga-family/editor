@@ -1,10 +1,8 @@
-<!-- TODO: refactor colors -->
-<!-- @bad TODO: Keyboard navigation-->
-<tui-hosted-dropdown
+<div
     *tuiLet="fontColor$ | async as selectedColor"
     #color
-    [content]="colorDropdown"
-    [tuiDropdownMaxHeight]="999"
+    [tuiDropdown]="colorDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
@@ -21,15 +19,11 @@
         class="t-plate"
         [style.background]="selectedColor"
     ></div>
-    <ng-template
-        #colorDropdown
-        let-activeZone
-    >
+    <ng-template #colorDropdown>
         <tui-palette
             class="t-color-picker"
             [colors]="colors"
-            [tuiActiveZoneParent]="activeZone"
             (selectedColor)="editor.setFontColor($event)"
         />
     </ng-template>
-</tui-hosted-dropdown>
+</div>

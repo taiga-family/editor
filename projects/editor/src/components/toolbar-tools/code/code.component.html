@@ -1,6 +1,7 @@
-<tui-hosted-dropdown
+<div
     #codes
-    [content]="codesDropdown"
+    [tuiDropdown]="codesDropdown"
+    [tuiDropdownOpen]="false"
 >
     <button
         appearance="icon"
@@ -23,4 +24,4 @@
             </button>
         </tui-data-list>
     </ng-template>
-</tui-hosted-dropdown>
+</div>

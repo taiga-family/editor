@@ -13,7 +13,7 @@
         tuiIconButton
         type="button"
         [disabled]="!can.mergeCells && !can.splitCells"
-        [iconLeft]="can.mergeCells ? 'tuiIconTableMerge' : 'tuiIconTableSplit'"
+        [iconLeft]="can.mergeCells ? '@tui.table-cells-merge' : '@tui.table-rows-split'"
         [tuiHint]="can.mergeCells ? texts.mergeCells : texts.splitCells"
         (click)="can.mergeCells ? mergeCells() : splitCell()"
     ></button>

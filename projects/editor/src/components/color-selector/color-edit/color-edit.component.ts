@@ -7,10 +7,10 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MaskitoModule} from '@maskito/angular';
+import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk';
-import {TuiDataList, TuiDropdownOptionsDirective} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdownOptionsDirective, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiInputNumberModule,
     TuiPrimitiveTextfieldModule,
@@ -32,10 +32,11 @@ const HEX_MODE_LENGTH = 6;
         TuiDataList,
         TuiPrimitiveTextfieldModule,
         NgIf,
-        MaskitoModule,
+        MaskitoDirective,
         TuiValueAccessorModule,
         NgForOf,
         TuiInputNumberModule,
+        TuiTextfield,
     ],
     templateUrl: './color-edit.template.html',
     styleUrls: ['./color-edit.style.less'],

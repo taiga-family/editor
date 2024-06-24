@@ -1,25 +1,15 @@
-<tui-hosted-dropdown
-    tuiDropdownAlign="left"
-    [content]="picker"
-    [tuiDropdownMaxHeight]="999"
+<button
+    appearance=""
+    automation-id="color-picker__button"
+    tuiButton
+    type="button"
+    [style.background]="background"
+    [style.color]="background"
+    [tuiDropdown]="picker"
+    [tuiDropdownOpen]="false"
 >
-    <button
-        appearance=""
-        automation-id="color-picker__button"
-        tuiButton
-        type="button"
-        [style.background]="background"
-        [style.color]="background"
-    >
-        <span class="invert">Color me Kubrick</span>
-    </button>
-</tui-hosted-dropdown>
-<ng-template
-    #picker
-    let-activeZone
->
-    <tui-color-selector
-        [tuiActiveZoneParent]="activeZone"
-        [(color)]="color"
-    />
+    <span class="invert">Color me Kubrick</span>
+</button>
+<ng-template #picker>
+    <tui-color-selector [(color)]="color" />
 </ng-template>
