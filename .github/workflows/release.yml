@@ -51,7 +51,3 @@ jobs:
           else
               npx release-it --increment --ci
           fi
-
-concurrency:
-  group: release-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
