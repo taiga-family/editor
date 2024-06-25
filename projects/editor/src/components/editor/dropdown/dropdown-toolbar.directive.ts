@@ -30,11 +30,11 @@ import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
     standalone: true,
     selector: '[tuiToolbarDropdown]',
     providers: [
-        tuiAsDriver(TuiDropdownToolbarDirective),
-        tuiAsRectAccessor(TuiDropdownToolbarDirective),
+        tuiAsDriver(TuiEditorDropdownToolbar),
+        tuiAsRectAccessor(TuiEditorDropdownToolbar),
     ],
 })
-export class TuiDropdownToolbarDirective
+export class TuiEditorDropdownToolbar
     extends TuiDriver
     implements TuiRectAccessor, OnDestroy
 {

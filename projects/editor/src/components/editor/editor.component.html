@@ -1,7 +1,7 @@
 <div
     *ngIf="editorLoaded$ | async as editorLoaded"
-    tuiAppearance="flat"
     class="t-wrapper"
+    [tuiAppearance]="options.appearance"
     [tuiAppearanceFocus]="computedFocused"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
@@ -58,8 +58,8 @@
                 <tui-editor-socket
                     tuiTiptapEditor
                     [editable]="interactive()"
-                    [value]="value()"
-                    (stateChange)="(0)"
+                    [value]="firstInitialValue"
+                    (valueChange)="onModelChange($event)"
                 />
             </div>
 

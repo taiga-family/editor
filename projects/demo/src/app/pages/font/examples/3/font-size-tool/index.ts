@@ -10,7 +10,8 @@ import {distinctUntilChanged, map} from 'rxjs';
     standalone: true,
     selector: 'font-size-tool',
     imports: [TuiDataList, NgForOf, TuiButton, TuiDropdown, AsyncPipe],
-    templateUrl: './font-size-tool.template.html',
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiFontSizeTool {

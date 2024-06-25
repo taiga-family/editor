@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
-import {CustomColorPicker} from './custom-color-picker/custom-color-picker.component';
+import {CustomColorPicker} from './custom-color-picker';
 
 @Component({
     standalone: true,
