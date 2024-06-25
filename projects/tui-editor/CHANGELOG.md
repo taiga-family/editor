@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.38.0](https://github.com/taiga-family/tui-editor/compare/v1.37.0...v1.38.0) (2024-06-25)
+
+### Bug Fixes
+
+- links are not changed in Safari
+  ([9b4ab76](https://github.com/taiga-family/tui-editor/commit/9b4ab7652a328e26b9865c33681479010a87f4cc))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.37.0](https://github.com/taiga-family/tui-editor/compare/v1.36.0...v1.37.0) (2024-06-10)
 
 ### Bug Fixes
