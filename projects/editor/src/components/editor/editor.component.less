@@ -7,7 +7,6 @@
     isolation: isolate;
     font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-m);
-    outline: 1px solid var(--tui-border-normal);
     max-height: inherit;
     min-height: 10rem;
     box-sizing: border-box;
@@ -22,10 +21,13 @@
     overflow: clip;
     flex-direction: column;
     border-radius: inherit;
+
+    &:not([data-focus='true']) {
+        outline: 1px solid var(--tui-border-normal);
+    }
 }
 
 .t-placeholder {
-    position: absolute;
     display: block;
     user-select: none;
     font: var(--tui-font-text-s);
@@ -49,18 +51,18 @@
 
 .t-example-text {
     position: absolute;
-    left: 1rem;
-    margin-top: 2.4rem;
     color: var(--tui-text-secondary);
-    letter-spacing: normal;
-    text-transform: none;
+    font: var(--tui-font-text-s);
+    font-size: inherit;
+    margin: 0.95rem 1rem -1rem;
+    width: 95%;
+    left: 0;
 }
 
 .t-scrollbar {
     display: flex;
     border-bottom: 0.3125rem solid transparent;
     padding-bottom: 1.3125rem;
-    margin-top: 1.6rem;
     box-sizing: border-box;
     flex: 1;
 }
