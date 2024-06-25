@@ -36,7 +36,6 @@ export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     TuiTabExtension,
     TableCellBackground,
     TuiDetailsContent,
-    TuiDetailsContent,
     TuiDetailsExtension,
     TuiSummary,
     TuiFontSizeExtension,
