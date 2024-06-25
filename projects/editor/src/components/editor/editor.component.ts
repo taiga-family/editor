@@ -197,7 +197,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         return (
             node?.nodeName.toLowerCase() === 'a' ||
             node?.parentNode?.nodeName.toLowerCase() === 'a' ||
-            !!node?.parentElement?.closest('tui-edit-link')
+            !!node?.parentElement?.closest('tui-edit-link') ||
+            !!node?.parentElement?.closest('tui-dropdown')
         );
     }
 
