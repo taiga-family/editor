@@ -48,9 +48,9 @@ import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
 import {TuiEditLink} from '../edit-link/edit-link.component';
 import {TuiEditorSocket} from '../editor-socket/editor-socket.component';
 import {TuiToolbar} from '../toolbar/toolbar.component';
-import {TuiDropdownToolbarDirective} from './dropdown/dropdown-toolbar.directive';
+import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
-import {TuiEditorPortalDirective} from './portal/editor-portal.directive';
+import {TuiEditorPortal} from './portal/editor-portal.directive';
 import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
 
 @Component({
@@ -65,12 +65,12 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         TuiDropdown,
         TuiEditLink,
         TuiEditorPortalHost,
-        TuiEditorPortalDirective,
+        TuiEditorPortal,
         TuiTiptapEditor,
         TuiEditorSocket,
         TuiToolbar,
         NgTemplateOutlet,
-        TuiDropdownToolbarDirective,
+        TuiEditorDropdownToolbar,
         TuiSurface,
         TuiAppearance,
     ],
@@ -110,6 +110,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             this.listenResizeEvents();
         });
 
+    /**
+     * prevent recursive changes
+     * between control and tiptap editor
+     */
+    protected firstInitialValue = '';
+
     @Input()
     public exampleText = '';
 
@@ -124,7 +130,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public hasMentionPlugin = false;
     public focused = false;
-
     public readonly editorService = inject(TuiTiptapEditorService);
 
     public get editor(): AbstractTuiEditor | null {
@@ -158,16 +163,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     public override writeValue(value: string | null): void {
-        if (value === this.value()) {
-            return;
-        }
-
-        const processed = this.contentProcessor(value || '');
+        const processed = this.contentProcessor(value ?? '');
 
         super.writeValue(processed);
 
-        if (processed !== value) {
-            // this.control?.reset(processed);
+        if (this.firstInitialValue !== processed) {
+            this.firstInitialValue = processed;
         }
 
         if (!this.focused) {
@@ -188,7 +189,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get hasExampleText(): boolean {
-        return !!this.exampleText && this.computedFocused && !this.value();
+        return !!this.exampleText && this.computedFocused && !this.control.value;
     }
 
     protected get isLinkSelected(): boolean {
@@ -200,6 +201,14 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             !!node?.parentElement?.closest('tui-edit-link') ||
             !!node?.parentElement?.closest('tui-dropdown')
         );
+    }
+
+    protected onModelChange(value: string | null): void {
+        const processed = this.contentProcessor(value ?? '');
+
+        if (processed !== this.control.value) {
+            this.onChange(processed);
+        }
     }
 
     protected onActiveZone(focused: boolean): void {
@@ -230,10 +239,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
         event.preventDefault();
         this.nativeFocusableElement?.focus();
-    }
-
-    protected getFallbackValue(): string {
-        return '';
     }
 
     private get focusNode(): Node | null {

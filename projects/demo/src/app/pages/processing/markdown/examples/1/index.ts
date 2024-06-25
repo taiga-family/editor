@@ -44,6 +44,8 @@ export default class Example implements OnInit {
 
     @tuiPure
     protected toMarkdown(html: string): string {
-        return new Converter().makeMarkdown(html);
+        return new Converter().makeMarkdown(
+            html.replaceAll('&lt;', '<').replaceAll('&gt;', '>'),
+        );
     }
 }

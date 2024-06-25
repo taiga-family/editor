@@ -8,10 +8,10 @@ import {TuiEditorPortalService} from './editor-portal.service';
     selector: '[tuiEditorPortal]',
     providers: [
         {provide: TuiDropdownService, useExisting: TuiEditorPortalService},
-        tuiAsViewport(TuiEditorPortalDirective),
+        tuiAsViewport(TuiEditorPortal),
     ],
 })
-export class TuiEditorPortalDirective extends TuiRectAccessor {
+export class TuiEditorPortal extends TuiRectAccessor {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
     public readonly type = 'viewport';

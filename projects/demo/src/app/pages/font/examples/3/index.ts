@@ -8,7 +8,7 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 
-import {ExampleTuiFontSizeTool} from './font-size-tool/font-size-tool.component';
+import {ExampleTuiFontSizeTool} from './font-size-tool';
 
 @Component({
     standalone: true,

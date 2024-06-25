@@ -14,8 +14,8 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     standalone: true,
     selector: 'custom-color-picker',
     imports: [TuiActiveZone, TuiDropdown, TuiButton, AsyncPipe, TuiColorSelector],
-    templateUrl: './custom-color-picker.component.html',
-    styleUrls: ['./custom-color-picker.component.less'],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomColorPicker {

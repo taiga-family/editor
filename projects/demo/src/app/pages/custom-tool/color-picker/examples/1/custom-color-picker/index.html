@@ -1,0 +1,35 @@
+<div>
+    <button
+        appearance="icon"
+        automation-id="toolbar__color-button"
+        size="s"
+        tuiIconButton
+        type="button"
+        [iconLeft]="icon || ''"
+        [tuiDropdown]="colorDropdown"
+        [tuiDropdownOpen]="false"
+    ></button>
+    <div
+        class="t-plate"
+        [style.background]="fontColor$ | async"
+    ></div>
+</div>
+
+<ng-template #colorDropdown>
+    <tui-color-selector
+        [color]="selectedColor"
+        [colors]="colors"
+        (colorChange)="onValueChange($event)"
+    />
+
+    <button
+        appearance="flat"
+        size="m"
+        tuiButton
+        type="button"
+        class="t-color-save"
+        (click)="setColor()"
+    >
+        Apply
+    </button>
+</ng-template>
