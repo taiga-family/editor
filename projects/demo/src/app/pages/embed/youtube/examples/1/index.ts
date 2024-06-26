@@ -10,13 +10,7 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
 @Component({
     standalone: true,
-    imports: [
-        ExampleTuiYoutubeTool,
-        ReactiveFormsModule,
-        TuiItem,
-        TuiEditor,
-        TuiIcon,
-    ],
+    imports: [ExampleTuiYoutubeTool, ReactiveFormsModule, TuiItem, TuiEditor, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

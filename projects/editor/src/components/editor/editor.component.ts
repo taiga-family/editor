@@ -13,7 +13,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
@@ -40,7 +40,7 @@ import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-edit
 import type {TuiEditorTool} from '../../enums/editor-tool';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
-import {TUI_EDITOR_CONTENT_PROCESSOR} from '../../tokens/editor-processor';
+import {TUI_EDITOR_VALUE_TRANSFORMER} from '../../tokens/editor-value-transformer';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
 import type {TuiSelectionState} from '../../utils/get-selection-state';
 import {tuiGetSelectionState} from '../../utils/get-selection-state';
@@ -86,7 +86,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild(TuiTiptapEditor, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
 
-    private readonly contentProcessor = inject(TUI_EDITOR_CONTENT_PROCESSOR);
+    private readonly contentProcessor = inject<
+        TuiValueTransformer<string | null, string | null>
+    >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
+
     private readonly doc = inject(DOCUMENT);
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
@@ -163,12 +166,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     public override writeValue(value: string | null): void {
-        const processed = this.contentProcessor(value ?? '');
+        const processed = this.contentProcessor?.fromControlValue(value) ?? value;
 
         super.writeValue(processed);
 
         if (this.firstInitialValue !== processed) {
-            this.firstInitialValue = processed;
+            this.firstInitialValue = processed ?? '';
         }
 
         if (!this.focused) {
@@ -204,10 +207,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected onModelChange(value: string | null): void {
-        const processed = this.contentProcessor(value ?? '');
+        const processed = this.contentProcessor?.toControlValue(value) ?? value;
 
         if (processed !== this.control.value) {
-            this.onChange(processed);
+            this.onChange(processed ?? '');
         }
     }
 

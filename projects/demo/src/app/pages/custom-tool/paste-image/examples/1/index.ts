@@ -9,13 +9,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
 
 @Component({
     standalone: true,
-    imports: [
-        ExampleTuiPasteImageTool,
-        TuiItem,
-        ReactiveFormsModule,
-        TuiEditor,
-        TuiIcon,
-    ],
+    imports: [ExampleTuiPasteImageTool, TuiItem, ReactiveFormsModule, TuiEditor, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

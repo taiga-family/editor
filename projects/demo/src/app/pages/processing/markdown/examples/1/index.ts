@@ -3,9 +3,9 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';
-import {tuiPure} from '@taiga-ui/cdk';
+import {tuiPure, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
-    TUI_EDITOR_CONTENT_PROCESSOR,
+    TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
@@ -21,8 +21,12 @@ import {Converter} from 'showdown';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
-            provide: TUI_EDITOR_CONTENT_PROCESSOR,
-            useValue: (markdown: string): string => new MarkdownIt().render(markdown),
+            provide: TUI_EDITOR_VALUE_TRANSFORMER,
+            useValue: new (class extends TuiValueTransformer<string, string> {
+                public readonly toControlValue = (value: string): string => value;
+                public readonly fromControlValue = (value: string): string =>
+                    new MarkdownIt().render(value);
+            })(),
         },
     ],
 })

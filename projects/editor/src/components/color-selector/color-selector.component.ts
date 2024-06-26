@@ -10,7 +10,14 @@ import {
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiGroup,
+    TuiHint,
+    TuiIcon,
+} from '@taiga-ui/core';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';

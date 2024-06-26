@@ -77,7 +77,6 @@ export * from './interfaces/parsed-gradient';
 export * from './services/picker.service';
 export * from './tokens/editor-extensions';
 export * from './tokens/editor-options';
-export * from './tokens/editor-processor';
 export * from './tokens/editor-sanitizer';
 export * from './tokens/editor-value-transformer';
 export * from './tokens/files-loader';
