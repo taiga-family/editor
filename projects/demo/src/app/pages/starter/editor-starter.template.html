@@ -160,100 +160,111 @@
     </ng-template>
 
     <ng-template pageTab="Options">
-        <h2>TUI_EDITOR_OPTIONS</h2>
-        You can configure some editor's params via DI-token
-        <code>TUI_EDITOR_OPTIONS</code>
-        .
+        <tui-doc-example
+            id="options"
+            heading="TUI_EDITOR_OPTIONS"
+        >
+            <tui-doc-code [code]="exampleEditorOptionsToken"></tui-doc-code>
 
-        <p>
-            <strong>Usage:</strong>
-        </p>
-        <tui-doc-code [code]="exampleEditorOptionsToken"></tui-doc-code>
+            <p>
+                <strong>Description of the available configurations:</strong>
+            </p>
+            <dl>
+                <dt>
+                    <code>appearance</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    <p>Visual presets of interactive components</p>
+                </dd>
 
-        <p>
-            <strong>Description of the available configurations:</strong>
-        </p>
-        <dl>
-            <dt>
-                <code>colors</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                map of colors in toolbar's dropdowns with color-selection.
+                <dt>
+                    <code>colors</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    map of colors in toolbar's dropdowns with color-selection.
 
-                <p>
-                    It accepts
-                    <code tuiText="ReadonlyMap<string, string>"></code>
-                    : the
-                    <strong>key</strong>
-                    is the name of the color (used only for hint and accessibility), the
-                    <strong>value</strong>
-                    – HTML color code.
-                </p>
-            </dd>
+                    <p>
+                        It accepts
+                        <code tuiText="ReadonlyMap<string, string>"></code>
+                        : the
+                        <strong>key</strong>
+                        is the name of the color (used only for hint and accessibility), the
+                        <strong>value</strong>
+                        – HTML color code.
+                    </p>
+                </dd>
 
-            <dt>
-                <code>blankColor</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                Null color. It is used in situations when there is no color selected.
+                <dt>
+                    <code>blankColor</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    Null color. It is used in situations when there is no color selected.
 
-                <p>
-                    it accepts
-                    <code>string</code>
-                    (HTML color code).
-                </p>
-            </dd>
+                    <p>
+                        it accepts
+                        <code>string</code>
+                        (HTML color code).
+                    </p>
+                </dd>
 
-            <dt>
-                <code>fontOptions</code>
-            </dt>
-            <dd class="tui-space_bottom-5">You can customize your own list of font sizes in editor.</dd>
+                <dt>
+                    <code>fontOptions</code>
+                </dt>
+                <dd class="tui-space_bottom-5">You can customize your own list of font sizes in editor.</dd>
 
-            <dt>
-                <code>translate</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                Although not all browsers recognize this attribute, it is respected by automatic translation systems
-                such as Google Translate, and may also be respected by tools used by human translators. As such it's
-                important that web authors use this attribute to mark content that should not be translated..
-            </dd>
+                <dt>
+                    <code>translate</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    Although not all browsers recognize this attribute, it is respected by automatic translation systems
+                    such as Google Translate, and may also be respected by tools used by human translators. As such it's
+                    important that web authors use this attribute to mark content that should not be translated..
+                </dd>
 
-            <dt>
-                <code>icons</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                You can redefine
-                <a
-                    href="https://github.com/taiga-family/tui-editor/blob/main/projects/tui-editor/tokens/editor-options.ts#L74"
-                    rel="noreferrer"
-                    target="_blank"
-                    tuiLink
-                >
-                    icons
-                </a>
-                by names.
-                <a
-                    href="https://taiga-ui.dev/icons/mapping"
-                    rel="noreferrer"
-                    target="_blank"
-                    tuiLink
-                >
-                    More ->
-                </a>
-            </dd>
+                <dt>
+                    <code>icons</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    You can redefine
+                    <a
+                        href="https://github.com/taiga-family/tui-editor/blob/main/projects/tui-editor/tokens/editor-options.ts#L74"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        icons
+                    </a>
+                    by names.
+                    <a
+                        href="https://taiga-ui.dev/icons/mapping"
+                        rel="noreferrer"
+                        target="_blank"
+                        tuiLink
+                    >
+                        More ->
+                    </a>
+                </dd>
 
-            <dt>
-                <code>spellcheck</code>
-            </dt>
-            <dd class="tui-space_bottom-5">Defines whether the editor may be checked for spelling errors.</dd>
+                <dt>
+                    <code>spellcheck</code>
+                </dt>
+                <dd class="tui-space_bottom-5">Defines whether the editor may be checked for spelling errors.</dd>
 
-            <dt>
-                <code>enableDefaultStyles</code>
-            </dt>
-            <dd class="tui-space_bottom-5">
-                By default, editor styles will be included without encapsulation, if you want your own styles, you can
-                disable them.
-            </dd>
-        </dl>
+                <dt>
+                    <code>enableDefaultStyles</code>
+                </dt>
+                <dd class="tui-space_bottom-5">
+                    By default, editor styles will be included without encapsulation, if you want your own styles, you
+                    can disable them.
+                </dd>
+            </dl>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="attach-files"
+            heading="TUI_ATTACH_FILES_LOADER / TUI_ATTACH_FILES_OPTIONS"
+        >
+            <tui-doc-code [code]="exampleFileComponentToken"></tui-doc-code>
+        </tui-doc-example>
     </ng-template>
 </tui-doc-page>

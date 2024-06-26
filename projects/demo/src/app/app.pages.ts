@@ -11,6 +11,12 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: `Documentation`,
+        title: `Tokens`,
+        route: `${TuiDemoPath.StarterKit}/Options`,
+        keywords: `TUI_EDITOR_OPTIONS, TUI_ATTACH_FILES_LOADER`,
+    },
+    {
+        section: `Documentation`,
         title: `Playground`,
         keywords: `reproduce, issue, bug, sandbox, playground, test, stackblitz`,
         route: TuiDemoPath.Stackblitz,
@@ -204,7 +210,7 @@ export const DEMO_PAGES: TuiDocPages = [
             {
                 section: `Documentation`,
                 title: `HTML5`,
-                keywords: `editor, embed, video player, audio player, html5, wysiwyg, редактор, плеер, html, rich, text`,
+                keywords: `editor, embed, video player, audio player, html5, wysiwyg, редактор, attach, file, native, video, audio, плеер, html, rich, text`,
                 route: `/${TuiDemoPath.EmbedHtml5}`,
             },
         ],

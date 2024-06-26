@@ -10,7 +10,7 @@ import {tuiEditorOptionsProvider} from '@tinkoff/tui-editor';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiEditorOptionsProvider({
-            appearence: 'no-border',
+            appearance: 'no-border',
         }),
     ],
 })
