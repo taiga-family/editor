@@ -17,6 +17,7 @@
         "@maskito/angular": ">=2.4.0",
         "@maskito/core": ">=2.4.0",
         "@maskito/kit": ">=2.4.0",
+        "@taiga-ui/dompurify": ">=4.1.0",
         "@tiptap/core": ">=2.4.0",
         "@tiptap/extension-blockquote": ">=2.4.0",
         "@tiptap/extension-bold": ">=2.4.0",
@@ -55,11 +56,16 @@
         "@tiptap/extension-underline": ">=2.4.0",
         "@tiptap/extension-youtube": ">=2.4.0",
         "@tiptap/starter-kit": ">=2.4.0",
+        "@types/dompurify": ">=3.0.5",
         "@types/markdown-it": ">=14.1.1",
         "@types/markdown-it-container": ">=2.0.10",
+        "dompurify": ">=3.1.5",
         "markdown-it": ">=14.1.0"
     },
     "peerDependenciesMeta": {
+        "@maskito/angular": {
+            "optional": true
+        },
         "@maskito/core": {
             "optional": true
         },
@@ -165,7 +171,7 @@
         "@tiptap/extension-youtube": {
             "optional": true
         },
-        "@tiptap/starter-kit": {
+        "@types/dompurify": {
             "optional": true
         },
         "@types/markdown-it": {
