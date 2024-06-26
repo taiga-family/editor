@@ -10,13 +10,7 @@ import {
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiGroupDirective,
-    TuiHint,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiHint} from '@taiga-ui/core';
 import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -60,7 +54,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
         TuiColorPicker,
         TuiColorEdit,
         TuiPalette,
-        TuiGroupDirective,
+        TuiGroup,
     ],
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],
