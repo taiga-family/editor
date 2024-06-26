@@ -10,7 +10,10 @@
 .app-version {
     color: var(--tui-text-secondary);
     font: var(--tui-font-text-xs);
-    line-height: 1.25rem;
-    transform: translateY(-0.5rem);
-    letter-spacing: 0.025rem;
+}
+
+@media not (min-width: 480px) {
+    .app-version {
+        display: none;
+    }
 }

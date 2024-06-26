@@ -19,12 +19,6 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'Contenteditable',
-        route: TuiDemoPath.AngularContenteditableAccessor,
-        keywords: 'contenteditable, accessor',
-    },
-    {
-        section: 'Documentation',
         title: 'ColorPicker',
         route: TuiDemoPath.ColorPicker,
         keywords: 'цвет, выбор, градиент, gradient, палитра, input, inputcolor',

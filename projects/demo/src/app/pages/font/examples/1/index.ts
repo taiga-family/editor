@@ -54,7 +54,9 @@ import {mergeAttributes} from '@tiptap/core';
         {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
+                import('@taiga-ui/editor').then(({TuiStarterKit}) =>
+                    TuiStarterKit.configure({heading: false}),
+                ),
                 import('@tiptap/extension-text-style').then(
                     ({default: TextStyle}) => TextStyle,
                 ),

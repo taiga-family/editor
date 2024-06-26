@@ -20,11 +20,6 @@ export const routes: Routes = [
         title: 'Input color picker',
     }),
     route({
-        path: TuiDemoPath.AngularContenteditableAccessor,
-        loadComponent: async () => import('./pages/angular-contenteditable-accessor'),
-        title: 'Contenteditable accessor',
-    }),
-    route({
         path: TuiDemoPath.Font,
         loadComponent: async () => import('./pages/font'),
         title: 'Font',

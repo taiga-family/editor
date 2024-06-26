@@ -1,5 +1,4 @@
 export * from './abstract/editor-adapter.abstract';
-export * from './angular-contenteditable-accessor/contenteditable-value-accessor';
 export * from './components/color-selector/color-edit/color-edit.component';
 export * from './components/color-selector/color-picker/color-picker.component';
 export * from './components/color-selector/color-selector.component';
@@ -79,6 +78,7 @@ export * from './services/picker.service';
 export * from './tokens/editor-extensions';
 export * from './tokens/editor-options';
 export * from './tokens/editor-processor';
+export * from './tokens/editor-sanitizer';
 export * from './tokens/editor-value-transformer';
 export * from './tokens/files-loader';
 export * from './tokens/i18n';

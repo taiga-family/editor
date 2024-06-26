@@ -29,10 +29,10 @@
                 (keydown.space.prevent)="onModeSelect(mode, dropdown)"
             >
                 {{ mode }}
-                <tui-svg
+                <tui-icon
                     *ngIf="isModeActive(mode)"
                     class="t-checkmark"
-                    [src]="options.icons.colorSelectorDropdownCheck"
+                    [icon]="options.icons.colorSelectorDropdownCheck"
                 />
             </button>
         </tui-data-list>

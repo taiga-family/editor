@@ -5,20 +5,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
-import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
     standalone: true,
-    imports: [
-        ExampleTuiEmbedTool,
-        TuiSvgComponent,
-        ReactiveFormsModule,
-        TuiItem,
-        TuiEditor,
-        TuiIcon,
-    ],
+    imports: [ExampleTuiEmbedTool, ReactiveFormsModule, TuiItem, TuiEditor, TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

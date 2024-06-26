@@ -1,5 +1,5 @@
 ```ts
-import {TuiEditorModule} from '@taiga-ui/editor';
+import {TuiEditor, TUI_EDITOR_EXTENSIONS, TUI_EDITOR_DEFAULT_EXTENSIONS} from '@taiga-ui/editor';
 // ...
 
 @Component({
@@ -10,10 +10,6 @@ import {TuiEditorModule} from '@taiga-ui/editor';
     ReactiveFormsModule,
   ],
   providers: [
-    {
-      provide: TUI_SANITIZER,
-      useClass: NgDompurifySanitizer,
-    },
     {
       provide: TUI_EDITOR_EXTENSIONS,
       useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,

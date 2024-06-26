@@ -4,7 +4,6 @@ export const TuiDemoPath = {
     Mention: 'mention',
     ColorPicker: 'color-picker',
     Checkbox: 'checkbox',
-    AngularContenteditableAccessor: 'angular-contenteditable-accessor',
     ColorPickerTool: 'custom-tool/color-picker',
     EmbedHtml5: 'embed/html5',
     EmbedIframe: 'embed/iframe',

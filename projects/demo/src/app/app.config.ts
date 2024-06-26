@@ -10,9 +10,7 @@ import {
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
 } from '@taiga-ui/addon-doc';
-import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {TUI_SANITIZER} from '@taiga-ui/legacy';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
@@ -29,10 +27,6 @@ export const appConfig: ApplicationConfig = {
             }),
         ),
         NG_EVENT_PLUGINS,
-        {
-            provide: TUI_SANITIZER,
-            useClass: NgDompurifySanitizer,
-        },
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy,

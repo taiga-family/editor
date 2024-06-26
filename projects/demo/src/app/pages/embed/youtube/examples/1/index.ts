@@ -5,14 +5,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
-import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
 @Component({
     standalone: true,
     imports: [
-        TuiSvgComponent,
         ExampleTuiYoutubeTool,
         ReactiveFormsModule,
         TuiItem,
@@ -47,9 +45,6 @@ export default class Example {
         Validators.required,
     );
 
-    /**
-     * TUI_SANITIZER doesn't support iframe inside content
-     */
     @tuiPure
     protected safe(content: string | null): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(content ?? '');

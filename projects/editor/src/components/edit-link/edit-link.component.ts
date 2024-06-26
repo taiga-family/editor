@@ -12,7 +12,6 @@ import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
-import {TuiSvgComponent} from '@taiga-ui/legacy';
 
 import type {
     TuiEditorLinkPrefix,
@@ -38,7 +37,6 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         TuiButton,
         TuiShortUrlPipe,
         TuiLink,
-        TuiSvgComponent,
         FormsModule,
         NgIf,
         AsyncPipe,

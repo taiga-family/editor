@@ -10,8 +10,7 @@ import {
 import type {SafeStyle} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiDefaultSort, tuiParseColor, tuiPure} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiHint} from '@taiga-ui/core';
-import {TuiSvgComponent} from '@taiga-ui/legacy';
+import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiHint, TuiIcon} from '@taiga-ui/core';
 
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '../../tokens/i18n';
@@ -46,7 +45,6 @@ const ICONS: Record<TuiGradientDirection, string> = {
         NgIf,
         TuiDropdown,
         TuiButton,
-        TuiSvgComponent,
         TuiDataList,
         NgForOf,
         TuiHint,
@@ -55,6 +53,7 @@ const ICONS: Record<TuiGradientDirection, string> = {
         TuiColorEdit,
         TuiPalette,
         TuiGroup,
+        TuiIcon,
     ],
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],

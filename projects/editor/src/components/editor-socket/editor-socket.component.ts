@@ -12,10 +12,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiIsElement} from '@taiga-ui/cdk';
-import {TUI_SANITIZER} from '@taiga-ui/legacy';
 
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
+import {TUI_EDITOR_SANITIZER} from '../../tokens/editor-sanitizer';
 
 @Component({
     standalone: true,
@@ -32,7 +32,7 @@ export class TuiEditorSocket {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
     private readonly renderer = inject(Renderer2);
     private readonly sanitizer = inject(Sanitizer);
-    private readonly tuiSanitizer = inject(TUI_SANITIZER, {optional: true});
+    private readonly tuiSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
     private readonly document = inject(DOCUMENT);
     private readonly editor = inject(TuiTiptapEditor, {optional: true});
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
