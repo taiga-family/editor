@@ -11,6 +11,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
             'editor, setup, starter kit, wysiwyg, редактор, текст, html, rich, text',
     },
     {
+        section: `Documentation`,
+        title: `Tokens`,
+        route: `${TuiDemoPath.StarterKit}/Options`,
+        keywords: `TUI_EDITOR_OPTIONS, TUI_ATTACH_FILES_LOADER`,
+    },
+    {
         section: 'Documentation',
         title: 'Playground',
         keywords: 'reproduce, issue, bug, sandbox, playground, test, stackblitz',

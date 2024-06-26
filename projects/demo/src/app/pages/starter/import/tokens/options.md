@@ -15,5 +15,5 @@ import {tuiEditorOptionsProvider, TuiEditorOptions} from '@taiga-ui/editor';
     }),
   ],
 })
-export class My {}
+export class Example {}
 ```

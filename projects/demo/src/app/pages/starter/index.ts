@@ -10,11 +10,19 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiLink} from "@taiga-ui/core";
 
 @Component({
     standalone: true,
     selector: 'editor-starter-page',
-    imports: [TuiAddonDoc, ReactiveFormsModule, TuiAutoFocus, TuiEditorSocket, TuiEditor],
+    imports: [
+        TuiAddonDoc,
+        ReactiveFormsModule,
+        TuiAutoFocus,
+        TuiEditorSocket,
+        TuiEditor,
+        TuiLink,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,13 +34,11 @@ import {
     ],
 })
 export default class TuiEditorStarter {
-    protected readonly exampleModule = import('./import/import-module.md?raw');
-    protected readonly exampleHtml = import('./import/insert-template.md?raw');
-    protected readonly Example = import('./import/component.md?raw');
-    protected readonly exampleEditorOptionsToken = import(
-        './import/editor-options-token.md?raw'
-    );
-
+    protected readonly exampleImport = import('./import/import.md?raw');
+    protected readonly template = import('./import/template.md?raw');
+    protected readonly component = import('./import/component.md?raw');
+    protected readonly exampleOptions = import('./import/tokens/options.md?raw');
+    protected readonly exampleFileAttach = import('./import/tokens/file-attach.md?raw');
     protected readonly exampleStyles = import('./import/styles.less.md?raw');
     protected readonly exampleIcons = import('./import/angular.json.md?raw');
     protected readonly isE2E = inject(TUI_IS_E2E);
