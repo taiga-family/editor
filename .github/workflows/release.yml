@@ -15,7 +15,7 @@ on:
           - patch
           - minor
           - major
-          - prepatch
+          - prerelease
 
 jobs:
   run-release:
@@ -42,7 +42,7 @@ jobs:
       - run: |
           if [[ "${{ github.event.inputs.forcePush }}" == "true" ]]; then
 
-            if [[ "${{ github.event.inputs.mode }}" != "prepatch" ]]; then
+            if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
               npx release-it "${{ github.event.inputs.mode }}" --increment --ci
             else
                 npx release-it --preRelease=alpha --ci
