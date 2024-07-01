@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.39.0](https://github.com/taiga-family/tui-editor/compare/v1.38.0...v1.39.0) (2024-07-01)
+
+### Bug Fixes
+
+- improve assert ([d062e32](https://github.com/taiga-family/tui-editor/commit/d062e321d5b6829ce184e4b0431b2bbc62d08c51))
+- prevent fetch resources in contenteditable
+  ([f1575ce](https://github.com/taiga-family/tui-editor/commit/f1575ce05bc821b0d2b87485b8db0bc12734dc63))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.38.0](https://github.com/taiga-family/tui-editor/compare/v1.37.0...v1.38.0) (2024-06-25)
 
 ### Bug Fixes
