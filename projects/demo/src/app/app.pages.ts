@@ -11,10 +11,10 @@ export const DEMO_PAGES: TuiDocRoutePages = [
             'editor, setup, starter kit, wysiwyg, редактор, текст, html, rich, text',
     },
     {
-        section: `Documentation`,
-        title: `Tokens`,
+        section: 'Documentation',
+        title: 'Tokens',
         route: `${TuiDemoPath.StarterKit}/Options`,
-        keywords: `TUI_EDITOR_OPTIONS, TUI_ATTACH_FILES_LOADER`,
+        keywords: 'TUI_EDITOR_OPTIONS, TUI_ATTACH_FILES_LOADER',
     },
     {
         section: 'Documentation',
@@ -216,6 +216,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                 keywords:
                     'editor, embed, video player, audio player, html5, wysiwyg, редактор, плеер, html, rich, text',
                 route: `/${TuiDemoPath.EmbedHtml5}`,
+            },
+            {
+                section: 'Documentation',
+                title: 'PDF',
+                keywords: 'editor, embed, pdf',
+                route: `/${TuiDemoPath.EmbedPDF}`,
             },
         ],
     },
