@@ -9,6 +9,7 @@ import {
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
+import {tuiPure} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
@@ -62,16 +63,17 @@ export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage>
         return this.attrs.draggable ?? null;
     }
 
+    @tuiPure
+    protected get src(): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
+    }
+
     protected get alt(): string {
         return this.attrs.alt || '';
     }
 
     protected get title(): string {
         return this.attrs.title || '';
-    }
-
-    protected get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
     }
 
     @HostListener('document:click.silent', ['$event.target'])

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
+import {tuiPure} from '@taiga-ui/cdk';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
@@ -40,6 +41,7 @@ export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIfram
         );
     }
 
+    @tuiPure
     protected get src(): SafeResourceUrl {
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
     }

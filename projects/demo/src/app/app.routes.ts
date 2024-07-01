@@ -140,6 +140,11 @@ export const routes: Routes = [
         title: 'Editor — HTML5',
     }),
     route({
+        path: TuiDemoPath.EmbedPDF,
+        loadComponent: async () => import('./pages/embed/pdf'),
+        title: 'Editor — PDF',
+    }),
+    route({
         path: TuiDemoPath.ToolbarBottom,
         loadComponent: async () => import('./pages/toolbar/bottom'),
         title: 'Editor — Toolbar',

@@ -20,7 +20,7 @@ declare module '@tiptap/core' {
     }
 }
 
-export const createIframeEditorExtension = (injector: Injector): Node =>
+export const tuiCreateIframeEditorExtension = ({injector}: {injector: Injector}): Node =>
     Node.create({
         name: 'iframe',
         group: 'block',
@@ -28,7 +28,7 @@ export const createIframeEditorExtension = (injector: Injector): Node =>
         draggable: false,
 
         parseHTML(): NodeSpec['parseDOM'] {
-            return [{tag: 'iframe[data-type="iframe-editor"]'}];
+            return [{tag: 'iframe'}];
         },
 
         addAttributes(): Record<keyof TuiEditableIframe, Attribute> {

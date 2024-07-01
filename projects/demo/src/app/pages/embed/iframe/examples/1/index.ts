@@ -20,8 +20,8 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
             deps: [Injector],
             useFactory: (injector: Injector) => [
                 import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
+                import('@taiga-ui/editor').then(({tuiCreateIframeEditorExtension}) =>
+                    tuiCreateIframeEditorExtension({injector}),
                 ),
             ],
         },
@@ -32,7 +32,6 @@ export default class Example {
     private readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected readonly control = new FormControl(
         `
         <p>Here is an online IDE:</p>

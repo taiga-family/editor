@@ -254,7 +254,10 @@ export class TuiToolbar {
         }
 
         ngDevMode &&
-            console.info(!!this.filesLoader, 'Please provide TUI_ATTACH_FILES_LOADER');
+            console.assert(
+                !!this.filesLoader,
+                'Please provide TUI_ATTACH_FILES_LOADER, more: https://taiga-family.github.io/editor/starter-kit/Options',
+            );
 
         this.filesLoader?.(files)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))
