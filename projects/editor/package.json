@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/editor",
-    "version": "2.0.21-alpha.6",
+    "version": "2.0.21-alpha.7",
     "description": "Rich text editor extension package for Taiga UI",
     "keywords": [
         "angular",
