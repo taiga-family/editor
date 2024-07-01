@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import {
     EMPTY_QUERY,
-    tuiAssert,
     TuiDestroyService,
     TuiHandler,
     TuiInjectionTokenType,
@@ -231,9 +230,9 @@ export class TuiToolbarComponent {
         }
 
         ngDevMode &&
-            tuiAssert.assert(
+            console.assert(
                 !!this.filesLoader,
-                'Please provide TUI_ATTACH_FILES_LOADER',
+                'Please provide TUI_ATTACH_FILES_LOADER, more: https://taiga-family.github.io/editor/starter-kit/Options',
             );
 
         this.filesLoader?.(files)
