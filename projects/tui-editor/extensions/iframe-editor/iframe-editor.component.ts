@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Inject} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
 import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
@@ -28,6 +28,11 @@ export class TuiIframeEditorComponent extends AbstractTuiEditorResizable<TuiEdit
         @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
     ) {
         super();
+    }
+
+    @tuiPure
+    getSrc(src?: string | null): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(src ?? '');
     }
 
     updateSize([width, height]: readonly [width: number, height: number]): void {

@@ -274,6 +274,15 @@ export const appRoutes: Routes = [
             title: `Editor — HTML5`,
         },
     },
+    {
+        path: TuiDemoPath.EmbedPDF,
+        loadChildren: async () =>
+            (await import(`./pages/embed/pdf/editor-embed-pdf.module`))
+                .ExampleTuiEditorEmbedPdfModule,
+        data: {
+            title: `Editor — PDF`,
+        },
+    },
     // Other
     {
         path: TuiDemoPath.Changelog,

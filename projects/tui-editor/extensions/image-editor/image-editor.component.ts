@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WINDOW} from '@ng-web-apis/common';
-import {TuiDestroyService} from '@taiga-ui/cdk';
+import {TuiDestroyService, tuiPure} from '@taiga-ui/cdk';
 import {AbstractTuiEditorResizable} from '@tinkoff/tui-editor/components/editor-resizable';
 import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
@@ -65,6 +65,11 @@ export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEdita
         @Inject(WINDOW) private readonly win: Window,
     ) {
         super();
+    }
+
+    @tuiPure
+    getSrc(src?: string | null): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(src ?? '');
     }
 
     @HostListener('document:click.silent', ['$event.target'])

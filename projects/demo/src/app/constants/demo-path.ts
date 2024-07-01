@@ -11,6 +11,7 @@ export const enum TuiDemoPath {
     AngularContenteditableAccessor = `angular-contenteditable-accessor`,
     ColorPickerTool = `custom-tool/color-picker`,
     EmbedHtml5 = `embed/html5`,
+    EmbedPDF = `embed/pdf`,
     EmbedIframe = `embed/iframe`,
     EmbedYoutube = `embed/youtube`,
     Focus = `focus`,

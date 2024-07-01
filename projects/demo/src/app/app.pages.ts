@@ -213,6 +213,12 @@ export const DEMO_PAGES: TuiDocPages = [
                 keywords: `editor, embed, video player, audio player, html5, wysiwyg, редактор, attach, file, native, video, audio, плеер, html, rich, text`,
                 route: `/${TuiDemoPath.EmbedHtml5}`,
             },
+            {
+                section: `Documentation`,
+                title: `PDF`,
+                keywords: `editor, embed, pdf, html, rich, text`,
+                route: `/${TuiDemoPath.EmbedPDF}`,
+            },
         ],
     },
     {
