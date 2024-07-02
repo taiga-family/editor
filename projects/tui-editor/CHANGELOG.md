@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.40.0](https://github.com/taiga-family/tui-editor/compare/v1.39.0...v1.40.0) (2024-07-02)
+
+### Bug Fixes
+
+- do not rewrite previous styles on table cell
+  ([979495d](https://github.com/taiga-family/tui-editor/commit/979495d76abdd000d6db1626b17e7d19da5ea4d6))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.39.0](https://github.com/taiga-family/tui-editor/compare/v1.38.0...v1.39.0) (2024-07-01)
 
 ### Bug Fixes
