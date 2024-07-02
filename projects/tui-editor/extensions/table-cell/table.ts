@@ -6,7 +6,7 @@ export const TuiTableCell = TableCell.extend({
         const attrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
 
         if (attrs.colwidth) {
-            attrs.style = `width: ${attrs.colwidth}px`;
+            attrs.style = `width: ${attrs.colwidth}px; ${attrs.style}`;
         }
 
         return [`td`, attrs, 0];
