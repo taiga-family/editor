@@ -15,11 +15,6 @@ export const routes: Routes = [
         title: 'Stackblitz Starter',
     }),
     route({
-        path: TuiDemoPath.ColorPicker,
-        loadComponent: async () => import('./pages/color-picker'),
-        title: 'Input color picker',
-    }),
-    route({
         path: TuiDemoPath.Font,
         loadComponent: async () => import('./pages/font'),
         title: 'Font',

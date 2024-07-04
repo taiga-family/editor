@@ -1,6 +1,4 @@
 <div
-    *tuiLet="fontColor$ | async as selectedColor"
-    #color
     [tuiDropdown]="colorDropdown"
     [tuiDropdownOpen]="false"
 >
@@ -12,13 +10,10 @@
         tuiHintDirection="top-left"
         tuiIconButton
         type="button"
-        [iconLeft]="icons.textColor"
+        [iconStart]="options.icons.textColor"
+        [style.color]="fontColor$ | async"
         [tuiHint]="foreColorText$ | async"
     ></button>
-    <div
-        class="t-plate"
-        [style.background]="selectedColor"
-    ></div>
     <ng-template #colorDropdown>
         <tui-palette
             class="t-color-picker"

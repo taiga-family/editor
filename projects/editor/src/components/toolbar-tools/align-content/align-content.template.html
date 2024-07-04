@@ -13,7 +13,7 @@
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            [iconLeft]="options.icons.textAlignPreview"
+            [iconStart]="options.icons.textAlignPreview"
             [tuiHint]="texts.justify"
         ></button>
         <ng-template #alignDropdown>
@@ -24,7 +24,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.textAlignLeft"
+                    [iconStart]="options.icons.textAlignLeft"
                     [tuiHint]="texts.justifyLeft"
                     (click)="editor.onAlign('left')"
                 ></button>
@@ -34,7 +34,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.textAlignCenter"
+                    [iconStart]="options.icons.textAlignCenter"
                     [tuiHint]="texts.justifyCenter"
                     (click)="editor.onAlign('center')"
                 ></button>
@@ -44,7 +44,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.textAlignRight"
+                    [iconStart]="options.icons.textAlignRight"
                     [tuiHint]="texts.justifyRight"
                     (click)="editor.onAlign('right')"
                 ></button>
@@ -54,7 +54,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.textAlignJustify"
+                    [iconStart]="options.icons.textAlignJustify"
                     [tuiHint]="texts.justifyFull"
                     (click)="editor.onAlign('justify')"
                 ></button>

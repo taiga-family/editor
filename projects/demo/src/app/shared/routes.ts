@@ -2,7 +2,6 @@ export const TuiDemoPath = {
     Anchors: 'anchors',
     Appearance: 'appearance',
     Mention: 'mention',
-    ColorPicker: 'color-picker',
     Checkbox: 'checkbox',
     ColorPickerTool: 'custom-tool/color-picker',
     EmbedHtml5: 'embed/html5',

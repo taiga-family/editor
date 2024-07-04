@@ -25,12 +25,6 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'ColorPicker',
-        route: TuiDemoPath.ColorPicker,
-        keywords: 'цвет, выбор, градиент, gradient, палитра, input, inputcolor',
-    },
-    {
-        section: 'Documentation',
         title: 'Font',
         route: TuiDemoPath.Font,
         keywords: 'editor, font, wysiwyg, редактор, текст, html, rich, text',
@@ -82,13 +76,6 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                 keywords:
                     'editor, custom, tool, emoji, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.PasteEmojiTool}`,
-            },
-            {
-                section: 'Documentation',
-                title: 'Color picker',
-                keywords:
-                    'editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text',
-                route: `/${TuiDemoPath.ColorPickerTool}`,
             },
             {
                 section: 'Documentation',

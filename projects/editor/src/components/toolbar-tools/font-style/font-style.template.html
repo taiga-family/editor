@@ -13,7 +13,7 @@
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            [iconLeft]="options.icons.fontStylePreview"
+            [iconStart]="options.icons.fontStylePreview"
             [tuiHint]="texts.fontStyle"
         ></button>
         <ng-template #formatDropdown>
@@ -25,7 +25,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.fontStyleBold"
+                    [iconStart]="options.icons.fontStyleBold"
                     [tuiHint]="texts.bold"
                     (click)="editor.toggleBold()"
                 ></button>
@@ -36,7 +36,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.fontStyleItalic"
+                    [iconStart]="options.icons.fontStyleItalic"
                     [tuiHint]="texts.italic"
                     (click)="editor.toggleItalic()"
                 ></button>
@@ -47,7 +47,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.fontStyleUnderline"
+                    [iconStart]="options.icons.fontStyleUnderline"
                     [tuiHint]="texts.underline"
                     (click)="editor.toggleUnderline()"
                 ></button>
@@ -58,7 +58,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.fontStyleStrike"
+                    [iconStart]="options.icons.fontStyleStrike"
                     [tuiHint]="texts.strikeThrough"
                     (click)="editor.toggleStrike()"
                 ></button>

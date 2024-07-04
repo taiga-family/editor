@@ -8,7 +8,7 @@ import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-e
 import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
-import {TuiPalette} from '../../color-selector/palette/palette.component';
+import {TuiPaletteModule} from "@taiga-ui/legacy";
 
 @Component({
     standalone: true,
@@ -21,7 +21,7 @@ import {TuiPalette} from '../../color-selector/palette/palette.component';
         TuiHint,
         NgIf,
         TuiActiveZone,
-        TuiPalette,
+        TuiPaletteModule,
     ],
     templateUrl: './highlight-color.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],

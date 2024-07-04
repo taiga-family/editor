@@ -5,16 +5,15 @@ import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
-import {TuiPalette} from '../../color-selector/palette/palette.component';
+import {TuiPaletteModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     selector: 'tui-text-color',
     imports: [
-        TuiPalette,
+        TuiPaletteModule,
         TuiActiveZone,
         TuiDropdown,
         AsyncPipe,
@@ -27,21 +26,19 @@ import {TuiPalette} from '../../color-selector/palette/palette.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTextColor {
-    private readonly options = inject(TUI_EDITOR_OPTIONS);
-
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
+    protected readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
     protected readonly fontColor$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.getFontColor() || this.options.blankColor),
+        map(() => {
+            const color = this.editor.getFontColor();
+
+            return this.options.blankColor === color ? null : color;
+        }),
         distinctUntilChanged(),
     );
 
-    protected readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
-
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
-
-    protected get icons(): TuiEditorOptions['icons'] {
-        return this.options.icons;
-    }
 }

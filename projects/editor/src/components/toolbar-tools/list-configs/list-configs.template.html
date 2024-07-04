@@ -13,7 +13,7 @@
             tuiHintDirection="top-left"
             tuiIconButton
             type="button"
-            [iconLeft]="options.icons.listPreview"
+            [iconStart]="options.icons.listPreview"
             [tuiHint]="texts.list"
         ></button>
         <ng-template #listDropdown>
@@ -25,7 +25,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.listUnOrdered"
+                    [iconStart]="options.icons.listUnOrdered"
                     [tuiHint]="texts.unorderedList"
                     (click)="editor.toggleUnorderedList()"
                 ></button>
@@ -36,7 +36,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.listOrdered"
+                    [iconStart]="options.icons.listOrdered"
                     [tuiHint]="texts.orderedList"
                     (click)="editor.toggleOrderedList()"
                 ></button>
@@ -47,7 +47,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.taskList"
+                    [iconStart]="options.icons.taskList"
                     (click)="editor.toggleTaskList()"
                 ></button>
                 <button
@@ -57,7 +57,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option t-option_margin"
-                    [iconLeft]="options.icons.indent"
+                    [iconStart]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     (click)="sinkListItem()"
                 ></button>
@@ -68,7 +68,7 @@
                     tuiIconButton
                     type="button"
                     class="t-option"
-                    [iconLeft]="options.icons.outdent"
+                    [iconStart]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     (click)="liftListItem()"
                 ></button>

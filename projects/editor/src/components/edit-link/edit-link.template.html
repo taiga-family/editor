@@ -35,7 +35,7 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [iconLeft]="options.icons.popupLinkRemove"
+            [iconStart]="options.icons.popupLinkRemove"
             (click)="onClear()"
         ></button>
         <button
@@ -46,7 +46,7 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [iconLeft]="options.icons.popupLinkSave"
+            [iconStart]="options.icons.popupLinkSave"
             (click)="onSave()"
         ></button>
     </ng-container>
@@ -56,7 +56,7 @@
             tuiLink
             class="t-link"
             [href]="href"
-            [iconLeft]="prefixIsHashMode ? '@tui.hash' : '@tui.external-link'"
+            [iconStart]="prefixIsHashMode ? '@tui.hash' : '@tui.external-link'"
         >
             {{ url | tuiShortUrl }}
         </a>
@@ -68,7 +68,7 @@
             tuiIconButton
             type="button"
             class="t-button t-edit-button"
-            [iconLeft]="options.icons.popupPreviewLinkEdit"
+            [iconStart]="options.icons.popupPreviewLinkEdit"
             (click)="onEdit()"
         ></button>
         <button
@@ -80,7 +80,7 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [iconLeft]="options.icons.popupPreviewLinkClear"
+            [iconStart]="options.icons.popupPreviewLinkClear"
             (click)="onRemove()"
         ></button>
     </ng-template>

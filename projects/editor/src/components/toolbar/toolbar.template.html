@@ -34,7 +34,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="undoDisabled"
-            [iconLeft]="icons.undo"
+            [iconStart]="icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
         ></button>
@@ -49,7 +49,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="redoDisabled"
-            [iconLeft]="icons.redo"
+            [iconStart]="icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
         ></button>
@@ -99,7 +99,7 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="unorderedList || orderedList"
-            [iconLeft]="icons.quote"
+            [iconStart]="icons.quote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
@@ -121,7 +121,7 @@
                 tuiIconButton
                 type="button"
                 class="t-tool"
-                [iconLeft]="icons.link"
+                [iconStart]="icons.link"
                 [tuiHint]="texts.link"
             ></button>
             <ng-template #linkDropdown>
@@ -146,7 +146,7 @@
                 tuiHintDirection="top-left"
                 tuiIconButton
                 type="button"
-                [iconLeft]="icons.anchor"
+                [iconStart]="icons.anchor"
                 [tuiHint]="texts.insertAnchor"
             ></button>
             <ng-template #anchorDropdown>
@@ -168,7 +168,7 @@
                 tuiItem
                 type="button"
                 class="t-tool t-tool_margin"
-                [iconLeft]="icons.attach"
+                [iconStart]="icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
             ></button>
@@ -199,7 +199,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [iconLeft]="icons.sub"
+            [iconStart]="icons.sub"
             [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
         ></button>
@@ -214,7 +214,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [iconLeft]="icons.sup"
+            [iconStart]="icons.sup"
             [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
         ></button>
@@ -258,7 +258,7 @@
             tuiItem
             type="button"
             class="t-tool"
-            [iconLeft]="icons.tex"
+            [iconStart]="icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
         ></button>
@@ -276,7 +276,7 @@
                 tuiIconButton
                 type="button"
                 class="t-tool"
-                [iconLeft]="icons.image"
+                [iconStart]="icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
             ></button>
@@ -301,7 +301,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [iconLeft]="icons.hr"
+            [iconStart]="icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
         ></button>
@@ -320,7 +320,7 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [iconLeft]="icons.clear"
+            [iconStart]="icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"
         ></button>
