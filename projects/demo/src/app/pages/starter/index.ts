@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
@@ -22,6 +23,7 @@ import {
         TuiEditorSocket,
         TuiEditor,
         TuiLink,
+        NgIf,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -62,11 +64,6 @@ export default class TuiEditorStarter {
     protected exampleText = '';
     protected minHeight: number | null = null;
     protected maxHeight: number | null = null;
-    protected readOnly = false;
-    protected focusable = true;
-    protected pseudoInvalid: boolean | null = null;
-    protected pseudoFocused: boolean | null = null;
-    protected pseudoHovered: boolean | null = null;
 
     protected readonly toolsVariants: readonly TuiEditorTool[][] = [
         TUI_EDITOR_DEFAULT_TOOLS,
@@ -80,6 +77,7 @@ export default class TuiEditorStarter {
 
     protected tools = this.toolsVariants[0];
     protected floating = false;
+    protected preview = true;
 
     protected get disabled(): boolean {
         return this.control.disabled;
