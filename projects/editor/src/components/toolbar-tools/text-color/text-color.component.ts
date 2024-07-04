@@ -2,12 +2,12 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiActiveZone, TuiLet} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiPaletteModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
-import {TuiPaletteModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

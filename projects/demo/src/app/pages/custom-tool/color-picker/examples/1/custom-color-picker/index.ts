@@ -4,8 +4,8 @@ import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor';
 import {TUI_EDITOR_OPTIONS, TuiTiptapEditorService} from '@taiga-ui/editor';
-import {distinctUntilChanged, map, share} from 'rxjs';
 import {TuiColorSelectorModule} from '@taiga-ui/legacy';
+import {distinctUntilChanged, map, share} from 'rxjs';
 
 @Component({
     standalone: true,
