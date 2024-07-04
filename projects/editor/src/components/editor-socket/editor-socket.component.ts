@@ -43,10 +43,7 @@ export class TuiEditorSocket {
             this.el,
             'innerHTML',
             this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(
-                      SecurityContext.HTML,
-                      content?.replace(/colwidth/g, 'width') ?? '',
-                  )
+                ? this.tuiSanitizer.sanitize(SecurityContext.HTML, content)
                 : this.sanitizer.sanitize(SecurityContext.HTML, content ?? ''),
         );
     }
