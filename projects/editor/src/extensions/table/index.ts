@@ -9,17 +9,17 @@ export const TuiTable = Table.extend({
         );
 
         return [
-            `div`,
-            {class: `tui-table-wrapper`},
+            'div',
+            {class: 'tui-table-wrapper'},
             [
-                `table`,
+                'table',
                 mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
                     style: tableWidth
                         ? `width: ${tableWidth}`
                         : `min-width: ${tableMinWidth}`,
                 }),
                 colgroup,
-                [`tbody`, 0],
+                ['tbody', 0],
             ],
         ];
     },
