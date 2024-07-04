@@ -114,7 +114,7 @@
         "@playwright/test": "1.44.1",
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
-        "@stackblitz/sdk": "1.10.0",
+        "@stackblitz/sdk": "1.11.0",
         "@swc-node/register": "1.9.2",
         "@swc/core": "1.5.27",
         "@swc/helpers": "0.5.11",
