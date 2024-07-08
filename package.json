@@ -190,7 +190,7 @@
         "showdown": "2.1.0",
         "terser-webpack-plugin": "5.3.10",
         "text-mask-core": "5.1.2",
-        "ts-jest": "29.1.5",
+        "ts-jest": "29.2.0",
         "tslib": "2.6.3",
         "typescript": "5.0.4",
         "wait-on": "7.2.0",
