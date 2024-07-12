@@ -30,7 +30,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     constructor() {
         super();
 
-        this.editorRef.subscribe(editor => {
+        this.editorRef.subscribe((editor) => {
             this.editor = editor;
 
             const update = (): void => {

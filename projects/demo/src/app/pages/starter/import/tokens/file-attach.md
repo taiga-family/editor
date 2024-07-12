@@ -35,7 +35,7 @@ export class MyUploadService {
       provide: TUI_ATTACH_FILES_LOADER,
       deps: [MyUploadService],
       useFactory(service: MyUploadService) {
-        return (files: File[]) => forkJoin(files.map(file => service.upload(file)));
+        return (files: File[]) => forkJoin(files.map((file) => service.upload(file)));
       },
     },
   ],
@@ -54,7 +54,7 @@ export class Example {
    * because you have all the necessary data for this
    */
   attach(files: TuiEditorAttachedFile[]): void {
-    files.forEach(file => this.wysiwyg?.editor?.setFileLink(file));
+    files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));
   }
 }
 ```

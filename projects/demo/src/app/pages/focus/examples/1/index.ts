@@ -20,7 +20,9 @@ import {
             useFactory: (injector: Injector) => [
                 import('@taiga-ui/editor')
                     .then(({TuiStarterKit}) => TuiStarterKit)
-                    .then(extension => extension.configure({heading: {levels: [1, 2]}})),
+                    .then((extension) =>
+                        extension.configure({heading: {levels: [1, 2]}}),
+                    ),
                 import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
                     TextAlign.configure({types: ['heading', 'paragraph']}),
                 ),

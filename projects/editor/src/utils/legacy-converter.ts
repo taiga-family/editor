@@ -1,5 +1,5 @@
 function migration(element: Element): void {
-    Array.from(element.children).forEach(child => {
+    Array.from(element.children).forEach((child) => {
         if (child.children.length) {
             migration(child);
         }

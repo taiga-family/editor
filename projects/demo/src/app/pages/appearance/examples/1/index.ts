@@ -5,7 +5,7 @@ import {TuiEditor, tuiEditorOptionsProvider} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [TuiEditor, ReactiveFormsModule, TuiActiveZone, TuiAutoFocus],
+    imports: [ReactiveFormsModule, TuiActiveZone, TuiAutoFocus, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

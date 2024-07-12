@@ -57,22 +57,22 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     standalone: true,
     selector: 'tui-editor',
     imports: [
-        TuiCardLarge,
         AsyncPipe,
         NgIf,
+        NgTemplateOutlet,
         TuiActiveZone,
-        TuiScrollbar,
+        TuiAppearance,
+        TuiCardLarge,
         TuiDropdown,
         TuiEditLink,
-        TuiEditorPortalHost,
-        TuiEditorPortal,
-        TuiTiptapEditor,
-        TuiEditorSocket,
-        TuiToolbar,
-        NgTemplateOutlet,
         TuiEditorDropdownToolbar,
+        TuiEditorPortal,
+        TuiEditorPortalHost,
+        TuiEditorSocket,
+        TuiScrollbar,
         TuiSurface,
-        TuiAppearance,
+        TuiTiptapEditor,
+        TuiToolbar,
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
@@ -106,7 +106,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             this.hasMentionPlugin = !!this.editorService
                 .getOriginTiptapEditor()
                 .extensionManager.extensions.find(
-                    extension => extension.name === 'mention',
+                    (extension) => extension.name === 'mention',
                 );
 
             this.patchContentEditableElement();

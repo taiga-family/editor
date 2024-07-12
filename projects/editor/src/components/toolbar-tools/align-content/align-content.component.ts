@@ -11,7 +11,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-align-content',
-    imports: [TuiHint, TuiButton, TuiDropdown, AsyncPipe, TuiLet, NgIf],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiLet],
     templateUrl: './align-content.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

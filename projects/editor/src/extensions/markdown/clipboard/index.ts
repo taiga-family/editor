@@ -35,7 +35,7 @@ export const TuiMarkdownClipboard = Extension.create({
                             },
                         );
                     },
-                    clipboardTextSerializer: slice => {
+                    clipboardTextSerializer: (slice) => {
                         if (!this.options.transformCopiedText) {
                             return null;
                         }

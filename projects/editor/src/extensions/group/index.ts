@@ -48,8 +48,8 @@ export const tuiCreateGroupExtension = (
             return {
                 style: {
                     default: null,
-                    parseHTML: element => element.getAttribute('style'),
-                    renderHTML: attributes => {
+                    parseHTML: (element) => element.getAttribute('style'),
+                    renderHTML: (attributes) => {
                         if (!attributes.style) {
                             return {};
                         }

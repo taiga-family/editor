@@ -18,7 +18,7 @@ export default Node.create({
                     updateDOM(element: Element) {
                         Array.from(
                             element.querySelectorAll('.contains-task-list'),
-                        ).forEach(list => {
+                        ).forEach((list) => {
                             list.setAttribute('data-type', 'taskList');
                         });
                     },

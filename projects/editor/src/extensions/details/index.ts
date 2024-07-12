@@ -31,8 +31,8 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
             opened: {
                 default: true,
                 keepOnSplit: false,
-                parseHTML: element => element.getAttribute('data-opened') === 'true',
-                renderHTML: attributes => ({
+                parseHTML: (element) => element.getAttribute('data-opened') === 'true',
+                renderHTML: (attributes) => ({
                     'data-opened': attributes.opened,
                 }),
             },

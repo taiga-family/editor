@@ -58,7 +58,7 @@ export const TuiFontColor = Extension.create<FontColorOptions>({
     } {
         return {
             setFontColor:
-                fontColor =>
+                (fontColor) =>
                 ({chain}) =>
                     chain().setMark('textStyle', {fontColor}).run(),
             unsetFontColor:

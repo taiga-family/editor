@@ -9,7 +9,7 @@ function hasAttributes(
 
     return (
         !keys.length ||
-        !!keys.filter(key => attributes[key] === markAttributes[key]).length
+        !!keys.filter((key) => attributes[key] === markAttributes[key]).length
     );
 }
 

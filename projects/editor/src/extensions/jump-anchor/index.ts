@@ -18,8 +18,8 @@ export const TuiJumpAnchor = Mark.create({
         return {
             id: {
                 default: null,
-                parseHTML: element => element.getAttribute('id'),
-                renderHTML: attributes => {
+                parseHTML: (element) => element.getAttribute('id'),
+                renderHTML: (attributes) => {
                     if (!attributes.id) {
                         return {};
                     }
@@ -41,7 +41,7 @@ export const TuiJumpAnchor = Mark.create({
     addCommands() {
         return {
             setAnchor:
-                id =>
+                (id) =>
                 ({chain}) =>
                     chain()
                         .extendMarkRange('jumpAnchor')

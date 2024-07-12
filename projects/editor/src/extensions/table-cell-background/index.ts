@@ -38,7 +38,7 @@ export const TableCellBackground = Extension.create({
     } {
         return {
             setCellBackground:
-                background =>
+                (background) =>
                 ({chain}) =>
                     chain()
                         .updateAttributes('tableCell', {background})

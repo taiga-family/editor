@@ -11,7 +11,7 @@ import {TuiPreview} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'app',
-    imports: [RouterLink, TuiRoot, TuiLink, TuiIcon, TuiAddonDoc, TuiPreview],
+    imports: [RouterLink, TuiAddonDoc, TuiIcon, TuiLink, TuiPreview, TuiRoot],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,

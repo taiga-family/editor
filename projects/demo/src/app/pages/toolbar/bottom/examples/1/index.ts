@@ -5,7 +5,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditor, TuiButton],
+    imports: [ReactiveFormsModule, TuiButton, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

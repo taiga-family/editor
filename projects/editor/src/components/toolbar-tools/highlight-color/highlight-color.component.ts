@@ -14,13 +14,13 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     standalone: true,
     selector: 'tui-highlight-color',
     imports: [
-        TuiDropdown,
         AsyncPipe,
-        TuiLet,
-        TuiButton,
-        TuiHint,
         NgIf,
         TuiActiveZone,
+        TuiButton,
+        TuiDropdown,
+        TuiHint,
+        TuiLet,
         TuiPaletteModule,
     ],
     templateUrl: './highlight-color.template.html',
@@ -37,7 +37,7 @@ export class TuiHighlightColor {
         distinctUntilChanged(),
     );
 
-    protected readonly backColorText$ = this.texts$.pipe(map(texts => texts.backColor));
+    protected readonly backColorText$ = this.texts$.pipe(map((texts) => texts.backColor));
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;

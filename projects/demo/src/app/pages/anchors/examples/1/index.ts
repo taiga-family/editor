@@ -9,7 +9,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorSocket, TuiEditor],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

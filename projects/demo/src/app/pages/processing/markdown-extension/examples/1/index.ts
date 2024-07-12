@@ -33,7 +33,7 @@ const markdown = `# h1 Heading 😎
 
 @Component({
     standalone: true,
-    imports: [TuiEditor, ReactiveFormsModule, FormsModule, TuiTextareaModule],
+    imports: [FormsModule, ReactiveFormsModule, TuiEditor, TuiTextareaModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -76,7 +76,7 @@ export default class Example implements OnInit {
     public ngOnInit(): void {
         this.markdown$
             .pipe(debounceTime(500), takeUntilDestroyed(this.destroyRef))
-            .subscribe(value => this.editor?.commands.setContent(value));
+            .subscribe((value) => this.editor?.commands.setContent(value));
     }
 
     protected get editor(): Editor | null {

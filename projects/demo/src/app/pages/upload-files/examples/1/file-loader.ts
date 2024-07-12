@@ -10,7 +10,7 @@ export function fileLoader(
     return (files: File[]) => {
         service.loading$.next(true);
 
-        return forkJoin(files.map(file => service.upload(file))).pipe(
+        return forkJoin(files.map((file) => service.upload(file))).pipe(
             finalize(() => service.loading$.next(false)),
         );
     };

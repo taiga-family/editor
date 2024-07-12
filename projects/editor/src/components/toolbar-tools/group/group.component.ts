@@ -10,7 +10,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-editor-group-tool',
-    imports: [TuiHint, TuiButton, AsyncPipe],
+    imports: [AsyncPipe, TuiButton, TuiHint],
     templateUrl: './group.component.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,11 +21,11 @@ export class TuiEditorGroupTool {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     protected readonly insertGroupText$ = this.texts$.pipe(
-        map(texts => texts.insertGroup),
+        map((texts) => texts.insertGroup),
     );
 
     protected readonly removeGroupText$ = this.texts$.pipe(
-        map(texts => texts.removeGroup),
+        map((texts) => texts.removeGroup),
     );
 
     protected readonly disabled$ = this.editor.stateChange$.pipe(

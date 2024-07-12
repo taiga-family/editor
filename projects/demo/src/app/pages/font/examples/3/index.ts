@@ -13,10 +13,10 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
 @Component({
     standalone: true,
     imports: [
-        ReactiveFormsModule,
         ExampleTuiFontSizeTool,
-        TuiEditorSocket,
+        ReactiveFormsModule,
         TuiEditor,
+        TuiEditorSocket,
         TuiItem,
     ],
     templateUrl: './index.html',

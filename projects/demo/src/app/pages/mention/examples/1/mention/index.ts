@@ -19,7 +19,7 @@ export interface User {
 @Component({
     standalone: true,
     selector: 'mentions',
-    imports: [TuiDataList, NgForOf, TuiInitialsPipe, TuiAvatar, TuiAutoFocus],
+    imports: [NgForOf, TuiAutoFocus, TuiAvatar, TuiDataList, TuiInitialsPipe],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

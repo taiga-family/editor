@@ -9,7 +9,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-details',
-    imports: [AsyncPipe, NgIf, TuiHint, TuiButton],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiHint],
     templateUrl: './details.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

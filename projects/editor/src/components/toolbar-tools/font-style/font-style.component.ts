@@ -12,7 +12,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-font-style',
-    imports: [TuiHint, TuiButton, NgIf, TuiDropdown, AsyncPipe],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint],
     templateUrl: './font-style.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

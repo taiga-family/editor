@@ -15,13 +15,13 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     selector: 'tui-table-cell-color',
     imports: [
         AsyncPipe,
-        TuiLet,
+        NgIf,
+        TuiActiveZone,
+        TuiButton,
         TuiDropdown,
         TuiHint,
-        TuiButton,
-        NgIf,
+        TuiLet,
         TuiPaletteModule,
-        TuiActiveZone,
     ],
     templateUrl: './table-cell-color.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
@@ -35,7 +35,7 @@ export class TuiTableCellColor {
 
     protected readonly colorText$ = this.texts$.pipe(
         map(
-            texts =>
+            (texts) =>
                 (this.editor.isActive('group') && texts.hiliteGroup) ||
                 (this.editor.isActive('table') && texts.cellColor) ||
                 '',

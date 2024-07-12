@@ -17,7 +17,7 @@ export const EmojiExtension = Extension.create({
                                       style: 'display: inline',
                                   }
                                 : null,
-                        parseHTML: element => element.getAttribute('data-type'),
+                        parseHTML: (element) => element.getAttribute('data-type'),
                     },
                 },
             },

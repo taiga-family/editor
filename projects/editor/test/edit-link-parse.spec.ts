@@ -100,7 +100,7 @@ describe('tuiEditLinkParseUrl', () => {
         });
     });
 
-    it('URLs', () => {
+    it('uRLs', () => {
         expect(tuiEditLinkParseUrl('https://taiga-ui.dev')).toEqual({
             prefix: 'https://',
             path: 'taiga-ui.dev',

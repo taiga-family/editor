@@ -74,16 +74,16 @@ function isMarkdownSerializable(node: ProseNode): boolean {
 
     if (
         tuiChildNodes(firstRow).some(
-            cell =>
+            (cell) =>
                 cell.type.name !== 'tableHeader' || hasSpan(cell) || cell.childCount > 1,
         )
     ) {
         return false;
     }
 
-    return !bodyRows.some(row =>
+    return !bodyRows.some((row) =>
         tuiChildNodes(row).some(
-            cell =>
+            (cell) =>
                 cell.type.name === 'tableHeader' || hasSpan(cell) || cell.childCount > 1,
         ),
     );

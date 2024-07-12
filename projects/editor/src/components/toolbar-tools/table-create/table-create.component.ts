@@ -11,7 +11,7 @@ import {TuiTableSizeSelector} from './table-size-selector/table-size-selector.co
 @Component({
     standalone: true,
     selector: 'tui-table-create',
-    imports: [TuiDropdown, TuiHint, TuiButton, AsyncPipe, TuiTableSizeSelector],
+    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint, TuiTableSizeSelector],
     templateUrl: './table-create.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -21,7 +21,7 @@ export class TuiTableCreate {
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 
     protected readonly insertTableText$ = this.texts$.pipe(
-        map(texts => texts.insertTable),
+        map((texts) => texts.insertTable),
     );
 
     protected addTable({rows, cols}: {cols: number; rows: number}): void {

@@ -6,7 +6,7 @@ export function tuiParseNodeAttributes(
     return attrs.reduce(
         (result, attribute) => {
             result[attribute] = {
-                parseHTML: element => element?.getAttribute(`${attribute}`),
+                parseHTML: (element) => element?.getAttribute(`${attribute}`),
             };
 
             return result;

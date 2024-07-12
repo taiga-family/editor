@@ -10,7 +10,7 @@ export class ExampleEditorCleanupHtmlTransformer extends TuiValueTransformer<str
     public toControlValue(componentValue: string): string {
         const tree = new DOMParser().parseFromString(componentValue, 'text/html');
 
-        tree.body.querySelectorAll('*').forEach(element => {
+        tree.body.querySelectorAll('*').forEach((element) => {
             // now we can manipulate with any elements
             // and cleanup any attributes (class for example)
             element.removeAttribute('class');

@@ -11,7 +11,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-list-configs',
-    imports: [TuiHint, TuiButton, TuiDropdown, AsyncPipe, NgIf, TuiLet],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiLet],
     templateUrl: './list-configs.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

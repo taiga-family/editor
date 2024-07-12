@@ -13,13 +13,13 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     standalone: true,
     selector: 'tui-text-color',
     imports: [
-        TuiPaletteModule,
-        TuiActiveZone,
-        TuiDropdown,
         AsyncPipe,
-        TuiLet,
-        TuiHint,
+        TuiActiveZone,
         TuiButton,
+        TuiDropdown,
+        TuiHint,
+        TuiLet,
+        TuiPaletteModule,
     ],
     templateUrl: './text-color.template.html',
     styleUrls: ['../../../../styles/tools-common.less'],
@@ -29,7 +29,7 @@ export class TuiTextColor {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
+    protected readonly foreColorText$ = this.texts$.pipe(map((texts) => texts.foreColor));
     protected readonly fontColor$ = this.editor.stateChange$.pipe(
         map(() => {
             const color = this.editor.getFontColor();

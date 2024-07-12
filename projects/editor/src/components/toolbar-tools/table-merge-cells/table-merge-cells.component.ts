@@ -10,7 +10,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 @Component({
     standalone: true,
     selector: 'tui-table-merge-cells',
-    imports: [TuiLet, AsyncPipe, NgIf, TuiButton, TuiHint],
+    imports: [AsyncPipe, NgIf, TuiButton, TuiHint, TuiLet],
     templateUrl: './table-merge-cells.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

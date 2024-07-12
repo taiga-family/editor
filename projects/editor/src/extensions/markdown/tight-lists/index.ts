@@ -14,10 +14,10 @@ export const TuiMarkdownTightLists = Extension.create({
                 attributes: {
                     tight: {
                         default: this.options.tight,
-                        parseHTML: element =>
+                        parseHTML: (element) =>
                             element.getAttribute('data-tight') === 'true' ||
                             !element.querySelector('p'),
-                        renderHTML: attributes => ({
+                        renderHTML: (attributes) => ({
                             class: attributes.tight ? this.options.tightClass : null,
                             'data-tight': attributes.tight ? 'true' : null,
                         }),
@@ -31,7 +31,7 @@ export const TuiMarkdownTightLists = Extension.create({
             toggleTight:
                 (tight = null) =>
                 ({editor, commands}: any) =>
-                    this.options.listTypes.some(name => {
+                    this.options.listTypes.some((name) => {
                         if (!editor.isActive(name)) {
                             return false;
                         }

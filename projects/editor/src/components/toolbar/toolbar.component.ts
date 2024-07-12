@@ -53,28 +53,28 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     standalone: true,
     selector: 'tui-toolbar',
     imports: [
-        TuiTableCellColor,
-        TuiTableMergeCells,
-        TuiTableCreate,
-        NgIf,
-        TuiItem,
-        TuiButton,
-        TuiHint,
-        TuiTextColor,
-        TuiHighlightColor,
-        TuiEditLink,
-        TuiDropdown,
-        TuiFontStyle,
         AsyncPipe,
-        TuiToolbarNavigationManager,
+        NgIf,
+        TuiAlignContent,
+        TuiButton,
+        TuiCode,
         TuiDetails,
         TuiDetailsRemove,
+        TuiDropdown,
+        TuiEditLink,
         TuiEditorGroupTool,
-        TuiTableRowColumnManager,
-        TuiCode,
-        TuiListConfigs,
-        TuiAlignContent,
         TuiFontSize,
+        TuiFontStyle,
+        TuiHighlightColor,
+        TuiHint,
+        TuiItem,
+        TuiListConfigs,
+        TuiTableCellColor,
+        TuiTableCreate,
+        TuiTableMergeCells,
+        TuiTableRowColumnManager,
+        TuiTextColor,
+        TuiToolbarNavigationManager,
     ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
@@ -241,7 +241,7 @@ export class TuiToolbar {
 
         this.imageLoader(file)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))
-            .subscribe(image => this.addImage(image));
+            .subscribe((image) => this.addImage(image));
     }
 
     protected onAttach(input: HTMLInputElement): void {
@@ -261,7 +261,7 @@ export class TuiToolbar {
 
         this.filesLoader?.(files)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))
-            .subscribe(attachedFiles => this.fileAttached.emit(attachedFiles));
+            .subscribe((attachedFiles) => this.fileAttached.emit(attachedFiles));
     }
 
     protected onTeX(): void {

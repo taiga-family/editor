@@ -12,7 +12,7 @@ export const TUI_IMAGE_LOADER: InjectionToken<
 > = new InjectionToken<TuiHandler<Blob | File, Observable<string>>>(
     '[TUI_IMAGE_LOADER]',
     {
-        factory: () => file => {
+        factory: () => (file) => {
             const fileReader = new FileReader();
 
             fileReader.readAsDataURL(file);

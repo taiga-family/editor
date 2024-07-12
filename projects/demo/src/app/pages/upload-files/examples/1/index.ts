@@ -16,7 +16,7 @@ import {FileIoService} from './filesio.service';
 
 @Component({
     standalone: true,
-    imports: [TuiLoader, AsyncPipe, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiEditor, TuiEditorSocket, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,6 +58,6 @@ export default class Example {
      * because you have all the necessary data for this
      */
     protected attach(files: TuiEditorAttachedFile[]): void {
-        files.forEach(file => this.wysiwyg?.editor?.setFileLink(file));
+        files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));
     }
 }

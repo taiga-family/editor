@@ -16,7 +16,7 @@ export const TuiLink = Link.extend({
         return {
             ...this.parent?.(),
             toggleLink:
-                attributes =>
+                (attributes) =>
                 ({chain, state}) => {
                     // eslint-disable-next-line no-lone-blocks
                     {
@@ -48,17 +48,17 @@ export const TuiLink = Link.extend({
     addPasteRules() {
         return [
             markPasteRule({
-                find: text =>
+                find: (text) =>
                     find(text)
-                        .filter(link => this.options.validate?.(link.value) ?? true)
-                        .filter(link => link.isLink)
-                        .map(link => ({
+                        .filter((link) => this.options.validate?.(link.value) ?? true)
+                        .filter((link) => link.isLink)
+                        .map((link) => ({
                             text: link.value,
                             index: link.start,
                             data: link,
                         })),
                 type: this.type,
-                getAttributes: match => ({href: match.data?.href}),
+                getAttributes: (match) => ({href: match.data?.href}),
             }),
         ];
     },

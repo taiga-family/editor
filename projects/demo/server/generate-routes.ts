@@ -23,16 +23,16 @@ const EXCEPTIONS: string[] = [TuiDemoPath.Stackblitz];
     const generated = (
         demoPathEnumContent
             .match(/['"`](.*)['"`]/g)
-            ?.map(route => route.replaceAll(/['"`]/g, '')) || []
+            ?.map((route) => route.replaceAll(/['"`]/g, '')) || []
     )
-        .filter(route => !EXCEPTIONS.includes(route) && !route.includes('embed'))
-        .map(route => `/${route}`);
+        .filter((route) => !EXCEPTIONS.includes(route) && !route.includes('embed'))
+        .map((route) => `/${route}`);
 
     console.info('Generated routes:');
 
     routes.push(...generated);
 
-    routes.forEach(route => console.info(`**** ${route}`));
+    routes.forEach((route) => console.info(`**** ${route}`));
 
     writeFileSync(
         join(process.cwd(), 'projects', 'demo', 'server', 'routes.txt'),

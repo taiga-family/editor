@@ -10,13 +10,13 @@ import {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorSocket, TuiEditor],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiEditorOptionsProvider({
             fontOptions: () =>
-                [8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96].map(size => ({
+                [8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96].map((size) => ({
                     px: size,
                     name: `${size}`,
                     ngStyle: {'font-size': '1rem'},

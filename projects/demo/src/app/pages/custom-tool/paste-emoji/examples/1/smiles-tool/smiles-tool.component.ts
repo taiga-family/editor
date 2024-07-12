@@ -7,7 +7,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 @Component({
     standalone: true,
     selector: 'smiles-tool',
-    imports: [TuiActiveZone, NgForOf, TuiDropdown, TuiButton],
+    imports: [NgForOf, TuiActiveZone, TuiButton, TuiDropdown],
     templateUrl: './smiles-tool.template.html',
     styleUrls: ['./smiles-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

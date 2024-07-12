@@ -16,7 +16,7 @@ export default Node.create({
                 parse: {
                     updateDOM(element: Element) {
                         Array.from(element.querySelectorAll('.task-list-item')).forEach(
-                            item => {
+                            (item) => {
                                 const input = item.querySelector('input');
 
                                 item.setAttribute('data-type', 'taskItem');

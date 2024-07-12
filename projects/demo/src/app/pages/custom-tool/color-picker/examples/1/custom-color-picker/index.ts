@@ -10,7 +10,7 @@ import {distinctUntilChanged, map, share} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'custom-color-picker',
-    imports: [TuiActiveZone, TuiDropdown, TuiButton, AsyncPipe, TuiColorSelectorModule],
+    imports: [AsyncPipe, TuiActiveZone, TuiButton, TuiColorSelectorModule, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

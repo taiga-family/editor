@@ -36,27 +36,27 @@ export const tuiCreateIframeEditorExtension = ({injector}: {injector: Injector})
                 src: {
                     default: null,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute('src'),
+                    parseHTML: (element) => element.getAttribute('src'),
                 },
                 frameborder: {
                     default: 0,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute('frameborder'),
+                    parseHTML: (element) => element.getAttribute('frameborder'),
                 },
                 width: {
                     default: '100%',
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute('width'),
+                    parseHTML: (element) => element.getAttribute('width'),
                 },
                 height: {
                     default: null,
                     keepOnSplit: false,
-                    parseHTML: element => element.getAttribute('height'),
+                    parseHTML: (element) => element.getAttribute('height'),
                 },
                 allowfullscreen: {
                     keepOnSplit: false,
                     default: this.options.allowFullscreen,
-                    parseHTML: element => element.getAttribute('allowfullscreen'),
+                    parseHTML: (element) => element.getAttribute('allowfullscreen'),
                 },
             };
         },
@@ -80,7 +80,7 @@ export const tuiCreateIframeEditorExtension = ({injector}: {injector: Injector})
         addCommands(): Partial<RawCommands> {
             return {
                 setIframe:
-                    attrs =>
+                    (attrs) =>
                     ({commands, state}) => {
                         const prevLine = state.selection.anchor;
 
