@@ -115,7 +115,7 @@
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
         "@stackblitz/sdk": "1.11.0",
-        "@swc-node/register": "1.10.3",
+        "@swc-node/register": "1.10.4",
         "@swc/core": "1.6.13",
         "@swc/helpers": "0.5.11",
         "@taiga-ui/browserslist-config": "0.104.0",
