@@ -8,9 +8,9 @@ jobs:
     name: E2E
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.65.4
-      - uses: taiga-family/ci/actions/setup/variables@v1.65.4
-      - uses: taiga-family/ci/actions/setup/node@v1.65.4
+      - uses: taiga-family/ci/actions/setup/checkout@v1.65.5
+      - uses: taiga-family/ci/actions/setup/variables@v1.65.5
+      - uses: taiga-family/ci/actions/setup/node@v1.65.5
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
