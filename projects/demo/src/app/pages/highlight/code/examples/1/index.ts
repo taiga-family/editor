@@ -11,7 +11,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditorSocket, TuiEditor],
+    imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

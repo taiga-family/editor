@@ -16,7 +16,7 @@ import {
 
 @Component({
     standalone: true,
-    imports: [TuiEditor, ReactiveFormsModule],
+    imports: [ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

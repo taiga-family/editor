@@ -8,7 +8,7 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'image-preview-example',
-    imports: [TuiPreview, TuiButton, NgIf],
+    imports: [NgIf, TuiButton, TuiPreview],
     templateUrl: './image-preview.template.html',
     styleUrls: ['./image-preview.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

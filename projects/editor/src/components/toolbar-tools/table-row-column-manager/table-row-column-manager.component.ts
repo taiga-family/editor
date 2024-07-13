@@ -22,7 +22,7 @@ export enum TuiTableCommands {
 @Component({
     standalone: true,
     selector: 'tui-table-row-column-manager',
-    imports: [NgForOf, TuiDataList, AsyncPipe, TuiButton, TuiHint, TuiDropdown, TuiLet],
+    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiLet],
     templateUrl: './table-row-column-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -44,7 +44,7 @@ export class TuiTableRowColumnManager {
     protected readonly isActive$ = this.editor.isActive$('table');
 
     protected readonly rowsColumnsManagingText$ = this.texts$.pipe(
-        map(texts => texts.rowsColumnsManaging),
+        map((texts) => texts.rowsColumnsManaging),
     );
 
     protected onTableOption(command: TuiTableCommands): void {

@@ -24,7 +24,7 @@ export class TuiEditorMarkdownParser {
 
     protected parse(content: unknown, {inline}: Record<string, any> = {}): string {
         if (typeof content === 'string') {
-            this.editor.extensionManager.extensions.forEach(extension =>
+            this.editor.extensionManager.extensions.forEach((extension) =>
                 tuiGetMarkdownSpec(extension)?.parse?.setup?.call(
                     {editor: this.editor, options: extension.options},
                     this.md,
@@ -34,7 +34,7 @@ export class TuiEditorMarkdownParser {
             const renderedHTML = this.md.render(content);
             const element = tuiElementFromString(renderedHTML);
 
-            this.editor.extensionManager.extensions.forEach(extension =>
+            this.editor.extensionManager.extensions.forEach((extension) =>
                 tuiGetMarkdownSpec(extension)?.parse?.updateDOM?.call(
                     {editor: this.editor, options: extension.options},
                     element,
@@ -56,7 +56,7 @@ export class TuiEditorMarkdownParser {
         this.normalizeBlocks(node);
 
         // remove all \n appended by markdown-it
-        node.querySelectorAll('*').forEach(el => {
+        node.querySelectorAll('*').forEach((el) => {
             if (el.nextSibling?.nodeType === Node.TEXT_NODE && !el.closest('pre')) {
                 el.nextSibling.textContent =
                     el.nextSibling.textContent?.replace(/^\n/, '') ?? '';
@@ -72,11 +72,11 @@ export class TuiEditorMarkdownParser {
 
     protected normalizeBlocks(node: Element): void {
         const blocks = Object.values(this.editor.schema.nodes).filter(
-            node => node.isBlock,
+            (node) => node.isBlock,
         );
 
         const selector = blocks
-            .map(block => block.spec.parseDOM?.map(spec => spec.tag))
+            .map((block) => block.spec.parseDOM?.map((spec) => spec.tag))
             .flat()
             .filter(Boolean)
             .join(',');
@@ -85,7 +85,7 @@ export class TuiEditorMarkdownParser {
             return;
         }
 
-        Array.from(node.querySelectorAll(selector)).forEach(el => {
+        Array.from(node.querySelectorAll(selector)).forEach((el) => {
             if (el.parentElement?.matches('p')) {
                 tuiExtractElement(el);
             }

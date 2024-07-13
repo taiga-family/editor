@@ -27,7 +27,7 @@ export const TUI_EDITOR_PROVIDERS = [
             );
 
             // eslint-disable-next-line @typescript-eslint/no-floating-promises
-            Promise.all(extensions).then(extensions => extensions$.next(extensions));
+            Promise.all(extensions).then((extensions) => extensions$.next(extensions));
 
             return extensions$;
         },

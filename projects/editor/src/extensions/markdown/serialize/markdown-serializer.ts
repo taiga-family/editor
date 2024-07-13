@@ -14,7 +14,7 @@ export class TuiMarkdownSerializer {
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return {
             ...Object.fromEntries(
-                Object.keys(this.editor.schema.nodes).map(name => [
+                Object.keys(this.editor.schema.nodes).map((name) => [
                     name,
                     this.serializeNode(HTMLNode),
                 ]),
@@ -22,11 +22,11 @@ export class TuiMarkdownSerializer {
             ...Object.fromEntries(
                 this.editor.extensionManager.extensions
                     .filter(
-                        extension =>
+                        (extension) =>
                             extension.type === 'node' &&
                             this.serializeNode(extension as any),
                     )
-                    .map(extension => [
+                    .map((extension) => [
                         extension.name,
                         this.serializeNode(extension as any),
                     ]) ?? [],
@@ -38,7 +38,7 @@ export class TuiMarkdownSerializer {
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         return {
             ...Object.fromEntries(
-                Object.keys(this.editor.schema.marks).map(name => [
+                Object.keys(this.editor.schema.marks).map((name) => [
                     name,
                     this.serializeMark(HTMLMark),
                 ]),
@@ -46,11 +46,11 @@ export class TuiMarkdownSerializer {
             ...Object.fromEntries(
                 this.editor.extensionManager.extensions
                     .filter(
-                        extension =>
+                        (extension) =>
                             extension.type === 'mark' &&
                             this.serializeMark(extension as any),
                     )
-                    .map(extension => [
+                    .map((extension) => [
                         extension.name,
                         this.serializeMark(extension as any),
                     ]) ?? [],

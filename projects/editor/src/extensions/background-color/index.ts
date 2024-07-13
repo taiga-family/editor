@@ -59,7 +59,7 @@ export const TuiBackgroundColor = Extension.create<BackgroundColorOptions>({
     } {
         return {
             setBackgroundColor:
-                backgroundColor =>
+                (backgroundColor) =>
                 ({chain}) =>
                     chain().setMark('textStyle', {backgroundColor}).run(),
             unsetBackgroundColor:

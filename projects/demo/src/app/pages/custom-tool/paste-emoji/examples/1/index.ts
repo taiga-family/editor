@@ -8,7 +8,7 @@ import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
 
 @Component({
     standalone: true,
-    imports: [ExampleTuiSmilesTool, TuiItem, ReactiveFormsModule, TuiEditor, TuiIcon],
+    imports: [ExampleTuiSmilesTool, ReactiveFormsModule, TuiEditor, TuiIcon, TuiItem],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

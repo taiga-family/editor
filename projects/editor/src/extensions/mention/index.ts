@@ -35,7 +35,7 @@ export const TuiMention = Node.create<TuiMentionOptions>({
             id: {
                 default: null,
                 keepOnSplit: true,
-                parseHTML: element => element.innerText,
+                parseHTML: (element) => element.innerText,
                 renderHTML: () => ({'data-type': this.name}),
             },
             class: {

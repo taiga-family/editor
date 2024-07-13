@@ -12,7 +12,7 @@ import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 @Component({
     standalone: true,
     selector: 'tui-editor-resizable',
-    imports: [TuiResizer, NgIf, TuiResizable],
+    imports: [NgIf, TuiResizable, TuiResizer],
     templateUrl: './editor-resizable.component.html',
     styleUrls: ['./editor-resizable.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

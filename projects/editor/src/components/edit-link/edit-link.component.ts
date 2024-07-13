@@ -32,17 +32,17 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     standalone: true,
     selector: 'tui-edit-link',
     imports: [
-        NgForOf,
-        TuiFilterAnchorsPipe,
-        TuiButton,
-        TuiShortUrlPipe,
-        TuiLink,
-        FormsModule,
-        NgIf,
         AsyncPipe,
+        FormsModule,
+        NgForOf,
+        NgIf,
         TuiAutoFocus,
+        TuiButton,
+        TuiFilterAnchorsPipe,
         TuiInputInline,
+        TuiLink,
         TuiScrollbar,
+        TuiShortUrlPipe,
     ],
     templateUrl: './edit-link.template.html',
     styleUrls: ['./edit-link.style.less'],
@@ -236,7 +236,7 @@ export class TuiEditLink {
         );
 
         return Array.from(nodes)
-            .map(node => node.getAttribute('id') || '')
+            .map((node) => node.getAttribute('id') || '')
             .filter(Boolean);
     }
 }

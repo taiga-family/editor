@@ -10,11 +10,11 @@ import {TuiInputInline} from '@taiga-ui/kit';
     selector: 'embed-tool',
     imports: [
         FormsModule,
-        TuiAutoFocus,
-        TuiInputInline,
         TuiActiveZone,
+        TuiAutoFocus,
         TuiButton,
         TuiDropdown,
+        TuiInputInline,
     ],
     templateUrl: './embed-tool.template.html',
     styleUrls: ['./embed-tool.styles.less'],

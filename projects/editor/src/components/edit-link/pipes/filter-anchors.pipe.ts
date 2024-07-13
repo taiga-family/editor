@@ -7,6 +7,8 @@ import {Pipe} from '@angular/core';
 })
 export class TuiFilterAnchorsPipe implements PipeTransform {
     public transform(anchors: string[], prefix: string, currentUrl: string): string[] {
-        return prefix === '#' ? anchors.filter(anchor => anchor !== currentUrl) : anchors;
+        return prefix === '#'
+            ? anchors.filter((anchor) => anchor !== currentUrl)
+            : anchors;
     }
 }

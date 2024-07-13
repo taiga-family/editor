@@ -15,14 +15,14 @@ import {TUI_EDITOR_FONT_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens
     standalone: true,
     selector: 'tui-font-size',
     imports: [
-        NgStyle,
-        NgClass,
-        LowerCasePipe,
         AsyncPipe,
+        LowerCasePipe,
+        NgClass,
         NgForOf,
+        NgStyle,
+        TuiButton,
         TuiDataList,
         TuiDropdown,
-        TuiButton,
         TuiHint,
     ],
     templateUrl: './font-size.template.html',
@@ -35,9 +35,9 @@ export class TuiFontSize {
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly fontsOptions$: Observable<
         ReadonlyArray<Partial<TuiEditorFontOption>>
-    > = this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
+    > = this.fontOptionsTexts$.pipe(map((texts) => this.options.fontOptions(texts)));
 
-    protected readonly fontText$ = this.texts$.pipe(map(texts => texts.font));
+    protected readonly fontText$ = this.texts$.pipe(map((texts) => texts.font));
 
     protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         const color = this.editor.getFontColor();

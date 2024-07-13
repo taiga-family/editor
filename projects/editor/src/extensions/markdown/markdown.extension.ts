@@ -24,13 +24,13 @@ export const TuiMarkdown = Extension.create({
         const commands = (extensions?.Commands?.config as any)?.addCommands?.();
 
         return {
-            setContent: (content, emitUpdate, parseOptions) => props =>
+            setContent: (content, emitUpdate, parseOptions) => (props) =>
                 commands?.setContent?.(
                     props.editor.storage.markdown.parser.parse(content),
                     emitUpdate,
                     parseOptions,
                 )(props),
-            insertContentAt: (range, content, options) => props =>
+            insertContentAt: (range, content, options) => (props) =>
                 commands?.insertContentAt?.(
                     range,
                     props.editor.storage.markdown.parser.parse(content, {inline: true}),

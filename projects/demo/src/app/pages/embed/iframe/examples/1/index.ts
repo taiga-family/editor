@@ -10,7 +10,7 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
     standalone: true,
-    imports: [ExampleTuiEmbedTool, ReactiveFormsModule, TuiItem, TuiEditor, TuiIcon],
+    imports: [ExampleTuiEmbedTool, ReactiveFormsModule, TuiEditor, TuiIcon, TuiItem],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

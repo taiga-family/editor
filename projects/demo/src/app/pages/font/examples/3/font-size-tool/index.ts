@@ -9,7 +9,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'font-size-tool',
-    imports: [TuiDataList, NgForOf, TuiButton, TuiDropdown, AsyncPipe],
+    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

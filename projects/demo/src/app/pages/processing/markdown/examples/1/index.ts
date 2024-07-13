@@ -15,7 +15,7 @@ import {Converter} from 'showdown';
 
 @Component({
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, TuiEditorSocket, TuiEditor],
+    imports: [NgIf, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

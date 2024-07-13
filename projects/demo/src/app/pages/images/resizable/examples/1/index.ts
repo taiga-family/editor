@@ -13,7 +13,7 @@ import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, HttpClientModule, TuiEditorSocket, TuiEditor],
+    imports: [HttpClientModule, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -36,12 +36,12 @@ export default class Example {
 
     protected base64Image$ = inject(HttpClient)
         .get('assets/images/lumberjack.png', {responseType: 'blob'})
-        .pipe(switchMap(file => this.imageLoader(file)));
+        .pipe(switchMap((file) => this.imageLoader(file)));
 
     protected control = new FormControl('');
 
     constructor() {
-        this.base64Image$.pipe(takeUntilDestroyed()).subscribe(src => {
+        this.base64Image$.pipe(takeUntilDestroyed()).subscribe((src) => {
             this.control.patchValue(
                 `
                     <img src="${src}" width="300" alt="" />

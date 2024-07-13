@@ -15,5 +15,5 @@ bootstrapApplication(AppComponent, {
       path: 'https://taiga-ui.dev/assets/taiga-ui/icons',
     }),
   ],
-}).catch(err => console.error(err));
+}).catch((err) => console.error(err));
 ```

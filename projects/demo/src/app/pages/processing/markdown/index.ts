@@ -6,7 +6,7 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/ed
 
 @Component({
     standalone: true,
-    imports: [TuiAddonDoc, TuiLink, RouterLink],
+    imports: [RouterLink, TuiAddonDoc, TuiLink],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

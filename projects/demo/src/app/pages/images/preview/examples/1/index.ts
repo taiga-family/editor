@@ -16,10 +16,10 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
     imports: [
         ImagePreviewExample,
         ReactiveFormsModule,
-        TuiPreview,
-        TuiEditorSocket,
-        TuiEditorImagePreview,
         TuiEditor,
+        TuiEditorImagePreview,
+        TuiEditorSocket,
+        TuiPreview,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

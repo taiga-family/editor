@@ -52,7 +52,7 @@ function pasteImage(injector: Injector) {
     return (view: EditorView, event: ClipboardEvent | DragEvent): void => {
         const dataTransfer =
             event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
-        const imagesFiles = Array.from(dataTransfer?.files ?? []).filter(file =>
+        const imagesFiles = Array.from(dataTransfer?.files ?? []).filter((file) =>
             /image/i.test(file.type),
         );
 
@@ -62,14 +62,14 @@ function pasteImage(injector: Injector) {
 
         const loader = injector.get(TUI_IMAGE_LOADER);
 
-        imagesFiles.forEach(file => {
+        imagesFiles.forEach((file) => {
             loader(file)
                 .pipe(
                     take(1),
                     // eslint-disable-next-line rxjs/no-ignored-takewhile-value
                     takeWhile(() => !view.isDestroyed),
                 )
-                .subscribe(src => {
+                .subscribe((src) => {
                     const node = view.state.schema.nodes.image.create({src});
                     const transaction = view.state.tr.replaceSelectionWith(node);
 
@@ -131,7 +131,7 @@ export function tuiCreateImageEditorExtension<T, K>({
         addCommands(): Partial<RawCommands> {
             return {
                 setEditableImage:
-                    attrs =>
+                    (attrs) =>
                     ({commands}) =>
                         commands.insertContent({
                             type: this.name,
