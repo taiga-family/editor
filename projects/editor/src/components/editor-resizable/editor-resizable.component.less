@@ -18,7 +18,7 @@
         pointer-events: none;
     }
 
-    &:hover .t-handle:after {
+    &:hover .t-handle::after {
         opacity: 1;
     }
 }
@@ -33,7 +33,7 @@
     align-items: center;
     height: 100%;
 
-    &:after {
+    &::after {
         .transition(opacity);
 
         content: '';
