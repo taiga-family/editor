@@ -64,6 +64,7 @@ export class TuiEditorStarterPageComponent {
     readOnly = false;
     focusable = true;
     floating = false;
+    preview = false;
     pseudoInvalid: boolean | null = null;
     pseudoFocused: boolean | null = null;
     pseudoHovered: boolean | null = null;

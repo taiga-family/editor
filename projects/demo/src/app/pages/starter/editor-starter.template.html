@@ -21,16 +21,25 @@
                 Start typing
             </tui-editor>
 
-            <h4>HTML:</h4>
-            <tui-editor-socket
-                class="tui-example"
-                [content]="control.value || ''"
-            ></tui-editor-socket>
+            <ng-container *ngIf="preview">
+                <h4>HTML:</h4>
+                <tui-editor-socket
+                    class="tui-example"
+                    [content]="control.value || ''"
+                ></tui-editor-socket>
 
-            <h4>Text:</h4>
-            <p>{{ control.value }}</p>
+                <h4>Text:</h4>
+                <p>{{ control.value }}</p>
+            </ng-container>
         </tui-doc-demo>
         <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="preview"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="preview"
+            >
+                Show preview
+            </ng-template>
             <ng-template
                 documentationPropertyName="disabled"
                 documentationPropertyType="boolean"
