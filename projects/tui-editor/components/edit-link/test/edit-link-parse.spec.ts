@@ -139,6 +139,28 @@ describe(`tuiEditLinkParseUrl`, () => {
             prefix: `ftp://`,
             path: `ftp.example:21`,
         });
+
+        expect(
+            tuiEditLinkParseUrl('https://domain.com/path:some:schema:data:test'),
+        ).toEqual({
+            prefix: 'https://',
+            path: 'domain.com/path:some:schema:data:test',
+        });
+
+        expect(tuiEditLinkParseUrl('domain.com/path:some:schema:data:test')).toEqual({
+            prefix: '',
+            path: 'domain.com/path:some:schema:data:test',
+        });
+
+        expect(tuiEditLinkParseUrl('https://domain.com?value=data:test')).toEqual({
+            prefix: 'https://',
+            path: 'domain.com?value=data:test',
+        });
+
+        expect(tuiEditLinkParseUrl('domain.com?value=data:test')).toEqual({
+            prefix: '',
+            path: 'domain.com?value=data:test',
+        });
     });
 
     it(`relative`, () => {
