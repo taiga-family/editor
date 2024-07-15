@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.42.0](https://github.com/taiga-family/tui-editor/compare/v1.41.0...v1.42.0) (2024-07-15)
+
+### Bug Fixes
+
+- reflow editor socket
+  ([2078809](https://github.com/taiga-family/tui-editor/commit/20788097899b997bc1f7455e5642c4a5df1b03a6))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.41.0](https://github.com/taiga-family/tui-editor/compare/v1.40.0...v1.41.0) (2024-07-15)
 
 ### Bug Fixes
