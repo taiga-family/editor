@@ -33,8 +33,11 @@ function splitOsiProtocol(url = ''): Array<string | undefined> {
 
 function splitSimpleProtocol(url = ''): Array<string | undefined> {
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
+    const hardUrl = // https://domain.com/path:some:schema:data:test
+        (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||
+        (url.includes('?') && url.lastIndexOf(':') > url.indexOf('?'));
 
-    return prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
+    return !hardUrl && prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
 }
 
 export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
