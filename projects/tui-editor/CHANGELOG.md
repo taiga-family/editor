@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.41.0](https://github.com/taiga-family/tui-editor/compare/v1.40.0...v1.41.0) (2024-07-15)
+
+### Bug Fixes
+
+- invalid link ([a6cbb33](https://github.com/taiga-family/tui-editor/commit/a6cbb334ca1f16773e6be5b588a9d6633188b8ac))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.40.0](https://github.com/taiga-family/tui-editor/compare/v1.39.0...v1.40.0) (2024-07-02)
 
 ### Bug Fixes
