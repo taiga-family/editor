@@ -21,7 +21,7 @@ ul[data-type] {
         margin-top: 0.25rem;
         cursor: pointer;
 
-        &:before {
+        &::before {
             content: '';
             position: absolute;
             top: 0;
@@ -42,7 +42,7 @@ ul[data-type] {
         background: var(--tui-background-accent-1, #526ed3);
         color: var(--tui-text-primary-on-accent-1, #fff);
 
-        &:before {
+        &::before {
             mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline vector-effect="non-scaling-stroke" points="20 6 9 17 4 12" /></svg>');
             transform: scale(1);
         }

@@ -16,7 +16,7 @@ ol:not([data-type]) {
         word-break: break-word;
     }
 
-    li:before {
+    li::before {
         unicode-bidi: isolate;
         font-variant-numeric: tabular-nums;
         text-transform: none;
@@ -31,7 +31,7 @@ ul:not([data-type]) {
         display: block;
     }
 
-    & > li:before {
+    & > li::before {
         content: '';
         display: inline-block;
         width: 0.5rem;
@@ -45,12 +45,12 @@ ul:not([data-type]) {
     }
 }
 
-li ul:not([data-type]) > li:before {
+li ul:not([data-type]) > li::before {
     background: none;
     border: 0.125rem solid var(--tui-background-accent-1);
 }
 
-li ul:not([data-type]) > li > ul:not([data-type]) > li:before {
+li ul:not([data-type]) > li > ul:not([data-type]) > li::before {
     background: var(--tui-background-accent-1);
     border-radius: 0;
     width: 0.375rem;
@@ -61,7 +61,7 @@ ol:not([data-type]) {
     counter-reset: item;
 }
 
-ol:not([data-type]) > li:before {
+ol:not([data-type]) > li::before {
     content: counters(item, '.') '.';
     display: block;
     counter-increment: item;
@@ -78,7 +78,7 @@ ol:not([data-type]) > li:before {
     counter-reset: details-item;
 }
 
-[data-type='details-content'] ol:not([data-type]) > li:before {
+[data-type='details-content'] ol:not([data-type]) > li::before {
     content: counters(details-item, '.') '.';
     counter-increment: details-item;
 }
@@ -87,7 +87,7 @@ ol:not([data-type]) > li:before {
     counter-reset: details-item2;
 }
 
-[data-type='details-content'] ol:not([data-type]) > li [data-type='details-content'] ol:not([data-type]) > li:before {
+[data-type='details-content'] ol:not([data-type]) > li [data-type='details-content'] ol:not([data-type]) > li::before {
     content: counters(details-item2, '.') '.';
     counter-increment: details-item2;
 }
