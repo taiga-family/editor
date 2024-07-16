@@ -23,7 +23,6 @@ table td {
     position: relative;
     min-width: 1em;
     height: 2rem;
-    border: 0.125rem solid var(--tui-background-neutral-1-hover);
     padding: 0.1875rem 0.3125rem;
     vertical-align: top;
     box-sizing: border-box;
@@ -34,8 +33,7 @@ table th {
     position: relative;
     min-width: 1em;
     height: 2rem;
-    border: 2px solid var(--tui-background-neutral-1-hover);
-    padding: 0.1875rem 0.3125;
+    padding: 0.1875rem 0.3125rem;
     vertical-align: top;
     box-sizing: border-box;
     word-break: break-word;
@@ -43,6 +41,15 @@ table th {
     text-align: left;
     background-color: var(--tui-background-base-alt);
     min-height: 2rem;
+}
+
+table td,
+table th {
+    border: 0.125rem solid rgb(233, 233, 231);
+
+    [tuiTheme='dark'] & {
+        border: 0.125rem solid rgb(47, 47, 47);
+    }
 }
 
 /* stylelint-disable-next-line */
