@@ -112,7 +112,7 @@
         "@nx/jest": "19.4.3",
         "@nx/node": "19.4.3",
         "@nx/workspace": "19.4.3",
-        "@playwright/test": "1.45.1",
+        "@playwright/test": "1.45.2",
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
         "@stackblitz/sdk": "1.11.0",
