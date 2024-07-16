@@ -24,8 +24,9 @@ test.describe('Anchors', () => {
         ]) {
             await page
                 .locator('tui-editor-socket')
-                .nth(1)
+                .last()
                 .locator(`a[href="#${anchor}"]`)
+                .last()
                 .click();
 
             await expect(page).toHaveScreenshot(`Anchors-02-${anchor}.png`);
