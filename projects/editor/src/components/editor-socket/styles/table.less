@@ -67,13 +67,17 @@ table th > * {
 }
 
 /* stylelint-disable-next-line */
-.selectedCell:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--tui-service-selected-text);
-    pointer-events: none;
+.selectedCell {
+    outline: 1px solid rgb(131, 180, 215);
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--tui-service-selected-text);
+        pointer-events: none;
+    }
 }
