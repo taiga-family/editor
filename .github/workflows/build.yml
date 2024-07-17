@@ -2,8 +2,7 @@ name: ⚙️ Build lib
 on:
   pull_request:
   push:
-    branches:
-      - 'v**.x'
+    branches: [main, 'v[0-9]+.x']
 
 jobs:
   build:

@@ -2,8 +2,7 @@ name: ⚙️ Tests
 on:
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main, 'v[0-9]+.x']
 
 jobs:
   tests:
