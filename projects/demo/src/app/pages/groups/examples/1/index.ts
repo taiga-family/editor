@@ -21,7 +21,7 @@ import type {Node} from '@tiptap/pm/model';
                         emptyNodeClass: 't-editor-placeholder',
                         placeholder: (({node}: {node: Node}) => {
                             if (node.type.name === 'paragraph') {
-                                return `Type '/' for command`;
+                                return 'Type "/" for command';
                             }
 
                             return null;
