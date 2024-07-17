@@ -5,10 +5,22 @@ export const TuiCustomEnter = Extension.create({
     addKeyboardShortcuts() {
         return {
             Enter: ({editor}) => {
-                editor.commands.setHardBreak();
-                editor.commands.setHardBreak();
+                if (editor.isActive('summary')) {
+                    editor.commands.selectNodeForward();
+                    editor?.commands.focus(editor?.state.selection.anchor + 1);
 
-                return true;
+                    if (globalThis.document) {
+                        editor.view
+                            .nodeDOM(editor.state.selection.anchor)
+                            ?.parentElement?.closest('details')
+                            ?.querySelector('[data-type="details-content"]')
+                            ?.prepend(document.createElement('p'));
+                    }
+
+                    return false;
+                }
+
+                return this.editor.chain().createParagraphNear().run();
             },
         };
     },
