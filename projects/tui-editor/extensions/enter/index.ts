@@ -5,8 +5,8 @@ export const TuiCustomEnter = Extension.create({
     addKeyboardShortcuts() {
         return {
             Enter: ({editor}) => {
-                editor.commands.setHardBreak();
-                editor.commands.setHardBreak();
+                (editor.commands as any)?.setHardBreak?.();
+                (editor.commands as any)?.setHardBreak?.();
 
                 return true;
             },
