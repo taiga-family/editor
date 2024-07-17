@@ -10,7 +10,6 @@
 
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/editor.svg)](https://npmjs.com/package/@taiga-ui/editor)
 [![All packages CI](https://github.com/taiga-family/editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/editor/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/taiga-ui/editor/branch/main/graphs/badge.svg)](https://app.codecov.io/gh/taiga-family/editor/tree/main/projects)
 
 </div>
 
