@@ -63,26 +63,26 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     addNodeView() {
         return ({node, editor}): any => {
             if (globalThis.document) {
-                const wrapper = document.createElement('div');
-                const details = document.createElement('details');
-                const collapseButton = document.createElement('button');
-                const deleteButton = document.createElement('button');
+                const wrapper = document.createElement(`div`);
+                const details = document.createElement(`details`);
+                const collapseButton = document.createElement(`button`);
+                const deleteButton = document.createElement(`button`);
 
-                wrapper.className = 't-details-wrapper';
-                collapseButton.className = 't-details-arrow';
-                deleteButton.className = 't-details-delete';
+                wrapper.className = `t-details-wrapper`;
+                collapseButton.className = `t-details-arrow`;
+                deleteButton.className = `t-details-delete`;
 
                 details.open = node.attrs.opened;
 
-                collapseButton.addEventListener('click', () => {
+                collapseButton.addEventListener(`click`, () => {
                     details.open = !details.open;
                     (node.attrs as unknown as Record<string, unknown>).opened =
                         details.open;
                 });
 
-                deleteButton.addEventListener('click', () => {
+                deleteButton.addEventListener(`click`, () => {
                     tuiDeleteNode(editor.state, editor.view.dispatch, this.name);
-                    editor.commands.focus('end');
+                    editor.commands.focus(`end`);
                 });
 
                 wrapper.append(details, collapseButton, deleteButton);
@@ -111,7 +111,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                 ({editor, state, dispatch}) => {
                     tuiDeleteNode(state, dispatch, this.name);
 
-                    return editor.commands.focus('end');
+                    return editor.commands.focus(`end`);
                 },
         };
     },
