@@ -7,7 +7,7 @@ export const TuiCustomEnter = Extension.create({
             Enter: ({editor}) => {
                 if (editor.isActive('summary')) {
                     editor.commands.selectNodeForward();
-                    editor?.commands.focus(editor?.state.selection.anchor + 1);
+                    editor?.commands.focus((editor?.state.selection.anchor ?? 0) + 1);
 
                     if (globalThis.document) {
                         editor.view
