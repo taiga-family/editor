@@ -21,6 +21,18 @@
         cursor: col-resize;
     }
 
+    .ProseMirror-gapcursor {
+        margin-top: 0.83rem;
+    }
+
+    .ProseMirror .ProseMirror-gapcursor:first-child {
+        margin-top: 0;
+    }
+
+    br + br.ProseMirror-trailingBreak {
+        display: none;
+    }
+
     /* stylelint-disable */
     @import './styles/text.less';
     @import './styles/link.less';
