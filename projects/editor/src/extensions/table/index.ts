@@ -24,5 +24,9 @@ export const TuiTable = Table.extend({
         ];
     },
 })
-    .configure({resizable: true})
+    .configure({
+        resizable: true,
+        lastColumnResizable: false,
+        allowTableNodeSelection: true,
+    })
     .extend();

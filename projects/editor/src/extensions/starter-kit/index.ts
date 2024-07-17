@@ -30,6 +30,8 @@ import type {OrderedListOptions} from '@tiptap/extension-ordered-list';
 import {OrderedList} from '@tiptap/extension-ordered-list';
 import type {ParagraphOptions} from '@tiptap/extension-paragraph';
 import {Paragraph} from '@tiptap/extension-paragraph';
+import type {PlaceholderOptions} from '@tiptap/extension-placeholder';
+import {Placeholder} from '@tiptap/extension-placeholder';
 import type {StrikeOptions} from '@tiptap/extension-strike';
 import {Strike} from '@tiptap/extension-strike';
 import type {TaskItemOptions} from '@tiptap/extension-task-item';
@@ -38,6 +40,8 @@ import type {TaskListOptions} from '@tiptap/extension-task-list';
 import {TaskList} from '@tiptap/extension-task-list';
 import {Text} from '@tiptap/extension-text';
 
+import {TuiCustomEnter} from '../enter';
+
 export interface TuiStarterKitOptions {
     blockquote: Partial<BlockquoteOptions> | false;
     bold: Partial<BoldOptions> | false;
@@ -45,6 +49,7 @@ export interface TuiStarterKitOptions {
     code: Partial<CodeOptions> | false;
     codeBlock: Partial<CodeBlockOptions> | false;
     document: false;
+    enter: false;
     dropcursor: Partial<DropcursorOptions> | false;
     gapcursor: false;
     hardBreak: Partial<HardBreakOptions> | false;
@@ -58,6 +63,7 @@ export interface TuiStarterKitOptions {
     orderedList: Partial<OrderedListOptions> | false;
     paragraph: Partial<ParagraphOptions> | false;
     strike: Partial<StrikeOptions> | false;
+    placeholder: Partial<PlaceholderOptions> | false;
     text: false;
 }
 
@@ -100,7 +106,12 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.gapcursor !== false) {
-            extensions.push(Gapcursor.configure(options?.gapcursor));
+            extensions.push(
+                Gapcursor.configure({
+                    allowGapCursor: true,
+                    ...(options?.gapcursor ?? {}),
+                }),
+            );
         }
 
         if (options?.hardBreak !== false) {
@@ -176,6 +187,23 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
 
         if (options?.text !== false) {
             extensions.push(Text.configure(options?.text));
+        }
+
+        if (options?.placeholder !== false) {
+            extensions.push(
+                Placeholder.configure({
+                    emptyNodeClass: 't-editor-placeholder',
+                    includeChildren: true,
+                    showOnlyCurrent: true,
+                    showOnlyWhenEditable: true,
+                    placeholder: '',
+                    ...(options?.placeholder ?? {}),
+                }),
+            );
+        }
+
+        if (options?.enter !== false) {
+            extensions.push(TuiCustomEnter);
         }
 
         return extensions;

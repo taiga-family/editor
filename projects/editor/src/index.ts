@@ -42,6 +42,7 @@ export * from './enums/editor-tool';
 export * from './extensions/background-color';
 export * from './extensions/default-editor-extensions';
 export * from './extensions/details';
+export * from './extensions/enter';
 export * from './extensions/file-link';
 export * from './extensions/font-color';
 export * from './extensions/font-size';
