@@ -6,6 +6,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import type {Node} from '@tiptap/pm/model';
 
 @Component({
     standalone: true,
@@ -20,7 +21,14 @@ import {
                 import('@tiptap/extension-placeholder').then(({Placeholder}) =>
                     Placeholder.configure({
                         emptyNodeClass: 't-editor-placeholder',
-                        placeholder: "Type '/' for command", // Notion like
+                        placeholder: (({node}: {node: Node}) => {
+                            if (node.type.name === 'paragraph') {
+                                return "Type '/' for command";
+                            }
+
+                            return null;
+                        }) as any,
+                        showOnlyCurrent: true,
                         includeChildren: true,
                     }),
                 ),
