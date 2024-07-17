@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.43.0](https://github.com/taiga-family/tui-editor/compare/v1.42.0...v1.43.0) (2024-07-17)
+
+### Features
+
+- add `TuiCustomEnter` and `Placeholder` extensions by default
+  ([d95d46e](https://github.com/taiga-family/tui-editor/commit/d95d46e9d4fdcf44a8ba3dad2294d2554383bdc1))
+- add outline color for selected cell
+  ([cd22e0e](https://github.com/taiga-family/tui-editor/commit/cd22e0e2aabb2d07276e245c1b88be2601df2e87))
+- improve styles for gapcursor
+  ([71f5681](https://github.com/taiga-family/tui-editor/commit/71f56810242b6b803164e27fc70db0b80d91b846))
+- support draggable for details
+  ([b532540](https://github.com/taiga-family/tui-editor/commit/b532540a6882c0263b715d1ac347dd3bf5bd88b4))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.42.0](https://github.com/taiga-family/tui-editor/compare/v1.41.0...v1.42.0) (2024-07-15)
 
 ### Bug Fixes
