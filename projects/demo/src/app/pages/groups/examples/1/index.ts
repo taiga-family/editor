@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TuiDestroyService} from '@taiga-ui/cdk';
 import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
+import type {Node} from '@tiptap/pm/model';
 
 @Component({
     selector: 'tui-editor-groups-example-1',
@@ -18,8 +19,14 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditorTool} from '@tinkoff/tui-editor';
                 import('@tiptap/extension-placeholder').then(({Placeholder}) =>
                     Placeholder.configure({
                         emptyNodeClass: 't-editor-placeholder',
-                        // eslint-disable-next-line @typescript-eslint/quotes
-                        placeholder: "Type '/' for command", // Notion like
+                        placeholder: (({node}: {node: Node}) => {
+                            if (node.type.name === 'paragraph') {
+                                return "Type '/' for command";
+                            }
+
+                            return null;
+                        }) as any,
+                        showOnlyCurrent: true,
                         includeChildren: true,
                     }),
                 ),
