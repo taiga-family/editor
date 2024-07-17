@@ -70,5 +70,5 @@ jobs:
           exit 1
 
 concurrency:
-  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  group: e2e-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true

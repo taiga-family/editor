@@ -30,5 +30,5 @@ jobs:
           folder: dist/demo/browser
 
 concurrency:
-  group: deploy-gh-pages
+  group: deploy-gh-pages-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
