@@ -1,5 +1,6 @@
 export * from '@tinkoff/tui-editor/extensions/background-color';
 export * from '@tinkoff/tui-editor/extensions/default-editor-extensions';
+export * from '@tinkoff/tui-editor/extensions/enter';
 export * from '@tinkoff/tui-editor/extensions/file-link';
 export * from '@tinkoff/tui-editor/extensions/font-color';
 export * from '@tinkoff/tui-editor/extensions/font-size';

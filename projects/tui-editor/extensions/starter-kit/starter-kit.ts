@@ -1,3 +1,4 @@
+import {TuiCustomEnter} from '@tinkoff/tui-editor/extensions/enter';
 import {Extension, KeyboardShortcutCommand} from '@tiptap/core';
 import {Blockquote, BlockquoteOptions} from '@tiptap/extension-blockquote';
 import {Bold, BoldOptions} from '@tiptap/extension-bold';
@@ -15,6 +16,8 @@ import {Italic, ItalicOptions} from '@tiptap/extension-italic';
 import {ListItem, ListItemOptions} from '@tiptap/extension-list-item';
 import {OrderedList, OrderedListOptions} from '@tiptap/extension-ordered-list';
 import {Paragraph, ParagraphOptions} from '@tiptap/extension-paragraph';
+import type {PlaceholderOptions} from '@tiptap/extension-placeholder';
+import {Placeholder} from '@tiptap/extension-placeholder';
 import {Strike, StrikeOptions} from '@tiptap/extension-strike';
 import {TaskItem, TaskItemOptions} from '@tiptap/extension-task-item';
 import {TaskList, TaskListOptions} from '@tiptap/extension-task-list';
@@ -27,6 +30,7 @@ export interface TuiStarterKitOptions {
     code: Partial<CodeOptions> | false;
     codeBlock: Partial<CodeBlockOptions> | false;
     document: false;
+    enter: false;
     dropcursor: Partial<DropcursorOptions> | false;
     gapcursor: false;
     hardBreak: Partial<HardBreakOptions> | false;
@@ -40,6 +44,7 @@ export interface TuiStarterKitOptions {
     orderedList: Partial<OrderedListOptions> | false;
     paragraph: Partial<ParagraphOptions> | false;
     strike: Partial<StrikeOptions> | false;
+    placeholder: Partial<PlaceholderOptions> | false;
     text: false;
 }
 
@@ -160,6 +165,23 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
 
         if (options?.text !== false) {
             extensions.push(Text.configure(options?.text));
+        }
+
+        if (options?.placeholder !== false) {
+            extensions.push(
+                Placeholder.configure({
+                    emptyNodeClass: `t-editor-placeholder`,
+                    includeChildren: true,
+                    showOnlyCurrent: true,
+                    showOnlyWhenEditable: true,
+                    placeholder: ``,
+                    ...(options?.placeholder ?? {}),
+                }),
+            );
+        }
+
+        if (options?.enter !== false) {
+            extensions.push(TuiCustomEnter);
         }
 
         return extensions;

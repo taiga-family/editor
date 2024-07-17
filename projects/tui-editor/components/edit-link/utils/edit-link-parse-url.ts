@@ -27,8 +27,8 @@ function splitOsiProtocol(url: string = ``): Array<string | undefined> {
 function splitSimpleProtocol(url: string = ``): Array<string | undefined> {
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
     const hardUrl = // https://domain.com/path:some:schema:data:test
-        (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||
-        (url.includes('?') && url.lastIndexOf(':') > url.indexOf('?'));
+        (url.includes(`/`) && url.lastIndexOf(`:`) > url.indexOf(`/`)) ||
+        (url.includes(`?`) && url.lastIndexOf(`:`) > url.indexOf(`?`));
 
     return !hardUrl && prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
 }
