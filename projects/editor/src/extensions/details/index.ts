@@ -42,7 +42,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     content: 'summary detailsContent',
 
     group: 'block',
-
+    draggable: true,
     allowGapCursor: true,
     isolating: true,
 
