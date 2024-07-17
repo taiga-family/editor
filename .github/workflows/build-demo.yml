@@ -18,5 +18,5 @@ jobs:
       - run: npm run build
 
 concurrency:
-  group: build-demo-${{ github.head_ref }}
+  group: build-demo-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true

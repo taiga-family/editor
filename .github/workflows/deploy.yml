@@ -20,5 +20,5 @@ jobs:
           folder: dist/demo/browser
 
 concurrency:
-  group: deploy-${{ github.head_ref }}
+  group: deploy-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true

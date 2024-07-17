@@ -23,5 +23,5 @@ jobs:
           name: tui-editor
 
 concurrency:
-  group: test-${{ github.head_ref }}
+  group: test-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
