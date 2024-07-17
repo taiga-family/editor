@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.46.0](https://github.com/taiga-family/tui-editor/compare/v1.45.0...v1.46.0) (2024-07-17)
+
+### Features
+
+- support break line inside details content
+  ([55c53da](https://github.com/taiga-family/tui-editor/commit/55c53da615f6e7181c62ee4fb36bd5a4ff39f9e5))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.45.0](https://github.com/taiga-family/tui-editor/compare/v1.44.0...v1.45.0) (2024-07-17)
 
 ### Features
