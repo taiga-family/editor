@@ -15,15 +15,6 @@ export const appRoutes: Routes = [
         },
     },
     {
-        path: `stackblitz`,
-        loadChildren: async () =>
-            (await import(`./pages/stackblitz/starter/stackblitz-starter.module`))
-                .StackblitzStarterModule,
-        data: {
-            title: `Stackblitz Starter`,
-        },
-    },
-    {
         path: TuiDemoPath.ColorPicker,
         loadChildren: async () =>
             (await import(`./pages/color-picker/editor-input-color-picker.module`))

@@ -17,13 +17,6 @@ export const DEMO_PAGES: TuiDocPages = [
     },
     {
         section: `Documentation`,
-        title: `Playground`,
-        keywords: `reproduce, issue, bug, sandbox, playground, test, stackblitz`,
-        route: TuiDemoPath.Stackblitz,
-        target: `_blank`,
-    },
-    {
-        section: `Documentation`,
         title: `Changelog`,
         route: TuiDemoPath.Changelog,
         keywords: `release, change, changelog, archive, history`,

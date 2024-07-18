@@ -1,46 +1,26 @@
 <tui-root>
     <tui-doc-main>
         <ng-container ngProjectAs="tuiDocHeader">
-            <a
-                href="https://github.com/taiga-family/tui-editor"
-                icon="assets/icons/github.svg"
-                iconAlign="left"
-                rel="noreferrer"
-                target="_blank"
-                title="TUI Editor source code on GitHub"
-                tuiLink
-                tuiMode="onLight"
-                class="link"
-            ></a>
+            <div class="t-links">
+                <p
+                    ngProjectAs="tuiDocNavigation"
+                    class="app-version"
+                >
+                    v{{ version }}
+                </p>
 
-            <a
-                href="https://t.me/taiga_ui"
-                icon="assets/icons/telegram.svg"
-                iconAlign="left"
-                rel="noreferrer"
-                target="_blank"
-                title="Get help on Telegram"
-                tuiLink
-                tuiMode="onLight"
-                class="link"
-            ></a>
-
-            <a
-                icon="assets/icons/stackblitz.svg"
-                iconAlign="left"
-                routerLink="stackblitz"
-                title="StackBlitz Starter"
-                tuiLink
-                tuiMode="onLight"
-                class="link"
-            ></a>
+                <a
+                    href="https://stackblitz.com/github/taiga-family/editor-preview/tree/main?file=apps/demo/src/app/home/home.component.html"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <img
+                        alt="stackblitz"
+                        src="https://developer.stackblitz.com/img/open_in_stackblitz_small.svg"
+                        class="stackblitz"
+                    />
+                </a>
+            </div>
         </ng-container>
-
-        <p
-            ngProjectAs="tuiDocNavigation"
-            class="app-version"
-        >
-            v{{ version }}
-        </p>
     </tui-doc-main>
 </tui-root>
