@@ -117,7 +117,7 @@
         "@release-it/conventional-changelog": "8.0.1",
         "@stackblitz/sdk": "1.11.0",
         "@swc-node/register": "1.10.9",
-        "@swc/core": "1.6.13",
+        "@swc/core": "1.7.0",
         "@swc/helpers": "0.5.12",
         "@taiga-ui/browserslist-config": "0.116.0",
         "@taiga-ui/commitlint-config": "0.116.0",
