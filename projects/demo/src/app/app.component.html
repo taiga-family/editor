@@ -1,10 +1,23 @@
 <tui-doc-main>
     <ng-container ngProjectAs="tuiDocHeader">
-        <p
-            ngProjectAs="tuiDocNavigation"
-            class="app-version"
-        >
-            v{{ version }}
-        </p>
+        <div class="t-links">
+            <p
+                ngProjectAs="tuiDocNavigation"
+                class="app-version"
+            >
+                v{{ version }}
+            </p>
+
+            <a
+                href="https://stackblitz.com/github/taiga-family/editor-preview/tree/main?file=apps/demo/src/app/home/home.component.html"
+                target="_blank"
+            >
+                <img
+                    alt="stackblitz"
+                    src="https://developer.stackblitz.com/img/open_in_stackblitz_small.svg"
+                    class="stackblitz"
+                />
+            </a>
+        </div>
     </ng-container>
 </tui-doc-main>

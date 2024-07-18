@@ -1,10 +1,6 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 import {join} from 'node:path';
 
-import {TuiDemoPath} from '../src/app/shared/routes';
-
-const EXCEPTIONS: string[] = [TuiDemoPath.Stackblitz];
-
 /**
  * This script is required for correct of `nx prerender demo` command.
  * `@nguniversal/builders:prerender` (version 12) can't extract routes for lazy-loading modules.
@@ -25,7 +21,7 @@ const EXCEPTIONS: string[] = [TuiDemoPath.Stackblitz];
             .match(/['"`](.*)['"`]/g)
             ?.map((route) => route.replaceAll(/['"`]/g, '')) || []
     )
-        .filter((route) => !EXCEPTIONS.includes(route) && !route.includes('embed'))
+        .filter((route) => !route.includes('embed'))
         .map((route) => `/${route}`);
 
     console.info('Generated routes:');

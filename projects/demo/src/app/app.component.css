@@ -3,6 +3,16 @@
     color: var(--tui-text-primary);
 }
 
+.t-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    & > * {
+        display: flex;
+    }
+}
+
 .link {
     margin-left: 1rem;
 }
@@ -10,6 +20,13 @@
 .app-version {
     color: var(--tui-text-secondary);
     font: var(--tui-font-text-xs);
+}
+
+.stackblitz:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
 }
 
 @media not (min-width: 480px) {

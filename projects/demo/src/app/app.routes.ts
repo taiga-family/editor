@@ -10,11 +10,6 @@ export const routes: Routes = [
         title: 'StarterKit',
     }),
     route({
-        path: 'stackblitz',
-        loadComponent: async () => import('./pages/stackblitz/starter'),
-        title: 'Stackblitz Starter',
-    }),
-    route({
         path: TuiDemoPath.Font,
         loadComponent: async () => import('./pages/font'),
         title: 'Font',

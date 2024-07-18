@@ -18,13 +18,6 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'Playground',
-        keywords: 'reproduce, issue, bug, sandbox, playground, test, stackblitz',
-        route: TuiDemoPath.Stackblitz,
-        target: '_blank',
-    },
-    {
-        section: 'Documentation',
         title: 'Font',
         route: TuiDemoPath.Font,
         keywords: 'editor, font, wysiwyg, редактор, текст, html, rich, text',
