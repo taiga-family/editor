@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.47.0](https://github.com/taiga-family/tui-editor/compare/v1.46.0...v1.47.0) (2024-07-19)
+
+### Bug Fixes
+
+- correct position for mention dropdown
+  ([ea8f727](https://github.com/taiga-family/tui-editor/commit/ea8f727338ccd13dc5a8a1238c2988cde0d28bec))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.46.0](https://github.com/taiga-family/tui-editor/compare/v1.45.0...v1.46.0) (2024-07-17)
 
 ### Features
