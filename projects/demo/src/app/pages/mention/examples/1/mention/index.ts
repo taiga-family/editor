@@ -1,9 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     EventEmitter,
+    HostListener,
     Input,
     Output,
+    ViewChild,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
 
@@ -19,6 +22,9 @@ export interface User {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MentionsComponent {
+    @ViewChild('container', {read: ElementRef})
+    private readonly container?: ElementRef<HTMLDivElement>;
+
     @Input()
     mentionSuggestions?: string;
 
@@ -47,5 +53,20 @@ export class MentionsComponent {
                       name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()),
               )
             : items;
+    }
+
+    @HostListener('window:keydown.arrowUp', ['$event', 'false'])
+    @HostListener('window:keydown.arrowDown', ['$event', 'true'])
+    protected down(event: Event, isDown: boolean): void {
+        const buttons = Array.from(this.el?.querySelectorAll('button') ?? []);
+        const button = isDown ? buttons[0] : buttons[buttons.length - 1];
+
+        if (!this.el?.contains(event.target as any)) {
+            button.focus();
+        }
+    }
+
+    private get el(): HTMLDivElement | null {
+        return this.container?.nativeElement ?? null;
     }
 }
