@@ -55,12 +55,13 @@
                 [tuiToolbarDropdown]="dropdownSelectionHandler"
                 [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
             >
-                <tui-editor-socket
+                <div
                     tuiTiptapEditor
+                    class="tui-editor-socket"
                     [editable]="interactive()"
                     [value]="firstInitialValue"
                     (valueChange)="onModelChange($event)"
-                />
+                ></div>
             </div>
 
             <ng-template #dropdown>
