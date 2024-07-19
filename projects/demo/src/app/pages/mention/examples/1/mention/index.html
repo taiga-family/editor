@@ -1,15 +1,17 @@
-<tui-data-list (mouseleave.capture)="$event.stopPropagation()">
-    <button
-        *ngFor="let item of getFilteredItems(items, mentionSuggestions); let i = index"
-        tuiOption
-        [tuiAutoFocus]="i == 0"
-        (click)="setMention.emit(item)"
-        (keydown.enter)="setMention.emit(item)"
-    >
-        {{ item.name }}
-        <tui-avatar
-            size="s"
-            [src]="item.avatar || (item.name | tuiInitials)"
-        />
-    </button>
+<tui-data-list>
+    <div #container>
+        <button
+            *ngFor="let item of getFilteredItems(items, mentionSuggestions); let i = index"
+            #button
+            tuiOption
+            (click)="setMention.emit(item)"
+            (keydown.enter)="setMention.emit(item)"
+        >
+            {{ item.name }}
+            <tui-avatar
+                size="s"
+                [src]="item.avatar || (item.name | tuiInitials)"
+            />
+        </button>
+    </div>
 </tui-data-list>

@@ -65,7 +65,8 @@ export class TuiEditorDropdownToolbar
                 range.commonAncestorContainer.parentElement?.closest('tui-dropdown');
 
             this.range =
-                contained && tuiIsTextNode(range.commonAncestorContainer)
+                (contained && tuiIsTextNode(range.commonAncestorContainer)) ||
+                range.commonAncestorContainer?.nodeName === 'P'
                     ? range
                     : this.range;
 
