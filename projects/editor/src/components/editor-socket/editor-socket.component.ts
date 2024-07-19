@@ -2,15 +2,15 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
+    HostBinding,
     HostListener,
     inject,
     Input,
-    Renderer2,
-    Sanitizer,
     SecurityContext,
     ViewEncapsulation,
 } from '@angular/core';
+import type {SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiIsElement} from '@taiga-ui/cdk';
 
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
@@ -29,22 +29,24 @@ import {TUI_EDITOR_SANITIZER} from '../../tokens/editor-sanitizer';
     },
 })
 export class TuiEditorSocket {
-    private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-    private readonly renderer = inject(Renderer2);
-    private readonly sanitizer = inject(Sanitizer);
-    private readonly tuiSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
-    private readonly document = inject(DOCUMENT);
     private readonly editor = inject(TuiTiptapEditor, {optional: true});
+    private readonly customSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
+    private readonly sanitizer = inject(DomSanitizer);
+    private readonly document = inject(DOCUMENT);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
-    public set content(content: string) {
-        this.renderer.setProperty(
-            this.el,
-            'innerHTML',
-            this.tuiSanitizer
-                ? this.tuiSanitizer.sanitize(SecurityContext.HTML, content)
-                : this.sanitizer.sanitize(SecurityContext.HTML, content ?? ''),
+    public content: string | null = null;
+
+    @HostBinding('innerHTML')
+    public get innerHtml(): SafeHtml | null {
+        if (!this.content) {
+            return null;
+        }
+
+        return (
+            this.customSanitizer?.sanitize(SecurityContext.HTML, this.content) ??
+            this.sanitizer.bypassSecurityTrustHtml(this.content)
         );
     }
 
