@@ -21,6 +21,7 @@
                 "outputPath": "dist/demo/browser",
                 "index": "projects/demo/src/index.html",
                 "main": "projects/demo/src/main.ts",
+                "inlineStyleLanguage": "less",
                 "polyfills": "projects/demo/src/polyfills.ts",
                 "tsConfig": "projects/demo/tsconfig.app.json",
                 "assets": [
