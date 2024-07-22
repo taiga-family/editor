@@ -110,7 +110,8 @@
                 "main": "projects/demo/server/server.ts",
                 "tsConfig": "projects/demo/tsconfig.server.json",
                 "sourceMap": true,
-                "optimization": false
+                "optimization": false,
+                "inlineStyleLanguage": "less"
             },
             "configurations": {
                 "production": {
