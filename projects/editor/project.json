@@ -12,9 +12,7 @@
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": [
-                "{workspaceRoot}/dist/{projectName}"
-            ],
+            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/{projectName}/ng-package.json"
@@ -28,9 +26,7 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": [
-                "{workspaceRoot}/coverage/{projectName}"
-            ],
+            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
             "options": {
                 "jestConfig": "projects/{projectName}/jest.config.ts"
             }
