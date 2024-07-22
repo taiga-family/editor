@@ -67,7 +67,7 @@ export class TuiEditorDropdownToolbar
         }),
     );
 
-    private ghost?: HTMLElement;
+    private readonly ghost?: HTMLElement;
 
     @Input('tuiToolbarDropdownPosition')
     public position: 'selection' | 'tag' | 'word' = 'selection';
