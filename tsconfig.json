@@ -34,9 +34,7 @@
             "@taiga-ui/testing/*": ["./taiga-ui/projects/testing/*"],
             "@taiga-ui/submodule-package": ["./taiga-ui/package.json"],
             "@taiga-ui/submodule-demo-package": ["./taiga-ui/projects/demo/package.json"],
-            "@taiga-ui/submodule-cdk-package": ["./taiga-ui/projects/cdk/package.json"],
-            "rxjs/*": ["node_modules/rxjs/*"],
-            "rxjs": ["node_modules/rxjs"]
+            "@taiga-ui/submodule-cdk-package": ["./taiga-ui/projects/cdk/package.json"]
         }
     }
 }

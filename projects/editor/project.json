@@ -1,34 +1,23 @@
 {
-    "name": "editor",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/editor",
+    "name": "editor",
     "projectType": "library",
-    "prefix": "tui",
+    "sourceRoot": "projects/editor",
     "targets": {
-        "lint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "eslint --no-error-on-unmatched-pattern \"**/projects/editor/**/*\""
-            }
-        },
-        "stylelint": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "stylelint \"**/editor/**/*.{css,less}\" --allow-empty-input"
-            }
-        },
         "prebuild": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "npx nx run-many -t build -p i18n cdk core kit legacy --output-style=stream"
+                "command": "npx nx run-many -t build -p i18n cdk core kit legacy layout --output-style=stream"
             }
         },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/editor"],
+            "outputs": [
+                "{workspaceRoot}/dist/{projectName}"
+            ],
             "options": {
                 "tsConfig": "tsconfig.build.json",
-                "project": "projects/editor/ng-package.json"
+                "project": "projects/{projectName}/ng-package.json"
             },
             "dependsOn": [
                 {
@@ -39,15 +28,17 @@
         },
         "test": {
             "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/editor"],
+            "outputs": [
+                "{workspaceRoot}/coverage/{projectName}"
+            ],
             "options": {
-                "jestConfig": "projects/editor/jest.config.ts"
+                "jestConfig": "projects/{projectName}/jest.config.ts"
             }
         },
         "publish": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "export TAG=\"$(node -p \"require('./package.json')?.version?.includes('alpha') ? 'alpha' : 'stable'\")\" && npm publish --tag $TAG ./dist/editor --access=public --verbose --ignore-scripts || echo 'already published'"
+                "command": "export TAG=\"$(node -p \"require('./package.json')?.version?.includes('alpha') ? 'alpha' : 'stable'\")\" && npm publish --tag $TAG ./dist/{projectName} --access=public --verbose --ignore-scripts || echo 'already published'"
             }
         }
     }
