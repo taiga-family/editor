@@ -9,4 +9,4 @@ if (environment.production) {
     enableProdMode();
 }
 
-bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err: unknown) => console.error(err));

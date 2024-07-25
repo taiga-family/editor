@@ -95,14 +95,14 @@ export class TuiEditorMarkdownParser {
     protected normalizeInline(node: Element, content: string): void {
         if (node.firstElementChild?.matches('p')) {
             const firstParagraph = node.firstElementChild;
-            const {nextElementSibling} = firstParagraph;
+            const {nextElementSibling, innerHTML} = firstParagraph;
             const startSpaces = content.match(/^\s+/)?.[0] ?? '';
             const endSpaces = !nextElementSibling
                 ? (content.match(/\s+$/)?.[0] ?? '')
                 : '';
 
             if (content.match(/^\n\n/)) {
-                firstParagraph.innerHTML = `${firstParagraph.innerHTML}${endSpaces}`;
+                firstParagraph.innerHTML = `${innerHTML}${endSpaces}`;
 
                 return;
             }

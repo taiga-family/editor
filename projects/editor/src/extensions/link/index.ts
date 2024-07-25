@@ -20,11 +20,11 @@ export const TuiLink = Link.extend({
                 ({chain, state}) => {
                     // eslint-disable-next-line no-lone-blocks
                     {
-                        const {selection, doc} = state;
+                        const {selection, doc, schema} = state;
                         const selected = doc.cut(selection.to, selection.to + 1);
                         const sliced = getHTMLFromFragment(
                             selected.content,
-                            state.schema,
+                            schema,
                         ).replaceAll(/<\/?[^>]+(>|$)/g, '');
                         const forwardSymbolIsWhitespace = sliced === ' ';
 
