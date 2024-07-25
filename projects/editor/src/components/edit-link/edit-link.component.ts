@@ -1,4 +1,4 @@
-import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,6 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiAutoFocus, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
@@ -49,7 +50,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditLink {
-    private readonly doc = inject(DOCUMENT);
+    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
     private readonly editor = inject(TuiTiptapEditorService);
 
@@ -179,7 +180,7 @@ export class TuiEditLink {
     }
 
     private getFocusedParentElement(): HTMLElement | null {
-        return this.doc.getSelection()?.focusNode?.parentElement || null;
+        return this.doc?.getSelection?.()?.focusNode?.parentElement || null;
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {
@@ -232,7 +233,7 @@ export class TuiEditLink {
         const nodes: Element[] = Array.from(
             this.editor
                 .getOriginTiptapEditor()
-                .view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
+                ?.view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
         );
 
         return Array.from(nodes)

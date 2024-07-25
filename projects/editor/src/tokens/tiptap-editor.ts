@@ -16,7 +16,9 @@ export const LAZY_TIPTAP_EDITOR = new InjectionToken('[LAZY_TIPTAP_EDITOR]', {
         const editor$ = new ReplaySubject<typeof Editor>(1);
 
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        import('@tiptap/core').then((m) => editor$.next(m.Editor));
+        import('@tiptap/core')
+            .then(({Editor}) => editor$.next(Editor))
+            .catch(() => editor$.complete());
 
         return editor$;
     },

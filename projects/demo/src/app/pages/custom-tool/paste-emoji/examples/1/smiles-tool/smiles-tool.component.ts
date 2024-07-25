@@ -34,7 +34,7 @@ export class ExampleTuiSmilesTool {
     protected insertSmile(smile: string): void {
         this.editor
             .getOriginTiptapEditor()
-            .chain()
+            ?.chain()
             .focus()
             .insertContent(`<p data-type="emoji">${smile}</p>`)
             .insertContent(' ')

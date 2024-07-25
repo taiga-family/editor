@@ -8,7 +8,7 @@ export interface TuiSelectionState {
 export function tuiGetSelectionState(
     editor: AbstractTuiEditor | null,
 ): TuiSelectionState {
-    if (!editor) {
+    if (!editor?.state?.selection) {
         return {before: '', after: ''};
     }
 

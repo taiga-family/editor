@@ -122,7 +122,7 @@ export default class Example {
 
         this.wysiwyg?.editor
             ?.getOriginTiptapEditor()
-            .commands.insertContent(
+            ?.commands.insertContent(
                 `<${tag} controls width="100%"><source src="${file.link}" type="${file.attrs?.type}"></${tag}><p><a href="${file.link}" download="${file.name}">Download ${file.name}</a></p>`,
             );
     }

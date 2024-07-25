@@ -80,8 +80,6 @@ export * from './utils/delete-nodes';
 export * from './utils/get-mark-range';
 export * from './utils/get-nested-nodes';
 export * from './utils/get-selected-content';
-export * from './utils/insert-html';
-export * from './utils/insert-text';
 export * from './utils/is-selection-in';
 export * from './utils/legacy-converter';
 export * from './utils/parse-node-attributes';

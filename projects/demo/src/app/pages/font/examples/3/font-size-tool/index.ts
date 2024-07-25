@@ -62,12 +62,14 @@ export class ExampleTuiFontSizeTool {
     }
 
     @tuiPure
-    private getDefaultFontSize(element: Element): number {
-        return Number(
-            this.win
-                .getComputedStyle(element)
-                .getPropertyValue('font-size')
-                .match(/\d+/)?.[0],
-        );
+    private getDefaultFontSize(element?: Element): number {
+        return element
+            ? Number(
+                  this.win
+                      .getComputedStyle(element)
+                      .getPropertyValue('font-size')
+                      .match(/\d+/)?.[0],
+              )
+            : 16;
     }
 }

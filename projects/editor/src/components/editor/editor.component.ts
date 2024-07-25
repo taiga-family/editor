@@ -1,4 +1,4 @@
-import {AsyncPipe, DOCUMENT, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -13,6 +13,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
@@ -81,6 +82,9 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
     ],
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild(TuiTiptapEditor, {read: ElementRef})
@@ -90,7 +94,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         TuiValueTransformer<string | null, string | null>
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
 
-    private readonly doc = inject(DOCUMENT);
+    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
 
@@ -105,7 +109,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         .subscribe(() => {
             this.hasMentionPlugin = !!this.editorService
                 .getOriginTiptapEditor()
-                .extensionManager.extensions.find(
+                ?.extensionManager.extensions.find(
                     (extension) => extension.name === 'mention',
                 );
 
@@ -175,7 +179,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         }
 
         if (!this.focused) {
-            this.doc.getSelection()?.removeAllRanges();
+            this.doc?.getSelection?.()?.removeAllRanges();
         }
     }
 
@@ -196,7 +200,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get isLinkSelected(): boolean {
-        const node = this.doc.getSelection()?.focusNode?.parentNode;
+        const node = this.doc?.getSelection()?.focusNode?.parentNode;
 
         return (
             node?.nodeName.toLowerCase() === 'a' ||
@@ -245,7 +249,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private get focusNode(): Node | null {
-        return this.doc.getSelection()?.focusNode ?? null;
+        return this.doc?.getSelection?.()?.focusNode ?? null;
     }
 
     private get currentFocusedNodeIsImageAnchor(): boolean {

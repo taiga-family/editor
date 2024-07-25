@@ -16,7 +16,7 @@ export abstract class AbstractTuiEditor {
     public abstract editable: boolean;
     public readonly stateChange$ = new Subject<void>();
     public readonly valueChange$ = new Subject<string>();
-    public abstract get state(): EditorState;
+    public abstract get state(): EditorState | null;
     public abstract isActive$(name: Record<string, string> | string): Observable<boolean>;
     public abstract isActive(name: Record<string, string> | string): boolean;
     public abstract undoDisabled(): boolean;
@@ -84,7 +84,7 @@ export abstract class AbstractTuiEditor {
     public abstract focus(): void;
     public abstract setValue(value: string): void;
     public abstract setCellColor(color: string): void;
-    public abstract getOriginTiptapEditor(): Editor;
+    public abstract getOriginTiptapEditor(): Editor | null;
     public abstract enter(): void;
     public abstract setDetails(): void;
     public abstract removeDetails(): void;

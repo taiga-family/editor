@@ -1,6 +1,6 @@
-import {DOCUMENT} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {Directive, ElementRef, inject, Input, ViewContainerRef} from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     EMPTY_CLIENT_RECT,
@@ -34,7 +34,7 @@ export class TuiEditorDropdownToolbar
 {
     private previousTagPosition: DOMRect | null = null;
     private range = inject(TUI_RANGE);
-    private readonly doc = inject(DOCUMENT);
+    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private readonly selection$ = inject(TUI_SELECTION_STREAM);
     private readonly el = inject(ElementRef<HTMLElement>);
     private readonly vcr = inject(ViewContainerRef);
@@ -100,7 +100,7 @@ export class TuiEditorDropdownToolbar
                 this.previousTagPosition =
                     element && tuiIsElement(element)
                         ? this.doc
-                              .querySelector('.ProseMirror-selectednode')
+                              ?.querySelector('.ProseMirror-selectednode')
                               ?.getBoundingClientRect() || element.getBoundingClientRect()
                         : EMPTY_CLIENT_RECT;
 
@@ -134,7 +134,7 @@ export class TuiEditorDropdownToolbar
     }
 
     private getRange(): Range {
-        const selection = this.doc.getSelection();
+        const selection = this.doc?.getSelection();
 
         return (
             (selection?.rangeCount && selection.getRangeAt(0)) ||

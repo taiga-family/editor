@@ -59,6 +59,6 @@ export default class Example {
     protected toggleHighlight(): void {
         this.wysiwyg?.editor
             ?.getOriginTiptapEditor()
-            .commands.toggleHighlight({color: '#c8eefc'});
+            ?.commands.toggleHighlight({color: '#c8eefc'});
     }
 }
