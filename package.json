@@ -170,7 +170,7 @@
         "jest-preset-angular": "14.2.0",
         "lint-staged": "15.2.7",
         "local-web-server": "5.3.4",
-        "marked": "13.0.2",
+        "marked": "13.0.3",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
         "nx": "19.5.3",
