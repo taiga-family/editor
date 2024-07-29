@@ -53,7 +53,7 @@
         </tui-doc-example>
     </ng-template>
 
-    <ng-template pageTab>
+    <ng-template pageTab="API">
         <tui-doc-demo>
             <tui-color-picker></tui-color-picker>
         </tui-doc-demo>
@@ -68,7 +68,7 @@
         </tui-doc-documentation>
     </ng-template>
 
-    <ng-template>
+    <ng-template pageTab="Setup">
         <ol class="b-demo-steps">
             <li>
                 <p>
@@ -92,5 +92,9 @@
                 ></tui-doc-code>
             </li>
         </ol>
+
+        <tui-doc-example heading="TUI_COLOR_SELECTOR_DEFAULT_OPTIONSS">
+            <tui-doc-code [code]="options"></tui-doc-code>
+        </tui-doc-example>
     </ng-template>
 </tui-doc-page>

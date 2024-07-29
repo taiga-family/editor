@@ -9,6 +9,7 @@ import {TuiDocExample} from '@taiga-ui/addon-doc';
 export class ExampleTuiColorPickerComponent {
     readonly exampleModule = import('./examples/import/import-module.md?raw');
     readonly exampleHtml = import('./examples/import/insert-template.md?raw');
+    readonly options = import('./examples/import/options.md?raw');
 
     readonly example1: TuiDocExample = {
         TypeScript: import('./examples/1/index.ts?raw'),
