@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.48.0](https://github.com/taiga-family/tui-editor/compare/v1.47.0...v1.48.0) (2024-07-29)
+
+### Features
+
+- support customization input color
+  ([861c1d7](https://github.com/taiga-family/tui-editor/commit/861c1d79867e4ee9923e84c081e47860206dd6d6))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.47.0](https://github.com/taiga-family/tui-editor/compare/v1.46.0...v1.47.0) (2024-07-19)
 
 ### Bug Fixes
