@@ -34,7 +34,6 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="undoDisabled"
-            [focusable]="false"
             [icon]="options.icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
@@ -50,7 +49,6 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="redoDisabled"
-            [focusable]="false"
             [icon]="options.icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
@@ -90,7 +88,6 @@
 
         <button
             *ngIf="enabled(editorTool.Quote)"
-            #button
             appearance="icon"
             automation-id="toolbar__quote-button"
             size="s"
@@ -101,73 +98,42 @@
             type="button"
             class="t-tool t-tool_margin"
             [disabled]="unorderedList || orderedList"
-            [focusable]="false"
             [icon]="options.icons.quote"
             [pseudoActive]="blockquote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
-        <tui-hosted-dropdown
+        <button
             *ngIf="enabled(editorTool.Link)"
-            #link
-            tuiItem
-            class="t-wrapper"
-            [canOpen]="canOpenAnchor"
-            [content]="linkDropdown"
-        >
-            <button
-                #button
-                appearance="icon"
-                automation-id="toolbar__link-button"
-                size="s"
-                tuiHintDescribe
-                tuiHintDirection="top-left"
-                tuiIconButton
-                type="button"
-                class="t-tool"
-                [focusable]="link.open"
-                [icon]="options.icons.link"
-                [pseudoActive]="link.open || a"
-                [tuiHint]="texts.link"
-            ></button>
-            <ng-template #linkDropdown>
-                <tui-edit-link
-                    #dropdown
-                    (addLink)="onLink(link, $event)"
-                    (removeLink)="onLink(link)"
-                ></tui-edit-link>
-            </ng-template>
-        </tui-hosted-dropdown>
-        <tui-hosted-dropdown
+            appearance="icon"
+            automation-id="toolbar__link-button"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
+            tuiIconButton
+            type="button"
+            class="t-tool"
+            [disabled]="a"
+            [icon]="options.icons.link"
+            [tuiHint]="texts.link"
+            (click)="onLink()"
+        ></button>
+        <button
             *ngIf="enabled(editorTool.Anchor)"
-            #anchor
-            class="t-wrapper"
-            [canOpen]="canOpenAnchor"
-            [content]="anchorDropdown"
-        >
-            <button
-                appearance="icon"
-                size="s"
-                tuiHintDescribe
-                tuiHintDirection="top-left"
-                tuiIconButton
-                type="button"
-                [focusable]="false"
-                [icon]="options.icons.anchor"
-                [pseudoActive]="anchor.open || jumpAnchor"
-                [tuiHint]="texts.insertAnchor"
-            ></button>
-            <ng-template #anchorDropdown>
-                <tui-edit-link
-                    [anchorMode]="true"
-                    (addLink)="setAnchor(anchor, $event)"
-                    (removeLink)="removeAnchor()"
-                ></tui-edit-link>
-            </ng-template>
-        </tui-hosted-dropdown>
+            appearance="icon"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
+            tuiIconButton
+            type="button"
+            class="t-tool"
+            [disabled]="a || jumpAnchor"
+            [icon]="options.icons.anchor"
+            [tuiHint]="texts.insertAnchor"
+            (click)="onLink('#')"
+        ></button>
         <ng-container *ngIf="enabled(editorTool.Attach)">
             <button
-                #button
                 appearance="icon"
                 size="s"
                 tuiHintDescribe
@@ -176,7 +142,6 @@
                 tuiItem
                 type="button"
                 class="t-tool t-tool_margin"
-                [focusable]="false"
                 [icon]="options.icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
@@ -199,7 +164,6 @@
     >
         <button
             *ngIf="enabled(editorTool.Sub)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -208,7 +172,6 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
             [icon]="options.icons.sub"
             [pseudoActive]="subscript"
             [tuiHint]="texts.subscript"
@@ -216,7 +179,6 @@
         ></button>
         <button
             *ngIf="enabled(editorTool.Sup)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -225,7 +187,6 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
             [icon]="options.icons.sup"
             [pseudoActive]="superscript"
             [tuiHint]="texts.superscript"
@@ -262,7 +223,6 @@
 
         <button
             *ngIf="enabled(editorTool.Tex)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -271,7 +231,6 @@
             tuiItem
             type="button"
             class="t-tool"
-            [focusable]="false"
             [icon]="options.icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
@@ -282,7 +241,6 @@
             class="t-wrapper"
         >
             <button
-                #button
                 appearance="icon"
                 size="s"
                 tuiHintDescribe
@@ -290,7 +248,6 @@
                 tuiIconButton
                 type="button"
                 class="t-tool"
-                [focusable]="false"
                 [icon]="options.icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
@@ -307,7 +264,6 @@
         </div>
         <button
             *ngIf="enabled(editorTool.HR)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -316,7 +272,6 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
             [icon]="options.icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
@@ -327,7 +282,6 @@
         class="t-block"
     >
         <button
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -336,7 +290,6 @@
             tuiItem
             type="button"
             class="t-tool t-tool_margin"
-            [focusable]="false"
             [icon]="options.icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"

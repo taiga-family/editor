@@ -160,6 +160,7 @@ export class TuiEditorComponent
             parentFocusElement?.nodeName.toLowerCase() === 'a' ||
             parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
             focusElement?.nodeName.toLowerCase() === 'a' ||
+            !!focusElement?.parentElement?.closest('a') ||
             !!focusElement?.parentElement?.closest('tui-edit-link') ||
             !!focusElement?.parentElement?.closest('tui-dropdown')
         );

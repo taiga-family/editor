@@ -33,11 +33,14 @@ export const TuiLink = Link.extend({
 
                         return (
                             forwardSymbolIsWhitespace
-                                ? toggleMark.setTextSelection(selection.to + 1)
-                                : toggleMark.setTextSelection(selection.to).insertContent(
-                                      // require: `@tiptap/extension-text-style`
-                                      `<span style="font-size: 15px"> </span>`,
-                                  )
+                                ? toggleMark.setTextSelection(selection.to - 1)
+                                : toggleMark
+                                      .setTextSelection(selection.to)
+                                      .insertContent(
+                                          // require: `@tiptap/extension-text-style`
+                                          `<span style="font-size: 15px"> </span>`,
+                                      )
+                                      .setTextSelection(selection.to - 1)
                         ).run();
                     }
                 },

@@ -21,7 +21,6 @@ import {
     TuiInjectionTokenType,
     tuiIsNativeFocusedIn,
 } from '@taiga-ui/cdk';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
@@ -138,10 +137,6 @@ export class TuiToolbarComponent {
         return this.editor.isActive('jumpAnchor');
     }
 
-    get canOpenAnchor(): boolean {
-        return !this.a && !this.jumpAnchor;
-    }
-
     get undoDisabled(): boolean {
         return this.editor.undoDisabled();
     }
@@ -244,25 +239,8 @@ export class TuiToolbarComponent {
         this.texClicked.emit();
     }
 
-    onLink(hosted: TuiHostedDropdownComponent, url?: string): void {
-        hosted.open = false;
-
-        if (url) {
-            this.editor.toggleLink(url);
-        }
-    }
-
-    setAnchor(hosted: TuiHostedDropdownComponent, anchor?: string): void {
-        hosted.open = false;
-
-        if (anchor) {
-            this.editor.setAnchor(anchor);
-            this.editor.selectClosest();
-        }
-    }
-
-    removeAnchor(): void {
-        this.editor.removeAnchor();
+    onLink(url?: string): void {
+        this.editor.toggleLink(url ?? '');
     }
 
     enabled(tool: TuiEditorTool): boolean {
