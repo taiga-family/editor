@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.49.0](https://github.com/taiga-family/tui-editor/compare/v1.48.0...v1.49.0) (2024-07-30)
+
+### Bug Fixes
+
+- double dropdown when edit links
+  ([f8c1f18](https://github.com/taiga-family/tui-editor/commit/f8c1f187b1f314c39074bf8252a6724318eaa506))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.48.0](https://github.com/taiga-family/tui-editor/compare/v1.47.0...v1.48.0) (2024-07-29)
 
 ### Features
