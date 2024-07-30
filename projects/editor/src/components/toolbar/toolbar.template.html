@@ -88,7 +88,6 @@
 
         <button
             *ngIf="enabled(editorTool.Quote)"
-            #button
             appearance="icon"
             automation-id="toolbar__quote-button"
             size="s"
@@ -103,63 +102,36 @@
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
         ></button>
-        <div
+        <button
             *ngIf="enabled(editorTool.Link)"
-            #link
-            tuiItem
-            class="t-wrapper"
-            [tuiDropdown]="linkDropdown"
-            [tuiDropdownOpen]="false"
-        >
-            <button
-                #button
-                appearance="icon"
-                automation-id="toolbar__link-button"
-                size="s"
-                tuiHintDescribe
-                tuiHintDirection="top-left"
-                tuiIconButton
-                type="button"
-                class="t-tool"
-                [iconStart]="icons.link"
-                [tuiHint]="texts.link"
-            ></button>
-            <ng-template #linkDropdown>
-                <tui-edit-link
-                    #dropdown
-                    (addLink)="onLink(link, $event)"
-                    (removeLink)="onLink(link)"
-                />
-            </ng-template>
-        </div>
-        <div
+            appearance="icon"
+            automation-id="toolbar__link-button"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
+            tuiIconButton
+            type="button"
+            class="t-tool"
+            [disabled]="a || jumpAnchor"
+            [iconStart]="icons.link"
+            [tuiHint]="texts.link"
+            (click)="onLink()"
+        ></button>
+        <button
             *ngIf="enabled(editorTool.Anchor)"
-            #anchor
-            class="t-wrapper"
-            [tuiDropdown]="anchorDropdown"
-            [tuiDropdownOpen]="false"
-        >
-            <button
-                appearance="icon"
-                size="s"
-                tuiHintDescribe
-                tuiHintDirection="top-left"
-                tuiIconButton
-                type="button"
-                [iconStart]="icons.anchor"
-                [tuiHint]="texts.insertAnchor"
-            ></button>
-            <ng-template #anchorDropdown>
-                <tui-edit-link
-                    [anchorMode]="true"
-                    (addLink)="setAnchor(anchor, $event)"
-                    (removeLink)="removeAnchor()"
-                />
-            </ng-template>
-        </div>
+            appearance="icon"
+            size="s"
+            tuiHintDescribe
+            tuiHintDirection="top-left"
+            tuiIconButton
+            type="button"
+            [disabled]="a || jumpAnchor"
+            [iconStart]="icons.anchor"
+            [tuiHint]="texts.insertAnchor"
+            (click)="onLink('#')"
+        ></button>
         <ng-container *ngIf="enabled(editorTool.Attach)">
             <button
-                #button
                 appearance="icon"
                 size="s"
                 tuiHintDescribe
@@ -190,7 +162,6 @@
     >
         <button
             *ngIf="enabled(editorTool.Sub)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -205,7 +176,6 @@
         ></button>
         <button
             *ngIf="enabled(editorTool.Sup)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -249,7 +219,6 @@
 
         <button
             *ngIf="enabled(editorTool.Tex)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -268,7 +237,6 @@
             class="t-wrapper"
         >
             <button
-                #button
                 appearance="icon"
                 size="s"
                 tuiHintDescribe
@@ -292,7 +260,6 @@
         </div>
         <button
             *ngIf="enabled(editorTool.HR)"
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe
@@ -311,7 +278,6 @@
         class="t-block"
     >
         <button
-            #button
             appearance="icon"
             size="s"
             tuiHintDescribe

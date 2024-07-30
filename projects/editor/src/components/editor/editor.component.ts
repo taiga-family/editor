@@ -200,13 +200,16 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get isLinkSelected(): boolean {
-        const node = this.doc?.getSelection()?.focusNode?.parentNode;
+        const focusElement = this.doc?.getSelection()?.focusNode;
+        const parentFocusElement = focusElement?.parentNode;
 
         return (
-            node?.nodeName.toLowerCase() === 'a' ||
-            node?.parentNode?.nodeName.toLowerCase() === 'a' ||
-            !!node?.parentElement?.closest('tui-edit-link') ||
-            !!node?.parentElement?.closest('tui-dropdown')
+            parentFocusElement?.nodeName.toLowerCase() === 'a' ||
+            parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
+            focusElement?.nodeName.toLowerCase() === 'a' ||
+            !!focusElement?.parentElement?.closest('a') ||
+            !!focusElement?.parentElement?.closest('tui-edit-link') ||
+            !!focusElement?.parentElement?.closest('tui-dropdown')
         );
     }
 
@@ -272,9 +275,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
      */
     private currentFocusedNodeIsTextAnchor(range: Range): boolean {
         return (
-            !!range.startContainer.parentElement
-                ?.closest('a')
-                ?.contains(this.focusNode) && tuiIsSafeLinkRange(range)
+            !!range.startContainer.parentElement?.closest('a') &&
+            tuiIsSafeLinkRange(range)
         );
     }
 

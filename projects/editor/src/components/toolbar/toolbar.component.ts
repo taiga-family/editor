@@ -268,25 +268,8 @@ export class TuiToolbar {
         this.texClicked.emit();
     }
 
-    protected onLink(hosted: any, url?: string): void {
-        hosted.open = false;
-
-        if (url) {
-            this.editor.toggleLink(url);
-        }
-    }
-
-    protected setAnchor(hosted: any, anchor?: string): void {
-        hosted.open = false;
-
-        if (anchor) {
-            this.editor.setAnchor(anchor);
-            this.editor.selectClosest();
-        }
-    }
-
-    protected removeAnchor(): void {
-        this.editor.removeAnchor();
+    protected onLink(url?: string): void {
+        this.editor.toggleLink(url ?? '');
     }
 
     protected enabled(tool: TuiEditorTool): boolean {
