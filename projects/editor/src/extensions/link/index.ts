@@ -39,7 +39,7 @@ export const TuiLink = Link.extend({
                                       .setTextSelection(selection.to)
                                       .insertContent(
                                           // require: `@tiptap/extension-text-style`
-                                          `<span style="font-size: 15px"> </span>`,
+                                          '<span style="font-size: 15px"> </span>',
                                       )
                                       .setTextSelection(selection.to - 1)
                         ).run();
