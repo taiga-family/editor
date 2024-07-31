@@ -73,6 +73,7 @@ export default class TuiEditorStarter {
             TuiEditorTool.Strikethrough,
             TuiEditorTool.HR,
         ],
+        [TuiEditorTool.Table, TuiEditorTool.CellColor],
     ];
 
     protected tools = this.toolsVariants[0];

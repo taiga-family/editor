@@ -313,12 +313,6 @@
             tuiItem
             class="t-tool t-tool_margin"
         />
-        <tui-table-cell-color
-            *ngIf="!enabled(editorTool.Table)"
-            tuiItem
-            class="t-tool t-wrapper"
-            [colors]="colors"
-        />
     </div>
     <div
         *ngIf="enabled(editorTool.Table)"
@@ -338,7 +332,11 @@
             tuiItem
             class="t-tool t-tool_margin"
         />
-
+    </div>
+    <div
+        *ngIf="enabled(editorTool.CellColor)"
+        class="t-block"
+    >
         <tui-table-cell-color
             tuiItem
             class="t-tool t-wrapper"

@@ -1,33 +1,29 @@
 <ng-container *tuiLet="color$ | async as color">
-    <div
+    <button
         *tuiLet="isActive$ | async as isActive"
-        #colorSelect
+        appearance="icon"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
+        tuiIconButton
+        type="button"
+        [disabled]="!isActive"
+        [iconStart]="icons.paint"
         [tuiDropdown]="cellColorDropdown"
         [tuiDropdownMaxHeight]="999"
         [tuiDropdownOpen]="false"
-    >
-        <button
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiHintDirection="top-left"
-            tuiIconButton
-            type="button"
-            [disabled]="!isActive"
-            [iconStart]="icons.paint"
-            [tuiHint]="colorText$ | async"
-        ></button>
-        <div
-            *ngIf="!isBlankColor(color || '')"
-            class="t-plate t-plate_paint"
-            [style.background]="color"
-        ></div>
-        <ng-template #cellColorDropdown>
-            <tui-palette
-                class="t-color-picker"
-                [colors]="colors"
-                (selectedColor)="setCellColor($event)"
-            />
-        </ng-template>
-    </div>
+        [tuiHint]="colorText$ | async"
+    ></button>
+    <div
+        *ngIf="!isBlankColor(color || '')"
+        class="t-plate t-plate_paint"
+        [style.background]="color"
+    ></div>
+    <ng-template #cellColorDropdown>
+        <tui-palette
+            class="t-color-picker"
+            [colors]="colors"
+            (selectedColor)="setCellColor($event)"
+        />
+    </ng-template>
 </ng-container>

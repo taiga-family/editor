@@ -25,6 +25,7 @@ export enum TuiEditorTool {
     Sub = 'subscript',
     Sup = 'superscript',
     Table = 'insertTable',
+    CellColor = 'cellColor',
     Tex = 'tex', // Todo
     Underline = 'underline',
     Undo = 'undo',

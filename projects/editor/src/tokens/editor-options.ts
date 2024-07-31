@@ -97,7 +97,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         popupLinkRemove: '@tui.x',
         popupPreviewLinkEdit: '@tui.pencil',
         popupPreviewLinkClear: '@tui.x',
-        paint: '@tui.paintbrush',
+        paint: '@tui.paint-bucket',
         textAlignPreview: '@tui.align-left',
         textAlignLeft: '@tui.align-left',
         textAlignCenter: '@tui.align-center',

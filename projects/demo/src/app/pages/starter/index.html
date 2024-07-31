@@ -45,6 +45,22 @@
                 )
             </ng-template>
             <ng-template
+                documentationPropertyName="[floatingToolbar]"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="floating"
+            >
+                Floating toolbar
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="tools"
+                documentationPropertyType="ReadonlyArray<TuiEditorTool>"
+                [documentationPropertyValues]="toolsVariants"
+                [(documentationPropertyValue)]="tools"
+            >
+                Allowed edit tools
+            </ng-template>
+            <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="ngModel"
                 documentationPropertyType="string"
@@ -60,22 +76,6 @@
                 [(documentationPropertyValue)]="exampleText"
             >
                 Example text shown on empty focused input
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tools"
-                documentationPropertyType="ReadonlyArray<TuiEditorTool>"
-                [documentationPropertyValues]="toolsVariants"
-                [(documentationPropertyValue)]="tools"
-            >
-                Allowed edit tools
-            </ng-template>
-            <ng-template
-                documentationPropertyName="[floatingToolbar]"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="floating"
-            >
-                Floating toolbar
             </ng-template>
         </tui-doc-documentation>
         <tui-doc-documentation heading="CSS customization">
