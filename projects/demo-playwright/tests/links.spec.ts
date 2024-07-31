@@ -25,7 +25,7 @@ test.describe('Links', () => {
         await page.keyboard.press('Enter');
         await expect(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
 
-        await page.locator('tui-editor sup').nth(0).dblclick();
+        await page.locator('tui-editor sup').nth(0).dblclick({force: true});
 
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
