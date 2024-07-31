@@ -22,8 +22,6 @@ import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
-import type {TuiEditorToolType} from '../../types/editor-tool';
-import {TuiEditorTool} from '../../types/editor-tool';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import type {TuiEditorOptions} from '../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -33,6 +31,8 @@ import {
 } from '../../tokens/files-loader';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../tokens/i18n';
 import {TUI_IMAGE_LOADER} from '../../tokens/image-loader';
+import type {TuiEditorToolType} from '../../types/editor-tool';
+import {TuiEditorTool} from '../../types/editor-tool';
 import {TuiEditLink} from '../edit-link/edit-link.component';
 import {TuiAlignContent} from '../toolbar-tools/align-content/align-content.component';
 import {TuiCode} from '../toolbar-tools/code/code.component';

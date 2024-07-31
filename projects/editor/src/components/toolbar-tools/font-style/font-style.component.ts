@@ -5,10 +5,10 @@ import {combineLatest, map} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import type {TuiEditorToolType} from '../../../types/editor-tool';
-import {TuiEditorTool} from '../../../types/editor-tool';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
+import type {TuiEditorToolType} from '../../../types/editor-tool';
+import {TuiEditorTool} from '../../../types/editor-tool';
 
 @Component({
     standalone: true,
