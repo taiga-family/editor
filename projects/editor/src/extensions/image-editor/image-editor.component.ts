@@ -31,7 +31,7 @@ export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage>
     private readonly win = inject(WINDOW);
 
     @HostBinding('attr.contenteditable')
-    protected contenteditable = true;
+    protected contenteditable = false;
 
     protected focused = false;
 
