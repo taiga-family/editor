@@ -342,7 +342,11 @@
             tuiItem
             class="t-tool t-tool_margin"
         ></tui-table-merge-cells>
-
+    </div>
+    <div
+        *ngIf="enabled(editorTool.CellColor)"
+        class="t-block"
+    >
         <tui-table-cell-color
             tuiItem
             class="t-tool t-wrapper"

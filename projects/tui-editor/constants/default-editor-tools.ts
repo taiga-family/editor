@@ -24,6 +24,7 @@ export const defaultEditorTools = [
     TuiEditorTool.Sup,
     TuiEditorTool.Sub,
     TuiEditorTool.Table,
+    TuiEditorTool.CellColor,
     TuiEditorTool.Details,
 ];
 

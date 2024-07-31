@@ -77,6 +77,7 @@ export class TuiEditorStarterPageComponent {
             TuiEditorTool.Strikethrough,
             TuiEditorTool.HR,
         ],
+        [TuiEditorTool.Table, TuiEditorTool.CellColor],
     ];
 
     tools = this.toolsVariants[0];
