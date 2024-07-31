@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.50.0](https://github.com/taiga-family/tui-editor/compare/v1.49.0...v1.50.0) (2024-07-31)
+
+### Bug Fixes
+
+- floating toolbar doesn't close if highlighted text was erased
+  ([6c1fe57](https://github.com/taiga-family/tui-editor/commit/6c1fe57b0715dc5b900bf0c4533aedfd9cee6751))
+- skip hydration ([83b9a8e](https://github.com/taiga-family/tui-editor/commit/83b9a8e90d125f4f31810cd9a4f4173c0b8d2691))
+
+### Features
+
+- override cell color tool
+  ([dadd8c7](https://github.com/taiga-family/tui-editor/commit/dadd8c7bf3dc3af7a21f6315587d4e06bdd064a0))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.49.0](https://github.com/taiga-family/tui-editor/compare/v1.48.0...v1.49.0) (2024-07-30)
 
 ### Bug Fixes
