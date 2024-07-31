@@ -19,7 +19,6 @@ import {
     AbstractTuiControl,
     AbstractTuiValueTransformer,
     ALWAYS_FALSE_HANDLER,
-    ALWAYS_TRUE_HANDLER,
     tuiAsFocusableItemAccessor,
     tuiAutoFocusOptionsProvider,
     TuiBooleanHandler,
@@ -131,11 +130,13 @@ export class TuiEditorComponent
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        if (this.floatingToolbar) {
-            return ALWAYS_TRUE_HANDLER;
+        if (!this.focused) {
+            return ALWAYS_FALSE_HANDLER;
         }
 
-        return this.focused ? this.openDropdownWhen : ALWAYS_FALSE_HANDLER;
+        return this.floatingToolbar
+            ? () => this.value.trim() !== ''
+            : this.openDropdownWhen;
     }
 
     get editor(): AbstractTuiEditor | null {
