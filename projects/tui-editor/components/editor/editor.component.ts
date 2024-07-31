@@ -64,6 +64,9 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
     ],
+    host: {
+        ngSkipHydration: 'true',
+    },
 })
 export class TuiEditorComponent
     extends AbstractTuiControl<string>
