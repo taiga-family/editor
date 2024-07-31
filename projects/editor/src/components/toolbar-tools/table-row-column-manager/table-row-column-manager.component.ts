@@ -8,16 +8,14 @@ import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-e
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TABLE_COMMANDS, TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
-// TODO: change type in v4.0
-// eslint-disable-next-line no-restricted-syntax
-export enum TuiTableCommands {
-    InsertColumnBefore,
-    InsertColumnAfter,
-    InsertRowBefore,
-    InsertRowAfter,
-    DeleteColumn,
-    DeleteRow,
-}
+export const TuiTableCommands = {
+    InsertColumnBefore: 0,
+    InsertColumnAfter: 1,
+    InsertRowBefore: 2,
+    InsertRowAfter: 3,
+    DeleteColumn: 4,
+    DeleteRow: 5,
+} as const;
 
 @Component({
     standalone: true,
@@ -27,7 +25,7 @@ export enum TuiTableCommands {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableRowColumnManager {
-    private readonly commandsRegistry: Record<TuiTableCommands, () => void> = {
+    private readonly commandsRegistry: Record<number, () => void> = {
         [TuiTableCommands.InsertColumnAfter]: () => this.editor.addColumnAfter(),
         [TuiTableCommands.InsertColumnBefore]: () => this.editor.addColumnBefore(),
         [TuiTableCommands.InsertRowAfter]: () => this.editor.addRowAfter(),
@@ -47,7 +45,7 @@ export class TuiTableRowColumnManager {
         map((texts) => texts.rowsColumnsManaging),
     );
 
-    protected onTableOption(command: TuiTableCommands): void {
-        this.commandsRegistry[command]();
+    protected onTableOption(command: number): void {
+        this.commandsRegistry[command]?.();
     }
 }

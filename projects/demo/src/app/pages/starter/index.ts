@@ -11,6 +11,7 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
+    TuiEditorToolType,
 } from '@taiga-ui/editor';
 
 @Component({
@@ -36,7 +37,6 @@ import {
     ],
 })
 export default class TuiEditorStarter {
-    protected readonly exampleImport = import('./import/import.md?raw');
     protected readonly template = import('./import/template.md?raw');
     protected readonly component = import('./import/component.md?raw');
     protected readonly exampleOptions = import('./import/tokens/options.md?raw');
@@ -65,8 +65,11 @@ export default class TuiEditorStarter {
     protected minHeight: number | null = null;
     protected maxHeight: number | null = null;
 
-    protected readonly toolsVariants: readonly TuiEditorTool[][] = [
-        TUI_EDITOR_DEFAULT_TOOLS,
+    protected readonly toolsVariants: (
+        | readonly TuiEditorToolType[]
+        | Set<TuiEditorToolType>
+    )[] = [
+        Array.from(TUI_EDITOR_DEFAULT_TOOLS),
         [
             TuiEditorTool.Bold,
             TuiEditorTool.Italic,

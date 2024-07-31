@@ -22,7 +22,7 @@ import {take} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
-import {TuiEditorTool} from '../../enums/editor-tool';
+import {TuiEditorTool, TuiEditorToolType} from '../../types/editor-tool';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import type {TuiEditorOptions} from '../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -102,7 +102,7 @@ export class TuiToolbar {
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
+    protected toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
@@ -121,7 +121,7 @@ export class TuiToolbar {
     public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
     @Input()
-    public set tools(value: readonly TuiEditorTool[]) {
+    public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
     }
 
@@ -272,7 +272,7 @@ export class TuiToolbar {
         this.editor.toggleLink(url ?? '');
     }
 
-    protected enabled(tool: TuiEditorTool): boolean {
+    protected enabled(tool: TuiEditorToolType): boolean {
         return this.toolsSet.has(tool);
     }
 

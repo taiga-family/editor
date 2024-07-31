@@ -37,7 +37,7 @@ import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
-import type {TuiEditorTool} from '../../enums/editor-tool';
+import {TuiEditorToolType} from '../../types/editor-tool';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_VALUE_TRANSFORMER} from '../../tokens/editor-value-transformer';
@@ -129,7 +129,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public floatingToolbar = false;
 
     @Input()
-    public tools: readonly TuiEditorTool[] = TUI_EDITOR_DEFAULT_TOOLS;
+    public tools: Set<TuiEditorToolType> | readonly TuiEditorToolType[] =
+        TUI_EDITOR_DEFAULT_TOOLS;
 
     @Output()
     public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();

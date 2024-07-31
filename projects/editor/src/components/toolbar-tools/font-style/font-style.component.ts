@@ -5,7 +5,7 @@ import {combineLatest, map} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TuiEditorTool} from '../../../enums/editor-tool';
+import {TuiEditorTool, TuiEditorToolType} from '../../../types/editor-tool';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
@@ -18,7 +18,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyle {
-    private toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_TOOLS);
+    private toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
 
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -40,11 +40,11 @@ export class TuiFontStyle {
     );
 
     @Input()
-    public set enabledTools(value: Set<TuiEditorTool> | readonly TuiEditorTool[]) {
+    public set enabledTools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
     }
 
-    protected isEnabled(tool: TuiEditorTool): boolean {
+    protected isEnabled(tool: TuiEditorToolType): boolean {
         return this.toolsSet.has(tool);
     }
 }

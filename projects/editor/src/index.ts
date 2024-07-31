@@ -38,7 +38,7 @@ export * from './directives/tiptap-editor/tiptap-editor.directive';
 export * from './directives/tiptap-editor/tiptap-editor.service';
 export * from './directives/tiptap-editor/tiptap-editor.types';
 export * from './directives/tiptap-editor/utils/is-empty-paragraph';
-export * from './enums/editor-tool';
+export * from './types/editor-tool';
 export * from './extensions/background-color';
 export * from './extensions/default-editor-extensions';
 export * from './extensions/details';

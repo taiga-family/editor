@@ -1,6 +1,6 @@
-import {TuiEditorTool} from '../enums/editor-tool';
+import {TuiEditorTool} from '../types/editor-tool';
 
-export const TUI_EDITOR_DEFAULT_TOOLS = [
+export const TUI_EDITOR_DEFAULT_TOOLS = new Set([
     TuiEditorTool.Undo,
     TuiEditorTool.Size,
     TuiEditorTool.Bold,
@@ -21,5 +21,6 @@ export const TUI_EDITOR_DEFAULT_TOOLS = [
     TuiEditorTool.Sup,
     TuiEditorTool.Sub,
     TuiEditorTool.Table,
+    TuiEditorTool.CellColor,
     TuiEditorTool.Details,
-];
+]);
