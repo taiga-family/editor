@@ -1,5 +1,5 @@
 ```typescript
-import {defaultEditorExtensions, TUI_EDITOR_EXTENSIONS} from '@tinkoff/tui-editor';
+import {defaultEditorTools} from '@tinkoff/tui-editor';
 // ...
 
 @Component({

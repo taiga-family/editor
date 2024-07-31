@@ -30,7 +30,7 @@ import {
 })
 export class TuiImageEditorComponent extends AbstractTuiEditorResizable<TuiEditableImage> {
     @HostBinding('attr.contenteditable')
-    contenteditable = true;
+    contenteditable = false;
 
     focused = false;
 
