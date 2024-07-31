@@ -17,7 +17,6 @@ import {WA_WINDOW} from '@ng-web-apis/common';
 import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
-    TUI_TRUE_HANDLER,
     TuiActiveZone,
     tuiAutoFocusOptionsProvider,
     TuiControl,
@@ -188,11 +187,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        if (this.floatingToolbar) {
-            return TUI_TRUE_HANDLER;
+        if (!this.focused) {
+            return TUI_FALSE_HANDLER;
         }
 
-        return this.focused ? this.openDropdownWhen : TUI_FALSE_HANDLER;
+        return this.floatingToolbar
+            ? () => this.value().trim() !== ''
+            : this.openDropdownWhen;
     }
 
     protected get hasExampleText(): boolean {
