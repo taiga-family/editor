@@ -36,6 +36,8 @@ export interface TuiEditorOptions {
         readonly image: string;
         readonly indent: string;
         readonly insertTable: string;
+        readonly tableCellMerge: string;
+        readonly tableCellSplit: string;
         readonly link: string;
         readonly listOrdered: string;
         readonly taskList: string;
@@ -45,6 +47,8 @@ export interface TuiEditorOptions {
         readonly paint: string;
         readonly popupLinkRemove: string;
         readonly popupLinkSave: string;
+        readonly hash: string;
+        readonly externalLink: string;
         readonly popupPreviewLinkClear: string;
         readonly popupPreviewLinkEdit: string;
         readonly quote: string;
@@ -98,6 +102,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         popupPreviewLinkEdit: '@tui.pencil',
         popupPreviewLinkClear: '@tui.x',
         paint: '@tui.paint-bucket',
+        hash: '@tui.hash',
+        externalLink: '@tui.external-link',
         textAlignPreview: '@tui.align-left',
         textAlignLeft: '@tui.align-left',
         textAlignCenter: '@tui.align-center',
@@ -113,6 +119,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         outdent: '@tui.indent-decrease',
         fontSize: '@tui.a-large-small',
         insertTable: '@tui.table',
+        tableCellMerge: '@tui.table-cells-merge',
+        tableCellSplit: '@tui.table-rows-split',
         addRowTable: '@tui.between-horizontal-start',
         code: '@tui.code',
         fontStylePreview: '@tui.remove-formatting',

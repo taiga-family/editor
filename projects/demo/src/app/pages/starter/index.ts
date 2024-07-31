@@ -4,6 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
+import type {TuiEditorToolType} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -11,7 +12,6 @@ import {
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
-    TuiEditorToolType,
 } from '@taiga-ui/editor';
 
 @Component({
@@ -65,10 +65,9 @@ export default class TuiEditorStarter {
     protected minHeight: number | null = null;
     protected maxHeight: number | null = null;
 
-    protected readonly toolsVariants: (
-        | readonly TuiEditorToolType[]
-        | Set<TuiEditorToolType>
-    )[] = [
+    protected readonly toolsVariants: ReadonlyArray<
+        Set<TuiEditorToolType> | readonly TuiEditorToolType[]
+    > = [
         Array.from(TUI_EDITOR_DEFAULT_TOOLS),
         [
             TuiEditorTool.Bold,

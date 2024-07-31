@@ -6,6 +6,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
+import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 
 @Component({
     standalone: true,
@@ -15,6 +16,7 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableMergeCells {
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editor = inject(TuiTiptapEditorService);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
 

@@ -29,7 +29,6 @@
         </label>
         <button
             appearance="icon"
-            shape="rounded"
             size="s"
             title="Insert link"
             tuiIconButton
@@ -40,7 +39,6 @@
         ></button>
         <button
             appearance="icon"
-            shape="rounded"
             size="s"
             title="Insert link"
             tuiIconButton
@@ -56,13 +54,12 @@
             tuiLink
             class="t-link"
             [href]="href"
-            [iconStart]="prefixIsHashMode ? '@tui.hash' : '@tui.external-link'"
+            [iconStart]="prefixIsHashMode ? options.icons.hash : options.icons.externalLink"
         >
             {{ url | tuiShortUrl }}
         </a>
         <button
             appearance="icon"
-            shape="rounded"
             size="s"
             title="Change link"
             tuiIconButton
@@ -74,7 +71,6 @@
         <button
             appearance="icon"
             automation-id="toolbar__popup-link-clear-button"
-            shape="rounded"
             size="s"
             title="Remove link"
             tuiIconButton

@@ -5,7 +5,8 @@ import {combineLatest, map} from 'rxjs';
 
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
-import {TuiEditorTool, TuiEditorToolType} from '../../../types/editor-tool';
+import type {TuiEditorToolType} from '../../../types/editor-tool';
+import {TuiEditorTool} from '../../../types/editor-tool';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
 import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
 
@@ -40,7 +41,9 @@ export class TuiFontStyle {
     );
 
     @Input()
-    public set enabledTools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
+    public set enabledTools(
+        value: Set<TuiEditorToolType> | readonly TuiEditorToolType[],
+    ) {
         this.toolsSet = new Set(value);
     }
 
