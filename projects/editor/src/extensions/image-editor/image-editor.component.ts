@@ -21,14 +21,22 @@ import {timer} from 'rxjs';
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
 import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
+import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import type {TuiEditableImage} from './image-editor.options';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
 import {TuiImageOptionsPosition} from './image-options-position.directive';
+import {TuiImageAlignComponent} from './options/image-align/image-align.component';
 
 @Component({
     standalone: true,
     selector: 'tui-image-editor',
-    imports: [TuiButton, TuiDropdown, TuiEditorResizable, TuiImageOptionsPosition],
+    imports: [
+        TuiButton,
+        TuiDropdown,
+        TuiEditorResizable,
+        TuiImageAlignComponent,
+        TuiImageOptionsPosition,
+    ],
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,18 +65,19 @@ export class TuiImageEditor
     protected focused = false;
     protected open = false;
 
-    protected readonly options = inject(TUI_IMAGE_EDITOR_OPTIONS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly imageOptions = inject(TUI_IMAGE_EDITOR_OPTIONS);
 
     public override get height(): number | string | null {
         return null;
     }
 
     public get minWidth(): number {
-        return this.options.minWidth || 0;
+        return this.imageOptions.minWidth || 0;
     }
 
     public get maxWidth(): number {
-        return this.options.maxWidth || 0;
+        return this.imageOptions.maxWidth || 0;
     }
 
     public ngOnInit(): void {
@@ -118,63 +127,15 @@ export class TuiImageEditor
         }
     }
 
-    @tuiPure
-    protected isAlignCenter(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('justify-content:center') ?? false;
-    }
-
-    @tuiPure
-    protected isAlignJustify(style?: string | null): boolean {
-        return style === null || style === undefined || style === '';
-    }
-
-    @tuiPure
-    protected isAlignLeft(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('float:left') ?? false;
-    }
-
-    @tuiPure
-    protected isAlignRight(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('float:right') ?? false;
-    }
-
     protected openDropdown(event: Event): void {
         this.open = true;
         this.dropdown?.toggle(true);
         event.stopImmediatePropagation();
     }
 
-    protected alignLeft(): void {
-        const style = 'float: left';
-
-        this.style = style;
-        this.attrs.style = style;
-
-        this.notifyUpdate();
-    }
-
-    protected alignCenter(): void {
-        const style =
-            'display: flex; justify-content: center; margin-left: auto; margin-right: auto;';
-
-        this.attrs.style = style;
-        this.style = style;
-
-        this.notifyUpdate();
-    }
-
-    protected alignJustify(): void {
-        this.style = null;
-        this.attrs.style = null;
-        this.notifyUpdate();
-    }
-
-    protected alignRight(): void {
-        const style = 'float: right';
-
-        this.attrs.style = style;
-        this.style = style;
-
+    protected align(styles: string | null): void {
+        this.style = styles;
+        this.attrs.style = styles;
         this.notifyUpdate();
     }
 

@@ -64,6 +64,13 @@ export interface TuiEditorOptions {
         readonly textColor: string;
         readonly textHilite: string;
         readonly undo: string;
+        readonly imageExtension: {
+            readonly settings: string;
+            readonly alignJustify: string;
+            readonly alignCenter: string;
+            readonly alignLeft: string;
+            readonly alignRight: string;
+        };
     };
     readonly linkOptions?: TuiEditorLinkOptions;
     readonly spellcheck: boolean;
@@ -130,6 +137,13 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         fontStyleStrike: '@tui.strikethrough',
         colorSelectorDropdownChevron: '@tui.chevron-down',
         colorSelectorDropdownCheck: '@tui.check',
+        imageExtension: {
+            settings: '@tui.settings',
+            alignJustify: '@tui.align-justify',
+            alignCenter: '@tui.align-center',
+            alignLeft: '@tui.align-left',
+            alignRight: '@tui.align-right',
+        },
     },
 };
 

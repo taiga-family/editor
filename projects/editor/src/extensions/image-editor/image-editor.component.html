@@ -7,11 +7,11 @@
 >
     <button
         appearance=""
-        iconStart="@tui.settings"
         size="s"
         tuiIconButton
         class="t-image-options"
         [class._open]="open"
+        [iconStart]="options.icons.imageExtension.settings"
         (click.capture.prevent)="openDropdown($event)"
     ></button>
 
@@ -35,34 +35,8 @@
 </div>
 
 <ng-template #imgOptions>
-    <div class="t-align-list">
-        <button
-            iconStart="@tui.align-justify"
-            size="s"
-            tuiIconButton
-            [appearance]="isAlignJustify(style) ? 'outline' : 'flat'"
-            (click.capture)="alignJustify(); open = false"
-        ></button>
-        <button
-            iconStart="@tui.align-left"
-            size="s"
-            tuiIconButton
-            [appearance]="isAlignLeft(style) ? 'outline' : 'flat'"
-            (click.capture)="alignLeft(); open = false"
-        ></button>
-        <button
-            iconStart="@tui.align-center"
-            size="s"
-            tuiIconButton
-            [appearance]="isAlignCenter(style) ? 'outline' : 'flat'"
-            (click.capture)="alignCenter(); open = false"
-        ></button>
-        <button
-            iconStart="@tui.align-right"
-            size="s"
-            tuiIconButton
-            [appearance]="isAlignRight(style) ? 'outline' : 'flat'"
-            (click.capture)="alignRight(); open = false"
-        ></button>
-    </div>
+    <tui-image-align
+        [style]="style"
+        (updateAlignStyles)="align($event); open = false"
+    />
 </ng-template>

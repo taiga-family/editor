@@ -1,8 +1,3 @@
-:host {
-    font: var(--tui-font-text-m);
-    color: var(--tui-text-primary);
-}
-
 .t-links {
     display: flex;
     gap: 10px;
@@ -15,11 +10,6 @@
 
 .link {
     margin-left: 1rem;
-}
-
-.app-version {
-    color: var(--tui-text-secondary);
-    font: var(--tui-font-text-xs);
 }
 
 .stackblitz:active {
