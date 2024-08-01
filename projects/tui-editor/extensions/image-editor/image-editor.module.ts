@@ -12,6 +12,7 @@ import {TuiEditorResizableModule} from '@tinkoff/tui-editor/components/editor-re
 
 import {TuiImageEditorComponent} from './image-editor.component';
 import {TuiImageOptionsPositionDirective} from './image-options-position.directive';
+import {TuiImageAlignComponent} from './options/image-align/image-align.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,11 @@ import {TuiImageOptionsPositionDirective} from './image-options-position.directi
         TuiDropdownModule,
         TuiDataListModule,
     ],
-    declarations: [TuiImageEditorComponent, TuiImageOptionsPositionDirective],
+    declarations: [
+        TuiImageEditorComponent,
+        TuiImageOptionsPositionDirective,
+        TuiImageAlignComponent,
+    ],
     exports: [TuiImageEditorComponent],
 })
 export class TuiImageEditorModule {}

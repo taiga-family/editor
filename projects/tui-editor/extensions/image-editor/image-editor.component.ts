@@ -29,6 +29,7 @@ import {
     TuiEditableImage,
     TuiImageEditorOptions,
 } from './image-editor.options';
+import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@tinkoff/tui-editor/tokens';
 
 @Component({
     selector: 'tui-image-editor',
@@ -73,7 +74,8 @@ export class TuiImageEditorComponent
     constructor(
         @Inject(TUI_EDITOR_MIN_IMAGE_WIDTH) readonly legacyMinWidth: number | null,
         @Inject(TUI_EDITOR_MAX_IMAGE_WIDTH) readonly legacyMaxWidth: number | null,
-        @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly options: TuiImageEditorOptions,
+        @Inject(TUI_IMAGE_EDITOR_OPTIONS) readonly imageOptions: TuiImageEditorOptions,
+        @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
         @Inject(DOCUMENT) private readonly doc: Document,
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(ElementRef) private readonly el: ElementRef<HTMLDivElement>,
@@ -99,32 +101,12 @@ export class TuiImageEditorComponent
         }
     }
 
-    @tuiPure
-    isAlignCenter(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('justify-content:center') ?? false;
-    }
-
-    @tuiPure
-    isAlignJustify(style?: string | null): boolean {
-        return style === null || style === undefined || style === '';
-    }
-
-    @tuiPure
-    isAlignLeft(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('float:left') ?? false;
-    }
-
-    @tuiPure
-    isAlignRight(style?: string | null): boolean {
-        return style?.replace(/\s/g, '')?.includes('float:right') ?? false;
-    }
-
     get minWidth(): number {
-        return (this.legacyMinWidth ?? this.options.minWidth) || 0;
+        return (this.legacyMinWidth ?? this.imageOptions.minWidth) || 0;
     }
 
     get maxWidth(): number {
-        return (this.legacyMaxWidth ?? this.options.maxWidth) || 0;
+        return (this.legacyMaxWidth ?? this.imageOptions.maxWidth) || 0;
     }
 
     ngOnInit(): void {
@@ -137,43 +119,15 @@ export class TuiImageEditorComponent
         }
     }
 
+    align(styles: string | null): void {
+        this.style = styles;
+        this.attrs.style = styles;
+        this.notifyUpdate();
+    }
+
     updateSize([width]: readonly [width: number, height?: number]): void {
         this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
-        this.notifyUpdate();
-    }
-
-    alignLeft(): void {
-        const style = 'float: left';
-
-        this.style = style;
-        this.attrs.style = style;
-
-        this.notifyUpdate();
-    }
-
-    alignCenter(): void {
-        const style =
-            'display: flex; justify-content: center; margin-left: auto; margin-right: auto;';
-
-        this.attrs.style = style;
-        this.style = style;
-
-        this.notifyUpdate();
-    }
-
-    alignJustify(): void {
-        this.style = null;
-        this.attrs.style = null;
-        this.notifyUpdate();
-    }
-
-    alignRight(): void {
-        const style = 'float: right';
-
-        this.attrs.style = style;
-        this.style = style;
-
         this.notifyUpdate();
     }
 

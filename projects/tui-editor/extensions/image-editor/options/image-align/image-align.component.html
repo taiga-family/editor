@@ -1,0 +1,31 @@
+<div class="t-align-list">
+    <button
+        size="s"
+        tuiIconButton
+        [appearance]="isAlignJustify(style) ? 'flat' : 'icon'"
+        [icon]="options.icons.imageExtension.alignJustify"
+        (click.capture)="alignJustify()"
+    ></button>
+    <button
+        size="s"
+        tuiIconButton
+        [appearance]="isAlignLeft(style) ? 'flat' : 'icon'"
+        [icon]="options.icons.imageExtension.alignLeft"
+        (click.capture)="alignLeft()"
+    ></button>
+    <button
+        size="s"
+        tuiIconButton
+        [appearance]="isAlignCenter(style) ? 'flat' : 'icon'"
+        [icon]="options.icons.imageExtension.alignCenter"
+        (click.capture)="alignCenter()"
+    ></button>
+    <button
+        appearance="icon"
+        size="s"
+        tuiIconButton
+        [appearance]="isAlignRight(style) ? 'flat' : 'icon'"
+        [icon]="options.icons.imageExtension.alignRight"
+        (click.capture)="alignRight()"
+    ></button>
+</div>
