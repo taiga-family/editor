@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.52.0](https://github.com/taiga-family/tui-editor/compare/v1.51.0...v1.52.0) (2024-08-01)
+
+### Features
+
+- decomposition image options
+  ([c2023e6](https://github.com/taiga-family/tui-editor/commit/c2023e65d2402548cefaa206953c172349851f07))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.51.0](https://github.com/taiga-family/tui-editor/compare/v1.50.0...v1.51.0) (2024-08-01)
 
 ### Bug Fixes
