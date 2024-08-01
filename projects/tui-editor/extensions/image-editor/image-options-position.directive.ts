@@ -2,11 +2,11 @@ import {Directive, ElementRef, Inject} from '@angular/core';
 import {tuiAsPositionAccessor, TuiPoint, TuiPositionAccessor} from '@taiga-ui/core';
 
 @Directive({
-    selector: `[tuiImageOptionsPosition]`,
+    selector: '[tuiImageOptionsPosition]',
     providers: [tuiAsPositionAccessor(TuiImageOptionsPositionDirective)],
 })
 export class TuiImageOptionsPositionDirective extends TuiPositionAccessor {
-    readonly type = `dropdown`;
+    readonly type = 'dropdown';
 
     constructor(@Inject(ElementRef) private readonly el: ElementRef<HTMLElement>) {
         super();
