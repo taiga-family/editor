@@ -79,6 +79,7 @@ export default class TuiEditorStarter {
     ];
 
     protected tools = this.toolsVariants[0];
+    protected readOnly = false;
     protected floating = false;
     protected preview = true;
 

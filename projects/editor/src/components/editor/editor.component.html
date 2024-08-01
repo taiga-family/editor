@@ -8,7 +8,7 @@
     <div class="t-toolbar-wrapper">
         <tui-toolbar
             *ngIf="editorLoaded && !floatingToolbar"
-            [disabled]="!interactive"
+            [disabled]="!interactive || readOnly()"
             [tools]="tools"
             (fileAttached)="fileAttached.emit($event)"
         >
@@ -69,7 +69,7 @@
                 <div [class.t-floating]="floatingToolbar">
                     <tui-toolbar
                         *ngIf="editorLoaded && floatingToolbar"
-                        [disabled]="!interactive"
+                        [disabled]="!interactive || readOnly()"
                         [tools]="tools"
                         (fileAttached)="fileAttached.emit($event)"
                     >

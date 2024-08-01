@@ -82,6 +82,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         role: 'toolbar',
+        '[class._disabled]': 'disabled',
     },
 })
 export class TuiToolbar {

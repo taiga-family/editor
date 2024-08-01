@@ -8,6 +8,7 @@
                 [exampleText]="exampleText"
                 [floatingToolbar]="floating"
                 [formControl]="control"
+                [readOnly]="readOnly"
                 [style.max-height.px]="maxHeight"
                 [style.min-height.px]="minHeight"
                 [tools]="tools"
@@ -43,6 +44,13 @@
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
+            </ng-template>
+            <ng-template
+                documentationPropertyName="[readOnly]"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="readOnly"
+            >
+                Readonly mode
             </ng-template>
             <ng-template
                 documentationPropertyName="[floatingToolbar]"

@@ -143,6 +143,11 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public focused = false;
     public readonly editorService = inject(TuiTiptapEditorService);
 
+    @Input('readOnly')
+    public set readOnlyMode(value: boolean) {
+        this.readOnly.set(value);
+    }
+
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
     }
@@ -192,7 +197,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        if (!this.focused) {
+        if (!this.focused || this.readOnly()) {
             return TUI_FALSE_HANDLER;
         }
 
