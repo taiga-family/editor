@@ -136,7 +136,7 @@ export class TuiEditorComponent
     }
 
     get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        if (!this.focused) {
+        if (!this.focused || this.readOnly) {
             return ALWAYS_FALSE_HANDLER;
         }
 

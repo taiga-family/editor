@@ -1,5 +1,11 @@
 @import 'taiga-ui-local.less';
 
+:host {
+    &._disabled {
+        pointer-events: none;
+    }
+}
+
 .t-tools-wrapper {
     .scrollbar-hidden();
     position: sticky;

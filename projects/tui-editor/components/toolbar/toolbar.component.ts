@@ -48,6 +48,7 @@ import {TuiToolbarNavigationManagerDirective} from './toolbar-navigation-manager
     providers: [TuiDestroyService],
     host: {
         role: 'toolbar',
+        '[class._disabled]': 'disabled',
     },
 })
 export class TuiToolbarComponent {

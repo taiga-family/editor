@@ -60,6 +60,14 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
+                documentationPropertyName="readOnly"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="readOnly"
+            >
+                Example text shown on empty focused input
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
                 documentationPropertyName="exampleText"
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="exampleText"
