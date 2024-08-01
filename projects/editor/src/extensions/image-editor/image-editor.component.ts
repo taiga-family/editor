@@ -1,4 +1,4 @@
-import type {AfterViewInit} from '@angular/core';
+import type {AfterViewInit, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,6 +14,8 @@ import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
+import type {TuiDropdownDirective} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {timer} from 'rxjs';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
@@ -21,31 +23,39 @@ import {TuiEditorResizable} from '../../components/editor-resizable/editor-resiz
 import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import type {TuiEditableImage} from './image-editor.options';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
+import {TuiImageOptionsPosition} from './image-options-position.directive';
 
 @Component({
     standalone: true,
     selector: 'tui-image-editor',
-    imports: [TuiEditorResizable],
+    imports: [TuiButton, TuiDropdown, TuiEditorResizable, TuiImageOptionsPosition],
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiImageEditor
     extends AbstractTuiEditorResizable<TuiEditableImage>
-    implements AfterViewInit
+    implements OnInit, AfterViewInit
 {
     @ViewChild('resizable', {static: true})
     private readonly resizable?: TuiEditorResizable;
+
+    @ViewChild('dropdown', {static: true})
+    private readonly dropdown?: TuiDropdownDirective;
 
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
     private readonly win = inject(WA_WINDOW);
     private readonly destroyRef = inject(DestroyRef);
 
+    @HostBinding('style')
+    protected style?: string | null = null;
+
     @HostBinding('attr.contenteditable')
     protected contenteditable = false;
 
     protected focused = false;
+    protected open = false;
 
     protected readonly options = inject(TUI_IMAGE_EDITOR_OPTIONS);
 
@@ -59,6 +69,10 @@ export class TuiImageEditor
 
     public get maxWidth(): number {
         return this.options.maxWidth || 0;
+    }
+
+    public ngOnInit(): void {
+        this.style = this.attrs.style;
     }
 
     public ngAfterViewInit(): void {
@@ -98,7 +112,70 @@ export class TuiImageEditor
 
         if (this.focused) {
             this.selectFakeText();
+        } else {
+            this.open = false;
+            this.dropdown?.toggle(false);
         }
+    }
+
+    @tuiPure
+    protected isAlignCenter(style?: string | null): boolean {
+        return style?.replace(/\s/g, '')?.includes('justify-content:center') ?? false;
+    }
+
+    @tuiPure
+    protected isAlignJustify(style?: string | null): boolean {
+        return style === null || style === undefined || style === '';
+    }
+
+    @tuiPure
+    protected isAlignLeft(style?: string | null): boolean {
+        return style?.replace(/\s/g, '')?.includes('float:left') ?? false;
+    }
+
+    @tuiPure
+    protected isAlignRight(style?: string | null): boolean {
+        return style?.replace(/\s/g, '')?.includes('float:right') ?? false;
+    }
+
+    protected openDropdown(event: Event): void {
+        this.open = true;
+        this.dropdown?.toggle(true);
+        event.stopImmediatePropagation();
+    }
+
+    protected alignLeft(): void {
+        const style = 'float: left';
+
+        this.style = style;
+        this.attrs.style = style;
+
+        this.notifyUpdate();
+    }
+
+    protected alignCenter(): void {
+        const style =
+            'display: flex; justify-content: center; margin-left: auto; margin-right: auto;';
+
+        this.attrs.style = style;
+        this.style = style;
+
+        this.notifyUpdate();
+    }
+
+    protected alignJustify(): void {
+        this.style = null;
+        this.attrs.style = null;
+        this.notifyUpdate();
+    }
+
+    protected alignRight(): void {
+        const style = 'float: right';
+
+        this.attrs.style = style;
+        this.style = style;
+
+        this.notifyUpdate();
     }
 
     private selectFakeText(): void {

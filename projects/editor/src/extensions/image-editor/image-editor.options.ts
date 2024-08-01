@@ -11,6 +11,7 @@ export interface TuiEditableImage {
     src: string;
     title?: string;
     width?: number | string | null;
+    style?: string | null;
 }
 
 /**

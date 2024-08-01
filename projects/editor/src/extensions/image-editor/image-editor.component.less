@@ -1,8 +1,16 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 :host {
     display: inline-block;
 
     &[data-drag-handle] {
         cursor: move;
+    }
+
+    &:hover {
+        .t-image-options {
+            opacity: 1;
+        }
     }
 }
 
@@ -10,8 +18,26 @@ img {
     pointer-events: none;
 }
 
-.t-emulate-inline-node {
-    display: inline-block;
-    margin: 0;
-    height: 0;
+.t-hosted {
+    position: relative;
+}
+
+.t-image-options {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    z-index: 1;
+    background: var(--tui-background-base);
+}
+
+.t-image-options:not(._open) {
+    .transition(opacity);
+
+    opacity: 0;
+}
+
+.t-align-list {
+    display: flex;
+    gap: 0.3125rem;
+    padding: 0.125rem;
 }

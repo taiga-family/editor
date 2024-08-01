@@ -1,30 +1,68 @@
-<!--
-    <p class="t-emulate-inline-node"></p>
-    is used to be able to select fake empty paragraph
-    (text node) around the image, which will be a link
--->
-<p
-    contenteditable="false"
-    class="t-emulate-inline-node"
-></p>
-<tui-editor-resizable
-    #resizable
-    [autoHeight]="true"
-    [width]="width"
-    (sizeChange)="updateSize($event)"
+<div
+    #dropdown="tuiDropdown"
+    tuiImageOptionsPosition
+    class="t-hosted"
+    [tuiDropdown]="imgOptions"
+    [tuiDropdownOpen]="open"
 >
-    <img
-        contenteditable="false"
-        [alt]="alt"
-        [attr.width]="width"
-        [class.ProseMirror-selectednode]="focused"
-        [src]="src"
-        [style.max-width.px]="maxWidth"
-        [style.min-width.px]="minWidth"
-        [title]="title"
-    />
-</tui-editor-resizable>
-<p
-    contenteditable="false"
-    class="t-emulate-inline-node"
-></p>
+    <button
+        appearance=""
+        iconStart="@tui.settings"
+        size="s"
+        tuiIconButton
+        class="t-image-options"
+        [class._open]="open"
+        (click.capture.prevent)="openDropdown($event)"
+    ></button>
+
+    <tui-editor-resizable
+        #resizable
+        [autoHeight]="true"
+        [width]="width"
+        (sizeChange)="updateSize($event)"
+    >
+        <img
+            contenteditable="false"
+            [alt]="alt"
+            [attr.width]="width"
+            [class.ProseMirror-selectednode]="focused"
+            [src]="src"
+            [style.max-width.px]="maxWidth"
+            [style.min-width.px]="minWidth"
+            [title]="title"
+        />
+    </tui-editor-resizable>
+</div>
+
+<ng-template #imgOptions>
+    <div class="t-align-list">
+        <button
+            iconStart="@tui.align-justify"
+            size="s"
+            tuiIconButton
+            [appearance]="isAlignJustify(style) ? 'outline' : 'flat'"
+            (click.capture)="alignJustify(); open = false"
+        ></button>
+        <button
+            iconStart="@tui.align-left"
+            size="s"
+            tuiIconButton
+            [appearance]="isAlignLeft(style) ? 'outline' : 'flat'"
+            (click.capture)="alignLeft(); open = false"
+        ></button>
+        <button
+            iconStart="@tui.align-center"
+            size="s"
+            tuiIconButton
+            [appearance]="isAlignCenter(style) ? 'outline' : 'flat'"
+            (click.capture)="alignCenter(); open = false"
+        ></button>
+        <button
+            iconStart="@tui.align-right"
+            size="s"
+            tuiIconButton
+            [appearance]="isAlignRight(style) ? 'outline' : 'flat'"
+            (click.capture)="alignRight(); open = false"
+        ></button>
+    </div>
+</ng-template>
