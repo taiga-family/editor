@@ -1,0 +1,16 @@
+name: 🤖 Auto blocking issues
+
+on:
+  issues:
+    types: [deleted, transferred, closed]
+  pull_request_target:
+    types: [closed]
+
+jobs:
+  blocking_issues:
+    runs-on: ubuntu-latest
+    name: Checks for blocking issues
+    steps:
+      - uses: Levi-Lesches/blocking-issues@v2
+        with:
+          use-label: 'blocked issue'
