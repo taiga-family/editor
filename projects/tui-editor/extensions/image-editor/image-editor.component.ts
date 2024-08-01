@@ -19,6 +19,7 @@ import {
     TuiEditorResizableComponent,
 } from '@tinkoff/tui-editor/components/editor-resizable';
 import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
+import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@tinkoff/tui-editor/tokens';
 import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -29,7 +30,6 @@ import {
     TuiEditableImage,
     TuiImageEditorOptions,
 } from './image-editor.options';
-import {TUI_EDITOR_OPTIONS, TuiEditorOptions} from '@tinkoff/tui-editor/tokens';
 
 @Component({
     selector: 'tui-image-editor',

@@ -129,11 +129,11 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         colorSelectorDropdownChevron: `tuiIconChevronDown`,
         colorSelectorDropdownCheck: `tuiIconCheck`,
         imageExtension: {
-            settings: 'tuiIconSettings',
-            alignJustify: 'tuiIconAlignJustify',
-            alignCenter: 'tuiIconAlignCenter',
-            alignLeft: 'tuiIconAlignLeft',
-            alignRight: 'tuiIconAlignRight',
+            settings: `tuiIconSettings`,
+            alignJustify: `tuiIconAlignJustify`,
+            alignCenter: `tuiIconAlignCenter`,
+            alignLeft: `tuiIconAlignLeft`,
+            alignRight: `tuiIconAlignRight`,
         },
     },
 };

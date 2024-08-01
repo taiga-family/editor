@@ -22,7 +22,7 @@ export class TuiImageAlignComponent {
     @Output()
     readonly updateAlignStyles = new EventEmitter<string | null>();
 
-    constructor(@Inject(TUI_EDITOR_OPTIONS) public readonly options: TuiEditorOptions) {}
+    constructor(@Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions) {}
 
     @tuiPure
     isAlignCenter(style?: string | null): boolean {
