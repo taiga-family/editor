@@ -22,6 +22,7 @@ import {
     TuiControl,
     tuiZonefree,
 } from '@taiga-ui/cdk';
+import type {TuiDropdownDirective} from '@taiga-ui/core';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
     TuiAppearance,
@@ -88,6 +89,9 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
 export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild(TuiTiptapEditor, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
+
+    @ViewChild('tuiDropdown')
+    private readonly tuiDropdown?: TuiDropdownDirective;
 
     private readonly contentProcessor = inject<
         TuiValueTransformer<string | null, string | null>
@@ -235,6 +239,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         this.editor?.removeAnchor();
     }
 
+    protected closeDropdown(): void {
+        this.tuiDropdown?.toggle(false);
+    }
+
     protected addLink(link: string): void {
         this.editor?.selectClosest();
         this.editor?.setLink(link);
@@ -277,8 +285,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
      */
     private currentFocusedNodeIsTextAnchor(range: Range): boolean {
         return (
-            !!range.startContainer.parentElement?.closest('a') &&
-            tuiIsSafeLinkRange(range)
+            this.focusNode?.nodeName === 'A' ||
+            !!this.focusNode?.parentElement?.closest('tui-edit-link') ||
+            (!!range.startContainer.parentElement?.closest('a') &&
+                tuiIsSafeLinkRange(range))
         );
     }
 
