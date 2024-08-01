@@ -1,15 +1,20 @@
+import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     HostBinding,
     HostListener,
     inject,
+    ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
-import {WINDOW} from '@ng-web-apis/common';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
+import {timer} from 'rxjs';
 
 import {AbstractTuiEditorResizable} from '../../components/editor-resizable/editor-resizable.abstract';
 import {TuiEditorResizable} from '../../components/editor-resizable/editor-resizable.component';
@@ -25,10 +30,17 @@ import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage> {
+export class TuiImageEditor
+    extends AbstractTuiEditorResizable<TuiEditableImage>
+    implements AfterViewInit
+{
+    @ViewChild('resizable', {static: true})
+    private readonly resizable?: TuiEditorResizable;
+
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
+    private readonly destroyRef = inject(DestroyRef);
 
     @HostBinding('attr.contenteditable')
     protected contenteditable = false;
@@ -49,13 +61,17 @@ export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage>
         return this.options.maxWidth || 0;
     }
 
-    public updateSize([width]: readonly [width: number, height: number]): void {
+    public ngAfterViewInit(): void {
+        if (this.minWidth > 0) {
+            this.updateMinWidth();
+        }
+    }
+
+    public updateSize([width]: readonly [width: number, height?: number]): void {
         this.currentWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
         this.attrs.width = this.currentWidth;
 
-        this.el.nativeElement.dispatchEvent(
-            new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
-        );
+        this.notifyUpdate();
     }
 
     @HostBinding('attr.data-drag-handle')
@@ -95,5 +111,28 @@ export class TuiImageEditor extends AbstractTuiEditorResizable<TuiEditableImage>
             this.win.getSelection()?.removeAllRanges();
             this.win.getSelection()?.addRange(range);
         }
+    }
+
+    private updateMinWidth(): void {
+        timer(100)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                const naturalWidth =
+                    this.resizable?.container?.nativeElement.querySelector('img')
+                        ?.naturalWidth ??
+                    this.resizable?.width ??
+                    this.attrs.width ??
+                    0;
+
+                if (this.minWidth > parseInt(naturalWidth as string, 10)) {
+                    this.updateSize([this.minWidth]);
+                }
+            });
+    }
+
+    private notifyUpdate(): void {
+        this.el.nativeElement.dispatchEvent(
+            new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+        );
     }
 }

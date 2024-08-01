@@ -1,4 +1,5 @@
 import {NgIf} from '@angular/common';
+import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +7,7 @@ import {
     HostBinding,
     Input,
     Output,
+    ViewChild,
 } from '@angular/core';
 import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 
@@ -18,6 +20,9 @@ import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorResizable {
+    @ViewChild('container', {static: true})
+    public container?: ElementRef<HTMLDivElement>;
+
     @Input()
     public autoHeight = false;
 
