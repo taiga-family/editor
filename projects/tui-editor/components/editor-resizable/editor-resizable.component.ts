@@ -1,10 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     EventEmitter,
     HostBinding,
     Input,
     Output,
+    ViewChild,
 } from '@angular/core';
 import {tuiIsNumber, tuiPx} from '@taiga-ui/cdk';
 
@@ -15,6 +17,9 @@ import {tuiIsNumber, tuiPx} from '@taiga-ui/cdk';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorResizableComponent {
+    @ViewChild('container', {static: true})
+    container?: ElementRef<HTMLDivElement>;
+
     @Input()
     autoHeight = false;
 

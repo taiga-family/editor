@@ -1,30 +1,68 @@
-<!-- eslint-disable @html-eslint/require-img-alt -->
-<!--
-    <p class="t-emulate-inline-node"></p>
-    is used to be able to select fake empty paragraph
-    (text node) around the image, which will be a link
--->
-<p
-    contenteditable="false"
-    class="t-emulate-inline-node"
-></p>
-<tui-editor-resizable
-    [autoHeight]="true"
-    [width]="width"
-    (sizeChange)="updateSize($event)"
+<tui-hosted-dropdown
+    topRight
+    class="t-hosted"
+    [content]="dropdown"
+    [(open)]="open"
 >
-    <img
-        contenteditable="false"
-        [alt]="alt"
-        [attr.width]="width"
-        [class.ProseMirror-selectednode]="focused"
-        [src]="getSrc(attrs.src)"
-        [style.max-width.px]="maxWidth"
-        [style.min-width.px]="minWidth"
-        [title]="title"
-    />
-</tui-editor-resizable>
-<p
-    contenteditable="false"
-    class="t-emulate-inline-node"
-></p>
+    <button
+        appearance="outline"
+        icon="tuiIconSettings"
+        size="s"
+        tuiIconButton
+        class="t-image-options"
+        [class._open]="open"
+    ></button>
+    <ng-template
+        #dropdown
+        let-close="close"
+    >
+        <div class="t-align-list">
+            <button
+                icon="tuiIconAlignJustify"
+                size="s"
+                tuiIconButton
+                [appearance]="isAlignJustify(style) ? 'flat' : 'icon'"
+                (click.capture)="alignJustify(); close()"
+            ></button>
+            <button
+                icon="tuiIconAlignLeft"
+                size="s"
+                tuiIconButton
+                [appearance]="isAlignLeft(style) ? 'flat' : 'icon'"
+                (click.capture)="alignLeft(); close()"
+            ></button>
+            <button
+                icon="tuiIconAlignCenter"
+                size="s"
+                tuiIconButton
+                [appearance]="isAlignCenter(style) ? 'flat' : 'icon'"
+                (click.capture)="alignCenter(); close()"
+            ></button>
+            <button
+                appearance="icon"
+                icon="tuiIconAlignRight"
+                size="s"
+                tuiIconButton
+                [appearance]="isAlignRight(style) ? 'flat' : 'icon'"
+                (click.capture)="alignRight(); close()"
+            ></button>
+        </div>
+    </ng-template>
+    <tui-editor-resizable
+        #resizable
+        [autoHeight]="true"
+        [width]="width"
+        (sizeChange)="updateSize($event)"
+    >
+        <img
+            contenteditable="false"
+            [alt]="alt"
+            [attr.width]="width"
+            [class.ProseMirror-selectednode]="focused"
+            [src]="getSrc(attrs.src)"
+            [style.max-width.px]="maxWidth"
+            [style.min-width.px]="minWidth"
+            [title]="title"
+        />
+    </tui-editor-resizable>
+</tui-hosted-dropdown>

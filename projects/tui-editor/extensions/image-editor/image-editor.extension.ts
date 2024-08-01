@@ -4,7 +4,6 @@ import {TuiNodeView} from '@tinkoff/tui-editor/extensions/tiptap-node-view';
 import {TUI_IMAGE_LOADER} from '@tinkoff/tui-editor/tokens';
 import {
     Attribute,
-    mergeAttributes,
     Node,
     NodeViewRenderer,
     NodeViewRendererProps,
@@ -12,7 +11,7 @@ import {
 } from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
 import {Plugin} from '@tiptap/pm/state';
-import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import {NodeSpec} from 'prosemirror-model';
 import {EditorView} from 'prosemirror-view';
 import {take, takeWhile} from 'rxjs/operators';
 
@@ -26,27 +25,6 @@ declare module '@tiptap/core' {
         };
     }
 }
-
-const IMAGE_EDITOR_PARSE_META = [{tag: `img`}];
-
-const DEFAULT_IMAGE_ATTRS = {
-    src: {
-        default: ``,
-        keepOnSplit: false,
-    },
-    width: {
-        default: null,
-        keepOnSplit: false,
-    },
-    alt: {
-        default: ``,
-        keepOnSplit: false,
-    },
-    title: {
-        default: ``,
-        keepOnSplit: false,
-    },
-};
 
 function pasteImage(injector: Injector) {
     return (view: EditorView, event: ClipboardEvent | DragEvent): void => {
@@ -107,27 +85,45 @@ export function createImageEditorExtension<T, K>(
         name: `image`,
         group: `inline`,
         inline: true,
-        atom: true,
         priority: 0,
         selectable: true,
         draggable: enableDraggable,
 
         parseHTML(): NodeSpec['parseDOM'] {
-            return IMAGE_EDITOR_PARSE_META;
+            return [
+                {
+                    tag: `img`,
+                },
+            ];
         },
 
         addAttributes(): Record<keyof TuiEditableImage, Attribute> {
             return {
-                ...DEFAULT_IMAGE_ATTRS,
+                src: {
+                    default: ``,
+                    keepOnSplit: false,
+                },
+                width: {
+                    default: null,
+                    keepOnSplit: false,
+                },
+                alt: {
+                    default: ``,
+                    keepOnSplit: false,
+                },
+                style: {
+                    default: ``,
+                    keepOnSplit: false,
+                },
+                title: {
+                    default: ``,
+                    keepOnSplit: false,
+                },
                 draggable: {
                     default: enableDraggable ? `` : null,
                     keepOnSplit: false,
                 },
             };
-        },
-
-        renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
-            return [`img`, mergeAttributes(HTMLAttributes)];
         },
 
         addNodeView(): NodeViewRenderer {

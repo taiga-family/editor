@@ -26,7 +26,7 @@ import {
     TuiStringHandler,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import {TUI_ANIMATIONS_DEFAULT_DURATION} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_DEFAULT_DURATION, TuiDropdownDirective} from '@taiga-ui/core';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiToolbarComponent} from '@tinkoff/tui-editor/components/toolbar';
 import {defaultEditorTools, TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
@@ -74,6 +74,9 @@ export class TuiEditorComponent
 {
     @ViewChild(TuiTiptapEditorDirective, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
+
+    @ViewChild('tuiDropdown')
+    private readonly tuiDropdown?: TuiDropdownDirective;
 
     @Input()
     exampleText = '';
@@ -221,6 +224,10 @@ export class TuiEditorComponent
 
     removeAnchor(): void {
         this.editor?.removeAnchor();
+    }
+
+    closeDropdown(): void {
+        this.tuiDropdown?.dropdownBoxRef?.destroy();
     }
 
     addLink(link: string): void {

@@ -53,6 +53,7 @@
 
         <ng-template #editor>
             <div
+                #tuiDropdown="tuiDropdown"
                 tuiDropdownLimitWidth="auto"
                 [tuiDropdown]="dropdown"
                 [tuiToolbarDropdown]="dropdownSelectionHandler"
@@ -85,8 +86,8 @@
                     <tui-edit-link
                         *ngIf="isLinkSelected"
                         #link
-                        (addLink)="link.anchorMode ? addAnchor($event) : addLink($event)"
-                        (removeLink)="link.anchorMode ? removeAnchor() : removeLink()"
+                        (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
+                        (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
                     ></tui-edit-link>
 
                     <ng-container *ngIf="isMentionMode">
