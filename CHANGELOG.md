@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.51.0](https://github.com/taiga-family/tui-editor/compare/v1.50.0...v1.51.0) (2024-08-01)
+
+### Bug Fixes
+
+- correct color for delete details button
+  ([17bbfe9](https://github.com/taiga-family/tui-editor/commit/17bbfe9a0904de1b903c018829209c2f71861c22))
+- support draggable for image
+  ([add57d4](https://github.com/taiga-family/tui-editor/commit/add57d43441212c2fce6e4041000afe09014d368))
+
+### Features
+
+- support align images in article
+  ([58e2dce](https://github.com/taiga-family/tui-editor/commit/58e2dceec10c3f7b22c6ed5f841729ab4fec2da6))
+- support align images in article
+  ([00c549f](https://github.com/taiga-family/tui-editor/commit/00c549f424c96d1aaf7744dd4a69e01a2c608ae8))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.50.0](https://github.com/taiga-family/tui-editor/compare/v1.49.0...v1.50.0) (2024-07-31)
 
 ### Bug Fixes
