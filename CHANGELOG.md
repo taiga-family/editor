@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.53.0](https://github.com/taiga-family/tui-editor/compare/v1.52.0...v1.53.0) (2024-08-01)
+
+### Features
+
+- support readOnly
+  ([0c3f0af](https://github.com/taiga-family/tui-editor/commit/0c3f0af428ead2a611113cadef3bfad52117c76e))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.52.0](https://github.com/taiga-family/tui-editor/compare/v1.51.0...v1.52.0) (2024-08-01)
 
 ### Features
