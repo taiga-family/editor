@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.54.0](https://github.com/taiga-family/tui-editor/compare/v1.53.0...v1.54.0) (2024-08-02)
+
+### Features
+
+- show example text always
+  ([ebce916](https://github.com/taiga-family/tui-editor/commit/ebce916ece66a08ac5e19152eafa71f77c9e8803))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.53.0](https://github.com/taiga-family/tui-editor/compare/v1.52.0...v1.53.0) (2024-08-01)
 
 ### Features
