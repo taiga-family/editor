@@ -8,6 +8,7 @@ import {
 import {Router} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
+import {TuiModeDirective} from '@taiga-ui/core';
 import pkg from '@tinkoff/tui-editor/package.json';
 import {Observable} from 'rxjs';
 
@@ -16,6 +17,12 @@ import {Observable} from 'rxjs';
     templateUrl: './app.component.html',
     styleUrls: ['./app.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: TuiModeDirective,
+            useExisting: null,
+        },
+    ],
 })
 export class TuiAppComponent implements OnInit {
     @HostBinding('class._loaded')

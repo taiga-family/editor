@@ -14,12 +14,6 @@
     font: var(--tui-font-text-xs);
 }
 
-@media not (min-width: 480px) {
-    .app-version {
-        display: none;
-    }
-}
-
 .t-links {
     display: flex;
     gap: 10px;
@@ -32,13 +26,34 @@
 
 .stackblitz:active {
     transform: scale(0.98);
-    /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
+}
+
+.stackblitz_mobile {
+    display: none;
 }
 
 header {
-    position: absolute;
-    left: 16.25rem;
+    position: static;
+    margin-left: 16.25rem;
     box-shadow: none;
+}
+
+@media @tui-mobile {
+    header {
+        margin-left: 0;
+    }
+
+    .stackblitz {
+        display: none;
+
+        &_mobile {
+            display: block;
+            padding-left: 12px;
+        }
+    }
+
+    .app-version {
+        display: none !important;
+    }
 }
