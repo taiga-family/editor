@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.55.0](https://github.com/taiga-family/tui-editor/compare/v1.54.0...v1.55.0) (2024-08-02)
+
+### Features
+
+- support auto min-height
+  ([774cf54](https://github.com/taiga-family/tui-editor/commit/774cf5403291a28c60d200d5ec1167df8855df0e))
+- support focus events
+  ([45422b5](https://github.com/taiga-family/tui-editor/commit/45422b5d94c376b176783ce9d6c89ec28ac22222))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.54.0](https://github.com/taiga-family/tui-editor/compare/v1.53.0...v1.54.0) (2024-08-02)
 
 ### Features
