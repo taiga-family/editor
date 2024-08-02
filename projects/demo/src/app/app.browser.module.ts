@@ -9,6 +9,7 @@ import {
     TUI_DOC_PAGES,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_TITLE,
+    TuiDocHeaderModule,
     TuiDocMainModule,
     TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
@@ -45,6 +46,7 @@ import {TuiLogoModule} from './modules/logo/logo.module';
         TuiDocMainModule,
         TuiLinkModule,
         TuiModeModule,
+        TuiDocHeaderModule,
     ],
     declarations: [TuiAppComponent],
     providers: [
