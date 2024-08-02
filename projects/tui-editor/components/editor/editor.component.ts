@@ -93,6 +93,12 @@ export class TuiEditorComponent
     @ViewChild(TuiToolbarComponent)
     readonly toolbar?: TuiToolbarComponent;
 
+    @Output()
+    readonly focusIn = new EventEmitter<void>();
+
+    @Output()
+    readonly focusOut = new EventEmitter<void>();
+
     hasMentionPlugin = false;
     focused = false;
 
@@ -210,6 +216,12 @@ export class TuiEditorComponent
         this.focused = focused;
         this.updateFocused(focused);
         this.control?.updateValueAndValidity();
+
+        if (focused) {
+            this.focusIn.emit();
+        } else {
+            this.focusOut.emit();
+        }
     }
 
     onModelChange(value: string): void {
