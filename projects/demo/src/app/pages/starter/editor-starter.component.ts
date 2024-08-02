@@ -59,8 +59,8 @@ export class TuiEditorStarterPageComponent {
     `);
 
     exampleText = '';
-    minHeight: number | null = null;
-    maxHeight: number | null = null;
+    minHeight = '';
+    maxHeight = '';
     readOnly = false;
     focusable = true;
     floating = false;
