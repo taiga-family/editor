@@ -37,10 +37,35 @@
     }
 }
 
-.t-example-text {
+.t-editor-placeholder {
+    .transition(transform);
+
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-02);
+    pointer-events: none;
+    will-change: transform;
+    transform: translateY(-0.25rem);
+    width: 95%;
+    font-size: 0.9375rem;
+
+    &_raised {
+        transform: translateY(-0.4375rem);
+    }
+}
+
+.t-editor-placeholder:not(:empty) {
+    margin: 1rem 1rem -1rem;
+    min-height: 1.625rem;
+}
+
+.t-editor-placeholder:empty {
+    margin-bottom: 1rem;
+}
+
+.t-editor-example-text {
     position: absolute;
     left: 1rem;
-    margin-top: 1.6rem;
+    margin-top: 0.1875rem;
     color: var(--tui-base-06);
     letter-spacing: normal;
     text-transform: none;

@@ -20,14 +20,14 @@
             <ng-content select="tools"></ng-content>
         </tui-toolbar>
         <div
-            class="t-placeholder"
-            [class.t-placeholder_raised]="placeholderRaised"
+            class="t-editor-placeholder"
+            [class.t-editor-placeholder_raised]="placeholderRaised"
         >
             <ng-content></ng-content>
         </div>
         <div
             *ngIf="hasExampleText"
-            class="t-example-text"
+            class="t-editor-example-text"
         >
             {{ exampleText }}
         </div>

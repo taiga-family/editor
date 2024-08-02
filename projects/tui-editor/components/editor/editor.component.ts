@@ -154,9 +154,7 @@ export class TuiEditorComponent
     }
 
     get hasExampleText(): boolean {
-        return (
-            !!this.exampleText && this.computedFocused && !this.hasValue && !this.readOnly
-        );
+        return !!this.exampleText && !this.hasValue && !this.readOnly;
     }
 
     get isLinkSelected(): boolean {
