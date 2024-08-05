@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.56.0](https://github.com/taiga-family/tui-editor/compare/v1.55.0...v1.56.0) (2024-08-05)
+
+### Features
+
+- support shared toolbar
+  ([0e79e65](https://github.com/taiga-family/tui-editor/commit/0e79e654877af88aa60f2b076e17c5205529c453))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.55.0](https://github.com/taiga-family/tui-editor/compare/v1.54.0...v1.55.0) (2024-08-02)
 
 ### Features
