@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    OnInit,
+    Optional,
+} from '@angular/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -16,21 +23,44 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
     styleUrls: ['../tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTextColorComponent {
+export class TuiTextColorComponent implements OnInit {
+    private localEditor: AbstractTuiEditor | null = null;
+
+    @Input('editor')
+    set inputEditor(value: AbstractTuiEditor | null) {
+        this.localEditor = value;
+        this.initStream();
+    }
+
     @Input()
     colors: ReadonlyMap<string, string> = this.options.colors;
 
-    readonly fontColor$ = this.editor.stateChange$.pipe(
-        map(() => this.editor.getFontColor() || this.options.blankColor),
-        distinctUntilChanged(),
-    );
-
     readonly foreColorText$ = this.texts$.pipe(map(texts => texts.foreColor));
+
+    fontColor$: Observable<string> | null = null;
 
     constructor(
         @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
+        @Optional()
+        @Inject(TuiTiptapEditorService)
+        readonly injectionEditor: AbstractTuiEditor | null,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
     ) {}
+
+    get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.localEditor;
+    }
+
+    ngOnInit(): void {
+        this.initStream();
+    }
+
+    private initStream(): void {
+        this.fontColor$ =
+            this.editor?.stateChange$.pipe(
+                map(() => this.editor?.getFontColor() || this.options.blankColor),
+                distinctUntilChanged(),
+            ) ?? null;
+    }
 }

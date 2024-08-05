@@ -164,6 +164,15 @@ export const appRoutes: Routes = [
         },
     },
     {
+        path: TuiDemoPath.ToolbarShared,
+        loadChildren: async () =>
+            (await import(`./pages/toolbar/shared/editor-toolbar-shared.module`))
+                .ExampleToolbarSharedModule,
+        data: {
+            title: `Editor — Toolbar`,
+        },
+    },
+    {
         path: TuiDemoPath.ProcessingLegacyHtml,
         loadChildren: async () =>
             (await import(`./pages/processing/legacy-html/editor-legacy-html.module`))

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input, Optional} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
@@ -20,6 +20,9 @@ import {map} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontSizeComponent {
+    @Input('editor')
+    inputEditor: AbstractTuiEditor | null = null;
+
     readonly fontsOptions$: Observable<ReadonlyArray<Partial<TuiEditorFontOption>>> =
         this.fontOptionsTexts$.pipe(map(texts => this.options.fontOptions(texts)));
 
@@ -27,7 +30,9 @@ export class TuiFontSizeComponent {
 
     constructor(
         @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
+        @Optional()
+        @Inject(TuiTiptapEditorService)
+        readonly injectionEditor: AbstractTuiEditor | null,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_FONT_OPTIONS)
@@ -35,6 +40,10 @@ export class TuiFontSizeComponent {
             TuiLanguageEditor['editorFontOptions']
         >,
     ) {}
+
+    get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.inputEditor;
+    }
 
     /**
      * @deprecated:
@@ -45,23 +54,23 @@ export class TuiFontSizeComponent {
     }
 
     setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
-        const color = this.editor.getFontColor();
+        const color = this.editor?.getFontColor() ?? EDITOR_BLANK_COLOR;
 
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
-            this.editor.setHeading(headingLevel);
+            this.editor?.setHeading(headingLevel);
         } else {
-            this.editor.setParagraph({fontSize: tuiPx(px || 0)});
+            this.editor?.setParagraph({fontSize: tuiPx(px || 0)});
         }
 
         if (color !== EDITOR_BLANK_COLOR) {
-            this.editor.setFontColor(color);
+            this.editor?.setFontColor(color);
         }
     }
 
     private clearPreviousTextStyles(): void {
-        this.editor.removeEmptyTextStyle();
-        this.editor.toggleMark('textStyle');
+        this.editor?.removeEmptyTextStyle();
+        this.editor?.toggleMark('textStyle');
     }
 }

@@ -29,7 +29,7 @@
                     [icon]="options.icons.textAlignLeft"
                     [pseudoActive]="!!alignState?.left"
                     [tuiHint]="texts.justifyLeft"
-                    (click)="editor.onAlign('left')"
+                    (click)="editor?.onAlign('left')"
                 ></button>
                 <button
                     appearance="icon"
@@ -40,7 +40,7 @@
                     [icon]="options.icons.textAlignCenter"
                     [pseudoActive]="!!alignState?.center"
                     [tuiHint]="texts.justifyCenter"
-                    (click)="editor.onAlign('center')"
+                    (click)="alignCenter()"
                 ></button>
                 <button
                     appearance="icon"
@@ -51,7 +51,7 @@
                     [icon]="options.icons.textAlignRight"
                     [pseudoActive]="!!alignState?.right"
                     [tuiHint]="texts.justifyRight"
-                    (click)="editor.onAlign('right')"
+                    (click)="editor?.onAlign('right')"
                 ></button>
                 <button
                     appearance="icon"
@@ -62,7 +62,7 @@
                     [icon]="options.icons.textAlignJustify"
                     [pseudoActive]="!!alignState?.justify"
                     [tuiHint]="texts.justifyFull"
-                    (click)="editor.onAlign('justify')"
+                    (click)="editor?.onAlign('justify')"
                 ></button>
             </div>
         </ng-template>

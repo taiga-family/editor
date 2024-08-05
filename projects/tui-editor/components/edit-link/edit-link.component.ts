@@ -6,6 +6,7 @@ import {
     HostListener,
     Inject,
     Input,
+    Optional,
     Output,
 } from '@angular/core';
 import {TuiInjectionTokenType, tuiIsElement} from '@taiga-ui/cdk';
@@ -34,6 +35,9 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 export class TuiEditLinkComponent {
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
 
+    @Input('editor')
+    inputEditor: AbstractTuiEditor | null = null;
+
     @Output()
     readonly addLink = new EventEmitter<string>();
 
@@ -53,9 +57,15 @@ export class TuiEditLinkComponent {
         private readonly doc: Document,
         @Inject(TUI_EDITOR_LINK_TEXTS)
         readonly texts$: TuiInjectionTokenType<typeof TUI_EDITOR_LINK_TEXTS>,
-        @Inject(TuiTiptapEditorService) private readonly editor: AbstractTuiEditor,
+        @Optional()
+        @Inject(TuiTiptapEditorService)
+        readonly injectionEditor: AbstractTuiEditor | null,
         @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
     ) {}
+
+    get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.inputEditor;
+    }
 
     get defaultProtocol(): TuiEditorLinkProtocol {
         return this.options.linkOptions?.protocol ?? TUI_EDITOR_LINK_HTTPS_PREFIX;
@@ -222,7 +232,7 @@ export class TuiEditLinkComponent {
     private getAllAnchorsIds(): string[] {
         const nodes: Element[] = Array.from(
             this.editor
-                .getOriginTiptapEditor()
+                ?.getOriginTiptapEditor()
                 .view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
         );
 

@@ -230,6 +230,12 @@ export const DEMO_PAGES: TuiDocPages = [
                 keywords: `editor, toolbar, floating, wysiwyg, редактор, текст, подсветка, html, rich, text`,
                 route: `/${TuiDemoPath.ToolbarFloating}`,
             },
+            {
+                section: `Documentation`,
+                title: `Shared`,
+                keywords: `editor, toolbar, shared, multiple, один на всех, html, rich, text`,
+                route: `/${TuiDemoPath.ToolbarShared}`,
+            },
         ],
     },
 ];

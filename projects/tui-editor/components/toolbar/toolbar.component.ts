@@ -23,7 +23,7 @@ import {
 } from '@taiga-ui/cdk';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
-import {defaultEditorTools} from '@tinkoff/tui-editor/constants';
+import {TUI_EDITOR_DEFAULT_EDITOR_TOOLS} from '@tinkoff/tui-editor/constants';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
 import {TuiEditorTool} from '@tinkoff/tui-editor/enums';
 import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
@@ -61,6 +61,9 @@ export class TuiToolbarComponent {
     @Input()
     colors: ReadonlyMap<string, string> = this.options.colors;
 
+    @Input('editor')
+    inputEditor: AbstractTuiEditor | null = null;
+
     @Input()
     @HostBinding('class._disabled')
     disabled = false;
@@ -76,7 +79,7 @@ export class TuiToolbarComponent {
 
     readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
 
-    toolsSet = new Set<TuiEditorTool>(defaultEditorTools);
+    toolsSet = new Set<TuiEditorTool>(TUI_EDITOR_DEFAULT_EDITOR_TOOLS);
 
     @Input()
     set tools(value: readonly TuiEditorTool[]) {
@@ -87,7 +90,9 @@ export class TuiToolbarComponent {
         @Optional()
         @Inject(ElementRef)
         private readonly el: ElementRef<HTMLElement>,
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
+        @Optional()
+        @Inject(TuiTiptapEditorService)
+        readonly injectionEditor: AbstractTuiEditor | null,
         @Inject(TUI_IMAGE_LOADER)
         private readonly imageLoader: TuiHandler<File, Observable<string>>,
         @Inject(TUI_ATTACH_FILES_OPTIONS)
@@ -105,6 +110,10 @@ export class TuiToolbarComponent {
         private readonly destroy$: TuiDestroyService,
     ) {}
 
+    get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.inputEditor;
+    }
+
     get focused(): boolean {
         return (
             tuiIsNativeFocusedIn(this.el.nativeElement) ||
@@ -119,39 +128,39 @@ export class TuiToolbarComponent {
     }
 
     get unorderedList(): boolean {
-        return this.editor.isActive('bulletList');
+        return this.editor?.isActive('bulletList') ?? false;
     }
 
     get orderedList(): boolean {
-        return this.editor.isActive('orderedList');
+        return this.editor?.isActive('orderedList') ?? false;
     }
 
     get blockquote(): boolean {
-        return this.editor.isActive('blockquote');
+        return this.editor?.isActive('blockquote') ?? false;
     }
 
     get a(): boolean {
-        return this.editor.isActive('link');
+        return this.editor?.isActive('link') ?? false;
     }
 
     get jumpAnchor(): boolean {
-        return this.editor.isActive('jumpAnchor');
+        return this.editor?.isActive('jumpAnchor') ?? false;
     }
 
     get undoDisabled(): boolean {
-        return this.editor.undoDisabled();
+        return this.editor?.undoDisabled() ?? false;
     }
 
     get redoDisabled(): boolean {
-        return this.editor.redoDisabled();
+        return this.editor?.redoDisabled() ?? false;
     }
 
     get subscript(): boolean {
-        return this.editor.isActive('subscript');
+        return this.editor?.isActive('subscript') ?? false;
     }
 
     get superscript(): boolean {
-        return this.editor.isActive('superscript');
+        return this.editor?.isActive('superscript') ?? false;
     }
 
     get formatEnabled(): boolean {
@@ -191,7 +200,7 @@ export class TuiToolbarComponent {
         }
 
         event.preventDefault();
-        this.editor.focus();
+        this.editor?.focus();
     }
 
     onBottomFocus(): void {
@@ -241,7 +250,7 @@ export class TuiToolbarComponent {
     }
 
     onLink(url?: string): void {
-        this.editor.toggleLink(url ?? '');
+        this.editor?.toggleLink(url ?? '');
     }
 
     enabled(tool: TuiEditorTool): boolean {
@@ -249,39 +258,39 @@ export class TuiToolbarComponent {
     }
 
     undo(): void {
-        this.editor.undo();
+        this.editor?.undo();
     }
 
     redo(): void {
-        this.editor.redo();
+        this.editor?.redo();
     }
 
     insertHorizontalRule(): void {
-        this.editor.setHorizontalRule();
+        this.editor?.setHorizontalRule();
     }
 
     removeFormat(): void {
-        this.editor.removeFormat();
+        this.editor?.removeFormat();
     }
 
     toggleOrderedList(): void {
-        this.editor.toggleOrderedList();
+        this.editor?.toggleOrderedList();
     }
 
     toggleQuote(): void {
-        this.editor.toggleBlockquote();
+        this.editor?.toggleBlockquote();
     }
 
     toggleSubscript(): void {
-        this.editor.toggleSubscript();
+        this.editor?.toggleSubscript();
     }
 
     toggleSuperscript(): void {
-        this.editor.toggleSuperscript();
+        this.editor?.toggleSuperscript();
     }
 
     private addImage(image: string): void {
-        this.editor.setImage(image);
+        this.editor?.setImage(image);
     }
 
     private focusFirst(): void {

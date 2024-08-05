@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    OnInit,
+    Optional,
+} from '@angular/core';
 import {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {AbstractTuiEditor} from '@tinkoff/tui-editor/abstract';
 import {TuiTiptapEditorService} from '@tinkoff/tui-editor/directives';
@@ -15,20 +22,43 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
     templateUrl: './details-remove.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDetailsRemoveComponent {
-    readonly disabled$ = this.editor.stateChange$.pipe(
-        map(() => !this.editor.isActive('details')),
-        distinctUntilChanged(),
-    );
+export class TuiDetailsRemoveComponent implements OnInit {
+    private localEditor: AbstractTuiEditor | null = null;
+
+    @Input('editor')
+    set inputEditor(value: AbstractTuiEditor | null) {
+        this.localEditor = value;
+        this.initStream();
+    }
+
+    disabled$: Observable<boolean> | null = null;
 
     constructor(
-        @Inject(TuiTiptapEditorService) readonly editor: AbstractTuiEditor,
+        @Optional()
+        @Inject(TuiTiptapEditorService)
+        readonly injectionEditor: AbstractTuiEditor | null,
         @Inject(TUI_EDITOR_TOOLBAR_TEXTS)
         readonly texts$: Observable<TuiLanguageEditor['toolbarTools']>,
         @Inject(TUI_EDITOR_OPTIONS) readonly options: TuiEditorOptions,
     ) {}
 
+    ngOnInit(): void {
+        this.initStream();
+    }
+
+    get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.localEditor;
+    }
+
     removeDetails(): void {
-        this.editor.removeDetails();
+        this.editor?.removeDetails();
+    }
+
+    private initStream(): void {
+        this.disabled$ =
+            this.editor?.stateChange$.pipe(
+                map(() => !this.editor?.isActive('details') ?? false),
+                distinctUntilChanged(),
+            ) ?? null;
     }
 }

@@ -32,7 +32,7 @@
             class="t-color-picker"
             [colors]="colors"
             [tuiActiveZoneParent]="activeZone"
-            (selectedColor)="editor.setBackgroundColor($event)"
+            (selectedColor)="editor?.setBackgroundColor($event)"
         ></tui-palette>
     </ng-template>
 </tui-hosted-dropdown>

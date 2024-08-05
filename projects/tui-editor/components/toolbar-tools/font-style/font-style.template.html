@@ -30,7 +30,7 @@
                     [icon]="options.icons.fontStyleBold"
                     [pseudoActive]="state.bold"
                     [tuiHint]="texts.bold"
-                    (click)="editor.toggleBold()"
+                    (click)="editor?.toggleBold()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Italic)"
@@ -42,7 +42,7 @@
                     [icon]="options.icons.fontStyleItalic"
                     [pseudoActive]="state.italic"
                     [tuiHint]="texts.italic"
-                    (click)="editor.toggleItalic()"
+                    (click)="editor?.toggleItalic()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Underline)"
@@ -54,7 +54,7 @@
                     [icon]="options.icons.fontStyleUnderline"
                     [pseudoActive]="state.underline"
                     [tuiHint]="texts.underline"
-                    (click)="editor.toggleUnderline()"
+                    (click)="editor?.toggleUnderline()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Strikethrough)"
@@ -66,7 +66,7 @@
                     [icon]="options.icons.fontStyleStrike"
                     [pseudoActive]="state.strike"
                     [tuiHint]="texts.strikeThrough"
-                    (click)="editor.toggleStrike()"
+                    (click)="editor?.toggleStrike()"
                 ></button>
             </div>
         </ng-template>
