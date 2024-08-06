@@ -96,6 +96,8 @@ export const tuiCreateGroupExtension = (
 
                     return {dom, contentDOM: content};
                 }
+
+                return null;
             };
         },
 
