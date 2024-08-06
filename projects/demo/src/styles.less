@@ -10,3 +10,23 @@ html,
 body {
     height: 100%;
 }
+
+tui-doc-main [tuiDocHeader] {
+    display: none;
+}
+
+tui-doc-navigation.tui-doc-navigation {
+    top: 0 !important;
+
+    tui-scrollbar {
+        overscroll-behavior: none;
+    }
+}
+
+.tui-doc-page {
+    padding-top: 0 !important;
+}
+
+tui-root::before {
+    position: absolute !important;
+}

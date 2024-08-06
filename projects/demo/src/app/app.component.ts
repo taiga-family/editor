@@ -2,7 +2,7 @@ import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
-import {TUI_DOC_PAGE_LOADED, TuiAddonDoc} from '@taiga-ui/addon-doc';
+import {TUI_DOC_PAGE_LOADED, TuiAddonDoc, TuiDocHeader} from '@taiga-ui/addon-doc';
 import {TuiIcon, TuiLink, TuiRoot} from '@taiga-ui/core';
 // eslint-disable-next-line @taiga-ui/experience/no-deep-imports
 import pkg from '@taiga-ui/editor/package.json';
@@ -11,7 +11,15 @@ import {TuiPreview} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'app',
-    imports: [RouterLink, TuiAddonDoc, TuiIcon, TuiLink, TuiPreview, TuiRoot],
+    imports: [
+        RouterLink,
+        TuiAddonDoc,
+        TuiIcon,
+        TuiLink,
+        TuiPreview,
+        TuiRoot,
+        TuiDocHeader,
+    ],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,

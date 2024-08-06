@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    font: var(--tui-font-text-s);
 
     & > * {
         display: flex;
@@ -14,13 +15,34 @@
 
 .stackblitz:active {
     transform: scale(0.98);
-    /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
 }
 
-@media not (min-width: 480px) {
-    .app-version {
+.stackblitz_mobile {
+    display: none;
+}
+
+header {
+    position: unset;
+    margin-left: 16.25rem;
+    box-shadow: none;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        margin-left: 0;
+    }
+
+    .stackblitz {
         display: none;
+
+        &_mobile {
+            display: block;
+            padding-left: 12px;
+        }
+    }
+
+    .app-version {
+        display: none !important;
     }
 }
