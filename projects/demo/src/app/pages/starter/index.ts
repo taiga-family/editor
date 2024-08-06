@@ -62,8 +62,8 @@ export default class TuiEditorStarter {
     `);
 
     protected exampleText = '';
-    protected minHeight: number | null = null;
-    protected maxHeight: number | null = null;
+    protected minHeight = '';
+    protected maxHeight = '';
 
     protected readonly toolsVariants: ReadonlyArray<
         Set<TuiEditorToolType> | readonly TuiEditorToolType[]

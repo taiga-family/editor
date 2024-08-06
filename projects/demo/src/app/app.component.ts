@@ -14,11 +14,11 @@ import {TuiPreview} from '@taiga-ui/kit';
     imports: [
         RouterLink,
         TuiAddonDoc,
+        TuiDocHeader,
         TuiIcon,
         TuiLink,
         TuiPreview,
         TuiRoot,
-        TuiDocHeader,
     ],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],

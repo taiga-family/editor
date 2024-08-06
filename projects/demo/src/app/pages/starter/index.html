@@ -9,8 +9,8 @@
                 [floatingToolbar]="floating"
                 [formControl]="control"
                 [readOnly]="readOnly"
-                [style.max-height.px]="maxHeight"
-                [style.min-height.px]="minHeight"
+                [style.max-height]="maxHeight"
+                [style.min-height]="minHeight"
                 [tools]="tools"
                 [tuiAutoFocus]="!isE2E"
             >
@@ -87,16 +87,16 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="style.minHeight.px"
-                documentationPropertyType="number"
+                documentationPropertyName="style.min-height"
+                documentationPropertyType="string"
                 [(documentationPropertyValue)]="minHeight"
             >
                 Value of CSS-property "min-height"
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="style.maxHeight.px"
-                documentationPropertyType="number"
+                documentationPropertyName="style.max-height"
+                documentationPropertyType="string"
                 [(documentationPropertyValue)]="maxHeight"
             >
                 Value of CSS-property "max-height"
