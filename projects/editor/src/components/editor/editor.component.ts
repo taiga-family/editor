@@ -139,6 +139,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @Output()
     public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
 
+    @Output()
+    public readonly focusIn = new EventEmitter<void>();
+
+    @Output()
+    public readonly focusOut = new EventEmitter<void>();
+
     public hasMentionPlugin = false;
     public focused = false;
     public readonly editorService = inject(TuiTiptapEditorService);
@@ -234,6 +240,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     protected onActiveZone(focused: boolean): void {
         this.focused = focused;
+
+        if (focused) {
+            this.focusIn.emit();
+        } else {
+            this.focusOut.emit();
+        }
     }
 
     protected addAnchor(anchor: string): void {
