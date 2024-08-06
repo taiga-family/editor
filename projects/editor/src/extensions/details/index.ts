@@ -95,6 +95,8 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     contentDOM: details,
                 };
             }
+
+            return null;
         };
     },
 

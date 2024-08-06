@@ -3,10 +3,6 @@
     "exclude": ["**/*.spec.ts"],
     "compilerOptions": {
         "outDir": "./dist/out-tsc/lib",
-        "declaration": true,
-        "sourceMap": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
         "paths": {
             "@taiga-ui/editor": ["./dist/tui-editor"],
             "@taiga-ui/kit": ["./taiga-ui/dist/kit"],
