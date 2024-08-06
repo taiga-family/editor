@@ -207,7 +207,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get hasExampleText(): boolean {
-        return !!this.exampleText && this.computedFocused && !this.control.value;
+        return !!this.exampleText && !this.value() && !this.readOnly();
     }
 
     protected get isLinkSelected(): boolean {

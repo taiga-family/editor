@@ -15,14 +15,14 @@
             <ng-content select="tools" />
         </tui-toolbar>
         <div
-            class="t-placeholder"
+            class="t-editor-placeholder"
             (mousedown)="focus($event)"
         >
             <ng-content />
         </div>
         <div
             *ngIf="hasExampleText"
-            class="t-example-text"
+            class="t-editor-example-text"
             (mousedown)="focus($event)"
         >
             {{ exampleText }}
