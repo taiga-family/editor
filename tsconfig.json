@@ -3,11 +3,6 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
-        "lib": ["es2021", "dom"],
-        "target": "ES2017",
-        "module": "ES2020",
-        "useDefineForClassFields": false,
-        "typeRoots": ["node_modules/@types"],
         "paths": {
             "@taiga-ui/editor": ["./projects/editor/src"],
             "@taiga-ui/kit": ["./taiga-ui/projects/kit"],
