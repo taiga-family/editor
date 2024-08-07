@@ -49,9 +49,9 @@ export async function tuiGoto(
     }
 
     if (hideNavigation) {
-       (await page.locator('tui-doc-navigation').all()).forEach((e) =>
-           e.evaluate((el) => el.remove()),
-       );
+        (await page.locator('tui-doc-navigation').all()).forEach((e) =>
+            e.evaluate((el) => el.remove()),
+        );
     }
 
     await page.waitForTimeout(1000);
