@@ -25,7 +25,7 @@
         <tui-palette
             class="t-color-picker"
             [colors]="colors"
-            (selectedColor)="editor.setBackgroundColor($event)"
+            (selectedColor)="editor?.setBackgroundColor($event)"
         />
     </ng-template>
 </div>

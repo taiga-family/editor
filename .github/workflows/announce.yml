@@ -18,6 +18,7 @@ jobs:
           echo "name=$(node -p "require('./projects/editor/package.json').name")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.3
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}

@@ -14,6 +14,7 @@ import {TuiAutoFocus, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 
+import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import type {
     TuiEditorLinkPrefix,
     TuiEditorLinkProtocol,
@@ -52,7 +53,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 export class TuiEditLink {
     private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
-    private readonly editor = inject(TuiTiptapEditorService);
+    private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
 
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected url: string = this.getHrefOrAnchorId();
@@ -60,6 +61,9 @@ export class TuiEditLink {
     protected prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
     protected anchorIds = this.getAllAnchorsIds();
     protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
+
+    @Input('editor')
+    public inputEditor: AbstractTuiEditor | null = null;
 
     @Output()
     public readonly addLink = new EventEmitter<string>();
@@ -75,6 +79,10 @@ export class TuiEditLink {
 
     public get anchorMode(): boolean {
         return this.isOnlyAnchorMode;
+    }
+
+    protected get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.inputEditor;
     }
 
     protected get defaultProtocol(): TuiEditorLinkProtocol {
@@ -232,7 +240,7 @@ export class TuiEditLink {
     private getAllAnchorsIds(): string[] {
         const nodes: Element[] = Array.from(
             this.editor
-                .getOriginTiptapEditor()
+                ?.getOriginTiptapEditor()
                 ?.view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
         );
 

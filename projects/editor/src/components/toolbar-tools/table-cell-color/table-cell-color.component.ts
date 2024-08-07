@@ -1,9 +1,12 @@
 import {AsyncPipe, NgIf} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiActiveZone, TuiLet} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
-import {combineLatest, distinctUntilChanged, map} from 'rxjs';
+import type {AbstractTuiEditor} from 'projects/editor/src/abstract/editor-adapter.abstract';
+import type {Observable} from 'rxjs';
+import {combineLatest, distinctUntilChanged, map, of} from 'rxjs';
 
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import type {TuiEditorOptions} from '../../../tokens/editor-options';
@@ -27,38 +30,32 @@ import {TUI_EDITOR_TOOLBAR_TEXTS} from '../../../tokens/i18n';
     styleUrls: ['../../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableCellColor {
+export class TuiTableCellColor implements OnInit {
+    private localEditor: AbstractTuiEditor | null = null;
+
     private readonly options = inject(TUI_EDITOR_OPTIONS);
-
-    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-
-    protected readonly colorText$ = this.texts$.pipe(
-        map(
-            (texts) =>
-                (this.editor.isActive('group') && texts.hiliteGroup) ||
-                (this.editor.isActive('table') && texts.cellColor) ||
-                '',
-        ),
-    );
-
-    protected readonly isActive$ = combineLatest([
-        this.editor.isActive$('table'),
-        this.editor.isActive$('group'),
-    ]).pipe(map(([table, group]) => table || group));
-
-    protected readonly color$ = this.editor.stateChange$.pipe(
-        map(
-            () =>
-                this.editor.getCellColor() ||
-                this.editor.getGroupColor() ||
-                this.options.blankColor,
-        ),
-        distinctUntilChanged(),
-    );
+    protected colorText$: Observable<string> | null = null;
+    protected isActive$: Observable<boolean> | null = null;
+    protected color$: Observable<string> | null = null;
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
+
+    @Input('editor')
+    public set inputEditor(value: AbstractTuiEditor | null) {
+        this.localEditor = value;
+        this.initStream();
+    }
+
+    public ngOnInit(): void {
+        this.initStream();
+    }
+
+    protected get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.localEditor;
+    }
 
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;
@@ -69,10 +66,37 @@ export class TuiTableCellColor {
     }
 
     protected setCellColor(color: string): void {
-        if (this.editor.isActive('group')) {
+        if (this.editor?.isActive('group')) {
             this.editor.setGroupHilite(color);
-        } else if (this.editor.isActive('table')) {
+        } else if (this.editor?.isActive('table')) {
             this.editor.setCellColor(color);
         }
+    }
+
+    private initStream(): void {
+        this.colorText$ = this.texts$.pipe(
+            map(
+                (texts) =>
+                    (this.editor?.isActive('group') && texts.hiliteGroup) ||
+                    (this.editor?.isActive('table') && texts.cellColor) ||
+                    '',
+            ),
+        );
+
+        this.isActive$ = combineLatest([
+            this.editor?.isActive$('table') ?? of(false),
+            this.editor?.isActive$('group') ?? of(false),
+        ]).pipe(map(([table, group]) => table || group));
+
+        this.color$ =
+            this.editor?.stateChange$.pipe(
+                map(
+                    () =>
+                        this.editor?.getCellColor() ||
+                        this.editor?.getGroupColor() ||
+                        this.options.blankColor,
+                ),
+                distinctUntilChanged(),
+            ) ?? null;
     }
 }

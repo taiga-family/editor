@@ -43,11 +43,15 @@ export async function tuiGoto(
     await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
 
     if (hideHeader) {
-        await page.locator('[tuidocheader]').evaluate((el) => el.remove());
+        (await page.locator('[tuidocheader]').all()).forEach((e) =>
+            e.evaluate((el) => el.remove()),
+        );
     }
 
     if (hideNavigation) {
-        await page.locator('tui-doc-navigation').evaluate((el) => el.remove());
+       (await page.locator('tui-doc-navigation').all()).forEach((e) =>
+           e.evaluate((el) => el.remove()),
+       );
     }
 
     await page.waitForTimeout(1000);

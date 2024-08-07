@@ -20,6 +20,7 @@ import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {take} from 'rxjs';
 
+import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
 import type {TuiEditorAttachedFile} from '../../interfaces/attached';
@@ -101,10 +102,13 @@ export class TuiToolbar {
         inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
-    protected readonly editor = inject(TuiTiptapEditorService);
+    protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
+
+    @Input('editor')
+    public inputEditor: AbstractTuiEditor | null = null;
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
@@ -127,6 +131,10 @@ export class TuiToolbar {
         this.toolsSet = new Set(value);
     }
 
+    protected get editor(): AbstractTuiEditor | null {
+        return this.injectionEditor ?? this.inputEditor;
+    }
+
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;
     }
@@ -145,43 +153,39 @@ export class TuiToolbar {
     }
 
     protected get unorderedList(): boolean {
-        return this.editor.isActive('bulletList');
+        return this.editor?.isActive('bulletList') ?? false;
     }
 
     protected get orderedList(): boolean {
-        return this.editor.isActive('orderedList');
+        return this.editor?.isActive('orderedList') ?? false;
     }
 
     protected get blockquote(): boolean {
-        return this.editor.isActive('blockquote');
+        return this.editor?.isActive('blockquote') ?? false;
     }
 
     protected get a(): boolean {
-        return this.editor.isActive('link');
+        return this.editor?.isActive('link') ?? false;
     }
 
     protected get jumpAnchor(): boolean {
-        return this.editor.isActive('jumpAnchor');
-    }
-
-    protected get canOpenAnchor(): boolean {
-        return !this.a && !this.jumpAnchor;
+        return this.editor?.isActive('jumpAnchor') ?? false;
     }
 
     protected get undoDisabled(): boolean {
-        return this.editor.undoDisabled();
+        return this.editor?.undoDisabled() ?? false;
     }
 
     protected get redoDisabled(): boolean {
-        return this.editor.redoDisabled();
+        return this.editor?.redoDisabled() ?? false;
     }
 
     protected get subscript(): boolean {
-        return this.editor.isActive('subscript');
+        return this.editor?.isActive('subscript') ?? false;
     }
 
     protected get superscript(): boolean {
-        return this.editor.isActive('superscript');
+        return this.editor?.isActive('superscript') ?? false;
     }
 
     protected get formatEnabled(): boolean {
@@ -221,7 +225,7 @@ export class TuiToolbar {
         }
 
         event.preventDefault();
-        this.editor.focus();
+        this.editor?.focus();
     }
 
     protected onBottomFocus(): void {
@@ -271,7 +275,7 @@ export class TuiToolbar {
     }
 
     protected onLink(url?: string): void {
-        this.editor.toggleLink(url ?? '');
+        this.editor?.toggleLink(url ?? '');
     }
 
     protected enabled(tool: TuiEditorToolType): boolean {
@@ -279,39 +283,39 @@ export class TuiToolbar {
     }
 
     protected undo(): void {
-        this.editor.undo();
+        this.editor?.undo();
     }
 
     protected redo(): void {
-        this.editor.redo();
+        this.editor?.redo();
     }
 
     protected insertHorizontalRule(): void {
-        this.editor.setHorizontalRule();
+        this.editor?.setHorizontalRule();
     }
 
     protected removeFormat(): void {
-        this.editor.removeFormat();
+        this.editor?.removeFormat();
     }
 
     protected toggleOrderedList(): void {
-        this.editor.toggleOrderedList();
+        this.editor?.toggleOrderedList();
     }
 
     protected toggleQuote(): void {
-        this.editor.toggleBlockquote();
+        this.editor?.toggleBlockquote();
     }
 
     protected toggleSubscript(): void {
-        this.editor.toggleSubscript();
+        this.editor?.toggleSubscript();
     }
 
     protected toggleSuperscript(): void {
-        this.editor.toggleSuperscript();
+        this.editor?.toggleSuperscript();
     }
 
     private addImage(image: string): void {
-        this.editor.setImage(image);
+        this.editor?.setImage(image);
     }
 
     private focusFirst(): void {

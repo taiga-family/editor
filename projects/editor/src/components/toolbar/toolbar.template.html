@@ -4,7 +4,7 @@
 >
     <!-- @note: this is a html huck to avoid autofocus, if the parent element is a label  -->
 </button>
-<ng-container *ngIf="editor.stateChange$ | async" />
+<ng-container *ngIf="editor?.stateChange$ | async" />
 <div
     [tabIndex]="focusable ? 0 : -1"
     (focus)="onTopFocus()"
@@ -61,6 +61,7 @@
         <tui-font-size
             tuiItem
             class="t-tool t-wrapper"
+            [editor]="editor"
         />
     </div>
     <div
@@ -71,6 +72,7 @@
             *ngIf="formatEnabled"
             tuiItem
             class="t-tool t-wrapper"
+            [editor]="editor"
             [enabledTools]="toolsSet"
         />
 
@@ -78,12 +80,14 @@
             *ngIf="enabled(editorTool.Align)"
             tuiItem
             class="t-tool t-wrapper"
+            [editor]="editor"
         />
 
         <tui-list-configs
             *ngIf="enabled(editorTool.List)"
             tuiItem
             class="t-tool t-wrapper"
+            [editor]="editor"
         />
 
         <button
@@ -198,6 +202,7 @@
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
+            [editor]="editor"
         />
 
         <tui-highlight-color
@@ -205,6 +210,7 @@
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
+            [editor]="editor"
         />
     </div>
     <div
@@ -215,6 +221,7 @@
             *ngIf="enabled(editorTool.Code)"
             tuiItem
             class="t-tool t-wrapper"
+            [editor]="editor"
         />
 
         <button
@@ -298,11 +305,13 @@
         <tui-details
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
 
         <tui-details-remove
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
     </div>
     <div
@@ -312,6 +321,7 @@
         <tui-editor-group-tool
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
     </div>
     <div
@@ -321,16 +331,19 @@
         <tui-table-create
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
 
         <tui-table-row-column-manager
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
 
         <tui-table-merge-cells
             tuiItem
             class="t-tool t-tool_margin"
+            [editor]="editor"
         />
     </div>
     <div
@@ -341,6 +354,7 @@
             tuiItem
             class="t-tool t-wrapper"
             [colors]="colors"
+            [editor]="editor"
         />
     </div>
     <div class="t-block">

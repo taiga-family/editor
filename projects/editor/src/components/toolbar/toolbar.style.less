@@ -1,8 +1,19 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 :host {
+    position: relative;
+    display: block;
+    isolation: isolate;
+
     &._disabled {
         pointer-events: none;
+    }
+
+    &:host-context(tui-editor) .t-tools-wrapper {
+        &:has(.t-block:not(:empty)) {
+            border: none;
+            outline: 0.0625rem solid var(--tui-border-normal);
+        }
     }
 }
 
@@ -10,10 +21,13 @@
     .scrollbar-hidden();
 
     display: flex;
-    padding: 0.25rem 0.75rem;
     overflow: auto;
     flex-wrap: wrap;
-    box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+
+    &:has(.t-block:not(:empty)) {
+        padding: 0.25rem 0.75rem;
+        border: 0.0625rem solid var(--tui-border-normal);
+    }
 
     &._disabled {
         pointer-events: none;
@@ -24,6 +38,10 @@
 .t-block {
     display: flex;
     padding: 0.25rem 0;
+
+    &:empty {
+        display: none;
+    }
 
     &:not(:last-child)::after {
         content: '';

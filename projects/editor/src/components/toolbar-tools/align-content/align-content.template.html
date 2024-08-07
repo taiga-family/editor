@@ -26,7 +26,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.textAlignLeft"
                     [tuiHint]="texts.justifyLeft"
-                    (click)="editor.onAlign('left')"
+                    (click)="editor?.onAlign('left')"
                 ></button>
                 <button
                     appearance="icon"
@@ -36,7 +36,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.textAlignCenter"
                     [tuiHint]="texts.justifyCenter"
-                    (click)="editor.onAlign('center')"
+                    (click)="editor?.onAlign('center')"
                 ></button>
                 <button
                     appearance="icon"
@@ -46,7 +46,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.textAlignRight"
                     [tuiHint]="texts.justifyRight"
-                    (click)="editor.onAlign('right')"
+                    (click)="editor?.onAlign('right')"
                 ></button>
                 <button
                     appearance="icon"
@@ -56,7 +56,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.textAlignJustify"
                     [tuiHint]="texts.justifyFull"
-                    (click)="editor.onAlign('justify')"
+                    (click)="editor?.onAlign('justify')"
                 ></button>
             </div>
         </ng-template>

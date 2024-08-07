@@ -26,4 +26,5 @@ export const TuiDemoPath = {
     UploadFiles: 'upload-files',
     ToolbarBottom: 'toolbar/bottom',
     ToolbarFloating: 'toolbar/floating',
+    ToolbarShared: 'toolbar/shared',
 } as const;

@@ -27,7 +27,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleBold"
                     [tuiHint]="texts.bold"
-                    (click)="editor.toggleBold()"
+                    (click)="editor?.toggleBold()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Italic)"
@@ -38,7 +38,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleItalic"
                     [tuiHint]="texts.italic"
-                    (click)="editor.toggleItalic()"
+                    (click)="editor?.toggleItalic()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Underline)"
@@ -49,7 +49,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleUnderline"
                     [tuiHint]="texts.underline"
-                    (click)="editor.toggleUnderline()"
+                    (click)="editor?.toggleUnderline()"
                 ></button>
                 <button
                     *ngIf="isEnabled(editorTool.Strikethrough)"
@@ -60,7 +60,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleStrike"
                     [tuiHint]="texts.strikeThrough"
-                    (click)="editor.toggleStrike()"
+                    (click)="editor?.toggleStrike()"
                 ></button>
             </div>
         </ng-template>
