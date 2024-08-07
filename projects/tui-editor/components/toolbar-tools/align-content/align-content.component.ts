@@ -56,10 +56,6 @@ export class TuiAlignContentComponent implements OnInit {
         this.initStream();
     }
 
-    alignCenter(): void {
-        this.editor?.onAlign('center');
-    }
-
     private initStream(): void {
         this.alignState$ = combineLatest([
             this.editor?.isActive$({textAlign: 'left'}) ?? of(false),

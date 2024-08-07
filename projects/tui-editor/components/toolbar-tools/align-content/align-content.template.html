@@ -40,7 +40,7 @@
                     [icon]="options.icons.textAlignCenter"
                     [pseudoActive]="!!alignState?.center"
                     [tuiHint]="texts.justifyCenter"
-                    (click)="alignCenter()"
+                    (click)="editor?.onAlign('center')"
                 ></button>
                 <button
                     appearance="icon"
