@@ -23,7 +23,6 @@
         }
     },
     "hooks": {
-        "after:bump": "npx nx build editor --output-style=stream && npx nx publish editor",
-        "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+        "after:bump": "npx nx build editor --output-style=stream && npx nx publish editor"
     }
 }
