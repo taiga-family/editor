@@ -23,6 +23,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Font-01.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
@@ -34,6 +35,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Font-02.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
@@ -45,6 +47,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Font-03.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
@@ -56,6 +59,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Font-04.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
@@ -67,6 +71,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Font-05.png');
     });
 });

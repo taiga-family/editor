@@ -50,6 +50,7 @@ test.describe('Groups', () => {
 
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.type('456');
+
         await expect(page.locator('#draggable-groups tui-editor')).toHaveScreenshot(
             'Groups-05.png',
         );

@@ -36,6 +36,7 @@ test.describe('Toolbar', () => {
         );
 
         await page.locator('tui-editor-socket.tui-example').click();
+
         await expect(page.locator('#demo-content tui-editor')).toHaveScreenshot(
             'Toolbar-04.png',
         );
@@ -45,21 +46,27 @@ test.describe('Toolbar', () => {
         await tuiGoto(page, '/custom-tool/paste-emoji#custom-tool');
 
         await page.locator('[contenteditable]').nth(0).focus();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-05.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-06.png');
 
         await page.locator('.smile').nth(0).click();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-07.png');
 
         await page.keyboard.type('awesome library for awesome people');
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-08.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-09.png');
 
         await page.locator('.smile').nth(2).click();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-10.png');
     });
 
@@ -94,6 +101,7 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-13.png');
 
         await page.locator('[automation-id="toolbar__ordering-list-button"]').focus();
@@ -109,6 +117,7 @@ test.describe('Toolbar', () => {
 
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.type('12345');
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-14.png');
 
         await page.locator('[automation-id="toolbar__insert-table-button"]').focus();
@@ -122,6 +131,7 @@ test.describe('Toolbar', () => {
 
         await cell.hover();
         await cell.click();
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-15.png');
     });
 
@@ -154,6 +164,7 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
+
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
