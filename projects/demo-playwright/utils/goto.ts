@@ -44,13 +44,17 @@ export async function tuiGoto(
 
     if (hideHeader) {
         for (const locator of await page.locator('[tuidocheader]').all()) {
-            await locator.evaluate((el) => el.remove());
+            if (await locator.isVisible()) {
+                await locator.evaluate((el) => el.remove());
+            }
         }
     }
 
     if (hideNavigation) {
         for (const locator of await page.locator('tui-doc-navigation').all()) {
-            await locator.evaluate((el) => el.remove());
+            if (await locator.isVisible()) {
+                await locator.evaluate((el) => el.remove());
+            }
         }
     }
 
