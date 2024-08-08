@@ -75,7 +75,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                 deleteButton.type = `button`;
                 details.open = node.attrs.opened;
 
-                let openHandler = () => {
+                const openHandler = (): void => {
                     details.open = !details.open;
                     (node.attrs as unknown as Record<string, unknown>).opened =
                         details.open;
@@ -121,18 +121,18 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
             setDetails:
                 () =>
                 ({commands, editor, state}) => {
-                    let content = '';
+                    let content = ``;
 
                     const pos = this.editor.state.selection.$anchor.pos;
 
-                    if (!!globalThis.document) {
+                    if (globalThis.document) {
                         content =
                             (document.defaultView?.window
                                 .getSelection()
                                 ?.toString()
                                 .trim().length ?? 0) > 0
                                 ? tuiGetSelectedContent(state)
-                                : '';
+                                : ``;
 
                         setTimeout(() =>
                             editor.chain().focus().setTextSelection(pos).run(),
