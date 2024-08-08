@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.57.0](https://github.com/taiga-family/tui-editor/compare/v1.56.0...v1.57.0) (2024-08-08)
+
+### Bug Fixes
+
+- details extension should be correct destroy
+  ([938027b](https://github.com/taiga-family/tui-editor/commit/938027bacf5ba7f6e27e8c1a0c143a645d911d3f))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.56.0](https://github.com/taiga-family/tui-editor/compare/v1.55.0...v1.56.0) (2024-08-05)
 
 ### Features
