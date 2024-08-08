@@ -61,7 +61,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     },
 
     addNodeView() {
-        return ({node, editor}): any => {
+        return ({node, getPos}): any => {
             if (globalThis.document) {
                 const wrapper = document.createElement(`div`);
                 const details = document.createElement(`details`);
@@ -70,20 +70,41 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
 
                 wrapper.className = `t-details-wrapper`;
                 collapseButton.className = `t-details-arrow`;
+                collapseButton.type = `button`;
                 deleteButton.className = `t-details-delete`;
-
+                deleteButton.type = `button`;
                 details.open = node.attrs.opened;
 
-                collapseButton.addEventListener(`click`, () => {
+                let openHandler = () => {
                     details.open = !details.open;
                     (node.attrs as unknown as Record<string, unknown>).opened =
                         details.open;
-                });
+                };
 
-                deleteButton.addEventListener(`click`, () => {
-                    tuiDeleteNode(editor.state, editor.view.dispatch, this.name);
-                    editor.commands.focus(`end`);
-                });
+                collapseButton.addEventListener(`click`, openHandler);
+
+                deleteButton.addEventListener(
+                    `click`,
+                    e => {
+                        collapseButton.removeEventListener(`click`, openHandler);
+
+                        const from = (getPos as any)?.() ?? 0;
+
+                        this.editor
+                            .chain()
+                            .focus()
+                            .setTextSelection((getPos as any)?.())
+                            .run();
+
+                        const node = this.editor.state.selection.$anchor.nodeAfter;
+                        const to = from + (node?.nodeSize ?? 0);
+
+                        this.editor.commands.deleteRange({from, to});
+
+                        e.preventDefault();
+                    },
+                    {capture: true, once: true},
+                );
 
                 wrapper.append(details, collapseButton, deleteButton);
 
@@ -99,8 +120,24 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
         return {
             setDetails:
                 () =>
-                ({commands, state}) => {
-                    const content = tuiGetSelectedContent(state);
+                ({commands, editor, state}) => {
+                    let content = '';
+
+                    const pos = this.editor.state.selection.$anchor.pos;
+
+                    if (!!globalThis.document) {
+                        content =
+                            (document.defaultView?.window
+                                .getSelection()
+                                ?.toString()
+                                .trim().length ?? 0) > 0
+                                ? tuiGetSelectedContent(state)
+                                : '';
+
+                        setTimeout(() =>
+                            editor.chain().focus().setTextSelection(pos).run(),
+                        );
+                    }
 
                     return commands.insertContent(
                         `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
