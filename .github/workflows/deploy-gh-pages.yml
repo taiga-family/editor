@@ -7,9 +7,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.58.1
-      - uses: taiga-family/ci/actions/setup/variables@v1.58.1
-      - uses: taiga-family/ci/actions/setup/node@v1.58.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
+      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
+      - uses: taiga-family/ci/actions/setup/node@v1.66.4
         with:
           validate-peer-deps: false
 
@@ -21,7 +21,7 @@ jobs:
           include: 'dist/demo/browser/index.html'
           regex: false
 
-      - uses: taiga-family/ci/actions/deploy/github-pages@v1.58.1
+      - uses: taiga-family/ci/actions/deploy/github-pages@v1.66.4
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           folder: dist/demo/browser
