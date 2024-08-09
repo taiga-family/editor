@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[6036],{16036:e=>{e.exports=":root {\n    --tui-floating-toolbar-max-width: 20rem;\n}\n"}}]);

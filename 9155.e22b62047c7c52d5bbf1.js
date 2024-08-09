@@ -1,1 +1,0 @@
-(self.webpackChunktui_editor=self.webpackChunktui_editor||[]).push([[9155],{19155:o=>{o.exports='<tui-editor\n    tuiAutoFocus\n    [formControl]="control"\n    [tools]="[]"\n></tui-editor>\n'}}]);
