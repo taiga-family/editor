@@ -1,5 +1,6 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -52,10 +53,22 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     },
 
     renderHTML({HTMLAttributes}) {
+        const attrs = mergeAttributes(this.options.HTMLAttributes, {
+            ...HTMLAttributes,
+            'data-opened': undefined,
+            open: HTMLAttributes['data-opened'] || undefined,
+        });
+
+        Object.keys(attrs).forEach(key => {
+            if (attrs[key] === undefined) {
+                delete attrs[key];
+            }
+        });
+
         return [
             `div`,
             {class: `t-details-wrapper t-details-wrapper_rendered`},
-            [`details`, mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
+            [`details`, attrs, 0],
             [`button`, {class: `t-details-arrow`}],
         ];
     },
@@ -75,10 +88,14 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                 deleteButton.type = `button`;
                 details.open = node.attrs.opened;
 
-                const openHandler = (): void => {
+                const openHandler = (event: Event): void => {
                     details.open = !details.open;
                     (node.attrs as unknown as Record<string, unknown>).opened =
                         details.open;
+
+                    event.target?.dispatchEvent(
+                        new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+                    );
                 };
 
                 collapseButton.addEventListener(`click`, openHandler);
