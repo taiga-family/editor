@@ -1,9 +1,9 @@
 import type {RawCommands} from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
 
+import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import {tuiDeleteNode} from '../../utils/delete-nodes';
 import {tuiGetSelectedContent} from '../../utils/get-selected-content';
-import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
