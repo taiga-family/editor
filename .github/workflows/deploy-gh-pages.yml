@@ -14,6 +14,13 @@ jobs:
           validate-peer-deps: false
 
       - run: npx nx prerender editor-demo
+      - uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '<base href="/">'
+          replace: '<base href="editor/">'
+          include: 'dist/demo/browser/index.html'
+          regex: false
+
       - uses: taiga-family/ci/actions/deploy/github-pages@v1.58.1
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
