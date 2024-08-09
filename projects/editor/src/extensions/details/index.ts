@@ -85,6 +85,8 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                 details.open = node.attrs.opened;
 
                 const openHandler = (event: Event): void => {
+                    const pos = (getPos as any)?.() ?? 0;
+
                     details.open = !details.open;
                     (node.attrs as unknown as Record<string, unknown>).opened =
                         details.open;
@@ -92,6 +94,8 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     event.target?.dispatchEvent(
                         new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
                     );
+
+                    this.editor.chain().focus().setTextSelection(pos).run();
                 };
 
                 collapseButton.addEventListener('click', openHandler);
