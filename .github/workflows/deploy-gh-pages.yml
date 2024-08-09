@@ -17,7 +17,7 @@ jobs:
       - uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '<base href="/">'
-          replace: '<base href="editor/">'
+          replace: '<base href="/editor/">'
           include: 'dist/demo/browser/index.html'
           regex: false
 
