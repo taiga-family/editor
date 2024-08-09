@@ -55,14 +55,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     renderHTML({HTMLAttributes}) {
         const attrs = mergeAttributes(this.options.HTMLAttributes, {
             ...HTMLAttributes,
-            'data-opened': undefined,
             open: HTMLAttributes['data-opened'] || undefined,
-        });
-
-        Object.keys(attrs).forEach(key => {
-            if (attrs[key] === undefined) {
-                delete attrs[key];
-            }
         });
 
         return [
@@ -116,7 +109,11 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                         const node = this.editor.state.selection.$anchor.nodeAfter;
                         const to = from + (node?.nodeSize ?? 0);
 
-                        this.editor.commands.deleteRange({from, to});
+                        if (this.editor.isActive('summary')) {
+                            this.editor.commands.deleteNode(this.type as any);
+                        } else {
+                            this.editor.commands.deleteRange({from, to});
+                        }
 
                         e.preventDefault();
                     },
