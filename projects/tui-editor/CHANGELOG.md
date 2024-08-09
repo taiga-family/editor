@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.58.0](https://github.com/taiga-family/tui-editor/compare/v1.57.0...v1.58.0) (2024-08-09)
+
+### Bug Fixes
+
+- accordion breaks into two
+  ([d4d68a1](https://github.com/taiga-family/tui-editor/commit/d4d68a137336e43bcde9514fe643ae7fc0e6f041))
+- broken accordion added to checkbox list
+  ([4293fcb](https://github.com/taiga-family/tui-editor/commit/4293fcb038c16486b8cbe44c64c6331c1186ed06))
+- correct delete details
+  ([ef47df9](https://github.com/taiga-family/tui-editor/commit/ef47df945ec2a55237885f0bc2e01eccd176fec8))
+- focus removed from editor when clicking arrow button in accordion
+  ([e94c12f](https://github.com/taiga-family/tui-editor/commit/e94c12fd8022ec50063aaf95a4c2d41716865d11))
+- no word wrap in the accordion title
+  ([3028b03](https://github.com/taiga-family/tui-editor/commit/3028b03f25391af29ee0c7b9af4216f3c9cab9c4))
+
+### Features
+
+- persist detail open state between editor and preview
+  ([035a0c0](https://github.com/taiga-family/tui-editor/commit/035a0c01efa112fa0cddb0bacbbc1db1a3e8a6fe))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.57.0](https://github.com/taiga-family/tui-editor/compare/v1.56.0...v1.57.0) (2024-08-08)
 
 ### Bug Fixes
