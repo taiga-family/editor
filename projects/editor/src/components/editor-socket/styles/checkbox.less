@@ -4,6 +4,10 @@ ul[data-type] {
     li[data-checked] {
         display: flex;
         gap: 0.5rem;
+
+        & > div {
+            width: 100%;
+        }
     }
 
     li[data-checked] > label > input[type='checkbox'] {
