@@ -10,16 +10,8 @@ jobs:
       - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
       - uses: taiga-family/ci/actions/setup/variables@v1.66.4
       - uses: taiga-family/ci/actions/setup/node@v1.66.4
-        with:
-          validate-peer-deps: false
 
-      - run: npx nx prerender editor-demo
-      - uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: '<base href="/">'
-          replace: '<base href="/editor/">'
-          include: 'dist/demo/browser/index.html'
-          regex: false
+      - run: npx nx prerender editor-demo -c github
 
       - uses: taiga-family/ci/actions/deploy/github-pages@v1.66.4
         with:

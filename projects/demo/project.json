@@ -72,6 +72,9 @@
                 "ssr": {
                     "baseHref": "/"
                 },
+                "github": {
+                    "baseHref": "/editor/"
+                },
                 "development": {}
             },
             "defaultConfiguration": "production",
@@ -133,7 +136,7 @@
             "executor": "@nguniversal/builders:prerender",
             "outputs": ["{workspaceRoot}/dist/demo"],
             "options": {
-                "browserTarget": "editor-demo:build:production,ssr",
+                "browserTarget": "editor-demo:build:production,github",
                 "serverTarget": "editor-demo:server:production",
                 "routesFile": "projects/demo/server/routes.txt",
                 "guessRoutes": false
