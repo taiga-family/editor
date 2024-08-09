@@ -21,7 +21,6 @@ import {Heading} from '@tiptap/extension-heading';
 import type {HistoryOptions} from '@tiptap/extension-history';
 import {History} from '@tiptap/extension-history';
 import type {HorizontalRuleOptions} from '@tiptap/extension-horizontal-rule';
-import {HorizontalRule} from '@tiptap/extension-horizontal-rule';
 import type {ItalicOptions} from '@tiptap/extension-italic';
 import {Italic} from '@tiptap/extension-italic';
 import type {ListItemOptions} from '@tiptap/extension-list-item';
@@ -41,6 +40,7 @@ import {TaskList} from '@tiptap/extension-task-list';
 import {Text} from '@tiptap/extension-text';
 
 import {TuiCustomEnter} from '../enter';
+import {TuiHorizontalRule} from '../horizontal';
 
 export interface TuiStarterKitOptions {
     blockquote: Partial<BlockquoteOptions> | false;
@@ -149,7 +149,7 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.horizontalRule !== false) {
-            extensions.push(HorizontalRule.configure(options?.horizontalRule));
+            extensions.push(TuiHorizontalRule.configure(options?.horizontalRule));
         }
 
         if (options?.italic !== false) {

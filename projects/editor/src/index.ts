@@ -46,6 +46,7 @@ export * from './extensions/file-link';
 export * from './extensions/font-color';
 export * from './extensions/font-size';
 export * from './extensions/group';
+export * from './extensions/horizontal';
 export * from './extensions/iframe-editor/iframe-editor.component';
 export * from './extensions/iframe-editor/iframe-editor.extension';
 export * from './extensions/iframe-editor/iframe-editor.options';
