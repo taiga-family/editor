@@ -1,6 +1,6 @@
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
-import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -55,7 +55,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     renderHTML({HTMLAttributes}) {
         const attrs = mergeAttributes(this.options.HTMLAttributes, {
             ...HTMLAttributes,
-            open: HTMLAttributes['data-opened'] || undefined,
+            open: HTMLAttributes[`data-opened`] || undefined,
         });
 
         return [
@@ -109,7 +109,7 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
                         const node = this.editor.state.selection.$anchor.nodeAfter;
                         const to = from + (node?.nodeSize ?? 0);
 
-                        if (this.editor.isActive('summary')) {
+                        if (this.editor.isActive(`summary`)) {
                             this.editor.commands.deleteNode(this.type as any);
                         } else {
                             this.editor.commands.deleteRange({from, to});
