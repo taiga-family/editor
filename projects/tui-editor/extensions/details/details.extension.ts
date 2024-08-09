@@ -1,6 +1,6 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node, RawCommands} from '@tiptap/core';
-import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor';
+import {TUI_EDITOR_RESIZE_EVENT} from '@tinkoff/tui-editor/constants';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
