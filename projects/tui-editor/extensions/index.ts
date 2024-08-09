@@ -5,6 +5,7 @@ export * from '@tinkoff/tui-editor/extensions/file-link';
 export * from '@tinkoff/tui-editor/extensions/font-color';
 export * from '@tinkoff/tui-editor/extensions/font-size';
 export * from '@tinkoff/tui-editor/extensions/group';
+export * from '@tinkoff/tui-editor/extensions/horizontal';
 export * from '@tinkoff/tui-editor/extensions/iframe-editor';
 export * from '@tinkoff/tui-editor/extensions/image-editor';
 export * from '@tinkoff/tui-editor/extensions/indent-outdent';

@@ -1,4 +1,5 @@
 import {TuiCustomEnter} from '@tinkoff/tui-editor/extensions/enter';
+import {TuiHorizontalRule} from '@tinkoff/tui-editor/extensions/horizontal';
 import {Extension, KeyboardShortcutCommand} from '@tiptap/core';
 import {Blockquote, BlockquoteOptions} from '@tiptap/extension-blockquote';
 import {Bold, BoldOptions} from '@tiptap/extension-bold';
@@ -11,7 +12,7 @@ import {Gapcursor} from '@tiptap/extension-gapcursor';
 import {HardBreak, HardBreakOptions} from '@tiptap/extension-hard-break';
 import {Heading, HeadingOptions} from '@tiptap/extension-heading';
 import {History, HistoryOptions} from '@tiptap/extension-history';
-import {HorizontalRule, HorizontalRuleOptions} from '@tiptap/extension-horizontal-rule';
+import {HorizontalRuleOptions} from '@tiptap/extension-horizontal-rule';
 import {Italic, ItalicOptions} from '@tiptap/extension-italic';
 import {ListItem, ListItemOptions} from '@tiptap/extension-list-item';
 import {OrderedList, OrderedListOptions} from '@tiptap/extension-ordered-list';
@@ -127,7 +128,7 @@ export const StarterKit = Extension.create<TuiStarterKitOptions>({
         }
 
         if (options?.horizontalRule !== false) {
-            extensions.push(HorizontalRule.configure(options?.horizontalRule));
+            extensions.push(TuiHorizontalRule.configure(options?.horizontalRule));
         }
 
         if (options?.italic !== false) {
