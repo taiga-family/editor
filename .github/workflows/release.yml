@@ -51,3 +51,18 @@ jobs:
           else
               npx release-it --increment --ci --github.release
           fi
+
+      - id: info
+        run: |
+          echo "version=v$(node -p "require('./dist/editor/package.json').version")" >> $GITHUB_OUTPUT
+          echo "name=$(node -p "require('./dist/editor/package.json').name")" >> $GITHUB_OUTPUT
+
+      - name: Announce to Telegram
+        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.66.3
+        with:
+          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
+          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
+          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
+          version: ${{ steps.info.outputs.version }}
+          textLink: ${{ steps.info.outputs.name }}
