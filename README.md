@@ -50,7 +50,7 @@ Read more about this license [here](https://choosealicense.com/licenses/apache-2
 | `2.x.y` | `4.x.y`  | ✅ Current              | ![npm version](https://img.shields.io/npm/v/@taiga-ui/editor?label=%40taiga-ui%2Feditor%20~%20v2)       |
 | `1.x.y` | `3.x.y`  | Long-term support (LTS) | ![npm version](https://img.shields.io/npm/v/@tinkoff/tui-editor?label=%40tinkoff%2Ftui-editor%20~%20v1) |
 
-## Official maintains
+## Support
 
 <table>
     <tr>
