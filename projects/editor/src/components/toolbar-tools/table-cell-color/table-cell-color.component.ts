@@ -4,10 +4,10 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiActiveZone, TuiLet} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
-import type {AbstractTuiEditor} from 'projects/editor/src/abstract/editor-adapter.abstract';
 import type {Observable} from 'rxjs';
 import {combineLatest, distinctUntilChanged, map, of} from 'rxjs';
 
+import type {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
 import type {TuiEditorOptions} from '../../../tokens/editor-options';
 import {TUI_EDITOR_OPTIONS} from '../../../tokens/editor-options';
