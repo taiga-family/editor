@@ -852,6 +852,9 @@ Apache-2.0
    limitations under the License.
 
 
+@taiga-ui/addon-commerce
+Apache-2.0
+
 @taiga-ui/addon-doc
 Apache-2.0
 
