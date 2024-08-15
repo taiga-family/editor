@@ -65,6 +65,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
         subPages: [
             {
                 section: 'Documentation',
+                title: 'Color picker',
+                keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
+                route: `/${TuiDemoPath.ColorPickerTool}`,
+            },
+            {
+                section: 'Documentation',
                 title: 'Paste emoji',
                 keywords:
                     'editor, custom, tool, emoji, wysiwyg, редактор, текст, html, rich, text',
