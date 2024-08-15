@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Injector,
+    PLATFORM_ID,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -30,10 +37,14 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isE2E = inject(TUI_IS_E2E);
+    private readonly isNotStatic =
+        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl(
-        `
+        this.isNotStatic
+            ? ''
+            : `
         <p>Here is an online IDE:</p>
         <iframe
          src="https://codepen.io/mehdinajafi/embed/LYyqNqR?default-tab=html${

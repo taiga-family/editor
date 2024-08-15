@@ -1,9 +1,11 @@
+import {isPlatformServer} from '@angular/common';
 import type {Injector} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     inject,
     INJECTOR,
+    PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -80,7 +82,7 @@ import {map} from 'rxjs';
     ],
     host: {
         class: 'html5-editor-example',
-        '[class._e2e]': 'isE2E',
+        '[class._e2e]': 'isNotStatic',
     },
 })
 export default class Example {
@@ -89,7 +91,8 @@ export default class Example {
 
     private readonly sanitizer = inject(DomSanitizer);
 
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isNotStatic =
+        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
@@ -98,7 +101,9 @@ export default class Example {
     ];
 
     protected readonly control = new FormControl(
-        `
+        this.isNotStatic
+            ? ''
+            : `
             <p>sample.pdf</p>
             <iframe
                 data-type="iframe-editor"

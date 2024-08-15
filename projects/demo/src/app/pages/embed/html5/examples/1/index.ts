@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    PLATFORM_ID,
+    ViewChild,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -81,6 +88,8 @@ export default class Example {
     private readonly wysiwyg?: TuiEditor;
 
     private readonly sanitizer = inject(DomSanitizer);
+    private readonly isNotStatic =
+        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly isE2E = inject(TUI_IS_E2E);
 
@@ -91,7 +100,9 @@ export default class Example {
     ];
 
     protected readonly control = new FormControl(
-        `
+        this.isNotStatic
+            ? ''
+            : `
             <p>Here is video: </p>
 
             <video controls="controls" width="100%" preload="${

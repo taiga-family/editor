@@ -20,9 +20,7 @@ import {join} from 'node:path';
         demoPathEnumContent
             .match(/['"`](.*)['"`]/g)
             ?.map((route) => route.replaceAll(/['"`]/g, '')) || []
-    )
-        .filter((route) => !route.includes('embed'))
-        .map((route) => `/${route}`);
+    ).map((route) => `/${route}`);
 
     console.info('Generated routes:');
 

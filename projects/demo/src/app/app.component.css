@@ -3,10 +3,10 @@
     gap: 10px;
     align-items: center;
     font: var(--tui-font-text-s);
+}
 
-    & > * {
-        display: flex;
-    }
+.t-links > * {
+    display: flex;
 }
 
 .link {
@@ -35,11 +35,11 @@ header {
 
     .stackblitz {
         display: none;
+    }
 
-        &_mobile {
-            display: block;
-            padding-left: 12px;
-        }
+    .stackblitz_mobile {
+        display: block;
+        padding-left: 12px;
     }
 
     .app-version {
