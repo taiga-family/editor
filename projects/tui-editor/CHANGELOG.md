@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.59.0](https://github.com/taiga-family/tui-editor/compare/v1.58.0...v1.59.0) (2024-08-15)
+
+### Bug Fixes
+
+- table breaks ([ffdf595](https://github.com/taiga-family/tui-editor/commit/ffdf5950b580e746bdd3ea226853bddc89f3296b))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.58.0](https://github.com/taiga-family/tui-editor/compare/v1.57.0...v1.58.0) (2024-08-09)
 
 ### Bug Fixes
