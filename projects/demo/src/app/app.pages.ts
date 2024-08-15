@@ -66,7 +66,8 @@ export const DEMO_PAGES: TuiDocRoutePages = [
             {
                 section: 'Documentation',
                 title: 'Color picker',
-                keywords: `editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text`,
+                keywords:
+                    'editor, custom color picker, color picker, tool, wysiwyg, редактор, выбрать цвет, html, rich, text',
                 route: `/${TuiDemoPath.ColorPickerTool}`,
             },
             {
