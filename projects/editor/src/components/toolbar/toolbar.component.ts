@@ -123,13 +123,13 @@ export class TuiToolbar {
     @Output()
     public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
+    public readonly el: HTMLElement | null =
+        inject(ElementRef, {optional: true})?.nativeElement ?? null;
+
     @Input()
     public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
     }
-
-    public readonly el: HTMLElement | null =
-        inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
     protected get editor(): AbstractTuiEditor | null {
         return this.injectionEditor ?? this.inputEditor;
