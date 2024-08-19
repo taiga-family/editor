@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[2954],{42954:n=>{n.exports="[data-appearance='no-border'] {\n    outline: none !important;\n\n    .t-tools-wrapper {\n        display: none !important;\n    }\n}\n"}}]);
