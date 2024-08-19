@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.60.0](https://github.com/taiga-family/tui-editor/compare/v1.59.0...v1.60.0) (2024-08-19)
+
+### Bug Fixes
+
+- click on label doesn't allow to type text
+  ([b392e94](https://github.com/taiga-family/tui-editor/commit/b392e94f175e8d2403db1e06667c0c0b30cb05d1))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.59.0](https://github.com/taiga-family/tui-editor/compare/v1.58.0...v1.59.0) (2024-08-15)
 
 ### Bug Fixes
