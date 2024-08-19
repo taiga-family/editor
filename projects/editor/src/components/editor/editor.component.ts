@@ -84,6 +84,7 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     ],
     host: {
         ngSkipHydration: 'true',
+        '(click)': 'focus($event)',
     },
 })
 export class TuiEditor extends TuiControl<string> implements OnDestroy {
@@ -270,7 +271,11 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected focus(event: any): void {
-        if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
+        const isSafeArea =
+            this.nativeFocusableElement?.contains(event.target as Node | null) ||
+            this.toolbar?.el?.contains(event.target as Node | null);
+
+        if (isSafeArea) {
             return;
         }
 

@@ -98,9 +98,6 @@ export class TuiToolbar {
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    private readonly el: HTMLElement | null =
-        inject(ElementRef, {optional: true})?.nativeElement ?? null;
-
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
@@ -130,6 +127,9 @@ export class TuiToolbar {
     public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
     }
+
+    public readonly el: HTMLElement | null =
+        inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
     protected get editor(): AbstractTuiEditor | null {
         return this.injectionEditor ?? this.inputEditor;
