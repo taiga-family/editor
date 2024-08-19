@@ -89,7 +89,7 @@ export class TuiToolbarComponent {
     constructor(
         @Optional()
         @Inject(ElementRef)
-        private readonly el: ElementRef<HTMLElement>,
+        readonly el: ElementRef<HTMLElement>,
         @Optional()
         @Inject(TuiTiptapEditorService)
         readonly injectionEditor: AbstractTuiEditor | null,

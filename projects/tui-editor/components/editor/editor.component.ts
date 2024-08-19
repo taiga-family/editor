@@ -66,6 +66,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     ],
     host: {
         ngSkipHydration: 'true',
+        '(click)': 'focus($event)',
     },
 })
 export class TuiEditorComponent
@@ -254,7 +255,11 @@ export class TuiEditorComponent
     }
 
     focus(event: MouseEvent): void {
-        if (this.nativeFocusableElement?.contains(event.target as Node | null)) {
+        const isSafeArea =
+            this.nativeFocusableElement?.contains(event.target as Node | null) ||
+            this.toolbar?.el.nativeElement.contains(event.target as Node | null);
+
+        if (isSafeArea) {
             return;
         }
 
