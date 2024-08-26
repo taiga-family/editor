@@ -106,7 +106,7 @@
         "@nx/jest": "19.5.7",
         "@nx/node": "19.5.7",
         "@nx/workspace": "19.5.7",
-        "@playwright/test": "1.46.0",
+        "@playwright/test": "1.46.1",
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
         "@swc-node/register": "1.10.9",
@@ -142,7 +142,9 @@
         "ts-jest": "29.2.4",
         "typescript": "5.0.4",
         "wait-on": "7.2.0",
-        "webpack": "5.93.0"
+        "tslib": "2.7.0",
+        "webpack": "5.93.0",
+        "ng-morph": "4.6.3"
     },
     "engines": {
         "node": ">=20",
