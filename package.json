@@ -134,17 +134,17 @@
         "lint-staged": "15.2.8",
         "local-web-server": "5.4.0",
         "marked": "13.0.3",
+        "ng-morph": "4.6.3",
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
         "nx": "19.5.7",
         "release-it": "17.6.0",
         "showdown": "2.1.0",
         "ts-jest": "29.2.4",
+        "tslib": "2.7.0",
         "typescript": "5.0.4",
         "wait-on": "7.2.0",
-        "tslib": "2.7.0",
-        "webpack": "5.93.0",
-        "ng-morph": "4.6.3"
+        "webpack": "5.93.0"
     },
     "engines": {
         "node": ">=20",
