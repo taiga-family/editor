@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.61.0](https://github.com/taiga-family/tui-editor/compare/v1.60.0...v1.61.0) (2024-08-26)
+
+### Bug Fixes
+
+- image option button submits the form
+  ([28a6755](https://github.com/taiga-family/tui-editor/commit/28a6755ca6b58e55bf900c435ac3ef2836d9db50))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.60.0](https://github.com/taiga-family/tui-editor/compare/v1.59.0...v1.60.0) (2024-08-19)
 
 ### Bug Fixes
