@@ -105,22 +105,27 @@ test.describe('Toolbar', () => {
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-13.png');
 
         await page.locator('[automation-id="toolbar__ordering-list-button"]').focus();
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
 
         await page
             .locator('[automation-id="toolbar__un-ordered-list-button"].t-option')
             .focus();
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
 
         await page.locator('[automation-id="toolbar__font-style-button"]').focus();
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+        await page.waitForTimeout(100);
         await page.keyboard.type('12345');
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-14.png');
 
         await page.locator('[automation-id="toolbar__insert-table-button"]').focus();
+        await page.waitForTimeout(100);
         await page.keyboard.press('Enter');
 
         const cell = page
@@ -129,6 +134,7 @@ test.describe('Toolbar', () => {
             .locator('.t-cell')
             .nth(1);
 
+        await page.waitForTimeout(100);
         await cell.hover();
         await cell.click();
 
