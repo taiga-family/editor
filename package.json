@@ -142,7 +142,7 @@
         "ts-jest": "29.2.5",
         "tslib": "2.7.0",
         "typescript": "5.0.4",
-        "webpack": "5.93.0"
+        "webpack": "5.94.0"
     },
     "engines": {
         "node": ">=20",
