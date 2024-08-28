@@ -14,9 +14,9 @@
     "repository": "https://github.com/taiga-family/editor",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@maskito/angular": ">=3.0.0",
-        "@maskito/core": ">=3.0.0",
-        "@maskito/kit": ">=3.0.0",
+        "@maskito/angular": ">=3.0.1",
+        "@maskito/core": ">=3.0.1",
+        "@maskito/kit": ">=3.0.1",
         "@tiptap/core": ">=2.6.2",
         "@tiptap/extension-blockquote": ">=2.6.2",
         "@tiptap/extension-bold": ">=2.6.2",
