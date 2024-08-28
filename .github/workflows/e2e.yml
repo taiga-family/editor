@@ -22,12 +22,10 @@ jobs:
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - name: Download ${{ env.DIST_NEXT }} for serve locally
-        run: |
-          git clone \
-                --depth 1 \
-                --branch snapshots/demo/next/${{ github.base_ref }} \
-                https://github.com/taiga-family/editor.git ${{ env.DIST_NEXT }}
+      - uses: taiga-family/ci/actions/run/clone@v1.71.0
+        with:
+          branch: snapshots/demo/next/${{ github.base_ref }}
+          destination: ${{ env.DIST_NEXT }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.71.0
         with:
@@ -36,8 +34,18 @@ jobs:
           replaceBaseUrlFrom: /editor/
           replaceBaseUrlTo: /
 
-      - run: npx nx e2e-ui editor-demo-playwright
+      - run: npx nx e2e editor-demo-playwright
         continue-on-error: true
+
+      - uses: actions/upload-artifact@v4.3.6
+        with:
+          path: |
+            ./projects/demo-playwright/tests-results/**/*.diff.png
+            !./projects/demo-playwright/tests-results/**/*-retry*/*.diff.png
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
 
       - id: diff-checker
         run: |

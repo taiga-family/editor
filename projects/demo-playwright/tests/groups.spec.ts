@@ -49,6 +49,7 @@ test.describe('Groups', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').nth(0).focus();
+        await page.keyboard.press('Enter');
         await page.keyboard.type('456');
 
         await expect(page.locator('#draggable-groups tui-editor')).toHaveScreenshot(
