@@ -13,20 +13,14 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.68.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.68.0
       - run: npx nx prerender editor-demo
-
-      - uses: jacobtomlinson/gha-find-replace@v3
+      - uses: taiga-family/ci/actions/run/serve@v1.70.1
         with:
-          find: '<base href="/editor/">'
-          replace: '<base href="/">'
-          include: '${{ env.DIST }}/index.html'
-          regex: false
-      - name: Serve ${{ env.DIST }} in background
-        run: |
-          npx ws --port ${{ env.NG_SERVER_PORT }} --directory ${{ env.DIST }} --spa index.html &
-          npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrlFrom: /editor/
+          replaceBaseUrlTo: /
 
-      - name: Run screenshot tests on ${{ env.DIST }}
-        run: npx nx e2e editor-demo-playwright -- --update-snapshots
+      - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
       - name: Download ${{ env.DIST_NEXT }} for serve locally
         run: |
@@ -35,27 +29,20 @@ jobs:
                 --branch snapshots/demo/next/${{ github.base_ref }} \
                 https://github.com/taiga-family/editor.git ${{ env.DIST_NEXT }}
 
-      - uses: jacobtomlinson/gha-find-replace@v3
+      - uses: taiga-family/ci/actions/run/serve@v1.70.1
         with:
-          find: '<base href="/editor/">'
-          replace: '<base href="/">'
-          include: '${{ env.DIST_NEXT }}/index.html'
-          regex: false
-      - name: Serve ${{ env.DIST_NEXT }} in background
-        run: |
-          npx ws --port ${{ env.NG_SERVER_PORT }} --directory ${{ env.DIST_NEXT }} --spa index.html &
-          npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST_NEXT }}
+          replaceBaseUrlFrom: /editor/
+          replaceBaseUrlTo: /
 
       - run: npx nx e2e-ui editor-demo-playwright
         continue-on-error: true
 
-      - name: Check if diff-output exists
-        id: diff-checker
+      - id: diff-checker
         run: |
           echo "diff_exist=$(find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
-
-      - name: Fall with an error if diff-output exists
-        if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
+      - if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
         run: |
           find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' -exec echo "{}" \;
           exit 1
