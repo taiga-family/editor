@@ -20,7 +20,7 @@ jobs:
 
       - uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: '<base href="./">'
+          find: '<base href="/editor/">'
           replace: '<base href="/">'
           include: '${{ env.DIST }}/index.html'
           regex: false
