@@ -8,15 +8,11 @@ jobs:
     name: E2E
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
-      - uses: taiga-family/ci/actions/setup/node@v1.66.4
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
-
-      - name: Building demo-app of git-branch without cache
-        run: npx nx prerender editor-demo
+      - uses: taiga-family/ci/actions/setup/checkout@v1.68.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.68.0
+      - uses: taiga-family/ci/actions/setup/node@v1.68.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.68.0
+      - run: npx nx prerender editor-demo
 
       - uses: jacobtomlinson/gha-find-replace@v3
         with:
@@ -50,23 +46,18 @@ jobs:
           npx ws --port ${{ env.NG_SERVER_PORT }} --directory ${{ env.DIST_NEXT }} --spa index.html &
           npx wait-on http://localhost:${{ env.NG_SERVER_PORT }}
 
-      - name: Run screenshot tests on ${{ env.DIST_NEXT }}
+      - run: npx nx e2e-ui editor-demo-playwright
         continue-on-error: true
-        run: npx nx e2e-ui editor-demo-playwright
-
-      - name: Debug output
-        continue-on-error: true
-        run: tree ./projects/demo-playwright/tests-results
 
       - name: Check if diff-output exists
         id: diff-checker
         run: |
-          echo "diff_exist=$(find ./total -regex '.*diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+          echo "diff_exist=$(find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
 
       - name: Fall with an error if diff-output exists
         if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
         run: |
-          find ./total -regex '.*diff\.png$' -exec echo "{}" \;
+          find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' -exec echo "{}" \;
           exit 1
 
 concurrency:

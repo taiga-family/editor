@@ -7,13 +7,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.66.4
-      - uses: taiga-family/ci/actions/setup/variables@v1.66.4
-      - uses: taiga-family/ci/actions/setup/node@v1.66.4
+      - uses: taiga-family/ci/actions/setup/checkout@v1.68.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.68.0
+      - uses: taiga-family/ci/actions/setup/node@v1.68.0
 
       - run: npx nx prerender editor-demo -c github
 
-      - uses: taiga-family/ci/actions/deploy/github-pages@v1.66.4
+      - uses: taiga-family/ci/actions/deploy/github-pages@v1.68.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           folder: dist/demo/browser
