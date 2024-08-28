@@ -1,9 +1,6 @@
 {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
     "defaultProject": "editor-demo",
-    "affected": {
-        "defaultBase": "origin/main"
-    },
     "workspaceLayout": {
         "libsDir": "projects",
         "appsDir": "projects"
@@ -27,5 +24,6 @@
             "cache": true
         }
     },
-    "parallel": 1
+    "parallel": 1,
+    "defaultBase": "origin/main"
 }
