@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[607],{40607:e=>{e.exports=".editor {\n    ::ng-deep .tui-editor-socket .ProseMirror {\n        min-height: 10rem;\n    }\n}\n"}}]);
