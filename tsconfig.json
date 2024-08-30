@@ -1,5 +1,6 @@
 {
     "extends": "@taiga-ui/tsconfig",
+    "include": [".scripts/*.ts"],
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
