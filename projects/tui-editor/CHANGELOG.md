@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.62.0](https://github.com/taiga-family/tui-editor/compare/v1.61.0...v1.62.0) (2024-09-02)
+
+### Bug Fixes
+
+- revert accordion state
+  ([504a460](https://github.com/taiga-family/tui-editor/commit/504a460069b8cdbd7040ffb790350581851f1b3f))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.61.0](https://github.com/taiga-family/tui-editor/compare/v1.60.0...v1.61.0) (2024-08-26)
 
 ### Bug Fixes
