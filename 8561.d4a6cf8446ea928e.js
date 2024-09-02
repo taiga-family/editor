@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[8561],{8561:e=>{e.exports=".hint {\n    display: flex;\n    color: var(--tui-border-hover);\n    block-size: 100%;\n    align-items: center;\n}\n"}}]);
