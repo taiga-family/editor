@@ -15,7 +15,7 @@ export default defineConfig({
     retries: process.env.CI ? 1 : 0,
     workers: process.env.CI ? '100%' : '50%',
     use: {
-        baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
+        baseURL: `http://localhost:${process.env.NG_SERVER_PORT ?? 3333}`,
         trace: 'on-first-retry',
         contextOptions: {
             reducedMotion: 'reduce',

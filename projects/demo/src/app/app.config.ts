@@ -61,7 +61,7 @@ export const appConfig: ApplicationConfig = {
                 }
 
                 return `${link}/${context.package.toLowerCase()}/src/lib/editor/${(
-                    context.header[0].toLowerCase() + context.header.slice(1)
+                    (context.header[0]?.toLowerCase() ?? '') + context.header.slice(1)
                 ).replaceAll(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
             },
         },

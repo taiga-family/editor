@@ -41,9 +41,11 @@ export class ExampleTuiFontSizeTool {
         const newIndex = this.currentIndex + 1;
 
         if (newIndex <= this.sizes.length - 1) {
-            const newSize = this.sizes[newIndex];
+            const newSize = this.sizes[newIndex] ?? 0;
 
-            this.setFontSize(newSize);
+            if (newSize > 0) {
+                this.setFontSize(newSize);
+            }
         }
     }
 
@@ -51,9 +53,11 @@ export class ExampleTuiFontSizeTool {
         const newIndex = this.currentIndex - 1;
 
         if (newIndex > 0) {
-            const newSize = this.sizes[newIndex];
+            const newSize = this.sizes[newIndex] ?? 0;
 
-            this.setFontSize(newSize);
+            if (newSize > 0) {
+                this.setFontSize(newSize);
+            }
         }
     }
 
@@ -65,10 +69,9 @@ export class ExampleTuiFontSizeTool {
     private getDefaultFontSize(element?: Element): number {
         return element
             ? Number(
-                  this.win
-                      .getComputedStyle(element)
-                      .getPropertyValue('font-size')
-                      .match(/\d+/)?.[0],
+                  /\d+/.exec(
+                      this.win.getComputedStyle(element).getPropertyValue('font-size'),
+                  )?.[0],
               )
             : 16;
     }

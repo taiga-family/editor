@@ -34,6 +34,8 @@ export default class Example implements OnInit {
             await tuiRawLoad(import('./example.md?raw')),
         );
 
-        this.control.patchValue(code);
+        if (code) {
+            this.control.patchValue(code);
+        }
     }
 }

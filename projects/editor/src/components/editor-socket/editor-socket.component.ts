@@ -2,8 +2,6 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     SecurityContext,
@@ -26,6 +24,8 @@ import {TUI_EDITOR_SANITIZER} from '../../tokens/editor-sanitizer';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.tui-editor-socket]': 'options.enableDefaultStyles',
+        '[innerHTML]': 'innerHtml',
+        '(click)': 'click($event)',
     },
 })
 export class TuiEditorSocket {
@@ -38,7 +38,6 @@ export class TuiEditorSocket {
     @Input()
     public content: string | null = null;
 
-    @HostBinding('innerHTML')
     public get innerHtml(): SafeHtml | null {
         if (!this.content) {
             return null;
@@ -55,13 +54,12 @@ export class TuiEditorSocket {
      * the main problem is that the external environment editor can use different base href="../"
      * More information: https://rogerkeays.com/blog/using-base-href-with-anchors
      */
-    @HostListener('click', ['$event'])
     protected click(event: Event): void {
         if (this.editor || !tuiIsElement(event.target)) {
             return;
         }
 
-        const href = event.target?.closest('a')?.getAttribute('href') || '';
+        const href = event.target?.closest('a')?.getAttribute('href') ?? '';
 
         if (!href.startsWith('#')) {
             return;

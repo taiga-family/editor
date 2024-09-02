@@ -4,19 +4,7 @@
     "compilerOptions": {
         "outDir": "./dist/out-tsc/lib",
         "paths": {
-            "@taiga-ui/editor": ["./dist/tui-editor"],
-            "@taiga-ui/kit": ["./taiga-ui/dist/kit"],
-            "@taiga-ui/kit/*": ["./taiga-ui/dist/kit/*"],
-            "@taiga-ui/cdk": ["./taiga-ui/dist/cdk"],
-            "@taiga-ui/cdk/*": ["./taiga-ui/dist/cdk/*"],
-            "@taiga-ui/core": ["./taiga-ui/dist/core"],
-            "@taiga-ui/core/*": ["./taiga-ui/dist/core/*"],
-            "@taiga-ui/layout": ["./taiga-ui/dist/layout"],
-            "@taiga-ui/layout/*": ["./taiga-ui/dist/layout/*"],
-            "@taiga-ui/i18n": ["./taiga-ui/dist/i18n"],
-            "@taiga-ui/i18n/*": ["./taiga-ui/dist/i18n/*"],
-            "@taiga-ui/legacy": ["./taiga-ui/dist/legacy"],
-            "@taiga-ui/legacy/*": ["./taiga-ui/dist/legacy/*"]
+            "@taiga-ui/editor": ["./dist/tui-editor"]
         }
     }
 }

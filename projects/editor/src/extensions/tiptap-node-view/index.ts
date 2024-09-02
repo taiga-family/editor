@@ -151,9 +151,9 @@ export class TuiNodeView extends NodeView<
             };
         }
 
-        this.contentDOMElement = this.node.isLeaf
-            ? null
-            : doc.createElement(this.node.isInline ? 'span' : 'div');
+        const inline = this.node.isInline ? 'span' : 'div';
+
+        this.contentDOMElement = this.node.isLeaf ? null : doc.createElement(inline);
 
         if (this.contentDOMElement) {
             // For some reason the whiteSpace prop is not inherited properly in Chrome and Safari

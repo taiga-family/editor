@@ -3,38 +3,16 @@
     "references": [
         {
             "path": ".scripts/tsconfig.tools.json"
+        },
+        {
+            "path": ".scripts/tsconfig.spec.json"
         }
     ],
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
         "paths": {
-            "@taiga-ui/editor": ["./projects/editor/src"],
-            "@taiga-ui/kit": ["./taiga-ui/projects/kit"],
-            "@taiga-ui/kit/*": ["./taiga-ui/projects/kit/*"],
-            "@taiga-ui/cdk": ["./taiga-ui/projects/cdk"],
-            "@taiga-ui/cdk/*": ["./taiga-ui/projects/cdk/*"],
-            "@taiga-ui/styles": ["./taiga-ui/projects/styles"],
-            "@taiga-ui/styles/*": ["./taiga-ui/projects/styles/*"],
-            "@taiga-ui/layout": ["./taiga-ui/projects/layout"],
-            "@taiga-ui/layout/*": ["./taiga-ui/projects/layout/*"],
-            "@taiga-ui/core": ["./taiga-ui/projects/core"],
-            "@taiga-ui/core/*": ["./taiga-ui/projects/core/*"],
-            "@taiga-ui/i18n": ["./taiga-ui/projects/i18n"],
-            "@taiga-ui/i18n/*": ["./taiga-ui/projects/i18n/*"],
-            "@taiga-ui/legacy": ["./taiga-ui/projects/legacy"],
-            "@taiga-ui/legacy/*": ["./taiga-ui/projects/legacy/*"],
-            "@taiga-ui/addon-doc": ["./taiga-ui/projects/addon-doc"],
-            "@taiga-ui/addon-doc/*": ["./taiga-ui/projects/addon-doc/*"],
-            "@taiga-ui/addon-preview": ["./taiga-ui/projects/addon-preview"],
-            "@taiga-ui/addon-preview/*": ["./taiga-ui/projects/addon-preview/*"],
-            "@taiga-ui/addon-mobile": ["./taiga-ui/projects/addon-mobile"],
-            "@taiga-ui/addon-mobile/*": ["./taiga-ui/projects/addon-mobile/*"],
-            "@taiga-ui/testing": ["./taiga-ui/projects/testing"],
-            "@taiga-ui/testing/*": ["./taiga-ui/projects/testing/*"],
-            "@taiga-ui/submodule-package": ["./taiga-ui/package.json"],
-            "@taiga-ui/submodule-demo-package": ["./taiga-ui/projects/demo/package.json"],
-            "@taiga-ui/submodule-cdk-package": ["./taiga-ui/projects/cdk/package.json"]
+            "@taiga-ui/editor": ["./projects/editor/src"]
         }
     }
 }

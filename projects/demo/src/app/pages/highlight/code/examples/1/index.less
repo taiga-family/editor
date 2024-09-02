@@ -3,9 +3,10 @@
     src: url('https://assets.codepen.io/2585/MonaspaceKrypton-SyntaxHighlighter-Regular.woff2') format('woff2');
 }
 
+/* stylelint-disable */
 @font-palette-values --kung-fury {
     @font-palette-values --kung-fury {
-        font-family: 'Monaspace';
+        font-family: Monaspace, sans-serif;
         override-colors:
             0 hsl(188 100% 75%),
             /* curlies and tags */ 1 hsl(250 100% 80%),
@@ -17,12 +18,13 @@
             /* ? */ 7 hsl(300 100% 80%) /* numbers */;
     }
 }
+/* stylelint-enable */
 
 :host {
     ::ng-deep {
         .tui-editor-socket pre:has(code[class='language-ts']) {
             background: var(--tui-background-accent-opposite-hover);
-            min-width: 0;
+            min-inline-size: 0;
             overflow-x: auto;
             padding: 2ch;
         }

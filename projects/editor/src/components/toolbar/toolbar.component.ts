@@ -7,8 +7,6 @@ import {
     DestroyRef,
     ElementRef,
     EventEmitter,
-    HostBinding,
-    HostListener,
     inject,
     Input,
     Output,
@@ -84,6 +82,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     host: {
         role: 'toolbar',
         '[class._disabled]': 'disabled',
+        '(mousedown)': 'onMouseDown($event, $event.target)',
     },
 })
 export class TuiToolbar {
@@ -111,7 +110,6 @@ export class TuiToolbar {
     public colors: ReadonlyMap<string, string> = this.options.colors;
 
     @Input()
-    @HostBinding('class._disabled')
     public disabled = false;
 
     @Output()
@@ -218,7 +216,6 @@ export class TuiToolbar {
         );
     }
 
-    @HostListener('mousedown', ['$event', '$event.target'])
     protected onMouseDown(event: MouseEvent, target: HTMLElement): void {
         if (target.closest('button')) {
             return;
@@ -259,11 +256,12 @@ export class TuiToolbar {
             return;
         }
 
-        ngDevMode &&
+        if (ngDevMode) {
             console.assert(
                 !!this.filesLoader,
                 'Please provide TUI_ATTACH_FILES_LOADER, more: https://taiga-family.github.io/editor/starter-kit/Options',
             );
+        }
 
         this.filesLoader?.(files)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))

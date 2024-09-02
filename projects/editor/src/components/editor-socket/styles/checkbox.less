@@ -6,14 +6,14 @@ ul[data-type] {
         gap: 0.5rem;
 
         & > div {
-            width: 100%;
+            inline-size: 100%;
         }
     }
 
     li[data-checked] > label > input[type='checkbox'] {
         position: relative;
-        width: var(--t-size, 1rem);
-        height: var(--t-size, 1rem);
+        inline-size: var(--t-size, 1rem);
+        block-size: var(--t-size, 1rem);
         border-radius: var(--tui-radius-xs, 0.25rem);
         transition-property: color, background, opacity, box-shadow, border;
         transition-duration: var(--tui-duration, 0.3s);
@@ -30,8 +30,8 @@ ul[data-type] {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            inline-size: 100%;
+            block-size: 100%;
             background: currentColor;
             mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center / 100%;
             transform: scale(0);

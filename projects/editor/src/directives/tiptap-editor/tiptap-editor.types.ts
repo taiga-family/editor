@@ -25,7 +25,7 @@ import type TextStyle from '@tiptap/extension-text-style';
 import type Underline from '@tiptap/extension-underline';
 import type StarterKit from '@tiptap/starter-kit';
 
-export {
+export type {
     Highlight,
     Image,
     Link,

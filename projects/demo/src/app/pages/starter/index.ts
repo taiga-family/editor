@@ -27,7 +27,6 @@ import {
         TuiLink,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

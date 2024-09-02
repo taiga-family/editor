@@ -34,14 +34,14 @@ ul:not([data-type]) {
     & > li::before {
         content: '';
         display: inline-block;
-        width: 0.5rem;
-        height: 0.5rem;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
         border-radius: 100%;
         margin: 0.5rem 0.875rem 0.0625rem -1.375rem;
         background-color: var(--tui-background-accent-1);
         vertical-align: top;
         box-sizing: border-box;
-        float: left;
+        float: inline-start;
     }
 }
 
@@ -53,8 +53,8 @@ li ul:not([data-type]) > li::before {
 li ul:not([data-type]) > li > ul:not([data-type]) > li::before {
     background: var(--tui-background-accent-1);
     border-radius: 0;
-    width: 0.375rem;
-    height: 0.375rem;
+    inline-size: 0.375rem;
+    block-size: 0.375rem;
 }
 
 ol:not([data-type]) {
@@ -68,7 +68,7 @@ ol:not([data-type]) > li::before {
     margin: 0 0.75rem 0 -1.5rem;
     color: var(--tui-border-hover);
     vertical-align: top;
-    float: left;
+    float: inline-start;
     white-space: nowrap;
 }
 

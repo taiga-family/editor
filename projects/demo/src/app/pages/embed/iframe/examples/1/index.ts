@@ -36,7 +36,6 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-    private readonly isE2E = inject(TUI_IS_E2E);
     private readonly isNotStatic =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
@@ -47,9 +46,7 @@ export default class Example {
             : `
         <p>Here is an online IDE:</p>
         <iframe
-         src="https://codepen.io/mehdinajafi/embed/LYyqNqR?default-tab=html${
-             this.isE2E ? '' : '%2Cresult'
-         }&editable=true"
+         src="https://codepen.io/mehdinajafi/embed/LYyqNqR?default-tab=html$%2Cresult&editable=true"
          height="375"
          width="100%"
          scrolling="no"

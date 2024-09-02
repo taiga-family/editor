@@ -4,7 +4,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostBinding,
     Input,
     Output,
     ViewChild,
@@ -18,6 +17,10 @@ import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
     templateUrl: './editor-resizable.component.html',
     styleUrls: ['./editor-resizable.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style.width]': 'hostWidth',
+        '[style.height]': 'hostHeight',
+    },
 })
 export class TuiEditorResizable {
     @ViewChild('container', {static: true})
@@ -37,12 +40,10 @@ export class TuiEditorResizable {
         readonly [width: number, height: number]
     >();
 
-    @HostBinding('style.width')
     protected get hostWidth(): number | string | null {
         return tuiIsNumber(this.width) ? tuiPx(this.width) : this.width;
     }
 
-    @HostBinding('style.height')
     protected get hostHeight(): number | string | null {
         if (this.autoHeight) {
             return null;

@@ -1,14 +1,14 @@
 .editor {
-    min-height: 12.5rem;
-    max-height: 12.5rem;
+    min-block-size: 12.5rem;
+    max-block-size: 12.5rem;
 
     ::ng-deep [data-appearance] {
         tui-toolbar {
             position: absolute;
-            width: 100%;
-            bottom: 0;
             left: 0;
+            bottom: 0;
             z-index: 1;
+            inline-size: 100%;
 
             .t-tools-wrapper {
                 box-shadow: 0 -0.0625rem 0.0625rem var(--tui-background-neutral-1-hover);

@@ -3,13 +3,13 @@ import {getHTMLFromFragment, Mark} from '@tiptap/core';
 import {Fragment} from '@tiptap/pm/model';
 import type {Mark as ProseMark} from 'prosemirror-model';
 
-function getMarkTags(mark: ProseMark): string[] | null {
+function getMarkTags(mark: ProseMark): [string, string] | null {
     const schema = mark.type.schema;
     const node = schema.text(' ', [mark]);
     const html = getHTMLFromFragment(Fragment.from(node), schema);
-    const match = html.match(/^(<.*?>) (<\/.*?>)$/);
+    const match = /^(<.*?>) (<\/.*?>)$/.exec(html);
 
-    return match ? [match[1], match[2]] : null;
+    return match ? [match[1] ?? '', match[2] ?? ''] : null;
 }
 
 export default Mark.create({

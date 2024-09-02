@@ -7,16 +7,16 @@
     font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-m);
     border: 0.0625rem solid var(--tui-border-normal);
-    max-height: inherit;
-    min-height: 10rem;
+    max-block-size: inherit;
+    min-block-size: 10rem;
     box-sizing: border-box;
     overflow: visible;
 }
 
 .t-wrapper {
     display: flex;
-    max-height: inherit;
-    min-height: inherit;
+    max-block-size: inherit;
+    min-block-size: inherit;
     cursor: text;
     overflow: clip;
     flex-direction: column;
@@ -31,7 +31,7 @@
     pointer-events: none;
     will-change: transform;
     transform: translateY(-0.25rem);
-    width: 95%;
+    inline-size: 95%;
     font-size: 0.9375rem;
 
     &_raised {
@@ -41,7 +41,7 @@
 
 .t-editor-placeholder:not(:empty) {
     margin: 1rem 1rem -1rem;
-    min-height: 1.625rem;
+    min-block-size: 1.625rem;
 }
 
 .t-editor-placeholder:empty {
@@ -59,7 +59,7 @@
 
 .t-scrollbar {
     display: flex;
-    min-height: 100%;
+    min-block-size: 100%;
     padding-bottom: 0.75rem;
     box-sizing: border-box;
     flex: 1;
@@ -68,7 +68,7 @@
 .t-floating {
     &,
     ::ng-deep .t-tools-wrapper {
-        max-width: var(--tui-floating-toolbar-max-width, 31.25rem);
+        max-inline-size: var(--tui-floating-toolbar-max-width, 31.25rem);
         flex-wrap: nowrap;
     }
 }

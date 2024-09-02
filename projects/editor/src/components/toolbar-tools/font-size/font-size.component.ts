@@ -48,14 +48,14 @@ export class TuiFontSize {
     }
 
     protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
-        const color = this.editor?.getFontColor() || EDITOR_BLANK_COLOR;
+        const color = this.editor?.getFontColor() ?? EDITOR_BLANK_COLOR;
 
         this.clearPreviousTextStyles();
 
         if (headingLevel) {
             this.editor?.setHeading(headingLevel);
         } else {
-            this.editor?.setParagraph({fontSize: tuiPx(px || 0)});
+            this.editor?.setParagraph({fontSize: tuiPx(px ?? 0)});
         }
 
         if (color !== EDITOR_BLANK_COLOR) {

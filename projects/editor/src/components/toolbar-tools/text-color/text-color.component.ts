@@ -56,7 +56,7 @@ export class TuiTextColor implements OnInit {
     private initStream(): void {
         this.fontColor$ =
             this.editor?.stateChange$.pipe(
-                map(() => this.editor?.getFontColor() || this.options.blankColor),
+                map(() => this.editor?.getFontColor() ?? this.options.blankColor),
                 distinctUntilChanged(),
             ) ?? null;
     }

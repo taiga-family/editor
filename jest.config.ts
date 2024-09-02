@@ -28,7 +28,7 @@ const config: Config = {
         ],
     },
     transformIgnorePatterns: [
-        String.raw`node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito|@ng-web-apis|@taiga-ui\/event-plugins|@taiga-ui\/polymorpheus|@taiga-ui\/dompurify)`,
+        String.raw`node_modules/(?!@angular|rxjs|ngx-highlightjs|@maskito|@ng-web-apis|@taiga-ui)`,
     ],
     testMatch: ['<rootDir>/projects/**/*.spec.ts'],
     testPathIgnorePatterns: ['/demo-playwright/', '/node_modules/', '/schematics/'],

@@ -4,25 +4,13 @@
     "projectType": "library",
     "sourceRoot": "projects/editor",
     "targets": {
-        "prebuild": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "npx nx run-many -t build -p i18n cdk core kit legacy layout --output-style=stream"
-            }
-        },
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "tsConfig": "tsconfig.build.json",
                 "project": "projects/{projectName}/ng-package.json"
-            },
-            "dependsOn": [
-                {
-                    "target": "prebuild",
-                    "params": "ignore"
-                }
-            ]
+            }
         },
         "test": {
             "executor": "@nx/jest:jest",

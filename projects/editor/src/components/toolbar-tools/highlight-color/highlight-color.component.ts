@@ -68,7 +68,8 @@ export class TuiHighlightColor implements OnInit {
             this.editor?.stateChange$.pipe(
                 map(
                     () =>
-                        (this.editor?.getBackgroundColor() || this.options.blankColor) ??
+                        this.editor?.getBackgroundColor() ??
+                        this.options.blankColor ??
                         false,
                 ),
                 distinctUntilChanged(),
