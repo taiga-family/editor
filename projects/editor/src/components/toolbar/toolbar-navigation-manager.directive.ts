@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, inject} from '@angular/core';
+import {Directive, ElementRef, inject} from '@angular/core';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
@@ -9,11 +9,15 @@ import {
 @Directive({
     standalone: true,
     selector: '[tuiToolbarNavigationManager]',
+    host: {
+        '(keydown.arrowRight.prevent)': 'onHorizontalNavigation(false)',
+        '(keydown.arrowLeft.prevent)': 'onHorizontalNavigation(true)',
+    },
 })
 export class TuiToolbarNavigationManager {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
 
-    public findFirstFocusableTool(reversed = false): any | null {
+    public findFirstFocusableTool(reversed = false): HTMLElement | null {
         const tools = reversed
             ? this.toolsContainers.slice().reverse()
             : this.toolsContainers;
@@ -31,8 +35,6 @@ export class TuiToolbarNavigationManager {
         return null;
     }
 
-    @HostListener('keydown.arrowRight.prevent', ['false'])
-    @HostListener('keydown.arrowLeft.prevent', ['true'])
     protected onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
         const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
@@ -56,9 +58,9 @@ export class TuiToolbarNavigationManager {
         return Array.from(this.el.querySelectorAll<HTMLElement>('[tuiItem]'));
     }
 
-    private findPreviousTool(wrapper: HTMLElement): HTMLElement | null {
-        if (tuiIsNativeMouseFocusable(wrapper)) {
-            return wrapper;
+    private findPreviousTool(wrapper?: HTMLElement | null): HTMLElement | null {
+        if (!wrapper || tuiIsNativeMouseFocusable(wrapper)) {
+            return wrapper ?? null;
         }
 
         const lookedInside = tuiGetClosestFocusable({
@@ -78,9 +80,9 @@ export class TuiToolbarNavigationManager {
         );
     }
 
-    private findNextTool(wrapper: HTMLElement): HTMLElement | null {
-        return tuiIsNativeMouseFocusable(wrapper)
-            ? wrapper
+    private findNextTool(wrapper?: HTMLElement | null): HTMLElement | null {
+        return !wrapper || tuiIsNativeMouseFocusable(wrapper)
+            ? (wrapper ?? null)
             : tuiGetClosestFocusable({
                   initial: wrapper,
                   root: this.el,

@@ -4,8 +4,6 @@ import {
     Component,
     DestroyRef,
     ElementRef,
-    HostBinding,
-    HostListener,
     inject,
     ViewChild,
 } from '@angular/core';
@@ -40,6 +38,12 @@ import {TuiImageAlignComponent} from './options/image-align/image-align.componen
     templateUrl: './image-editor.component.html',
     styleUrls: ['./image-editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[style]': 'style',
+        '[attr.data-drag-handle]': 'dragHandle',
+        '[attr.contenteditable]': 'contenteditable',
+        '(document:click.silent)': 'currentTargetIsFocused($event.target)',
+    },
 })
 export class TuiImageEditor
     extends AbstractTuiEditorResizable<TuiEditableImage>
@@ -56,10 +60,8 @@ export class TuiImageEditor
     private readonly win = inject(WA_WINDOW);
     private readonly destroyRef = inject(DestroyRef);
 
-    @HostBinding('style')
     protected style?: string | null = null;
 
-    @HostBinding('attr.contenteditable')
     protected contenteditable = false;
 
     protected focused = false;
@@ -73,11 +75,11 @@ export class TuiImageEditor
     }
 
     public get minWidth(): number {
-        return this.imageOptions.minWidth || 0;
+        return this.imageOptions.minWidth ?? 0;
     }
 
     public get maxWidth(): number {
-        return this.imageOptions.maxWidth || 0;
+        return this.imageOptions.maxWidth ?? 0;
     }
 
     public ngOnInit(): void {
@@ -97,25 +99,23 @@ export class TuiImageEditor
         this.notifyUpdate();
     }
 
-    @HostBinding('attr.data-drag-handle')
-    protected get dragHandle(): '' | null {
-        return this.attrs.draggable ?? null;
-    }
-
     @tuiPure
     protected get src(): SafeResourceUrl {
         return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
     }
 
+    protected get dragHandle(): '' | null {
+        return this.attrs.draggable ?? null;
+    }
+
     protected get alt(): string {
-        return this.attrs.alt || '';
+        return this.attrs.alt ?? '';
     }
 
     protected get title(): string {
-        return this.attrs.title || '';
+        return this.attrs.title ?? '';
     }
 
-    @HostListener('document:click.silent', ['$event.target'])
     protected currentTargetIsFocused(node: Node): void {
         this.focused = this.el.nativeElement.contains(node);
 

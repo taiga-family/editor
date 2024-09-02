@@ -16,9 +16,13 @@ export const IMAGE_CLIPBOARD_PASTE_EXTENSION: Partial<NodeConfig<unknown, unknow
                                 );
 
                             if (isImage) {
-                                const node = view.state.schema.nodes.image.create({
+                                const node = view.state.schema.nodes.image?.create({
                                     src: url,
                                 });
+
+                                if (!node) {
+                                    return;
+                                }
 
                                 const transaction =
                                     view.state.tr.replaceSelectionWith(node);

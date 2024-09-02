@@ -1,5 +1,5 @@
 export function tuiIsSafeLinkRange(range: Range): boolean {
-    const textNodeLength = range.endContainer.nodeValue?.length || 0;
+    const textNodeLength = range.endContainer.nodeValue?.length ?? 0;
 
     return (
         range.endOffset - range.startOffset > 0 ||

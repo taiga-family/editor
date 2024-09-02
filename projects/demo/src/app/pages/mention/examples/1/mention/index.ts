@@ -4,7 +4,6 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    HostListener,
     Input,
     Output,
     ViewChild,
@@ -25,6 +24,10 @@ export interface User {
     imports: [NgForOf, TuiAutoFocus, TuiAvatar, TuiDataList, TuiInitialsPipe],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(window:keydown.arrowUp)': 'down($event, false)',
+        '(window:keydown.arrowDown)': 'down($event, true)',
+    },
 })
 export class Mentions {
     @ViewChild('container', {read: ElementRef})
@@ -60,14 +63,12 @@ export class Mentions {
             : items;
     }
 
-    @HostListener('window:keydown.arrowUp', ['$event', 'false'])
-    @HostListener('window:keydown.arrowDown', ['$event', 'true'])
     protected down(event: Event, isDown: boolean): void {
         const buttons = Array.from(this.el?.querySelectorAll('button') ?? []);
         const button = isDown ? buttons[0] : buttons[buttons.length - 1];
 
         if (!this.el?.contains(event.target as any)) {
-            button.focus();
+            button?.focus();
         }
     }
 

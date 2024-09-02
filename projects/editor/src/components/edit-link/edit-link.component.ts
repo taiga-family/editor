@@ -3,7 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    HostListener,
     inject,
     Input,
     Output,
@@ -49,6 +48,10 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     templateUrl: './edit-link.template.html',
     styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '(document:selectionchange)': 'onSelectionChange()',
+        '(mousedown)': 'onMouseDown($event)',
+    },
 })
 export class TuiEditLink {
     private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
@@ -105,7 +108,6 @@ export class TuiEditLink {
         return !this.anchorMode && this.edit && this.anchorIds.length > 0;
     }
 
-    @HostListener('document:selectionchange')
     protected onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
@@ -113,7 +115,6 @@ export class TuiEditLink {
         }
     }
 
-    @HostListener('mousedown', ['$event'])
     protected onMouseDown(event: MouseEvent): void {
         if (tuiIsElement(event.target) && !event.target.matches('a, button, input')) {
             event.preventDefault();
@@ -205,7 +206,7 @@ export class TuiEditLink {
         const a = this.getAnchorElement();
 
         return a
-            ? this.removePrefix(a.getAttribute('href') || a.getAttribute('id') || '')
+            ? this.removePrefix(a.getAttribute('href') ?? a.getAttribute('id') ?? '')
             : this.url;
     }
 
@@ -245,7 +246,7 @@ export class TuiEditLink {
         );
 
         return Array.from(nodes)
-            .map((node) => node.getAttribute('id') || '')
+            .map((node) => node.getAttribute('id') ?? '')
             .filter(Boolean);
     }
 }

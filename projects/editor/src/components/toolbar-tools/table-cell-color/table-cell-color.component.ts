@@ -92,8 +92,8 @@ export class TuiTableCellColor implements OnInit {
             this.editor?.stateChange$.pipe(
                 map(
                     () =>
-                        this.editor?.getCellColor() ||
-                        this.editor?.getGroupColor() ||
+                        this.editor?.getCellColor() ??
+                        this.editor?.getGroupColor() ??
                         this.options.blankColor,
                 ),
                 distinctUntilChanged(),

@@ -96,12 +96,12 @@ export class TuiEditorMarkdownParser {
         if (node.firstElementChild?.matches('p')) {
             const firstParagraph = node.firstElementChild;
             const {nextElementSibling, innerHTML} = firstParagraph;
-            const startSpaces = content.match(/^\s+/)?.[0] ?? '';
+            const startSpaces = /^\s+/.exec(content)?.[0] ?? '';
             const endSpaces = !nextElementSibling
-                ? (content.match(/\s+$/)?.[0] ?? '')
+                ? (/\s+$/.exec(content)?.[0] ?? '')
                 : '';
 
-            if (content.match(/^\n\n/)) {
+            if (/^\n\n/.exec(content)) {
                 firstParagraph.innerHTML = `${innerHTML}${endSpaces}`;
 
                 return;

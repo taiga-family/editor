@@ -21,7 +21,7 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, of} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -50,6 +50,10 @@ import {map} from 'rxjs';
                 ([file]: File[]): Observable<
                     Array<TuiEditorAttachedFile<{type: string}>>
                 > => {
+                    if (!file) {
+                        return of([]);
+                    }
+
                     const fileReader = new FileReader();
 
                     // For example, instead of uploading to a file server,
@@ -122,6 +126,10 @@ export default class Example {
     }
 
     protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
+        if (!file) {
+            return;
+        }
+
         this.editor?.editorService
             ?.getOriginTiptapEditor()
             ?.chain()

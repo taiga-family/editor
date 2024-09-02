@@ -24,10 +24,10 @@ export abstract class AbstractTuiEditorResizable<
     }
 
     protected get width(): number | string | null {
-        return this.currentWidth || this.attrs.width || null;
+        return (this.currentWidth || this.attrs.width) ?? null;
     }
 
     protected get height(): number | string | null {
-        return this.currentHeight || this.attrs.height || null;
+        return (this.currentHeight || this.attrs.height) ?? null;
     }
 }

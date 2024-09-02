@@ -5,12 +5,6 @@
     "sourceRoot": "projects/demo/src",
     "prefix": "app",
     "targets": {
-        "i18n": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "npx nx build i18n"
-            }
-        },
         "build": {
             "executor": "@nx/angular:webpack-browser",
             "options": {
@@ -33,13 +27,13 @@
                     },
                     {
                         "glob": "**/*",
-                        "input": "taiga-ui/projects/icons/src",
+                        "input": "node_modules/@taiga-ui/icons/src",
                         "output": "assets/taiga-ui/icons"
                     }
                 ],
                 "styles": [
-                    "taiga-ui/projects/core/styles/taiga-ui-theme.less",
-                    "taiga-ui/projects/core/styles/taiga-ui-fonts.less",
+                    "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+                    "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
                     "projects/demo/src/styles.less"
                 ],
                 "scripts": [],
@@ -77,13 +71,7 @@
                 },
                 "development": {}
             },
-            "defaultConfiguration": "production",
-            "dependsOn": [
-                {
-                    "target": "i18n",
-                    "params": "ignore"
-                }
-            ]
+            "defaultConfiguration": "production"
         },
         "serve": {
             "executor": "@nx/angular:dev-server",
@@ -146,10 +134,6 @@
             },
             "defaultConfiguration": "production",
             "dependsOn": [
-                {
-                    "target": "i18n",
-                    "params": "ignore"
-                },
                 {
                     "target": "generate-routes-file",
                     "params": "ignore"

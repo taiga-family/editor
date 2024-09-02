@@ -1,5 +1,5 @@
 import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, HostBinding, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_PAGE_LOADED, TuiAddonDoc, TuiDocHeader} from '@taiga-ui/addon-doc';
@@ -23,14 +23,14 @@ import {TuiPreview} from '@taiga-ui/kit';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class._loaded]': 'pageLoadedInit',
+        '[$.class._loaded]': 'pageLoaded',
+    },
 })
 export class AppComponent implements OnInit {
     private readonly pageLoaded$ = inject(TUI_DOC_PAGE_LOADED);
-
-    @HostBinding('class._loaded')
     protected readonly pageLoadedInit = '0';
-
-    @HostBinding('$.class._loaded')
     protected readonly pageLoaded = this.pageLoaded$;
 
     protected readonly router = inject(Router);

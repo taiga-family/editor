@@ -9,21 +9,20 @@
 }
 
 .smiles {
-    max-width: 18rem;
     display: flex;
+    max-inline-size: 18rem;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
 
 .smile {
+    .transition(background);
+
     appearance: none;
     border: 0;
     background: none;
-    font-size: inherit;
-    line-height: inherit;
     text-decoration: none;
-    .transition(background);
     flex: 1 0 21%;
     cursor: pointer;
     border-radius: var(--tui-radius-s);

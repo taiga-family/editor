@@ -3,7 +3,7 @@
 table {
     border-collapse: collapse;
     table-layout: fixed;
-    width: 100%;
+    inline-size: 100%;
     margin: 0;
     overflow: hidden;
 }
@@ -21,8 +21,8 @@ table .tableWrapper {
 
 table td {
     position: relative;
-    min-width: 1em;
-    height: 2rem;
+    min-inline-size: 1em;
+    block-size: 2rem;
     padding: 0.1875rem 0.3125rem;
     vertical-align: top;
     box-sizing: border-box;
@@ -31,16 +31,16 @@ table td {
 
 table th {
     position: relative;
-    min-width: 1em;
-    height: 2rem;
+    min-inline-size: 1em;
+    block-size: 2rem;
     padding: 0.1875rem 0.3125rem;
     vertical-align: top;
     box-sizing: border-box;
     word-break: break-word;
     font-weight: bold;
-    text-align: left;
+    text-align: start;
     background-color: var(--tui-background-base-alt);
-    min-height: 2rem;
+    min-block-size: 2rem;
 }
 
 table td,
@@ -58,7 +58,7 @@ table .column-resize-handle {
     right: -0.125rem;
     top: 0;
     bottom: -0.125rem;
-    width: 0.25rem;
+    inline-size: 0.25rem;
     background-color: #adf;
     pointer-events: none;
 }

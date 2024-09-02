@@ -288,9 +288,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private get currentFocusedNodeIsImageAnchor(): boolean {
+        const node = this.focusNode?.childNodes[0]?.nodeName;
+
         return (
-            this.focusNode?.nodeName === 'A' &&
-            ['IMG', 'TUI-IMAGE-EDITOR'].includes(this.focusNode?.childNodes[0]?.nodeName)
+            (this.focusNode?.nodeName === 'A' &&
+                node &&
+                ['IMG', 'TUI-IMAGE-EDITOR'].includes(node)) ||
+            false
         );
     }
 
@@ -323,15 +327,18 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private listenResizeEvents(): void {
-        this.el?.nativeElement &&
-            fromEvent(this.el?.nativeElement, TUI_EDITOR_RESIZE_EVENT)
-                .pipe(
-                    throttleTime(0),
-                    tuiZonefree(this.zone),
-                    takeUntilDestroyed(this.destroy$),
-                )
-                .subscribe(() =>
-                    this.editorService.valueChange$.next(this.editorService.getHTML()),
-                );
+        if (!this.el?.nativeElement) {
+            return;
+        }
+
+        fromEvent(this.el.nativeElement, TUI_EDITOR_RESIZE_EVENT)
+            .pipe(
+                throttleTime(0),
+                tuiZonefree(this.zone),
+                takeUntilDestroyed(this.destroy$),
+            )
+            .subscribe(() =>
+                this.editorService.valueChange$.next(this.editorService.getHTML()),
+            );
     }
 }

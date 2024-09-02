@@ -49,11 +49,13 @@ function pasteImage(injector: Injector) {
                     takeWhile(() => !view.isDestroyed),
                 )
                 .subscribe((src) => {
-                    const node = view.state.schema.nodes.image.create({src});
-                    const transaction = view.state.tr.replaceSelectionWith(node);
+                    const node = view.state.schema.nodes.image?.create({src});
+                    const transaction = node
+                        ? view.state.tr.replaceSelectionWith(node)
+                        : null;
 
                     setTimeout?.(() => {
-                        if (!view.isDestroyed) {
+                        if (!view.isDestroyed && transaction) {
                             view.dispatch(transaction);
                         }
                     });

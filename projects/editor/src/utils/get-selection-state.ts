@@ -19,10 +19,10 @@ export function tuiGetSelectionState(
     before = (
         before?.slice(
             ((before?.lastIndexOf(' ') || before?.lastIndexOf('\n')) ?? 0) + 1,
-        ) || ''
+        ) ?? ''
     ).trim();
 
-    const after = $to.nodeAfter?.textContent.trim() || '';
+    const after = $to.nodeAfter?.textContent.trim() ?? '';
 
     return {before, after};
 }

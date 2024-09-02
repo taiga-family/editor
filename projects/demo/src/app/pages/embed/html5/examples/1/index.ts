@@ -19,7 +19,7 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, of} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -48,6 +48,10 @@ import {map} from 'rxjs';
                 ([file]: File[]): Observable<
                     Array<TuiEditorAttachedFile<{type: string}>>
                 > => {
+                    if (!file) {
+                        return of([]);
+                    }
+
                     const fileReader = new FileReader();
 
                     // For example, instead of uploading to a file server,
@@ -105,16 +109,12 @@ export default class Example {
             : `
             <p>Here is video: </p>
 
-            <video controls="controls" width="100%" preload="${
-                this.isE2E ? 'none' : 'auto'
-            }" controlsList="nodownload">
+            <video controls="controls" width="100%" preload="auto" controlsList="nodownload">
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
             </video>
 
             <p>Here is audio: </p>
-            <audio controls style="width: 100%" preload="${
-                this.isE2E ? 'none' : 'auto'
-            }" controlsList="nodownload">
+            <audio controls style="width: 100%" preload="auto" controlsList="nodownload">
               <source src="https://www.w3docs.com/build/audios/audio.mp3" type="audio/mp3">
             </audio>
 
@@ -129,12 +129,12 @@ export default class Example {
     }
 
     protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
-        const tag = `${file.attrs?.type ?? ''}`.split('/')[0];
+        const tag = `${file?.attrs?.type ?? ''}`.split('/')[0];
 
         this.wysiwyg?.editor
             ?.getOriginTiptapEditor()
             ?.commands.insertContent(
-                `<${tag} controls width="100%"><source src="${file.link}" type="${file.attrs?.type}"></${tag}><p><a href="${file.link}" download="${file.name}">Download ${file.name}</a></p>`,
+                `<${tag} controls width="100%"><source src="${file?.link}" type="${file?.attrs?.type}"></${tag}><p><a href="${file?.link}" download="${file?.name}">Download ${file?.name}</a></p>`,
             );
     }
 }
