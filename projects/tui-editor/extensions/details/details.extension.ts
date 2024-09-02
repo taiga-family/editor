@@ -53,15 +53,10 @@ export const TuiDetails = Node.create<TuiDetailsOptions>({
     },
 
     renderHTML({HTMLAttributes}) {
-        const attrs = mergeAttributes(this.options.HTMLAttributes, {
-            ...HTMLAttributes,
-            open: HTMLAttributes[`data-opened`] || undefined,
-        });
-
         return [
             `div`,
             {class: `t-details-wrapper t-details-wrapper_rendered`},
-            [`details`, attrs, 0],
+            [`details`, mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
             [`button`, {class: `t-details-arrow`}],
         ];
     },
