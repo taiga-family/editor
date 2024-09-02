@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[8113],{8113:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 0;\n}\n\ntui-toolbar.toolbar {\n    position: sticky;\n    top: 0;\n    z-index: 1;\n    background: var(--tui-base-01);\n}\n\ntui-editor.editor {\n    min-block-size: auto;\n    border-radius: 0;\n}\n"}}]);
