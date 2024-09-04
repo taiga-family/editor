@@ -9,6 +9,12 @@
     min-height: 10rem;
     box-sizing: border-box;
     overflow: clip;
+
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
 }
 
 .t-wrapper {
