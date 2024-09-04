@@ -30,7 +30,6 @@ import {
     TuiScrollbar,
     TuiSurface,
 } from '@taiga-ui/core';
-import {TuiCardLarge} from '@taiga-ui/layout';
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
@@ -63,7 +62,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         NgTemplateOutlet,
         TuiActiveZone,
         TuiAppearance,
-        TuiCardLarge,
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
