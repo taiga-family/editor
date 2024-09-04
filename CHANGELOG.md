@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.63.0](https://github.com/taiga-family/tui-editor/compare/v1.62.0...v1.63.0) (2024-09-04)
+
+### Bug Fixes
+
+- add clearfix ([#1321](https://github.com/taiga-family/tui-editor/issues/1321))
+  ([6be3fef](https://github.com/taiga-family/tui-editor/commit/6be3feffd76b33bf48676a4d6409e5b54adce9d9))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.62.0](https://github.com/taiga-family/tui-editor/compare/v1.61.0...v1.62.0) (2024-09-02)
 
 ### Bug Fixes
