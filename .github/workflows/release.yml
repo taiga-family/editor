@@ -4,7 +4,6 @@ on:
     mode:
       type: choice
       description: release mode
-      required: true
       options:
         - patch
         - minor
