@@ -4,6 +4,12 @@
     color: var(--tui-text-primary);
     font: var(--tui-font-text-m);
 
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+
     &[tuiTiptapEditor] {
         overflow: hidden;
     }

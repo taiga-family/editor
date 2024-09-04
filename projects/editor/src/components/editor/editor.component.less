@@ -11,6 +11,12 @@
     min-block-size: 10rem;
     box-sizing: border-box;
     overflow: visible;
+
+    &::after {
+        content: '';
+        clear: both;
+        display: table;
+    }
 }
 
 .t-wrapper {
