@@ -1,14 +1,21 @@
 name: ⚠️ Release
 on:
   workflow_dispatch:
-    mode:
-      type: choice
-      description: release mode
-      options:
-        - patch
-        - minor
-        - major
-        - prerelease
+    inputs:
+      forcePush:
+        type: boolean
+        required: false
+        description: --force-publish package
+      mode:
+        type: choice
+        description: force package to be versioned (depend --force-publish)
+        required: false
+        default: minor
+        options:
+          - patch
+          - minor
+          - major
+          - prerelease
 
 jobs:
   run-release:
@@ -36,10 +43,14 @@ jobs:
       - run: npx ts-node .scripts/validate-version.ts
 
       - run: |
-          if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
-              npx release-it "${{ github.event.inputs.mode }}" --increment --ci --github.release
+          if [[ "${{ github.event.inputs.forcePush }}" == "true" ]]; then
+            if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
+                npx release-it "${{ github.event.inputs.mode }}" --increment --ci --github.release
+            else
+                npx release-it --preRelease=alpha --ci
+            fi
           else
-              npx release-it --preRelease=alpha --ci
+              npx release-it --increment --ci --github.release
           fi
 
       - id: info
