@@ -1,4 +1,4 @@
-import Token from 'markdown-it/lib/token';
+import {Token} from 'markdown-it';
 
 let disableCheckboxes = true;
 let useLabelWrapper = false;

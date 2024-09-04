@@ -1,7 +1,6 @@
 import {Extension} from '@tiptap/core';
-import {DOMParser} from '@tiptap/pm/model';
+import {DOMParser, Slice} from '@tiptap/pm/model';
 import {Plugin, PluginKey} from '@tiptap/pm/state';
-import {Slice} from 'prosemirror-model';
 
 import {tuiElementFromString} from '../util/dom';
 

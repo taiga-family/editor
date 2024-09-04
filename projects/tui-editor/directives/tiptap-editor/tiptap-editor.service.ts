@@ -11,8 +11,8 @@ import {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import {TIPTAP_EDITOR} from '@tinkoff/tui-editor/tokens';
 import {tuiGetMarkRange, tuiParseStyle} from '@tinkoff/tui-editor/utils';
 import type {Editor, Range} from '@tiptap/core';
-import {MarkType} from 'prosemirror-model';
-import {EditorState} from 'prosemirror-state';
+import {MarkType} from '@tiptap/pm/model';
+import {EditorState} from '@tiptap/pm/state';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs/operators';
 

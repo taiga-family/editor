@@ -1,6 +1,6 @@
 import {tuiParseNodeAttributes} from '@tinkoff/tui-editor/utils';
 import {mergeAttributes, Node} from '@tiptap/core';
-import {MarkSpec} from 'prosemirror-model';
+import {NodeSpec} from '@tiptap/pm/model';
 
 export const TuiSource = Node.create({
     name: `source`,
@@ -17,7 +17,7 @@ export const TuiSource = Node.create({
         ]);
     },
 
-    parseHTML(): MarkSpec['parseDOM'] {
+    parseHTML(): NodeSpec['parseDOM'] {
         return [{tag: `source`}];
     },
 

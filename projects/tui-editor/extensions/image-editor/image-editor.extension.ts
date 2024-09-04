@@ -10,9 +10,9 @@ import {
     RawCommands,
 } from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
+import {NodeSpec} from '@tiptap/pm/model';
 import {Plugin} from '@tiptap/pm/state';
-import {NodeSpec} from 'prosemirror-model';
-import {EditorView} from 'prosemirror-view';
+import {EditorView} from '@tiptap/pm/view';
 import {take, takeWhile} from 'rxjs/operators';
 
 import {TuiImageEditorComponent} from './image-editor.component';

@@ -8,7 +8,7 @@ import {
     NodeViewRendererProps,
     RawCommands,
 } from '@tiptap/core';
-import {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
 
 import {TuiIframeEditorComponent} from './iframe-editor.component';
 import {TuiEditableIframe} from './iframe-editor.options';

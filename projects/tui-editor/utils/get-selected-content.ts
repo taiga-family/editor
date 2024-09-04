@@ -1,5 +1,5 @@
 import {getHTMLFromFragment} from '@tiptap/core';
-import {EditorState} from 'prosemirror-state';
+import {EditorState} from '@tiptap/pm/state';
 
 export function tuiGetSelectedContent(state: EditorState, current?: string): string {
     const currentNodeContent = current ?? state.selection.$head.parent.textContent;

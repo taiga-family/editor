@@ -1,4 +1,4 @@
-import {Attrs, Node as NodeElement} from 'prosemirror-model';
+import {Attrs, Node as NodeElement} from '@tiptap/pm/model';
 
 export function tuiGetNestedNodes(node: NodeElement): Array<Array<Attrs | string>> {
     const nodes: Array<Array<Attrs | string>> = [];

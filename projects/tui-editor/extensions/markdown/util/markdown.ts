@@ -1,9 +1,8 @@
 import markdownIt from 'markdown-it';
-import StateInline from 'markdown-it/lib/rules_inline/state_inline';
 
 const md = markdownIt();
 
-function scanDelims(text: string, pos: number): StateInline.Scanned {
+function scanDelims(text: string, pos: number): markdownIt.StateInline.Scanned {
     // @ts-ignore
     md.inline.State.prototype.scanDelims.call({src: text, posMax: text.length});
     // @ts-ignore

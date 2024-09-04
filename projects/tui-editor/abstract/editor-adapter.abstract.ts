@@ -4,7 +4,7 @@ import type {TuiYoutubeOptions} from '@tinkoff/tui-editor/extensions/youtube';
 import type {TuiEditorAttachedFile} from '@tinkoff/tui-editor/interfaces';
 import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
-import type {EditorState} from 'prosemirror-state';
+import type {EditorState} from '@tiptap/pm/state';
 import {Observable, Subject} from 'rxjs';
 
 @Directive()

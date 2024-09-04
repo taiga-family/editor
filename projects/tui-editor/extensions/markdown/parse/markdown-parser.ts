@@ -1,6 +1,5 @@
 import {Editor} from '@tiptap/core';
-import MarkdownIt from 'markdown-it';
-import {RenderRule} from 'markdown-it/lib/renderer';
+import MarkdownIt, {Renderer} from 'markdown-it';
 
 import {tuiElementFromString, tuiExtractElement, tuiUnwrapElement} from '../util/dom';
 import {tuiGetMarkdownSpec} from '../util/extensions';
@@ -111,7 +110,7 @@ export class TuiEditorMarkdownParser {
 
     withPatchedRenderer(md: MarkdownIt): MarkdownIt {
         const withoutNewLine =
-            (renderer: RenderRule | undefined) =>
+            (renderer: Renderer.RenderRule | undefined) =>
             (...args: any[]): string => {
                 // @ts-ignore
                 const rendered = renderer?.(...args);

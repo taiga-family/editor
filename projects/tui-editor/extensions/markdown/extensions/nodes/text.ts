@@ -1,5 +1,5 @@
 import {Node} from '@tiptap/core';
-import {Node as ProseNode} from 'prosemirror-model';
+import {Node as ProseNode} from '@tiptap/pm/model';
 
 import {tuiEscapeHTML} from '../../util/dom';
 
