@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.64.0](https://github.com/taiga-family/tui-editor/compare/v1.63.0...v1.64.0) (2024-09-04)
+
+### Features
+
+- drop some deps ([882918d](https://github.com/taiga-family/tui-editor/commit/882918dd2d33edc0f0684038721ebb87187012fa))
+- update prosemirror deps
+  ([6f3f625](https://github.com/taiga-family/tui-editor/commit/6f3f62590258c157454bbfce417bfda0be8d2287))
+- use tiptap/pm/model
+  ([3802a3d](https://github.com/taiga-family/tui-editor/commit/3802a3d587c607c4d82e21bb83ea25825cd9d1a9))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.63.0](https://github.com/taiga-family/tui-editor/compare/v1.62.0...v1.63.0) (2024-09-04)
 
 ### Bug Fixes
