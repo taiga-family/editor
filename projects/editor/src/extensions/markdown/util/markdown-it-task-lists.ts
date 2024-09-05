@@ -71,7 +71,7 @@ function isTodoItem(tokens: MarkdownIt.Token[], index: number): boolean {
 function todoify(token: MarkdownIt.Token, TokenConstructor: any): void {
     token.children?.unshift(makeCheckbox(token, TokenConstructor));
 
-    if (token.children && token.children[1]) {
+    if (token.children?.[1]) {
         token.children[1].content = token.children[1].content.slice(3);
     }
 
@@ -86,7 +86,7 @@ function todoify(token: MarkdownIt.Token, TokenConstructor: any): void {
             // Use large random number as id property of the checkbox.
             const id = `task-item-${Math.ceil(Math.random() * (10000 * 1000) - 1000)}`;
 
-            if (token.children && token.children[0]) {
+            if (token.children?.[0]) {
                 token.children[0].content = `${token.children[0].content.slice(
                     0,
                     -1,
