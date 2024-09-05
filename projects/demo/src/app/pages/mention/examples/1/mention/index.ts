@@ -50,7 +50,7 @@ export class Mentions {
     public mentionSuggestions?: string;
 
     @Output()
-    public setMention = new EventEmitter<User>();
+    public readonly setMention = new EventEmitter<User>();
 
     @tuiPure
     protected getFilteredItems(items: readonly User[], search?: string): readonly User[] {

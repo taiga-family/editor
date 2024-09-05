@@ -119,17 +119,16 @@ export const tuiCreateGroupExtension = (
                 setGroupHilite:
                     (color: string) =>
                     ({editor}) => {
+                        let position = editor.state.selection.$anchor;
+
                         /**
                          * @note:
                          * we can't mutate DOM directly in tiptap
                          * find group element for update style attribute
                          */
-                        for (
-                            let position = editor.state.selection.$anchor,
-                                depth = position.depth;
-                            depth > 0;
-                            depth--
-                        ) {
+                        for (let depth = position.depth; depth > 0; depth--) {
+                            position = editor.state.selection.$anchor;
+
                             const node = position.node(depth);
 
                             if (node.type.name === this.name) {
