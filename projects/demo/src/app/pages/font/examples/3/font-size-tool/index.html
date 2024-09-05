@@ -15,6 +15,7 @@
         appearance="flat"
         size="s"
         tuiButton
+        type="button"
     >
         {{ size$ | async }}
     </button>
@@ -24,6 +25,7 @@
             <button
                 *ngFor="let size of sizes"
                 tuiOption
+                type="button"
                 (click)="setFontSize(size)"
             >
                 {{ size }}

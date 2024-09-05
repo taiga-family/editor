@@ -19,6 +19,7 @@
             <button
                 *ngFor="let item of fontsOptions$ | async"
                 tuiOption
+                type="button"
                 [attr.automation-id]="'tui_font__' + (item.name || '' | lowercase)"
                 [ngClass]="item?.ngClass || {}"
                 [ngStyle]="item?.ngStyle || {}"
