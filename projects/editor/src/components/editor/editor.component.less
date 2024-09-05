@@ -6,11 +6,16 @@
     isolation: isolate;
     font: var(--tui-font-text-m);
     border-radius: var(--tui-radius-m);
-    border: 0.0625rem solid var(--tui-border-normal);
+    outline: 0.0625rem solid var(--tui-border-normal);
     max-block-size: inherit;
     min-block-size: 10rem;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: auto;
+
+    &._has-focus {
+        outline-color: var(--tui-border-focus);
+        outline-width: 0.125rem;
+    }
 
     &::after {
         content: '';

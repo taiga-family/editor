@@ -10,7 +10,6 @@ import type {TuiEditorLinkOptions} from '../constants/default-link-options-handl
 import {TUI_DEFAULT_LINK_OPTIONS} from '../constants/default-link-options-handler';
 
 export interface TuiEditorOptions {
-    readonly appearance: string;
     readonly blankColor: string;
     readonly colors: ReadonlyMap<string, string>;
     readonly fontOptions: typeof tuiDefaultFontOptionsHandler;
@@ -80,7 +79,6 @@ export interface TuiEditorOptions {
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: 'no',
-    appearance: 'flat',
     spellcheck: false,
     enableDefaultStyles: true,
     colors: TUI_EDITOR_DEFAULT_EDITOR_COLORS,

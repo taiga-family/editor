@@ -4,29 +4,31 @@
 >
     <ng-template pageTab="API">
         <tui-doc-demo [sticky]="false">
-            <tui-editor
-                [exampleText]="exampleText"
-                [floatingToolbar]="floating"
-                [formControl]="control"
-                [readOnly]="readOnly"
-                [style.max-height]="maxHeight"
-                [style.min-height]="minHeight"
-                [tools]="tools ?? []"
-                [tuiAutoFocus]="!isE2E"
-            >
-                Start typing
-            </tui-editor>
+            <div class="container">
+                <tui-editor
+                    [exampleText]="exampleText"
+                    [floatingToolbar]="floating"
+                    [formControl]="control"
+                    [readOnly]="readOnly"
+                    [style.max-height]="maxHeight"
+                    [style.min-height]="minHeight"
+                    [tools]="tools ?? []"
+                    [tuiAutoFocus]="!isE2E"
+                >
+                    Start typing
+                </tui-editor>
 
-            <ng-container *ngIf="preview">
-                <h4>HTML:</h4>
-                <tui-editor-socket
-                    class="tui-example"
-                    [content]="control.value || ''"
-                />
+                <ng-container *ngIf="preview">
+                    <h4>HTML:</h4>
+                    <tui-editor-socket
+                        class="tui-example"
+                        [content]="control.value || ''"
+                    />
 
-                <h4>Text:</h4>
-                <p>{{ control.value }}</p>
-            </ng-container>
+                    <h4>Text:</h4>
+                    <p>{{ control.value }}</p>
+                </ng-container>
+            </div>
         </tui-doc-demo>
         <tui-doc-documentation>
             <ng-template
