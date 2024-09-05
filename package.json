@@ -136,7 +136,7 @@
         "jest": "29.7.0",
         "jest-environment-jsdom": "29.7.0",
         "jest-preset-angular": "14.2.2",
-        "lint-staged": "15.2.9",
+        "lint-staged": "15.2.10",
         "markdown-it": "14.1.0",
         "marked": "14.1.1",
         "ng-morph": "4.6.5",
