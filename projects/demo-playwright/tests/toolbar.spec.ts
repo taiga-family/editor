@@ -170,18 +170,21 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
         await page.locator('[automation-id="toolbar__undo-button"]').focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-20.png');
 
         await page.locator('[contenteditable]').nth(0).focus();
         await page.locator('[automation-id="toolbar__redo-button"]').focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-21.png');
     });
