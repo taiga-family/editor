@@ -1,5 +1,4 @@
-// @ts-ignore
-import type Token from 'markdown-it/lib/token';
+import type MarkdownIt from 'markdown-it';
 
 let disableCheckboxes = true;
 let useLabelWrapper = false;
@@ -33,7 +32,7 @@ export function tuiMarkdownItTaskList(md: any, options: any): void {
     });
 }
 
-function attrSet(token: Token, name: string, value: string): void {
+function attrSet(token: MarkdownIt.Token, name: string, value: string): void {
     const index = token.attrIndex(name);
     const attr: [string, string] = [name, value];
 
@@ -44,11 +43,11 @@ function attrSet(token: Token, name: string, value: string): void {
     }
 }
 
-function parentToken(tokens: Token[], index: number): number {
-    const targetLevel = tokens[index].level - 1;
+function parentToken(tokens: MarkdownIt.Token[], index: number): number {
+    const targetLevel = (tokens[index]?.level ?? 0) - 1;
 
     for (let i = index - 1; i >= 0; i--) {
-        if (tokens[i].level === targetLevel) {
+        if (tokens[i]?.level === targetLevel) {
             return i;
         }
     }
@@ -56,19 +55,23 @@ function parentToken(tokens: Token[], index: number): number {
     return -1;
 }
 
-function isTodoItem(tokens: Token[], index: number): boolean {
+function isTodoItem(tokens: MarkdownIt.Token[], index: number): boolean {
     return (
-        isInline(tokens[index]) &&
-        isParagraph(tokens[index - 1]) &&
-        isListItem(tokens[index - 2]) &&
-        startsWithTodoMarkdown(tokens[index])
+        (tokens[index] &&
+            isInline(tokens[index]!) &&
+            tokens[index - 1] &&
+            isParagraph(tokens[index - 1]!) &&
+            tokens[index - 2] &&
+            isListItem(tokens[index - 2]!) &&
+            startsWithTodoMarkdown(tokens[index]!)) ??
+        false
     );
 }
 
-function todoify(token: Token, TokenConstructor: any): void {
+function todoify(token: MarkdownIt.Token, TokenConstructor: any): void {
     token.children?.unshift(makeCheckbox(token, TokenConstructor));
 
-    if (token.children) {
+    if (token.children && token.children[1]) {
         token.children[1].content = token.children[1].content.slice(3);
     }
 
@@ -83,7 +86,7 @@ function todoify(token: Token, TokenConstructor: any): void {
             // Use large random number as id property of the checkbox.
             const id = `task-item-${Math.ceil(Math.random() * (10000 * 1000) - 1000)}`;
 
-            if (token.children) {
+            if (token.children && token.children[0]) {
                 token.children[0].content = `${token.children[0].content.slice(
                     0,
                     -1,
@@ -98,7 +101,7 @@ function todoify(token: Token, TokenConstructor: any): void {
     }
 }
 
-function makeCheckbox(token: Token, TokenConstructor: any): any {
+function makeCheckbox(token: MarkdownIt.Token, TokenConstructor: any): any {
     const checkbox = new TokenConstructor('html_inline', '', 0);
     const disabledAttr = disableCheckboxes ? ' disabled="" ' : '';
 
@@ -113,7 +116,7 @@ function makeCheckbox(token: Token, TokenConstructor: any): any {
 
 // these next two functions are kind of hacky; probably should really be a
 // true block-level token with .tag=='label'
-function beginLabel(TokenConstructor: any): Token {
+function beginLabel(TokenConstructor: any): MarkdownIt.Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = '<label>';
@@ -121,7 +124,7 @@ function beginLabel(TokenConstructor: any): Token {
     return token;
 }
 
-function endLabel(TokenConstructor: any): Token {
+function endLabel(TokenConstructor: any): MarkdownIt.Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = '</label>';
@@ -129,7 +132,11 @@ function endLabel(TokenConstructor: any): Token {
     return token;
 }
 
-function afterLabel(content: string, id: string, TokenConstructor: any): Token {
+function afterLabel(
+    content: string,
+    id: string,
+    TokenConstructor: any,
+): MarkdownIt.Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = `<label class="task-list-item-label" for="${id}">${content}</label>`;
@@ -138,19 +145,19 @@ function afterLabel(content: string, id: string, TokenConstructor: any): Token {
     return token;
 }
 
-function isInline(token: Token): boolean {
+function isInline(token: MarkdownIt.Token): boolean {
     return token.type === 'inline';
 }
 
-function isParagraph(token: Token): boolean {
+function isParagraph(token: MarkdownIt.Token): boolean {
     return token.type === 'paragraph_open';
 }
 
-function isListItem(token: Token): boolean {
+function isListItem(token: MarkdownIt.Token): boolean {
     return token.type === 'list_item_open';
 }
 
-function startsWithTodoMarkdown(token: Token): boolean {
+function startsWithTodoMarkdown(token: MarkdownIt.Token): boolean {
     // leading whitespace in a list item is already trimmed off by markdown-it
     return (
         token.content.startsWith('[ ] ') ||

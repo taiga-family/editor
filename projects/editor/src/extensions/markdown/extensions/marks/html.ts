@@ -1,7 +1,7 @@
 import type {Editor} from '@tiptap/core';
 import {getHTMLFromFragment, Mark} from '@tiptap/core';
+import type {Mark as ProseMark} from '@tiptap/pm/model';
 import {Fragment} from '@tiptap/pm/model';
-import type {Mark as ProseMark} from 'prosemirror-model';
 
 function getMarkTags(mark: ProseMark): [string, string] | null {
     const schema = mark.type.schema;

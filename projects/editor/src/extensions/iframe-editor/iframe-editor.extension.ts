@@ -6,7 +6,7 @@ import type {
     RawCommands,
 } from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
-import type {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
+import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
 
 import {TuiNodeView} from '../tiptap-node-view';
 import {TuiIframeEditor} from './iframe-editor.component';

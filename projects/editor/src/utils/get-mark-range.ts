@@ -1,5 +1,5 @@
 import type {Range} from '@tiptap/core';
-import type {Mark as ProseMirrorMark, MarkType, ResolvedPos} from 'prosemirror-model';
+import type {Mark as ProseMirrorMark, MarkType, ResolvedPos} from '@tiptap/pm/model';
 
 function hasAttributes(
     markAttributes: Record<string, unknown>,

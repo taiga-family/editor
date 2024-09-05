@@ -1,5 +1,5 @@
 import type {Editor, Mark as Mark2, Node as Node2} from '@tiptap/core';
-import type {Mark, Node} from 'prosemirror-model';
+import type {Mark, Node} from '@tiptap/pm/model';
 
 import HTMLMark from '../extensions/marks/html';
 import HardBreak from '../extensions/nodes/hard-break';

@@ -1,7 +1,7 @@
 import type {Editor} from '@tiptap/core';
 import {getHTMLFromFragment, Node} from '@tiptap/core';
+import type {Node as ProseNode} from '@tiptap/pm/model';
 import {Fragment} from '@tiptap/pm/model';
-import type {Node as ProseNode} from 'prosemirror-model';
 
 import {tuiElementFromString} from '../../util/dom';
 

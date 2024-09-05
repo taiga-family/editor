@@ -9,8 +9,8 @@ import type {
     NodeViewRendererProps,
 } from '@tiptap/core';
 import {NodeView} from '@tiptap/core';
-import type {Node as ProseMirrorNode} from 'prosemirror-model';
-import type {Decoration} from 'prosemirror-view';
+import type {Node as ProseMirrorNode} from '@tiptap/pm/model';
+import type {Decoration} from '@tiptap/pm/view';
 
 /**
  * Copied from

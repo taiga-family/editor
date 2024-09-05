@@ -1,5 +1,5 @@
 import {Mark} from '@tiptap/core';
-import {defaultMarkdownSerializer} from 'prosemirror-markdown';
+import {defaultMarkdownSerializer} from '@tiptap/pm/markdown';
 
 export default Mark.create({
     name: 'code',

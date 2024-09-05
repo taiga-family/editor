@@ -1,7 +1,7 @@
 import {Directive} from '@angular/core';
 import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
-import type {EditorState} from 'prosemirror-state';
+import type {EditorState} from '@tiptap/pm/state';
 import type {Observable} from 'rxjs';
 import {Subject} from 'rxjs';
 

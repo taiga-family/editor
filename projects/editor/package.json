@@ -56,13 +56,9 @@
         "@tiptap/extension-youtube": ">=2.6.6",
         "@tiptap/pm": ">=2.6.6",
         "@tiptap/starter-kit": ">=2.6.6",
-        "@types/dompurify": ">=3.0.5",
-        "@types/markdown-it": ">=14.1.2",
+        "@types/markdown-it": "14.1.2",
         "@types/markdown-it-container": ">=2.0.10",
-        "dompurify": ">=3.1.6",
-        "markdown-it": ">=14.1.0",
-        "prosemirror-markdown": ">=1.13.0",
-        "prosemirror-model": ">=1.22.3"
+        "markdown-it": ">=14.1.0"
     },
     "peerDependenciesMeta": {
         "@maskito/angular": {
@@ -72,9 +68,6 @@
             "optional": true
         },
         "@maskito/kit": {
-            "optional": true
-        },
-        "@types/dompurify": {
             "optional": true
         },
         "@types/markdown-it": {

@@ -1,6 +1,6 @@
 import {isNodeSelection} from '@tiptap/core';
 import {HorizontalRule} from '@tiptap/extension-horizontal-rule';
-import {NodeSelection, TextSelection} from 'prosemirror-state';
+import {NodeSelection, TextSelection} from '@tiptap/pm/state';
 
 export const TuiHorizontalRule = HorizontalRule.extend({
     addCommands() {

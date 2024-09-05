@@ -1,6 +1,6 @@
 import {Node} from '@tiptap/core';
+import type {Node as ProseNode} from '@tiptap/pm/model';
 import type MarkdownIt from 'markdown-it';
-import type {Node as ProseNode} from 'prosemirror-model';
 
 export default Node.create({
     name: 'codeBlock',

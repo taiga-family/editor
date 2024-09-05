@@ -3,8 +3,8 @@ import './tiptap-editor.types';
 import {inject, Injectable} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
 import type {Editor, Range} from '@tiptap/core';
-import type {MarkType} from 'prosemirror-model';
-import {EditorState} from 'prosemirror-state';
+import type {MarkType} from '@tiptap/pm/model';
+import {EditorState} from '@tiptap/pm/state';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map, startWith} from 'rxjs';
 

@@ -9,9 +9,9 @@ import type {
 } from '@tiptap/core';
 import {mergeAttributes} from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
+import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
 import {Plugin} from '@tiptap/pm/state';
-import type {DOMOutputSpec, NodeSpec} from 'prosemirror-model';
-import type {EditorView} from 'prosemirror-view';
+import type {EditorView} from '@tiptap/pm/view';
 import {take, takeWhile} from 'rxjs';
 
 import {TUI_IMAGE_LOADER} from '../../tokens/image-loader';
