@@ -23,7 +23,12 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import type {TuiDropdownDirective} from '@taiga-ui/core';
-import {TUI_ANIMATIONS_DEFAULT_DURATION, TuiDropdown, TuiScrollbar} from '@taiga-ui/core';
+import {
+    TUI_ANIMATIONS_DEFAULT_DURATION,
+    TuiDropdown,
+    TuiScrollbar,
+    TuiWithAppearance,
+} from '@taiga-ui/core';
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
@@ -72,6 +77,7 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         TUI_EDITOR_PROVIDERS,
     ],
     hostDirectives: [
+        TuiWithAppearance,
         {
             directive: TuiActiveZone,
             outputs: ['tuiActiveZoneChange'],
