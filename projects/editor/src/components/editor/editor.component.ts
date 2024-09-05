@@ -54,7 +54,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         AsyncPipe,
         NgIf,
         NgTemplateOutlet,
-        TuiActiveZone,
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
@@ -72,9 +71,16 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
     ],
+    hostDirectives: [
+        {
+            directive: TuiActiveZone,
+            outputs: ['tuiActiveZoneChange'],
+        },
+    ],
     host: {
         ngSkipHydration: 'true',
         '[class._has-focus]': 'computedFocused',
+        '(tuiActiveZoneChange)': 'onActiveZone($event)',
         '(click)': 'focus($event)',
     },
 })
