@@ -1,8 +1,6 @@
 <div
     *ngIf="editorLoaded$ | async as editorLoaded"
     class="t-wrapper"
-    [tuiAppearance]="options.appearance"
-    [tuiAppearanceFocus]="computedFocused"
     (tuiActiveZoneChange)="onActiveZone($event)"
 >
     <div class="t-toolbar-wrapper">

@@ -23,13 +23,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk';
 import type {TuiDropdownDirective} from '@taiga-ui/core';
-import {
-    TUI_ANIMATIONS_DEFAULT_DURATION,
-    TuiAppearance,
-    TuiDropdown,
-    TuiScrollbar,
-    TuiSurface,
-} from '@taiga-ui/core';
+import {TUI_ANIMATIONS_DEFAULT_DURATION, TuiDropdown, TuiScrollbar} from '@taiga-ui/core';
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
@@ -61,7 +55,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         NgIf,
         NgTemplateOutlet,
         TuiActiveZone,
-        TuiAppearance,
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
@@ -69,7 +62,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         TuiEditorPortalHost,
         TuiEditorSocket,
         TuiScrollbar,
-        TuiSurface,
         TuiTiptapEditor,
         TuiToolbar,
     ],
@@ -82,6 +74,7 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     ],
     host: {
         ngSkipHydration: 'true',
+        '[class._has-focus]': 'computedFocused',
         '(click)': 'focus($event)',
     },
 })
