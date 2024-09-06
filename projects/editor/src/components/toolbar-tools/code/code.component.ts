@@ -2,8 +2,7 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs';
+import {combineLatest, map, type Observable, of} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../directives/tiptap-editor/tiptap-editor.service';
@@ -49,15 +48,9 @@ export class TuiCode implements OnInit {
     }
 
     private initStream(): void {
-        this.insideCode$ =
-            this.editor?.stateChange$.pipe(
-                map(
-                    () =>
-                        (this.editor?.isActive('code') ||
-                            this.editor?.isActive('codeBlock')) ??
-                        false,
-                ),
-                distinctUntilChanged(),
-            ) ?? null;
+        this.insideCode$ = combineLatest({
+            code: this.editor?.isActive$('code') ?? of(false),
+            codeBlock: this.editor?.isActive$('codeBlock') ?? of(false),
+        }).pipe(map(({code, codeBlock}) => code || codeBlock));
     }
 }
