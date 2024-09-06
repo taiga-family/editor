@@ -2,8 +2,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../../../abstract/editor-adapter.abstract';
 import {TuiTiptapEditorService} from '../../../../directives/tiptap-editor/tiptap-editor.service';
@@ -44,9 +43,6 @@ export class TuiDetailsRemove implements OnInit {
 
     private initStream(): void {
         this.disabled$ =
-            this.editor?.stateChange$.pipe(
-                map(() => !this.editor?.isActive('details') ?? false),
-                distinctUntilChanged(),
-            ) ?? null;
+            this.editor?.isActive$('details').pipe(map((isActive) => !isActive)) ?? null;
     }
 }
