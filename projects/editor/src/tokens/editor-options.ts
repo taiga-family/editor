@@ -128,7 +128,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         tableCellSplit: '@tui.table-rows-split',
         addRowTable: '@tui.between-horizontal-start',
         code: '@tui.code',
-        fontStylePreview: '@tui.remove-formatting',
+        fontStylePreview: '@tui.type-outline',
         fontStyleBold: '@tui.bold',
         fontStyleItalic: '@tui.italic',
         fontStyleUnderline: '@tui.underline',
