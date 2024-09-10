@@ -1,29 +1,33 @@
 {
-    "name": "editor",
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "projectType": "library",
-    "sourceRoot": "projects/editor",
-    "targets": {
-        "build": {
-            "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
-            "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "projects/{projectName}/ng-package.json"
-            }
-        },
-        "test": {
-            "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
-            "options": {
-                "jestConfig": "projects/{projectName}/jest.config.ts"
-            }
-        },
-        "publish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "npm publish ./dist/{projectName} --access=public --verbose --ignore-scripts || echo 'already published'"
-            }
-        }
+  "name": "editor",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "projects/editor",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:ng-packagr",
+      "outputs": [
+        "{workspaceRoot}/dist/{projectName}"
+      ],
+      "options": {
+        "tsConfig": "tsconfig.build.json",
+        "project": "projects/{projectName}/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectName}"
+      ],
+      "options": {
+        "jestConfig": "projects/{projectName}/jest.config.ts"
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish ./dist/{projectName} --access=public --verbose --ignore-scripts || echo 'already published'"
+      }
     }
+  }
 }
