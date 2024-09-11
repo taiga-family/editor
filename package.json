@@ -105,7 +105,7 @@
         "@release-it-plugins/workspaces": "4.2.0",
         "@release-it/conventional-changelog": "8.0.1",
         "@swc-node/register": "1.10.9",
-        "@swc/core": "1.7.24",
+        "@swc/core": "1.7.26",
         "@swc/helpers": "0.5.13",
         "@taiga-ui/addon-doc": "4.6.0",
         "@taiga-ui/browserslist-config": "0.169.1",
