@@ -5,11 +5,11 @@ import {
     EDITOR_BLANK_COLOR,
     TUI_EDITOR_DEFAULT_EDITOR_COLORS,
 } from '../constants/default-editor-colors';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '../constants/default-editor-tools';
 import {tuiDefaultFontOptionsHandler} from '../constants/default-font-options-handler';
 import type {TuiEditorLinkOptions} from '../constants/default-link-options-handler';
 import {TUI_DEFAULT_LINK_OPTIONS} from '../constants/default-link-options-handler';
 import type {TuiEditorToolType} from '../types/editor-tool';
-import {TUI_EDITOR_DEFAULT_TOOLS} from '../constants/default-editor-tools';
 
 export interface TuiEditorOptions {
     readonly blankColor: string;
