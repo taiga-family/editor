@@ -23,8 +23,8 @@
     "scripts": {
         "prepare": "husky",
         "start": "nx serve editor-demo",
+        "lint": "eslint .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
-        "format": "npm run prettier -- --write",
         "stylelint": "stylelint './projects/**/*.{less,css}' --config package.json",
         "prebump": "npx nx build editor",
         "bump": "npx nx publish editor"
