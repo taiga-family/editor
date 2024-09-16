@@ -7,8 +7,8 @@ on:
         description: Bump version as requested
         required: true
         options:
-          - patch
           - minor
+          - patch
           - major
           - prerelease
 
