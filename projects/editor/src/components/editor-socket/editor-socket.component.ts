@@ -8,9 +8,10 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {SafeHtml} from '@angular/platform-browser';
+import {EVENT_MANAGER_PLUGINS, type SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiIsElement} from '@taiga-ui/cdk';
+import {PreventEventPlugin} from '@taiga-ui/event-plugins';
 
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
@@ -36,6 +37,16 @@ export class TuiEditorSocket {
     private readonly document = inject(DOCUMENT);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly html = signal<SafeHtml | string | null>(null);
+
+    constructor() {
+        ngDevMode &&
+            console.assert(
+                !!inject<unknown[]>(EVENT_MANAGER_PLUGINS).find(
+                    (plugin) => plugin instanceof PreventEventPlugin,
+                ),
+                'NG_EVENT_PLUGINS is missing from global providers',
+            );
+    }
 
     @Input()
     public set content(content: string | null) {

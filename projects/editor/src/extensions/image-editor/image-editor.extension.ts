@@ -157,3 +157,5 @@ export function tuiCreateImageEditorExtension<T, K>({
         },
     });
 }
+
+export const setup = tuiCreateImageEditorExtension;
