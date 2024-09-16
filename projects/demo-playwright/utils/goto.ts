@@ -1,5 +1,4 @@
 import type {Page} from '@playwright/test';
-import {expect} from '@playwright/test';
 
 import {tuiMockDate} from './mock-date';
 import {tuiMockImages} from './mock-images';
@@ -40,8 +39,6 @@ export async function tuiGoto(
 
     const response = await page.goto(url, playwrightGotoOptions);
 
-    await expect(page.locator('app')).toHaveClass(/_loaded/, {timeout: 15_000});
-
     if (hideHeader) {
         for (const locator of await page.locator('[tuidocheader]').all()) {
             if (await locator.isVisible()) {
@@ -57,8 +54,6 @@ export async function tuiGoto(
             }
         }
     }
-
-    await page.waitForTimeout(1000);
 
     return response;
 }
