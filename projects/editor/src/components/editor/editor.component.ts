@@ -32,7 +32,6 @@ import {
 import {delay, fromEvent, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
-import {TUI_EDITOR_DEFAULT_TOOLS} from '../../constants/default-editor-tools';
 import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
 import {TuiTiptapEditor} from '../../directives/tiptap-editor/tiptap-editor.directive';
 import {TuiTiptapEditorService} from '../../directives/tiptap-editor/tiptap-editor.service';
@@ -40,7 +39,6 @@ import type {TuiEditorAttachedFile} from '../../interfaces/attached';
 import {TUI_EDITOR_OPTIONS} from '../../tokens/editor-options';
 import {TUI_EDITOR_VALUE_TRANSFORMER} from '../../tokens/editor-value-transformer';
 import {TIPTAP_EDITOR} from '../../tokens/tiptap-editor';
-import type {TuiEditorToolType} from '../../types/editor-tool';
 import type {TuiSelectionState} from '../../utils/get-selection-state';
 import {tuiGetSelectionState} from '../../utils/get-selection-state';
 import {tuiIsSafeLinkRange} from '../../utils/safe-link-range';
@@ -131,14 +129,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected firstInitialValue = '';
 
     @Input()
-    public exampleText = '';
+    public exampleText = this.options.exampleText;
 
     @Input()
-    public floatingToolbar = false;
+    public floatingToolbar = this.options.floatingToolbar;
 
     @Input()
-    public tools: Set<TuiEditorToolType> | readonly TuiEditorToolType[] =
-        TUI_EDITOR_DEFAULT_TOOLS;
+    public tools = this.options.tools;
 
     @Output()
     public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
