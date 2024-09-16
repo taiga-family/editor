@@ -5,9 +5,11 @@ import {
     EDITOR_BLANK_COLOR,
     TUI_EDITOR_DEFAULT_EDITOR_COLORS,
 } from '../constants/default-editor-colors';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '../constants/default-editor-tools';
 import {tuiDefaultFontOptionsHandler} from '../constants/default-font-options-handler';
 import type {TuiEditorLinkOptions} from '../constants/default-link-options-handler';
 import {TUI_DEFAULT_LINK_OPTIONS} from '../constants/default-link-options-handler';
+import type {TuiEditorToolType} from '../types/editor-tool';
 
 export interface TuiEditorOptions {
     readonly blankColor: string;
@@ -75,16 +77,22 @@ export interface TuiEditorOptions {
     readonly spellcheck: boolean;
     readonly enableDefaultStyles: boolean;
     readonly translate: 'no' | 'yes';
+    readonly tools: Set<TuiEditorToolType> | readonly TuiEditorToolType[];
+    readonly floatingToolbar: boolean;
+    readonly exampleText: string;
 }
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: 'no',
     spellcheck: false,
+    exampleText: '',
     enableDefaultStyles: true,
+    tools: TUI_EDITOR_DEFAULT_TOOLS,
     colors: TUI_EDITOR_DEFAULT_EDITOR_COLORS,
     blankColor: EDITOR_BLANK_COLOR,
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
     fontOptions: tuiDefaultFontOptionsHandler,
+    floatingToolbar: false,
     icons: {
         undo: '@tui.undo',
         redo: '@tui.redo',
