@@ -20,17 +20,17 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
-      - uses: taiga-family/ci/actions/setup/checkout@v1.73.1
+      - uses: taiga-family/ci/actions/setup/checkout@v1.74.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           ref: ${{ github.ref }}
           fetch-depth: 0
-      - uses: taiga-family/ci/actions/setup/variables@v1.73.1
-      - uses: taiga-family/ci/actions/setup/node@v1.73.1
-      - uses: taiga-family/ci/actions/setup/config/git@v1.73.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.74.0
+      - uses: taiga-family/ci/actions/setup/node@v1.74.0
+      - uses: taiga-family/ci/actions/setup/config/git@v1.74.0
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.73.1
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.74.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
@@ -48,7 +48,7 @@ jobs:
 
       - name: Announce to Telegram
         if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.73.1
+        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.74.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
           topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
