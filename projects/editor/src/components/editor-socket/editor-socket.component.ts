@@ -5,6 +5,7 @@ import {
     inject,
     Input,
     SecurityContext,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import type {SafeHtml} from '@angular/platform-browser';
@@ -24,7 +25,7 @@ import {TUI_EDITOR_SANITIZER} from '../../tokens/editor-sanitizer';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.tui-editor-socket]': 'options.enableDefaultStyles',
-        '[innerHTML]': 'innerHtml',
+        '[innerHTML]': 'html()',
         '(click)': 'click($event)',
     },
 })
@@ -34,19 +35,19 @@ export class TuiEditorSocket {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly document = inject(DOCUMENT);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly html = signal<SafeHtml | string | null>(null);
 
     @Input()
-    public content: string | null = null;
-
-    public get innerHtml(): SafeHtml | null {
-        if (!this.content) {
-            return null;
+    public set content(content: string | null) {
+        if (!content) {
+            return;
         }
 
-        return (
-            this.customSanitizer?.sanitize(SecurityContext.HTML, this.content) ??
-            this.sanitizer.bypassSecurityTrustHtml(this.content)
-        );
+        const safety =
+            this.customSanitizer?.sanitize(SecurityContext.HTML, content) ??
+            this.sanitizer.bypassSecurityTrustHtml(content ?? '');
+
+        this.html.set(safety);
     }
 
     /**
