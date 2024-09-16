@@ -2,15 +2,10 @@ name: ⚠️ Release
 on:
   workflow_dispatch:
     inputs:
-      forcePush:
-        type: boolean
-        required: false
-        description: --force-publish package
       mode:
         type: choice
-        description: force package to be versioned (depend --force-publish)
-        required: false
-        default: minor
+        description: Bump version as requested
+        required: true
         options:
           - patch
           - minor
@@ -39,18 +34,11 @@ jobs:
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
-      - run: git pull --rebase --recurse-submodules
-      - run: npx ts-node .scripts/validate-version.ts
-
       - run: |
-          if [[ "${{ github.event.inputs.forcePush }}" == "true" ]]; then
-            if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
-                npx release-it "${{ github.event.inputs.mode }}" --increment --ci --github.release
-            else
-                npx release-it --preRelease=alpha --ci
-            fi
+          if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
+              npx release-it "${{ github.event.inputs.mode }}" --increment --ci --github.release
           else
-              npx release-it --increment --ci --github.release
+              npx release-it --preRelease=alpha --ci
           fi
 
       - id: info

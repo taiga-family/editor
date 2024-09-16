@@ -22,17 +22,12 @@
     ],
     "scripts": {
         "prepare": "husky",
-        "*** Workflow ***": "",
         "start": "nx serve editor-demo",
-        "build": "nx run editor-demo:build:production",
-        "test": "nx test",
-        "submodule:update": "git submodule update --rebase --remote",
-        "submodule:reset": "git submodule | awk '{ git restore --staged $2 }' && git submodule update --init --recursive",
-        "*** Format ***": "",
-        "lint": "eslint .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "format": "npm run prettier -- --write",
-        "stylelint": "stylelint './projects/**/*.{less,css}' --config package.json"
+        "stylelint": "stylelint './projects/**/*.{less,css}' --config package.json",
+        "prebump": "npx nx build editor",
+        "bump": "npx nx publish editor"
     },
     "commitlint": {
         "extends": [
@@ -61,18 +56,9 @@
             "plugin:@taiga-ui/experience/taiga-naming"
         ]
     },
-    "eslintIgnore": [
-        "taiga-ui"
-    ],
     "stylelint": {
         "extends": [
             "@taiga-ui/stylelint-config"
-        ],
-        "ignoreFiles": [
-            "**/dist/**",
-            "**/coverage/**",
-            "**/tests-report/**",
-            "**/node_modules/**"
         ]
     },
     "devDependencies": {
@@ -102,12 +88,11 @@
         "@nx/node": "19.7.3",
         "@nx/workspace": "19.7.3",
         "@playwright/test": "1.47.1",
-        "@release-it-plugins/workspaces": "4.2.0",
-        "@release-it/conventional-changelog": "8.0.2",
         "@swc-node/register": "1.10.9",
         "@swc/core": "1.7.26",
         "@swc/helpers": "0.5.13",
         "@taiga-ui/addon-doc": "4.6.0",
+        "@taiga-ui/auto-changelog-config": "0.182.0",
         "@taiga-ui/browserslist-config": "0.182.0",
         "@taiga-ui/cdk": "4.6.0",
         "@taiga-ui/commitlint-config": "0.182.0",
@@ -119,6 +104,7 @@
         "@taiga-ui/legacy": "4.6.0",
         "@taiga-ui/polymorpheus": "4.7.1",
         "@taiga-ui/prettier-config": "0.182.0",
+        "@taiga-ui/release-it-config": "0.182.0",
         "@taiga-ui/stylelint-config": "0.182.0",
         "@taiga-ui/styles": "4.6.0",
         "@taiga-ui/testing": "4.6.0",
@@ -143,16 +129,10 @@
         "ng-packagr": "16.2.3",
         "ngx-highlightjs": "10.0.0",
         "nx": "19.7.3",
-        "release-it": "17.6.0",
         "showdown": "2.1.0",
         "ts-jest": "29.2.5",
         "tslib": "2.7.0",
         "typescript": "5.0.4",
         "webpack": "5.94.0"
-    },
-    "engines": {
-        "node": ">=20",
-        "npm": ">=10",
-        "yarn": "Please use npm instead of yarn to install dependencies"
     }
 }

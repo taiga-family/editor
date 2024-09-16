@@ -1,13 +1,5 @@
 {
     "extends": "@taiga-ui/tsconfig",
-    "references": [
-        {
-            "path": ".scripts/tsconfig.tools.json"
-        },
-        {
-            "path": ".scripts/tsconfig.spec.json"
-        }
-    ],
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
