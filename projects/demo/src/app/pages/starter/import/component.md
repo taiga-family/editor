@@ -12,7 +12,11 @@ import {TUI_EDITOR_DEFAULT_TOOLS} from '@taiga-ui/editor';
   providers: [
     {
       provide: TUI_EDITOR_EXTENSIONS,
-      useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
+      deps: [Injector],
+      useFactory: (injector: Injector) => [
+        ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+        import('@taiga-ui/editor').then(({setup}) => setup({injector})),
+      ],
     },
   ],
   // ...

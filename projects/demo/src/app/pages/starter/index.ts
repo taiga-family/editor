@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
@@ -32,7 +32,11 @@ import {
     providers: [
         {
             provide: TUI_EDITOR_EXTENSIONS,
-            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
+            deps: [Injector],
+            useFactory: (injector: Injector) => [
+                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
+                import('@taiga-ui/editor').then(({setup}) => setup({injector})),
+            ],
         },
     ],
 })
