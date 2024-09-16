@@ -1,4 +1,7 @@
-<header tuiDocHeader>
+<header
+    tuiDocHeader
+    [attr.tuiTheme]="darkMode() ? 'dark' : 'light'"
+>
     <div class="t-links">
         <p
             ngProjectAs="tuiDocNavigation"
@@ -23,6 +26,17 @@
                 class="t-stackblitz t-stackblitz_mobile"
             />
         </a>
+
+        <button
+            appearance="secondary"
+            size="s"
+            tuiIconButton
+            type="button"
+            class="tui-doc-dark-mode-switch"
+            [iconStart]="icon"
+            [style.border-radius.%]="100"
+            (click)="darkMode.set(!darkMode())"
+        ></button>
     </div>
 </header>
 

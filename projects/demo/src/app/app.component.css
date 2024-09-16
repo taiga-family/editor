@@ -1,3 +1,8 @@
+[tuiDocHeader] {
+    color: var(--tui-text-primary);
+    background: var(--tui-background-base);
+}
+
 .t-links {
     display: flex;
     gap: 0.625rem;
