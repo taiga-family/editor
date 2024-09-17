@@ -81,12 +81,15 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     styleUrls: ['./editor.component.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
         {
             provide: TUI_APPEARANCE_OPTIONS,
             useValue: {appearance: 'textfield'},
         },
+        tuiAutoFocusOptionsProvider({
+            delay: TUI_ANIMATIONS_DEFAULT_DURATION,
+            query: '[contenteditable].ProseMirror',
+        }),
     ],
     hostDirectives: [
         {
