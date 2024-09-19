@@ -1,20 +1,27 @@
 import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     DestroyRef,
     ElementRef,
     EventEmitter,
     inject,
     Input,
     NgZone,
+    type OnDestroy,
     Output,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
+import {
+    TUI_TRUE_HANDLER,
+    type TuiBooleanHandler,
+    tuiInjectElement,
+    type TuiValueTransformer,
+    tuiWatch,
+} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TuiActiveZone,
@@ -22,14 +29,18 @@ import {
     TuiControl,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import type {TuiDropdownDirective} from '@taiga-ui/core';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
+    TUI_APPEARANCE_OPTIONS,
+    TuiAppearance,
+    tuiAppearanceFocus,
+    tuiAppearanceMode,
+    tuiAppearanceState,
     TuiDropdown,
+    type TuiDropdownDirective,
     TuiScrollbar,
-    TuiWithAppearance,
 } from '@taiga-ui/core';
-import {delay, fromEvent, throttleTime} from 'rxjs';
+import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 
 import type {AbstractTuiEditor} from '../../abstract/editor-adapter.abstract';
 import {TUI_EDITOR_RESIZE_EVENT} from '../../constants/default-events';
@@ -73,9 +84,16 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     providers: [
         tuiAutoFocusOptionsProvider({delay: TUI_ANIMATIONS_DEFAULT_DURATION}),
         TUI_EDITOR_PROVIDERS,
+        {
+            provide: TUI_APPEARANCE_OPTIONS,
+            useValue: {appearance: 'textfield'},
+        },
     ],
     hostDirectives: [
-        TuiWithAppearance,
+        {
+            directive: TuiAppearance,
+            inputs: ['tuiAppearance: appearance'],
+        },
         {
             directive: TuiActiveZone,
             outputs: ['tuiActiveZoneChange'],
@@ -83,7 +101,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     ],
     host: {
         ngSkipHydration: 'true',
-        '[class._has-focus]': 'computedFocused',
         '(tuiActiveZoneChange)': 'onActiveZone($event)',
         '(click)': 'focus($event)',
     },
@@ -147,7 +164,25 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public readonly focusOut = new EventEmitter<void>();
 
     public hasMentionPlugin = false;
-    public focused = false;
+    public readonly hovered = toSignal(
+        merge(
+            fromEvent(tuiInjectElement(), 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
+            fromEvent(tuiInjectElement(), 'mouseleave').pipe(map(TUI_FALSE_HANDLER)),
+        ).pipe(tuiWatch(this.cdr)),
+    );
+
+    public readonly focused = tuiAppearanceFocus(false);
+    public readonly m = tuiAppearanceMode(this.mode);
+    public readonly s = tuiAppearanceState(
+        computed(() => {
+            if (this.disabled()) {
+                return 'disabled';
+            }
+
+            return this.hovered() ? 'hover' : null;
+        }),
+    );
+
     public readonly editorService = inject(TuiTiptapEditorService);
 
     @Input('readOnly')
@@ -163,10 +198,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         return (
             this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') || null
         );
-    }
-
-    public get computedFocused(): boolean {
-        return (this.editor?.isFocused || this.focused) ?? false;
     }
 
     public get selectionState(): TuiSelectionState {
@@ -194,7 +225,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             this.firstInitialValue = processed ?? '';
         }
 
-        if (!this.focused) {
+        if (!this.focused()) {
             this.doc?.getSelection?.()?.removeAllRanges();
         }
     }
@@ -204,7 +235,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {
-        if (!this.focused || this.readOnly()) {
+        if (!this.focused() || this.readOnly()) {
             return TUI_FALSE_HANDLER;
         }
 
@@ -240,7 +271,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected onActiveZone(focused: boolean): void {
-        this.focused = focused;
+        this.focused.set(focused);
 
         if (focused) {
             this.focusIn.emit();
