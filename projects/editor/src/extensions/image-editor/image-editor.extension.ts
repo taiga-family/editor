@@ -11,7 +11,7 @@ import {mergeAttributes} from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
 import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
 import {Plugin} from '@tiptap/pm/state';
-import type {EditorView} from '@tiptap/pm/view';
+import type {EditorView, NodeView} from '@tiptap/pm/view';
 import {take, takeWhile} from 'rxjs';
 
 import {TUI_IMAGE_LOADER} from '../../tokens/image-loader';
@@ -123,12 +123,11 @@ export function tuiCreateImageEditorExtension<T, K>({
         },
 
         addNodeView(): NodeViewRenderer {
-            return (props: NodeViewRendererProps) =>
-                Reflect.construct(TuiNodeView, [
-                    TuiImageEditor,
-                    props,
-                    {injector, ...props},
-                ]);
+            return (props: NodeViewRendererProps): NodeView =>
+                new TuiNodeView(TuiImageEditor, props, {
+                    injector,
+                    ...props,
+                }) as unknown as NodeView;
         },
 
         addCommands(): Partial<RawCommands> {

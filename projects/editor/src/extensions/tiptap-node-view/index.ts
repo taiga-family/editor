@@ -10,7 +10,7 @@ import type {
 } from '@tiptap/core';
 import {NodeView} from '@tiptap/core';
 import type {Node as ProseMirrorNode} from '@tiptap/pm/model';
-import type {Decoration} from '@tiptap/pm/view';
+import type {Decoration, DecorationSource, EditorView} from '@tiptap/pm/view';
 
 /**
  * Copied from
@@ -75,6 +75,10 @@ export class TuiNodeViewNg implements NodeViewProps {
     public declare getPos: NodeViewProps['getPos'];
     public declare updateAttributes: NodeViewProps['updateAttributes'];
     public declare deleteNode: NodeViewProps['deleteNode'];
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    public declare HTMLAttributes: Record<string, any>;
+    public declare innerDecorations: DecorationSource;
+    public declare view: EditorView;
 }
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
@@ -131,12 +135,15 @@ export class TuiNodeView extends NodeView<
         const props: NodeViewProps = {
             editor: this.editor,
             node: this.node,
-            decorations: this.decorations,
+            decorations: this.decorations as readonly DecorationWithType[],
             selected: false,
             extension: this.extension,
             getPos: () => this.getPos(),
             updateAttributes: (attributes = {}) => this.updateAttributes(attributes),
             deleteNode: () => this.deleteNode(),
+            view: this.view,
+            innerDecorations: this.innerDecorations,
+            HTMLAttributes: this.HTMLAttributes,
         };
 
         this.editor.on('selectionUpdate', this.handleSelectionUpdate.bind(this));

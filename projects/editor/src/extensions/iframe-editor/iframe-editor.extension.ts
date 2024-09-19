@@ -7,6 +7,7 @@ import type {
 } from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
 import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
+import type {NodeView} from '@tiptap/pm/view';
 
 import {TuiNodeView} from '../tiptap-node-view';
 import {TuiIframeEditor} from './iframe-editor.component';
@@ -69,12 +70,11 @@ export const tuiCreateIframeEditorExtension = ({injector}: {injector: Injector})
         },
 
         addNodeView(): NodeViewRenderer {
-            return (props: NodeViewRendererProps) =>
-                Reflect.construct(TuiNodeView, [
-                    TuiIframeEditor,
-                    props,
-                    {injector, ...props},
-                ]);
+            return (props: NodeViewRendererProps): NodeView =>
+                new TuiNodeView(TuiIframeEditor, props, {
+                    injector,
+                    ...props,
+                }) as unknown as NodeView;
         },
 
         addCommands(): Partial<RawCommands> {
