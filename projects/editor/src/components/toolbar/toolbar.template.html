@@ -1,23 +1,26 @@
-<button
-    type="button"
-    class="t-prevent-parent-label-behavior"
->
-    <!-- @note: this is a html huck to avoid autofocus, if the parent element is a label  -->
-</button>
+<ng-container *ngIf="!disabled">
+    <button
+        type="button"
+        class="t-prevent-parent-label-behavior"
+    >
+        <!-- @note: this is a html hack to avoid autofocus, if the parent element is a label  -->
+    </button>
+    <div
+        [tabIndex]="focusable ? 0 : -1"
+        (focus)="onTopFocus()"
+    ></div>
+    <div
+        [tabIndex]="focusable ? 0 : -1"
+        (focus)="onBottomFocus()"
+    ></div>
+</ng-container>
 <ng-container *ngIf="editor?.stateChange$ | async" />
-<div
-    [tabIndex]="focusable ? 0 : -1"
-    (focus)="onTopFocus()"
-></div>
-<div
-    [tabIndex]="focusable ? 0 : -1"
-    (focus)="onBottomFocus()"
-></div>
 <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
-<section
+<fieldset
     *ngIf="texts$ | async as texts"
     tuiToolbarNavigationManager
     class="t-tools-wrapper"
+    [disabled]="disabled"
 >
     <div
         *ngIf="enabled(editorTool.Undo)"
@@ -360,4 +363,4 @@
     <div class="t-block">
         <ng-content />
     </div>
-</section>
+</fieldset>
