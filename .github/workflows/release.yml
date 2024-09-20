@@ -10,44 +10,27 @@ on:
           - minor
           - patch
           - major
-          - prerelease
 
 jobs:
   run-release:
     name: Run release
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'chore(release)')"
-    env:
-      GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
     steps:
       - uses: taiga-family/ci/actions/setup/checkout@v1.80.0
+      - uses: taiga-family/ci/actions/run/release-it@v1.80.0
         with:
-          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           ref: ${{ github.ref }}
-          fetch-depth: 0
-      - uses: taiga-family/ci/actions/setup/variables@v1.80.0
-      - uses: taiga-family/ci/actions/setup/node@v1.80.0
-      - uses: taiga-family/ci/actions/setup/config/git@v1.80.0
-        with:
-          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.80.0
-        with:
-          token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
-
-      - run: |
-          if [[ "${{ github.event.inputs.mode }}" != "prerelease" ]]; then
-              npx release-it "${{ github.event.inputs.mode }}" --increment --ci --github.release
-          else
-              npx release-it --preRelease=alpha --ci
-          fi
+          mode: ${{ github.event.inputs.mode }}
+          npmToken: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
+          githubToken: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
       - id: info
         run: |
-          echo "version=v$(node -p "require('./dist/editor/package.json').version")" >> $GITHUB_OUTPUT
-          echo "name=$(node -p "require('./dist/editor/package.json').name")" >> $GITHUB_OUTPUT
+          echo "version=v$(node -p "require('./projects/editor/package.json').version")" >> $GITHUB_OUTPUT
+          echo "name=$(node -p "require('./projects/editor/package.json').name")" >> $GITHUB_OUTPUT
 
       - name: Announce to Telegram
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
         uses: taiga-family/ci/actions/messenger/telegram/announce@v1.80.0
         with:
           chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
