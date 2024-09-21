@@ -86,7 +86,7 @@
         "@nx/angular": "19.8.0",
         "@nx/jest": "19.8.0",
         "@nx/workspace": "19.8.0",
-        "@playwright/test": "1.47.1",
+        "@playwright/test": "1.47.2",
         "@swc-node/register": "1.10.9",
         "@swc/core": "1.7.26",
         "@swc/helpers": "0.5.13",
