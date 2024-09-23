@@ -26,8 +26,7 @@
         "lint": "eslint .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
         "stylelint": "stylelint './projects/**/*.{less,css}' --config package.json",
-        "prebump": "npx syncer && npx nx build editor",
-        "bump": "npx nx run-many -t publish"
+        "release": "npx syncer && npx nx publish editor"
     },
     "commitlint": {
         "extends": [
