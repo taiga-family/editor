@@ -1,0 +1,26 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiHintDescribe
+    tuiHintDirection="top-left"
+    tuiIconButton
+    type="button"
+    [disabled]="!(isActive$ | async)"
+    [iconStart]="icons.paint"
+    [tuiDropdown]="cellColorDropdown"
+    [tuiDropdownMaxHeight]="999"
+    [tuiDropdownOpen]="false"
+    [tuiHint]="colorText$ | async"
+></button>
+<div
+    *ngIf="!isBlankColor((color$ | async) || '')"
+    class="t-plate t-plate_paint"
+    [style.background]="color$ | async"
+></div>
+<ng-template #cellColorDropdown>
+    <tui-palette
+        class="t-color-picker"
+        [colors]="colors"
+        (selectedColor)="setCellColor($event)"
+    />
+</ng-template>

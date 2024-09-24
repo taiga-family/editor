@@ -8,6 +8,6 @@
     ],
     "dest": "../../dist/editor",
     "lib": {
-        "entryFile": "src/index.ts"
+        "entryFile": "index.ts"
     }
 }

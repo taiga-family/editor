@@ -1,12 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TuiLink} from '@taiga-ui/core';
 import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [RouterLink, TuiAddonDoc, TuiLink],
+    imports: [TuiAddonDoc],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

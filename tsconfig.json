@@ -4,7 +4,8 @@
         "baseUrl": "./",
         "outDir": "./dist",
         "paths": {
-            "@taiga-ui/editor": ["./projects/editor/src"]
+            "@taiga-ui/editor": ["./projects/editor"],
+            "@taiga-ui/editor/*": ["./projects/editor/*"]
         }
     }
 }

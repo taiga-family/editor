@@ -8,7 +8,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {TuiAutoFocus, tuiPure} from '@taiga-ui/cdk';
+import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
@@ -21,7 +21,7 @@ export interface User {
 @Component({
     standalone: true,
     selector: 'mentions',
-    imports: [NgForOf, TuiAutoFocus, TuiAvatar, TuiDataList, TuiInitialsPipe],
+    imports: [NgForOf, TuiAvatar, TuiDataList, TuiInitialsPipe],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

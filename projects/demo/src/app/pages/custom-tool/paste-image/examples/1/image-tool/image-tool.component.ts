@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiActiveZone, TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
@@ -8,14 +8,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     selector: 'image-tool',
-    imports: [
-        FormsModule,
-        TuiActiveZone,
-        TuiAutoFocus,
-        TuiButton,
-        TuiDropdown,
-        TuiInputInline,
-    ],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
     templateUrl: './image-tool.template.html',
     styleUrls: ['./image-tool.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
