@@ -1,9 +1,31 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+[`conventional commits`](https://www.conventionalcommits.org/) guidelines.
+
+### [4.10.0](https://github.com/taiga-family/editor/compare/v4.9.0...v4.10.0) (2024-09-25)
+
+### 🚀 Features
+
+- drop maskito peer dependencies (#1451)
+  [(4c2e827)](https://github.com/taiga-family/editor/commit/4c2e827d367e2b85d4dbb649f210906312874a62)
+- entry points (#1447)
+  [(0804056)](https://github.com/taiga-family/editor/commit/0804056b5fea8acd08557ea99a54909163513b76)
+
+### 🐞 Bug Fixes
+
+- autofocus (#1397) [(398026f)](https://github.com/taiga-family/editor/commit/398026f3111345559a74e4d8c7ea385289c4c26a)
+- editor should properly adapt to flex container (#1431)
+  [(796a1a4)](https://github.com/taiga-family/editor/commit/796a1a4a32e6a3705942f116447bf27736abbba2)
+- **deps**: update maskito to &gt;=3.0.2 (#1419)
+  [(3473358)](https://github.com/taiga-family/editor/commit/3473358c7883a577a8433d74612948eb16fef273)
 
 ### [4.9.0](https://github.com/taiga-family/editor/compare/v4.8.0...v4.9.0) (2024-09-19)
+
+### 🐞 Bug Fixes
+
+- add proper `Appearance` support (#1414)
+  [(9fd608c)](https://github.com/taiga-family/editor/commit/9fd608c03db7e583f992157ad8815c4760add0ed)
 
 ### [4.8.0](https://github.com/taiga-family/editor/compare/v4.7.0...v4.8.0) (2024-09-19)
 
@@ -11,7 +33,17 @@ All notable changes to this project will be documented in this file. See
 
 - support tiptap 2.7 [(4e21d63)](https://github.com/taiga-family/editor/commit/4e21d63f85ebd40abe5b964997448ae6dd6d0626)
 
+### 🐞 Bug Fixes
+
+- **deps**: update tiptap to &gt;=2.7.2 (#1410)
+  [(6dd64a3)](https://github.com/taiga-family/editor/commit/6dd64a307faa1c34ec58bfc681b39b50c3ac61ef)
+
 ### [4.7.0](https://github.com/taiga-family/editor/compare/v4.6.0...v4.7.0) (2024-09-17)
+
+### 🐞 Bug Fixes
+
+- pin patch versions (#1396)
+  [(d05579b)](https://github.com/taiga-family/editor/commit/d05579b8cd3aa79f09463a71e7803f9a3ec65d5b)
 
 ### [4.6.0](https://github.com/taiga-family/editor/compare/v4.5.0...v4.6.0) (2024-09-16)
 
@@ -22,6 +54,26 @@ All notable changes to this project will be documented in this file. See
 
 ### [4.5.0](https://github.com/taiga-family/editor/compare/v4.4.0...v4.5.0) (2024-09-16)
 
+### 🚀 Features
+
+- add loading lazy for image (#1391)
+  [(bc59d44)](https://github.com/taiga-family/editor/commit/bc59d447b562d09fdfe6bb95e3d461b9210129c9)
+- add new options (#1390)
+  [(6deb3a7)](https://github.com/taiga-family/editor/commit/6deb3a7a2d8337b27f5fdf787c0db7f735a544df)
+- update "fontStylePreview" icon. (#1350)
+  [(49c9af9)](https://github.com/taiga-family/editor/commit/49c9af9e923a2653f973c1a24fd439de747f42c4)
+- use appearance on host (#1340)
+  [(74e1b05)](https://github.com/taiga-family/editor/commit/74e1b05647dc2eed8154e7f52b63ea1dfec91200)
+- use hostDirectives (#1337)
+  [(d7322cd)](https://github.com/taiga-family/editor/commit/d7322cd5f9892f499d2a62f71759ae3d536f5e10)
+- drop redundant appearance (#1336)
+  [(d02f2db)](https://github.com/taiga-family/editor/commit/d02f2db430af0ebcc9713672dac92f907a9b78b1)
+
+### 🐞 Bug Fixes
+
+- correct render editor-socket (#1389)
+  [(f0c86b8)](https://github.com/taiga-family/editor/commit/f0c86b82cfb8c2ee86c4e7eff9c145b94784238b)
+
 ### [4.4.0](https://github.com/taiga-family/editor/compare/v4.3.0...v4.4.0) (2024-09-05)
 
 ### 🚀 Features
@@ -31,9 +83,24 @@ All notable changes to this project will be documented in this file. See
 
 ### [4.3.0](https://github.com/taiga-family/editor/compare/v4.2.0...v4.3.0) (2024-09-04)
 
+### 🐞 Bug Fixes
+
+- add clearfix (#1322)
+  [(f9bb76d)](https://github.com/taiga-family/editor/commit/f9bb76d1b1afdd22a8220e4add3feb048404a2b6)
+
 ### [4.2.0](https://github.com/taiga-family/editor/compare/v4.1.0...v4.2.0) (2024-09-04)
 
+### 🐞 Bug Fixes
+
+- drop redundant dependency (#1320)
+  [(4989115)](https://github.com/taiga-family/editor/commit/49891155d3bfa417583ff64b7d029f8d419d9729)
+
 ### [4.1.0](https://github.com/taiga-family/editor/compare/v4.0.0...v4.1.0) (2024-09-02)
+
+### 🚀 Features
+
+- drop submodule and revert accordion (#1315)
+  [(0edc86b)](https://github.com/taiga-family/editor/commit/0edc86b57e502e0d50d3c538cb4dbb97af356510)
 
 ## [4.0.0](https://github.com/taiga-family/editor/compare/v2.8.0...v4.0.0) (2024-08-30)
 
@@ -200,6 +267,11 @@ All notable changes to this project will be documented in this file. See
 
 ### [2.0.21-alpha.15](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.14...v2.0.21-alpha.15) (2024-07-19)
 
+### 🚀 Features
+
+- support SSR (#1196)
+  [(1a1ac83)](https://github.com/taiga-family/editor/commit/1a1ac831d10a304c5d82411cdb1a675a56ae360a)
+
 ### 🐞 Bug Fixes
 
 - do not override list style by placeholder
@@ -249,6 +321,11 @@ All notable changes to this project will be documented in this file. See
 
 ### [2.0.21-alpha.10](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.9...v2.0.21-alpha.10) (2024-07-15)
 
+### 🐞 Bug Fixes
+
+- invalid url (#1171)
+  [(473b035)](https://github.com/taiga-family/editor/commit/473b035f682b2912da471766db58fee6b0977419)
+
 ### [2.0.21-alpha.9](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.8...v2.0.21-alpha.9) (2024-07-13)
 
 ### [2.0.21-alpha.8](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.7...v2.0.21-alpha.8) (2024-07-04)
@@ -261,6 +338,11 @@ All notable changes to this project will be documented in this file. See
   [(73d2917)](https://github.com/taiga-family/editor/commit/73d29179437d155a099c20b3238d4bcfa7ceb227)
 
 ### [2.0.21-alpha.7](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.6...v2.0.21-alpha.7) (2024-07-01)
+
+### 🐞 Bug Fixes
+
+- prevent fetch resources in contenteditable (#1107)
+  [(0f46d57)](https://github.com/taiga-family/editor/commit/0f46d57a29d880a407d8e7e082069e4a75575520)
 
 ### [2.0.21-alpha.6](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.5...v2.0.21-alpha.6) (2024-06-26)
 
@@ -284,6 +366,8 @@ All notable changes to this project will be documented in this file. See
   [(2523ee3)](https://github.com/taiga-family/editor/commit/2523ee3f29271df759846bf27919bd82a9798658)
 - remove duplicate details content plugin
   [(f18bdf9)](https://github.com/taiga-family/editor/commit/f18bdf9426ddf0819d182548d0475d5511dd9dc9)
+- invalid recalculation model (#1103)
+  [(fbe2750)](https://github.com/taiga-family/editor/commit/fbe2750ecfff1b1571c6165da5a342b3c9822ec1)
 
 ### [2.0.21-alpha.4](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.3...v2.0.21-alpha.4) (2024-06-24)
 
@@ -302,6 +386,8 @@ All notable changes to this project will be documented in this file. See
   [(33fb1b0)](https://github.com/taiga-family/editor/commit/33fb1b0da7ca834fa7c2bb779e91b796c80e3df9)
 - doesn't work pasting image from clipboard
   [(4447f9f)](https://github.com/taiga-family/editor/commit/4447f9fe483f1f21be95137bd38ee9738f68749c)
+- mark some peer dependencies as optional and remove some unnecessary peer dependencies (#1093)
+  [(171e93c)](https://github.com/taiga-family/editor/commit/171e93c55324911cf93d9f00cb01dc428adc1ce1)
 
 ### [2.0.21-alpha.2](https://github.com/taiga-family/editor/compare/v2.0.21-alpha.1...v2.0.21-alpha.2) (2024-06-06)
 
@@ -316,9 +402,24 @@ All notable changes to this project will be documented in this file. See
 
 ### [2.0.20-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.19-alpha.0...v2.0.20-alpha.0) (2024-06-05)
 
+### 🚀 Features
+
+- use tbank scope (#1082)
+  [(9a98316)](https://github.com/taiga-family/editor/commit/9a9831662794c7c83a49f893d81e3fd411e5291e)
+
 ### [2.0.19-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.18-alpha.0...v2.0.19-alpha.0) (2024-06-04)
 
+### 🚀 Features
+
+- drop default minimum size for images less than 300px (#1039)
+  [(330c718)](https://github.com/taiga-family/editor/commit/330c71858ae6bf8401c5fc397f933cb99c58fe0d)
+
 ### [2.0.18-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.17-alpha.0...v2.0.18-alpha.0) (2024-05-08)
+
+### 🐞 Bug Fixes
+
+- class constructor NodeView cannot be invoked without 'new' (#1010)
+  [(f3ab25e)](https://github.com/taiga-family/editor/commit/f3ab25e4e9349a9a86d765cb116e5985a6cc5778)
 
 ### [2.0.17-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.16-alpha.0...v2.0.17-alpha.0) (2024-05-07)
 
@@ -326,6 +427,8 @@ All notable changes to this project will be documented in this file. See
 
 - show custom tools when basic tools skipped
   [(0baf924)](https://github.com/taiga-family/editor/commit/0baf924817512fd2f0e66ec850dc620879c1e704)
+- reset counter list for nested li inside details (#998)
+  [(3689672)](https://github.com/taiga-family/editor/commit/368967230550a75a103f924d78913cc7674995a6)
 
 ### [2.0.16-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.15-alpha.0...v2.0.16-alpha.0) (2024-05-06)
 
@@ -344,14 +447,32 @@ All notable changes to this project will be documented in this file. See
 
 ### [2.0.11-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.10-alpha.0...v2.0.11-alpha.0) (2024-04-03)
 
+### 🚀 Features
+
+- drop legacy button (#946)
+  [(254a7a3)](https://github.com/taiga-family/editor/commit/254a7a3a6dd0aaf77cc61ab4c9999ba4c8a2c2ff)
+
+### 🐞 Bug Fixes
+
+- support preview full list of mention suggestion (#949)
+  [(68d8773)](https://github.com/taiga-family/editor/commit/68d877390ab70627ea232ac2fc4826eef8e3bd4b)
+
 ### [2.0.10-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.9-alpha.0...v2.0.10-alpha.0) (2024-03-30)
 
 ### 🚀 Features
 
 - support hex pattern in input color
   [(6be94b1)](https://github.com/taiga-family/editor/commit/6be94b1345704338ac30f894c0402d99b048d468)
+- add markdown extension (#937)
+  [(df32291)](https://github.com/taiga-family/editor/commit/df32291dc60257bfa8ad3ea9c6c68fc614635dad)
 
 ### [2.0.9-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.8-alpha.0...v2.0.9-alpha.0) (2024-03-27)
+
+### 🚀 Features
+
+- add mention (#927) [(262a631)](https://github.com/taiga-family/editor/commit/262a6318c18c078729260cdd890dbff97e33f230)
+- add checkbox (#922)
+  [(bbfd692)](https://github.com/taiga-family/editor/commit/bbfd6925a6be718131bd795b61508831be30f85d)
 
 ### 🐞 Bug Fixes
 
@@ -362,15 +483,60 @@ All notable changes to this project will be documented in this file. See
 
 ### [2.0.7-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.6-alpha.0...v2.0.7-alpha.0) (2024-03-25)
 
+### 🚀 Features
+
+- add floating toolbar (#914)
+  [(6b78a58)](https://github.com/taiga-family/editor/commit/6b78a58d56be440e2514244cec18bbb37f2be3f5)
+
 ### [2.0.6-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.5-alpha.0...v2.0.6-alpha.0) (2024-03-25)
+
+### 🚀 Features
+
+- add example for align toolbar bottom (#888)
+  [(cb3f867)](https://github.com/taiga-family/editor/commit/cb3f8670bc902144d5aa1e777456198ceac38aad)
+- ssr (#883) [(7e8bd83)](https://github.com/taiga-family/editor/commit/7e8bd83f5fa3dcddeb1fa7263c5902a664e86cad)
 
 ### [2.0.5-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.4-alpha.0...v2.0.5-alpha.0) (2024-03-19)
 
+### 🚀 Features
+
+- ssr (#874) [(c52ce74)](https://github.com/taiga-family/editor/commit/c52ce74ec12505896665fd0520ddf27e101f0ee8)
+- support appearance (#868)
+  [(716ba8e)](https://github.com/taiga-family/editor/commit/716ba8eb90ff9424c90317fa58a93b554ca1ab0e)
+
 ### [2.0.4-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.3-alpha.0...v2.0.4-alpha.0) (2024-03-14)
+
+### 🐞 Bug Fixes
+
+- clear contenteditable focus after reset in Safari (#861)
+  [(784968e)](https://github.com/taiga-family/editor/commit/784968ede52fe1f04e95906f31bac1427b740364)
 
 ### [2.0.3-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.2-alpha.0...v2.0.3-alpha.0) (2024-03-12)
 
+### 🚀 Features
+
+- upgrade to Angular 16 (#843)
+  [(3854c92)](https://github.com/taiga-family/editor/commit/3854c927f7f730e6fd3ba079ca933f1f147e1dc9)
+
 ### [2.0.2-alpha.0](https://github.com/taiga-family/editor/compare/v1.64.0...v2.0.2-alpha.0) (2024-03-01)
+
+### 🚀 Features
+
+- fix typecheck in cypress files (#6908) (#824)
+  [(76d6497)](https://github.com/taiga-family/editor/commit/76d64977586c37bd1765d00a18f9d64d6b9a1299)
+- remove `tui-input-count` (#678)
+  [(f0f3b5a)](https://github.com/taiga-family/editor/commit/f0f3b5ad96dcd24f4803f5cb64f5a07be1bbb125)
+
+### 🐞 Bug Fixes
+
+- change hidden to clip (#828)
+  [(bb9edf6)](https://github.com/taiga-family/editor/commit/bb9edf6fe59cc79cf0908fea8b0ae885cdf22f8d)
+- strange behaviour on Windows (#820)
+  [(218a3c8)](https://github.com/taiga-family/editor/commit/218a3c803c6760b45d26f90ec0a1fb5cc2b14365)
+- undo operation should work when updating attributes (#808)
+  [(261bf96)](https://github.com/taiga-family/editor/commit/261bf96af15df2fee974d4fd5b5f1c9d62a359f9)
+- use image loader when using drag-and-drop images (#792)
+  [(406c393)](https://github.com/taiga-family/editor/commit/406c393949b650f12e165b67ca7533073a55d6f4)
 
 ### [1.64.0](https://github.com/taiga-family/editor/compare/v1.63.0...v1.64.0) (2024-09-04)
 
@@ -383,6 +549,11 @@ All notable changes to this project will be documented in this file. See
   [(3802a3d)](https://github.com/taiga-family/editor/commit/3802a3d587c607c4d82e21bb83ea25825cd9d1a9)
 
 ### [1.63.0](https://github.com/taiga-family/editor/compare/v1.62.0...v1.63.0) (2024-09-04)
+
+### 🐞 Bug Fixes
+
+- add clearfix (#1321)
+  [(6be3fef)](https://github.com/taiga-family/editor/commit/6be3feffd76b33bf48676a4d6409e5b54adce9d9)
 
 ### [1.62.0](https://github.com/taiga-family/editor/compare/v1.61.0...v1.62.0) (2024-09-02)
 
@@ -597,6 +768,11 @@ All notable changes to this project will be documented in this file. See
 
 ### [1.36.0](https://github.com/taiga-family/editor/compare/v1.35.0...v1.36.0) (2024-06-10)
 
+### 🐞 Bug Fixes
+
+- mark some peer dependencies as optional and remove some unnecessary peer dependencies (#1097)
+  [(2d71423)](https://github.com/taiga-family/editor/commit/2d71423e8d1c96ffc313684effbf915bc33f7da3)
+
 ### [1.35.0](https://github.com/taiga-family/editor/compare/v1.34.0...v1.35.0) (2024-06-06)
 
 ### [1.34.0](https://github.com/taiga-family/editor/compare/v1.33.0...v1.34.0) (2024-06-06)
@@ -648,12 +824,19 @@ All notable changes to this project will be documented in this file. See
 
 ### [1.27.0](https://github.com/taiga-family/editor/compare/v1.26.0...v1.27.0) (2024-05-08)
 
+### 🐞 Bug Fixes
+
+- class constructor NodeView cannot be invoked without 'new' (#1009)
+  [(b2e44b0)](https://github.com/taiga-family/editor/commit/b2e44b06b2405e6f40555649c2f51ea2f7eddea7)
+
 ### [1.26.0](https://github.com/taiga-family/editor/compare/v1.25.1...v1.26.0) (2024-05-07)
 
 ### 🐞 Bug Fixes
 
 - show custom tools when basic tools skipped
   [(881460d)](https://github.com/taiga-family/editor/commit/881460de2663bc9bb7b6392989946021d7e53891)
+- reset counter list for nested li inside details (#998)
+  [(0482ffa)](https://github.com/taiga-family/editor/commit/0482ffa8cb8c95bed5d637517a48062113f19a58)
 
 ### [1.25.1](https://github.com/taiga-family/editor/compare/v1.25.0...v1.25.1) (2024-04-08)
 
@@ -663,13 +846,45 @@ All notable changes to this project will be documented in this file. See
 
 ### [1.25.0](https://github.com/taiga-family/editor/compare/v1.24.0...v1.25.0) (2024-04-08)
 
+### 🐞 Bug Fixes
+
+- incorrect column's width after cell merging (#962)
+  [(3f58640)](https://github.com/taiga-family/editor/commit/3f5864092cd4b1314949f3de1eefbce468bb336c)
+
 ### [1.24.0](https://github.com/taiga-family/editor/compare/v1.23.0...v1.24.0) (2024-04-02)
+
+### 🚀 Features
+
+- support relative links (#942)
+  [(680edf4)](https://github.com/taiga-family/editor/commit/680edf4efb26ccd618966cf22a584ff525db57e0)
+
+### 🐞 Bug Fixes
+
+- support preview full list of mention suggestion (#944)
+  [(e602062)](https://github.com/taiga-family/editor/commit/e602062da5e2adb1772b30d26b1e2d3098cda7f6)
+- strange dropdown behaviour (#941)
+  [(806be0b)](https://github.com/taiga-family/editor/commit/806be0b792cecec16727b2417d77d4bb39a93935)
 
 ### [1.23.0](https://github.com/taiga-family/editor/compare/v1.22.0...v1.23.0) (2024-04-01)
 
+### 🐞 Bug Fixes
+
+- incorrect dropdown behaviour (#940)
+  [(3634bba)](https://github.com/taiga-family/editor/commit/3634bba0bb45aa58122258c7103a5915e723ef19)
+
 ### [1.22.0](https://github.com/taiga-family/editor/compare/v1.21.0...v1.22.0) (2024-03-29)
 
+### 🚀 Features
+
+- add markdown extension (#934)
+  [(7938bd9)](https://github.com/taiga-family/editor/commit/7938bd94ef083704d14c62cdfb4235759cbd3b3c)
+
 ### [1.21.0](https://github.com/taiga-family/editor/compare/v1.20.1...v1.21.0) (2024-03-28)
+
+### 🚀 Features
+
+- add hex pattern in color picker (#929)
+  [(a4ec210)](https://github.com/taiga-family/editor/commit/a4ec210815652b91cd18d64c3b12ec15cba9d984)
 
 ### [1.20.1](https://github.com/taiga-family/editor/compare/v1.20.0...v1.20.1) (2024-03-27)
 
@@ -680,7 +895,17 @@ All notable changes to this project will be documented in this file. See
 
 ### [1.20.0](https://github.com/taiga-family/editor/compare/v1.19.0...v1.20.0) (2024-03-27)
 
+### 🚀 Features
+
+- add mention extension (#926)
+  [(955ebff)](https://github.com/taiga-family/editor/commit/955ebffb32d9515531ed6c518bd3bb448429c82d)
+
 ### [1.19.0](https://github.com/taiga-family/editor/compare/v1.18.0...v1.19.0) (2024-03-26)
+
+### 🚀 Features
+
+- add checkbox (#919)
+  [(96998c3)](https://github.com/taiga-family/editor/commit/96998c32913f7828602890b3b7b93811ca1e1df3)
 
 ### [1.18.0](https://github.com/taiga-family/editor/compare/v1.17.0...v1.18.0) (2024-03-22)
 
@@ -688,8 +913,17 @@ All notable changes to this project will be documented in this file. See
 
 - add toolbar examples
   [(4100402)](https://github.com/taiga-family/editor/commit/4100402714de533599bb905c390eb8432fb0868e)
+- support floating toolbar (#901)
+  [(e335879)](https://github.com/taiga-family/editor/commit/e335879b5226f11eb43adcfa0d4bcebb710f1ecc)
+- support appearance (#867)
+  [(47d6e6d)](https://github.com/taiga-family/editor/commit/47d6e6dae34b3c11a207587e4ed19efb9c54e694)
 
 ### [1.17.0](https://github.com/taiga-family/editor/compare/v1.16.0...v1.17.0) (2024-03-14)
+
+### 🐞 Bug Fixes
+
+- clear contenteditable focus after reset in Safari (#862)
+  [(4866dc1)](https://github.com/taiga-family/editor/commit/4866dc13a3895fa5c1c2a7dd9d7bf337ec44e9ce)
 
 ### [1.16.0]() (2024-02-29)
 
@@ -701,6 +935,34 @@ All notable changes to this project will be documented in this file. See
   [(0fdf555)](https://github.com/taiga-family/editor/commit/0fdf5555b4145eec06edbbb4c6d27de58ffbe7df)
 - improve ux for touching edit link
   [(6744776)](https://github.com/taiga-family/editor/commit/6744776da7071cd0a05bce23905b37265c323f8b)
+- add `enableDefaultStyles` option (#823)
+  [(defc64e)](https://github.com/taiga-family/editor/commit/defc64e604cb9361ab1fab03572cf9181a52aee0)
+- remove `tui-input-count` (#676)
+  [(bb3ebed)](https://github.com/taiga-family/editor/commit/bb3ebedf3566d3a5ed8e2a1afa850e110cf795ca)
+- support copy paste multiple links (#610)
+  [(f261eff)](https://github.com/taiga-family/editor/commit/f261effd5bf6ada05d079a06a0915aba60178904)
+- reuse previous font color when change font size (#314)
+  [(abd01e2)](https://github.com/taiga-family/editor/commit/abd01e2198e8be40808df3b2bcc5e0b0b1ed7916)
+- improve ui for color-edit component (#257)
+  [(b023a6a)](https://github.com/taiga-family/editor/commit/b023a6a9bfe40f143f04a454ba04f69e2bb2ab9c)
+- support override icons (#165)
+  [(4dc5cd4)](https://github.com/taiga-family/editor/commit/4dc5cd4ab69786637e661fa877e5c8bdc28b069b)
+- change margin for list (#152)
+  [(57d79ca)](https://github.com/taiga-family/editor/commit/57d79ca8741db87b88df887e921402477e228346)
+- add stackblitz starter (#30)
+  [(20831ef)](https://github.com/taiga-family/editor/commit/20831ef3f7815ef6e6be93da0387b0a55c486ddf)
+- add e2e (#10) [(2e4067a)](https://github.com/taiga-family/editor/commit/2e4067ab525b6021251b8ba4061c548602981afb)
+- support cypress (#8)
+  [(11c6411)](https://github.com/taiga-family/editor/commit/11c6411ebe1950e909c47db7597a76834e698688)
+- move all pages (#7)
+  [(6daf751)](https://github.com/taiga-family/editor/commit/6daf751ae94a52bb020f2bc4a14e823843d78eae)
+- remove ssr executors (#6)
+  [(cdf9bcb)](https://github.com/taiga-family/editor/commit/cdf9bcb3c8d84de698b36c1911547b5cf5efac40)
+- add starter page (#4)
+  [(5c8d2a7)](https://github.com/taiga-family/editor/commit/5c8d2a714828647f8448e863fe1e91f5970c5d27)
+- support gh-pages (#2)
+  [(99c11e1)](https://github.com/taiga-family/editor/commit/99c11e1f27c6951f6be3bd55d5054168a322a6dd)
+- cleanup (#1) [(be6f24b)](https://github.com/taiga-family/editor/commit/be6f24b549da262edacae7b7f8ffcaf2c434b446)
 
 ### 🐞 Bug Fixes
 
@@ -710,3 +972,17 @@ All notable changes to this project will be documented in this file. See
   [(2203aa7)](https://github.com/taiga-family/editor/commit/2203aa75cffe018f6cec4410cde20352b756c9e8)
 - cannot convert undefined or null to object at getOwnPropertyDescriptors
   [(b991466)](https://github.com/taiga-family/editor/commit/b99146633d2850c314150e248a3c1e07a3409895)
+- change hidden to clip (#827)
+  [(00bb79b)](https://github.com/taiga-family/editor/commit/00bb79b4ddf2302dc28907b7e32c8d9410816445)
+- strange behaviour on Windows (#821)
+  [(420a19c)](https://github.com/taiga-family/editor/commit/420a19cea534f288ab7eef6ff85ce714b2e2787d)
+- undo operation should work when updating attributes (#793)
+  [(1d27675)](https://github.com/taiga-family/editor/commit/1d276756d2f58e46edad1512f7016b8e7c6c5c65)
+- use image loader when using drag-and-drop images (#791)
+  [(38f7bf5)](https://github.com/taiga-family/editor/commit/38f7bf588536919a9f0d18b4201b857b74fbe5d7)
+- can't resolve item.directive.ts, but not a .d.ts file (#157)
+  [(50b117e)](https://github.com/taiga-family/editor/commit/50b117e57626c8cd3cc93c8c912dc402b67f0d36)
+- expect null pointer (#156)
+  [(fb50ce7)](https://github.com/taiga-family/editor/commit/fb50ce734dfb61e7540203b983eeb8ae9cbb6b94)
+- show cursor `pointer` for color `picker` (#73)
+  [(e593796)](https://github.com/taiga-family/editor/commit/e593796281fb875b8200be6d62ec2d2a8c86397e)
