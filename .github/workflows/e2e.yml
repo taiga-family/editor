@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.85.0
-      - uses: taiga-family/ci/actions/setup/node@v1.85.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.85.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.87.0
+      - uses: taiga-family/ci/actions/setup/node@v1.87.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.87.0
       - run: npx nx prerender editor-demo
-      - uses: taiga-family/ci/actions/run/serve@v1.85.0
+      - uses: taiga-family/ci/actions/run/serve@v1.87.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -22,12 +22,12 @@ jobs:
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@v1.85.0
+      - uses: taiga-family/ci/actions/run/clone@v1.87.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.85.0
+      - uses: taiga-family/ci/actions/run/serve@v1.87.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
