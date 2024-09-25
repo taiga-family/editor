@@ -4,7 +4,8 @@
     "compilerOptions": {
         "outDir": "./dist/out-tsc/lib",
         "paths": {
-            "@taiga-ui/editor": ["./dist/tui-editor"]
+            "@taiga-ui/editor": ["./dist/tui-editor"],
+            "@taiga-ui/editor/*": ["./dist/tui-editor/*"]
         }
     }
 }

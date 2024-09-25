@@ -52,7 +52,8 @@
     "eslintConfig": {
         "extends": [
             "plugin:@taiga-ui/experience/all",
-            "plugin:@taiga-ui/experience/taiga-naming"
+            "plugin:@taiga-ui/experience/taiga-naming",
+            "plugin:@taiga-ui/experience/entry-points"
         ]
     },
     "stylelint": {

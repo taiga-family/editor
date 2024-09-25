@@ -1,0 +1,32 @@
+<div
+    [tuiDropdown]="tableOptionsDropdown"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance="icon"
+        size="s"
+        tuiHintDescribe
+        tuiHintDirection="top-left"
+        tuiIconButton
+        type="button"
+        [disabled]="!(isActive$ | async)"
+        [iconStart]="options.icons.addRowTable"
+        [tuiHint]="rowsColumnsManagingText$ | async"
+    ></button>
+</div>
+
+<ng-template #tableOptionsDropdown>
+    <tui-data-list>
+        <tui-opt-group *ngFor="let group of tableCommandTexts$ | async; let i = index">
+            <!-- TODO: remove "magic" numbers i*2+@Directive({standalone: true, and make code more readable-->
+            <button
+                *ngFor="let item of group; let j = index"
+                tuiOption
+                type="button"
+                (click)="onTableOption(i * 2 + j)"
+            >
+                {{ item }}
+            </button>
+        </tui-opt-group>
+    </tui-data-list>
+</ng-template>

@@ -1,31 +1,19 @@
-import {NgForOf, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAvatar} from '@taiga-ui/kit';
 
 import type {User} from './mention';
 import {Mentions} from './mention';
 
 @Component({
     standalone: true,
-    imports: [
-        Mentions,
-        NgForOf,
-        NgIf,
-        ReactiveFormsModule,
-        TuiAvatar,
-        TuiDataList,
-        TuiEditor,
-        TuiEditorSocket,
-        TuiInitialsPipe,
-    ],
+    imports: [Mentions, NgIf, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

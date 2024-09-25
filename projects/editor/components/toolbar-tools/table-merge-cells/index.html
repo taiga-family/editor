@@ -1,0 +1,12 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiHintDescribe
+    tuiHintDirection="top-left"
+    tuiIconButton
+    type="button"
+    [disabled]="!canMergeCells() && !canSplitCells()"
+    [iconStart]="canMergeCells() ? options.icons.tableCellMerge : options.icons.tableCellSplit"
+    [tuiHint]="canMergeCells() ? (texts$ | async)?.mergeCells : (texts$ | async)?.splitCells"
+    (click)="canMergeCells() ? mergeCells() : splitCell()"
+></button>

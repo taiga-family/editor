@@ -7,7 +7,6 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiPreview} from '@taiga-ui/kit';
 
 import {ImagePreviewExample} from './image-preview/image-preview.component';
 
@@ -19,7 +18,6 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
         TuiEditor,
         TuiEditorImagePreview,
         TuiEditorSocket,
-        TuiPreview,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
