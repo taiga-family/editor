@@ -1,10 +1,10 @@
-import HTMLMark from '@taiga-ui/editor/extensions/markdown/extensions/marks/html';
-import HardBreak from '@taiga-ui/editor/extensions/markdown/extensions/nodes/hard-break';
-import HTMLNode from '@taiga-ui/editor/extensions/markdown/extensions/nodes/html';
-import {tuiGetMarkdownSpec} from '@taiga-ui/editor/extensions/markdown/extensions/util';
 import type {Editor, Mark as Mark2, Node as Node2} from '@tiptap/core';
 import type {Mark, Node} from '@tiptap/pm/model';
 
+import HTMLMark from '../extensions/marks/html';
+import HardBreak from '../extensions/nodes/hard-break';
+import HTMLNode from '../extensions/nodes/html';
+import {tuiGetMarkdownSpec} from '../extensions/util';
 import {TuiMarkdownSerializerState} from './state';
 
 export class TuiMarkdownSerializer {

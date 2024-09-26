@@ -1,7 +1,8 @@
-import HTMLNode from '@taiga-ui/editor/extensions/markdown/extensions/nodes/html';
-import {tuiChildNodes} from '@taiga-ui/editor/extensions/markdown/util';
 import {Node} from '@tiptap/core';
 import type {Node as ProseNode} from '@tiptap/pm/model';
+
+import {tuiChildNodes} from '../../../util/prosemirror';
+import HTMLNode from '../html';
 
 export default Node.create({
     name: 'table',

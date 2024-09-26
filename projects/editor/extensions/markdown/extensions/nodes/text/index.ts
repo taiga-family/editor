@@ -1,6 +1,7 @@
-import {tuiEscapeHTML} from '@taiga-ui/editor/extensions/markdown/util';
 import {Node} from '@tiptap/core';
 import type {Node as ProseNode} from '@tiptap/pm/model';
+
+import {tuiEscapeHTML} from '../../../util/dom';
 
 export default Node.create({
     name: 'text',

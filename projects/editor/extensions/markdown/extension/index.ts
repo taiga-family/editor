@@ -1,8 +1,9 @@
-import {TuiMarkdownClipboard} from '@taiga-ui/editor/extensions/markdown/clipboard';
-import {TuiEditorMarkdownParser} from '@taiga-ui/editor/extensions/markdown/parse';
-import {TuiMarkdownSerializer} from '@taiga-ui/editor/extensions/markdown/serialize';
-import {TuiMarkdownTightLists} from '@taiga-ui/editor/extensions/markdown/tight-lists';
 import {Extension, extensions} from '@tiptap/core';
+
+import {TuiMarkdownClipboard} from '../clipboard';
+import {TuiEditorMarkdownParser} from '../parse';
+import {TuiMarkdownSerializer} from '../serialize';
+import {TuiMarkdownTightLists} from '../tight-lists';
 
 export const TuiMarkdown = Extension.create({
     name: 'markdown',
