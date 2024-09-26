@@ -1,8 +1,3 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See
-[`conventional commits`](https://www.conventionalcommits.org/) guidelines.
-
 ### [4.10.0](https://github.com/taiga-family/editor/compare/v4.9.0...v4.10.0) (2024-09-25)
 
 ### 🚀 Features
