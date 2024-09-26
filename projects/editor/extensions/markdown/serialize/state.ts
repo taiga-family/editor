@@ -1,6 +1,7 @@
-import {tuiTrimInline} from '@taiga-ui/editor/extensions/markdown/util';
 import {MarkdownSerializerState as BaseMarkdownSerializerState} from '@tiptap/pm/markdown';
 import type {Mark, Node} from '@tiptap/pm/model';
+
+import {tuiTrimInline} from '../util/markdown';
 
 export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
     public inTable = false;

@@ -1,8 +1,9 @@
-import {tuiElementFromString} from '@taiga-ui/editor/extensions/markdown/util';
 import {Extension} from '@tiptap/core';
 import type {Slice} from '@tiptap/pm/model';
 import {DOMParser} from '@tiptap/pm/model';
 import {Plugin, PluginKey} from '@tiptap/pm/state';
+
+import {tuiElementFromString} from '../util/dom';
 
 export const TuiMarkdownClipboard = Extension.create({
     name: 'markdownClipboard',

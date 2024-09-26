@@ -1,6 +1,7 @@
-import HTMLNode from '@taiga-ui/editor/extensions/markdown/extensions/nodes/html';
 import {Node} from '@tiptap/core';
 import type {Node as ProseNode} from '@tiptap/pm/model';
+
+import HTMLNode from '../html';
 
 export default Node.create({
     name: 'hardBreak',
