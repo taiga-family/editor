@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    inject,
+} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -23,6 +29,7 @@ export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIfram
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el: ElementRef<HTMLDivElement> = inject(ElementRef);
     protected readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
+    protected readonly changeDetector = inject(ChangeDetectorRef);
 
     public updateSize([width, height]: readonly [width: number, height: number]): void {
         this.currentWidth = Math.max(
