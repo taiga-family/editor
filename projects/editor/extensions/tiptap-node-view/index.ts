@@ -66,9 +66,8 @@ export class TuiComponentRenderer<C, P> {
  * Tiptap's {@link https://tiptap.dev/guide/node-views NodeView} from angular component.
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
-export class TuiNodeViewNg implements NodeViewProps {
+export abstract class TuiNodeViewNg implements NodeViewProps {
     public declare editor: NodeViewProps['editor'];
-    public declare node: NodeViewProps['node'];
     public declare decorations: NodeViewProps['decorations'];
     public declare selected: NodeViewProps['selected'];
     public declare extension: NodeViewProps['extension'];
@@ -79,6 +78,8 @@ export class TuiNodeViewNg implements NodeViewProps {
     public declare HTMLAttributes: Record<string, any>;
     public declare innerDecorations: DecorationSource;
     public declare view: EditorView;
+    public abstract get node(): NodeViewProps['node'];
+    public abstract set node(value: NodeViewProps['node']);
 }
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {

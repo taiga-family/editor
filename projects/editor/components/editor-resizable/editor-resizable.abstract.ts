@@ -1,5 +1,6 @@
-import {Directive} from '@angular/core';
+import {type ChangeDetectorRef, Directive} from '@angular/core';
 import {TuiNodeViewNg} from '@taiga-ui/editor/extensions/tiptap-node-view';
+import type {NodeViewProps} from '@tiptap/core';
 
 export interface TuiEditorResizableContainer {
     height?: number | string | null;
@@ -10,6 +11,8 @@ export interface TuiEditorResizableContainer {
 export abstract class AbstractTuiEditorResizable<
     T extends TuiEditorResizableContainer,
 > extends TuiNodeViewNg {
+    protected abstract readonly changeDetector: ChangeDetectorRef;
+    private localNode!: NodeViewProps['node'];
     protected currentHeight = 0;
     protected currentWidth = 0;
 
@@ -17,6 +20,15 @@ export abstract class AbstractTuiEditorResizable<
         width: number,
         height: number,
     ]): void;
+
+    public get node(): NodeViewProps['node'] {
+        return this.localNode;
+    }
+
+    public set node(value: NodeViewProps['node']) {
+        this.localNode = value;
+        this.changeDetector.markForCheck();
+    }
 
     protected get attrs(): T {
         return (this.node?.attrs as T) || {src: ''};

@@ -1,10 +1,12 @@
-import type {AfterViewInit, OnInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     DestroyRef,
     ElementRef,
     inject,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -70,6 +72,7 @@ export class TuiImageEditor
 
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly imageOptions = inject(TUI_IMAGE_EDITOR_OPTIONS);
+    protected readonly changeDetector = inject(ChangeDetectorRef);
 
     public override get height(): number | string | null {
         return null;
@@ -100,11 +103,6 @@ export class TuiImageEditor
         this.notifyUpdate();
     }
 
-    @tuiPure
-    protected get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
-    }
-
     protected get dragHandle(): '' | null {
         return this.attrs.draggable ?? null;
     }
@@ -115,6 +113,11 @@ export class TuiImageEditor
 
     protected get title(): string {
         return this.attrs.title ?? '';
+    }
+
+    @tuiPure
+    protected getBypassedSrc(src: string): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(src);
     }
 
     protected currentTargetIsFocused(node: Node): void {
