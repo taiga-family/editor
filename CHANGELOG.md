@@ -3,12 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [`conventional commits`](https://www.conventionalcommits.org/) guidelines.
 
+### [4.12.0](https://github.com/taiga-family/editor/compare/v4.11.0...v4.12.0) (2024-09-27)
+
+### 🐞 Bug Fixes
+
+- image source after drag and drop (#1470)
+  [(5b2f9e2)](https://github.com/taiga-family/editor/commit/5b2f9e2aec0ac470c704d8539d258133e07e1a49)
+
 ### [4.11.0](https://github.com/taiga-family/editor/compare/v4.10.0...v4.11.0) (2024-09-26)
 
 ### 🐞 Bug Fixes
 
 - markdown extensions should be flat (#1461)
   [(60a60b1)](https://github.com/taiga-family/editor/commit/60a60b1535ee694f226796b8c18e66ce7fed36d2)
+- **deps**: update tiptap to &gt;=2.7.3 (#1454)
+  [(dfc2867)](https://github.com/taiga-family/editor/commit/dfc28673301b16a27d3869c0d446fdedd171ae04)
 
 ### [4.10.0](https://github.com/taiga-family/editor/compare/v4.9.0...v4.10.0) (2024-09-25)
 
