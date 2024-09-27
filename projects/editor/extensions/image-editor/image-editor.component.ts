@@ -100,11 +100,6 @@ export class TuiImageEditor
         this.notifyUpdate();
     }
 
-    @tuiPure
-    protected get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src);
-    }
-
     protected get dragHandle(): '' | null {
         return this.attrs.draggable ?? null;
     }
@@ -115,6 +110,11 @@ export class TuiImageEditor
 
     protected get title(): string {
         return this.attrs.title ?? '';
+    }
+
+    @tuiPure
+    protected getBypassedSrc(src: string): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(src);
     }
 
     protected currentTargetIsFocused(node: Node): void {
