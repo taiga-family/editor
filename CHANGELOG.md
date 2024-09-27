@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [`conventional commits`](https://www.conventionalcommits.org/) guidelines.
 
+### [4.11.0](https://github.com/taiga-family/editor/compare/v4.10.0...v4.11.0) (2024-09-26)
+
+### 🐞 Bug Fixes
+
+- markdown extensions should be flat (#1461)
+  [(60a60b1)](https://github.com/taiga-family/editor/commit/60a60b1535ee694f226796b8c18e66ce7fed36d2)
+
 ### [4.10.0](https://github.com/taiga-family/editor/compare/v4.9.0...v4.10.0) (2024-09-25)
 
 ### 🚀 Features

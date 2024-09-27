@@ -1,7 +1,8 @@
-import BulletList from '@taiga-ui/editor/extensions/markdown/extensions/nodes/bullet-list';
-import {tuiMarkdownItTaskList} from '@taiga-ui/editor/extensions/markdown/util';
 import {Node} from '@tiptap/core';
 import type MarkdownIt from 'markdown-it';
+
+import {tuiMarkdownItTaskList} from '../../../util/markdown-it-task-lists';
+import BulletList from '../bullet-list';
 
 export default Node.create({
     name: 'taskList',

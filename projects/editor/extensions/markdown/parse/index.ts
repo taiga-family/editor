@@ -1,11 +1,8 @@
-import {tuiGetMarkdownSpec} from '@taiga-ui/editor/extensions/markdown/extensions/util';
-import {
-    tuiElementFromString,
-    tuiExtractElement,
-    tuiUnwrapElement,
-} from '@taiga-ui/editor/extensions/markdown/util';
 import type {Editor} from '@tiptap/core';
 import MarkdownIt from 'markdown-it';
+
+import {tuiGetMarkdownSpec} from '../extensions/util';
+import {tuiElementFromString, tuiExtractElement, tuiUnwrapElement} from '../util/dom';
 
 export class TuiEditorMarkdownParser {
     protected readonly md: MarkdownIt;
