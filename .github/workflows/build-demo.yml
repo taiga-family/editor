@@ -16,5 +16,5 @@ jobs:
       - run: npx nx prerender editor-demo
 
 concurrency:
-  group: build-demo-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

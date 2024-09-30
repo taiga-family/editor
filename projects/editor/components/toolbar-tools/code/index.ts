@@ -38,11 +38,7 @@ export class TuiCode implements OnInit {
     }
 
     public onCode(isCodeBlock: boolean): void {
-        if (isCodeBlock) {
-            this.editor?.toggleCodeBlock();
-        } else {
-            this.editor?.toggleCode();
-        }
+        this.editor?.[isCodeBlock ? 'toggleCodeBlock' : 'toggleCode']();
     }
 
     protected get editor(): AbstractTuiEditor | null {
