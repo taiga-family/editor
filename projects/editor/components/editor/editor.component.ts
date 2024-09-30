@@ -1,4 +1,5 @@
 import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,26 +10,23 @@ import {
     inject,
     Input,
     NgZone,
-    type OnDestroy,
     Output,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {
-    TUI_TRUE_HANDLER,
-    type TuiBooleanHandler,
-    tuiInjectElement,
-    type TuiValueTransformer,
-    tuiWatch,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
     TuiActiveZone,
     tuiAutoFocusOptionsProvider,
     TuiControl,
+    tuiInjectElement,
+    tuiWatch,
     tuiZonefree,
 } from '@taiga-ui/cdk';
+import type {TuiDropdownDirective} from '@taiga-ui/core';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
     TUI_APPEARANCE_OPTIONS,
@@ -37,7 +35,6 @@ import {
     tuiAppearanceMode,
     tuiAppearanceState,
     TuiDropdown,
-    type TuiDropdownDirective,
     TuiScrollbar,
 } from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorAttachedFile} from '@taiga-ui/editor/common';

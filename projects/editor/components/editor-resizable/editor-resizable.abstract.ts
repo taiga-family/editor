@@ -1,4 +1,5 @@
-import {type ChangeDetectorRef, Directive} from '@angular/core';
+import type {ChangeDetectorRef} from '@angular/core';
+import {Directive} from '@angular/core';
 import {TuiNodeViewNg} from '@taiga-ui/editor/extensions/tiptap-node-view';
 import type {NodeViewProps} from '@tiptap/core';
 

@@ -1,12 +1,11 @@
+import type {AfterViewInit, OnInit} from '@angular/core';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DestroyRef,
     ElementRef,
     inject,
-    type OnInit,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
