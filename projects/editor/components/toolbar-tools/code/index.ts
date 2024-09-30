@@ -9,7 +9,8 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import {combineLatest, map, type Observable, of} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {combineLatest, map, of} from 'rxjs';
 
 @Component({
     standalone: true,
