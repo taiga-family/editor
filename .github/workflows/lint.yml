@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
+        with:
+          persist-credentials: false
       - uses: taiga-family/ci/actions/setup/variables@v1.87.6
       - uses: taiga-family/ci/actions/setup/node@v1.87.6
       - run: |
@@ -28,5 +30,5 @@ jobs:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
-  group: lint-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

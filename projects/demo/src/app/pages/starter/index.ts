@@ -92,10 +92,6 @@ export default class TuiEditorStarter {
     }
 
     protected set disabled(value: boolean) {
-        if (value) {
-            this.control.disable();
-        } else {
-            this.control.enable();
-        }
+        this.control?.[value ? 'disable' : 'enable']();
     }
 }

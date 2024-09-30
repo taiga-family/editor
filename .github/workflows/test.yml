@@ -21,5 +21,5 @@ jobs:
           name: editor
 
 concurrency:
-  group: test-${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
