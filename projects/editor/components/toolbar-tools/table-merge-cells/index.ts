@@ -1,11 +1,11 @@
 import {AsyncPipe} from '@angular/common';
+import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
     Input,
-    type OnInit,
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
