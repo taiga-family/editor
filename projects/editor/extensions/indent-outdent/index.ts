@@ -7,6 +7,7 @@ export function tuiIsOrderedOrBulletList(editor: Editor): boolean {
 
 export const TuiTabExtension = Extension.create({
     name: 'indent',
+    priority: 50,
 
     addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {
         return {
