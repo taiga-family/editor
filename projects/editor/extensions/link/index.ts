@@ -28,14 +28,8 @@ function getCurrentWordBounds(editor: Editor): Range {
             '\uFFFC',
         );
 
-        const wordBefore = textBefore
-            .replaceAll(/\uFFFC/g, '')
-            .split(/\b/)
-            .pop();
-        const wordAfter = textAfter
-            .replaceAll(/\uFFFC/g, '')
-            .split(/\b/)
-            .shift();
+        const wordBefore = textBefore.replaceAll('￼', '').split(/\b/).pop();
+        const wordAfter = textAfter.replaceAll('￼', '').split(/\b/).shift();
 
         const from = pos - (wordBefore?.length ?? 0);
         const to = pos + (wordAfter?.length ?? 0);
