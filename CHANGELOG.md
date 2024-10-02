@@ -1,3 +1,23 @@
+### [4.13.0](https://github.com/taiga-family/editor/compare/v4.12.0...v4.13.0) (2024-10-02)
+
+### 🚀 Features
+
+- replace `exampleText` config with `placeholder` (#1494)
+  [(525c16f)](https://github.com/taiga-family/editor/commit/525c16f29884b9574ded0f880a8a9a63f7557792)
+
+### 🐞 Bug Fixes
+
+- fix inserting hard break with Shift+Enter shortcut after paragraph (#1496)
+  [(08879d2)](https://github.com/taiga-family/editor/commit/08879d26a53e4c9548248ac4981505d9f9ad5d36)
+- fix link editor's button tooltip text (#1495)
+  [(d4afbce)](https://github.com/taiga-family/editor/commit/d4afbce70ae385d3942ffbe1551fdff93faf3a38)
+- make `TuiTabExtension` independent of import order (#1483)
+  [(b21eeb6)](https://github.com/taiga-family/editor/commit/b21eeb60aaba439498ebc056b89ec4387f57f0cc)
+- fix link editor's input auto-focus (#1482)
+  [(0c0ce47)](https://github.com/taiga-family/editor/commit/0c0ce47a2362b7f5add513d999035c983a2f8cbe)
+- **deps**: update tiptap to &gt;=2.8.0 (#1478)
+  [(ca5b160)](https://github.com/taiga-family/editor/commit/ca5b160bdfdfb185bbddd842bb22787e0cd4b737)
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See
