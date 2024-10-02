@@ -29,11 +29,13 @@ function getCurrentWordBounds(editor: Editor): Range {
         );
 
         const wordBefore = textBefore
-            .replaceAll(/\uFFFC/, '')
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replaceAll(/\uFFFC/g, '')
             .split(/\b/)
             .pop();
         const wordAfter = textAfter
-            .replaceAll(/\uFFFC/, '')
+            // eslint-disable-next-line unicorn/prefer-string-replace-all
+            .replaceAll(/\uFFFC/g, '')
             .split(/\b/)
             .shift();
 
