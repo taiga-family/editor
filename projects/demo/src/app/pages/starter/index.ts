@@ -65,7 +65,7 @@ export default class TuiEditorStarter {
         </p>
     `);
 
-    protected exampleText = '';
+    protected placeholder = '';
     protected minHeight = '';
     protected maxHeight = '';
 

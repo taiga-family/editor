@@ -79,13 +79,18 @@ export interface TuiEditorOptions {
     readonly translate: 'no' | 'yes';
     readonly tools: Set<TuiEditorToolType> | readonly TuiEditorToolType[];
     readonly floatingToolbar: boolean;
+    /**
+     * @deprecated use placeholder
+     */
     readonly exampleText: string;
+    readonly placeholder: string;
 }
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: 'no',
     spellcheck: false,
     exampleText: '',
+    placeholder: '',
     enableDefaultStyles: true,
     tools: TUI_EDITOR_DEFAULT_TOOLS,
     colors: TUI_EDITOR_DEFAULT_EDITOR_COLORS,
