@@ -12,17 +12,17 @@
             <ng-content select="tools" />
         </tui-toolbar>
         <div
-            class="t-editor-placeholder"
+            class="t-editor-label"
             (mousedown)="focus($event)"
         >
             <ng-content />
         </div>
         <div
-            *ngIf="hasExampleText"
+            *ngIf="hasPlaceholder"
             class="t-editor-example-text"
             (mousedown)="focus($event)"
         >
-            {{ exampleText }}
+            {{ placeholder || exampleText }}
         </div>
     </div>
 

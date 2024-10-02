@@ -144,8 +144,14 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
      */
     protected firstInitialValue = '';
 
+    /**
+     * @deprecated use placeholder
+     */
     @Input()
     public exampleText = this.options.exampleText;
+
+    @Input()
+    public placeholder = this.options.placeholder;
 
     @Input()
     public floatingToolbar = this.options.floatingToolbar;
@@ -243,8 +249,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             : this.openDropdownWhen;
     }
 
-    protected get hasExampleText(): boolean {
-        return !!this.exampleText && !this.value() && !this.readOnly();
+    protected get hasPlaceholder(): boolean {
+        return (
+            !!(this.placeholder || this.exampleText) && !this.value() && !this.readOnly()
+        );
     }
 
     protected get isLinkSelected(): boolean {

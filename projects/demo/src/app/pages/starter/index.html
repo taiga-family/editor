@@ -6,9 +6,9 @@
         <tui-doc-demo [sticky]="false">
             <div class="container">
                 <tui-editor
-                    [exampleText]="exampleText"
                     [floatingToolbar]="floating"
                     [formControl]="control"
+                    [placeholder]="placeholder"
                     [readOnly]="readOnly"
                     [style.max-height]="maxHeight"
                     [style.min-height]="minHeight"
@@ -81,11 +81,11 @@
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
-                documentationPropertyName="exampleText"
+                documentationPropertyName="placeholder"
                 documentationPropertyType="string"
-                [(documentationPropertyValue)]="exampleText"
+                [(documentationPropertyValue)]="placeholder"
             >
-                Example text shown on empty focused input
+                Placeholder shown on empty focused input
             </ng-template>
             <ng-template
                 documentationPropertyMode="input"
