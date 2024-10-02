@@ -20,6 +20,7 @@ import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     TuiActiveZone,
+    tuiAutoFocusOptionsProvider,
     TuiControl,
     tuiInjectElement,
     tuiWatch,
@@ -27,6 +28,7 @@ import {
 } from '@taiga-ui/cdk';
 import type {TuiDropdownDirective} from '@taiga-ui/core';
 import {
+    TUI_ANIMATIONS_DEFAULT_DURATION,
     TUI_APPEARANCE_OPTIONS,
     TuiAppearance,
     tuiAppearanceFocus,
@@ -81,6 +83,10 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
             provide: TUI_APPEARANCE_OPTIONS,
             useValue: {appearance: 'textfield'},
         },
+        tuiAutoFocusOptionsProvider({
+            delay: TUI_ANIMATIONS_DEFAULT_DURATION,
+            query: '[contenteditable].ProseMirror, input:not(.t-image, .t-file-upload), textarea, select',
+        }),
     ],
     hostDirectives: [
         {
