@@ -18,11 +18,6 @@
 - **deps**: update tiptap to &gt;=2.8.0 (#1478)
   [(ca5b160)](https://github.com/taiga-family/editor/commit/ca5b160bdfdfb185bbddd842bb22787e0cd4b737)
 
-# Changelog
-
-All notable changes to this project will be documented in this file. See
-[`conventional commits`](https://www.conventionalcommits.org/) guidelines.
-
 ### [4.12.0](https://github.com/taiga-family/editor/compare/v4.11.0...v4.12.0) (2024-09-27)
 
 ### 🐞 Bug Fixes

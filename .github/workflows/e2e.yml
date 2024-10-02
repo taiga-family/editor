@@ -4,7 +4,6 @@ on:
 
 jobs:
   e2e:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E
     runs-on: ubuntu-latest
     steps:
