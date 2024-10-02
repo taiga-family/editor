@@ -29,11 +29,11 @@ function getCurrentWordBounds(editor: Editor): Range {
         );
 
         const wordBefore = textBefore
-            .replaceAll(/\uFFFC/, '')
+            .replaceAll(/\uFFFC/g, '')
             .split(/\b/)
             .pop();
         const wordAfter = textAfter
-            .replaceAll(/\uFFFC/, '')
+            .replaceAll(/\uFFFC/g, '')
             .split(/\b/)
             .shift();
 
