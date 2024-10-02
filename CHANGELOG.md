@@ -1,3 +1,12 @@
+### [4.14.0](https://github.com/taiga-family/editor/compare/v4.13.0...v4.14.0) (2024-10-02)
+
+### 🚀 Features
+
+- ignore announce when release was skip
+  [(edf18d1)](https://github.com/taiga-family/editor/commit/edf18d1693eb27e803386f4ca5615557693e8e71)
+- keyboard shortcut for adding links (#1497)
+  [(681b1ec)](https://github.com/taiga-family/editor/commit/681b1ec1859cd1f9658905e20e1a38895208f23d)
+
 ### [4.13.0](https://github.com/taiga-family/editor/compare/v4.12.0...v4.13.0) (2024-10-02)
 
 ### 🚀 Features
