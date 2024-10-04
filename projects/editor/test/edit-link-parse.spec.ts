@@ -106,9 +106,9 @@ describe('tuiEditLinkParseUrl', () => {
             path: 'taiga-ui.dev',
         });
 
-        expect(tuiEditLinkParseUrl('https://tinkoff-group.com/')).toEqual({
+        expect(tuiEditLinkParseUrl('https://bank.com/')).toEqual({
             prefix: 'https://',
-            path: 'tinkoff-group.com/',
+            path: 'bank.com/',
         });
 
         expect(tuiEditLinkParseUrl('www.jsowl.com')).toEqual({
