@@ -57,10 +57,8 @@ import {mergeAttributes} from '@tiptap/core';
                 import('@taiga-ui/editor').then(({TuiStarterKit}) =>
                     TuiStarterKit.configure({heading: false}),
                 ),
-                import('@tiptap/extension-text-style').then(
-                    ({default: TextStyle}) => TextStyle,
-                ),
-                import('@tiptap/extension-heading').then(({default: Heading}) =>
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
+                import('@tiptap/extension-heading').then(({Heading}) =>
                     Heading.configure({levels: [1, 2, 3, 4, 5, 6]})
                         // @note: if you want to add custom css classes
                         // then you need customize Heading extension

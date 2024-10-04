@@ -20,12 +20,10 @@ import {
             provide: TUI_EDITOR_EXTENSIONS,
             useValue: [
                 import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
+                import('@tiptap/extension-text-align').then(({TextAlign}) =>
                     TextAlign.configure({types: ['heading', 'paragraph']}),
                 ),
-                import('@tiptap/extension-text-style').then(
-                    ({default: TextStyle}) => TextStyle,
-                ),
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
                 import('@tiptap/extension-highlight').then(({Highlight}) =>
                     Highlight.configure({
                         multicolor: true,

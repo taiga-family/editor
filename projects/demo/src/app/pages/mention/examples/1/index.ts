@@ -23,9 +23,7 @@ import {Mentions} from './mention';
             useValue: [
                 import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
                 import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@tiptap/extension-text-style').then(
-                    ({default: TextStyle}) => TextStyle,
-                ),
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
                 import('@taiga-ui/editor').then(({TuiMention}) => TuiMention),
             ],
         },

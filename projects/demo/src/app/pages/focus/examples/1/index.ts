@@ -23,20 +23,14 @@ import {
                     .then((extension) =>
                         extension.configure({heading: {levels: [1, 2]}}),
                     ),
-                import('@tiptap/extension-text-align').then(({default: TextAlign}) =>
+                import('@tiptap/extension-text-align').then(({TextAlign}) =>
                     TextAlign.configure({types: ['heading', 'paragraph']}),
                 ),
-                import('@tiptap/extension-text-style').then(
-                    ({default: TextStyle}) => TextStyle,
-                ),
-                import('@tiptap/extension-underline').then(
-                    ({default: Underline}) => Underline,
-                ),
-                import('@tiptap/extension-subscript').then(
-                    ({default: Subscript}) => Subscript,
-                ),
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
+                import('@tiptap/extension-underline').then(({Underline}) => Underline),
+                import('@tiptap/extension-subscript').then(({Subscript}) => Subscript),
                 import('@tiptap/extension-superscript').then(
-                    ({default: Superscript}) => Superscript,
+                    ({Superscript}) => Superscript,
                 ),
                 import('@taiga-ui/editor').then(({TuiFontColor}) => TuiFontColor),
                 import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
@@ -48,12 +42,8 @@ import {
                 import('@taiga-ui/editor').then(({TuiTable}) =>
                     TuiTable.configure({resizable: true}),
                 ),
-                import('@tiptap/extension-table-row').then(
-                    ({default: TableRow}) => TableRow,
-                ),
-                import('@tiptap/extension-table-cell').then(
-                    ({default: TableCell}) => TableCell,
-                ),
+                import('@tiptap/extension-table-row').then(({TableRow}) => TableRow),
+                import('@tiptap/extension-table-cell').then(({TableCell}) => TableCell),
                 import('@tiptap/extension-table-header').then(
                     ({TableHeader}) => TableHeader,
                 ),
