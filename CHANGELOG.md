@@ -1,3 +1,10 @@
+### [4.15.0](https://github.com/taiga-family/editor/compare/v4.14.0...v4.15.0) (2024-10-04)
+
+### 🐞 Bug Fixes
+
+- default export (#1505)
+  [(8c7efd6)](https://github.com/taiga-family/editor/commit/8c7efd68137c731457d4169dd091f6a7d3d0beea)
+
 ### [4.14.0](https://github.com/taiga-family/editor/compare/v4.13.0...v4.14.0) (2024-10-02)
 
 ### 🚀 Features
