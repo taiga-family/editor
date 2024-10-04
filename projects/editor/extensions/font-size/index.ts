@@ -1,7 +1,4 @@
 import {Extension} from '@tiptap/core';
-import type * as ExtensionTextStyleType from '@tiptap/extension-text-style';
-
-export type {ExtensionTextStyleType};
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -14,6 +11,13 @@ declare module '@tiptap/core' {
              * Unset the font size
              */
             unsetFontSize: () => ReturnType;
+        };
+        textStyle: {
+            /**
+             * Remove spans without inline style attributes.
+             * @example editor.commands.removeEmptyTextStyle()
+             */
+            removeEmptyTextStyle: () => ReturnType;
         };
     }
 }

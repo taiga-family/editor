@@ -1,5 +1,5 @@
 import {mergeAttributes} from '@tiptap/core';
-import TableCell from '@tiptap/extension-table-cell';
+import {TableCell} from '@tiptap/extension-table-cell';
 
 export const TuiTableCell = TableCell.extend({
     renderHTML({HTMLAttributes}) {

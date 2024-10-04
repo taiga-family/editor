@@ -1,6 +1,6 @@
-import YoutubeExtension from '@tiptap/extension-youtube';
+import {Youtube} from '@tiptap/extension-youtube';
 
-export const TuiYoutube = YoutubeExtension.extend({}).configure({
+export const TuiYoutube = Youtube.extend({}).configure({
     autoplay: false,
     ccLanguage: 'en',
     interfaceLanguage: 'en',
