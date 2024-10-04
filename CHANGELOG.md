@@ -444,9 +444,6 @@
 
 ### 🚀 Features
 
-- use tbank scope (#1082)
-  [(9a98316)](https://github.com/taiga-family/editor/commit/9a9831662794c7c83a49f893d81e3fd411e5291e)
-
 ### [2.0.19-alpha.0](https://github.com/taiga-family/editor/compare/v2.0.18-alpha.0...v2.0.19-alpha.0) (2024-06-04)
 
 ### 🚀 Features
@@ -825,8 +822,6 @@
 ### [1.33.0](https://github.com/taiga-family/editor/compare/v1.32.0...v1.33.0) (2024-06-05)
 
 ### 🚀 Features
-
-- use tbank scope [(0c9f15b)](https://github.com/taiga-family/editor/commit/0c9f15b1509820af77b6fd858387683e3249eb82)
 
 ### [1.32.0](https://github.com/taiga-family/editor/compare/v1.31.0...v1.32.0) (2024-05-29)
 
