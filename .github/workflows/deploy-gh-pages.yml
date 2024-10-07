@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.93.1
-      - uses: taiga-family/ci/actions/setup/node@v1.93.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.93.2
+      - uses: taiga-family/ci/actions/setup/node@v1.93.2
       - run: npx nx prerender editor-demo -c github
-      - uses: taiga-family/ci/actions/deploy/github-pages@v1.93.1
+      - uses: taiga-family/ci/actions/deploy/github-pages@v1.93.2
         with:
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
           folder: dist/demo/browser
