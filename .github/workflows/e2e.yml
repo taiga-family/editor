@@ -36,7 +36,7 @@ jobs:
       - run: npx nx e2e editor-demo-playwright
         continue-on-error: true
 
-      - uses: actions/upload-artifact@v4.4.0
+      - uses: actions/upload-artifact@v4.4.1
         with:
           path: ./projects/demo-playwright/tests-results/**/*-diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
