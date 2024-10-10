@@ -1,0 +1,27 @@
+name: Devcontainer
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+permissions:
+  contents: read
+
+jobs:
+  devcontainer-test:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft != true
+    steps:
+      - uses: actions/checkout@v4.2.1
+      - uses: taiga-family/ci/actions/setup/variables@v1.93.2
+      - uses: taiga-family/ci/actions/setup/node@v1.93.2
+
+      - name: Build and run dev container task
+        uses: devcontainers/ci@v0.3.1900000349
+        with:
+          runCmd: npx nx build editor-demo
