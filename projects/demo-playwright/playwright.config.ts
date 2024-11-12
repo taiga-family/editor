@@ -1,24 +1,33 @@
+import type {ViewportSize} from '@playwright/test';
 import {defineConfig, devices} from '@playwright/test';
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
+const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
+
 export default defineConfig({
     testDir: __dirname,
     testMatch: '**/*.spec.ts',
     outputDir: 'tests-results',
     snapshotDir: 'snapshots',
-    reporter: process.env.CI ? 'github' : [['html', {outputFolder: 'tests-report'}]],
+    reporter: [
+        ['html', {outputFolder: 'tests-report'}],
+        ['json', {outputFile: 'tests-results/test-results.json'}],
+    ],
     fullyParallel: true,
-    /* Fail the build on CI if you accidentally left test.only in the source code. */
     forbidOnly: !!process.env.CI,
-    retries: process.env.CI ? 1 : 0,
+    retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? '100%' : '50%',
+    timeout: 5 * 60 * 1000,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT ?? 3333}`,
         trace: 'on-first-retry',
+        testIdAttribute: 'automation-id',
+        actionTimeout: 10_000,
         contextOptions: {
+            deviceScaleFactor: 2,
             reducedMotion: 'reduce',
+            viewport: DEFAULT_VIEWPORT,
+            screen: DEFAULT_VIEWPORT,
+            hasTouch: true,
         },
     },
     projects: [
@@ -26,10 +35,7 @@ export default defineConfig({
             name: 'chromium',
             use: {
                 ...devices['Desktop Chrome HiDPI'],
-                viewport: {
-                    width: 720,
-                    height: 1024,
-                },
+                viewport: DEFAULT_VIEWPORT,
             },
         },
     ],

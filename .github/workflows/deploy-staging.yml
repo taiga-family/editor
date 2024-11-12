@@ -1,23 +1,22 @@
-name: 🚀 Deploy / preview
+name: 🚀 Deploy
 on: pull_request
 
 jobs:
-  build_and_preview:
-    name: Firebase
+  staging:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.93.5
       - uses: taiga-family/ci/actions/setup/node@v1.93.5
       - run: npx nx build editor-demo
-      - name: Deploy preview
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0.9.0
         continue-on-error: true
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
         with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-editor
+          target: taiga-editor
           expires: 1d
 
 concurrency:
