@@ -29,6 +29,8 @@ test.describe('Anchors', () => {
                 .last()
                 .click();
 
+            await page.waitForTimeout(300);
+
             await expect(page).toHaveScreenshot(`Anchors-02-${anchor}.png`);
         }
     });

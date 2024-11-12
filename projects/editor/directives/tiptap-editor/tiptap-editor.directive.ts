@@ -15,19 +15,17 @@ export class TuiTiptapEditor {
 
     protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
 
+    protected readonly $ = inject(TIPTAP_EDITOR)
+        .pipe(takeUntilDestroyed())
+        .subscribe(() =>
+            this.renderer.appendChild(this.el.nativeElement, this.editorContainer),
+        );
+
     @Output()
     public readonly valueChange = this.editor.valueChange$;
 
     @Output()
     public readonly stateChange = this.editor.stateChange$;
-
-    constructor() {
-        inject(TIPTAP_EDITOR)
-            .pipe(takeUntilDestroyed())
-            .subscribe(() =>
-                this.renderer.appendChild(this.el.nativeElement, this.editorContainer),
-            );
-    }
 
     @Input()
     public set value(value: string) {
