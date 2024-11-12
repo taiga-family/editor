@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgIf, NgTemplateOutlet} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,6 +11,7 @@ import {
     Input,
     NgZone,
     Output,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -61,7 +62,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
     standalone: true,
     selector: 'tui-editor',
     imports: [
-        AsyncPipe,
         NgIf,
         NgTemplateOutlet,
         TuiDropdown,
@@ -123,9 +123,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected readonly toolbar?: TuiToolbar;
 
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
 
-    protected sub = this.editorLoaded$
+    protected readonly $ = this.editorLoaded$
         .pipe(delay(0), takeUntilDestroyed())
         .subscribe(() => {
             this.hasMentionPlugin = !!this.editorService
@@ -136,6 +137,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
             this.patchContentEditableElement();
             this.listenResizeEvents();
+            this.editorLoaded.set(true);
         });
 
     /**
