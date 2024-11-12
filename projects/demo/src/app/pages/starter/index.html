@@ -18,6 +18,17 @@
                     Start typing
                 </tui-editor>
 
+                <button
+                    appearance="outline"
+                    size="s"
+                    tuiButton
+                    type="button"
+                    class="tui-space_top-3"
+                    (click)="control.setValue('')"
+                >
+                    Reset
+                </button>
+
                 <ng-container *ngIf="preview">
                     <h4>HTML:</h4>
                     <tui-editor-socket
