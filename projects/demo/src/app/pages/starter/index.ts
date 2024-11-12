@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/cor
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiLink} from '@taiga-ui/core';
 import type {TuiEditorToolType} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
@@ -22,6 +22,7 @@ import {
         ReactiveFormsModule,
         TuiAddonDoc,
         TuiAutoFocus,
+        TuiButton,
         TuiEditor,
         TuiEditorSocket,
         TuiLink,
