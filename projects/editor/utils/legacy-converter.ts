@@ -7,12 +7,12 @@ function migration(element: Element): void {
         if (child.tagName === 'FONT') {
             if (child.hasAttribute('size')) {
                 switch (child.getAttribute('size')) {
-                    case '6': {
-                        migrateHeading('h1', child);
+                    case '2': {
+                        migrateParagraph('13px', child);
                         break;
                     }
-                    case '5': {
-                        migrateHeading('h2', child);
+                    case '3': {
+                        migrateParagraph('15px', child);
                         break;
                     }
 
@@ -21,13 +21,13 @@ function migration(element: Element): void {
                         break;
                     }
 
-                    case '3': {
-                        migrateParagraph('15px', child);
+                    case '5': {
+                        migrateHeading('h2', child);
                         break;
                     }
 
-                    case '2': {
-                        migrateParagraph('13px', child);
+                    case '6': {
+                        migrateHeading('h1', child);
                         break;
                     }
                     default:
