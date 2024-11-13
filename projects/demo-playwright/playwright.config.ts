@@ -44,6 +44,10 @@ export default defineConfig({
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
+            threshold: 0.02,
+        },
+        toMatchSnapshot: {
+            threshold: 0.02,
         },
     },
 });

@@ -46,6 +46,7 @@ export const TUI_EDITOR_PROVIDERS = [
             LAZY_TIPTAP_EDITOR,
             WA_WINDOW,
         ],
+        // eslint-disable-next-line @typescript-eslint/max-params
         useFactory: (
             element: HTMLElement,
             extensions: Observable<Array<Extension | Mark | Node>>,

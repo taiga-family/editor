@@ -24,7 +24,9 @@
                 [iconStart]="options.icons.textAlignLeft"
                 [tuiHint]="(texts$ | async)?.justifyLeft"
                 (click)="editor?.onAlign('left')"
-            ></button>
+            >
+                Left align
+            </button>
             <button
                 appearance="icon"
                 size="s"
@@ -34,7 +36,9 @@
                 [iconStart]="options.icons.textAlignCenter"
                 [tuiHint]="(texts$ | async)?.justifyCenter"
                 (click)="editor?.onAlign('center')"
-            ></button>
+            >
+                Center align
+            </button>
             <button
                 appearance="icon"
                 size="s"
@@ -44,7 +48,9 @@
                 [iconStart]="options.icons.textAlignRight"
                 [tuiHint]="(texts$ | async)?.justifyRight"
                 (click)="editor?.onAlign('right')"
-            ></button>
+            >
+                Right align
+            </button>
             <button
                 appearance="icon"
                 size="s"
@@ -54,7 +60,9 @@
                 [iconStart]="options.icons.textAlignJustify"
                 [tuiHint]="(texts$ | async)?.justifyFull"
                 (click)="editor?.onAlign('justify')"
-            ></button>
+            >
+                Justify align
+            </button>
         </div>
     </ng-template>
 </div>

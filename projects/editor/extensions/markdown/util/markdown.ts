@@ -3,6 +3,13 @@ import markdownIt from 'markdown-it';
 
 const md = markdownIt();
 
+interface TrimOptions {
+    text: string;
+    delim: string;
+    from: number;
+    to: number;
+}
+
 function scanDelims(text: string, pos: number): StateInline.Scanned {
     // @ts-ignore
     md.inline.State.prototype.scanDelims.call({src: text, posMax: text.length});
@@ -12,7 +19,8 @@ function scanDelims(text: string, pos: number): StateInline.Scanned {
     return state.scanDelims(pos, true);
 }
 
-function trimStart(text: string, delim: string, from: number, to: number): any {
+function trimStart(options: TrimOptions): any {
+    const {text, delim, from, to} = options;
     let pos = from;
     let res = text;
 
@@ -21,14 +29,16 @@ function trimStart(text: string, delim: string, from: number, to: number): any {
             break;
         }
 
-        res = tuiShiftDelim(res, delim, pos, 1);
+        res = tuiShiftDelim({text: res, delim, start: pos, offset: 1});
         pos++;
     }
 
     return {text: res, from: pos, to};
 }
 
-function trimEnd(text: string, delim: string, from: number, to: number): any {
+function trimEnd(options: TrimOptions): any {
+    const {text, delim, from, to} = options;
+
     let pos = to;
     let res = text;
 
@@ -37,27 +47,23 @@ function trimEnd(text: string, delim: string, from: number, to: number): any {
             break;
         }
 
-        res = tuiShiftDelim(res, delim, pos, -1);
+        res = tuiShiftDelim({text: res, delim, start: pos, offset: -1});
         pos--;
     }
 
     return {text: res, from, to: pos};
 }
 
-export function tuiTrimInline(
-    text: string,
-    delim: string,
-    from: number,
-    to: number,
-): string {
+export function tuiTrimInline(options: TrimOptions): string {
+    const {text, delim, from, to} = options;
     let state = {
         text,
         from,
         to,
     };
 
-    state = trimStart(state.text, delim, state.from, state.to);
-    state = trimEnd(state.text, delim, state.from, state.to);
+    state = trimStart({text: state.text, delim, from: state.from, to: state.to});
+    state = trimEnd({text: state.text, delim, from: state.from, to: state.to});
 
     if (state.to - state.from < delim.length + 1) {
         state.text =
@@ -68,12 +74,15 @@ export function tuiTrimInline(
     return state.text;
 }
 
-export function tuiShiftDelim(
-    text: string,
-    delim: string,
-    start: number,
-    offset: number,
-): string {
+interface Options {
+    text: string;
+    delim: string;
+    start: number;
+    offset: number;
+}
+
+export function tuiShiftDelim(options: Options): string {
+    const {text, delim, start, offset} = options;
     let res =
         text.slice(0, Math.max(0, start)) + text.slice(Math.max(0, start + delim.length));
 

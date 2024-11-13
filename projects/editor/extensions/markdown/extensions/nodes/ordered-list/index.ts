@@ -23,6 +23,7 @@ export default Node.create({
     addStorage() {
         return {
             markdown: {
+                // eslint-disable-next-line @typescript-eslint/max-params
                 serialize(state: any, node: ProseNode, parent: ProseNode, index: number) {
                     const start = node.attrs.start || 1;
                     const maxW = String(start + node.childCount - 1).length;

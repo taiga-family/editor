@@ -9,6 +9,7 @@ export default Node.create({
     addStorage() {
         return {
             markdown: {
+                // eslint-disable-next-line @typescript-eslint/max-params
                 serialize(state: any, node: ProseNode, parent: ProseNode, index: number) {
                     for (let i = index + 1; i < parent.childCount; i++) {
                         if (parent.child(i).type !== node.type) {
