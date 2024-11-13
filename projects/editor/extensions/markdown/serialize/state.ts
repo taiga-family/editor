@@ -27,11 +27,17 @@ export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
         if (top?.start && top?.end) {
             const {delimiter, start, end} = this.normalizeInline(top);
 
-            this.out = tuiTrimInline(this.out, delimiter, start, end);
+            this.out = tuiTrimInline({
+                text: this.out,
+                delim: delimiter,
+                from: start,
+                to: end,
+            });
             this.inlines.pop();
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/max-params
     public override markString(
         mark: Mark,
         open: boolean,

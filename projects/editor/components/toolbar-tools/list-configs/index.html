@@ -27,7 +27,9 @@
                     [iconStart]="options.icons.listUnOrdered"
                     [tuiHint]="texts.unorderedList"
                     (click)="editor?.toggleUnorderedList()"
-                ></button>
+                >
+                    Unordered list
+                </button>
                 <button
                     appearance="icon"
                     automation-id="toolbar__ordered-list-button"
@@ -38,7 +40,9 @@
                     [iconStart]="options.icons.listOrdered"
                     [tuiHint]="texts.orderedList"
                     (click)="editor?.toggleOrderedList()"
-                ></button>
+                >
+                    Ordered list
+                </button>
                 <button
                     appearance="icon"
                     automation-id="toolbar__task-list-button"
@@ -48,7 +52,9 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.taskList"
                     (click)="editor?.toggleTaskList()"
-                ></button>
+                >
+                    Toggle task list
+                </button>
                 <button
                     appearance="icon"
                     automation-id="toolbar_indent-button"
@@ -59,7 +65,9 @@
                     [iconStart]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     (click)="sinkListItem()"
-                ></button>
+                >
+                    Sink list item
+                </button>
                 <button
                     appearance="icon"
                     automation-id="toolbar_outdent-button"
@@ -70,7 +78,9 @@
                     [iconStart]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     (click)="liftListItem()"
-                ></button>
+                >
+                    Lift list item
+                </button>
             </div>
         </ng-template>
     </div>
