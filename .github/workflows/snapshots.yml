@@ -11,7 +11,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.93.5
       - uses: taiga-family/ci/actions/setup/node@v1.93.5
 
-      - run: npx nx build editor-demo
+      - run: npx nx prerender editor-demo -c development
       - run: tree ${{ env.DIST }} -P '*.html'
 
       - id: info

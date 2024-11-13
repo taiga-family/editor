@@ -11,13 +11,11 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.93.5
       - uses: taiga-family/ci/actions/setup/node@v1.93.5
       - uses: taiga-family/ci/actions/setup/playwright@v1.93.5
-      - run: npx nx prerender editor-demo
+      - run: npx nx prerender editor-demo -c development
       - uses: taiga-family/ci/actions/run/serve@v1.93.5
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
-          replaceBaseUrlFrom: /editor/
-          replaceBaseUrlTo: /
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
@@ -30,8 +28,6 @@ jobs:
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
-          replaceBaseUrlFrom: /editor/
-          replaceBaseUrlTo: /
 
       - run: npx nx e2e editor-demo-playwright
         continue-on-error: true
