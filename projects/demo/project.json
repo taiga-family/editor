@@ -63,13 +63,12 @@
                     "vendorChunk": false,
                     "buildOptimizer": true
                 },
-                "ssr": {
-                    "baseHref": "/"
-                },
                 "github": {
                     "baseHref": "/editor/"
                 },
-                "development": {}
+                "development": {
+                    "baseHref": "/"
+                }
             },
             "defaultConfiguration": "production"
         },
@@ -130,7 +129,10 @@
                 "guessRoutes": false
             },
             "configurations": {
-                "production": {}
+                "production": {},
+                "development": {
+                    "browserTarget": "editor-demo:build:production,development"
+                }
             },
             "defaultConfiguration": "production",
             "dependsOn": [
