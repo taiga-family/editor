@@ -17,6 +17,7 @@
 
 # misc
 /coverage
+test-results.json
 *.log
 
 # System Files

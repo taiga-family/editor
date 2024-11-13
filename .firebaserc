@@ -1,0 +1,15 @@
+{
+  "projects": {},
+  "targets": {
+    "taiga-editor": {
+      "hosting": {
+        "taiga-editor": [
+          "taiga-editor"
+        ],
+        "taiga-editor-e2e-report": [
+          "taiga-editor-e2e-report"
+        ]
+      }
+    }
+  }
+}

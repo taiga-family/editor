@@ -6,6 +6,8 @@ jobs:
   e2e:
     name: E2E
     runs-on: ubuntu-latest
+    env:
+      PW_RESULT: ./projects/demo-playwright/tests-results
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.93.5
@@ -32,21 +34,44 @@ jobs:
       - run: npx nx e2e editor-demo-playwright
         continue-on-error: true
 
-      - uses: actions/upload-artifact@v4.4.3
+      - run: tree ${{ env.PW_RESULT }}
+      - name: Deploy e2e report
+        id: e2e-report
+        uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+        continue-on-error: true
         with:
-          path: ./projects/demo-playwright/tests-results/**/*-diff.png
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          target: taiga-editor-e2e-report
+          projectId: taiga-editor
+          disableComment: 'true'
+          expires: 1d
+
+      - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
+        uses: actions/upload-artifact@v4.4.3
+        id: artifact
+        with:
+          path: ${{ env.PW_RESULT }}/**/*-retry2/*-diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           if-no-files-found: ignore
           compression-level: 0
           retention-days: 1
 
-      - id: diff-checker
+      - name: Check if diff-output exists
+        id: diff_checker
         run: |
-          echo "diff_exist=$(find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
-      - if: ${{ steps.diff-checker.outputs.diff_exist != '0' }}
+          echo "diff_exist=$(find ${{ env.PW_RESULT }} -path '*retry2/*' -iname '*-diff.png' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+      - name: Fall with an error if diff-output exists
+        if: ${{ steps.diff_checker.outputs.diff_exist != '0' }}
         run: |
-          find ./projects/demo-playwright/tests-results -regex '.*diff\.png$' -exec echo "{}" \;
+          find ${{ env.PW_RESULT }} -path '*retry2/*' -iname '*-diff.png' -exec echo "{}" \;
           exit 1
+
+      - uses: daun/playwright-report-summary@v3.6.0
+        if: always()
+        with:
+          custom-info: 'For more information, [see our report](${{ steps.e2e-report.outputs.details_url }})'
+          report-file: ${{ env.PW_RESULT }}/test-results.json
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

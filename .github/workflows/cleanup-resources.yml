@@ -1,0 +1,34 @@
+name: 🤖 Cleanup resources after close PR
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  purge-cache:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: refs/pull/${{ github.event.number }}/merge
+    steps:
+      - uses: actions/checkout@v4.2.2
+        continue-on-error: true
+      - run: |
+          gh cache list --ref $BRANCH > cache.log && cat cache.log
+
+          for cacheId in $(gh cache list --ref $BRANCH --json id | jq -r .[].id); do
+              echo "> gh cache delete $cacheId"
+              gh cache delete $cacheId
+          done
+
+  delete-firebase-channel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: w9jds/firebase-action@v13.25.0
+        continue-on-error: true
+        with:
+          args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }} --force
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_TAIGA_PREVIEWS_SA }}
+          PROJECT_ID: taiga-editor
