@@ -2,12 +2,13 @@ name: ⚙️ E2E tests
 on:
   pull_request:
 
+env:
+  PW_RESULT: ./projects/demo-playwright/tests-results
+
 jobs:
   e2e:
     name: E2E
     runs-on: ubuntu-latest
-    env:
-      PW_RESULT: ./projects/demo-playwright/tests-results
     outputs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
@@ -49,6 +50,14 @@ jobs:
           disableComment: 'true'
           expires: 1d
 
+      - name: Upload report artifacts
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          path: ${{ env.PW_RESULT }}/test-results.json
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
+          compression-level: 0
+          retention-days: 1
+
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.4.3
         with:
@@ -73,6 +82,11 @@ jobs:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           merge-multiple: true
+      - uses: actions/download-artifact@v4.1.8
+        with:
+          path: ${{ env.PW_RESULT }}
+          name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
+
       - run: tree ${{ env.PW_RESULT }} || echo "not found"
 
       - name: Check if diff-output exists
