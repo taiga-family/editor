@@ -175,4 +175,13 @@ describe('tuiEditLinkParseUrl', () => {
             path: 'hello/world',
         });
     });
+
+    it('nested', () => {
+        expect(
+            tuiEditLinkParseUrl('https://google.com?utm_source=https://yahoo.com'),
+        ).toEqual({
+            prefix: 'https://',
+            path: 'google.com?utm_source=https://yahoo.com',
+        });
+    });
 });
