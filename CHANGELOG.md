@@ -1,3 +1,19 @@
+### [4.16.0](https://github.com/taiga-family/editor/compare/v4.15.0...v4.16.0) (2024-11-18)
+
+### 🚀 Features
+
+- drop implicit depend on baseHref behaviour (#1564)
+  [(e042393)](https://github.com/taiga-family/editor/commit/e04239360b517c032814405db91fa7ef494e980b)
+- drop editor loaded async pipe (#1560)
+  [(a33e71a)](https://github.com/taiga-family/editor/commit/a33e71ac7fcddd3c294f4bc73e93d5a046f2dbd8)
+
+### 🐞 Bug Fixes
+
+- the value in the component is incorrectly updated when it is passed as an empty string using formControl (#1558)
+  [(3493434)](https://github.com/taiga-family/editor/commit/349343478334d43784163b6ff311b13772925342)
+- don't focus blank color, because it's default (#1563)
+  [(48e4671)](https://github.com/taiga-family/editor/commit/48e46716593b5a40c7444f69dee6e532a5df3759)
+
 ### [4.15.0](https://github.com/taiga-family/editor/compare/v4.14.0...v4.15.0) (2024-10-04)
 
 ### 🐞 Bug Fixes
