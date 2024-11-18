@@ -158,6 +158,15 @@ export class TuiEditLink {
         this.url = this.removePrefix(url);
     }
 
+    protected onBlur(url: string): void {
+        const range = this.editor?.getSelectionSnapshot();
+
+        if (range && !url) {
+            this.editor?.setTextSelection({from: range.anchor, to: range.head});
+            this.editor?.toggleLink('');
+        }
+    }
+
     protected onClear(): void {
         this.url = '';
     }

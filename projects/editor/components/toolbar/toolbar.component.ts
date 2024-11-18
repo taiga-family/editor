@@ -274,6 +274,7 @@ export class TuiToolbar {
     }
 
     protected onLink(url?: string): void {
+        this.editor?.takeSelectionSnapshot();
         this.editor?.toggleLink(url ?? '');
     }
 
