@@ -4,6 +4,7 @@ import type {
     TuiEditableIframe,
     TuiEditableImage,
     TuiEditorAttachedFile,
+    TuiSelectionSnapshot,
     TuiYoutubeOptions,
 } from '@taiga-ui/editor/common';
 import {
@@ -28,6 +29,8 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef: Observable<Editor | null> = inject(TIPTAP_EDITOR);
 
     protected editor?: Editor;
+
+    protected selectionSnapshot: TuiSelectionSnapshot | null = null;
 
     constructor() {
         super();
@@ -428,6 +431,14 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     public getHTML(): string {
         return this.getOriginTiptapEditor()?.getHTML() ?? '';
+    }
+
+    public takeSelectionSnapshot(): void {
+        this.selectionSnapshot = this.editor?.state.selection.toJSON() ?? null;
+    }
+
+    public getSelectionSnapshot(): TuiSelectionSnapshot | null {
+        return this.selectionSnapshot;
     }
 }
 

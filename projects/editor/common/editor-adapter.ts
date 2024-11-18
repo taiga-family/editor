@@ -9,6 +9,11 @@ import type {TuiEditorAttachedFile} from './attached';
 import type {TuiEditableIframe} from './iframe';
 import type {TuiYoutubeOptions} from './youtube';
 
+export interface TuiSelectionSnapshot {
+    anchor: number;
+    head: number;
+}
+
 @Directive()
 export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
@@ -82,6 +87,8 @@ export abstract class AbstractTuiEditor {
     public abstract destroy(): void;
     public abstract selectClosest(): void;
     public abstract focus(): void;
+    public abstract takeSelectionSnapshot(): void;
+    public abstract getSelectionSnapshot(): TuiSelectionSnapshot | null;
     public abstract setValue(value: string): void;
     public abstract setCellColor(color: string): void;
     public abstract getOriginTiptapEditor(): Editor | null;

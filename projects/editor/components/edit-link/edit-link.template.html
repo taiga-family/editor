@@ -23,7 +23,10 @@
                     <ng-container *ngIf="texts$ | async as text">
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     </ng-container>
-                    <input [(ngModel)]="url" />
+                    <input
+                        [(ngModel)]="url"
+                        (blur)="onBlur(url)"
+                    />
                 </tui-input-inline>
             </div>
         </label>
