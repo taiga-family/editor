@@ -137,6 +137,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
             this.patchContentEditableElement();
             this.listenResizeEvents();
+            this.editorService.setValue(this.firstInitialValue);
             this.editorLoaded.set(true);
         });
 
@@ -234,6 +235,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
         if (!this.focused()) {
             this.doc?.getSelection?.()?.removeAllRanges();
+        }
+
+        if (this.editorLoaded()) {
+            this.editorService.setValue(processed ?? '');
         }
     }
 
