@@ -1,4 +1,3 @@
-import {tuiIsValidUrl} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER,
@@ -10,7 +9,8 @@ interface TuiEditLinkParsed {
     prefix: string;
 }
 
-function splitOsiProtocol(url = ''): Array<string | undefined> {
+function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
+    const [url = '', queryParams = ''] = rawUrl.split(/\?/) ?? [];
     const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER) ?? -1;
     const [prefix, path] =
         protocolPosition > -1
@@ -25,18 +25,25 @@ function splitOsiProtocol(url = ''): Array<string | undefined> {
                   ),
               ]
             : ['', url];
-    const result = [prefix, path].filter(Boolean);
 
-    return path?.includes('://') && result.length > 1 ? splitOsiProtocol(path) : result;
+    const pathWithQueries = path + (queryParams.length ? `?${queryParams}` : '');
+    const result = [prefix, pathWithQueries].filter(Boolean);
+
+    return path?.includes('://') && result.length > 1
+        ? splitOsiProtocol(pathWithQueries)
+        : result;
 }
 
-function splitSimpleProtocol(url = ''): Array<string | undefined> {
+function splitSimpleProtocol(rawUrl = ''): Array<string | undefined> {
+    const [url = '', queryParams = ''] = rawUrl.split(/\?/) ?? [];
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
     const hardUrl = // https://domain.com/path:some:schema:data:test
         (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||
         (url.includes('?') && url.lastIndexOf(':') > url.indexOf('?'));
 
-    return !hardUrl && prefix && path && !tuiIsValidUrl(url) ? [`${prefix}:`, path] : [];
+    return !hardUrl && prefix && path && !isValidUrl(url)
+        ? [`${prefix}:`, path + (queryParams.length ? `?${queryParams}` : '')]
+        : [];
 }
 
 export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
@@ -65,4 +72,19 @@ export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
     }
 
     return {prefix, path: prefix === '' ? url : path};
+}
+
+/**
+ * @internal
+ */
+function isValidUrl(url: string): boolean {
+    return new RegExp(
+        String.raw`^([a-zA-Z]+:\/\/)?` + // protocol
+            String.raw`((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|localhost|` + // domain name
+            String.raw`((\d{1,3}\.){3}\d{1,3}))` + // OR IP (v4) address
+            String.raw`(\:\d+)?(\/[-a-z\d%_.~+\:]*)*` + // port and path
+            String.raw`(\?[)(;&a-z\d%_.~+=-]*)?` + // query string
+            String.raw`(\#[-a-z\d_]*)?$`, // fragment locator
+        'i',
+    ).test(url);
 }
