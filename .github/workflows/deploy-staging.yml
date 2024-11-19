@@ -14,7 +14,7 @@ jobs:
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}
+          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-demo
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           projectId: taiga-editor
           target: taiga-editor

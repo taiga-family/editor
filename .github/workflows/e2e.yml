@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
-          channelId: pr${{ github.event.number }}-${{ github.head_ref }}
+          channelId: pr${{ github.event.number }}-${{ github.head_ref }}-e2e
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           target: taiga-editor-e2e-report
           projectId: taiga-editor
