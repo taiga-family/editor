@@ -1,3 +1,12 @@
+### [4.17.0](https://github.com/taiga-family/editor/compare/v4.16.0...v4.17.0) (2024-11-19)
+
+### 🐞 Bug Fixes
+
+- support nested urls inside query params (#1581)
+  [(e071abb)](https://github.com/taiga-family/editor/commit/e071abb8c7dfca6c2300532d394f8f6768d8f299)
+- do not save empty link (#1580)
+  [(3477f64)](https://github.com/taiga-family/editor/commit/3477f64f271b588190b7938f6c694f0b948e6792)
+
 ### [4.16.0](https://github.com/taiga-family/editor/compare/v4.15.0...v4.16.0) (2024-11-18)
 
 ### 🚀 Features
