@@ -20,7 +20,7 @@ jobs:
               gh cache delete $cacheId
           done
 
-  delete-firebase-channel:
+  delete-firebase-channels:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -28,7 +28,14 @@ jobs:
       - uses: w9jds/firebase-action@v13.25.0
         continue-on-error: true
         with:
-          args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }} --force
+          args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }}-demo --force
+        env:
+          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
+          PROJECT_ID: taiga-editor
+      - uses: w9jds/firebase-action@v13.25.0
+        continue-on-error: true
+        with:
+          args: hosting:channel:delete pr${{ github.event.number }}-${{ github.head_ref }}-e2e --force
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
           PROJECT_ID: taiga-editor
