@@ -1,3 +1,10 @@
+### [4.18.0](https://github.com/taiga-family/editor/compare/v4.17.0...v4.18.0) (2024-11-20)
+
+### 🚀 Features
+
+- add `parseOptions` (#1593)
+  [(0011d1a)](https://github.com/taiga-family/editor/commit/0011d1a07d08296117c12afe4e1e0569ebb0dd24)
+
 ### [4.17.0](https://github.com/taiga-family/editor/compare/v4.16.0...v4.17.0) (2024-11-19)
 
 ### 🐞 Bug Fixes
