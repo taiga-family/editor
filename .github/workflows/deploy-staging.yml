@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.97.0
-      - uses: taiga-family/ci/actions/setup/node@v1.97.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.99.0
+      - uses: taiga-family/ci/actions/setup/node@v1.99.0
       - run: npx nx build editor-demo
       - uses: FirebaseExtended/action-hosting-deploy@v0.9.0
         continue-on-error: true
