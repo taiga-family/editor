@@ -1,11 +1,13 @@
 import {Renderer2} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
+import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
     LAZY_EDITOR_EXTENSIONS,
     LAZY_TIPTAP_EDITOR,
     TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
+    TUI_EDITOR_OPTIONS,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import type {Editor, Extension, Mark, Node} from '@tiptap/core';
@@ -45,6 +47,7 @@ export const TUI_EDITOR_PROVIDERS = [
             LAZY_EDITOR_EXTENSIONS,
             LAZY_TIPTAP_EDITOR,
             WA_WINDOW,
+            TUI_EDITOR_OPTIONS,
         ],
         // eslint-disable-next-line @typescript-eslint/max-params
         useFactory: (
@@ -52,16 +55,18 @@ export const TUI_EDITOR_PROVIDERS = [
             extensions: Observable<Array<Extension | Mark | Node>>,
             editor: Observable<typeof Editor>,
             winRef: Window,
+            options: TuiEditorOptions,
         ): Observable<Editor | null> =>
             combineLatest([editor, extensions]).pipe(
                 take(1),
-                map(([LazyEditor, extensions]) => {
+                map(([Editor, extensions]) => {
                     try {
                         if (!globalThis.document) {
                             globalThis.document = winRef.document;
                         }
 
-                        return new LazyEditor({
+                        return new Editor({
+                            ...options,
                             element,
                             extensions,
                         });

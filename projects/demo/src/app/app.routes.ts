@@ -10,6 +10,11 @@ export const routes: Routes = [
         title: 'StarterKit',
     }),
     route({
+        path: TuiDemoPath.ParseOptions,
+        loadComponent: async () => import('./pages/parse-options'),
+        title: 'ParseOptions',
+    }),
+    route({
         path: TuiDemoPath.Font,
         loadComponent: async () => import('./pages/font'),
         title: 'Font',

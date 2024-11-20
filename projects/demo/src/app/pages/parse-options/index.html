@@ -1,0 +1,24 @@
+<tui-doc-page
+    header="Editor"
+    type="components"
+>
+    <p>
+        Passed content is parsed by ProseMirror. To hook into the parsing, you can pass parseOptions which are then
+        handled by
+        <a
+            href="https://prosemirror.net/docs/ref/#model.ParseOptions"
+            target="_blank"
+            tuiLink
+        >
+            ProseMirror.
+        </a>
+    </p>
+
+    <tui-doc-example
+        id="preserve-whitespace"
+        description="By default, whitespace is collapsed as per HTML's rules. Pass true to preserve whitespace, but normalize newlines to spaces, and 'full' to preserve whitespace entirely."
+        heading="Preserve whitespace"
+        [component]="component1"
+        [content]="example1"
+    />
+</tui-doc-page>

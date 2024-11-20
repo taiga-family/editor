@@ -11,6 +11,7 @@ import {
     AbstractTuiEditor,
     EDITOR_BLANK_COLOR,
     TIPTAP_EDITOR,
+    TUI_EDITOR_OPTIONS,
 } from '@taiga-ui/editor/common';
 import type * as TuiEditorTypes from '@taiga-ui/editor/common/types';
 import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/editor/utils';
@@ -27,6 +28,7 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
 @Injectable()
 export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef: Observable<Editor | null> = inject(TIPTAP_EDITOR);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     protected editor?: Editor;
 
@@ -341,7 +343,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             return;
         }
 
-        this.editor?.commands.setContent(value);
+        this.editor?.commands.setContent(value, false, this.options.parseOptions);
         this.editor?.view.updateState(
             EditorState.create({
                 schema: this.editor.state.schema,
