@@ -19,6 +19,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Parse options',
+        route: TuiDemoPath.ParseOptions,
+        keywords: 'editor, parse, options, preserveWhitespace',
+    },
+    {
+        section: 'Documentation',
         title: 'Font',
         route: TuiDemoPath.Font,
         keywords: 'editor, font, wysiwyg, редактор, текст, html, rich, text',

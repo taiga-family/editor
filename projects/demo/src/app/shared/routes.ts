@@ -9,6 +9,7 @@ export const TuiDemoPath = {
     EmbedIframe: 'embed/iframe',
     EmbedYoutube: 'embed/youtube',
     Focus: 'focus',
+    ParseOptions: 'parse-options',
     Font: 'font',
     Groups: 'groups',
     HighlightCode: 'highlight/code',

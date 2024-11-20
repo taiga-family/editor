@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import type {EditorOptions} from '@tiptap/core';
 
 import {
     EDITOR_BLANK_COLOR,
@@ -11,7 +12,7 @@ import type {TuiEditorLinkOptions} from './default-link-options-handler';
 import {TUI_DEFAULT_LINK_OPTIONS} from './default-link-options-handler';
 import type {TuiEditorToolType} from './editor-tool';
 
-export interface TuiEditorOptions {
+export interface TuiEditorOptions extends Partial<EditorOptions> {
     readonly blankColor: string;
     readonly colors: ReadonlyMap<string, string>;
     readonly fontOptions: typeof tuiDefaultFontOptionsHandler;
@@ -98,6 +99,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
     fontOptions: tuiDefaultFontOptionsHandler,
     floatingToolbar: false,
+    parseOptions: {},
     icons: {
         undo: '@tui.undo',
         redo: '@tui.redo',
