@@ -14,8 +14,8 @@ export default Node.create({
                         '  ',
                         () =>
                             `${
-                                ((this as any).editor as Editor)?.storage.markdown.options
-                                    .bulletListMarker || '-'
+                                ((this as any)?.editor as Editor)?.storage.markdown
+                                    .options.bulletListMarker || '-'
                             } `,
                     );
                 },
