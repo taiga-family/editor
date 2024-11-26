@@ -49,14 +49,17 @@ test.describe('Toolbar', () => {
         await tuiGoto(page, '/custom-tool/paste-emoji#custom-tool');
 
         await page.locator('[contenteditable]').nth(0).focus();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-05.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-06.png');
 
         await page.locator('.smile').nth(0).click();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-07.png');
 
@@ -66,10 +69,12 @@ test.describe('Toolbar', () => {
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-08.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-09.png');
 
         await page.locator('.smile').nth(2).click();
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-10.png');
     });
@@ -112,6 +117,7 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').nth(0).focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Toolbar-13.png');
 
