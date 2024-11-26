@@ -2,6 +2,7 @@ import {NgIf, NgTemplateOutlet} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     computed,
     DestroyRef,
@@ -125,6 +126,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
+    protected readonly cd = inject(ChangeDetectorRef);
 
     protected readonly $ = this.editorLoaded$
         .pipe(delay(0), takeUntilDestroyed())
@@ -135,10 +137,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
                     (extension) => extension.name === 'mention',
                 );
 
-            this.patchContentEditableElement();
             this.listenResizeEvents();
             this.editorService.setValue(this.firstInitialValue);
             this.editorLoaded.set(true);
+            this.cd.detectChanges();
+
+            // patch after rendered contenteditable element
+            this.patchContentEditableElement();
         });
 
     /**
