@@ -48,6 +48,7 @@ import {
     TuiTextColor,
 } from '@taiga-ui/editor/components/toolbar-tools';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {tuiGetCurrentWordBounds} from '@taiga-ui/editor/utils';
 import {take} from 'rxjs';
 
 import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
@@ -275,7 +276,17 @@ export class TuiToolbar {
 
     protected onLink(url?: string): void {
         this.editor?.takeSelectionSnapshot();
-        this.editor?.toggleLink(url ?? '');
+
+        if (url === '#') {
+            const range = this.editor?.getSelectionSnapshot();
+            const editor = this.editor?.getOriginTiptapEditor();
+            const {from = range?.anchor} = editor ? tuiGetCurrentWordBounds(editor) : {};
+
+            this.editor?.setAnchor('');
+            this.editor?.getOriginTiptapEditor()?.commands.focus((from ?? 0) + 1);
+        } else {
+            this.editor?.toggleLink(url ?? '');
+        }
     }
 
     protected enabled(tool: TuiEditorToolType): boolean {

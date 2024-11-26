@@ -124,10 +124,11 @@ export class TuiEditLink {
     protected setAnchor(anchor: string): void {
         this.url = anchor;
         this.changePrefix(true);
+        this.addLink.emit(this.href);
     }
 
-    protected changePrefix(isPrefix: boolean): void {
-        this.prefix = isPrefix ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
+    protected changePrefix(useHash: boolean): void {
+        this.prefix = useHash ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
     }
 
     protected onSave(): void {
@@ -161,9 +162,14 @@ export class TuiEditLink {
     protected onBlur(url: string): void {
         const range = this.editor?.getSelectionSnapshot();
 
-        if (range && !url) {
+        if (range && !url && !this.url) {
             this.editor?.setTextSelection({from: range.anchor, to: range.head});
-            this.editor?.toggleLink('');
+
+            if (this.anchorMode) {
+                this.editor?.removeAnchor();
+            } else {
+                this.editor?.toggleLink('');
+            }
         }
     }
 
@@ -182,6 +188,10 @@ export class TuiEditLink {
                 .prefix as TuiEditorLinkPrefix) || this.defaultProtocol;
 
         if (a) {
+            if (this.isOnlyAnchorMode) {
+                return TUI_EDITOR_LINK_HASH_PREFIX;
+            }
+
             return (!a.getAttribute('href') && a.getAttribute('id')) ||
                 a.getAttribute('href')?.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)
                 ? TUI_EDITOR_LINK_HASH_PREFIX
@@ -194,7 +204,10 @@ export class TuiEditLink {
     private detectAnchorMode(): boolean {
         const a = this.getAnchorElement();
 
-        return !a?.href && !!a?.getAttribute('id');
+        return (
+            !a?.href &&
+            (!!a?.getAttribute('id') || a?.getAttribute('data-type') === 'jump-anchor')
+        );
     }
 
     private getFocusedParentElement(): HTMLElement | null {
