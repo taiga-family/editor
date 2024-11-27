@@ -1,3 +1,5 @@
+import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
+import {tuiGetCurrentWordBounds, tuiGetSlicedFragment} from '@taiga-ui/editor/utils';
 import {Mark, mergeAttributes} from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -42,11 +44,24 @@ export const TuiJumpAnchor = Mark.create({
         return {
             setAnchor:
                 (id) =>
-                ({chain}) =>
-                    chain()
+                ({chain, state, editor}) => {
+                    const {from, to} = tuiGetCurrentWordBounds(editor);
+                    const sliced = tuiGetSlicedFragment(state, to);
+                    const forwardSymbolIsWhitespace = sliced === ' ';
+                    const jumpAnchorMark = chain()
+                        .setTextSelection({from, to})
                         .extendMarkRange('jumpAnchor')
-                        .setMark('jumpAnchor', {id})
-                        .run(),
+                        .setMark('jumpAnchor', {id});
+
+                    return (
+                        forwardSymbolIsWhitespace
+                            ? jumpAnchorMark.setTextSelection(to - 1)
+                            : jumpAnchorMark
+                                  .setTextSelection(to)
+                                  .insertContent(TUI_TIPTAP_WHITESPACE_HACK)
+                                  .setTextSelection(to - 1)
+                    ).run();
+                },
 
             removeAnchor:
                 () =>

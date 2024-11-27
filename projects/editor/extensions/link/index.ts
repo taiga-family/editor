@@ -1,58 +1,13 @@
-import {tuiParseNodeAttributes} from '@taiga-ui/editor/utils';
-import type {Editor, KeyboardShortcutCommand, Range} from '@tiptap/core';
-import {getHTMLFromFragment, markPasteRule} from '@tiptap/core';
+import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
+import {
+    tuiGetCurrentWordBounds,
+    tuiGetSlicedFragment,
+    tuiParseNodeAttributes,
+} from '@taiga-ui/editor/utils';
+import type {KeyboardShortcutCommand} from '@tiptap/core';
+import {markPasteRule} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
 import {find} from 'linkifyjs';
-
-function getCurrentWordBounds(editor: Editor): Range {
-    const {state} = editor;
-    const {selection} = state;
-    const {$anchor, empty} = selection;
-
-    if (!empty) {
-        return {
-            from: selection.from,
-            to: selection.to,
-        };
-    }
-
-    if ($anchor) {
-        const {pos} = $anchor;
-        const start = $anchor.start();
-        const parent = $anchor.parent;
-        const textBefore = parent.textBetween(0, pos - start, undefined, '\uFFFC');
-        const textAfter = parent.textBetween(
-            pos - start,
-            parent.content.size,
-            undefined,
-            '\uFFFC',
-        );
-
-        const wordBefore = textBefore
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replaceAll(/\uFFFC/g, '')
-            .split(/\b/)
-            .pop();
-        const wordAfter = textAfter
-            // eslint-disable-next-line unicorn/prefer-string-replace-all
-            .replaceAll(/\uFFFC/g, '')
-            .split(/\b/)
-            .shift();
-
-        const from = pos - (wordBefore?.length ?? 0);
-        const to = pos + (wordAfter?.length ?? 0);
-
-        return {
-            from,
-            to,
-        };
-    }
-
-    return {
-        from: selection.to,
-        to: selection.to + 1,
-    };
-}
 
 export const TuiLink = Link.extend({
     addAttributes() {
@@ -70,14 +25,8 @@ export const TuiLink = Link.extend({
                 ({chain, state, editor}) => {
                     // eslint-disable-next-line no-lone-blocks
                     {
-                        const {doc, schema} = state;
-                        const {from, to} = getCurrentWordBounds(editor);
-                        const selected = doc.cut(to, to + 1);
-                        const sliced = getHTMLFromFragment(
-                            selected.content,
-                            schema,
-                        ).replaceAll(/<\/?[^>]+(>|$)/g, '');
-
+                        const {from, to} = tuiGetCurrentWordBounds(editor);
+                        const sliced = tuiGetSlicedFragment(state, to);
                         const forwardSymbolIsWhitespace = sliced === ' ';
 
                         const toggleMark = chain()
@@ -91,10 +40,7 @@ export const TuiLink = Link.extend({
                                 ? toggleMark.setTextSelection(to - 1)
                                 : toggleMark
                                       .setTextSelection(to)
-                                      .insertContent(
-                                          // require: `@tiptap/extension-text-style`
-                                          '<span style="font-size: 15px"> </span>',
-                                      )
+                                      .insertContent(TUI_TIPTAP_WHITESPACE_HACK)
                                       .setTextSelection(to - 1)
                         ).run();
                     }

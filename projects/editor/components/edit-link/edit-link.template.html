@@ -93,7 +93,7 @@
                 *ngFor="let id of anchorIds | tuiFilterAnchors: prefix : url"
                 type="button"
                 class="t-anchor"
-                (click)="setAnchor(id)"
+                (mousedown)="setAnchor(id)"
             >
                 #{{ id }}
             </button>
