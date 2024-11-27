@@ -39,6 +39,8 @@ test.describe('Anchors', () => {
 
         await editor.focus();
         await editor.fill('');
+        await page.mouse.click(0, 0);
+        await page.waitForTimeout(300);
 
         await expect(fullExample).toHaveScreenshot('Anchors-03.png');
 

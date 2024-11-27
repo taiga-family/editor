@@ -67,17 +67,17 @@ export class TuiComponentRenderer<C, P> {
  * It contains compulsory properties which component will get externally while NodeView's rendering.
  */
 export abstract class TuiNodeViewNg implements NodeViewProps {
-    public declare editor: NodeViewProps['editor'];
-    public declare decorations: NodeViewProps['decorations'];
-    public declare selected: NodeViewProps['selected'];
-    public declare extension: NodeViewProps['extension'];
-    public declare getPos: NodeViewProps['getPos'];
-    public declare updateAttributes: NodeViewProps['updateAttributes'];
-    public declare deleteNode: NodeViewProps['deleteNode'];
+    declare public editor: NodeViewProps['editor'];
+    declare public decorations: NodeViewProps['decorations'];
+    declare public selected: NodeViewProps['selected'];
+    declare public extension: NodeViewProps['extension'];
+    declare public getPos: NodeViewProps['getPos'];
+    declare public updateAttributes: NodeViewProps['updateAttributes'];
+    declare public deleteNode: NodeViewProps['deleteNode'];
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    public declare HTMLAttributes: Record<string, any>;
-    public declare innerDecorations: DecorationSource;
-    public declare view: EditorView;
+    declare public HTMLAttributes: Record<string, any>;
+    declare public innerDecorations: DecorationSource;
+    declare public view: EditorView;
     public abstract get node(): NodeViewProps['node'];
     public abstract set node(value: NodeViewProps['node']);
 }
@@ -101,7 +101,7 @@ export class TuiNodeView extends NodeView<
     Editor,
     TuiNodeViewRendererOptions
 > {
-    protected declare renderer: TuiComponentRenderer<TuiNodeViewNg, NodeViewProps>;
+    declare protected renderer: TuiComponentRenderer<TuiNodeViewNg, NodeViewProps>;
     protected contentDOMElement: HTMLElement | null = null;
 
     /**
