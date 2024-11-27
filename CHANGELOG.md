@@ -1,3 +1,16 @@
+### [4.19.0](https://github.com/taiga-family/editor/compare/v4.18.0...v4.19.0) (2024-11-27)
+
+### 🐞 Bug Fixes
+
+- clear html socket view if empty content is passed (#1612)
+  [(8d171f9)](https://github.com/taiga-family/editor/commit/8d171f91afee0703cf76daad22676f4a42c84158)
+- regression for anchor links (#1610)
+  [(e724d90)](https://github.com/taiga-family/editor/commit/e724d9018e91cd69b90419004cb7e79605ea74ec)
+- update tiptap to &gt;=2.10.3 (#1611)
+  [(6e433db)](https://github.com/taiga-family/editor/commit/6e433db40d4b25469df816e940476b09fcf4fac9)
+- patch after rendered contenteditable element (#1602)
+  [(76997da)](https://github.com/taiga-family/editor/commit/76997dac721f719b91557f2fed8fae0c84d757c3)
+
 ### [4.18.0](https://github.com/taiga-family/editor/compare/v4.17.0...v4.18.0) (2024-11-20)
 
 ### 🚀 Features
