@@ -35,6 +35,7 @@ import {
     TUI_IMAGE_LOADER,
     TuiEditorOptions,
 } from '@tinkoff/tui-editor/tokens';
+import {tuiGetCurrentWordBounds} from '@tinkoff/tui-editor/utils';
 import {Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
 
@@ -250,7 +251,15 @@ export class TuiToolbarComponent {
     }
 
     onLink(url?: string): void {
-        this.editor?.toggleLink(url ?? '');
+        if (url === '#') {
+            const editor = this.editor?.getOriginTiptapEditor();
+            const {from = 0} = editor ? tuiGetCurrentWordBounds(editor) : {};
+
+            this.editor?.setAnchor('');
+            this.editor?.getOriginTiptapEditor()?.commands.focus((from ?? 0) + 1);
+        } else {
+            this.editor?.toggleLink(url ?? '');
+        }
     }
 
     enabled(tool: TuiEditorTool): boolean {

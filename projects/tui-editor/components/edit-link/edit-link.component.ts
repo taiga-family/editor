@@ -119,10 +119,11 @@ export class TuiEditLinkComponent {
     setAnchor(anchor: string): void {
         this.url = anchor;
         this.changePrefix(true);
+        this.addLink.emit(this.href);
     }
 
-    changePrefix(isPrefix: boolean): void {
-        this.prefix = isPrefix ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
+    changePrefix(useHash: boolean): void {
+        this.prefix = useHash ? TUI_EDITOR_LINK_HASH_PREFIX : this.defaultProtocol;
     }
 
     onSave(): void {
@@ -164,6 +165,10 @@ export class TuiEditLinkComponent {
                 .prefix as TuiEditorLinkPrefix) || this.defaultProtocol;
 
         if (a) {
+            if (this.isOnlyAnchorMode) {
+                return TUI_EDITOR_LINK_HASH_PREFIX;
+            }
+
             return (!a.getAttribute('href') && a.getAttribute('id')) ||
                 a.getAttribute('href')?.startsWith(TUI_EDITOR_LINK_HASH_PREFIX)
                 ? TUI_EDITOR_LINK_HASH_PREFIX
@@ -176,7 +181,10 @@ export class TuiEditLinkComponent {
     private detectAnchorMode(): boolean {
         const a = this.getAnchorElement();
 
-        return !a?.href && !!a?.getAttribute('id');
+        return (
+            !a?.href &&
+            (!!a?.getAttribute('id') || a?.getAttribute('data-type') === 'jump-anchor')
+        );
     }
 
     private getFocusedParentElement(): HTMLElement | null {
