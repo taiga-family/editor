@@ -36,13 +36,9 @@ export class TuiEditorSocket {
     protected readonly html = signal<SafeHtml | string | null>(null);
 
     @Input()
-    public set content(content: string | null) {
-        if (!content) {
-            return;
-        }
-
+    public set content(content: string | null | undefined) {
         const safety =
-            this.customSanitizer?.sanitize(SecurityContext.HTML, content) ??
+            this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
             this.sanitizer.bypassSecurityTrustHtml(content ?? '');
 
         this.html.set(safety);
