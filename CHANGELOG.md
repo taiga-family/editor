@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.65.0](https://github.com/taiga-family/tui-editor/compare/v1.64.0...v1.65.0) (2024-11-27)
+
+### Bug Fixes
+
+- regression for anchor links ([#1614](https://github.com/taiga-family/tui-editor/issues/1614))
+  ([b313ea1](https://github.com/taiga-family/tui-editor/commit/b313ea192b7d3b0b7cafc8fa7c6c29bbae252524))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.64.0](https://github.com/taiga-family/tui-editor/compare/v1.63.0...v1.64.0) (2024-09-04)
 
 ### Features
