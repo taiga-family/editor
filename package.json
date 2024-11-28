@@ -112,7 +112,7 @@
         "@taiga-ui/testing": "4.17.0",
         "@taiga-ui/tsconfig": "0.235.0",
         "@types/express": "5.0.0",
-        "@types/jasmine": "5.1.4",
+        "@types/jasmine": "5.1.5",
         "@types/jest": "29.5.14",
         "@types/markdown-it": "14.1.2",
         "@types/markdown-it-container": "2.0.10",
