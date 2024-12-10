@@ -13,15 +13,10 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
-        title: 'Tokens',
-        route: `${TuiDemoPath.StarterKit}/Options`,
-        keywords: 'TUI_EDITOR_OPTIONS, TUI_ATTACH_FILES_LOADER',
-    },
-    {
-        section: 'Documentation',
-        title: 'Parse options',
-        route: TuiDemoPath.ParseOptions,
-        keywords: 'editor, parse, options, preserveWhitespace',
+        title: 'Options',
+        route: TuiDemoPath.Options,
+        keywords:
+            'editor, parse, options, preserveWhitespace, editor props, tuiEditorOptionsProvider, TUI_EDITOR_OPTIONS',
     },
     {
         section: 'Documentation',
@@ -65,6 +60,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
         title: 'Focus',
         route: TuiDemoPath.Focus,
         keywords: 'editor, focus, focusable, wysiwyg, редактор, фокус, html, rich, text',
+    },
+    {
+        section: 'Documentation',
+        title: 'Upload files',
+        route: TuiDemoPath.UploadFiles,
+        keywords: 'attach, files, upload, TUI_ATTACH_FILES_LOADER',
     },
     {
         section: 'Documentation',
@@ -182,7 +183,7 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                 title: 'Upload',
                 keywords:
                     'editor, upload, images, wysiwyg, редактор, текст, html, rich, text',
-                route: `/${TuiDemoPath.ImagesUpload}`,
+                route: `/${TuiDemoPath.UploadImages}`,
             },
         ],
     },

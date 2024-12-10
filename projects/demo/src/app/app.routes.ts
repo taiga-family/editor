@@ -10,8 +10,8 @@ export const routes: Routes = [
         title: 'StarterKit',
     }),
     route({
-        path: TuiDemoPath.ParseOptions,
-        loadComponent: async () => import('./pages/parse-options'),
+        path: TuiDemoPath.Options,
+        loadComponent: async () => import('./pages/options'),
         title: 'ParseOptions',
     }),
     route({
@@ -115,7 +115,7 @@ export const routes: Routes = [
         title: 'Editor  — Preview images',
     }),
     route({
-        path: TuiDemoPath.ImagesUpload,
+        path: TuiDemoPath.UploadImages,
         loadComponent: async () => import('./pages/images/upload'),
         title: 'Editor — Upload images',
     }),
