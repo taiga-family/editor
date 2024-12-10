@@ -44,8 +44,6 @@ import {
 export default class TuiEditorStarter {
     protected readonly template = import('./import/template.md?raw');
     protected readonly component = import('./import/component.md?raw');
-    protected readonly exampleOptions = import('./import/tokens/options.md?raw');
-    protected readonly exampleFileAttach = import('./import/tokens/file-attach.md?raw');
     protected readonly exampleStyles = import('./import/styles.less.md?raw');
     protected readonly exampleIcons = import('./import/angular.json.md?raw');
     protected readonly isE2E = inject(TUI_IS_E2E);

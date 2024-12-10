@@ -3,6 +3,21 @@
     type="components"
 >
     <tui-doc-example
+        id="attach-files"
+        heading="Basic"
+        [description]="info"
+    >
+        <ng-template #info>
+            You can use
+            <code>TUI_ATTACH_FILES_LOADER</code>
+            and
+            <code>TUI_ATTACH_FILES_OPTIONS</code>
+            tokens for attach any files in your editor
+        </ng-template>
+        <tui-doc-code [code]="exampleFileAttach" />
+    </tui-doc-example>
+
+    <tui-doc-example
         id="upload-file"
         description="100 uploads per day, 2GB file size limit, files auto-deleted after 1 download"
         heading="Upload files"

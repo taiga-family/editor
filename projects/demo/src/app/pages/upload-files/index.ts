@@ -15,6 +15,7 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/ed
     ],
 })
 export default class Example {
+    protected readonly exampleFileAttach = import('./file-attach.md?raw');
     protected readonly component1 = import('./examples/1');
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
