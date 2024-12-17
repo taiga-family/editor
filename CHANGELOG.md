@@ -1,3 +1,10 @@
+### [4.20.0](https://github.com/taiga-family/editor/compare/v4.19.0...v4.20.0) (2024-12-17)
+
+### 🐞 Bug Fixes
+
+- correctly apply file link attributes (#1626)
+  [(d68fa92)](https://github.com/taiga-family/editor/commit/d68fa920e21b1a8e7ea92b61f6dfcbc28e0fc6ea)
+
 ### [4.19.0](https://github.com/taiga-family/editor/compare/v4.18.0...v4.19.0) (2024-11-27)
 
 ### 🐞 Bug Fixes
