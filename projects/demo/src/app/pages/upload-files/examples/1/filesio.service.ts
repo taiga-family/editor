@@ -33,6 +33,14 @@ export class FileIoService {
                 method: 'POST',
                 body,
             }).then(async (response: Response) => response.json()),
-        ).pipe(map((result) => ({name: result.name, link: result.link})));
+        ).pipe(
+            map((result) => ({
+                name: result.name,
+                link: result.link,
+                attrs: {
+                    class: 'file-link',
+                },
+            })),
+        );
     }
 }

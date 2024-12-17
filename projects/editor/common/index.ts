@@ -21,4 +21,5 @@ export * from './image';
 export * from './image-loader';
 export * from './parsed-gradient';
 export * from './tiptap-editor';
+export * from './tui-link-attributes';
 export * from './youtube';
