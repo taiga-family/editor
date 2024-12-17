@@ -1,4 +1,6 @@
-export interface TuiEditorAttachedFile<T = Record<string, any>> {
+import type {TuiLinkAttributes} from './tui-link-attributes';
+
+export interface TuiEditorAttachedFile<T = TuiLinkAttributes> {
     attrs?: T;
     link: string;
     name: string;

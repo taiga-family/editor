@@ -1,4 +1,4 @@
-import type {TuiEditorAttachedFile} from '@taiga-ui/editor/common';
+import type {TuiEditorAttachedFile, TuiLinkAttributes} from '@taiga-ui/editor/common';
 import {Extension} from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -7,6 +7,12 @@ declare module '@tiptap/core' {
             setFileLink: (preview: TuiEditorAttachedFile) => ReturnType;
         };
     }
+}
+
+function linkAttributesToString(attrs: TuiLinkAttributes): string {
+    return Object.entries(attrs)
+        .map(([key, value]) => `${key}="${value}"`)
+        .join(' ');
 }
 
 export const TuiFileLink = Extension.create({
@@ -20,6 +26,9 @@ export const TuiFileLink = Extension.create({
                     const {selection} = state;
                     const selectedSize = Math.abs(selection.to - selection.from);
                     const whitespace = '<span style="font-size: 15px"> </span>';
+                    const attrs = fileLink.attrs
+                        ? linkAttributesToString(fileLink.attrs)
+                        : '';
 
                     return (
                         selectedSize > 0
@@ -32,7 +41,7 @@ export const TuiFileLink = Extension.create({
                                   .setTextSelection(selection.to)
                                   .insertContent(whitespace)
                             : chain().insertContent(
-                                  `<a href="${fileLink.link}">${fileLink.name}</a>${whitespace}`,
+                                  `<a href="${fileLink.link}" ${attrs}>${fileLink.name}</a>${whitespace}`,
                               )
                     )
                         .setTextSelection(selection.to)
