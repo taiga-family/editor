@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.66.0](https://github.com/taiga-family/tui-editor/compare/v1.65.0...v1.66.0) (2024-12-23)
+
+### Bug Fixes
+
+- performance tiptap link issue ([#1629](https://github.com/taiga-family/tui-editor/issues/1629))
+  ([89b2632](https://github.com/taiga-family/tui-editor/commit/89b2632397525b8adc9b5dcdea401a094b6b3f9a))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.65.0](https://github.com/taiga-family/tui-editor/compare/v1.64.0...v1.65.0) (2024-11-27)
 
 ### Bug Fixes
