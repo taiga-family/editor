@@ -1,3 +1,10 @@
+### [4.21.0](https://github.com/taiga-family/editor/compare/v4.20.0...v4.21.0) (2024-12-23)
+
+### 🐞 Bug Fixes
+
+- performance tiptap link issue (#1628)
+  [(b310930)](https://github.com/taiga-family/editor/commit/b3109305c05972f054b1eefa7f13fffd1bff760f)
+
 ### [4.20.0](https://github.com/taiga-family/editor/compare/v4.19.0...v4.20.0) (2024-12-17)
 
 ### 🐞 Bug Fixes
