@@ -4,9 +4,7 @@ import {
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@tinkoff/tui-editor/utils';
-import {markPasteRule} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
-import {find} from 'linkifyjs';
 
 export const TuiLink = Link.extend({
     addAttributes() {
@@ -49,19 +47,7 @@ export const TuiLink = Link.extend({
 
     addPasteRules() {
         return [
-            markPasteRule({
-                find: text =>
-                    find(text)
-                        .filter(link => this.options.validate?.(link.value) ?? true)
-                        .filter(link => link.isLink)
-                        .map(link => ({
-                            text: link.value,
-                            index: link.start,
-                            data: link,
-                        })),
-                type: this.type,
-                getAttributes: match => ({href: match.data?.href}),
-            }),
+            // Workaround for issue: https://github.com/ueberdosis/tiptap/issues/5957
         ];
     },
 }).configure({openOnClick: false});
