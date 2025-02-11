@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    Injectable,
     PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
@@ -19,7 +20,19 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {map, of, switchMap} from 'rxjs';
+
+@Injectable({
+    providedIn: 'root',
+})
+export class HttpMockUploader {
+    public save(_base64: string): Observable<string> {
+        return of(
+            // mock
+            'https://private-user-images.githubusercontent.com/20438370/398424241-231fe6f0-6c0a-481f-8856-f5da3a10f06b.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzkyNzk0ODksIm5iZiI6MTczOTI3OTE4OSwicGF0aCI6Ii8yMDQzODM3MC8zOTg0MjQyNDEtMjMxZmU2ZjAtNmMwYS00ODFmLTg4NTYtZjVkYTNhMTBmMDZiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjExVDEzMDYyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM5YTQ1ZDI2ZGE5ZjQ4MzBjNmEzNTIzN2JjMjE0ZWFkYjg0OGQyYmI4NGU0NTQ0Y2Q2MjYyNWI0MmFjNDgxYTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8idoj74wxtWsQgdhSL09qvWp62Mv7Mzkl3uuiDYUyD4',
+        );
+    }
+}
 
 @Component({
     standalone: true,
@@ -43,8 +56,9 @@ import {map, of} from 'rxjs';
         },
         {
             provide: TUI_ATTACH_FILES_LOADER,
+            deps: [HttpMockUploader],
             useFactory:
-                () =>
+                (uploader: HttpMockUploader) =>
                 ([file]: File[]): Observable<
                     Array<TuiEditorAttachedFile<{type: string}>>
                 > => {
@@ -54,21 +68,19 @@ import {map, of} from 'rxjs';
 
                     const fileReader = new FileReader();
 
-                    // For example, instead of uploading to a file server,
-                    // we convert the result immediately into content to base64
                     fileReader.readAsDataURL(file);
 
                     return tuiTypedFromEvent(fileReader, 'load').pipe(
-                        map(() => [
+                        switchMap(() => uploader.save(String(fileReader.result))),
+                        map((link) => [
                             {
+                                // Do not return base64 instead of link to binary
+                                // because it's bad idea for your performance
+
+                                link,
+
                                 name: file.name,
-
-                                /* base64 or link to the file on your server */
-                                link: String(fileReader.result),
-
-                                attrs: {
-                                    type: file.type,
-                                },
+                                attrs: {type: file.type},
                             },
                         ]),
                     );
