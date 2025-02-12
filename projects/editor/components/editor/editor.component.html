@@ -3,14 +3,10 @@
     class="t-wrapper"
 >
     <div class="t-toolbar-wrapper">
-        <tui-toolbar
-            *ngIf="!floatingToolbar"
-            [disabled]="!interactive()"
-            [tools]="tools"
-            (fileAttached)="fileAttached.emit($event)"
-        >
-            <ng-content select="tools" />
-        </tui-toolbar>
+        <ng-container *ngIf="!floatingToolbar">
+            <ng-container [ngTemplateOutlet]="toolbarTpl" />
+        </ng-container>
+
         <div
             class="t-editor-label"
             (mousedown)="focus($event)"
@@ -27,66 +23,61 @@
     </div>
 
     <tui-scrollbar
-        *ngIf="floatingToolbar"
-        class="t-scrollbar"
-        (mousedown)="focus($event)"
-    >
-        <ng-container [ngTemplateOutlet]="editor" />
-    </tui-scrollbar>
-    <tui-scrollbar
-        *ngIf="!floatingToolbar"
-        tuiEditorPortal
         class="t-scrollbar"
         (keydown)="focus($event)"
         (mousedown)="focus($event)"
     >
-        <ng-container [ngTemplateOutlet]="editor" />
-        <tui-editor-portal-host />
+        <ng-container [ngTemplateOutlet]="editorTpl" />
     </tui-scrollbar>
-
-    <ng-template #editor>
-        <div
-            #tuiDropdown="tuiDropdown"
-            tuiDropdownLimitWidth="auto"
-            [tuiDropdown]="dropdown"
-            [tuiToolbarDropdown]="dropdownSelectionHandler"
-            [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
-        >
-            <div
-                tuiTiptapEditor
-                class="tui-editor-socket"
-                [editable]="interactive()"
-                (valueChange)="onModelChange($event)"
-            ></div>
-        </div>
-
-        <ng-template #dropdown>
-            <div [class.t-floating]="floatingToolbar">
-                <tui-toolbar
-                    *ngIf="floatingToolbar"
-                    [disabled]="!interactive()"
-                    [tools]="tools"
-                    (fileAttached)="fileAttached.emit($event)"
-                >
-                    <ng-content select="tools" />
-                </tui-toolbar>
-
-                <tui-edit-link
-                    *ngIf="isLinkSelected"
-                    #link
-                    (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
-                    (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
-                />
-
-                <ng-container *ngIf="isMentionMode">
-                    <ng-content select="mention" />
-                </ng-container>
-            </div>
-        </ng-template>
-    </ng-template>
 </div>
 
 <tui-editor-socket
     class="t-hidden-editor"
     [content]="value()"
 />
+
+<ng-template #toolbarTpl>
+    <tui-toolbar
+        [disabled]="!interactive()"
+        [tools]="tools"
+        (fileAttached)="fileAttached.emit($event)"
+    >
+        <ng-content select="tools" />
+    </tui-toolbar>
+</ng-template>
+
+<ng-template #editorTpl>
+    <div
+        #tuiDropdown="tuiDropdown"
+        tuiDropdownLimitWidth="auto"
+        [tuiDropdown]="dropdown"
+        [tuiToolbarDropdown]="dropdownSelectionHandler"
+        [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
+    >
+        <div
+            tuiTiptapEditor
+            class="tui-editor-socket"
+            [editable]="interactive()"
+            (valueChange)="onModelChange($event)"
+        ></div>
+    </div>
+
+    <ng-template #dropdown>
+        <div [class.t-floating]="floatingToolbar">
+            <ng-container *ngIf="floatingToolbar">
+                <ng-container [ngTemplateOutlet]="toolbarTpl" />
+            </ng-container>
+
+            <tui-edit-link
+                *ngIf="isLinkSelected"
+                #link
+                (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
+                (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
+            />
+
+            <ng-container *ngIf="isMentionMode">
+                <ng-content select="mention" />
+            </ng-container>
+        </div>
+    </ng-template>
+</ng-template>

@@ -6,6 +6,7 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/ed
     standalone: true,
     imports: [TuiAddonDoc],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -19,6 +20,5 @@ export default class Example {
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
     };
 }

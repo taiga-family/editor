@@ -38,6 +38,7 @@ import {
     tuiAppearanceState,
     TuiDropdown,
     TuiScrollbar,
+    tuiScrollbarOptionsProvider,
 } from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorAttachedFile} from '@taiga-ui/editor/common';
 import {
@@ -56,8 +57,6 @@ import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
-import {TuiEditorPortal} from './portal/editor-portal.directive';
-import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
 
 @Component({
     standalone: true,
@@ -68,8 +67,6 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
-        TuiEditorPortal,
-        TuiEditorPortalHost,
         TuiEditorSocket,
         TuiScrollbar,
         TuiTiptapEditor,
@@ -84,6 +81,7 @@ import {TuiEditorPortalHost} from './portal/editor-portal-host.component';
             provide: TUI_APPEARANCE_OPTIONS,
             useValue: {appearance: 'textfield'},
         },
+        tuiScrollbarOptionsProvider({mode: 'hover'}),
         tuiAutoFocusOptionsProvider({
             delay: TUI_ANIMATIONS_DEFAULT_DURATION,
             query: '[contenteditable].ProseMirror, input:not(.t-image, .t-file-upload), textarea, select',
@@ -112,6 +110,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild('tuiDropdown')
     private readonly tuiDropdown?: TuiDropdownDirective;
 
+    private readonly rootEl = tuiInjectElement();
+
     private readonly contentProcessor = inject<
         TuiValueTransformer<string | null, string | null>
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
@@ -119,10 +119,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
-
-    @ViewChild(TuiToolbar)
-    protected readonly toolbar?: TuiToolbar;
-
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
@@ -257,7 +253,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         }
 
         return this.floatingToolbar
-            ? () => this.value().trim() !== ''
+            ? (range) =>
+                  (this.value().trim() !== '' && !this.editor?.state?.selection.empty) ||
+                  this.openDropdownWhen(range)
             : this.openDropdownWhen;
     }
 
@@ -320,10 +318,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         this.editor?.unsetLink();
     }
 
-    protected focus(event: any): void {
+    protected focus(event: KeyboardEvent | MouseEvent): void {
         const isSafeArea =
             this.nativeFocusableElement?.contains(event.target as Node | null) ||
-            this.toolbar?.el?.contains(event.target as Node | null);
+            Array.from(this.rootEl?.querySelectorAll('tui-toolbar') ?? []).some(
+                (toolbar) => toolbar?.contains(event.target as Node | null),
+            );
 
         if (isSafeArea) {
             return;
