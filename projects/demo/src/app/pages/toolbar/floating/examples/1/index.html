@@ -1,5 +1,53 @@
 <tui-editor
+    #editorRef
+    appearance="no-border"
     [floatingToolbar]="true"
     [formControl]="control"
-    [tools]="builtInTools"
-/>
+    [style.max-height.px]="400"
+    [tools]="[]"
+>
+    <ng-container ngProjectAs="topTools">
+        <tui-toolbar
+            [editor]="editorRef.editor"
+            [tools]="builtInTools"
+        />
+    </ng-container>
+
+    <ng-container ngProjectAs="tools">
+        <tui-font-size [editor]="editorRef.editor" />
+
+        <button
+            appearance="icon"
+            iconStart="@tui.bold"
+            size="s"
+            tuiIconButton
+            type="button"
+            class="t-option t-option_margin"
+            (click)="editorRef.editor?.toggleBold()"
+        >
+            Toggle bold
+        </button>
+        <button
+            appearance="icon"
+            iconStart="@tui.italic"
+            size="s"
+            tuiIconButton
+            type="button"
+            class="t-option t-option_margin"
+            (click)="editorRef.editor?.toggleItalic()"
+        >
+            Toggle italic
+        </button>
+        <button
+            appearance="icon"
+            iconStart="@tui.underline"
+            size="s"
+            tuiIconButton
+            type="button"
+            class="t-option t-option_margin"
+            (click)="editorRef.editor?.toggleUnderline()"
+        >
+            Toggle underline
+        </button>
+    </ng-container>
+</tui-editor>
