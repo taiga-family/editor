@@ -87,7 +87,7 @@
         "@nx/angular": "20.1.4",
         "@nx/jest": "20.1.4",
         "@nx/workspace": "20.1.4",
-        "@playwright/test": "1.50.1",
+        "@playwright/test": "1.51.0",
         "@taiga-ui/addon-doc": "4.28.0",
         "@taiga-ui/auto-changelog-config": "0.263.0",
         "@taiga-ui/browserslist-config": "0.263.0",
