@@ -366,7 +366,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     public selectClosest(): void {
         const pos = this.editor?.state.selection.anchor;
         const range = tuiGetMarkRange(
-            this.editor?.state.doc.resolve(pos ?? 0),
+            this.editor?.state.tr.doc.resolve(pos ?? 0),
             this.editor?.schema.marks.link,
         );
 

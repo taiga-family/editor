@@ -1,5 +1,5 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/editor/utils';
-import type {KeyboardShortcutCommand, RawCommands} from '@tiptap/core';
+import type {RawCommands} from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -153,8 +153,8 @@ export const tuiCreateGroupExtension = (
             };
         },
 
-        addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {
-            return createOnEnter ? {Enter: this.editor.commands.setGroup} : {};
+        addKeyboardShortcuts(): Record<string, () => boolean> {
+            return createOnEnter ? {Enter: () => this.editor.commands.setGroup()} : {};
         },
     });
 };
