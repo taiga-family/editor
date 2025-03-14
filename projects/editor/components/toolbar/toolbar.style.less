@@ -15,6 +15,12 @@
             outline: 0.0625rem solid var(--tui-border-normal);
         }
     }
+
+    ::ng-deep {
+        button[disabled] {
+            pointer-events: none;
+        }
+    }
 }
 
 .t-tools-wrapper {
