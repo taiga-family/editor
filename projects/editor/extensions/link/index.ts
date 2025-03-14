@@ -24,7 +24,7 @@ export const TuiLink = Link.extend({
                     // eslint-disable-next-line no-lone-blocks
                     {
                         const {from, to} = tuiGetCurrentWordBounds(editor);
-                        const sliced = tuiGetSlicedFragment(state, to);
+                        const sliced = tuiGetSlicedFragment(state);
                         const forwardSymbolIsWhitespace = sliced === ' ';
 
                         const toggleMark = chain()
