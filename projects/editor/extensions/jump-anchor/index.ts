@@ -46,7 +46,7 @@ export const TuiJumpAnchor = Mark.create({
                 (id) =>
                 ({chain, state, editor}) => {
                     const {from, to} = tuiGetCurrentWordBounds(editor);
-                    const sliced = tuiGetSlicedFragment(state, to);
+                    const sliced = tuiGetSlicedFragment(state);
                     const forwardSymbolIsWhitespace = sliced === ' ';
                     const jumpAnchorMark = chain()
                         .setTextSelection({from, to})
