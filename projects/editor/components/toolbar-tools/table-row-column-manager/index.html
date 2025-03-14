@@ -1,5 +1,5 @@
 <div
-    [tuiDropdown]="tableOptionsDropdown"
+    [tuiDropdown]="!(isActive$ | async) ? null : tableOptionsDropdown"
     [tuiDropdownOpen]="false"
 >
     <button
