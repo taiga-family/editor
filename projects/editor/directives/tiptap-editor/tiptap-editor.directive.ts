@@ -1,6 +1,7 @@
 import {Directive, ElementRef, inject, Input, Output, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '@taiga-ui/editor/common';
+import {distinctUntilChanged} from 'rxjs';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
@@ -22,7 +23,7 @@ export class TuiTiptapEditor {
         );
 
     @Output()
-    public readonly valueChange = this.editor.valueChange$;
+    public readonly valueChange = this.editor.valueChange$.pipe(distinctUntilChanged());
 
     @Output()
     public readonly stateChange = this.editor.stateChange$;
