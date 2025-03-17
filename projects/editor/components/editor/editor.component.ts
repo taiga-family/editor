@@ -284,6 +284,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
         if (processed !== this.control.value) {
             this.onChange(processed ?? '');
+            this.cd.detectChanges();
         }
     }
 
