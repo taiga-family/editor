@@ -223,7 +223,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     public isActive$(
         nameOrAttributes: Record<string, string> | string,
     ): Observable<boolean> {
-        return this.stateChange$.pipe(
+        return this.valueChange$.pipe(
             startWith(null),
             map(() => this.isActive(nameOrAttributes)),
             distinctUntilChanged(),

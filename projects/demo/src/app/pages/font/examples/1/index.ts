@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -14,7 +14,6 @@ import {mergeAttributes} from '@tiptap/core';
     imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiEditorOptionsProvider({

@@ -20,7 +20,7 @@ export class CustomColorPicker {
 
     protected selectedColor = '';
     protected readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);
-    protected readonly fontColor$ = this.editor.stateChange$.pipe(
+    protected readonly fontColor$ = this.editor.valueChange$.pipe(
         map(() =>
             this.editor.getOriginTiptapEditor()?.isFocused
                 ? this.editor[`get${this.type}` as const]?.() || 'transparent'

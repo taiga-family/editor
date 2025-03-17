@@ -14,7 +14,7 @@
         (focus)="onBottomFocus()"
     ></div>
 </ng-container>
-<ng-container *ngIf="editor?.stateChange$ | async" />
+<ng-container *ngIf="editor?.valueChange$ | async" />
 <!-- TODO: Change to `tuiHintDescribe` when figure tuiDriver order issue -->
 <fieldset
     *ngIf="texts$ | async as texts"

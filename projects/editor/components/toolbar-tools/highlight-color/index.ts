@@ -52,7 +52,7 @@ export class TuiHighlightColor implements OnInit {
 
     private initStream(): void {
         this.backgroundColor$ =
-            this.editor?.stateChange$.pipe(
+            this.editor?.valueChange$.pipe(
                 map(
                     () =>
                         this.editor?.getBackgroundColor() ??

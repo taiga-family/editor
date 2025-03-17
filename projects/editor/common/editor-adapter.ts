@@ -3,7 +3,7 @@ import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
 import type {EditorState} from '@tiptap/pm/state';
 import type {Observable} from 'rxjs';
-import {Subject} from 'rxjs';
+import {ReplaySubject, Subject} from 'rxjs';
 
 import type {TuiEditorAttachedFile} from './attached';
 import type {TuiEditableIframe} from './iframe';
@@ -20,7 +20,7 @@ export abstract class AbstractTuiEditor {
     public abstract readonly html: string;
     public abstract editable: boolean;
     public readonly stateChange$ = new Subject<void>();
-    public readonly valueChange$ = new Subject<string>();
+    public readonly valueChange$ = new ReplaySubject<string>(1);
     public abstract get state(): EditorState | null;
     public abstract isActive$(name: Record<string, string> | string): Observable<boolean>;
     public abstract isActive(name: Record<string, string> | string): boolean;

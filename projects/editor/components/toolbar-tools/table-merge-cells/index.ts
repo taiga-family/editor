@@ -54,7 +54,7 @@ export class TuiTableMergeCells implements OnInit {
     }
 
     private initStream(): void {
-        this.editor?.stateChange$
+        this.editor?.valueChange$
             .pipe(
                 map(() => this.editor?.canMergeCells() ?? false),
                 distinctUntilChanged(),
@@ -62,7 +62,7 @@ export class TuiTableMergeCells implements OnInit {
             )
             .subscribe((e) => this.canMergeCells.set(e));
 
-        this.editor?.stateChange$
+        this.editor?.valueChange$
             .pipe(
                 map(() => this.editor?.canSplitCells() ?? false),
                 distinctUntilChanged(),

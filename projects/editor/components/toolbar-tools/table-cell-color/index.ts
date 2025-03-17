@@ -76,7 +76,7 @@ export class TuiTableCellColor implements OnInit {
         ]).pipe(map(([table, group]) => table || group));
 
         this.color$ =
-            this.editor?.stateChange$.pipe(
+            this.editor?.valueChange$.pipe(
                 map(
                     () =>
                         this.editor?.getCellColor() ??
