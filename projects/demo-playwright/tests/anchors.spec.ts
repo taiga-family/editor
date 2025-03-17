@@ -37,6 +37,7 @@ test.describe('Anchors', () => {
         const editor = page.locator('[contenteditable]').nth(0);
         const fullExample = page.locator('tui-doc-example#anchors');
 
+        await page.waitForTimeout(300);
         await editor.focus();
         await editor.fill('');
         await page.mouse.click(0, 0);
@@ -46,36 +47,38 @@ test.describe('Anchors', () => {
 
         await editor.focus();
         await editor.fill('Hello\n\n\nLink to anchor\n');
+        await page.waitForTimeout(1000);
         await editor.getByText('Hello').selectText();
         await page.getByTestId('tui-doc-example').getByRole('button').nth(3).click();
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(1000);
 
         await page.keyboard.press('H');
         await page.keyboard.press('e');
         await page.keyboard.press('l');
         await page.keyboard.press('l');
         await page.keyboard.press('o');
+        await page.waitForTimeout(1000);
 
         await expect(fullExample).toHaveScreenshot('Anchors-04.png');
 
-        await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
+        await page.keyboard.press('Enter');
 
         await expect(fullExample).toHaveScreenshot('Anchors-05.png');
 
         await editor.getByText('Link to anchor').selectText();
         await page.getByTestId('toolbar__link-button').click();
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(1000);
 
         await expect(fullExample).toHaveScreenshot('Anchors-06.png');
 
         await page.getByRole('button', {name: '#Hello'}).click();
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(1000);
 
         await expect(fullExample).toHaveScreenshot('Anchors-07.png');
 
         await page.mouse.click(0, 0);
-        await page.waitForTimeout(300);
+        await page.waitForTimeout(1000);
 
         await expect(fullExample).toHaveScreenshot('Anchors-08.png');
     });

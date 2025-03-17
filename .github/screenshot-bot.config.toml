@@ -7,7 +7,8 @@ workflowWithTests = [
 # array of RegExp strings to match images inside artifacts (by their path or file name)
 # which shows difference between two screenshot and which will be added to bot report comment
 screenshotsDiffsPaths = [
-    '.*-diff.png'
+    '.*__diff_output__.*', # it is default cypress folder name into which snapshot diffs are put
+    '.*.diff.png'
 ]
 
 # RegExp string to match images inside artifacts (by their path or file name)
@@ -21,4 +22,4 @@ branchesIgnore = ["^release/.*", "^v[0-9].x$"]
 screenshotImageAttrs = []
 
 # Text which is placed at the beginning of section "Failed tests"
-failedTestsReportDescription = '**After <= Diff => Before**'
+failedTestsReportDescription = '<h3 align="center">Before (main) ← Diff → After (local)</h3>'
