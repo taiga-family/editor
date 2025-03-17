@@ -1,9 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Injector,
-    ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiButton} from '@taiga-ui/core';
 import {
@@ -33,7 +28,6 @@ import {
     imports: [ReactiveFormsModule, TuiButton, TuiEditor, TuiFontSize, TuiToolbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
