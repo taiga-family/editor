@@ -1,29 +1,37 @@
 {
-    "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "defaultProject": "editor-demo",
-    "workspaceLayout": {
-        "libsDir": "projects",
-        "appsDir": "projects"
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultProject": "editor-demo",
+  "workspaceLayout": {
+    "libsDir": "projects",
+    "appsDir": "projects"
+  },
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
+    "sharedGlobals": [
+      "{workspaceRoot}/angular.json",
+      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/tsconfig.*.json",
+      "{workspaceRoot}/tsconfig.json"
+    ],
+    "production": [
+      "default"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "cache": true
     },
-    "namedInputs": {
-        "default": ["{projectRoot}/**/*", "sharedGlobals"],
-        "sharedGlobals": [
-            "{workspaceRoot}/angular.json",
-            "{workspaceRoot}/nx.json",
-            "{workspaceRoot}/tsconfig.*.json",
-            "{workspaceRoot}/tsconfig.json"
-        ],
-        "production": ["default"]
-    },
-    "targetDefaults": {
-        "build": {
-            "inputs": ["production", "^production"],
-            "cache": true
-        },
-        "test": {
-            "cache": true
-        }
-    },
-    "parallel": 1,
-    "defaultBase": "origin/main"
+    "test": {
+      "cache": true
+    }
+  },
+  "parallel": 1,
+  "defaultBase": "origin/main"
 }
