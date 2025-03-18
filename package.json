@@ -113,7 +113,7 @@
         "@types/jest": "29.5.14",
         "@types/markdown-it": "14.1.2",
         "@types/markdown-it-container": "2.0.10",
-        "@types/node": "22.13.5",
+        "@types/node": "22.13.10",
         "@types/showdown": "2.0.6",
         "@types/webpack-env": "1.18.8",
         "express": "4.21.2",
