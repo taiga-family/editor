@@ -18,4 +18,36 @@ test.describe('Img', () => {
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Img-02.png');
     });
+
+    test('resizable image', async ({page}) => {
+        await tuiGoto(page, 'images/resizable');
+
+        const locator = page.locator('.t-handle-right-side');
+        const box = await locator?.boundingBox();
+
+        await page.locator('tui-editor-resizable').hover();
+        await locator.hover();
+        await page.mouse.move(
+            (box?.x ?? 0) + (box?.width ?? 0) / 2,
+            (box?.y ?? 0) + (box?.height ?? 0) / 2,
+        );
+        await page.mouse.down();
+        await page.mouse.move(
+            (box?.x ?? 0) + (box?.width ?? 0) / 2 + 100,
+            (box?.y ?? 0) + (box?.height ?? 0) / 2,
+        );
+
+        await expect(page.locator('[id="resizable-image"] .t-demo')).toHaveScreenshot(
+            'Img-03.png',
+        );
+
+        await page.mouse.move(
+            (box?.x ?? 0) + (box?.width ?? 0) / 2 - 150,
+            (box?.y ?? 0) + (box?.height ?? 0) / 2,
+        );
+
+        await expect(page.locator('[id="resizable-image"] .t-demo')).toHaveScreenshot(
+            'Img-04.png',
+        );
+    });
 });
