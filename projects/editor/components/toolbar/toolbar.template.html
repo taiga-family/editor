@@ -40,7 +40,9 @@
             [iconStart]="icons.undo"
             [tuiHint]="texts.undo"
             (click)="undo()"
-        ></button>
+        >
+            {{ texts.undo }}
+        </button>
         <button
             appearance="icon"
             automation-id="toolbar__redo-button"
@@ -55,7 +57,9 @@
             [iconStart]="icons.redo"
             [tuiHint]="texts.redo"
             (click)="redo()"
-        ></button>
+        >
+            {{ texts.redo }}
+        </button>
     </div>
     <div
         *ngIf="enabled(editorTool.Size)"
@@ -108,7 +112,9 @@
             [iconStart]="icons.quote"
             [tuiHint]="texts.quote"
             (click)="toggleQuote()"
-        ></button>
+        >
+            {{ texts.quote }}
+        </button>
         <button
             *ngIf="enabled(editorTool.Link)"
             appearance="icon"
@@ -123,7 +129,9 @@
             [iconStart]="icons.link"
             [tuiHint]="texts.link"
             (click)="onLink()"
-        ></button>
+        >
+            {{ texts.link }}
+        </button>
         <button
             *ngIf="enabled(editorTool.Anchor)"
             appearance="icon"
@@ -136,7 +144,9 @@
             [iconStart]="icons.anchor"
             [tuiHint]="texts.insertAnchor"
             (click)="onLink('#')"
-        ></button>
+        >
+            {{ texts.insertAnchor }}
+        </button>
         <ng-container *ngIf="enabled(editorTool.Attach)">
             <button
                 appearance="icon"
@@ -150,7 +160,9 @@
                 [iconStart]="icons.attach"
                 [tuiHint]="texts.attach"
                 (click)="fileUpload.click()"
-            ></button>
+            >
+                {{ texts.attach }}
+            </button>
 
             <input
                 #fileUpload
@@ -180,7 +192,9 @@
             [iconStart]="icons.sub"
             [tuiHint]="texts.subscript"
             (click)="toggleSubscript()"
-        ></button>
+        >
+            {{ texts.subscript }}
+        </button>
         <button
             *ngIf="enabled(editorTool.Sup)"
             appearance="icon"
@@ -194,7 +208,9 @@
             [iconStart]="icons.sup"
             [tuiHint]="texts.superscript"
             (click)="toggleSuperscript()"
-        ></button>
+        >
+            {{ texts.superscript }}
+        </button>
     </div>
     <div
         *ngIf="enabled(editorTool.Color) || enabled(editorTool.Hilite)"
@@ -240,7 +256,9 @@
             [iconStart]="icons.tex"
             [tuiHint]="texts.tex"
             (click)="onTeX()"
-        ></button>
+        >
+            {{ texts.tex }}
+        </button>
         <div
             *ngIf="enabled(editorTool.Img)"
             tuiItem
@@ -257,7 +275,9 @@
                 [iconStart]="icons.image"
                 [tuiHint]="texts.image"
                 (click)="image.click()"
-            ></button>
+            >
+                {{ texts.image }}
+            </button>
 
             <input
                 #image
@@ -281,7 +301,9 @@
             [iconStart]="icons.hr"
             [tuiHint]="texts.insertHorizontalRule"
             (click)="insertHorizontalRule()"
-        ></button>
+        >
+            {{ texts.insertHorizontalRule }}
+        </button>
     </div>
     <div
         *ngIf="enabled(editorTool.Clear)"
@@ -299,7 +321,9 @@
             [iconStart]="icons.clear"
             [tuiHint]="texts.clear"
             (click)="removeFormat()"
-        ></button>
+        >
+            {{ texts.clear }}
+        </button>
     </div>
     <div
         *ngIf="enabled(editorTool.Details)"

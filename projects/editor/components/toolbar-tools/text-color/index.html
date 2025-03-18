@@ -13,7 +13,9 @@
         [iconStart]="options.icons.textColor"
         [style.color]="fontColor$ | async"
         [tuiHint]="foreColorText$ | async"
-    ></button>
+    >
+        {{ foreColorText$ | async }}
+    </button>
     <ng-template #colorDropdown>
         <tui-palette
             class="t-color-picker"

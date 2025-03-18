@@ -12,7 +12,9 @@
         type="button"
         [iconStart]="options.icons.code"
         [tuiHint]="hintText$ | async"
-    ></button>
+    >
+        {{ hintText$ | async }}
+    </button>
     <ng-template #codesDropdown>
         <tui-data-list>
             <button

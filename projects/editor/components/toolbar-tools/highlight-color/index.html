@@ -13,7 +13,9 @@
         class="t-tool"
         [iconStart]="icons.textHilite"
         [tuiHint]="backColorText$ | async"
-    ></button>
+    >
+        {{ backColorText$ | async }}
+    </button>
     <div
         *ngIf="!isBlankColor((backgroundColor$ | async) || '')"
         class="t-plate"

@@ -12,7 +12,9 @@
         [disabled]="!(isActive$ | async)"
         [iconStart]="options.icons.addRowTable"
         [tuiHint]="rowsColumnsManagingText$ | async"
-    ></button>
+    >
+        {{ rowsColumnsManagingText$ | async }}
+    </button>
 </div>
 
 <ng-template #tableOptionsDropdown>

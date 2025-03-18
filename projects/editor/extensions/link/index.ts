@@ -21,7 +21,6 @@ export const TuiLink = Link.extend({
             toggleLink:
                 (attributes) =>
                 ({chain, state, editor}) => {
-                    // eslint-disable-next-line no-lone-blocks
                     {
                         const {from, to} = tuiGetCurrentWordBounds(editor);
                         const sliced = tuiGetSlicedFragment(state, to);

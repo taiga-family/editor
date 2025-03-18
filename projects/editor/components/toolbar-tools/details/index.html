@@ -8,4 +8,6 @@
     [iconStart]="options.icons.detailsAdd"
     [tuiHint]="(texts$ | async)?.setDetails"
     (click)="setDetails()"
-></button>
+>
+    {{ (texts$ | async)?.setDetails }}
+</button>

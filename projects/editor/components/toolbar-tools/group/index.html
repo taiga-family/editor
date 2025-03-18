@@ -8,7 +8,9 @@
     [iconStart]="options.icons.groupAdd"
     [tuiHint]="insertGroupText$ | async"
     (click)="addGroup()"
-></button>
+>
+    {{ insertGroupText$ | async }}
+</button>
 
 <button
     appearance="icon"
@@ -21,4 +23,6 @@
     [iconStart]="options.icons.groupRemove"
     [tuiHint]="removeGroupText$ | async"
     (click)="removeGroup()"
-></button>
+>
+    {{ removeGroupText$ | async }}
+</button>

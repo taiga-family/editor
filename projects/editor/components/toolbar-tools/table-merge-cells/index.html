@@ -9,4 +9,6 @@
     [iconStart]="canMergeCells() ? options.icons.tableCellMerge : options.icons.tableCellSplit"
     [tuiHint]="canMergeCells() ? (texts$ | async)?.mergeCells : (texts$ | async)?.splitCells"
     (click)="canMergeCells() ? mergeCells() : splitCell()"
-></button>
+>
+    {{ canMergeCells() ? (texts$ | async)?.mergeCells : (texts$ | async)?.splitCells }}
+</button>
