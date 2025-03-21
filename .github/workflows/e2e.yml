@@ -14,23 +14,23 @@ jobs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.102.0
-      - uses: taiga-family/ci/actions/setup/node@v1.102.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.102.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.117.0
+      - uses: taiga-family/ci/actions/setup/node@v1.117.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.117.0
       - run: npx nx prerender editor-demo -c development
-      - uses: taiga-family/ci/actions/run/serve@v1.102.0
+      - uses: taiga-family/ci/actions/run/serve@v1.117.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@v1.102.0
+      - uses: taiga-family/ci/actions/run/clone@v1.117.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.102.0
+      - uses: taiga-family/ci/actions/run/serve@v1.117.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.102.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.117.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
