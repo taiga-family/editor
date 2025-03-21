@@ -30,14 +30,33 @@
                 </button>
 
                 <ng-container *ngIf="preview">
-                    <h4>HTML:</h4>
-                    <tui-editor-socket
-                        class="tui-example"
-                        [content]="control.value || ''"
+                    <h4>Update HTML:</h4>
+
+                    <tui-radio-list
+                        size="s"
+                        [items]="updates"
+                        [style.flex-direction]="'row'"
+                        [style.width]="'max-content'"
+                        [(ngModel)]="updateOn"
                     />
 
-                    <h4>Text:</h4>
-                    <p>{{ control.value }}</p>
+                    <br />
+
+                    <tui-textarea
+                        *ngIf="updateOn === 'change'"
+                        [expandable]="true"
+                        [ngModel]="control.value"
+                        [ngModelOptions]="{updateOn: 'change'}"
+                        (ngModelChange)="control.setValue($event)"
+                    />
+
+                    <tui-textarea
+                        *ngIf="updateOn === 'blur'"
+                        [expandable]="true"
+                        [ngModel]="control.value"
+                        [ngModelOptions]="{updateOn: 'blur'}"
+                        (ngModelChange)="control.setValue($event)"
+                    />
                 </ng-container>
             </div>
         </tui-doc-demo>

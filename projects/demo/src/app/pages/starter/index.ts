@@ -1,31 +1,33 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiLink} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import type {TuiEditorToolType} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
-    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiRadioList} from '@taiga-ui/kit';
+import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     selector: 'editor-starter-page',
     imports: [
+        FormsModule,
         NgIf,
         ReactiveFormsModule,
         TuiAddonDoc,
         TuiAutoFocus,
         TuiButton,
         TuiEditor,
-        TuiEditorSocket,
-        TuiLink,
+        TuiRadioList,
+        TuiTextareaModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -67,6 +69,9 @@ export default class TuiEditorStarter {
     protected placeholder = '';
     protected minHeight = '';
     protected maxHeight = '';
+
+    protected readonly updates = ['change', 'blur'] as const;
+    protected updateOn: 'blur' | 'change' = this.updates[0];
 
     protected readonly toolsVariants: ReadonlyArray<
         Set<TuiEditorToolType> | readonly TuiEditorToolType[]
