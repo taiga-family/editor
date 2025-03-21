@@ -34,8 +34,8 @@ test.describe('Anchors', () => {
     });
 
     test('make anchor', async ({page}) => {
-        const editor = page.locator('[contenteditable]').nth(0);
         const fullExample = page.locator('tui-doc-example#anchors');
+        const editor = fullExample.locator('[contenteditable]').nth(0);
 
         await page.waitForTimeout(300);
         await editor.focus();

@@ -13,7 +13,9 @@
         type="button"
         [iconStart]="options.icons.fontSize"
         [tuiHint]="fontText$ | async"
-    ></button>
+    >
+        {{ fontText$ | async }}
+    </button>
     <ng-template #fontsDropdown>
         <tui-data-list>
             <button

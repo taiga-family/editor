@@ -27,7 +27,6 @@ export const TUI_EDITOR_PROVIDERS = [
                 1,
             );
 
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             Promise.all(extensions)
                 .then((extensions) => extensions$.next(extensions))
                 .catch(() => extensions$.next([]));
@@ -49,7 +48,7 @@ export const TUI_EDITOR_PROVIDERS = [
             WA_WINDOW,
             TUI_EDITOR_OPTIONS,
         ],
-        // eslint-disable-next-line @typescript-eslint/max-params
+
         useFactory: (
             element: HTMLElement,
             extensions: Observable<Array<Extension | Mark | Node>>,

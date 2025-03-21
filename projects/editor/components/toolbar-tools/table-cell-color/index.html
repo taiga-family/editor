@@ -11,7 +11,9 @@
     [tuiDropdownMaxHeight]="999"
     [tuiDropdownOpen]="false"
     [tuiHint]="colorText$ | async"
-></button>
+>
+    {{ colorText$ | async }}
+</button>
 <div
     *ngIf="!isBlankColor((color$ | async) || '')"
     class="t-plate t-plate_paint"

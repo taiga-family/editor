@@ -37,7 +37,7 @@ function pasteImage(injector: Injector) {
             loader(file)
                 .pipe(
                     take(1),
-                    // eslint-disable-next-line rxjs/no-ignored-takewhile-value
+
                     takeWhile(() => !view.isDestroyed),
                 )
                 .subscribe((src) => {

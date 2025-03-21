@@ -6,7 +6,7 @@ import {TuiDropdownService} from '@taiga-ui/core';
     standalone: true,
     selector: 'tui-editor-portal-host',
     template: `
-        <ng-container #viewContainer></ng-container>
+        <ng-container #viewContainer />
     `,
     styleUrls: ['./editor-portal-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

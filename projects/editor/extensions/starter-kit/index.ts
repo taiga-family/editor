@@ -69,7 +69,6 @@ export interface TuiStarterKitOptions {
 export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
     name: 'starterKit',
 
-    // eslint-disable-next-line max-statements
     addExtensions() {
         const extensions = [];
 

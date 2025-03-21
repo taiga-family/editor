@@ -14,7 +14,9 @@
             type="button"
             [iconStart]="options.icons.listPreview"
             [tuiHint]="texts.list"
-        ></button>
+        >
+            {{ texts.list }}
+        </button>
         <ng-template #listDropdown>
             <div class="t-dropdown t-dropdown-list">
                 <button

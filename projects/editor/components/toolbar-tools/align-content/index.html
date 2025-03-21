@@ -12,7 +12,9 @@
         type="button"
         [iconStart]="options.icons.textAlignPreview"
         [tuiHint]="(texts$ | async)?.justify"
-    ></button>
+    >
+        {{ (texts$ | async)?.justify }}
+    </button>
     <ng-template #alignDropdown>
         <div class="t-dropdown">
             <button

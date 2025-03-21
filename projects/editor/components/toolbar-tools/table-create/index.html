@@ -15,7 +15,9 @@
         type="button"
         [iconStart]="options.icons.insertTable"
         [tuiHint]="insertTableText$ | async"
-    ></button>
+    >
+        {{ insertTableText$ | async }}
+    </button>
 </div>
 
 <ng-template #tableDropdown>

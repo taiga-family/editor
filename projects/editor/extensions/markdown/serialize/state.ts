@@ -37,7 +37,6 @@ export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
         }
     }
 
-    // eslint-disable-next-line @typescript-eslint/max-params
     public override markString(
         mark: Mark,
         open: boolean,
