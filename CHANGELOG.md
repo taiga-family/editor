@@ -1,3 +1,29 @@
+### [4.22.0](https://github.com/taiga-family/editor/compare/v4.21.0...v4.22.0) (2025-03-21)
+
+### 🚀 Features
+
+- update renovate.json (#1668)
+  [(9996ab6)](https://github.com/taiga-family/editor/commit/9996ab62f997d74396f5ca3cca853ab8b5e57746)
+- improve floating toolbar (#1641)
+  [(2f2f309)](https://github.com/taiga-family/editor/commit/2f2f309e57219a1ad492e4728a9ee3da7c09576a)
+
+### 🐞 Bug Fixes
+
+- do not blur any focused inputs (#1683)
+  [(ed8ed3a)](https://github.com/taiga-family/editor/commit/ed8ed3af9081a4a804b75ff4300674696134408a)
+- cannot read properties of undefined `reading nodeSize` (#1661)
+  [(3a3a67a)](https://github.com/taiga-family/editor/commit/3a3a67a5fd62d1ff0fdaeae83c20f290b7bb344c)
+- listen resize events after any DOM changes (#1671)
+  [(a1a7b97)](https://github.com/taiga-family/editor/commit/a1a7b970c69572cfb0ffafba12ed6216124aa473)
+- applying a mismatched transaction in group extension (#1673)
+  [(6cbc72b)](https://github.com/taiga-family/editor/commit/6cbc72bc9b4ce3a4a71b0f5d9501e3140d6b9e29)
+- reuse value state after first transformation (#1666)
+  [(c59be62)](https://github.com/taiga-family/editor/commit/c59be62329f0fba895f5bc569636acf3f9a6ef21)
+- focus removed from editor when clicking disabled buttons in toolbar (#1659)
+  [(7747f36)](https://github.com/taiga-family/editor/commit/7747f366da56eb63f6e36df0d6e3a7be47b3bde1)
+- update tiptap to &gt;=2.11.5 (#1656)
+  [(897128f)](https://github.com/taiga-family/editor/commit/897128f77ebfd0371ec0462c62d8461aef2ae1d7)
+
 ### [4.21.0](https://github.com/taiga-family/editor/compare/v4.20.0...v4.21.0) (2024-12-23)
 
 ### 🐞 Bug Fixes
