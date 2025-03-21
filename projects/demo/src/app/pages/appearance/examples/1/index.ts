@@ -1,14 +1,12 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiEditor} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiActiveZone, TuiEditor],
+    imports: [ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Example {

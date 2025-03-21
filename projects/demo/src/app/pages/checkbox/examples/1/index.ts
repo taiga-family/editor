@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -11,7 +11,6 @@ import {
     standalone: true,
     imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
