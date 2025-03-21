@@ -236,10 +236,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             this.firstInitialValue = processed ?? '';
         }
 
-        if (!this.focused()) {
-            this.doc?.getSelection?.()?.removeAllRanges();
-        }
-
         if (this.editorLoaded()) {
             this.editorService.setValue(processed ?? '');
         }

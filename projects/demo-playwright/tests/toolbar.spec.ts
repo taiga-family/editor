@@ -38,7 +38,7 @@ test.describe('Toolbar', () => {
             'Toolbar-03.png',
         );
 
-        await page.locator('tui-editor-socket.tui-example').click();
+        await page.mouse.click(0, 0);
 
         await expect(page.locator('#demo-content tui-editor')).toHaveScreenshot(
             'Toolbar-04.png',
