@@ -133,13 +133,15 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
                     (extension) => extension.name === 'mention',
                 );
 
-            this.listenResizeEvents();
             this.editorService.setValue(this.firstInitialValue);
             this.editorLoaded.set(true);
             this.cd.detectChanges();
 
             // patch after rendered contenteditable element
             this.patchContentEditableElement();
+
+            // listen resize events after any DOM changes
+            this.listenResizeEvents();
         });
 
     /**
