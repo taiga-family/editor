@@ -46,7 +46,7 @@ test.describe('Anchors', () => {
         await expect(fullExample).toHaveScreenshot('Anchors-03.png');
 
         await editor.focus();
-        await editor.fill('Hello\n\n\nLink to anchor\n');
+        await page.keyboard.type('Hello\n\n\nLink to anchor\n');
         await page.waitForTimeout(1000);
         await editor.getByText('Hello').selectText();
         await page.getByTestId('tui-doc-example').getByRole('button').nth(3).click();
