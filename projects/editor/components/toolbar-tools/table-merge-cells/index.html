@@ -2,12 +2,12 @@
     appearance="icon"
     size="s"
     tuiHintDescribe
-    tuiHintDirection="top-left"
     tuiIconButton
     type="button"
     [disabled]="!canMergeCells() && !canSplitCells()"
     [iconStart]="canMergeCells() ? options.icons.tableCellMerge : options.icons.tableCellSplit"
     [tuiHint]="canMergeCells() ? (texts$ | async)?.mergeCells : (texts$ | async)?.splitCells"
+    [tuiHintManual]="!isMobile && null"
     (click)="canMergeCells() ? mergeCells() : splitCell()"
 >
     {{ canMergeCells() ? (texts$ | async)?.mergeCells : (texts$ | async)?.splitCells }}

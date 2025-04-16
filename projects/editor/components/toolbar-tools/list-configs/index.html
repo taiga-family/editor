@@ -9,11 +9,11 @@
             automation-id="toolbar__ordering-list-button"
             size="s"
             tuiHintDescribe
-            tuiHintDirection="top-left"
             tuiIconButton
             type="button"
             [iconStart]="options.icons.listPreview"
             [tuiHint]="texts.list"
+            [tuiHintManual]="!isMobile && null"
         >
             {{ texts.list }}
         </button>
@@ -28,6 +28,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.listUnOrdered"
                     [tuiHint]="texts.unorderedList"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleUnorderedList()"
                 >
                     Unordered list
@@ -41,6 +42,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.listOrdered"
                     [tuiHint]="texts.orderedList"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleOrderedList()"
                 >
                     Ordered list
@@ -66,6 +68,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.indent"
                     [tuiHint]="texts.indent"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="sinkListItem()"
                 >
                     Sink list item
@@ -79,6 +82,7 @@
                     class="t-option"
                     [iconStart]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="liftListItem()"
                 >
                     Lift list item

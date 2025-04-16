@@ -1,6 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorToolType} from '@taiga-ui/editor/common';
 import {
@@ -24,6 +25,7 @@ import {combineLatest, map, of} from 'rxjs';
 export class TuiFontStyle implements OnInit {
     private toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
     private localEditor: AbstractTuiEditor | null = null;
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});

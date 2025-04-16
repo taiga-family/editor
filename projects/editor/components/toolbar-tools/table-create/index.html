@@ -10,11 +10,11 @@
         automation-id="toolbar__insert-table-button"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [iconStart]="options.icons.insertTable"
         [tuiHint]="insertTableText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ insertTableText$ | async }}
     </button>

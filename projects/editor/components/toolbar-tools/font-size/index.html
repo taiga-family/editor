@@ -8,11 +8,11 @@
         automation-id="toolbar__font-size-button"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [iconStart]="options.icons.fontSize"
         [tuiHint]="fontText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ fontText$ | async }}
     </button>

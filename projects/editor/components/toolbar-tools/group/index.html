@@ -7,6 +7,7 @@
     type="button"
     [iconStart]="options.icons.groupAdd"
     [tuiHint]="insertGroupText$ | async"
+    [tuiHintManual]="!isMobile && null"
     (click)="addGroup()"
 >
     {{ insertGroupText$ | async }}
@@ -22,6 +23,7 @@
     [disabled]="!!(disabled$ | async)"
     [iconStart]="options.icons.groupRemove"
     [tuiHint]="removeGroupText$ | async"
+    [tuiHintManual]="!isMobile && null"
     (click)="removeGroup()"
 >
     {{ removeGroupText$ | async }}

@@ -3,12 +3,12 @@
     appearance="icon"
     size="s"
     tuiHintDescribe
-    tuiHintDirection="top-left"
     tuiIconButton
     type="button"
     [disabled]="!!(disabled$ | async)"
     [iconStart]="options.icons.detailsRemove"
     [tuiHint]="text.removeDetails"
+    [tuiHintManual]="!isMobile && null"
     (click)="removeDetails()"
 >
     {{ text.removeDetails }}

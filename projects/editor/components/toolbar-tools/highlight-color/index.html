@@ -7,12 +7,12 @@
         automation-id="toolbar__hilite-button"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         class="t-tool"
         [iconStart]="icons.textHilite"
         [tuiHint]="backColorText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ backColorText$ | async }}
     </button>

@@ -7,12 +7,12 @@
         automation-id="toolbar__color-button"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [iconStart]="options.icons.textColor"
         [style.color]="fontColor$ | async"
         [tuiHint]="foreColorText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ foreColorText$ | async }}
     </button>

@@ -2,7 +2,6 @@
     appearance="icon"
     size="s"
     tuiHintDescribe
-    tuiHintDirection="top-left"
     tuiIconButton
     type="button"
     [disabled]="!(isActive$ | async)"
@@ -11,6 +10,7 @@
     [tuiDropdownMaxHeight]="999"
     [tuiDropdownOpen]="false"
     [tuiHint]="colorText$ | async"
+    [tuiHintManual]="!isMobile && null"
 >
     {{ colorText$ | async }}
 </button>

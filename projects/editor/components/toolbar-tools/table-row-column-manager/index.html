@@ -6,12 +6,12 @@
         appearance="icon"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [disabled]="!(isActive$ | async)"
         [iconStart]="options.icons.addRowTable"
         [tuiHint]="rowsColumnsManagingText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ rowsColumnsManagingText$ | async }}
     </button>

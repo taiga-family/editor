@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
+import {TuiButton, TuiHint, tuiHintOptionsProvider} from '@taiga-ui/core';
 import type {
     AbstractTuiEditor,
     TuiEditorAttachedFile,
@@ -81,6 +81,11 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiHintOptionsProvider({
+            direction: ['top-left', 'top', 'right'],
+        }),
+    ],
     host: {
         role: 'toolbar',
         '[class._disabled]': 'disabled',

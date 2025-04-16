@@ -1,5 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -17,6 +18,7 @@ import {combineLatest, map, of} from 'rxjs';
 })
 export class TuiListConfigs {
     private localEditor: AbstractTuiEditor | null = null;
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);

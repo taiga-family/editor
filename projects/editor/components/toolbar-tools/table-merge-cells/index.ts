@@ -9,6 +9,7 @@ import {
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -25,6 +26,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 export class TuiTableMergeCells implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
     private readonly destroyRef = inject(DestroyRef);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
