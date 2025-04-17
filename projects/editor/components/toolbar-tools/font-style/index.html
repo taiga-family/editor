@@ -10,11 +10,11 @@
             automation-id="toolbar__font-style-button"
             size="s"
             tuiHintDescribe
-            tuiHintDirection="top-left"
             tuiIconButton
             type="button"
             [iconStart]="options.icons.fontStylePreview"
             [tuiHint]="texts.fontStyle"
+            [tuiHintManual]="!isMobile && null"
         >
             {{ texts.fontStyle }}
         </button>
@@ -29,6 +29,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleBold"
                     [tuiHint]="texts.bold"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleBold()"
                 >
                     Toggle bold
@@ -42,6 +43,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleItalic"
                     [tuiHint]="texts.italic"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleItalic()"
                 >
                     Toggle italic
@@ -55,6 +57,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleUnderline"
                     [tuiHint]="texts.underline"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleUnderline()"
                 >
                     Toggle underline
@@ -68,6 +71,7 @@
                     class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleStrike"
                     [tuiHint]="texts.strikeThrough"
+                    [tuiHintManual]="!isMobile && null"
                     (click)="editor?.toggleStrike()"
                 >
                     Toggle strike

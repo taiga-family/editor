@@ -1,6 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -18,6 +19,7 @@ import {map} from 'rxjs';
 })
 export class TuiEditorGroupTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

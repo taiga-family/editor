@@ -7,11 +7,11 @@
         appearance="icon"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [iconStart]="options.icons.code"
         [tuiHint]="hintText$ | async"
+        [tuiHintManual]="!isMobile && null"
     >
         {{ hintText$ | async }}
     </button>

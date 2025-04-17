@@ -7,7 +7,6 @@
         automation-id="toolbar__align-button"
         size="s"
         tuiHintDescribe
-        tuiHintDirection="top-left"
         tuiIconButton
         type="button"
         [iconStart]="options.icons.textAlignPreview"
@@ -25,6 +24,7 @@
                 class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignLeft"
                 [tuiHint]="(texts$ | async)?.justifyLeft"
+                [tuiHintManual]="!isMobile && null"
                 (click)="editor?.onAlign('left')"
             >
                 Left align
@@ -37,6 +37,7 @@
                 class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignCenter"
                 [tuiHint]="(texts$ | async)?.justifyCenter"
+                [tuiHintManual]="!isMobile && null"
                 (click)="editor?.onAlign('center')"
             >
                 Center align
@@ -49,6 +50,7 @@
                 class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignRight"
                 [tuiHint]="(texts$ | async)?.justifyRight"
+                [tuiHintManual]="!isMobile && null"
                 (click)="editor?.onAlign('right')"
             >
                 Right align
@@ -61,6 +63,7 @@
                 class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignJustify"
                 [tuiHint]="(texts$ | async)?.justifyFull"
+                [tuiHintManual]="!isMobile && null"
                 (click)="editor?.onAlign('justify')"
             >
                 Justify align

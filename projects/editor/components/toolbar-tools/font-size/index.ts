@@ -1,6 +1,6 @@
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {tuiPx} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, tuiPx} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorFontOption} from '@taiga-ui/editor/common';
 import {
@@ -32,6 +32,7 @@ import {map} from 'rxjs';
 })
 export class TuiFontSize {
     private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);

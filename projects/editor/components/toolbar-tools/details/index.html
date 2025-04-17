@@ -2,11 +2,11 @@
     appearance="icon"
     size="s"
     tuiHintDescribe
-    tuiHintDirection="top-left"
     tuiIconButton
     type="button"
     [iconStart]="options.icons.detailsAdd"
     [tuiHint]="(texts$ | async)?.setDetails"
+    [tuiHintManual]="!isMobile && null"
     (click)="setDetails()"
 >
     {{ (texts$ | async)?.setDetails }}
