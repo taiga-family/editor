@@ -1,3 +1,14 @@
+### [4.23.0](https://github.com/taiga-family/editor/compare/v4.22.0...v4.23.0) (2025-04-17)
+
+### 🐞 Bug Fixes
+
+- clear contenteditable focus after reset in Safari (#1702)
+  [(d4393c0)](https://github.com/taiga-family/editor/commit/d4393c0f95270f97c6998c9c588bbfbb1c2ff707)
+- change default position for hints (#1698)
+  [(e600ed6)](https://github.com/taiga-family/editor/commit/e600ed6795aef9100ca4290f4de85f21e536335a)
+- update tiptap to &gt;=2.11.7 (#1696)
+  [(a52ccea)](https://github.com/taiga-family/editor/commit/a52ccea85c0289ccac8203e216cc855f34b4416a)
+
 ### [4.22.0](https://github.com/taiga-family/editor/compare/v4.21.0...v4.22.0) (2025-03-21)
 
 ### 🚀 Features
