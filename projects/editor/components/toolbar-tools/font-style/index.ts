@@ -19,7 +19,6 @@ import {combineLatest, map, of} from 'rxjs';
     selector: 'tui-font-style',
     imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyle implements OnInit {

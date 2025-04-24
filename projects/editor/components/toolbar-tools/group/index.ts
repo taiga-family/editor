@@ -14,7 +14,6 @@ import {map} from 'rxjs';
     selector: 'tui-editor-group-tool',
     imports: [AsyncPipe, TuiButton, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorGroupTool implements OnInit {

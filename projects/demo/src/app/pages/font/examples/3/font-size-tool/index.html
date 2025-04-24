@@ -3,6 +3,7 @@
     iconStart="@tui.minus"
     size="s"
     tuiIconButton
+    tuiToolbarTool
     type="button"
     (click)="decrease()"
 >
@@ -17,6 +18,7 @@
         appearance="flat"
         size="s"
         tuiButton
+        tuiToolbarTool
         type="button"
     >
         {{ size$ | async }}
@@ -41,6 +43,7 @@
     iconStart="@tui.plus"
     size="s"
     tuiIconButton
+    tuiToolbarTool
     type="button"
     (click)="increase()"
 >

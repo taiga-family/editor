@@ -12,6 +12,7 @@ import {
     Output,
     ViewChild,
     ViewChildren,
+    ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItem} from '@taiga-ui/cdk';
@@ -80,6 +81,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiHintOptionsProvider({

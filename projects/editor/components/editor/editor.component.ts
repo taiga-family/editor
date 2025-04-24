@@ -14,6 +14,7 @@ import {
     Output,
     signal,
     ViewChild,
+    ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -74,6 +75,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_EDITOR_PROVIDERS,
@@ -84,7 +86,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         tuiScrollbarOptionsProvider({mode: 'hover'}),
         tuiAutoFocusOptionsProvider({
             delay: TUI_ANIMATIONS_DEFAULT_DURATION,
-            query: '[contenteditable].ProseMirror, input:not(.t-image, .t-file-upload), textarea, select',
+            query: '[contenteditable].ProseMirror, input:not([type=file]), textarea, select',
         }),
     ],
     hostDirectives: [

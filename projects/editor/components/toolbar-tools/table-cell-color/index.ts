@@ -15,7 +15,6 @@ import {combineLatest, distinctUntilChanged, map, of} from 'rxjs';
     selector: 'tui-table-cell-color',
     imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiPaletteModule],
     templateUrl: './index.html',
-    styleUrls: ['../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCellColor implements OnInit {

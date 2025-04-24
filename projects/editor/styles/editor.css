@@ -1,0 +1,79 @@
+tui-editor {
+    position: relative;
+    display: block;
+    isolation: isolate;
+    font: var(--tui-font-text-m);
+    border-radius: var(--tui-radius-m);
+    max-block-size: inherit;
+    min-block-size: 10rem;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+tui-editor::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+[tuiEditorArea] {
+    display: flex;
+    block-size: 100%;
+    max-block-size: inherit;
+    min-block-size: inherit;
+    cursor: text;
+    overflow: clip;
+    flex-direction: column;
+    border-radius: inherit;
+}
+
+[tuiEditorLabel] {
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-secondary);
+    pointer-events: none;
+    will-change: transform;
+    transform: translateY(-0.25rem);
+    inline-size: 95%;
+    font-size: 0.9375rem;
+}
+
+[tuiEditorLabel]:not(:empty) {
+    margin: 1rem 1rem -0.625rem;
+    min-block-size: 1.625rem;
+}
+
+[tuiEditorLabel]:empty {
+    margin-bottom: 1rem;
+}
+
+[tuiEditorScrollbar] {
+    display: flex;
+    padding-bottom: 0.75rem;
+    box-sizing: border-box;
+    flex: 1;
+}
+
+[tuiEditorPlaceholder] {
+    position: absolute;
+    left: 1rem;
+    margin-top: 0.1875rem;
+    color: var(--tui-text-secondary);
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+[tuiEditorFloatingToolbar],
+[tuiEditorFloatingToolbar] [tuiToolbar] {
+    max-inline-size: 31.25rem;
+    flex-wrap: nowrap;
+}
+
+tui-editor tui-editor-socket {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    block-size: 0;
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+}

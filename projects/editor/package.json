@@ -14,6 +14,9 @@
     "homepage": "https://github.com/taiga-family/editor",
     "repository": "https://github.com/taiga-family/editor",
     "license": "Apache-2.0",
+    "exports": {
+        "./styles/*": "./styles/*"
+    },
     "peerDependencies": {
         "@tiptap/core": ">=2.11.7",
         "@tiptap/extension-blockquote": ">=2.11.7",

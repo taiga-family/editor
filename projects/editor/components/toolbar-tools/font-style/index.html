@@ -11,6 +11,7 @@
             size="s"
             tuiHintDescribe
             tuiIconButton
+            tuiToolbarTool
             type="button"
             [iconStart]="options.icons.fontStylePreview"
             [tuiHint]="texts.fontStyle"
@@ -19,14 +20,14 @@
             {{ texts.fontStyle }}
         </button>
         <ng-template #formatDropdown>
-            <div class="t-dropdown">
+            <div tuiToolbarDropdown>
                 <button
                     *ngIf="isEnabled(editorTool.Bold)"
                     appearance="icon"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleBold"
                     [tuiHint]="texts.bold"
                     [tuiHintManual]="!isMobile && null"
@@ -39,8 +40,8 @@
                     appearance="icon"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleItalic"
                     [tuiHint]="texts.italic"
                     [tuiHintManual]="!isMobile && null"
@@ -53,8 +54,8 @@
                     appearance="icon"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleUnderline"
                     [tuiHint]="texts.underline"
                     [tuiHintManual]="!isMobile && null"
@@ -67,8 +68,8 @@
                     appearance="icon"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.fontStyleStrike"
                     [tuiHint]="texts.strikeThrough"
                     [tuiHintManual]="!isMobile && null"

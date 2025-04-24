@@ -3,6 +3,7 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiToolbarTool
     type="button"
     [disabled]="!(isActive$ | async)"
     [iconStart]="icons.paint"
@@ -16,12 +17,12 @@
 </button>
 <div
     *ngIf="!isBlankColor((color$ | async) || '')"
-    class="t-plate t-plate_paint"
+    tuiPlate
     [style.background]="color$ | async"
 ></div>
 <ng-template #cellColorDropdown>
     <tui-palette
-        class="t-color-picker"
+        tuiPalette
         [colors]="colors"
         (selectedColor)="setCellColor($event)"
     />
