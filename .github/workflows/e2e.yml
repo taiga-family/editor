@@ -84,12 +84,12 @@ jobs:
 
       - name: Download artifacts for Playwright
         continue-on-error: true
-        uses: actions/download-artifact@v4.2.1
+        uses: actions/download-artifact@v4.3.0
         with:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
           merge-multiple: true
-      - uses: actions/download-artifact@v4.2.1
+      - uses: actions/download-artifact@v4.3.0
         with:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
