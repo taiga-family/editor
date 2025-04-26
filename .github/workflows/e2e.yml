@@ -107,7 +107,7 @@ jobs:
           find ${{ env.PW_RESULT }} -iname '*.diff.png' -exec echo "{}" \;
           exit 1
 
-      - uses: daun/playwright-report-summary@v3.8.0
+      - uses: daun/playwright-report-summary@v3.9.0
         if: always()
         with:
           custom-info: 'For more information, [see our report](${{ needs.e2e.outputs.details_url }})'
