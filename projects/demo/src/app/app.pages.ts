@@ -244,6 +244,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                     'editor, toolbar, shared, multiple, один на всех, html, rich, text',
                 route: `/${TuiDemoPath.ToolbarShared}`,
             },
+            {
+                section: 'Documentation',
+                title: 'Custom',
+                keywords: 'editor, toolbar, custom',
+                route: `/${TuiDemoPath.ToolbarCustom}`,
+            },
         ],
     },
 ];

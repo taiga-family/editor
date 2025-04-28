@@ -30,16 +30,31 @@
     </tui-scrollbar>
 </div>
 
-<tui-editor-socket [content]="value()" />
+<tui-editor-socket
+    class="t-inner-socket"
+    [content]="value()"
+/>
 
 <ng-template #toolbarTpl>
-    <tui-toolbar
-        [disabled]="!interactive()"
-        [tools]="tools"
-        (fileAttached)="fileAttached.emit($event)"
-    >
-        <ng-content select="tools" />
-    </tui-toolbar>
+    <tui-toolbar-host>
+        <ng-container
+            *ngIf="toolbar; else defaultToolbar"
+            [ngTemplateOutlet]="toolbar"
+            [ngTemplateOutletContext]="{
+                $implicit: editor,
+                disabled: !interactive(),
+            }"
+        />
+        <ng-template #defaultToolbar>
+            <tui-toolbar
+                [disabled]="!interactive()"
+                [tools]="tools"
+                (fileAttached)="fileAttached.emit($event)"
+            >
+                <ng-content select="tools" />
+            </tui-toolbar>
+        </ng-template>
+    </tui-toolbar-host>
 </ng-template>
 
 <ng-template #editorTpl>

@@ -1,0 +1,20 @@
+<ng-container *ngIf="editor?.stateChange$ | async" />
+<ng-container *ngIf="editor">
+    <div tuiToolbarBlock>
+        <tui-font-style
+            tuiItem
+            [editor]="editor"
+            [enabledTools]="options.tools"
+        />
+
+        <tui-align-content
+            tuiItem
+            [editor]="editor"
+        />
+
+        <tui-list-configs
+            tuiItem
+            [editor]="editor"
+        />
+    </div>
+</ng-container>

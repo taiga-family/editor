@@ -1,0 +1,14 @@
+<tui-editor
+    [formControl]="control"
+    [toolbar]="toolbar"
+/>
+
+<ng-template
+    #toolbar
+    let-editor
+>
+    <custom-toolbar
+        tuiToolbar
+        [editor]="editor"
+    />
+</ng-template>
