@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[7703],{7703:o=>{o.exports='<tui-editor\n    [formControl]="control"\n    [toolbar]="toolbar"\n/>\n\n<ng-template\n    #toolbar\n    let-editor\n>\n    <custom-toolbar\n        tuiToolbar\n        [editor]="editor"\n    />\n</ng-template>\n'}}]);
