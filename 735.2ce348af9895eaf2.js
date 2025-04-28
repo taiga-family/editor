@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[735],{735:e=>{e.exports="@import '@taiga-ui/editor/styles/editor-toolbar.css';\n"}}]);
