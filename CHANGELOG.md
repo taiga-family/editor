@@ -1,3 +1,10 @@
+### [4.25.0](https://github.com/taiga-family/editor/compare/v4.24.0...v4.25.0) (2025-04-28)
+
+### 🚀 Features
+
+- support provide custom/external toolbar (#1721)
+  [(0311413)](https://github.com/taiga-family/editor/commit/031141334f41cf7362d61907ceac2a296edab78c)
+
 ### [4.24.0](https://github.com/taiga-family/editor/compare/v4.23.0...v4.24.0) (2025-04-28)
 
 ### 🚀 Features
