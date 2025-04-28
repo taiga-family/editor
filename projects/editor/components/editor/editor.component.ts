@@ -1,5 +1,5 @@
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
+import type {OnDestroy, TemplateRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -51,6 +51,7 @@ import {
 import {TuiEditLink} from '@taiga-ui/editor/components/edit-link';
 import {TuiEditorSocket} from '@taiga-ui/editor/components/editor-socket';
 import {TuiToolbar} from '@taiga-ui/editor/components/toolbar';
+import {ToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
 import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import type {TuiSelectionState} from '@taiga-ui/editor/utils';
 import {tuiGetSelectionState, tuiIsSafeLinkRange} from '@taiga-ui/editor/utils';
@@ -65,6 +66,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     imports: [
         NgIf,
         NgTemplateOutlet,
+        ToolbarHostComponent,
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
@@ -160,6 +162,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     @Input()
     public placeholder = this.options.placeholder;
+
+    @Input()
+    public toolbar?: TemplateRef<unknown> | null = null;
 
     @Input()
     public floatingToolbar = this.options.floatingToolbar;
@@ -322,7 +327,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected focus(event: KeyboardEvent | MouseEvent): void {
         const isSafeArea =
             this.nativeFocusableElement?.contains(event.target as Node | null) ||
-            Array.from(this.rootEl?.querySelectorAll('tui-toolbar') ?? []).some(
+            Array.from(this.rootEl?.querySelectorAll('tui-toolbar-host') ?? []).some(
                 (toolbar) => toolbar?.contains(event.target as Node | null),
             );
 

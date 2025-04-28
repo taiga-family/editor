@@ -1,6 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,13 +9,11 @@ import {
     inject,
     Input,
     Output,
-    ViewChild,
-    ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, tuiIsNativeFocusedIn, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint, tuiHintOptionsProvider} from '@taiga-ui/core';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {
     AbstractTuiEditor,
     TuiEditorAttachedFile,
@@ -52,8 +49,6 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {tuiGetCurrentWordBounds} from '@taiga-ui/editor/utils';
 import {take} from 'rxjs';
 
-import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
-
 @Component({
     standalone: true,
     selector: 'tui-toolbar',
@@ -77,30 +72,16 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
         TuiTableMergeCells,
         TuiTableRowColumnManager,
         TuiTextColor,
-        TuiToolbarNavigationManager,
     ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiHintOptionsProvider({
-            direction: ['top-left', 'top', 'right'],
-        }),
-    ],
     host: {
-        role: 'toolbar',
-        '[class._disabled]': 'disabled',
-        '(mousedown)': 'onMouseDown($event, $event.target)',
+        tuiToolbar: '',
     },
 })
 export class TuiToolbar {
-    @ViewChildren('dropdown', {read: ElementRef})
-    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
-    @ViewChild(TuiToolbarNavigationManager)
-    private readonly navigationManager?: TuiToolbarNavigationManager;
-
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
     private readonly destroyRef = inject(DestroyRef);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
@@ -144,19 +125,6 @@ export class TuiToolbar {
 
     protected get icons(): TuiEditorOptions['icons'] {
         return this.options.icons;
-    }
-
-    protected get focused(): boolean {
-        return (
-            tuiIsNativeFocusedIn(this.el) ||
-            !!this.dropdowns.find(({nativeElement}) =>
-                tuiIsNativeFocusedIn(nativeElement),
-            )
-        );
-    }
-
-    protected get focusable(): boolean {
-        return !this.focused && !this.disabled;
     }
 
     protected get unorderedList(): boolean {
@@ -232,14 +200,6 @@ export class TuiToolbar {
 
         event.preventDefault();
         this.editor?.focus();
-    }
-
-    protected onBottomFocus(): void {
-        this.focusLast();
-    }
-
-    protected onTopFocus(): void {
-        this.focusFirst();
     }
 
     protected onImage(input: HTMLInputElement): void {
@@ -334,21 +294,5 @@ export class TuiToolbar {
 
     private addImage(image: string): void {
         this.editor?.setImage(image);
-    }
-
-    private focusFirst(): void {
-        const firstButton = this.navigationManager?.findFirstFocusableTool();
-
-        if (firstButton) {
-            firstButton.focus();
-        }
-    }
-
-    private focusLast(): void {
-        const lastButton = this.navigationManager?.findFirstFocusableTool(true);
-
-        if (lastButton) {
-            lastButton.focus();
-        }
     }
 }

@@ -28,4 +28,5 @@ export const TuiDemoPath = {
     ToolbarBottom: 'toolbar/bottom',
     ToolbarFloating: 'toolbar/floating',
     ToolbarShared: 'toolbar/shared',
+    ToolbarCustom: 'toolbar/custom',
 } as const;

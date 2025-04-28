@@ -154,6 +154,11 @@ export const routes: Routes = [
         loadComponent: async () => import('./pages/toolbar/shared'),
         title: 'Editor — Toolbar',
     }),
+    route({
+        path: TuiDemoPath.ToolbarCustom,
+        loadComponent: async () => import('./pages/toolbar/custom'),
+        title: 'Editor — Toolbar',
+    }),
     {
         path: '**',
         redirectTo: TuiDemoPath.StarterKit,
