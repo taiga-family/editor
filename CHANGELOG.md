@@ -1,3 +1,10 @@
+### [4.24.0](https://github.com/taiga-family/editor/compare/v4.23.0...v4.24.0) (2025-04-28)
+
+### 🚀 Features
+
+- move less styles to separate css file for toolbar (#1713)
+  [(67bbb61)](https://github.com/taiga-family/editor/commit/67bbb61c9529a843d584bf3add874aa470e4c51c)
+
 ### [4.23.0](https://github.com/taiga-family/editor/compare/v4.22.0...v4.23.0) (2025-04-17)
 
 ### 🐞 Bug Fixes
