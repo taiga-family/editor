@@ -14,7 +14,6 @@ import {combineLatest, map, of} from 'rxjs';
     selector: 'tui-align-content',
     imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContent implements OnInit {

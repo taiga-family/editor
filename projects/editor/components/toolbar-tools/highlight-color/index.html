@@ -8,8 +8,8 @@
         size="s"
         tuiHintDescribe
         tuiIconButton
+        tuiToolbarTool
         type="button"
-        class="t-tool"
         [iconStart]="icons.textHilite"
         [tuiHint]="backColorText$ | async"
         [tuiHintManual]="!isMobile && null"
@@ -18,12 +18,12 @@
     </button>
     <div
         *ngIf="!isBlankColor((backgroundColor$ | async) || '')"
-        class="t-plate"
+        tuiPlate
         [style.background]="backgroundColor$ | async"
     ></div>
     <ng-template #hiliteDropdown>
         <tui-palette
-            class="t-color-picker"
+            tuiPalette
             [colors]="colors"
             (selectedColor)="editor?.setBackgroundColor($event)"
         />

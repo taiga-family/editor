@@ -10,6 +10,7 @@
             size="s"
             tuiHintDescribe
             tuiIconButton
+            tuiToolbarTool
             type="button"
             [iconStart]="options.icons.listPreview"
             [tuiHint]="texts.list"
@@ -18,14 +19,14 @@
             {{ texts.list }}
         </button>
         <ng-template #listDropdown>
-            <div class="t-dropdown t-dropdown-list">
+            <div tuiToolbarDropdownContent>
                 <button
                     appearance="icon"
                     automation-id="toolbar__un-ordered-list-button"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.listUnOrdered"
                     [tuiHint]="texts.unorderedList"
                     [tuiHintManual]="!isMobile && null"
@@ -38,8 +39,8 @@
                     automation-id="toolbar__ordered-list-button"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.listOrdered"
                     [tuiHint]="texts.orderedList"
                     [tuiHintManual]="!isMobile && null"
@@ -52,8 +53,8 @@
                     automation-id="toolbar__task-list-button"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.taskList"
                     (click)="editor?.toggleTaskList()"
                 >
@@ -64,8 +65,8 @@
                     automation-id="toolbar_indent-button"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option t-option_margin"
                     [iconStart]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     [tuiHintManual]="!isMobile && null"
@@ -78,8 +79,8 @@
                     automation-id="toolbar_outdent-button"
                     size="s"
                     tuiIconButton
+                    tuiToolbarTool
                     type="button"
-                    class="t-option"
                     [iconStart]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     [tuiHintManual]="!isMobile && null"

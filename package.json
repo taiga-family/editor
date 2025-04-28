@@ -26,7 +26,7 @@
         "lint": "eslint .",
         "cspell": "cspell --relative --dot --no-progress --gitignore .",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
-        "stylelint": "stylelint './projects/**/*.{less,css}' --config package.json",
+        "stylelint": "stylelint './projects/**/*.{less}' --config package.json",
         "release": "npx syncer && npx nx publish editor"
     },
     "commitlint": {

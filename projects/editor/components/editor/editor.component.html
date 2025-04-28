@@ -1,29 +1,28 @@
 <div
     *ngIf="editorLoaded()"
+    tuiEditorArea
     class="t-wrapper"
 >
-    <div class="t-toolbar-wrapper">
-        <ng-container *ngIf="!floatingToolbar">
-            <ng-container [ngTemplateOutlet]="toolbarTpl" />
-        </ng-container>
+    <ng-container *ngIf="!floatingToolbar">
+        <ng-container [ngTemplateOutlet]="toolbarTpl" />
+    </ng-container>
 
-        <div
-            class="t-editor-label"
-            (mousedown)="focus($event)"
-        >
-            <ng-content />
-        </div>
-        <div
-            *ngIf="hasPlaceholder"
-            class="t-editor-example-text"
-            (mousedown)="focus($event)"
-        >
-            {{ placeholder || exampleText }}
-        </div>
+    <div
+        tuiEditorLabel
+        (mousedown)="focus($event)"
+    >
+        <ng-content />
+    </div>
+    <div
+        *ngIf="hasPlaceholder"
+        tuiEditorPlaceholder
+        (mousedown)="focus($event)"
+    >
+        {{ placeholder || exampleText }}
     </div>
 
     <tui-scrollbar
-        class="t-scrollbar"
+        tuiEditorScrollbar
         (keydown)="focus($event)"
         (mousedown)="focus($event)"
     >
@@ -31,10 +30,7 @@
     </tui-scrollbar>
 </div>
 
-<tui-editor-socket
-    class="t-hidden-editor"
-    [content]="value()"
-/>
+<tui-editor-socket [content]="value()" />
 
 <ng-template #toolbarTpl>
     <tui-toolbar
@@ -63,7 +59,7 @@
     </div>
 
     <ng-template #dropdown>
-        <div [class.t-floating]="floatingToolbar">
+        <div [class.tuiEditorFloatingToolbar]="floatingToolbar">
             <ng-container *ngIf="floatingToolbar">
                 <ng-container [ngTemplateOutlet]="toolbarTpl" />
             </ng-container>

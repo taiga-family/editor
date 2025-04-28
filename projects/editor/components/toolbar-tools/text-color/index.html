@@ -8,6 +8,7 @@
         size="s"
         tuiHintDescribe
         tuiIconButton
+        tuiToolbarTool
         type="button"
         [iconStart]="options.icons.textColor"
         [style.color]="fontColor$ | async"
@@ -18,7 +19,7 @@
     </button>
     <ng-template #colorDropdown>
         <tui-palette
-            class="t-color-picker"
+            tuiPalette
             [colors]="colors"
             (selectedColor)="editor?.setFontColor($event)"
         />

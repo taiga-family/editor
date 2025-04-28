@@ -126,9 +126,7 @@ test.describe('Toolbar', () => {
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await page
-            .locator('[automation-id="toolbar__un-ordered-list-button"].t-option')
-            .focus();
+        await page.locator('[automation-id="toolbar__un-ordered-list-button"]').focus();
 
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);

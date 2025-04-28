@@ -15,7 +15,6 @@ import {distinctUntilChanged, map} from 'rxjs';
     selector: 'tui-highlight-color',
     imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiPaletteModule],
     templateUrl: './index.html',
-    styleUrls: ['../../../styles/tools-common.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiHighlightColor implements OnInit {

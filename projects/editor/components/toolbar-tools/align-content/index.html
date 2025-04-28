@@ -8,6 +8,7 @@
         size="s"
         tuiHintDescribe
         tuiIconButton
+        tuiToolbarTool
         type="button"
         [iconStart]="options.icons.textAlignPreview"
         [tuiHint]="(texts$ | async)?.justify"
@@ -15,13 +16,13 @@
         {{ (texts$ | async)?.justify }}
     </button>
     <ng-template #alignDropdown>
-        <div class="t-dropdown">
+        <div tuiToolbarDropdownContent>
             <button
                 appearance="icon"
                 size="s"
                 tuiIconButton
+                tuiToolbarTool
                 type="button"
-                class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignLeft"
                 [tuiHint]="(texts$ | async)?.justifyLeft"
                 [tuiHintManual]="!isMobile && null"
@@ -33,8 +34,8 @@
                 appearance="icon"
                 size="s"
                 tuiIconButton
+                tuiToolbarTool
                 type="button"
-                class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignCenter"
                 [tuiHint]="(texts$ | async)?.justifyCenter"
                 [tuiHintManual]="!isMobile && null"
@@ -46,8 +47,8 @@
                 appearance="icon"
                 size="s"
                 tuiIconButton
+                tuiToolbarTool
                 type="button"
-                class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignRight"
                 [tuiHint]="(texts$ | async)?.justifyRight"
                 [tuiHintManual]="!isMobile && null"
@@ -59,8 +60,8 @@
                 appearance="icon"
                 size="s"
                 tuiIconButton
+                tuiToolbarTool
                 type="button"
-                class="t-option t-option_margin"
                 [iconStart]="options.icons.textAlignJustify"
                 [tuiHint]="(texts$ | async)?.justifyFull"
                 [tuiHintManual]="!isMobile && null"

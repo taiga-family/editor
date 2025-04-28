@@ -4,6 +4,7 @@
         automation-id="toolbar__color-button"
         size="s"
         tuiIconButton
+        tuiToolbarTool
         type="button"
         [iconStart]="icon || ''"
         [tuiDropdown]="colorDropdown"
@@ -12,7 +13,7 @@
         Color options
     </button>
     <div
-        class="t-plate"
+        tuiPlate
         [style.background]="fontColor$ | async"
     ></div>
 </div>
