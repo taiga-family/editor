@@ -14,6 +14,10 @@ export interface TuiSelectionSnapshot {
     head: number;
 }
 
+export interface TuiSetValueOption {
+    clearsHistory?: boolean;
+}
+
 @Directive()
 export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
@@ -49,6 +53,7 @@ export abstract class AbstractTuiEditor {
     public abstract toggleUnorderedList(): void;
     public abstract toggleCode(): void;
     public abstract togglePre(): void;
+    public abstract clearHistory(): void;
     public abstract toggleSubscript(): void;
     public abstract toggleSuperscript(): void;
     public abstract toggleCodeBlock(): void;
@@ -89,7 +94,7 @@ export abstract class AbstractTuiEditor {
     public abstract focus(): void;
     public abstract takeSelectionSnapshot(): void;
     public abstract getSelectionSnapshot(): TuiSelectionSnapshot | null;
-    public abstract setValue(value: string): void;
+    public abstract setValue(value: string, options?: TuiSetValueOption): void;
     public abstract setCellColor(color: string): void;
     public abstract getOriginTiptapEditor(): Editor | null;
     public abstract enter(): void;
