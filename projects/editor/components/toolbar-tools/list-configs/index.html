@@ -10,6 +10,7 @@
             size="s"
             tuiHintDescribe
             tuiIconButton
+            tuiItem
             tuiToolbarTool
             type="button"
             [iconStart]="options.icons.listPreview"
@@ -25,6 +26,7 @@
                     automation-id="toolbar__un-ordered-list-button"
                     size="s"
                     tuiIconButton
+                    tuiItem
                     tuiToolbarTool
                     type="button"
                     [iconStart]="options.icons.listUnOrdered"
@@ -39,6 +41,7 @@
                     automation-id="toolbar__ordered-list-button"
                     size="s"
                     tuiIconButton
+                    tuiItem
                     tuiToolbarTool
                     type="button"
                     [iconStart]="options.icons.listOrdered"
@@ -53,6 +56,7 @@
                     automation-id="toolbar__task-list-button"
                     size="s"
                     tuiIconButton
+                    tuiItem
                     tuiToolbarTool
                     type="button"
                     [iconStart]="options.icons.taskList"
@@ -70,7 +74,7 @@
                     [iconStart]="options.icons.indent"
                     [tuiHint]="texts.indent"
                     [tuiHintManual]="!isMobile && null"
-                    (click)="sinkListItem()"
+                    (click)="editor?.sinkListItem()"
                 >
                     Sink list item
                 </button>
@@ -79,12 +83,13 @@
                     automation-id="toolbar_outdent-button"
                     size="s"
                     tuiIconButton
+                    tuiItem
                     tuiToolbarTool
                     type="button"
                     [iconStart]="options.icons.outdent"
                     [tuiHint]="texts.outdent"
                     [tuiHintManual]="!isMobile && null"
-                    (click)="liftListItem()"
+                    (click)="editor?.liftListItem()"
                 >
                     Lift list item
                 </button>

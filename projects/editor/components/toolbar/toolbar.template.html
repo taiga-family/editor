@@ -1,339 +1,136 @@
 <ng-container *ngIf="editor?.stateChange$ | async" />
-<ng-container *ngIf="texts$ | async as texts">
-    <div
-        *ngIf="enabled(editorTool.Undo)"
-        tuiToolbarBlock
-    >
-        <button
-            appearance="icon"
-            automation-id="toolbar__undo-button"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [disabled]="undoDisabled"
-            [iconStart]="icons.undo"
-            [tuiHint]="texts.undo"
-            (click)="undo()"
-        >
-            {{ texts.undo }}
-        </button>
-        <button
-            appearance="icon"
-            automation-id="toolbar__redo-button"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [disabled]="redoDisabled"
-            [iconStart]="icons.redo"
-            [tuiHint]="texts.redo"
-            (click)="redo()"
-        >
-            {{ texts.redo }}
-        </button>
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Size)"
-        tuiToolbarBlock
-    >
-        <tui-font-size
-            tuiItem
-            [editor]="editor"
-        />
-    </div>
-    <div
-        *ngIf="firstBigBlockEnabled"
-        tuiToolbarBlock
-    >
-        <tui-font-style
-            *ngIf="formatEnabled"
-            tuiItem
-            [editor]="editor"
-            [enabledTools]="toolsSet"
-        />
-
-        <tui-align-content
-            *ngIf="enabled(editorTool.Align)"
-            tuiItem
-            [editor]="editor"
-        />
-
-        <tui-list-configs
-            *ngIf="enabled(editorTool.List)"
-            tuiItem
-            [editor]="editor"
-        />
-
-        <button
-            *ngIf="enabled(editorTool.Quote)"
-            appearance="icon"
-            automation-id="toolbar__quote-button"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [disabled]="unorderedList || orderedList"
-            [iconStart]="icons.quote"
-            [tuiHint]="texts.quote"
-            (click)="toggleQuote()"
-        >
-            {{ texts.quote }}
-        </button>
-        <button
-            *ngIf="enabled(editorTool.Link)"
-            appearance="icon"
-            automation-id="toolbar__link-button"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            [disabled]="a || jumpAnchor"
-            [iconStart]="icons.link"
-            [tuiHint]="texts.link"
-            (click)="onLink()"
-        >
-            {{ texts.link }}
-        </button>
-        <button
-            *ngIf="enabled(editorTool.Anchor)"
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            [disabled]="a || jumpAnchor"
-            [iconStart]="icons.anchor"
-            [tuiHint]="texts.insertAnchor"
-            (click)="onLink('#')"
-        >
-            {{ texts.insertAnchor }}
-        </button>
-        <ng-container *ngIf="enabled(editorTool.Attach)">
-            <input
-                #fileUpload
-                type="file"
-                [accept]="attachOptions.accept"
-                [multiple]="attachOptions.multiple"
-                [tabIndex]="-1"
-                (change)="onAttach(fileUpload)"
-            />
-
-            <button
-                appearance="icon"
-                size="s"
-                tuiHintDescribe
-                tuiIconButton
-                tuiItem
-                tuiToolbarTool
-                type="button"
-                [iconStart]="icons.attach"
-                [tuiHint]="texts.attach"
-                (click)="fileUpload.click()"
-            >
-                {{ texts.attach }}
-            </button>
-        </ng-container>
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Sub) || enabled(editorTool.Sup)"
-        tuiToolbarBlock
-    >
-        <button
-            *ngIf="enabled(editorTool.Sub)"
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="icons.sub"
-            [tuiHint]="texts.subscript"
-            (click)="toggleSubscript()"
-        >
-            {{ texts.subscript }}
-        </button>
-        <button
-            *ngIf="enabled(editorTool.Sup)"
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="icons.sup"
-            [tuiHint]="texts.superscript"
-            (click)="toggleSuperscript()"
-        >
-            {{ texts.superscript }}
-        </button>
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Color) || enabled(editorTool.Hilite)"
-        tuiToolbarBlock
-    >
-        <tui-text-color
-            *ngIf="enabled(editorTool.Color)"
-            tuiItem
-            [colors]="colors"
-            [editor]="editor"
-        />
-
-        <tui-highlight-color
-            *ngIf="enabled(editorTool.Hilite)"
-            tuiItem
-            [colors]="colors"
-            [editor]="editor"
-        />
-    </div>
-    <div
-        *ngIf="secondBigBlockEnabled"
-        tuiToolbarBlock
-    >
-        <tui-code
-            *ngIf="enabled(editorTool.Code)"
-            tuiItem
-            [editor]="editor"
-        />
-
-        <button
-            *ngIf="enabled(editorTool.Tex)"
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="icons.tex"
-            [tuiHint]="texts.tex"
-            (click)="onTeX()"
-        >
-            {{ texts.tex }}
-        </button>
-        <div
-            *ngIf="enabled(editorTool.Img)"
-            tuiItem
-        >
-            <input
-                #image
-                accept="image/*"
-                type="file"
-                (change)="onImage(image)"
-            />
-
-            <button
-                appearance="icon"
-                size="s"
-                tuiHintDescribe
-                tuiIconButton
-                tuiToolbarTool
-                type="button"
-                [iconStart]="icons.image"
-                [tuiHint]="texts.image"
-                (click)="image.click()"
-            >
-                {{ texts.image }}
-            </button>
-        </div>
-        <button
-            *ngIf="enabled(editorTool.HR)"
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="icons.hr"
-            [tuiHint]="texts.insertHorizontalRule"
-            (click)="insertHorizontalRule()"
-        >
-            {{ texts.insertHorizontalRule }}
-        </button>
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Clear)"
-        tuiToolbarBlock
-    >
-        <button
-            appearance="icon"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="icons.clear"
-            [tuiHint]="texts.clear"
-            (click)="removeFormat()"
-        >
-            {{ texts.clear }}
-        </button>
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Details)"
-        tuiToolbarBlock
-    >
-        <tui-details
-            tuiItem
-            [editor]="editor"
-        />
-
-        <tui-details-remove
-            tuiItem
-            [editor]="editor"
-        />
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Group)"
-        tuiToolbarBlock
-    >
-        <tui-editor-group-tool
-            tuiItem
-            [editor]="editor"
-        />
-    </div>
-    <div
-        *ngIf="enabled(editorTool.Table)"
-        tuiToolbarBlock
-    >
-        <tui-table-create
-            tuiItem
-            [editor]="editor"
-        />
-
-        <tui-table-row-column-manager
-            tuiItem
-            [editor]="editor"
-        />
-
-        <tui-table-merge-cells
-            tuiItem
-            [editor]="editor"
-        />
-    </div>
-    <div
-        *ngIf="enabled(editorTool.CellColor)"
-        tuiToolbarBlock
-    >
-        <tui-table-cell-color
-            tuiItem
-            [colors]="colors"
-            [editor]="editor"
-        />
-    </div>
-    <div tuiToolbarBlock>
-        <ng-content />
-    </div>
-</ng-container>
+<section
+    *ngIf="enabled(tool.Undo)"
+    tuiToolbarBlock
+>
+    <tui-undo-tool [editor]="editor" />
+    <tui-redo-tool [editor]="editor" />
+</section>
+<tui-font-size
+    *ngIf="enabled(tool.Size)"
+    tuiToolbarBlock
+    [editor]="editor"
+/>
+<section
+    *ngIf="firstBigBlockEnabled"
+    tuiToolbarBlock
+>
+    <tui-font-style-tool
+        *ngIf="formatEnabled"
+        [editor]="editor"
+        [enabledTools]="toolsSet"
+    />
+    <tui-align-content-tool
+        *ngIf="enabled(tool.Align)"
+        [editor]="editor"
+    />
+    <tui-list-configs-tool
+        *ngIf="enabled(tool.List)"
+        [editor]="editor"
+    />
+    <tui-quote-tool
+        *ngIf="enabled(tool.Quote)"
+        [editor]="editor"
+    />
+    <tui-link-tool
+        *ngIf="enabled(tool.Link)"
+        [editor]="editor"
+    />
+    <tui-anchor-tool
+        *ngIf="enabled(tool.Anchor)"
+        [editor]="editor"
+    />
+    <tui-attach-tool
+        *ngIf="enabled(tool.Attach)"
+        [editor]="editor"
+        (fileAttached)="fileAttached.emit($event)"
+    />
+</section>
+<section
+    *ngIf="enabled(tool.Sub) || enabled(tool.Sup)"
+    tuiToolbarBlock
+>
+    <tui-subscript-tool
+        *ngIf="enabled(tool.Sub)"
+        [editor]="editor"
+    />
+    <tui-superscript-tool
+        *ngIf="enabled(tool.Sup)"
+        [editor]="editor"
+    />
+</section>
+<section
+    *ngIf="enabled(tool.Color) || enabled(tool.Hilite)"
+    tuiToolbarBlock
+>
+    <tui-text-color-tool
+        *ngIf="enabled(tool.Color)"
+        [colors]="colors"
+        [editor]="editor"
+    />
+    <tui-highlight-color-tool
+        *ngIf="enabled(tool.Hilite)"
+        [colors]="colors"
+        [editor]="editor"
+    />
+</section>
+<section
+    *ngIf="secondBigBlockEnabled"
+    tuiToolbarBlock
+>
+    <tui-code-tool
+        *ngIf="enabled(tool.Code)"
+        [editor]="editor"
+    />
+    <tui-tex-tool
+        *ngIf="enabled(tool.Tex)"
+        [editor]="editor"
+        (texClicked)="texClicked.emit($event)"
+    />
+    <tui-image-tool
+        *ngIf="enabled(tool.Img)"
+        [editor]="editor"
+    />
+    <tui-hr-tool
+        *ngIf="enabled(tool.HR)"
+        [editor]="editor"
+    />
+</section>
+<tui-clear-tool
+    *ngIf="enabled(tool.Clear)"
+    tuiToolbarBlock
+    [editor]="editor"
+/>
+<section
+    *ngIf="enabled(tool.Details)"
+    tuiToolbarBlock
+>
+    <tui-details-tool [editor]="editor" />
+    <tui-details-remove-tool [editor]="editor" />
+</section>
+<section
+    *ngIf="enabled(tool.Group)"
+    tuiToolbarBlock
+>
+    <tui-editor-group-tool [editor]="editor" />
+</section>
+<section
+    *ngIf="enabled(tool.Table)"
+    tuiToolbarBlock
+>
+    <tui-table-create-tool [editor]="editor" />
+    <tui-table-row-column-manager-tool [editor]="editor" />
+    <tui-table-merge-cells-tool [editor]="editor" />
+</section>
+<section
+    *ngIf="enabled(tool.CellColor)"
+    tuiToolbarBlock
+>
+    <tui-table-cell-color-tool
+        [colors]="colors"
+        [editor]="editor"
+    />
+</section>
+<section tuiToolbarBlock>
+    <ng-content />
+</section>

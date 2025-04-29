@@ -1,7 +1,7 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {
@@ -15,12 +15,13 @@ import {combineLatest, map, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-code',
-    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiHint],
+    // TODO: deprecate tui-code
+    selector: 'tui-code,tui-code-tool',
+    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiCode implements OnInit {
+export class TuiCodeTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -55,3 +56,8 @@ export class TuiCode implements OnInit {
         }).pipe(map(({code, codeBlock}) => code || codeBlock));
     }
 }
+
+/**
+ * @deprecated use {@link TuiCodeTool}
+ */
+export const TuiCode = TuiCodeTool;

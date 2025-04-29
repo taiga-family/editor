@@ -36,18 +36,14 @@
 />
 
 <ng-template #toolbarTpl>
-    <tui-toolbar-host>
+    <tui-toolbar-host [disabled]="!interactive()">
         <ng-container
             *ngIf="toolbar; else defaultToolbar"
             [ngTemplateOutlet]="toolbar"
-            [ngTemplateOutletContext]="{
-                $implicit: editor,
-                disabled: !interactive(),
-            }"
+            [ngTemplateOutletContext]="{$implicit: editor}"
         />
         <ng-template #defaultToolbar>
             <tui-toolbar
-                [disabled]="!interactive()"
                 [tools]="tools"
                 (fileAttached)="fileAttached.emit($event)"
             >

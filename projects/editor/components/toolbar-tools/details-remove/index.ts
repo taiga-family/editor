@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -11,12 +11,13 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-details-remove',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiHint],
+    // TODO: deprecated tui-details-remove
+    selector: 'tui-details-remove,tui-details-remove-tool',
+    imports: [AsyncPipe, NgIf, TuiButton, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDetailsRemove implements OnInit {
+export class TuiDetailsRemoveTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
@@ -34,10 +35,6 @@ export class TuiDetailsRemove implements OnInit {
         this.initStream();
     }
 
-    public removeDetails(): void {
-        this.editor?.removeDetails();
-    }
-
     protected get editor(): AbstractTuiEditor | null {
         return this.injectionEditor ?? this.localEditor;
     }
@@ -47,3 +44,8 @@ export class TuiDetailsRemove implements OnInit {
             this.editor?.isActive$('details').pipe(map((isActive) => !isActive)) ?? null;
     }
 }
+
+/**
+ * @deprecated use {@link TuiDetailsRemoveTool}
+ */
+export const TuiDetailsRemove = TuiDetailsRemoveTool;

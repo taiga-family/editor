@@ -1,7 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorToolType} from '@taiga-ui/editor/common';
 import {
@@ -16,12 +16,13 @@ import {combineLatest, map, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-font-style',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint],
+    // TODO: deprecate tui-font-style
+    selector: 'tui-font-style,tui-font-style-tool',
+    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiFontStyle implements OnInit {
+export class TuiFontStyleTool implements OnInit {
     private toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
     private localEditor: AbstractTuiEditor | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
@@ -77,3 +78,8 @@ export class TuiFontStyle implements OnInit {
         );
     }
 }
+
+/**
+ * @deprecated use {@link TuiFontStyleTool}
+ */
+export const TuiFontStyle = TuiFontStyleTool;

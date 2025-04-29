@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -10,12 +10,13 @@ import {combineLatest, map, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-list-configs',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint],
+    // TODO: deprecate tui-list-configs
+    selector: 'tui-list-configs,tui-list-configs-tool',
+    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiListConfigs {
+export class TuiListConfigsTool {
     private localEditor: AbstractTuiEditor | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -38,14 +39,6 @@ export class TuiListConfigs {
         return this.injectionEditor ?? this.localEditor;
     }
 
-    protected sinkListItem(): void {
-        this.editor?.sinkListItem();
-    }
-
-    protected liftListItem(): void {
-        this.editor?.liftListItem();
-    }
-
     private initStream(): void {
         this.listState$ = combineLatest([
             this.editor?.isActive$('orderedList') ?? of(false),
@@ -60,3 +53,8 @@ export class TuiListConfigs {
         );
     }
 }
+
+/**
+ * @deprecated use {@link TuiListConfigsTool}
+ */
+export const TuiListConfigs = TuiListConfigsTool;

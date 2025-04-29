@@ -1,0 +1,17 @@
+<ng-container *ngIf="editor?.stateChange$ | async" />
+<button
+    appearance="icon"
+    automation-id="toolbar__quote-button"
+    size="s"
+    tuiHintDescribe
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [disabled]="unorderedList || orderedList"
+    [iconStart]="options.icons.quote"
+    [tuiHint]="(texts$ | async)?.quote"
+    (click)="editor?.toggleBlockquote()"
+>
+    {{ (texts$ | async)?.quote }}
+</button>

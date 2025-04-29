@@ -3,10 +3,11 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiItem
     tuiToolbarTool
     type="button"
     [disabled]="!(isActive$ | async)"
-    [iconStart]="icons.paint"
+    [iconStart]="options.icons.paint"
     [tuiDropdown]="cellColorDropdown"
     [tuiDropdownMaxHeight]="999"
     [tuiDropdownOpen]="false"

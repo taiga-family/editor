@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -12,12 +12,13 @@ import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-text-color',
-    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint, TuiPaletteModule],
+    // TODO: deprecate tui-text-color
+    selector: 'tui-text-color,tui-text-color-tool',
+    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint, TuiItem, TuiPaletteModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTextColor implements OnInit {
+export class TuiTextColorTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -52,3 +53,8 @@ export class TuiTextColor implements OnInit {
             ) ?? null;
     }
 }
+
+/**
+ * @deprecated use {@link TuiTextColorTool}
+ */
+export const TuiTextColor = TuiTextColorTool;
