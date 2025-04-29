@@ -4,12 +4,13 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiItem
     type="button"
     [disabled]="!!(disabled$ | async)"
     [iconStart]="options.icons.detailsRemove"
     [tuiHint]="text.removeDetails"
     [tuiHintManual]="!isMobile && null"
-    (click)="removeDetails()"
+    (click)="editor?.removeDetails()"
 >
     {{ text.removeDetails }}
 </button>

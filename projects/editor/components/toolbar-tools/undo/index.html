@@ -1,0 +1,17 @@
+<ng-container *ngIf="editor?.stateChange$ | async" />
+<button
+    appearance="icon"
+    automation-id="toolbar__undo-button"
+    size="s"
+    tuiHintDescribe
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [disabled]="editor?.undoDisabled()"
+    [iconStart]="options.icons.undo"
+    [tuiHint]="(texts$ | async)?.undo"
+    (click)="editor?.undo()"
+>
+    {{ (texts$ | async)?.undo }}
+</button>

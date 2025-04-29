@@ -9,6 +9,7 @@
         size="s"
         tuiHintDescribe
         tuiIconButton
+        tuiItem
         tuiToolbarTool
         type="button"
         [iconStart]="options.icons.fontSize"
@@ -21,6 +22,7 @@
         <tui-data-list>
             <button
                 *ngFor="let item of fontsOptions$ | async"
+                tuiItem
                 tuiOption
                 type="button"
                 [attr.automation-id]="'tui_font__' + (item.name || '' | lowercase)"

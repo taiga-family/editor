@@ -1,6 +1,6 @@
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, tuiPx} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem, tuiPx} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorFontOption} from '@taiga-ui/editor/common';
 import {
@@ -15,7 +15,8 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-font-size',
+    // TODO: deprecate tui-font-size
+    selector: 'tui-font-size,tui-font-size-tool',
     imports: [
         AsyncPipe,
         LowerCasePipe,
@@ -26,15 +27,15 @@ import {map} from 'rxjs';
         TuiDataList,
         TuiDropdown,
         TuiHint,
+        TuiItem,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiFontSize {
+export class TuiFontSizeTool {
     private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly fontsOptions$: Observable<
         ReadonlyArray<Partial<TuiEditorFontOption>>
@@ -42,12 +43,10 @@ export class TuiFontSize {
 
     protected readonly fontText$ = this.texts$.pipe(map((texts) => texts.font));
 
-    @Input('editor')
-    public inputEditor: AbstractTuiEditor | null = null;
-
-    protected get editor(): AbstractTuiEditor | null {
-        return this.injectionEditor ?? this.inputEditor;
-    }
+    @Input()
+    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
+        optional: true,
+    });
 
     protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
         const color = this.editor?.getFontColor() ?? EDITOR_BLANK_COLOR;
@@ -70,3 +69,8 @@ export class TuiFontSize {
         this.editor?.toggleMark('textStyle');
     }
 }
+
+/**
+ * @deprecated use {@link TuiFontSizeTool}
+ */
+export const TuiFontSize = TuiFontSizeTool;

@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
@@ -12,7 +12,7 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-editor-group-tool',
-    imports: [AsyncPipe, TuiButton, TuiHint],
+    imports: [AsyncPipe, TuiButton, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -41,14 +41,6 @@ export class TuiEditorGroupTool implements OnInit {
 
     public ngOnInit(): void {
         this.initStream();
-    }
-
-    public addGroup(): void {
-        this.editor?.setGroup();
-    }
-
-    public removeGroup(): void {
-        this.editor?.removeGroup();
     }
 
     protected get editor(): AbstractTuiEditor | null {

@@ -1,7 +1,7 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {
@@ -24,12 +24,13 @@ export const TuiTableCommands = {
 
 @Component({
     standalone: true,
-    selector: 'tui-table-row-column-manager',
-    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiHint],
+    // TODO: deprecate tui-table-row-column-manager
+    selector: 'tui-table-row-column-manager,tui-table-row-column-manager-tool',
+    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiItem],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableRowColumnManager implements OnInit {
+export class TuiTableRowColumnManagerTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
     private commandsRegistry: Record<number, () => void> | null = null;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
@@ -74,3 +75,8 @@ export class TuiTableRowColumnManager implements OnInit {
         this.isActive$ = this.editor?.isActive$('table') ?? null;
     }
 }
+
+/**
+ * @deprecated use {@link TuiTableRowColumnManagerTool}
+ */
+export const TuiTableRowColumnManager = TuiTableRowColumnManagerTool;

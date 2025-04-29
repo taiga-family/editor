@@ -3,12 +3,13 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiItem
     tuiToolbarTool
     type="button"
     [iconStart]="options.icons.detailsAdd"
     [tuiHint]="(texts$ | async)?.setDetails"
     [tuiHintManual]="!isMobile && null"
-    (click)="setDetails()"
+    (click)="editor?.setDetails()"
 >
     {{ (texts$ | async)?.setDetails }}
 </button>

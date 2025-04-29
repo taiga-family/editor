@@ -1,9 +1,9 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
-import type {AbstractTuiEditor, TuiEditorOptions} from '@taiga-ui/editor/common';
+import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
@@ -12,15 +12,24 @@ import {combineLatest, distinctUntilChanged, map, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    selector: 'tui-table-cell-color',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiPaletteModule],
+    // TODO: deprecate tui-table-cell-color
+    selector: 'tui-table-cell-color,tui-table-cell-color-tool',
+    imports: [
+        AsyncPipe,
+        NgIf,
+        TuiButton,
+        TuiDropdown,
+        TuiHint,
+        TuiItem,
+        TuiPaletteModule,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTableCellColor implements OnInit {
+export class TuiTableCellColorTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
 
-    private readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
@@ -43,10 +52,6 @@ export class TuiTableCellColor implements OnInit {
 
     protected get editor(): AbstractTuiEditor | null {
         return this.injectionEditor ?? this.localEditor;
-    }
-
-    protected get icons(): TuiEditorOptions['icons'] {
-        return this.options.icons;
     }
 
     protected isBlankColor(color: string): boolean {
@@ -88,3 +93,8 @@ export class TuiTableCellColor implements OnInit {
             ) ?? null;
     }
 }
+
+/**
+ * @deprecated use {@link TuiTableCellColorTool}
+ */
+export const TuiTableCellColor = TuiTableCellColorTool;

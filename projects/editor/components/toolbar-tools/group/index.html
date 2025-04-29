@@ -4,12 +4,13 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiItem
     tuiToolbarTool
     type="button"
     [iconStart]="options.icons.groupAdd"
     [tuiHint]="insertGroupText$ | async"
     [tuiHintManual]="!isMobile && null"
-    (click)="addGroup()"
+    (click)="editor?.setGroup()"
 >
     {{ insertGroupText$ | async }}
 </button>
@@ -20,13 +21,14 @@
     size="s"
     tuiHintDescribe
     tuiIconButton
+    tuiItem
     tuiToolbarTool
     type="button"
     [disabled]="!!(disabled$ | async)"
     [iconStart]="options.icons.groupRemove"
     [tuiHint]="removeGroupText$ | async"
     [tuiHintManual]="!isMobile && null"
-    (click)="removeGroup()"
+    (click)="editor?.removeGroup()"
 >
     {{ removeGroupText$ | async }}
 </button>

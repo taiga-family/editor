@@ -1,0 +1,16 @@
+<ng-container *ngIf="editor?.stateChange$ | async" />
+<button
+    appearance="icon"
+    size="s"
+    tuiHintDescribe
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [disabled]="a || jumpAnchor"
+    [iconStart]="options.icons.anchor"
+    [tuiHint]="(texts$ | async)?.insertAnchor"
+    (click)="onAnchor()"
+>
+    {{ (texts$ | async)?.insertAnchor }}
+</button>
