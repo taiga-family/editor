@@ -1,3 +1,17 @@
+### [4.26.0](https://github.com/taiga-family/editor/compare/v4.25.0...v4.26.0) (2025-04-29)
+
+### 🚀 Features
+
+- support history management by automatically from form control (#1726)
+  [(664722d)](https://github.com/taiga-family/editor/commit/664722d4bccf2979e090d30475c692a2387ef029)
+- add separate toolbar tools (#1724)
+  [(d4a145f)](https://github.com/taiga-family/editor/commit/d4a145feaf81ad92329564763fea47eb86266dfa)
+
+### 🐞 Bug Fixes
+
+- wrong css imports (#1725)
+  [(0d58f78)](https://github.com/taiga-family/editor/commit/0d58f78527d3961f0e696ee95cfe2fe6dc750330)
+
 ### [4.25.0](https://github.com/taiga-family/editor/compare/v4.24.0...v4.25.0) (2025-04-28)
 
 ### 🚀 Features
