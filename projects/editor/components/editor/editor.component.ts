@@ -137,7 +137,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
                     (extension) => extension.name === 'mention',
                 );
 
-            this.editorService.setValue(this.firstInitialValue);
+            this.editorService.setValue(this.firstInitialValue, {clearsHistory: true});
             this.editorLoaded.set(true);
             this.cd.detectChanges();
 

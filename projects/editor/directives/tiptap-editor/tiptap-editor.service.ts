@@ -5,6 +5,7 @@ import type {
     TuiEditableImage,
     TuiEditorAttachedFile,
     TuiSelectionSnapshot,
+    TuiSetValueOption,
     TuiYoutubeOptions,
 } from '@taiga-ui/editor/common';
 import {
@@ -29,10 +30,9 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
 export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef: Observable<Editor | null> = inject(TIPTAP_EDITOR);
     private readonly options = inject(TUI_EDITOR_OPTIONS);
-
-    protected editor?: Editor;
-
+    private firstInitContent = false;
     protected selectionSnapshot: TuiSelectionSnapshot | null = null;
+    protected editor?: Editor;
 
     constructor() {
         super();
@@ -338,12 +338,21 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.chain().focus().run();
     }
 
-    public setValue(value: string): void {
+    public setValue(value: string, options: TuiSetValueOption = {}): void {
         if (value === this.html || (value === '' && this.html === '<p></p>')) {
             return;
         }
 
         this.editor?.commands.setContent(value, false, this.options.parseOptions);
+
+        if (options.clearsHistory || !this.firstInitContent) {
+            this.clearHistory();
+        }
+
+        this.firstInitContent = true;
+    }
+
+    public clearHistory(): void {
         this.editor?.view.updateState(
             EditorState.create({
                 schema: this.editor.state.schema,
