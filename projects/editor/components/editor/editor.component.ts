@@ -368,6 +368,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private currentFocusedNodeIsTextAnchor(range: Range): boolean {
         return (
             this.focusNode?.nodeName === 'A' ||
+            !!this.focusNode?.parentElement?.closest('a') ||
             !!this.focusNode?.parentElement?.closest('tui-edit-link') ||
             (!!range.startContainer.parentElement?.closest('a') &&
                 tuiIsSafeLinkRange(range))

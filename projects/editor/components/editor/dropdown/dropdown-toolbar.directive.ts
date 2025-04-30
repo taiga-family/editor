@@ -48,7 +48,11 @@ export class TuiEditorDropdownToolbar
         this.selection$.pipe(
             map(() => this.getRange()),
             distinctUntilChanged(
-                (x, y) => x.startOffset === y.startOffset && x.endOffset === y.endOffset,
+                (prev, curr) =>
+                    prev?.startContainer === curr?.startContainer &&
+                    prev?.endContainer === curr?.endContainer &&
+                    prev?.startOffset === curr?.startOffset &&
+                    prev?.endOffset === curr?.endOffset,
             ),
         ),
     ]).pipe(

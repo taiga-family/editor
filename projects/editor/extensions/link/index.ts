@@ -1,6 +1,7 @@
 import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
 import {
     tuiGetCurrentWordBounds,
+    tuiGetHtmlFromFragment,
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
@@ -20,11 +21,17 @@ export const TuiLink = Link.extend({
             ...this.parent?.(),
             toggleLink:
                 (attributes) =>
-                ({chain, state, editor}) => {
+                ({chain, state, editor, tr}) => {
                     {
+                        if (!tuiGetSlicedFragment(state).trim()) {
+                            return false;
+                        }
+
                         const {from, to} = tuiGetCurrentWordBounds(editor);
-                        const sliced = tuiGetSlicedFragment(state);
-                        const forwardSymbolIsWhitespace = sliced === ' ';
+                        const forwardSymbolIsWhitespace = tuiGetHtmlFromFragment(
+                            tr.doc.cut(tr.selection.to, tr.selection.to + 1).content,
+                            editor.schema,
+                        );
 
                         const toggleMark = chain()
                             .setTextSelection({from, to})
@@ -32,14 +39,18 @@ export const TuiLink = Link.extend({
                                 extendEmptyMarkRange: true,
                             });
 
-                        return (
-                            forwardSymbolIsWhitespace
-                                ? toggleMark.setTextSelection(to - 1)
-                                : toggleMark
-                                      .setTextSelection(to)
-                                      .insertContent(TUI_TIPTAP_WHITESPACE_HACK)
-                                      .setTextSelection(to - 1)
-                        ).run();
+                        return toggleMark
+                            .setTextSelection(to)
+                            .insertContent(
+                                forwardSymbolIsWhitespace === ' '
+                                    ? ''
+                                    : TUI_TIPTAP_WHITESPACE_HACK,
+                            )
+                            .setTextSelection({
+                                from,
+                                to: to - from === 1 ? to : to - 1,
+                            })
+                            .run();
                     }
                 },
         };

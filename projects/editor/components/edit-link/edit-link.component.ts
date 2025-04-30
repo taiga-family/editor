@@ -9,7 +9,12 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiAutoFocus, tuiIsElement} from '@taiga-ui/cdk';
+import {
+    TUI_IS_IOS,
+    TuiAutoFocus,
+    tuiAutoFocusOptionsProvider,
+    tuiIsElement,
+} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import type {
     AbstractTuiEditor,
@@ -48,16 +53,30 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     templateUrl: './edit-link.template.html',
     styleUrls: ['./edit-link.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        /**
+         * Safari has a different behavior for autofocus,
+         * which causes focus to be lost at the moment of delay
+         * https://github.com/taiga-family/editor/issues/1717
+         */
+        {
+            provide: TUI_IS_IOS,
+            useValue: true,
+        },
+        tuiAutoFocusOptionsProvider({
+            delay: 0,
+            preventScroll: true,
+        }),
+    ],
     host: {
         '(document:selectionchange)': 'onSelectionChange()',
-        '(mousedown)': 'onMouseDown($event)',
+        '(mousedown.capture)': 'onMouseDown($event)',
     },
 })
 export class TuiEditLink {
+    private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
-    private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected url: string = this.getHrefOrAnchorId();
     protected edit = !this.url;

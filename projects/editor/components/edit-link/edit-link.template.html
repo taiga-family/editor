@@ -13,7 +13,6 @@
             <div class="t-url">
                 <div class="t-prefix">{{ prefix }}</div>
                 <tui-input-inline
-                    tuiAutoFocus
                     class="t-input"
                     [class.t-input_filled]="hasUrl"
                     (input)="onChange($any($event.target)?.value)"
@@ -24,6 +23,7 @@
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     </ng-container>
                     <input
+                        tuiAutoFocus
                         [(ngModel)]="url"
                         (blur)="onBlur(url)"
                     />
@@ -38,7 +38,7 @@
             type="button"
             class="t-button"
             [iconStart]="options.icons.popupLinkRemove"
-            (click)="onClear()"
+            (mousedown.prevent)="onClear()"
         ></button>
         <button
             appearance="icon"
@@ -48,7 +48,7 @@
             type="button"
             class="t-button"
             [iconStart]="options.icons.popupLinkSave"
-            (click)="onSave()"
+            (mousedown)="onSave()"
         ></button>
     </ng-container>
     <ng-template #view>
