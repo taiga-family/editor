@@ -1,3 +1,14 @@
+### [4.27.0](https://github.com/taiga-family/editor/compare/v4.26.0...v4.27.0) (2025-04-30)
+
+### 🐞 Bug Fixes
+
+- wrong behaviour in Safari for tui-edit-link (#1729)
+  [(87974b7)](https://github.com/taiga-family/editor/commit/87974b79139fd677db2d56e967cdcc67f69b87b8)
+- wrong placeholder position (#1730)
+  [(801fe2a)](https://github.com/taiga-family/editor/commit/801fe2a68bf69525432ce33004355ff84574aa0e)
+- update tiptap to &gt;=2.11.9 (#1728)
+  [(0ef1382)](https://github.com/taiga-family/editor/commit/0ef1382dfa30c78b4908f7d110d3a26d860477ab)
+
 ### [4.26.0](https://github.com/taiga-family/editor/compare/v4.25.0...v4.26.0) (2025-04-29)
 
 ### 🚀 Features
