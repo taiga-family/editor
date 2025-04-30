@@ -3,23 +3,25 @@
     tuiEditorArea
     class="t-wrapper"
 >
-    <ng-container *ngIf="!floatingToolbar">
-        <ng-container [ngTemplateOutlet]="toolbarTpl" />
-    </ng-container>
+    <section>
+        <ng-container *ngIf="!floatingToolbar">
+            <ng-container [ngTemplateOutlet]="toolbarTpl" />
+        </ng-container>
 
-    <div
-        tuiEditorLabel
-        (mousedown)="focus($event)"
-    >
-        <ng-content />
-    </div>
-    <div
-        *ngIf="hasPlaceholder"
-        tuiEditorPlaceholder
-        (mousedown)="focus($event)"
-    >
-        {{ placeholder || exampleText }}
-    </div>
+        <div
+            tuiEditorLabel
+            (mousedown)="focus($event)"
+        >
+            <ng-content />
+        </div>
+        <div
+            *ngIf="hasPlaceholder"
+            tuiEditorPlaceholder
+            (mousedown)="focus($event)"
+        >
+            {{ placeholder || exampleText }}
+        </div>
+    </section>
 
     <tui-scrollbar
         tuiEditorScrollbar
