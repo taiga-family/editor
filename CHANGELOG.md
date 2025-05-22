@@ -1,3 +1,12 @@
+### [4.28.0](https://github.com/taiga-family/editor/compare/v4.27.0...v4.28.0) (2025-05-22)
+
+### 🐞 Bug Fixes
+
+- added fixes for min/max width options (#1746) (#1747)
+  [(57c5984)](https://github.com/taiga-family/editor/commit/57c5984124e9bd2074d2424fc59cbb05860c40dd)
+- update tiptap to &gt;=2.12.0 (#1734)
+  [(4a9ec21)](https://github.com/taiga-family/editor/commit/4a9ec21d3c67025569149de82029c1cda4caf843)
+
 ### [4.27.0](https://github.com/taiga-family/editor/compare/v4.26.0...v4.27.0) (2025-04-30)
 
 ### 🐞 Bug Fixes
