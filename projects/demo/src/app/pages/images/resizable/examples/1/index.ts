@@ -4,6 +4,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
+    TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
     TuiEditorSocket,
@@ -26,6 +27,13 @@ import {switchMap} from 'rxjs';
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],
+        },
+        {
+            provide: TUI_IMAGE_EDITOR_OPTIONS,
+            useValue: {
+                minWidth: 100,
+                maxWidth: 800,
+            },
         },
     ],
 })
