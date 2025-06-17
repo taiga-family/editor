@@ -25,6 +25,9 @@ import {combineLatest, distinctUntilChanged, map, of} from 'rxjs';
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiPlateHost: '',
+    },
 })
 export class TuiTableCellColorTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
