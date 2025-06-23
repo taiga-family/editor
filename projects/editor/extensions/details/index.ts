@@ -19,6 +19,13 @@ declare module '@tiptap/core' {
 export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     name: 'details',
 
+    content: 'summary detailsContent',
+
+    group: 'block',
+    draggable: true,
+    allowGapCursor: true,
+    isolating: true,
+
     addOptions() {
         return {
             HTMLAttributes: {},
@@ -38,13 +45,6 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
         };
     },
 
-    content: 'summary detailsContent',
-
-    group: 'block',
-    draggable: true,
-    allowGapCursor: true,
-    isolating: true,
-
     parseHTML() {
         return [
             {
@@ -63,7 +63,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     },
 
     addNodeView() {
-        return ({node, getPos}): any => {
+        return ({node, getPos, editor}): any => {
             if (globalThis.document) {
                 const wrapper = document.createElement('div');
                 const details = document.createElement('details');
@@ -91,12 +91,30 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     this.editor.chain().focus().setTextSelection(pos).run();
                 };
 
+                // caretaker note:
+                // This is a workaround, because when the content contains whitespaces,
+                // Tiptap ends up rendering two accordions instead of one.
+                const pasteHandler = async (event: Event): Promise<void> => {
+                    if ((event.target as Element)?.closest('summary')) {
+                        event.preventDefault();
+
+                        const buffer = await navigator.clipboard.readText();
+                        const text = (buffer satisfies string).trim();
+
+                        editor.commands.insertContent(text);
+                    }
+                };
+
                 collapseButton.addEventListener('click', openHandler);
+                details.addEventListener('paste', pasteHandler, {capture: true});
 
                 deleteButton.addEventListener(
                     'click',
                     (e) => {
                         collapseButton.removeEventListener('click', openHandler);
+                        details.removeEventListener('click', pasteHandler, {
+                            capture: true,
+                        });
 
                         const from = (getPos as any)?.() ?? 0;
 
@@ -121,6 +139,31 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                 );
 
                 wrapper.append(details, collapseButton, deleteButton);
+
+                // caretaker note:
+                // This is a workaround to prevent double accordion
+                // insertion after a copy/paste event.
+                setTimeout(() => {
+                    const target: HTMLElement | null = details.querySelector('summary p');
+
+                    if (!target) {
+                        return;
+                    }
+
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+
+                    range.selectNodeContents(target);
+                    range.collapse(false);
+
+                    sel?.removeAllRanges();
+                    sel?.addRange(range);
+
+                    target.focus();
+                    range.detach();
+
+                    target.scrollTop = target.scrollHeight;
+                });
 
                 return {
                     dom: wrapper,
@@ -147,11 +190,9 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                                 .trim().length ?? 0) > 0
                                 ? tuiGetSelectedContent(state)
                                 : '';
-
-                        setTimeout(() =>
-                            editor.chain().focus().setTextSelection(pos).run(),
-                        );
                     }
+
+                    setTimeout(() => editor.chain().focus().setTextSelection(pos).run());
 
                     return commands.insertContent(
                         `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
@@ -207,15 +248,15 @@ export interface TuiSummaryOptions {
 export const TuiSummary = Node.create<TuiSummaryOptions>({
     name: 'summary',
 
+    content: 'paragraph',
+
+    group: 'block',
+
     addOptions() {
         return {
             HTMLAttributes: {},
         };
     },
-
-    content: 'paragraph',
-
-    group: 'block',
 
     parseHTML() {
         return [
