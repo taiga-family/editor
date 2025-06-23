@@ -67,6 +67,10 @@
     display: none;
 }
 
+[tuiPlateHost] {
+    position: relative;
+}
+
 [tuiPlate] {
     position: absolute;
     top: 1.9rem;

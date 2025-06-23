@@ -25,6 +25,9 @@ import {distinctUntilChanged, map} from 'rxjs';
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        tuiPlateHost: '',
+    },
 })
 export class TuiHighlightColorTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
