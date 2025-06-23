@@ -21,8 +21,8 @@ test.describe('Links', () => {
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
 
-        await page.locator('tui-input-inline input').focus();
-        await page.locator('tui-input-inline input').fill('wysiwyg.com');
+        await page.locator('tui-input-inline input').nth(0).focus();
+        await page.locator('tui-input-inline input').nth(0).fill('wysiwyg.com');
         await page.keyboard.press('Enter');
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
@@ -32,8 +32,8 @@ test.describe('Links', () => {
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
 
-        await page.locator('tui-input-inline input').focus();
-        await page.locator('tui-input-inline input').fill('example.com');
+        await page.locator('tui-input-inline input').nth(0).focus();
+        await page.locator('tui-input-inline input').nth(0).fill('example.com');
         await page.keyboard.press('Enter');
 
         await expect(page.locator('tui-editor')).toHaveScreenshot('Links-03.png');
