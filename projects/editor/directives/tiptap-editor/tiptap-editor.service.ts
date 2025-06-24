@@ -201,7 +201,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public toggleTaskList(): void {
-        this.editor?.commands.toggleTaskList();
+        this.editor?.chain().focus().toggleTaskList().run();
     }
 
     public sinkListItem(): void {
