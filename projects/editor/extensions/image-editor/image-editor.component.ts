@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -28,6 +29,7 @@ import {TuiImageAlignComponent} from './options/image-align/image-align.componen
     standalone: true,
     selector: 'tui-image-editor',
     imports: [
+        NgIf,
         TuiButton,
         TuiDropdown,
         TuiEditorResizable,
@@ -116,6 +118,10 @@ export class TuiImageEditor
     }
 
     protected currentTargetIsFocused(node: Node): void {
+        if (!this.editor.isEditable) {
+            return;
+        }
+
         this.focused = this.el.nativeElement.contains(node);
 
         if (this.focused) {

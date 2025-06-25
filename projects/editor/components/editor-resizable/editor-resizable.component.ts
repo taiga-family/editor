@@ -27,6 +27,9 @@ export class TuiEditorResizable {
     public container?: ElementRef<HTMLDivElement>;
 
     @Input()
+    public isEditable = false;
+
+    @Input()
     public autoHeight = false;
 
     @Input()

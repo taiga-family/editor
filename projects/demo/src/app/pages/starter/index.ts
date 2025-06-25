@@ -9,6 +9,7 @@ import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,
+    TUI_IMAGE_EDITOR_OPTIONS,
     TuiEditor,
     TuiEditorTool,
 } from '@taiga-ui/editor';
@@ -40,6 +41,13 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
                 ...TUI_EDITOR_DEFAULT_EXTENSIONS,
                 import('@taiga-ui/editor').then(({setup}) => setup({injector})),
             ],
+        },
+        {
+            provide: TUI_IMAGE_EDITOR_OPTIONS,
+            useValue: {
+                minWidth: 100,
+                maxWidth: 800,
+            },
         },
     ],
 })

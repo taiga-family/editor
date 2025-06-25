@@ -41,8 +41,8 @@ export class MyUploadService {
   ],
 })
 export class Example {
-  @ViewChild(TuiEditorComponent)
-  private readonly wysiwyg?: TuiEditorComponent;
+  @ViewChild(TuiEditor)
+  private readonly wysiwyg?: TuiEditor;
 
   readonly tools = [TuiEditorTool.Attach];
 

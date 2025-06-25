@@ -3,9 +3,11 @@
     tuiImageOptionsPosition
     class="t-hosted"
     [tuiDropdown]="imgOptions"
+    [tuiDropdownEnabled]="editor.isEditable"
     [tuiDropdownOpen]="open"
 >
     <button
+        *ngIf="editor.isEditable"
         appearance=""
         size="s"
         tuiIconButton
@@ -21,6 +23,7 @@
     <tui-editor-resizable
         #resizable
         [autoHeight]="true"
+        [isEditable]="editor.isEditable"
         [width]="width"
         (sizeChange)="updateSize($event)"
     >
