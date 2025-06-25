@@ -1,0 +1,14 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [iconStart]="options.icons.fontStyleBold"
+    [tuiHint]="(texts$ | async)?.bold"
+    [tuiHintManual]="!isMobile && null"
+    (click)="editor?.toggleBold()"
+>
+    Toggle bold
+</button>

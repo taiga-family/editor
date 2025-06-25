@@ -22,66 +22,10 @@
         </button>
         <ng-template #formatDropdown>
             <div tuiToolbarDropdownContent>
-                <button
-                    *ngIf="isEnabled(editorTool.Bold)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleBold"
-                    [tuiHint]="texts.bold"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleBold()"
-                >
-                    Toggle bold
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Italic)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleItalic"
-                    [tuiHint]="texts.italic"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleItalic()"
-                >
-                    Toggle italic
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Underline)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleUnderline"
-                    [tuiHint]="texts.underline"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleUnderline()"
-                >
-                    Toggle underline
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Strikethrough)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleStrike"
-                    [tuiHint]="texts.strikeThrough"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleStrike()"
-                >
-                    Toggle strike
-                </button>
+                <tui-font-bold-tool *ngIf="isEnabled(editorTool.Bold)" />
+                <tui-font-italic-tool *ngIf="isEnabled(editorTool.Italic)" />
+                <tui-font-underline-tool *ngIf="isEnabled(editorTool.Underline)" />
+                <tui-font-strike-tool *ngIf="isEnabled(editorTool.Strikethrough)" />
             </div>
         </ng-template>
     </div>

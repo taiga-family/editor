@@ -1,0 +1,14 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [iconStart]="options.icons.fontStyleItalic"
+    [tuiHint]="(texts$ | async)?.italic"
+    [tuiHintManual]="!isMobile && null"
+    (click)="editor?.toggleItalic()"
+>
+    Toggle italic
+</button>

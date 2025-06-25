@@ -10,6 +10,10 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorTool,
 } from '@taiga-ui/editor/common';
+import {TuiFontBoldTool} from '@taiga-ui/editor/components/toolbar-tools/font-bold';
+import {TuiFontItalicTool} from '@taiga-ui/editor/components/toolbar-tools/font-italic';
+import {TuiFontStrikeTool} from '@taiga-ui/editor/components/toolbar-tools/font-strike';
+import {TuiFontUnderlineTool} from '@taiga-ui/editor/components/toolbar-tools/font-underline';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
@@ -18,7 +22,18 @@ import {combineLatest, map, of} from 'rxjs';
     standalone: true,
     // TODO: deprecate tui-font-style
     selector: 'tui-font-style,tui-font-style-tool',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiItem],
+    imports: [
+        AsyncPipe,
+        NgIf,
+        TuiButton,
+        TuiDropdown,
+        TuiFontBoldTool,
+        TuiFontItalicTool,
+        TuiFontStrikeTool,
+        TuiFontUnderlineTool,
+        TuiHint,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

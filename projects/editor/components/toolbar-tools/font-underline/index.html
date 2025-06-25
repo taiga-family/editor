@@ -1,0 +1,14 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [iconStart]="options.icons.fontStyleUnderline"
+    [tuiHint]="(texts$ | async)?.underline"
+    [tuiHintManual]="!isMobile && null"
+    (click)="editor?.toggleUnderline()"
+>
+    Toggle underline
+</button>

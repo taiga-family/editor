@@ -1,0 +1,14 @@
+<button
+    appearance="icon"
+    size="s"
+    tuiIconButton
+    tuiItem
+    tuiToolbarTool
+    type="button"
+    [iconStart]="options.icons.fontStyleStrike"
+    [tuiHint]="(texts$ | async)?.strikeThrough"
+    [tuiHintManual]="!isMobile && null"
+    (click)="editor?.toggleStrike()"
+>
+    Toggle strike
+</button>

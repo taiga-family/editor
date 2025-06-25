@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiButton} from '@taiga-ui/core';
 import {
     TableCellBackground,
     TUI_EDITOR_EXTENSIONS,
@@ -10,9 +9,12 @@ import {
     TuiEditor,
     TuiEditorTool,
     TuiFileLink,
+    TuiFontBoldTool,
     TuiFontColor,
-    TuiFontSize,
+    TuiFontItalicTool,
     TuiFontSizeExtension,
+    TuiFontSizeTool,
+    TuiFontUnderlineTool,
     TuiJumpAnchor,
     TuiLink,
     TuiStarterKit,
@@ -25,7 +27,15 @@ import {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiButton, TuiEditor, TuiFontSize, TuiToolbar],
+    imports: [
+        ReactiveFormsModule,
+        TuiEditor,
+        TuiFontBoldTool,
+        TuiFontItalicTool,
+        TuiFontSizeTool,
+        TuiFontUnderlineTool,
+        TuiToolbar,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
