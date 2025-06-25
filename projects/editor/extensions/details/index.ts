@@ -1,5 +1,5 @@
 import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
-import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/editor/utils';
+import {tuiDeleteNode} from '@taiga-ui/editor/utils';
 import type {RawCommands} from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
 
@@ -18,9 +18,7 @@ declare module '@tiptap/core' {
 
 export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     name: 'details',
-
     content: 'summary detailsContent',
-
     group: 'block',
     draggable: true,
     allowGapCursor: true,
@@ -63,7 +61,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     },
 
     addNodeView() {
-        return ({node, getPos, editor}): any => {
+        return ({node, getPos}): any => {
             if (globalThis.document) {
                 const wrapper = document.createElement('div');
                 const details = document.createElement('details');
@@ -91,38 +89,16 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     this.editor.chain().focus().setTextSelection(pos).run();
                 };
 
-                // caretaker note:
-                // This is a workaround, because when the content contains whitespaces,
-                // Tiptap ends up rendering two accordions instead of one.
-                const pasteHandler = async (event: Event): Promise<void> => {
-                    if ((event.target as Element)?.closest('summary')) {
-                        event.preventDefault();
-
-                        const buffer = await navigator.clipboard.readText();
-                        const text = (buffer satisfies string).trim();
-
-                        editor.commands.insertContent(text);
-                    }
-                };
-
                 collapseButton.addEventListener('click', openHandler);
-                details.addEventListener('paste', pasteHandler, {capture: true});
 
                 deleteButton.addEventListener(
                     'click',
                     (e) => {
                         collapseButton.removeEventListener('click', openHandler);
-                        details.removeEventListener('click', pasteHandler, {
-                            capture: true,
-                        });
 
                         const from = (getPos as any)?.() ?? 0;
 
-                        this.editor
-                            .chain()
-                            .focus()
-                            .setTextSelection((getPos as any)?.())
-                            .run();
+                        this.editor.chain().focus().setTextSelection(from).run();
 
                         const node = this.editor.state.selection.$anchor.nodeAfter;
                         const to = from + (node?.nodeSize ?? 0);
@@ -140,31 +116,6 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
 
                 wrapper.append(details, collapseButton, deleteButton);
 
-                // caretaker note:
-                // This is a workaround to prevent double accordion
-                // insertion after a copy/paste event.
-                setTimeout(() => {
-                    const target: HTMLElement | null = details.querySelector('summary p');
-
-                    if (!target) {
-                        return;
-                    }
-
-                    const range = document.createRange();
-                    const sel = window.getSelection();
-
-                    range.selectNodeContents(target);
-                    range.collapse(false);
-
-                    sel?.removeAllRanges();
-                    sel?.addRange(range);
-
-                    target.focus();
-                    range.detach();
-
-                    target.scrollTop = target.scrollHeight;
-                });
-
                 return {
                     dom: wrapper,
                     contentDOM: details,
@@ -175,29 +126,57 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
 
     addCommands(): Partial<RawCommands> {
         return {
-            setDetails:
-                () =>
-                ({commands, editor, state}) => {
-                    let content = '';
-
-                    const pos = this.editor.state.selection.$anchor.pos;
-
-                    if (globalThis.document) {
-                        content =
-                            (document.defaultView?.window
-                                .getSelection()
-                                ?.toString()
-                                .trim().length ?? 0) > 0
-                                ? tuiGetSelectedContent(state)
-                                : '';
+            setDetails: () => {
+                return ({commands, editor, state}) => {
+                    if (editor.isActive('details')) {
+                        return false;
                     }
 
-                    setTimeout(() => editor.chain().focus().setTextSelection(pos).run());
+                    const {schema, selection} = state;
+                    const {$from, $to} = selection;
+                    const range = $from.blockRange($to);
 
-                    return commands.insertContent(
-                        `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
+                    if (!range) {
+                        return false;
+                    }
+
+                    const slice = state.doc.slice(range.start, range.end);
+                    const match = schema.nodes.detailsContent?.contentMatch.matchFragment(
+                        slice.content,
                     );
-                },
+
+                    if (!match) {
+                        return false;
+                    }
+
+                    commands.insertContentAt(
+                        {from: range.start, to: range.end},
+                        {
+                            type: this.name,
+                            content: [
+                                {
+                                    type: 'summary',
+                                    content: [
+                                        {
+                                            type: 'paragraph',
+                                            content: [],
+                                        },
+                                    ],
+                                },
+                                {
+                                    type: 'detailsContent',
+                                    content: slice.toJSON()?.content ?? [],
+                                },
+                            ],
+                        },
+                    );
+
+                    commands.focus();
+                    commands.setTextSelection(range.start + 2);
+
+                    return true;
+                };
+            },
             removeDetails:
                 () =>
                 ({editor, state, dispatch}) => {
@@ -215,11 +194,8 @@ export interface TuiDetailContentOptions {
 
 export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
     name: 'detailsContent',
-
     content: 'block+',
-
     group: 'block',
-
     allowGapCursor: true,
 
     parseHTML() {
@@ -247,9 +223,7 @@ export interface TuiSummaryOptions {
 
 export const TuiSummary = Node.create<TuiSummaryOptions>({
     name: 'summary',
-
-    content: 'paragraph',
-
+    content: 'block+',
     group: 'block',
 
     addOptions() {
