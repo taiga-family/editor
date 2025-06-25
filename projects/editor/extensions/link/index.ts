@@ -6,6 +6,7 @@ import {
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
 import type {KeyboardShortcutCommand} from '@tiptap/core';
+import {mergeAttributes} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
 
 export const TuiLink = Link.extend({
@@ -54,6 +55,16 @@ export const TuiLink = Link.extend({
                     }
                 },
         };
+    },
+
+    renderHTML({HTMLAttributes}) {
+        return [
+            'a',
+            mergeAttributes(HTMLAttributes, {
+                target: HTMLAttributes?.href?.startsWith('#') ? '_self' : '_blank',
+            }),
+            0,
+        ];
     },
 
     addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {

@@ -60,6 +60,7 @@ export class TuiEditorSocket {
             return;
         }
 
+        this.document.location.hash = '';
         this.document.location.hash = href.replace('#', '');
         event.preventDefault();
     }
