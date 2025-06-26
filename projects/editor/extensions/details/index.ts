@@ -1,35 +1,31 @@
 import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
 import {tuiDeleteNode} from '@taiga-ui/editor/utils';
 import type {RawCommands} from '@tiptap/core';
-import {mergeAttributes, Node} from '@tiptap/core';
+import {mergeAttributes} from '@tiptap/core';
+import type {DetailsOptions} from '@tiptap/extension-details';
+import {Details} from '@tiptap/extension-details';
+import type {DetailsContentOptions} from '@tiptap/extension-details-content';
+import {DetailsContent} from '@tiptap/extension-details-content';
+import type {DetailsSummaryOptions} from '@tiptap/extension-details-summary';
+import {DetailsSummary} from '@tiptap/extension-details-summary';
 
-export interface TuiDetailsOptions {
-    readonly HTMLAttributes: Record<string, unknown>;
-}
+/**
+ * @deprecated use {@link DetailsOptions}
+ */
+export type TuiDetailsOptions = DetailsOptions;
 
-declare module '@tiptap/core' {
-    interface Commands<ReturnType> {
-        details: {
-            removeDetails: () => ReturnType;
-            setDetails: () => ReturnType;
-        };
-    }
-}
+/**
+ * @deprecated use {@link DetailsContentOptions}
+ */
+export type TuiDetailContentOptions = DetailsContentOptions;
 
-export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
-    name: 'details',
-    content: 'summary detailsContent',
-    group: 'block',
-    draggable: true,
-    allowGapCursor: true,
-    isolating: true,
+/**
+ * @deprecated: use {@link DetailsSummaryOptions}
+ */
+export type TuiSummaryOptions = DetailsSummaryOptions;
 
-    addOptions() {
-        return {
-            HTMLAttributes: {},
-        };
-    },
-
+// TODO: rename to TuiDetails in v5
+export const TuiDetailsExtension = Details.extend<DetailsOptions>({
     addAttributes() {
         return {
             opened: {
@@ -43,18 +39,10 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
         };
     },
 
-    parseHTML() {
-        return [
-            {
-                tag: 'details',
-            },
-        ];
-    },
-
     renderHTML({HTMLAttributes}) {
         return [
             'div',
-            {class: 't-details-wrapper t-details-wrapper_rendered'},
+            {class: 't-details-wrapper'},
             ['details', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
             ['button', {class: 't-details-arrow'}],
         ];
@@ -95,20 +83,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     'click',
                     (e) => {
                         collapseButton.removeEventListener('click', openHandler);
-
-                        const from = (getPos as any)?.() ?? 0;
-
-                        editor.chain().focus().setTextSelection(from).run();
-
-                        const node = editor.state.selection.$anchor.nodeAfter;
-                        const to = from + (node?.nodeSize ?? 0);
-
-                        if (editor.isActive('summary')) {
-                            editor.commands.deleteNode(this.type);
-                        } else {
-                            editor.commands.deleteRange({from, to});
-                        }
-
+                        editor.commands.unsetDetails();
                         e.preventDefault();
                     },
                     {capture: true, once: true},
@@ -123,12 +98,12 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
             }
         };
     },
-
     addCommands(): Partial<RawCommands> {
         return {
+            ...this.parent?.(),
             setDetails: () => {
                 return ({commands, editor, state}) => {
-                    if (editor.isActive('summary')) {
+                    if (editor.isActive('detailsSummary')) {
                         return false;
                     }
 
@@ -155,7 +130,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                             type: this.name,
                             content: [
                                 {
-                                    type: 'summary',
+                                    type: 'detailsSummary',
                                     content: [
                                         {
                                             type: 'paragraph',
@@ -177,27 +152,26 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                     return true;
                 };
             },
-            removeDetails:
+            unsetDetails:
                 () =>
-                ({editor, state, dispatch}) => {
-                    tuiDeleteNode(state, dispatch, this.name);
-
-                    return editor.commands.focus('end');
-                },
+                ({state, dispatch}) =>
+                    tuiDeleteNode(state, dispatch, this.name),
         };
     },
 });
 
-export interface TuiDetailContentOptions {
-    readonly HTMLAttributes: Record<string, unknown>;
-}
-
-export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
-    name: 'detailsContent',
+export const TuiDetailsSummary = DetailsSummary.extend<DetailsSummaryOptions>({
     content: 'block+',
     group: 'block',
-    allowGapCursor: true,
+});
 
+/**
+ * @deprecated use {@link TuiDetailsSummary}
+ */
+export const TuiSummary = TuiDetailsSummary;
+
+export const TuiDetailsContent = DetailsContent.extend<DetailsContentOptions>({
+    addNodeView: null,
     parseHTML() {
         return [
             {
@@ -205,45 +179,12 @@ export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
             },
         ];
     },
-
     renderHTML({HTMLAttributes}) {
         return [
             'div',
             mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
                 'data-type': 'details-content',
             }),
-            0,
-        ];
-    },
-});
-
-export interface TuiSummaryOptions {
-    readonly HTMLAttributes: Record<string, unknown>;
-}
-
-export const TuiSummary = Node.create<TuiSummaryOptions>({
-    name: 'summary',
-    content: 'block+',
-    group: 'block',
-
-    addOptions() {
-        return {
-            HTMLAttributes: {},
-        };
-    },
-
-    parseHTML() {
-        return [
-            {
-                tag: 'summary',
-            },
-        ];
-    },
-
-    renderHTML({HTMLAttributes}) {
-        return [
-            'summary',
-            mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
             0,
         ];
     },

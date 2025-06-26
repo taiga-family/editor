@@ -98,8 +98,12 @@ export abstract class AbstractTuiEditor {
     public abstract setCellColor(color: string): void;
     public abstract getOriginTiptapEditor(): Editor | null;
     public abstract enter(): void;
-    public abstract setDetails(): void;
+    /**
+     * @deprecated: use {@link unsetDetails}
+     */
     public abstract removeDetails(): void;
+    public abstract setDetails(): void;
+    public abstract unsetDetails(): void;
     public abstract setGroup(): void;
     public abstract setGroupHilite(color: string): void;
     public abstract removeGroup(): void;
