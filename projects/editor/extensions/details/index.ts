@@ -61,7 +61,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     },
 
     addNodeView() {
-        return ({node, getPos}): any => {
+        return ({node, getPos, editor}): any => {
             if (globalThis.document) {
                 const wrapper = document.createElement('div');
                 const details = document.createElement('details');
@@ -86,7 +86,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
                         new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
                     );
 
-                    this.editor.chain().focus().setTextSelection(pos).run();
+                    editor.chain().focus().setTextSelection(pos).run();
                 };
 
                 collapseButton.addEventListener('click', openHandler);
@@ -98,15 +98,15 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
 
                         const from = (getPos as any)?.() ?? 0;
 
-                        this.editor.chain().focus().setTextSelection(from).run();
+                        editor.chain().focus().setTextSelection(from).run();
 
-                        const node = this.editor.state.selection.$anchor.nodeAfter;
+                        const node = editor.state.selection.$anchor.nodeAfter;
                         const to = from + (node?.nodeSize ?? 0);
 
-                        if (this.editor.isActive('summary')) {
-                            this.editor.commands.deleteNode(this.type);
+                        if (editor.isActive('summary')) {
+                            editor.commands.deleteNode(this.type);
                         } else {
-                            this.editor.commands.deleteRange({from, to});
+                            editor.commands.deleteRange({from, to});
                         }
 
                         e.preventDefault();
@@ -128,7 +128,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
         return {
             setDetails: () => {
                 return ({commands, editor, state}) => {
-                    if (editor.isActive('details')) {
+                    if (editor.isActive('summary')) {
                         return false;
                     }
 
