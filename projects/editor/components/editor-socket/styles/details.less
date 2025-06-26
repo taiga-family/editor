@@ -108,10 +108,12 @@ div[data-type='details-content'] {
 }
 
 .t-details-wrapper {
-    //.tui-space(bottom, 2);
-
     position: relative;
     display: flex;
+}
+
+.t-details-wrapper + .t-details-wrapper {
+    margin-top: 1rem;
 }
 
 .t-details-wrapper_rendered {

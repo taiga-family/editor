@@ -1,5 +1,5 @@
 import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
-import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/editor/utils';
+import {tuiDeleteNode} from '@taiga-ui/editor/utils';
 import type {RawCommands} from '@tiptap/core';
 import {mergeAttributes, Node} from '@tiptap/core';
 
@@ -18,6 +18,11 @@ declare module '@tiptap/core' {
 
 export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
     name: 'details',
+    content: 'summary detailsContent',
+    group: 'block',
+    draggable: true,
+    allowGapCursor: true,
+    isolating: true,
 
     addOptions() {
         return {
@@ -37,13 +42,6 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
             },
         };
     },
-
-    content: 'summary detailsContent',
-
-    group: 'block',
-    draggable: true,
-    allowGapCursor: true,
-    isolating: true,
 
     parseHTML() {
         return [
@@ -100,11 +98,7 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
 
                         const from = (getPos as any)?.() ?? 0;
 
-                        this.editor
-                            .chain()
-                            .focus()
-                            .setTextSelection((getPos as any)?.())
-                            .run();
+                        this.editor.chain().focus().setTextSelection(from).run();
 
                         const node = this.editor.state.selection.$anchor.nodeAfter;
                         const to = from + (node?.nodeSize ?? 0);
@@ -132,31 +126,57 @@ export const TuiDetailsExtension = Node.create<TuiDetailsOptions>({
 
     addCommands(): Partial<RawCommands> {
         return {
-            setDetails:
-                () =>
-                ({commands, editor, state}) => {
-                    let content = '';
-
-                    const pos = this.editor.state.selection.$anchor.pos;
-
-                    if (globalThis.document) {
-                        content =
-                            (document.defaultView?.window
-                                .getSelection()
-                                ?.toString()
-                                .trim().length ?? 0) > 0
-                                ? tuiGetSelectedContent(state)
-                                : '';
-
-                        setTimeout(() =>
-                            editor.chain().focus().setTextSelection(pos).run(),
-                        );
+            setDetails: () => {
+                return ({commands, editor, state}) => {
+                    if (editor.isActive('details')) {
+                        return false;
                     }
 
-                    return commands.insertContent(
-                        `<details data-opened="true"><summary><p></p></summary><div data-type="details-content"><p>${content}</p></div></details><p></p>`,
+                    const {schema, selection} = state;
+                    const {$from, $to} = selection;
+                    const range = $from.blockRange($to);
+
+                    if (!range) {
+                        return false;
+                    }
+
+                    const slice = state.doc.slice(range.start, range.end);
+                    const match = schema.nodes.detailsContent?.contentMatch.matchFragment(
+                        slice.content,
                     );
-                },
+
+                    if (!match) {
+                        return false;
+                    }
+
+                    commands.insertContentAt(
+                        {from: range.start, to: range.end},
+                        {
+                            type: this.name,
+                            content: [
+                                {
+                                    type: 'summary',
+                                    content: [
+                                        {
+                                            type: 'paragraph',
+                                            content: [],
+                                        },
+                                    ],
+                                },
+                                {
+                                    type: 'detailsContent',
+                                    content: slice.toJSON()?.content ?? [],
+                                },
+                            ],
+                        },
+                    );
+
+                    commands.focus();
+                    commands.setTextSelection(range.start + 2);
+
+                    return true;
+                };
+            },
             removeDetails:
                 () =>
                 ({editor, state, dispatch}) => {
@@ -174,11 +194,8 @@ export interface TuiDetailContentOptions {
 
 export const TuiDetailsContent = Node.create<TuiDetailContentOptions>({
     name: 'detailsContent',
-
     content: 'block+',
-
     group: 'block',
-
     allowGapCursor: true,
 
     parseHTML() {
@@ -206,16 +223,14 @@ export interface TuiSummaryOptions {
 
 export const TuiSummary = Node.create<TuiSummaryOptions>({
     name: 'summary',
+    content: 'block+',
+    group: 'block',
 
     addOptions() {
         return {
             HTMLAttributes: {},
         };
     },
-
-    content: 'paragraph',
-
-    group: 'block',
 
     parseHTML() {
         return [
