@@ -2806,6 +2806,9 @@ MIT
 @tiptap/extension-bullet-list
 MIT
 
+@tiptap/extension-character-count
+MIT
+
 @tiptap/extension-code
 MIT
 
