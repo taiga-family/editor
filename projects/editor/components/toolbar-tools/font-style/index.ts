@@ -1,16 +1,22 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorToolType} from '@taiga-ui/editor/common';
 import {
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_OPTIONS,
-    TUI_EDITOR_TOOLBAR_TEXTS,
     TuiEditorTool,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
+import {
+    TuiBoldTool,
+    TuiItalicTool,
+    TuiStrikeTool,
+    TuiStylePreviewTool,
+    TuiUnderlineTool,
+} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
 
@@ -18,7 +24,16 @@ import {combineLatest, map, of} from 'rxjs';
     standalone: true,
     // TODO: deprecate tui-font-style
     selector: 'tui-font-style,tui-font-style-tool',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiItem],
+    imports: [
+        AsyncPipe,
+        NgIf,
+        TuiBoldTool,
+        TuiDropdown,
+        TuiItalicTool,
+        TuiStrikeTool,
+        TuiStylePreviewTool,
+        TuiUnderlineTool,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -29,7 +44,6 @@ export class TuiFontStyleTool implements OnInit {
     protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected fontStyleState$: Observable<{
         bold: boolean;
         italic: boolean;

@@ -14,38 +14,8 @@
     <ng-container ngProjectAs="tools">
         <tui-font-size [editor]="editorRef.editor" />
 
-        <button
-            appearance="icon"
-            iconStart="@tui.bold"
-            size="s"
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            (click)="editorRef.editor?.toggleBold()"
-        >
-            Toggle bold
-        </button>
-        <button
-            appearance="icon"
-            iconStart="@tui.italic"
-            size="s"
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            (click)="editorRef.editor?.toggleItalic()"
-        >
-            Toggle italic
-        </button>
-        <button
-            appearance="icon"
-            iconStart="@tui.underline"
-            size="s"
-            tuiIconButton
-            tuiToolbarTool
-            type="button"
-            (click)="editorRef.editor?.toggleUnderline()"
-        >
-            Toggle underline
-        </button>
+        <button tuiBoldTool></button>
+        <button tuiItalicTool></button>
+        <button tuiUnderlineTool></button>
     </ng-container>
 </tui-editor>

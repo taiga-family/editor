@@ -5,6 +5,7 @@ import {
     TableCellBackground,
     TUI_EDITOR_EXTENSIONS,
     TuiBackgroundColor,
+    TuiBoldTool,
     TuiDetailsContent,
     TuiDetailsExtension,
     TuiEditor,
@@ -13,6 +14,7 @@ import {
     TuiFontColor,
     TuiFontSize,
     TuiFontSizeExtension,
+    TuiItalicTool,
     TuiJumpAnchor,
     TuiLink,
     TuiStarterKit,
@@ -21,11 +23,21 @@ import {
     TuiTable,
     TuiTableCell,
     TuiToolbar,
+    TuiUnderlineTool,
 } from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiButton, TuiEditor, TuiFontSize, TuiToolbar],
+    imports: [
+        ReactiveFormsModule,
+        TuiBoldTool,
+        TuiButton,
+        TuiEditor,
+        TuiFontSize,
+        TuiItalicTool,
+        TuiToolbar,
+        TuiUnderlineTool,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
