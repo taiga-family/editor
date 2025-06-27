@@ -2815,6 +2815,15 @@ MIT
 @tiptap/extension-code-block
 MIT
 
+@tiptap/extension-details
+MIT
+
+@tiptap/extension-details-content
+MIT
+
+@tiptap/extension-details-summary
+MIT
+
 @tiptap/extension-document
 MIT
 
