@@ -1,7 +1,7 @@
 import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_IS_MOBILE, TuiItem, tuiPx} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorFontOption} from '@taiga-ui/editor/common';
 import {
     EDITOR_BLANK_COLOR,
@@ -10,6 +10,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiSizeTool} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -23,11 +24,10 @@ import {map} from 'rxjs';
         NgClass,
         NgForOf,
         NgStyle,
-        TuiButton,
         TuiDataList,
         TuiDropdown,
-        TuiHint,
         TuiItem,
+        TuiSizeTool,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,8 +40,6 @@ export class TuiFontSizeTool {
     protected readonly fontsOptions$: Observable<
         ReadonlyArray<Partial<TuiEditorFontOption>>
     > = this.fontOptionsTexts$.pipe(map((texts) => this.options.fontOptions(texts)));
-
-    protected readonly fontText$ = this.texts$.pipe(map((texts) => texts.font));
 
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {

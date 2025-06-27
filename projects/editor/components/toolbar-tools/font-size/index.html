@@ -1,23 +1,11 @@
 <div
-    #fonts
     [tuiDropdown]="fontsDropdown"
     [tuiDropdownOpen]="false"
 >
     <button
-        appearance="icon"
         automation-id="toolbar__font-size-button"
-        size="s"
-        tuiHintDescribe
-        tuiIconButton
-        tuiItem
-        tuiToolbarTool
-        type="button"
-        [iconStart]="options.icons.fontSize"
-        [tuiHint]="fontText$ | async"
-        [tuiHintManual]="!isMobile && null"
-    >
-        {{ fontText$ | async }}
-    </button>
+        tuiSizeTool
+    ></button>
     <ng-template #fontsDropdown>
         <tui-data-list>
             <button

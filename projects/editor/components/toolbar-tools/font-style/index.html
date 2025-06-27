@@ -1,88 +1,43 @@
-<ng-container *ngIf="texts$ | async as texts">
-    <div
-        *ngIf="fontStyleState$ | async as state"
-        #format
-        [tuiDropdown]="formatDropdown"
-        [tuiDropdownOpen]="false"
-    >
-        <button
-            appearance="icon"
-            automation-id="toolbar__font-style-button"
-            size="s"
-            tuiHintDescribe
-            tuiIconButton
-            tuiItem
-            tuiToolbarTool
-            type="button"
-            [iconStart]="options.icons.fontStylePreview"
-            [tuiHint]="texts.fontStyle"
-            [tuiHintManual]="!isMobile && null"
-        >
-            {{ texts.fontStyle }}
-        </button>
-        <ng-template #formatDropdown>
-            <div tuiToolbarDropdownContent>
-                <button
-                    *ngIf="isEnabled(editorTool.Bold)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleBold"
-                    [tuiHint]="texts.bold"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleBold()"
-                >
-                    Toggle bold
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Italic)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleItalic"
-                    [tuiHint]="texts.italic"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleItalic()"
-                >
-                    Toggle italic
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Underline)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleUnderline"
-                    [tuiHint]="texts.underline"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleUnderline()"
-                >
-                    Toggle underline
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Strikethrough)"
-                    appearance="icon"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.fontStyleStrike"
-                    [tuiHint]="texts.strikeThrough"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleStrike()"
-                >
-                    Toggle strike
-                </button>
-            </div>
-        </ng-template>
-    </div>
-</ng-container>
+<div
+    *ngIf="fontStyleState$ | async as state"
+    #format
+    [tuiDropdown]="formatDropdown"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        automation-id="toolbar__font-style-button"
+        tuiStylePreviewTool
+    ></button>
+    <ng-template #formatDropdown>
+        <div tuiToolbarDropdownContent>
+            <button
+                *ngIf="isEnabled(editorTool.Bold)"
+                tuiBoldTool
+                [editor]="editor"
+            >
+                Toggle bold
+            </button>
+            <button
+                *ngIf="isEnabled(editorTool.Italic)"
+                tuiItalicTool
+                [editor]="editor"
+            >
+                Toggle italic
+            </button>
+            <button
+                *ngIf="isEnabled(editorTool.Underline)"
+                tuiUnderlineTool
+                [editor]="editor"
+            >
+                Toggle underline
+            </button>
+            <button
+                *ngIf="isEnabled(editorTool.Strikethrough)"
+                tuiStrikeTool
+                [editor]="editor"
+            >
+                Toggle strike
+            </button>
+        </div>
+    </ng-template>
+</div>
