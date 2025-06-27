@@ -23,6 +23,7 @@
         "@tiptap/extension-bold": ">=2.23.0",
         "@tiptap/extension-bubble-menu": ">=2.23.0",
         "@tiptap/extension-bullet-list": ">=2.23.0",
+        "@tiptap/extension-character-count": ">=2.23.0",
         "@tiptap/extension-code": ">=2.23.0",
         "@tiptap/extension-code-block": ">=2.23.0",
         "@tiptap/extension-document": ">=2.23.0",

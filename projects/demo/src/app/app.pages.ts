@@ -49,6 +49,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Character counter',
+        route: TuiDemoPath.CharacterCounter,
+        keywords: 'editor, counter, character',
+    },
+    {
+        section: 'Documentation',
         title: 'Groups',
         route: TuiDemoPath.Groups,
         keywords:
