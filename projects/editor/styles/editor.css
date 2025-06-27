@@ -77,3 +77,9 @@ tui-editor tui-editor-socket {
     margin: 0;
     padding: 0;
 }
+
+[tuiTiptapEditor][data-contenteditable='false'] * {
+    -webkit-user-drag: none;
+    user-drag: none;
+    cursor: default;
+}

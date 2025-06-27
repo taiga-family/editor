@@ -136,3 +136,8 @@ details[open] + .t-details-arrow {
     top: 1.75rem;
     transform: rotate(225deg);
 }
+
+&[tuiTiptapEditor][data-contenteditable='false'] .t-details-delete,
+&[tuiTiptapEditor][data-contenteditable='false'] .t-details-arrow {
+    display: none;
+}

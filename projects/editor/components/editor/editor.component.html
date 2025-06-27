@@ -66,6 +66,7 @@
         <div
             tuiTiptapEditor
             class="tui-editor-socket"
+            [attr.data-contenteditable]="interactive()"
             [editable]="interactive()"
             (valueChange)="onModelChange($event)"
         ></div>
