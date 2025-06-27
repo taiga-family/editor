@@ -1,135 +1,183 @@
-<ng-container *ngIf="editor?.stateChange$ | async" />
 <section
     *ngIf="enabled(tool.Undo)"
     tuiToolbarBlock
 >
-    <tui-undo-tool [editor]="editor" />
-    <tui-redo-tool [editor]="editor" />
+    <button
+        tuiUndoTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiRedoTool
+        [editor]="editor"
+    ></button>
 </section>
-<tui-font-size
+<section
     *ngIf="enabled(tool.Size)"
     tuiToolbarBlock
-    [editor]="editor"
-/>
+>
+    <button tuiFontSizeTool></button>
+</section>
 <section
     *ngIf="firstBigBlockEnabled"
     tuiToolbarBlock
 >
-    <tui-font-style-tool
+    <button
         *ngIf="formatEnabled"
+        tuiFontStyleTool
         [editor]="editor"
         [enabledTools]="toolsSet"
-    />
-    <tui-align-content-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Align)"
+        tuiAlignTool
         [editor]="editor"
-    />
-    <tui-list-configs-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.List)"
+        tuiListTool
         [editor]="editor"
-    />
-    <tui-quote-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Quote)"
+        tuiBlockquoteTool
         [editor]="editor"
-    />
-    <tui-link-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Link)"
+        tuiLinkTool
         [editor]="editor"
-    />
-    <tui-anchor-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Anchor)"
+        tuiAnchorTool
         [editor]="editor"
-    />
-    <tui-attach-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Attach)"
+        tuiAttachTool
         [editor]="editor"
         (fileAttached)="fileAttached.emit($event)"
-    />
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Sub) || enabled(tool.Sup)"
     tuiToolbarBlock
 >
-    <tui-subscript-tool
+    <button
         *ngIf="enabled(tool.Sub)"
+        tuiSubscriptTool
         [editor]="editor"
-    />
-    <tui-superscript-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Sup)"
+        tuiSuperscriptTool
         [editor]="editor"
-    />
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Color) || enabled(tool.Hilite)"
     tuiToolbarBlock
 >
-    <tui-text-color-tool
+    <button
         *ngIf="enabled(tool.Color)"
+        tuiTextColorTool
         [colors]="colors"
         [editor]="editor"
-    />
-    <tui-highlight-color-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Hilite)"
+        tuiHighlightColorTool
         [colors]="colors"
         [editor]="editor"
-    />
+    ></button>
 </section>
 <section
     *ngIf="secondBigBlockEnabled"
     tuiToolbarBlock
 >
-    <tui-code-tool
+    <button
         *ngIf="enabled(tool.Code)"
+        tuiCodeTool
         [editor]="editor"
-    />
-    <tui-tex-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Tex)"
+        tuiTexTool
         [editor]="editor"
         (texClicked)="texClicked.emit($event)"
-    />
-    <tui-image-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Img)"
+        tuiImageTool
         [editor]="editor"
-    />
-    <tui-hr-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.HR)"
+        tuiHrTool
         [editor]="editor"
-    />
+    ></button>
 </section>
-<tui-clear-tool
+<section
     *ngIf="enabled(tool.Clear)"
     tuiToolbarBlock
-    [editor]="editor"
-/>
+>
+    <button
+        tuiClearTool
+        [editor]="editor"
+    ></button>
+</section>
 <section
     *ngIf="enabled(tool.Details)"
     tuiToolbarBlock
 >
-    <tui-details-tool [editor]="editor" />
-    <tui-details-remove-tool [editor]="editor" />
+    <button
+        tuiDetailsAddTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiDetailsRemoveTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Group)"
     tuiToolbarBlock
 >
-    <tui-editor-group-tool [editor]="editor" />
+    <button
+        tuiInsertGroupTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiRemoveGroupTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Table)"
     tuiToolbarBlock
 >
-    <tui-table-create-tool [editor]="editor" />
-    <tui-table-row-column-manager-tool [editor]="editor" />
-    <tui-table-merge-cells-tool [editor]="editor" />
+    <button
+        tuiInsertTableTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiAddRowTableTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiTableMergeCellTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.CellColor)"
     tuiToolbarBlock
 >
-    <tui-table-cell-color-tool
+    <button
+        tuiPaintTool
         [colors]="colors"
         [editor]="editor"
-    />
+    ></button>
 </section>
 <section tuiToolbarBlock>
     <ng-content />

@@ -10,7 +10,7 @@ test.describe('Readonly and Disabled states', () => {
             '/starter-kit?ngModel=%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22false%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E123123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E123%3C%2Fp%3E%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22true%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E12123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E%3C%2Fp%3E',
         );
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Readonly-01.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-01.png');
     });
 
     test('check readonly state on detail component', async ({page}) => {
@@ -20,7 +20,7 @@ test.describe('Readonly and Disabled states', () => {
             '/starter-kit?%5BreadOnly%5D=true&ngModel=%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22false%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E123123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E123%3C%2Fp%3E%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22true%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E12123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E%3C%2Fp%3E',
         );
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Readonly-02.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-02.png');
     });
 
     test('check disabled state on detail component', async ({page}) => {
@@ -30,7 +30,7 @@ test.describe('Readonly and Disabled states', () => {
             '/starter-kit?ngModel=%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22false%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E123123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E123%3C%2Fp%3E%3Cdiv%20class%3D%22t-details-wrapper%20t-details-wrapper_rendered%22%3E%3Cdetails%20data-opened%3D%22true%22%3E%3Csummary%3E%3Cp%3E123123%3C%2Fp%3E%3C%2Fsummary%3E%3Cdiv%20data-type%3D%22details-content%22%3E%3Cp%3E12123123%3C%2Fp%3E%3C%2Fdiv%3E%3C%2Fdetails%3E%3Cbutton%20class%3D%22t-details-arrow%22%3E%3C%2Fbutton%3E%3C%2Fdiv%3E%3Cp%3E%3C%2Fp%3E&Show%20preview=false&disabled=true',
         );
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Readonly-03.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-03.png');
     });
 
     test('check visible controls on image', async ({page}) => {
@@ -42,7 +42,7 @@ test.describe('Readonly and Disabled states', () => {
 
         await page.locator('tui-editor [contenteditable] tui-editor-resizable').hover();
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Readonly-04.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-04.png');
     });
 
     test('check disabled controls on image', async ({page}) => {
@@ -56,6 +56,6 @@ test.describe('Readonly and Disabled states', () => {
             .locator('tui-editor [contenteditable] tui-editor-resizable')
             .hover({force: true});
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Readonly-05.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-05.png');
     });
 });

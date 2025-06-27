@@ -1,17 +1,32 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_EXTENSIONS,
+    TUI_EDITOR_OPTIONS,
+    TuiAlignButtonTool,
     TuiEditor,
+    TuiFontStyleButtonTool,
+    TuiListButtonTool,
 } from '@taiga-ui/editor';
-
-import {CustomToolbar} from './custom-toolbar';
 
 @Component({
     standalone: true,
-    imports: [CustomToolbar, ReactiveFormsModule, TuiEditor],
+    imports: [
+        ReactiveFormsModule,
+        TuiAlignButtonTool,
+        TuiEditor,
+        TuiFontStyleButtonTool,
+        TuiListButtonTool,
+    ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -21,6 +36,8 @@ import {CustomToolbar} from './custom-toolbar';
     ],
 })
 export default class Example {
+    protected readonly options = inject(TUI_EDITOR_OPTIONS);
+
     protected readonly control = new FormControl(`
         <h2>What is Lorem Ipsum?</h2>
         <p>

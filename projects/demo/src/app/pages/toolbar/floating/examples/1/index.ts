@@ -1,20 +1,19 @@
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiButton} from '@taiga-ui/core';
 import {
     TableCellBackground,
     TUI_EDITOR_EXTENSIONS,
     TuiBackgroundColor,
-    TuiBoldTool,
+    TuiBoldButtonTool,
     TuiDetailsContent,
     TuiDetailsExtension,
     TuiEditor,
     TuiEditorTool,
     TuiFileLink,
     TuiFontColor,
-    TuiFontSize,
+    TuiFontSizeButtonTool,
     TuiFontSizeExtension,
-    TuiItalicTool,
+    TuiItalicButtonTool,
     TuiJumpAnchor,
     TuiLink,
     TuiStarterKit,
@@ -23,20 +22,19 @@ import {
     TuiTable,
     TuiTableCell,
     TuiToolbar,
-    TuiUnderlineTool,
+    TuiUnderlineButtonTool,
 } from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        TuiBoldTool,
-        TuiButton,
+        TuiBoldButtonTool,
         TuiEditor,
-        TuiFontSize,
-        TuiItalicTool,
+        TuiFontSizeButtonTool,
+        TuiItalicButtonTool,
         TuiToolbar,
-        TuiUnderlineTool,
+        TuiUnderlineButtonTool,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

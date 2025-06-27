@@ -1,99 +1,37 @@
-import {AsyncPipe, NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorToolType} from '@taiga-ui/editor/common';
-import {
-    TUI_EDITOR_DEFAULT_TOOLS,
-    TUI_EDITOR_OPTIONS,
-    TuiEditorTool,
-} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_DEFAULT_TOOLS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
-import {
-    TuiBoldTool,
-    TuiItalicTool,
-    TuiStrikeTool,
-    TuiStylePreviewTool,
-    TuiUnderlineTool,
-} from '@taiga-ui/editor/tools';
-import type {Observable} from 'rxjs';
-import {combineLatest, map, of} from 'rxjs';
+import {TuiFontStyleButtonTool} from '@taiga-ui/editor/tools';
 
+/**
+ * @deprecated use {@link TuiFontStyleButtonTool}
+ */
 @Component({
     standalone: true,
-    // TODO: deprecate tui-font-style
     selector: 'tui-font-style,tui-font-style-tool',
-    imports: [
-        AsyncPipe,
-        NgIf,
-        TuiBoldTool,
-        TuiDropdown,
-        TuiItalicTool,
-        TuiStrikeTool,
-        TuiStylePreviewTool,
-        TuiUnderlineTool,
-    ],
-    templateUrl: './index.html',
+    imports: [TuiFontStyleButtonTool],
+    template: `
+        <button
+            tuiFontStyleTool
+            [editor]="editor"
+            [enabledTools]="enabledTools"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiFontStyleTool implements OnInit {
-    private toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
-    private localEditor: AbstractTuiEditor | null = null;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly editorTool: typeof TuiEditorTool = TuiEditorTool;
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    protected fontStyleState$: Observable<{
-        bold: boolean;
-        italic: boolean;
-        underline: boolean;
-        strike: boolean;
-    }> | null = null;
-
-    @Input('editor')
-    public set inputEditor(value: AbstractTuiEditor | null) {
-        this.localEditor = value;
-        this.initStream();
-    }
+export class TuiFontStyleTool {
+    @Input()
+    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
+        optional: true,
+    });
 
     @Input()
-    public set enabledTools(
-        value: Set<TuiEditorToolType> | readonly TuiEditorToolType[],
-    ) {
-        this.toolsSet = new Set(value);
-    }
-
-    public get editor(): AbstractTuiEditor | null {
-        return this.injectionEditor ?? this.localEditor;
-    }
-
-    public ngOnInit(): void {
-        this.initStream();
-    }
-
-    public isEnabled(tool: TuiEditorToolType): boolean {
-        return this.toolsSet.has(tool);
-    }
-
-    private initStream(): void {
-        this.fontStyleState$ = combineLatest([
-            this.editor?.isActive$('bold') ?? of(false),
-            this.editor?.isActive$('italic') ?? of(false),
-            this.editor?.isActive$('underline') ?? of(false),
-            this.editor?.isActive$('strike') ?? of(false),
-        ]).pipe(
-            map(([bold, italic, underline, strike]) => ({
-                bold,
-                italic,
-                underline,
-                strike,
-            })),
-        );
-    }
+    public enabledTools: Set<TuiEditorToolType> | readonly TuiEditorToolType[] =
+        new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
 }
 
 /**
- * @deprecated use {@link TuiFontStyleTool}
+ * @deprecated use {@link TuiFontStyleButtonTool}
  */
 export const TuiFontStyle = TuiFontStyleTool;

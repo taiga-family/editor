@@ -19,8 +19,6 @@ export default class Example {
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        './custom-toolbar.ts': import('./examples/1/custom-toolbar/index.ts?raw'),
-        './custom-toolbar.html': import('./examples/1/custom-toolbar/index.html?raw'),
-        './custom-toolbar.less': import('./examples/1/custom-toolbar/index.less?raw'),
+        LESS: import('./examples/1/index.less?raw'),
     };
 }

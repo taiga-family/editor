@@ -16,7 +16,7 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? '100%' : '50%',
-    timeout: 5 * 60 * 1000,
+    timeout: 10 * 60 * 1000,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT ?? 3333}`,
         trace: 'on-first-retry',

@@ -1,74 +1,31 @@
-import {AsyncPipe, LowerCasePipe, NgClass, NgForOf, NgStyle} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem, tuiPx} from '@taiga-ui/cdk';
-import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import type {AbstractTuiEditor, TuiEditorFontOption} from '@taiga-ui/editor/common';
-import {
-    EDITOR_BLANK_COLOR,
-    TUI_EDITOR_FONT_OPTIONS,
-    TUI_EDITOR_OPTIONS,
-    TUI_EDITOR_TOOLBAR_TEXTS,
-} from '@taiga-ui/editor/common';
+import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import {TuiSizeTool} from '@taiga-ui/editor/tools';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {TuiFontSizeButtonTool} from '@taiga-ui/editor/tools';
 
+/**
+ * @deprecated use {@link TuiFontSizeButtonTool}
+ */
 @Component({
     standalone: true,
-    // TODO: deprecate tui-font-size
     selector: 'tui-font-size,tui-font-size-tool',
-    imports: [
-        AsyncPipe,
-        LowerCasePipe,
-        NgClass,
-        NgForOf,
-        NgStyle,
-        TuiDataList,
-        TuiDropdown,
-        TuiItem,
-        TuiSizeTool,
-    ],
-    templateUrl: './index.html',
+    imports: [TuiFontSizeButtonTool],
+    template: `
+        <button
+            tuiFontSizeTool
+            [editor]="editor"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontSizeTool {
-    private readonly fontOptionsTexts$ = inject(TUI_EDITOR_FONT_OPTIONS);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected readonly fontsOptions$: Observable<
-        ReadonlyArray<Partial<TuiEditorFontOption>>
-    > = this.fontOptionsTexts$.pipe(map((texts) => this.options.fontOptions(texts)));
-
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
         optional: true,
     });
-
-    protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {
-        const color = this.editor?.getFontColor() ?? EDITOR_BLANK_COLOR;
-
-        this.clearPreviousTextStyles();
-
-        if (headingLevel) {
-            this.editor?.setHeading(headingLevel);
-        } else {
-            this.editor?.setParagraph({fontSize: tuiPx(px ?? 0)});
-        }
-
-        if (color !== EDITOR_BLANK_COLOR) {
-            this.editor?.setFontColor(color);
-        }
-    }
-
-    private clearPreviousTextStyles(): void {
-        this.editor?.removeEmptyTextStyle();
-        this.editor?.toggleMark('textStyle');
-    }
 }
 
 /**
- * @deprecated use {@link TuiFontSizeTool}
+ * @deprecated use {@link TuiFontSizeButtonTool}
  */
 export const TuiFontSize = TuiFontSizeTool;
