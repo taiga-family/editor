@@ -22,35 +22,13 @@
         <ng-template #listDropdown>
             <div tuiToolbarDropdownContent>
                 <button
-                    appearance="icon"
-                    automation-id="toolbar__un-ordered-list-button"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.listUnOrdered"
-                    [tuiHint]="texts.unorderedList"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleUnorderedList()"
-                >
-                    Unordered list
-                </button>
+                    tuiUnorderedListTool
+                    [editor]="editor"
+                ></button>
                 <button
-                    appearance="icon"
-                    automation-id="toolbar__ordered-list-button"
-                    size="s"
-                    tuiIconButton
-                    tuiItem
-                    tuiToolbarTool
-                    type="button"
-                    [iconStart]="options.icons.listOrdered"
-                    [tuiHint]="texts.orderedList"
-                    [tuiHintManual]="!isMobile && null"
-                    (click)="editor?.toggleOrderedList()"
-                >
-                    Ordered list
-                </button>
+                    tuiOrderedListTool
+                    [editor]="editor"
+                ></button>
                 <button
                     appearance="icon"
                     automation-id="toolbar__task-list-button"

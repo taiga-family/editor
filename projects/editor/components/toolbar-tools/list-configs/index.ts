@@ -5,6 +5,10 @@ import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {
+    TuiOrderedListButtonTool,
+    TuiUnorderedListButtonTool,
+} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
 
@@ -12,7 +16,16 @@ import {combineLatest, map, of} from 'rxjs';
     standalone: true,
     // TODO: deprecate tui-list-configs
     selector: 'tui-list-configs,tui-list-configs-tool',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiDropdown, TuiHint, TuiItem],
+    imports: [
+        AsyncPipe,
+        NgIf,
+        TuiButton,
+        TuiDropdown,
+        TuiHint,
+        TuiItem,
+        TuiOrderedListButtonTool,
+        TuiUnorderedListButtonTool,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

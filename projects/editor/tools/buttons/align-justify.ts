@@ -2,24 +2,24 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarTool} from './tool';
+import {TuiToolbarButtonTool} from '../tool';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiBoldTool]',
+    selector: 'button[tuiAlignJustifyTool]',
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiToolbarTool],
+    hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor?.toggleBold()',
+        '(click)': 'editor?.onAlign("justify")',
     },
 })
-export class TuiBoldTool extends TuiToolbarTool {
+export class TuiAlignJustifyButtonTool extends TuiToolbarButtonTool {
     protected override ensureIcon(icons: TuiEditorOptions['icons']): string {
-        return icons.fontStyleBold;
+        return icons.textAlignJustify;
     }
 
     protected override ensureHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.bold;
+        return texts?.justifyFull;
     }
 }

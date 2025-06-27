@@ -1,11 +1,12 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorOptions} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiHighlightColorButtonTool} from '@taiga-ui/editor/tools';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs';
@@ -17,13 +18,31 @@ import {distinctUntilChanged, map} from 'rxjs';
     imports: [
         AsyncPipe,
         NgIf,
-        TuiButton,
         TuiDropdown,
-        TuiHint,
-        TuiItem,
+        TuiHighlightColorButtonTool,
         TuiPaletteModule,
     ],
-    templateUrl: './index.html',
+    template: `
+        <button
+            tuiHighlightColorTool
+            [editor]="editor"
+            [tuiDropdown]="hiliteDropdown"
+            [tuiDropdownOpen]="false"
+        >
+            <ng-template #hiliteDropdown>
+                <tui-palette
+                    tuiPalette
+                    [colors]="colors"
+                    (selectedColor)="editor?.setBackgroundColor($event)"
+                />
+            </ng-template>
+        </button>
+        <div
+            *ngIf="!isBlankColor((backgroundColor$ | async) || '')"
+            tuiPlate
+            [style.background]="backgroundColor$ | async"
+        ></div>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         tuiPlateHost: '',
@@ -34,9 +53,7 @@ export class TuiHighlightColorTool implements OnInit {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected backgroundColor$: Observable<string> | null = null;
-    protected readonly backColorText$ = this.texts$.pipe(map((texts) => texts.backColor));
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;

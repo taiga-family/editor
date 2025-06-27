@@ -1,11 +1,15 @@
-import {AsyncPipe} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiDropdown} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {
+    TuiAlignCenterButtonTool,
+    TuiAlignJustifyButtonTool,
+    TuiAlignLeftButtonTool,
+    TuiAlignPreviewButtonTool,
+    TuiAlignRightButtonTool,
+} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
 
@@ -13,16 +17,49 @@ import {combineLatest, map, of} from 'rxjs';
     standalone: true,
     // TODO: deprecated tui-align-content
     selector: 'tui-align-content,tui-align-content-tool',
-    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint, TuiItem],
-    templateUrl: './index.html',
+    imports: [
+        TuiAlignCenterButtonTool,
+        TuiAlignJustifyButtonTool,
+        TuiAlignLeftButtonTool,
+        TuiAlignPreviewButtonTool,
+        TuiAlignRightButtonTool,
+        TuiDropdown,
+    ],
+    template: `
+        <button
+            automation-id="toolbar__align-button"
+            tuiAlignPreviewTool
+            [editor]="editor"
+            [tuiDropdown]="alignDropdown"
+            [tuiDropdownOpen]="false"
+        >
+            <ng-template #alignDropdown>
+                <div tuiToolbarDropdownContent>
+                    <button
+                        tuiAlignLeftTool
+                        [editor]="editor"
+                    ></button>
+                    <button
+                        tuiAlignCenterTool
+                        [editor]="editor"
+                    ></button>
+                    <button
+                        tuiAlignRightTool
+                        [editor]="editor"
+                    ></button>
+                    <button
+                        tuiAlignJustifyTool
+                        [editor]="editor"
+                    ></button>
+                </div>
+            </ng-template>
+        </button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected alignState$: Observable<{
         left: boolean;
         right: boolean;

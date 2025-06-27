@@ -15,6 +15,7 @@ const fileIO = {
     expires: '1d',
 };
 
+// TODO: remove file.io
 @Injectable({
     providedIn: 'root',
 })
@@ -30,6 +31,7 @@ export class FileIoService {
 
         return from(
             fetch(fileIO.host, {
+                mode: 'no-cors',
                 method: 'POST',
                 body,
             }).then(async (response: Response) => response.json()),

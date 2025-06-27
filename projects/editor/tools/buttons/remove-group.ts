@@ -2,21 +2,24 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarTool} from './tool';
+import {TuiToolbarButtonTool} from '../tool';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiStylePreviewTool]',
+    selector: 'button[tuiRemoveGroupTool]',
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiToolbarTool],
+    hostDirectives: [TuiToolbarButtonTool],
+    host: {
+        '(click)': 'editor?.removeGroup()',
+    },
 })
-export class TuiStylePreviewTool extends TuiToolbarTool {
+export class TuiRemoveGroupButtonTool extends TuiToolbarButtonTool {
     protected override ensureIcon(icons: TuiEditorOptions['icons']): string {
-        return icons.fontStylePreview;
+        return icons.groupRemove;
     }
 
     protected override ensureHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.fontStyle;
+        return texts?.removeGroup;
     }
 }

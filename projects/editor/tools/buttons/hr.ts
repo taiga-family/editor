@@ -2,24 +2,24 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarTool} from './tool';
+import {TuiToolbarButtonTool} from '../tool';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiStrikeTool]',
+    selector: 'button[tuiHrTool]',
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiToolbarTool],
+    hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor?.toggleStrike()',
+        '(click)': 'editor?.setHorizontalRule()',
     },
 })
-export class TuiStrikeTool extends TuiToolbarTool {
+export class TuiHrButtonTool extends TuiToolbarButtonTool {
     protected override ensureIcon(icons: TuiEditorOptions['icons']): string {
-        return icons.fontStyleStrike;
+        return icons.hr;
     }
 
     protected override ensureHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.strikeThrough;
+        return texts?.insertHorizontalRule;
     }
 }

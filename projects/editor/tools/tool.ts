@@ -40,7 +40,7 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
         type: 'button',
     },
 })
-export class TuiToolbarTool {
+export class TuiToolbarButtonTool {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));

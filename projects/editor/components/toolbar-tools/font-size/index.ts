@@ -10,7 +10,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import {TuiSizeTool} from '@taiga-ui/editor/tools';
+import {TuiSizeButtonTool} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
@@ -27,7 +27,7 @@ import {map} from 'rxjs';
         TuiDataList,
         TuiDropdown,
         TuiItem,
-        TuiSizeTool,
+        TuiSizeButtonTool,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
