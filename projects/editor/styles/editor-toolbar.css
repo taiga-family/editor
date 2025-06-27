@@ -11,6 +11,7 @@
     display: flex;
     overflow: auto;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 [tuiToolbar]._disabled {
