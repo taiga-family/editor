@@ -116,22 +116,6 @@ div[data-type='details-content'] {
     margin-top: 1rem;
 }
 
-.t-details-wrapper_rendered {
-    .t-details-arrow {
-        pointer-events: none;
-    }
-
-    summary {
-        transition: transform var(--tui-duration, 0.3s);
-        cursor: pointer;
-        pointer-events: auto;
-
-        &:hover {
-            background: var(--tui-background-base-alt);
-        }
-    }
-}
-
 details[open] + .t-details-arrow {
     top: 1.75rem;
     transform: rotate(225deg);

@@ -72,8 +72,8 @@ declare module '@tiptap/core' {
 
     interface Commands<ReturnType> {
         details: {
-            removeDetails: () => ReturnType;
             setDetails: () => ReturnType;
+            unsetDetails: () => ReturnType;
         };
     }
 
