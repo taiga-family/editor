@@ -1,3 +1,33 @@
+### [4.29.0](https://github.com/taiga-family/editor/compare/v4.28.0...v4.29.0) (2025-06-27)
+
+### 🚀 Features
+
+- reuse details extension (#1767)
+  [(17c5629)](https://github.com/taiga-family/editor/commit/17c5629ae76f4f017c3cd14054ba892c7fbc7dca)
+- add character counter example (#1770)
+  [(b1b3ece)](https://github.com/taiga-family/editor/commit/b1b3ece7775bd8728cce738d3c9168cc6834bd43)
+- enable last column resizable (#1754)
+  [(a38f654)](https://github.com/taiga-family/editor/commit/a38f654bcee955c9460ba428b410ed03b5b69695)
+
+### 🐞 Bug Fixes
+
+- support disabled/readonly states in custom nodes (#1765)
+  [(ce2b46b)](https://github.com/taiga-family/editor/commit/ce2b46b6ca7204d324b48cc228b3509737bcb8da)
+- support align toolbar by bottom (#1768)
+  [(032f8d3)](https://github.com/taiga-family/editor/commit/032f8d3bcafd62ef87e72f8e2ba28a32c46816b0)
+- update tiptap to &gt;=2.23.0 (#1769)
+  [(7c52020)](https://github.com/taiga-family/editor/commit/7c52020e76170afa8439428fbe54bf80b96eecfe)
+- support nested details (#1766)
+  [(8d8072d)](https://github.com/taiga-family/editor/commit/8d8072da52c9a6afdb529df5a0105f81e06fa41c)
+- prevent double accordion insertion after a copy/paste event (#1758)
+  [(7bb7adb)](https://github.com/taiga-family/editor/commit/7bb7adb0588357aef8477c0f32a4504f09de7586)
+- second click on an anchor link should scroll to the target (#1764)
+  [(1e4ec02)](https://github.com/taiga-family/editor/commit/1e4ec028bb2a50a6fe672e86a7c15e0b84c38a13)
+- update tiptap to &gt;=2.22.3 (#1756)
+  [(b3e0c42)](https://github.com/taiga-family/editor/commit/b3e0c42ff594f045e74a4c7631118c3d4aa15740)
+- colored horizontal bar place (#1753)
+  [(073ba6b)](https://github.com/taiga-family/editor/commit/073ba6b455b1217550dc62ba4940f3b6e36c7d79)
+
 ### [4.28.0](https://github.com/taiga-family/editor/compare/v4.27.0...v4.28.0) (2025-05-22)
 
 ### 🐞 Bug Fixes
