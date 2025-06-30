@@ -11,6 +11,7 @@
     display: flex;
     overflow: auto;
     flex-wrap: wrap;
+    align-content: center;
     box-sizing: border-box;
 }
 
@@ -54,6 +55,7 @@
 
 [tuiToolbar] [tuiItem] {
     position: relative;
+    align-self: center;
 }
 
 [tuiToolbar] input[type='file'] {

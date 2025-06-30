@@ -32,19 +32,22 @@
         *ngIf="enabled(tool.Quote)"
         [editor]="editor"
     />
-    <tui-link-tool
+    <button
         *ngIf="enabled(tool.Link)"
+        tuiLinkTool
         [editor]="editor"
-    />
-    <tui-anchor-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Anchor)"
+        tuiAnchorTool
         [editor]="editor"
-    />
-    <tui-attach-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.Attach)"
+        tuiAttachTool
         [editor]="editor"
         (fileAttached)="fileAttached.emit($event)"
-    />
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Sub) || enabled(tool.Sup)"
@@ -87,32 +90,47 @@
         [editor]="editor"
         (texClicked)="texClicked.emit($event)"
     />
-    <tui-image-tool
+    <button
         *ngIf="enabled(tool.Img)"
+        tuiImageTool
         [editor]="editor"
-    />
-    <tui-hr-tool
+    ></button>
+    <button
         *ngIf="enabled(tool.HR)"
+        tuiHrTool
         [editor]="editor"
-    />
+    ></button>
 </section>
-<tui-clear-tool
+<button
     *ngIf="enabled(tool.Clear)"
-    tuiToolbarBlock
+    tuiClearTool
     [editor]="editor"
-/>
+></button>
 <section
     *ngIf="enabled(tool.Details)"
     tuiToolbarBlock
 >
-    <tui-details-tool [editor]="editor" />
-    <tui-details-remove-tool [editor]="editor" />
+    <button
+        tuiDetailsAddTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiDetailsRemoveTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Group)"
     tuiToolbarBlock
 >
-    <tui-editor-group-tool [editor]="editor" />
+    <button
+        tuiInsertGroupTool
+        [editor]="editor"
+    ></button>
+    <button
+        tuiRemoveGroupTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="enabled(tool.Table)"

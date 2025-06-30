@@ -2,24 +2,24 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarTool} from './tool';
+import {TuiToolbarButtonTool} from '../tool';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiItalicTool]',
+    selector: 'button[tuiDetailsAddTool]',
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiToolbarTool],
+    hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor?.toggleItalic()',
+        '(click)': 'editor.setDetails()',
     },
 })
-export class TuiItalicTool extends TuiToolbarTool {
+export class TuiDetailsAddButtonTool extends TuiToolbarButtonTool {
     protected override ensureIcon(icons: TuiEditorOptions['icons']): string {
-        return icons.fontStyleItalic;
+        return icons.detailsAdd;
     }
 
     protected override ensureHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.italic;
+        return texts?.setDetails;
     }
 }

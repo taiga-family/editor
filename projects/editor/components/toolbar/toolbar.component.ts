@@ -21,19 +21,10 @@ import {
 } from '@taiga-ui/editor/common';
 import {
     TuiAlignContentTool,
-    TuiAnchorTool,
-    TuiAttachTool,
-    TuiClearTool,
     TuiCodeTool,
-    TuiDetailsRemoveTool,
-    TuiDetailsTool,
-    TuiEditorGroupTool,
     TuiFontSizeTool,
     TuiFontStyleTool,
     TuiHighlightColorTool,
-    TuiHrTool,
-    TuiImageTool,
-    TuiLinkTool,
     TuiListConfigsTool,
     TuiQuoteTool,
     TuiRedoTool,
@@ -48,6 +39,18 @@ import {
     TuiUndoTool,
 } from '@taiga-ui/editor/components/toolbar-tools';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {
+    TuiAnchorButtonTool,
+    TuiAttachButtonTool,
+    TuiClearButtonTool,
+    TuiDetailsAddButtonTool,
+    TuiDetailsRemoveButtonTool,
+    TuiHrButtonTool,
+    TuiImageButtonTool,
+    TuiInsertGroupButtonTool,
+    TuiLinkButtonTool,
+    TuiRemoveGroupButtonTool,
+} from '@taiga-ui/editor/tools';
 
 @Component({
     standalone: true,
@@ -56,22 +59,23 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
         AsyncPipe,
         NgIf,
         TuiAlignContentTool,
-        TuiAnchorTool,
-        TuiAttachTool,
-        TuiClearTool,
+        TuiAnchorButtonTool,
+        TuiAttachButtonTool,
+        TuiClearButtonTool,
         TuiCodeTool,
-        TuiDetailsRemoveTool,
-        TuiDetailsTool,
-        TuiEditorGroupTool,
+        TuiDetailsAddButtonTool,
+        TuiDetailsRemoveButtonTool,
         TuiFontSizeTool,
         TuiFontStyleTool,
         TuiHighlightColorTool,
-        TuiHrTool,
-        TuiImageTool,
-        TuiLinkTool,
+        TuiHrButtonTool,
+        TuiImageButtonTool,
+        TuiInsertGroupButtonTool,
+        TuiLinkButtonTool,
         TuiListConfigsTool,
         TuiQuoteTool,
         TuiRedoTool,
+        TuiRemoveGroupButtonTool,
         TuiSubscriptTool,
         TuiSuperscriptTool,
         TuiTableCellColorTool,
@@ -123,30 +127,6 @@ export class TuiToolbar {
     @Input()
     public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
-    }
-
-    protected get orderedList(): boolean {
-        return this.editor?.isActive('orderedList') ?? false;
-    }
-
-    protected get blockquote(): boolean {
-        return this.editor?.isActive('blockquote') ?? false;
-    }
-
-    protected get a(): boolean {
-        return this.editor?.isActive('link') ?? false;
-    }
-
-    protected get jumpAnchor(): boolean {
-        return this.editor?.isActive('jumpAnchor') ?? false;
-    }
-
-    protected get subscript(): boolean {
-        return this.editor?.isActive('subscript') ?? false;
-    }
-
-    protected get superscript(): boolean {
-        return this.editor?.isActive('superscript') ?? false;
     }
 
     protected get formatEnabled(): boolean {

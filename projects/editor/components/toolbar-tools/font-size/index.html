@@ -1,11 +1,9 @@
-<div
+<button
+    automation-id="toolbar__font-size-button"
+    tuiSizeTool
     [tuiDropdown]="fontsDropdown"
     [tuiDropdownOpen]="false"
 >
-    <button
-        automation-id="toolbar__font-size-button"
-        tuiSizeTool
-    ></button>
     <ng-template #fontsDropdown>
         <tui-data-list>
             <button
@@ -25,4 +23,4 @@
             </button>
         </tui-data-list>
     </ng-template>
-</div>
+</button>

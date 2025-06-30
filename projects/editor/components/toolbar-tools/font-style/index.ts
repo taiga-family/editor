@@ -11,11 +11,11 @@ import {
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {
-    TuiBoldTool,
-    TuiItalicTool,
-    TuiStrikeTool,
-    TuiStylePreviewTool,
-    TuiUnderlineTool,
+    TuiBoldButtonTool,
+    TuiItalicButtonTool,
+    TuiStrikeButtonTool,
+    TuiStylePreviewButtonTool,
+    TuiUnderlineButtonTool,
 } from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of} from 'rxjs';
@@ -27,12 +27,12 @@ import {combineLatest, map, of} from 'rxjs';
     imports: [
         AsyncPipe,
         NgIf,
-        TuiBoldTool,
+        TuiBoldButtonTool,
         TuiDropdown,
-        TuiItalicTool,
-        TuiStrikeTool,
-        TuiStylePreviewTool,
-        TuiUnderlineTool,
+        TuiItalicButtonTool,
+        TuiStrikeButtonTool,
+        TuiStylePreviewButtonTool,
+        TuiUnderlineButtonTool,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
