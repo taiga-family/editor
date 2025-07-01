@@ -1,16 +1,16 @@
 <button
-    *ngIf="texts$ | async as text"
     appearance="icon"
     size="s"
     tuiHintDescribe
     tuiIconButton
     tuiItem
+    tuiToolbarTool
     type="button"
     [disabled]="!!(disabled$ | async)"
     [iconStart]="options.icons.detailsRemove"
-    [tuiHint]="text.removeDetails"
+    [tuiHint]="(texts$ | async)?.removeDetails"
     [tuiHintManual]="!isMobile && null"
     (click)="editor?.removeDetails()"
 >
-    {{ text.removeDetails }}
+    {{ (texts$ | async)?.removeDetails }}
 </button>
