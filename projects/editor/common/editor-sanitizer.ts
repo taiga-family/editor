@@ -1,6 +1,10 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {Sanitizer} from '@angular/core';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_EDITOR_SANITIZER = tuiCreateTokenFromFactory<Sanitizer | null>(
-    () => null,
+export const TUI_EDITOR_SANITIZER = new InjectionToken<Sanitizer | null>(
+    ngDevMode ? 'TUI_EDITOR_SANITIZER' : '',
+    {
+        factory: () => null,
+    },
 );

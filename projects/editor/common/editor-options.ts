@@ -1,5 +1,7 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk';
+import {InjectionToken} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk';
 import type {EditorOptions} from '@tiptap/core';
 
 import {
@@ -160,7 +162,12 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     },
 };
 
-export const TUI_EDITOR_OPTIONS = tuiCreateToken(TUI_EDITOR_DEFAULT_OPTIONS);
+export const TUI_EDITOR_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_EDITOR_OPTIONS' : '',
+    {
+        factory: () => TUI_EDITOR_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiEditorOptionsProvider(options: Partial<TuiEditorOptions>): Provider {
     return tuiProvideOptions(TUI_EDITOR_OPTIONS, options, TUI_EDITOR_DEFAULT_OPTIONS);
