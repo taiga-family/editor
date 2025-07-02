@@ -1,60 +1,38 @@
-import {AsyncPipe} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import {TuiPaletteModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map} from 'rxjs';
+import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
 
+/**
+ * @deprecated: use {@link TuiTextColorButtonTool}
+ */
 @Component({
     standalone: true,
-    // TODO: deprecate tui-text-color
     selector: 'tui-text-color,tui-text-color-tool',
-    imports: [AsyncPipe, TuiButton, TuiDropdown, TuiHint, TuiItem, TuiPaletteModule],
-    templateUrl: './index.html',
+    imports: [TuiTextColorButtonTool],
+    template: `
+        <button
+            tuiTextColorTool
+            [colors]="colors"
+            [editor]="editor"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTextColorTool implements OnInit {
-    private localEditor: AbstractTuiEditor | null = null;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+export class TuiTextColorTool {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected readonly foreColorText$ = this.texts$.pipe(map((texts) => texts.foreColor));
-    protected fontColor$: Observable<string> | null = null;
 
     @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors: ReadonlyMap<string, string> = inject(TUI_EDITOR_OPTIONS).colors;
 
-    @Input('editor')
-    public set inputEditor(value: AbstractTuiEditor | null) {
-        this.localEditor = value;
-        this.initStream();
-    }
-
-    public ngOnInit(): void {
-        this.initStream();
-    }
-
-    protected get editor(): AbstractTuiEditor | null {
-        return this.injectionEditor ?? this.localEditor;
-    }
-
-    private initStream(): void {
-        this.fontColor$ =
-            this.editor?.stateChange$.pipe(
-                map(() => this.editor?.getFontColor() ?? this.options.blankColor),
-                map((color) => (color === this.options.blankColor ? '' : color)),
-                distinctUntilChanged(),
-            ) ?? null;
-    }
+    @Input()
+    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
+        optional: true,
+    });
 }
 
 /**
- * @deprecated use {@link TuiTextColorTool}
+ * @deprecated use {@link TuiTextColorButtonTool}
  */
 export const TuiTextColor = TuiTextColorTool;

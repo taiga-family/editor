@@ -8,15 +8,15 @@ test.describe('Img', () => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_BASE64_IMG}`);
         await page.locator('[contenteditable]').nth(0).focus();
 
-        await expect(page.locator('#demo-content tui-editor')).toHaveScreenshot(
-            'Img-01.png',
-        );
+        await expect
+            .soft(page.locator('#demo-content tui-editor'))
+            .toHaveScreenshot('Img-01.png');
     });
 
     test('preview display of images', async ({page}) => {
         await tuiGoto(page, 'images/preview');
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Img-02.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-02.png');
     });
 
     test('resizable image', async ({page}) => {
@@ -37,17 +37,17 @@ test.describe('Img', () => {
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
         );
 
-        await expect(page.locator('[id="resizable-image"] .t-demo')).toHaveScreenshot(
-            'Img-03.png',
-        );
+        await expect
+            .soft(page.locator('[id="resizable-image"] .t-demo'))
+            .toHaveScreenshot('Img-03.png');
 
         await page.mouse.move(
             (box?.x ?? 0) + (box?.width ?? 0) / 2 - 150,
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
         );
 
-        await expect(page.locator('[id="resizable-image"] .t-demo')).toHaveScreenshot(
-            'Img-04.png',
-        );
+        await expect
+            .soft(page.locator('[id="resizable-image"] .t-demo'))
+            .toHaveScreenshot('Img-04.png');
     });
 });

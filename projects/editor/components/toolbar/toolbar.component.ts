@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,68 +19,69 @@ import {
     TUI_EDITOR_OPTIONS,
     TuiEditorTool,
 } from '@taiga-ui/editor/common';
-import {
-    TuiAlignContentTool,
-    TuiAnchorTool,
-    TuiAttachTool,
-    TuiClearTool,
-    TuiCodeTool,
-    TuiDetailsRemoveTool,
-    TuiDetailsTool,
-    TuiEditorGroupTool,
-    TuiFontSizeTool,
-    TuiFontStyleTool,
-    TuiHighlightColorTool,
-    TuiHrTool,
-    TuiImageTool,
-    TuiLinkTool,
-    TuiListConfigsTool,
-    TuiQuoteTool,
-    TuiRedoTool,
-    TuiSubscriptTool,
-    TuiSuperscriptTool,
-    TuiTableCellColorTool,
-    TuiTableCreateTool,
-    TuiTableMergeCellsTool,
-    TuiTableRowColumnManagerTool,
-    TuiTextColorTool,
-    TuiTexTool,
-    TuiUndoTool,
-} from '@taiga-ui/editor/components/toolbar-tools';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {
+    TuiAddRowTableButtonTool,
+    TuiAlignButtonTool,
+    TuiAnchorButtonTool,
+    TuiAttachButtonTool,
+    TuiBlockquoteButtonTool,
+    TuiClearButtonTool,
+    TuiCodeButtonTool,
+    TuiDetailsAddButtonTool,
+    TuiDetailsRemoveButtonTool,
+    TuiFontSizeButtonTool,
+    TuiFontStyleButtonTool,
+    TuiHighlightColorButtonTool,
+    TuiHrButtonTool,
+    TuiImageButtonTool,
+    TuiInsertGroupButtonTool,
+    TuiInsertTableButtonTool,
+    TuiLinkButtonTool,
+    TuiListButtonTool,
+    TuiPaintButtonTool,
+    TuiRedoButtonTool,
+    TuiRemoveGroupButtonTool,
+    TuiSubscriptButtonTool,
+    TuiSuperscriptButtonTool,
+    TuiTableMergeCellButtonTool,
+    TuiTexButtonTool,
+    TuiTextColorButtonTool,
+    TuiUndoButtonTool,
+} from '@taiga-ui/editor/tools';
 
 @Component({
     standalone: true,
     selector: 'tui-toolbar',
     imports: [
-        AsyncPipe,
         NgIf,
-        TuiAlignContentTool,
-        TuiAnchorTool,
-        TuiAttachTool,
-        TuiClearTool,
-        TuiCodeTool,
-        TuiDetailsRemoveTool,
-        TuiDetailsTool,
-        TuiEditorGroupTool,
-        TuiFontSizeTool,
-        TuiFontStyleTool,
-        TuiHighlightColorTool,
-        TuiHrTool,
-        TuiImageTool,
-        TuiLinkTool,
-        TuiListConfigsTool,
-        TuiQuoteTool,
-        TuiRedoTool,
-        TuiSubscriptTool,
-        TuiSuperscriptTool,
-        TuiTableCellColorTool,
-        TuiTableCreateTool,
-        TuiTableMergeCellsTool,
-        TuiTableRowColumnManagerTool,
-        TuiTextColorTool,
-        TuiTexTool,
-        TuiUndoTool,
+        TuiAddRowTableButtonTool,
+        TuiAlignButtonTool,
+        TuiAnchorButtonTool,
+        TuiAttachButtonTool,
+        TuiBlockquoteButtonTool,
+        TuiClearButtonTool,
+        TuiCodeButtonTool,
+        TuiDetailsAddButtonTool,
+        TuiDetailsRemoveButtonTool,
+        TuiFontSizeButtonTool,
+        TuiFontStyleButtonTool,
+        TuiHighlightColorButtonTool,
+        TuiHrButtonTool,
+        TuiImageButtonTool,
+        TuiInsertGroupButtonTool,
+        TuiInsertTableButtonTool,
+        TuiLinkButtonTool,
+        TuiListButtonTool,
+        TuiPaintButtonTool,
+        TuiRedoButtonTool,
+        TuiRemoveGroupButtonTool,
+        TuiSubscriptButtonTool,
+        TuiSuperscriptButtonTool,
+        TuiTableMergeCellButtonTool,
+        TuiTexButtonTool,
+        TuiTextColorButtonTool,
+        TuiUndoButtonTool,
     ],
     templateUrl: './toolbar.template.html',
     styleUrls: ['./toolbar.style.less'],
@@ -123,30 +124,6 @@ export class TuiToolbar {
     @Input()
     public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
         this.toolsSet = new Set(value);
-    }
-
-    protected get orderedList(): boolean {
-        return this.editor?.isActive('orderedList') ?? false;
-    }
-
-    protected get blockquote(): boolean {
-        return this.editor?.isActive('blockquote') ?? false;
-    }
-
-    protected get a(): boolean {
-        return this.editor?.isActive('link') ?? false;
-    }
-
-    protected get jumpAnchor(): boolean {
-        return this.editor?.isActive('jumpAnchor') ?? false;
-    }
-
-    protected get subscript(): boolean {
-        return this.editor?.isActive('subscript') ?? false;
-    }
-
-    protected get superscript(): boolean {
-        return this.editor?.isActive('superscript') ?? false;
     }
 
     protected get formatEnabled(): boolean {

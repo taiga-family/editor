@@ -17,17 +17,19 @@ test.describe('Demo', () => {
             test(name, async ({page}) => {
                 await tuiGoto(page, path);
 
-                await expect(async () => {
-                    const examples = await page.locator('tui-doc-example').all();
+                await expect
+                    .soft(async () => {
+                        const examples = await page.locator('tui-doc-example').all();
 
-                    expect(examples.length).toBeGreaterThan(0);
+                        expect.soft(examples.length).toBeGreaterThan(0);
 
-                    for (const example of examples) {
-                        await expect(
-                            example.getByTestId('tui-doc-example'),
-                        ).toBeAttached();
-                    }
-                }).toPass();
+                        for (const example of examples) {
+                            await expect
+                                .soft(example.getByTestId('tui-doc-example'))
+                                .toBeAttached();
+                        }
+                    })
+                    .toPass();
 
                 const examples = await page.getByTestId('tui-doc-example').all();
 

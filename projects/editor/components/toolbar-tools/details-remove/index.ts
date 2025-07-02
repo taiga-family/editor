@@ -1,20 +1,26 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiDetailsRemoveButtonTool} from '@taiga-ui/editor/tools';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
+/**
+ * @deprecated use {@link TuiDetailsRemoveButtonTool}
+ */
 @Component({
     standalone: true,
-    // TODO: deprecated tui-details-remove
     selector: 'tui-details-remove,tui-details-remove-tool',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiHint, TuiItem],
-    templateUrl: './index.html',
+    imports: [TuiDetailsRemoveButtonTool],
+    template: `
+        <button
+            tuiDetailsRemoveTool
+            [editor]="editor"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsRemoveTool implements OnInit {
@@ -46,6 +52,6 @@ export class TuiDetailsRemoveTool implements OnInit {
 }
 
 /**
- * @deprecated use {@link TuiDetailsRemoveTool}
+ * @deprecated use {@link TuiDetailsAddButtonTool}
  */
 export const TuiDetailsRemove = TuiDetailsRemoveTool;

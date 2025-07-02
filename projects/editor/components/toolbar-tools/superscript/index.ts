@@ -1,22 +1,24 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
+import {TuiSuperscriptButtonTool} from '@taiga-ui/editor/tools';
 
+/**
+ * @deprecated use {@link TuiSuperscriptButtonTool}
+ */
 @Component({
     standalone: true,
     selector: 'tui-superscript-tool',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiHint, TuiItem],
-    templateUrl: './index.html',
+    imports: [TuiSuperscriptButtonTool],
+    template: `
+        <button
+            tuiSuperscriptTool
+            [editor]="editor"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSuperscriptTool {
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
         optional: true,

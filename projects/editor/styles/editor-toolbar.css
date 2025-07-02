@@ -2,7 +2,6 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
 
-    /* stylelint-enable*/
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {
         display: none;
@@ -11,6 +10,7 @@
     display: flex;
     overflow: auto;
     flex-wrap: wrap;
+    align-content: center;
     box-sizing: border-box;
 }
 
@@ -46,6 +46,7 @@
     transition: background var(--tui-duration) ease-in-out;
     position: relative;
     margin: 0 0.125rem;
+    overflow: visible;
 }
 
 [tuiToolbarTool]:hover {
@@ -54,6 +55,7 @@
 
 [tuiToolbar] [tuiItem] {
     position: relative;
+    align-self: center;
 }
 
 [tuiToolbar] input[type='file'] {

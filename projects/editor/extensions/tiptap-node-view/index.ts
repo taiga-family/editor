@@ -78,6 +78,7 @@ export abstract class TuiNodeViewNg implements NodeViewProps {
     declare public HTMLAttributes: Record<string, any>;
     declare public innerDecorations: DecorationSource;
     declare public view: EditorView;
+
     public abstract get node(): NodeViewProps['node'];
     public abstract set node(value: NodeViewProps['node']);
 }

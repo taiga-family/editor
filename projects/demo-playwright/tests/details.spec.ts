@@ -10,22 +10,22 @@ test.describe('Details', () => {
         const details = page.locator('tui-toolbar button').locator('text="Details"');
         const contenteditable = page.locator('[contenteditable]').nth(0);
 
-        await expect(editor).toHaveScreenshot('Details-01.png');
+        await expect.soft(editor).toHaveScreenshot('Details-01.png');
 
         await details.click();
-        await expect(editor).toHaveScreenshot('Details-02.png');
+        await expect.soft(editor).toHaveScreenshot('Details-02.png');
 
         await page.keyboard.type('Hello');
         await details.click();
         await contenteditable.click();
-        await expect(editor).toHaveScreenshot('Details-03.png');
+        await expect.soft(editor).toHaveScreenshot('Details-03.png');
 
         await details.click();
-        await expect(editor).toHaveScreenshot('Details-04.png');
+        await expect.soft(editor).toHaveScreenshot('Details-04.png');
 
         await page.keyboard.type('Nested');
         await details.click();
         await contenteditable.click();
-        await expect(editor).toHaveScreenshot('Details-06.png');
+        await expect.soft(editor).toHaveScreenshot('Details-06.png');
     });
 });

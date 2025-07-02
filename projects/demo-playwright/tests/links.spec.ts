@@ -12,7 +12,7 @@ test.describe('Links', () => {
     test('check if at least one link exists', async ({page}) => {
         await page.locator('tui-editor a').nth(0).click();
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Links-01.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-01.png');
     });
 
     test('switch links between', async ({page}) => {
@@ -25,7 +25,7 @@ test.describe('Links', () => {
         await page.locator('tui-input-inline input').nth(0).fill('wysiwyg.com');
         await page.keyboard.press('Enter');
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
 
         await page.locator('tui-editor sup').nth(0).dblclick({force: true});
 
@@ -36,16 +36,16 @@ test.describe('Links', () => {
         await page.locator('tui-input-inline input').nth(0).fill('example.com');
         await page.keyboard.press('Enter');
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Links-03.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-03.png');
 
         await page.locator('tui-editor strong').nth(0).click();
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Links-04.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-04.png');
 
         await page.mouse.click(0, 0);
 
         await page.locator('tui-editor sup').nth(0).click();
 
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Links-05.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-05.png');
     });
 });

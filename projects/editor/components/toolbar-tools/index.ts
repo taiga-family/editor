@@ -19,7 +19,6 @@ export * from '@taiga-ui/editor/components/toolbar-tools/subscript';
 export * from '@taiga-ui/editor/components/toolbar-tools/superscript';
 export * from '@taiga-ui/editor/components/toolbar-tools/table-cell-color';
 export * from '@taiga-ui/editor/components/toolbar-tools/table-create';
-export * from '@taiga-ui/editor/components/toolbar-tools/table-create/table-size-selector';
 export * from '@taiga-ui/editor/components/toolbar-tools/table-merge-cells';
 export * from '@taiga-ui/editor/components/toolbar-tools/table-row-column-manager';
 export * from '@taiga-ui/editor/components/toolbar-tools/tex';

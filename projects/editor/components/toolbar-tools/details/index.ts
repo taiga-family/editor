@@ -1,24 +1,24 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_MOBILE, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
 import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiDetailsAddButtonTool} from '@taiga-ui/editor/tools';
 
+/**
+ * @deprecated: use {@link TuiDetailsAddButtonTool}
+ */
 @Component({
     standalone: true,
-    // TODO: deprecated tui-details
     selector: 'tui-details, tui-details-tool',
-    imports: [AsyncPipe, TuiButton, TuiHint, TuiItem],
-    templateUrl: './index.html',
+    imports: [TuiDetailsAddButtonTool],
+    template: `
+        <button
+            tuiDetailsAddTool
+            [editor]="editor"
+        ></button>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDetailsTool {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
-    protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
         optional: true,
@@ -26,6 +26,6 @@ export class TuiDetailsTool {
 }
 
 /**
- * @deprecated use {@link TuiDetailsTool}
+ * @deprecated use {@link TuiDetailsAddButtonTool}
  */
 export const TuiDetails = TuiDetailsTool;

@@ -10,7 +10,7 @@ test.describe('Anchors', () => {
     });
 
     test('all content', async ({page}) => {
-        await expect(page.locator('tui-editor')).toHaveScreenshot('Anchors-01.png');
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Anchors-01.png');
     });
 
     test('viewport position', async ({page}) => {
@@ -29,7 +29,7 @@ test.describe('Anchors', () => {
                 .last()
                 .click();
 
-            await expect(page).toHaveScreenshot(`Anchors-02-${anchor}.png`);
+            await expect.soft(page).toHaveScreenshot(`Anchors-02-${anchor}.png`);
         }
     });
 
@@ -43,7 +43,7 @@ test.describe('Anchors', () => {
         await page.mouse.click(0, 0);
         await page.waitForTimeout(300);
 
-        await expect(fullExample).toHaveScreenshot('Anchors-03.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-03.png');
 
         await editor.focus();
         await page.keyboard.type('Hello\n\n\nLink to anchor\n');
@@ -59,27 +59,27 @@ test.describe('Anchors', () => {
         await page.keyboard.press('o');
         await page.waitForTimeout(1000);
 
-        await expect(fullExample).toHaveScreenshot('Anchors-04.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-04.png');
 
         await page.waitForTimeout(300);
         await page.keyboard.press('Enter');
 
-        await expect(fullExample).toHaveScreenshot('Anchors-05.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-05.png');
 
         await editor.getByText('Link to anchor').selectText();
         await page.getByTestId('toolbar__link-button').click();
         await page.waitForTimeout(1000);
 
-        await expect(fullExample).toHaveScreenshot('Anchors-06.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-06.png');
 
         await page.getByRole('button', {name: '#Hello'}).click();
         await page.waitForTimeout(1000);
 
-        await expect(fullExample).toHaveScreenshot('Anchors-07.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-07.png');
 
         await page.mouse.click(0, 0);
         await page.waitForTimeout(1000);
 
-        await expect(fullExample).toHaveScreenshot('Anchors-08.png');
+        await expect.soft(fullExample).toHaveScreenshot('Anchors-08.png');
     });
 });
