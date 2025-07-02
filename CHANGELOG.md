@@ -1,3 +1,17 @@
+### [4.30.0](https://github.com/taiga-family/editor/compare/v4.29.0...v4.30.0) (2025-07-02)
+
+### 🚀 Features
+
+- use host directives instead of components for toolbar tools (#1772)
+  [(0af848f)](https://github.com/taiga-family/editor/commit/0af848fa6f7fb0a566d710c33ca7ff7d3ba66143)
+- decomposition some components by host directives (#1771)
+  [(d17edaa)](https://github.com/taiga-family/editor/commit/d17edaac81869811e91f37f75d8d966e567b18f9)
+
+### 🐞 Bug Fixes
+
+- update tiptap to &gt;=2.23.1 (#1776)
+  [(70a5682)](https://github.com/taiga-family/editor/commit/70a5682be8881e35c7f6a0e38567bb9906f5a369)
+
 ### [4.29.0](https://github.com/taiga-family/editor/compare/v4.28.0...v4.29.0) (2025-06-27)
 
 ### 🚀 Features
