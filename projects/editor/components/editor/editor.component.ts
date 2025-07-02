@@ -114,8 +114,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild('tuiDropdown')
     private readonly tuiDropdown?: TuiDropdownDirective;
 
-    private readonly rootEl = tuiInjectElement();
-
     private readonly contentProcessor = inject<
         TuiValueTransformer<string | null, string | null>
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
@@ -201,6 +199,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         }),
     );
 
+    public readonly rootEl = tuiInjectElement();
     public readonly editorService = inject(TuiTiptapEditorService);
 
     @Input('readOnly')

@@ -14,6 +14,7 @@ export const TuiDemoPath = {
     Options: 'options',
     Font: 'font',
     Groups: 'groups',
+    TableOfContents: 'table-of-contents',
     HighlightCode: 'highlight/code',
     HighlightText: 'highlight/text',
     ImagesPreview: 'images/preview',

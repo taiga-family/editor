@@ -1,0 +1,28 @@
+<tui-doc-page
+    header="Editor"
+    type="components"
+>
+    <tui-doc-example
+        id="table-of-contents"
+        heading="Table of contents"
+        [component]="component1"
+        [content]="example1"
+        [description]="description"
+    >
+        <ng-template #description>
+            <p>
+                The
+                <a
+                    href="https://tiptap.dev/docs/editor/extensions/functionality/table-of-contents"
+                    target="_blank"
+                    tuiLink
+                >
+                    TableOfContents
+                </a>
+                extension lets you get a list of anchors from your document and passes on important information about
+                each anchor (for example the depth, the content and a unique ID for each heading but also the active
+                state and scroll states for each anchor). This can be used to render the table of content on your own.
+            </p>
+        </ng-template>
+    </tui-doc-example>
+</tui-doc-page>

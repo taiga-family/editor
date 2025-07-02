@@ -10,17 +10,18 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
     selector: '[tuiTiptapEditor]',
 })
 export class TuiTiptapEditor {
+    private canEdit = true;
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly editor = inject(TuiTiptapEditorService);
-
     protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
 
     protected readonly $ = inject(TIPTAP_EDITOR)
         .pipe(takeUntilDestroyed())
-        .subscribe(() =>
-            this.renderer.appendChild(this.el.nativeElement, this.editorContainer),
-        );
+        .subscribe(() => {
+            this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
+            this.editable = this.canEdit; // synchronized editable state after first render
+        });
 
     @Output()
     public readonly valueChange = this.editor.valueChange$.pipe(distinctUntilChanged());
@@ -35,6 +36,7 @@ export class TuiTiptapEditor {
 
     @Input()
     public set editable(editable: boolean) {
+        this.canEdit = editable;
         this.editor.editable = editable;
     }
 }
