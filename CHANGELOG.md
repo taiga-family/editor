@@ -1,3 +1,16 @@
+### [4.31.0](https://github.com/taiga-family/editor/compare/v4.30.0...v4.31.0) (2025-07-03)
+
+### 🐞 Bug Fixes
+
+- extending component with hostDirectives causes them to be matched twice (#1786)
+  [(e18a1f9)](https://github.com/taiga-family/editor/commit/e18a1f9979d12a85ac6201dd85b716052d561547)
+- update tiptap to &gt;=2.24.1 (#1788)
+  [(ca226c2)](https://github.com/taiga-family/editor/commit/ca226c2e6ee039bdc38e1df7b7b36768ecea45b2)
+- update tiptap to &gt;=2.24.1 (#1787)
+  [(2f36881)](https://github.com/taiga-family/editor/commit/2f368816e5d366c4f6d96a3c18241f52196a944e)
+- update tiptap to &gt;=2.24.0 (#1783)
+  [(5113cb1)](https://github.com/taiga-family/editor/commit/5113cb1458572826493f984f36f64e81c843d2d9)
+
 ### [4.30.0](https://github.com/taiga-family/editor/compare/v4.29.0...v4.30.0) (2025-07-02)
 
 ### 🚀 Features
