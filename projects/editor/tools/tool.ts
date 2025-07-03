@@ -10,14 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    tuiButtonOptionsProvider,
-    TuiHintDirective,
-    TuiHintManual,
-    tuiHintOptionsProvider,
-    TuiIcons,
-} from '@taiga-ui/core';
+import {TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
@@ -25,41 +18,23 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
 
-@Directive({
-    standalone: true,
-    providers: [
-        tuiHintOptionsProvider({
-            direction: ['top-left', 'top', 'right'],
-        }),
-        tuiButtonOptionsProvider({
-            size: 's',
-            appearance: 'icon',
-        }),
-    ],
-    hostDirectives: [
-        TuiHintDirective,
-        TuiHintManual,
-        {
-            directive: TuiButton,
-            inputs: ['size'],
-        },
-    ],
-    host: {
-        tuiItem: '',
-        tuiToolbarTool: '',
-        tuiIconButton: '',
-        type: 'button',
-        '[disabled]': 'disabled()',
-    },
-})
-export class TuiToolbarButtonTool implements OnChanges, OnDestroy {
+import {TuiToolbarButtonTool} from './tool-button';
+
+@Directive()
+export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
     protected readonly cd = inject(ChangeDetectorRef);
     protected readonly destroy$ = inject(DestroyRef);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));
-    protected readonly disabled = signal<boolean>(false);
+    protected readonly readOnly = signal(false);
     protected subscription?: Subscription;
+
+    protected readonly disabled = tuiDirectiveBinding(
+        TuiToolbarButtonTool,
+        'disabled',
+        computed(() => this.readOnly()),
+    );
 
     protected readonly iconStart = tuiDirectiveBinding(
         TuiIcons,
@@ -84,22 +59,29 @@ export class TuiToolbarButtonTool implements OnChanges, OnDestroy {
         optional: true,
     });
 
+    protected getDisableState?(): boolean;
+
+    protected abstract getIcon(icons?: TuiEditorOptions['icons']): string;
+
+    protected abstract getHint(options?: TuiLanguageEditor['toolbarTools']): string;
+
     public ngOnChanges(changes: SimpleChanges): void {
-        if (changes['editor']) {
+        if (changes['editor'] && this.getDisableState) {
             this.subscription?.unsubscribe();
 
-            this.disabled.set(this.getDisableState());
+            this.setDisabled(this.getDisableState());
+
             this.subscription = this.editor?.stateChange$
                 .pipe(
                     debounceTime(0),
                     startWith(null),
-                    map(() => this.getDisableState()),
+                    map(() => this.getDisableState?.() ?? false),
                     distinctUntilChanged(),
                     shareReplay({bufferSize: 1, refCount: true}),
                     tuiWatch(this.cd),
                     takeUntilDestroyed(this.destroy$),
                 )
-                .subscribe((disabled) => this.disabled.set(disabled));
+                .subscribe((disabled) => this.setDisabled(disabled));
         }
     }
 
@@ -107,15 +89,10 @@ export class TuiToolbarButtonTool implements OnChanges, OnDestroy {
         this.subscription?.unsubscribe();
     }
 
-    protected getIcon(_?: TuiEditorOptions['icons']): string {
-        return '';
-    }
+    private setDisabled(disabled: boolean): void {
+        this.readOnly.set(disabled);
 
-    protected getHint(_?: TuiLanguageEditor['toolbarTools']): string {
-        return '';
-    }
-
-    protected getDisableState(): boolean {
-        return false;
+        // caretaker note: trigger computed effect
+        this.cd.detectChanges();
     }
 }

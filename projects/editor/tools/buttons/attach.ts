@@ -15,7 +15,8 @@ import {TUI_ATTACH_FILES_LOADER, TUI_ATTACH_FILES_OPTIONS} from '@taiga-ui/edito
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {take} from 'rxjs';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -38,7 +39,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'fileUpload?.nativeElement.click()',
     },
 })
-export class TuiAttachButtonTool extends TuiToolbarButtonTool {
+export class TuiAttachButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
 
@@ -50,11 +51,11 @@ export class TuiAttachButtonTool extends TuiToolbarButtonTool {
     @Output()
     public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.attach;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.attach;
     }
 

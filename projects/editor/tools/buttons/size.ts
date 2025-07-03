@@ -22,7 +22,8 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -67,7 +68,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '[attr.automation-id]': '"toolbar__font-size-button"',
     },
 })
-export class TuiFontSizeButtonTool extends TuiToolbarButtonTool {
+export class TuiFontSizeButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     protected readonly fontsOptions$ = inject(TUI_EDITOR_FONT_OPTIONS).pipe(
@@ -79,11 +80,11 @@ export class TuiFontSizeButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.fontSize;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.font;
     }
 

@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -14,12 +15,12 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'editor?.toggleSuperscript()',
     },
 })
-export class TuiSuperscriptButtonTool extends TuiToolbarButtonTool {
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+export class TuiSuperscriptButtonTool extends TuiToolbarTool {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.sup;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.superscript;
     }
 }

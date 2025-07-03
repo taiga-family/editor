@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -14,8 +15,12 @@ import {TuiToolbarButtonTool} from '../tool';
         '[attr.automation-id]': '"toolbar__task-list-button"',
     },
 })
-export class TuiTaskListButtonTool extends TuiToolbarButtonTool {
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+export class TuiTaskListButtonTool extends TuiToolbarTool {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.taskList;
+    }
+
+    protected getHint(): string {
+        return '';
     }
 }

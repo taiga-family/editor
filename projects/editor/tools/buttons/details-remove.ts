@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -14,16 +15,16 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'editor.unsetDetails()',
     },
 })
-export class TuiDetailsRemoveButtonTool extends TuiToolbarButtonTool {
+export class TuiDetailsRemoveButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
         return !(this.editor?.isActive('details') ?? false);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.detailsRemove;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.removeDetails;
     }
 }

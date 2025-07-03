@@ -3,7 +3,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {tuiGetCurrentWordBounds} from '@taiga-ui/editor/utils';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -15,7 +16,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'onAnchor()',
     },
 })
-export class TuiAnchorButtonTool extends TuiToolbarButtonTool {
+export class TuiAnchorButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
         return (
             (this.editor?.isActive('link') ?? false) ||
@@ -23,11 +24,11 @@ export class TuiAnchorButtonTool extends TuiToolbarButtonTool {
         );
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.anchor;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.insertAnchor;
     }
 

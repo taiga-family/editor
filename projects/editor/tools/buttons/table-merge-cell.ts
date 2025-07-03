@@ -5,7 +5,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {distinctUntilChanged, map} from 'rxjs';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -17,7 +18,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'canMergeCells?.() ? editor?.mergeCells() : editor?.splitCell()',
     },
 })
-export class TuiTableMergeCellButtonTool extends TuiToolbarButtonTool implements OnInit {
+export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnInit {
     protected readonly canMergeCells = signal<boolean>(false);
 
     public ngOnInit(): void {
@@ -37,11 +38,11 @@ export class TuiTableMergeCellButtonTool extends TuiToolbarButtonTool implements
         );
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return this.canMergeCells?.() ? icons.tableCellMerge : icons.tableCellSplit;
     }
 
-    protected override getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
         return (this.canMergeCells?.() ? texts?.mergeCells : texts?.splitCells) ?? '';
     }
 }

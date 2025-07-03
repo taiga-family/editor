@@ -15,7 +15,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 import {TuiIndentButtonTool} from './indent';
 import {TuiOrderedListButtonTool} from './ordered-list';
 import {TuiOutdentButtonTool} from './outdent';
@@ -67,7 +68,7 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
         '[attr.automation-id]': '"toolbar__ordering-list-button"',
     },
 })
-export class TuiListButtonTool extends TuiToolbarButtonTool {
+export class TuiListButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
@@ -75,11 +76,11 @@ export class TuiListButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.listPreview;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.list;
     }
 }

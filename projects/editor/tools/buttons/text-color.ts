@@ -19,7 +19,8 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -42,7 +43,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '[attr.automation-id]': '"toolbar__color-button"',
     },
 })
-export class TuiTextColorButtonTool extends TuiToolbarButtonTool {
+export class TuiTextColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     @Input()
@@ -53,11 +54,11 @@ export class TuiTextColorButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textColor;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.foreColor;
     }
 }

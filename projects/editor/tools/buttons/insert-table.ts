@@ -19,7 +19,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 const MAX_COLS_NUMBER = 15;
 const MAX_ROWS_NUMBER = 15;
@@ -89,7 +90,7 @@ const MIN_DISTANCE_PX = 70;
         '[attr.automation-id]': '"toolbar__insert-table-button"',
     },
 })
-export class TuiInsertTableButtonTool extends TuiToolbarButtonTool {
+export class TuiInsertTableButtonTool extends TuiToolbarTool {
     private readonly win = inject(WINDOW);
     protected readonly dropdown = tuiDropdown(null);
 
@@ -111,11 +112,11 @@ export class TuiInsertTableButtonTool extends TuiToolbarButtonTool {
         return Math.min(Math.max(3, this.tableSize.rows + 1), MAX_ROWS_NUMBER);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.insertTable;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.insertTable;
     }
 
