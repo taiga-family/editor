@@ -12,7 +12,8 @@ import {TUI_IMAGE_LOADER} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {take} from 'rxjs';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -34,18 +35,18 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'image?.nativeElement.click()',
     },
 })
-export class TuiImageButtonTool extends TuiToolbarButtonTool {
+export class TuiImageButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
 
     @ViewChild('image')
     protected image?: ElementRef<HTMLInputElement>;
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.image;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.image;
     }
 

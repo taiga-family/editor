@@ -20,7 +20,8 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -52,7 +53,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '[attr.automation-id]': '"toolbar__hilite-button"',
     },
 })
-export class TuiHighlightColorButtonTool extends TuiToolbarButtonTool {
+export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     @Input()
@@ -67,11 +68,11 @@ export class TuiHighlightColorButtonTool extends TuiToolbarButtonTool {
         return this.editor?.getBackgroundColor() === this.options.blankColor;
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textHilite;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.backColor;
     }
 }

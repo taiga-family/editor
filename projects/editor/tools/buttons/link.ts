@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -15,7 +16,7 @@ import {TuiToolbarButtonTool} from '../tool';
         '(click)': 'onLink()',
     },
 })
-export class TuiLinkButtonTool extends TuiToolbarButtonTool {
+export class TuiLinkButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
         return (
             (this.editor?.isActive('link') ?? false) ||
@@ -23,11 +24,11 @@ export class TuiLinkButtonTool extends TuiToolbarButtonTool {
         );
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.link;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.link;
     }
 

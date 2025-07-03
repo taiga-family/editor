@@ -15,7 +15,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 import {TuiAlignCenterButtonTool} from './align-center';
 import {TuiAlignJustifyButtonTool} from './align-justify';
 import {TuiAlignLeftButtonTool} from './align-left';
@@ -61,7 +62,7 @@ import {TuiAlignRightButtonTool} from './align-right';
         '[attr.automation-id]': '"toolbar__align-button"',
     },
 })
-export class TuiAlignButtonTool extends TuiToolbarButtonTool {
+export class TuiAlignButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
@@ -69,11 +70,11 @@ export class TuiAlignButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textAlignPreview;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.justify;
     }
 }

@@ -20,7 +20,8 @@ import {TUI_EDITOR_CODE_OPTIONS} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -51,7 +52,7 @@ import {TuiToolbarButtonTool} from '../tool';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
 })
-export class TuiCodeButtonTool extends TuiToolbarButtonTool {
+export class TuiCodeButtonTool extends TuiToolbarTool {
     protected readonly codeOptionsTexts$ = inject(TUI_EDITOR_CODE_OPTIONS);
 
     protected readonly dropdown = tuiDropdown(null);
@@ -61,11 +62,11 @@ export class TuiCodeButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.code;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.code;
     }
 

@@ -40,3 +40,4 @@ export * from './buttons/underline';
 export * from './buttons/undo';
 export * from './buttons/unordered-list';
 export * from './tool';
+export * from './tool-button';

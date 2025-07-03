@@ -18,7 +18,8 @@ import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     standalone: true,
@@ -49,7 +50,7 @@ import {TuiToolbarButtonTool} from '../tool';
         tuiPlateHost: '',
     },
 })
-export class TuiPaintButtonTool extends TuiToolbarButtonTool {
+export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
 
     @Input()
@@ -68,11 +69,11 @@ export class TuiPaintButtonTool extends TuiToolbarButtonTool {
         );
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.paint;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return (
             (this.editor?.isActive('group') && texts.hiliteGroup) ||
             (this.editor?.isActive('table') && texts.cellColor) ||

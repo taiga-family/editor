@@ -12,7 +12,8 @@ import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_TABLE_COMMANDS} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 
 export const TuiTableCommands = {
     InsertColumnBefore: 0,
@@ -58,18 +59,18 @@ export const TuiTableCommands = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
 })
-export class TuiAddRowTableButtonTool extends TuiToolbarButtonTool {
+export class TuiAddRowTableButtonTool extends TuiToolbarTool {
     protected readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
 
     protected override getDisableState(): boolean {
         return !(this.editor?.isActive('table') ?? false);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.addRowTable;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.rowsColumnsManaging;
     }
 

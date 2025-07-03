@@ -18,7 +18,8 @@ import {TuiEditorTool} from '@taiga-ui/editor/common';
 import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TuiToolbarButtonTool} from '../tool';
+import {TuiToolbarTool} from '../tool';
+import {TuiToolbarButtonTool} from '../tool-button';
 import {TuiBoldButtonTool} from './bold';
 import {TuiItalicButtonTool} from './italic';
 import {TuiStrikeButtonTool} from './strike';
@@ -79,7 +80,7 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
         '[attr.automation-id]': "'toolbar__font-style-button'",
     },
 })
-export class TuiFontStyleButtonTool extends TuiToolbarButtonTool {
+export class TuiFontStyleButtonTool extends TuiToolbarTool {
     private toolsSet = new Set(this.options.tools);
     protected readonly dropdown = tuiDropdown(null);
     protected readonly editorTool = TuiEditorTool;
@@ -98,11 +99,11 @@ export class TuiFontStyleButtonTool extends TuiToolbarButtonTool {
         this.dropdown.set(template);
     }
 
-    protected override getIcon(icons: TuiEditorOptions['icons']): string {
+    protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.fontStylePreview;
     }
 
-    protected override getHint(texts: TuiLanguageEditor['toolbarTools']): string {
+    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
         return texts?.fontStyle;
     }
 }

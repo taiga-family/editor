@@ -61,6 +61,6 @@ export default [
         },
     },
     {
-        ignores: ['.release-it.js'],
+        ignores: ['.release-it.js', '**/tests-results/*'],
     },
 ];
