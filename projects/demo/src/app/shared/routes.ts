@@ -3,6 +3,7 @@ export const TuiDemoPath = {
     Appearance: 'appearance',
     Mention: 'mention',
     CharacterCounter: 'character-counter',
+    DropdownList: 'dropdown-list',
     Checkbox: 'checkbox',
     ColorPickerTool: 'custom-tool/color-picker',
     EmbedHtml5: 'embed/html5',

@@ -45,6 +45,11 @@ export const routes: Routes = [
         title: 'Character counter',
     }),
     route({
+        path: TuiDemoPath.DropdownList,
+        loadComponent: async () => import('./pages/dropdown'),
+        title: 'Dropdown list / slash commands',
+    }),
+    route({
         path: TuiDemoPath.Focus,
         loadComponent: async () => import('./pages/focus'),
         title: 'Focus',

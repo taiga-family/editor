@@ -55,6 +55,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Dropdowns / slash commands',
+        route: TuiDemoPath.DropdownList,
+        keywords: 'editor, slash, commands, dropdown',
+    },
+    {
+        section: 'Documentation',
         title: 'Groups',
         route: TuiDemoPath.Groups,
         keywords:

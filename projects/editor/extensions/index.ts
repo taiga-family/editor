@@ -16,6 +16,7 @@ export * from '@taiga-ui/editor/extensions/markdown';
 export * from '@taiga-ui/editor/extensions/media';
 export * from '@taiga-ui/editor/extensions/mention';
 export * from '@taiga-ui/editor/extensions/starter-kit';
+export * from '@taiga-ui/editor/extensions/suggestion';
 export * from '@taiga-ui/editor/extensions/table';
 export * from '@taiga-ui/editor/extensions/table-cell';
 export * from '@taiga-ui/editor/extensions/table-cell-background';
