@@ -1,0 +1,16 @@
+<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+    [(tuiDropdownOpen)]="open"
+>
+    <tui-data-list *tuiTextfieldDropdown>
+        <button
+            *ngFor="let item of filter(suggestion)"
+            tuiOption
+            type="button"
+            (click)="command(item)"
+        >
+            {{ item.name }}
+        </button>
+    </tui-data-list>
+</tui-editor>
