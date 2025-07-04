@@ -68,6 +68,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Table of contents',
+        route: TuiDemoPath.TableOfContents,
+        keywords: 'editor, table of contents, contents, table, текст, html, rich, text',
+    },
+    {
+        section: 'Documentation',
         title: 'Focus',
         route: TuiDemoPath.Focus,
         keywords: 'editor, focus, focusable, wysiwyg, редактор, фокус, html, rich, text',

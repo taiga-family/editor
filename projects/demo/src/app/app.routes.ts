@@ -60,6 +60,11 @@ export const routes: Routes = [
         title: 'Groups',
     }),
     route({
+        path: TuiDemoPath.TableOfContents,
+        loadComponent: async () => import('./pages/table-of-contents'),
+        title: 'Table of Contents',
+    }),
+    route({
         path: TuiDemoPath.UploadFiles,
         loadComponent: async () => import('./pages/upload-files'),
         title: 'Upload files',
