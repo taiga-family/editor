@@ -1,0 +1,10 @@
+<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+/>
+
+<h4>HTML:</h4>
+<tui-editor-socket [content]="control.value || ''" />
+
+<h4>Text:</h4>
+<p>{{ control.value }}</p>

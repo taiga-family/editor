@@ -40,6 +40,11 @@ export const routes: Routes = [
         title: 'Mention',
     }),
     route({
+        path: TuiDemoPath.Details,
+        loadComponent: async () => import('./pages/details'),
+        title: 'Details',
+    }),
+    route({
         path: TuiDemoPath.CharacterCounter,
         loadComponent: async () => import('./pages/character-counter'),
         title: 'Character counter',
