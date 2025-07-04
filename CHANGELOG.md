@@ -1,3 +1,17 @@
+### [4.32.0](https://github.com/taiga-family/editor/compare/v4.31.0...v4.32.0) (2025-07-04)
+
+### 🚀 Features
+
+- support table of contents extension (#1781)
+  [(d7282ca)](https://github.com/taiga-family/editor/commit/d7282cad65b6745ca2e039805e1c1c3077cd2a8b)
+
+### 🐞 Bug Fixes
+
+- use semantic attribute open on details html tag (#1791)
+  [(548c6d9)](https://github.com/taiga-family/editor/commit/548c6d9518861ae139e8a3cda1340f9cb7061692)
+- update tiptap to &gt;=2.24.2 (#1790)
+  [(2e7fb39)](https://github.com/taiga-family/editor/commit/2e7fb39de6d6789d703377b7b7e34ba357d75290)
+
 ### [4.31.0](https://github.com/taiga-family/editor/compare/v4.30.0...v4.31.0) (2025-07-03)
 
 ### 🐞 Bug Fixes
