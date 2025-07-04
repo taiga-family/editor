@@ -45,11 +45,24 @@ export default class Example {
             <p>Content 1</p>
         </details>
 
-        <p>Hello world</p>
+        <p></p>
 
         <details>
             <summary><p>Title 2</p></summary>
             <p>Content 2</p>
         </details>
+
+        <p></p>
+
+        <!-- legacy details -->
+        <div class="t-details-wrapper">
+            <details data-opened="true">
+                <summary><p>Old</p></summary>
+                <div data-type="details-content">
+                    <p>Way</p>
+                </div>
+            </details>
+            <button class="t-details-arrow"></button>
+        </div>
     `);
 }
