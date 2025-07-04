@@ -2,15 +2,17 @@
 
 summary {
     display: flex;
+    position: relative;
     align-items: center;
     min-block-size: 3.5rem;
     inline-size: 100%;
     box-sizing: border-box;
     border-radius: var(--tui-radius-l);
-    pointer-events: none;
     outline: none;
     word-break: break-word;
     padding: 0 4.6875rem 0 1.25rem;
+    transition: transform var(--tui-duration, 0.3s);
+    cursor: pointer;
 
     &:focus-visible {
         outline: 0.125rem solid var(--tui-text-action);
@@ -30,26 +32,28 @@ details[open] summary {
     border-radius: var(--tui-radius-l) var(--tui-radius-l) 0 0;
 }
 
+summary::after,
 .t-details-arrow {
+    content: '';
     position: absolute;
     top: 1.5rem;
     right: 1.25rem;
     block-size: 0.575rem;
     inline-size: 0.575rem;
-    border: 0.0625rem solid var(--tui-text-secondary);
+    border: 0.0625rem solid var(--tui-text-tertiary);
     border-width: 0 0.125rem 0.125rem 0;
     transform: rotate(45deg);
-    transition: var(--tui-duration, 0.3s);
     appearance: none;
     box-sizing: border-box;
     padding: 0;
     background: none;
     cursor: pointer;
     outline: none;
+}
 
-    &:hover {
-        border-color: var(--tui-text-primary);
-    }
+details:hover summary::after,
+.t-details-arrow:hover {
+    border-color: var(--tui-text-secondary);
 }
 
 .t-details-delete {
@@ -67,15 +71,15 @@ details[open] summary {
     border: none;
 
     &:hover::after {
-        color: var(--tui-text-primary);
+        color: var(--tui-text-secondary);
     }
 
     &::after {
         content: '\00d7';
         display: inline-block;
         font: inherit;
-        font-size: 2rem;
-        color: var(--tui-text-secondary);
+        font-size: 1.5rem;
+        color: var(--tui-text-tertiary);
         block-size: 100%;
         inline-size: 100%;
         line-height: 0.8rem;
@@ -116,6 +120,7 @@ div[data-type='details-content'] {
     margin-top: 1rem;
 }
 
+details[open] summary::after,
 details[open] + .t-details-arrow {
     top: 1.75rem;
     transform: rotate(225deg);
@@ -124,4 +129,17 @@ details[open] + .t-details-arrow {
 &[tuiTiptapEditor][data-contenteditable='false'] .t-details-delete,
 &[tuiTiptapEditor][data-contenteditable='false'] .t-details-arrow {
     display: none;
+}
+
+tui-editor & summary,
+.t-details-arrow {
+    pointer-events: none;
+}
+
+tui-editor & summary::after {
+    content: none;
+}
+
+tui-editor & .t-details-arrow {
+    pointer-events: auto;
 }

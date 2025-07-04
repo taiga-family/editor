@@ -26,6 +26,27 @@ test.describe('Details', () => {
         await page.keyboard.type('Nested');
         await details.click();
         await contenteditable.click();
-        await expect.soft(editor).toHaveScreenshot('Details-06.png');
+        await expect.soft(editor).toHaveScreenshot('Details-05.png');
+    });
+
+    test('opening and closing works as it should', async ({page}) => {
+        await tuiGoto(page, '/details');
+
+        const editor = page.locator('tui-editor');
+        const content = page.locator('h4 + tui-editor-socket');
+
+        await expect.soft(content).toHaveScreenshot('Details-06.png');
+        await content.locator('details').nth(0).locator('summary').click();
+        await expect.soft(content).toHaveScreenshot('Details-07.png');
+        await expect.soft(editor).toHaveScreenshot('Details-08.png');
+
+        await editor
+            .locator('.t-details-wrapper')
+            .nth(1)
+            .locator('.t-details-arrow')
+            .click();
+
+        await expect.soft(editor).toHaveScreenshot('Details-09.png');
+        await expect.soft(content).toHaveScreenshot('Details-10.png');
     });
 });

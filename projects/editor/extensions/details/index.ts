@@ -28,12 +28,16 @@ export type TuiSummaryOptions = DetailsSummaryOptions;
 export const TuiDetailsExtension = Details.extend<DetailsOptions>({
     addAttributes() {
         return {
-            opened: {
-                default: true,
+            open: {
+                default: 'open',
                 keepOnSplit: false,
-                parseHTML: (element) => element.getAttribute('data-opened') === 'true',
+                parseHTML: (element) =>
+                    element.getAttribute('open') === 'open' ||
+                    element.getAttribute('open') === 'true' ||
+                    element.hasAttribute('open') ||
+                    element.getAttribute('data-opened'), // legacy
                 renderHTML: (attributes) => ({
-                    'data-opened': attributes.opened,
+                    open: attributes.open ? 'open' : undefined,
                 }),
             },
         };
@@ -41,10 +45,9 @@ export const TuiDetailsExtension = Details.extend<DetailsOptions>({
 
     renderHTML({HTMLAttributes}) {
         return [
-            'div',
-            {class: 't-details-wrapper'},
-            ['details', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0],
-            ['button', {class: 't-details-arrow'}],
+            'details',
+            mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
+            0,
         ];
     },
 
@@ -61,13 +64,13 @@ export const TuiDetailsExtension = Details.extend<DetailsOptions>({
                 collapseButton.type = 'button';
                 deleteButton.className = 't-details-delete';
                 deleteButton.type = 'button';
-                details.open = node.attrs.opened;
+                details.open = node.attrs.open;
 
                 const openHandler = (event: Event): void => {
                     const pos = (getPos as any)?.() ?? 0;
 
                     details.open = !details.open;
-                    (node.attrs as unknown as Record<string, unknown>).opened =
+                    (node.attrs as unknown as Record<string, unknown>).open =
                         details.open;
 
                     event.target?.dispatchEvent(
