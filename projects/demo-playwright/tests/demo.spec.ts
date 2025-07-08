@@ -40,6 +40,7 @@ test.describe('Demo', () => {
 
                 for (const [i, example] of examples.entries()) {
                     await example.scrollIntoViewIfNeeded();
+                    await page.waitForTimeout(300);
 
                     await expect
                         .soft(example)

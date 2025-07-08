@@ -27,8 +27,8 @@ test.describe('Groups', () => {
             .soft(page.locator('#draggable-groups tui-editor'))
             .toHaveScreenshot('Groups-03.png');
 
-        await page.locator('[contenteditable]').nth(0).focus();
-        await page.keyboard.press('Meta+A');
+        await page.locator('[contenteditable]').first().focus();
+        await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
 
         await expect
@@ -40,7 +40,7 @@ test.describe('Groups', () => {
             .focus();
         await page.keyboard.press('Enter');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.keyboard.type('12345');
 
         await page
@@ -48,7 +48,7 @@ test.describe('Groups', () => {
             .focus();
         await page.keyboard.press('Enter');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Enter');
         await page.keyboard.type('456');
 

@@ -6,13 +6,13 @@ import {tuiGoto} from '../utils';
 test.describe('Toolbar', () => {
     test("closes tool's dropdown if opened new tool's dropdown", async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
 
         await expect
             .soft(page.locator('#demo-content tui-editor'))
             .toHaveScreenshot('Toolbar-01.png');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__color-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -29,7 +29,7 @@ test.describe('Toolbar', () => {
     test("closes tool's dropdown if clicked outside", async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__color-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -48,7 +48,7 @@ test.describe('Toolbar', () => {
     test('has the possibility to add custom tool', async ({page}) => {
         await tuiGoto(page, '/custom-tool/paste-emoji#custom-tool');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-05.png');
@@ -58,7 +58,7 @@ test.describe('Toolbar', () => {
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-06.png');
 
-        await page.locator('.smile').nth(0).click();
+        await page.locator('.smile').first().click();
         await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-07.png');
@@ -82,7 +82,7 @@ test.describe('Toolbar', () => {
     test('make a html table by 2x2', async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.keyboard.type('\n\n\n\n');
         await page.waitForTimeout(300);
 
@@ -115,7 +115,7 @@ test.describe('Toolbar', () => {
     test('set table without style inheritance', async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
         await page.waitForTimeout(300);
@@ -137,7 +137,7 @@ test.describe('Toolbar', () => {
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
 
         await page.keyboard.type('12345');
         await page.waitForTimeout(300);
@@ -167,14 +167,14 @@ test.describe('Toolbar', () => {
     }) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-16.png');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -195,20 +195,20 @@ test.describe('Toolbar', () => {
     test('skips disabled tools and selects next tool after disabled', async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__undo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-20.png');
 
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__redo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
