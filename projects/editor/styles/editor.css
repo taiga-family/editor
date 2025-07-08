@@ -16,17 +16,6 @@ tui-editor::after {
     clear: both;
 }
 
-[tuiEditorArea] {
-    display: flex;
-    block-size: 100%;
-    max-block-size: inherit;
-    min-block-size: inherit;
-    cursor: text;
-    overflow: clip;
-    flex-direction: column;
-    border-radius: inherit;
-}
-
 [tuiEditorLabel] {
     font: var(--tui-font-text-s);
     color: var(--tui-text-secondary);
@@ -55,21 +44,14 @@ tui-editor::after {
 
 [tuiEditorPlaceholder] {
     position: absolute;
-    left: 1rem;
-    margin-top: 0.1875rem;
+    margin-top: 1.5625rem;
     color: var(--tui-text-secondary);
     letter-spacing: normal;
     text-transform: none;
 }
 
-[tuiEditorFloatingToolbar],
-[tuiEditorFloatingToolbar] [tuiToolbar] {
-    max-inline-size: 31.25rem;
-    flex-wrap: nowrap;
-}
-
-tui-editor tui-editor-socket {
-    display: none;
+tui-editor > tui-editor-socket {
+    display: none !important;
     visibility: hidden;
     opacity: 0;
     block-size: 0;

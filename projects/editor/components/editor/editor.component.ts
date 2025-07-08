@@ -8,6 +8,7 @@ import {
     DestroyRef,
     ElementRef,
     EventEmitter,
+    forwardRef,
     inject,
     Input,
     NgZone,
@@ -29,7 +30,6 @@ import {
     tuiWatch,
     tuiZonefree,
 } from '@taiga-ui/cdk';
-import type {TuiDropdownDirective} from '@taiga-ui/core';
 import {
     TUI_ANIMATIONS_DEFAULT_DURATION,
     TUI_APPEARANCE_OPTIONS,
@@ -38,6 +38,7 @@ import {
     tuiAppearanceMode,
     tuiAppearanceState,
     TuiDropdown,
+    TuiDropdownDirective,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
 } from '@taiga-ui/core';
@@ -55,6 +56,7 @@ import {ToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
 import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import type {TuiSelectionState} from '@taiga-ui/editor/utils';
 import {tuiGetSelectionState, tuiIsSafeLinkRange} from '@taiga-ui/editor/utils';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
@@ -66,6 +68,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     imports: [
         NgIf,
         NgTemplateOutlet,
+        PolymorpheusOutlet,
         ToolbarHostComponent,
         TuiDropdown,
         TuiEditLink,
@@ -111,7 +114,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     @ViewChild(TuiTiptapEditor, {read: ElementRef})
     private readonly el?: ElementRef<HTMLElement>;
 
-    @ViewChild('tuiDropdown')
+    @ViewChild(forwardRef(() => TuiDropdownDirective))
     private readonly tuiDropdown?: TuiDropdownDirective;
 
     private readonly contentProcessor = inject<
