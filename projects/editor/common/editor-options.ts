@@ -153,7 +153,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         colorSelectorDropdownChevron: '@tui.chevron-down',
         colorSelectorDropdownCheck: '@tui.check',
         imageExtension: {
-            settings: '@tui.settings',
+            // TODO: rename settings to align
+            settings: '@tui.align-left',
             alignJustify: '@tui.align-justify',
             alignCenter: '@tui.align-center',
             alignLeft: '@tui.align-left',
