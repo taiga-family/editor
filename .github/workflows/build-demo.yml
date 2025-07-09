@@ -13,6 +13,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.132.0
       - uses: taiga-family/ci/actions/setup/node@v1.132.0
       - run: npx nx prerender editor-demo
+      - run: npx --yes bundlemon --config .github/.bundlemonrc.json
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

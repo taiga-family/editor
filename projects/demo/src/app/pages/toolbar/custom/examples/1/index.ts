@@ -25,7 +25,6 @@ import {
         TuiListButtonTool,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

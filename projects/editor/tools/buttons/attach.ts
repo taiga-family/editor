@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
