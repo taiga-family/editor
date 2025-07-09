@@ -17,6 +17,11 @@ test.describe('Demo', () => {
             test(name, async ({page}) => {
                 await tuiGoto(page, path);
 
+                test.skip(
+                    !page.url().endsWith(path),
+                    `The page has been redirected to ${page.url()}`,
+                );
+
                 await expect
                     .soft(async () => {
                         const examples = await page.locator('tui-doc-example').all();
