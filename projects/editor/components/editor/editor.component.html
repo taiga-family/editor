@@ -1,92 +1,75 @@
-<div
-    tuiEditorArea
-    class="t-wrapper"
->
-    <section>
-        <ng-container *ngIf="!floatingToolbar">
-            <ng-container [ngTemplateOutlet]="toolbarTpl" />
-        </ng-container>
-
-        <div
-            tuiEditorLabel
-            (mousedown)="focus($event)"
-        >
-            <ng-content />
-        </div>
-        <div
-            *ngIf="hasPlaceholder"
-            tuiEditorPlaceholder
-            (mousedown)="focus($event)"
-        >
-            {{ placeholder || exampleText }}
-        </div>
-    </section>
-
-    <tui-scrollbar
-        tuiEditorScrollbar
-        (keydown)="focus($event)"
-        (mousedown)="focus($event)"
-    >
-        <ng-container [ngTemplateOutlet]="editorTpl" />
-    </tui-scrollbar>
-</div>
-
-<tui-editor-socket
-    class="t-inner-socket"
-    [content]="value()"
-/>
-
 <ng-template #toolbarTpl>
     <tui-toolbar-host [disabled]="!interactive()">
-        <ng-container
-            *ngIf="toolbar; else defaultToolbar"
-            [ngTemplateOutlet]="toolbar"
-            [ngTemplateOutletContext]="{$implicit: editor}"
-        />
-        <ng-template #defaultToolbar>
-            <tui-toolbar
-                [tools]="tools"
-                (fileAttached)="fileAttached.emit($event)"
-            >
-                <ng-content select="tools" />
-            </tui-toolbar>
-        </ng-template>
+        <ng-container *polymorpheusOutlet="toolbar ?? defaultToolbar as text; context: {$implicit: editor}">
+            {{ text }}
+        </ng-container>
     </tui-toolbar-host>
+
+    <ng-template #defaultToolbar>
+        <tui-toolbar
+            [tools]="tools"
+            (fileAttached)="fileAttached.emit($event)"
+        >
+            <ng-content select="tools" />
+        </tui-toolbar>
+    </ng-template>
 </ng-template>
+
+<ng-container *polymorpheusOutlet="!floatingToolbar ? toolbarTpl : null as text">
+    {{ text }}
+</ng-container>
+
+<div
+    tuiEditorLabel
+    (mousedown)="focus($event)"
+>
+    <div
+        *ngIf="hasPlaceholder"
+        tuiEditorPlaceholder
+    >
+        {{ placeholder || exampleText }}
+    </div>
+
+    <ng-content />
+</div>
+
+<tui-scrollbar
+    tuiEditorScrollbar
+    (keydown)="focus($event)"
+    (mousedown)="focus($event)"
+>
+    <ng-container [ngTemplateOutlet]="editorTpl" />
+</tui-scrollbar>
+
+<tui-editor-socket [content]="value()" />
 
 <ng-template #editorTpl>
     <div
-        #tuiDropdown="tuiDropdown"
         tuiDropdownLimitWidth="auto"
+        tuiTiptapEditor
+        class="tui-editor-socket"
+        [attr.data-contenteditable]="interactive()"
+        [editable]="interactive()"
         [tuiDropdown]="dropdown"
         [tuiToolbarDropdown]="dropdownSelectionHandler"
         [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
-    >
-        <div
-            tuiTiptapEditor
-            class="tui-editor-socket"
-            [attr.data-contenteditable]="interactive()"
-            [editable]="interactive()"
-            (valueChange)="onModelChange($event)"
-        ></div>
-    </div>
+        (valueChange)="onModelChange($event)"
+    ></div>
+</ng-template>
 
-    <ng-template #dropdown>
-        <div [class.tuiEditorFloatingToolbar]="floatingToolbar">
-            <ng-container *ngIf="floatingToolbar">
-                <ng-container [ngTemplateOutlet]="toolbarTpl" />
-            </ng-container>
+<ng-template #dropdown>
+    <ng-container *polymorpheusOutlet="floatingToolbar ? toolbarTpl : null as text">
+        {{ text }}
+    </ng-container>
 
-            <tui-edit-link
-                *ngIf="isLinkSelected"
-                #link
-                (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
-                (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
-            />
+    <tui-edit-link
+        *ngIf="isLinkSelected"
+        #link
+        (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
+        (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
+    />
 
-            <ng-container *ngIf="isMentionMode">
-                <ng-content select="mention" />
-            </ng-container>
-        </div>
-    </ng-template>
+    <ng-container *ngIf="isMentionMode">
+        <ng-content select="mention" />
+    </ng-container>
 </ng-template>

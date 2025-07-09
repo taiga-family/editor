@@ -36,14 +36,19 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
     for (const diffImage of diffs) {
         const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
         const path = `${rootPath}/${diffImageName}${OUTPUT_DIFF_IMAGE_POSTFIX}`;
-        const buffer = await combineSnapshots(
-            imagesPaths.filter((path) =>
-                path.startsWith(diffImage.replace(DIFF_IMAGE_POSTFIX, '')),
-            ),
-        );
 
-        writeFileSync(path, buffer);
+        try {
+            const buffer = await combineSnapshots(
+                imagesPaths.filter((path) =>
+                    path.startsWith(diffImage.replace(DIFF_IMAGE_POSTFIX, '')),
+                ),
+            );
 
-        console.info(`Write new diff: ${path}`);
+            writeFileSync(path, buffer);
+
+            console.info(`Write new diff: ${path}`);
+        } catch (error) {
+            console.error(`Can't write diff: ${path}`, (error as Error)?.message);
+        }
     }
 })();
