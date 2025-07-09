@@ -18,7 +18,7 @@ import {
     TuiDriver,
     tuiGetWordRange,
 } from '@taiga-ui/core';
-import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
+import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -45,16 +45,7 @@ export class TuiEditorDropdownToolbar
 
     private readonly stream$ = combineLatest([
         this.handler$,
-        this.selection$.pipe(
-            map(() => this.getRange()),
-            distinctUntilChanged(
-                (prev, curr) =>
-                    prev?.startContainer === curr?.startContainer &&
-                    prev?.endContainer === curr?.endContainer &&
-                    prev?.startOffset === curr?.startOffset &&
-                    prev?.endOffset === curr?.endOffset,
-            ),
-        ),
+        this.selection$.pipe(map(() => this.getRange())),
     ]).pipe(
         map(([handler, range]) => {
             const contained =

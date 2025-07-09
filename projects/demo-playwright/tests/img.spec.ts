@@ -6,7 +6,7 @@ import {tuiGoto} from '../utils';
 test.describe('Img', () => {
     test('base64', async ({page}) => {
         await tuiGoto(page, `/starter-kit?ngModel=${HTML_BASE64_IMG}`);
-        await page.locator('[contenteditable]').nth(0).focus();
+        await page.locator('[contenteditable]').first().focus();
 
         await expect
             .soft(page.locator('#demo-content tui-editor'))
