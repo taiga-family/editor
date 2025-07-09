@@ -1,7 +1,6 @@
 import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
 import {
     tuiGetCurrentWordBounds,
-    tuiGetHtmlFromFragment,
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
@@ -22,31 +21,36 @@ export const TuiLink = Link.extend({
             ...this.parent?.(),
             toggleLink:
                 (attributes) =>
-                ({chain, state, editor, tr}) => {
+                ({chain, state, editor}) => {
                     {
                         if (!tuiGetSlicedFragment(state).trim()) {
                             return false;
                         }
 
                         const {from, to} = tuiGetCurrentWordBounds(editor);
-                        const forwardSymbolIsWhitespace = tuiGetHtmlFromFragment(
-                            tr.doc.cut(tr.selection.to, tr.selection.to + 1).content,
-                            editor.schema,
-                        );
+                        const forwardSymbol =
+                            state.selection.to < state.doc.content.size
+                                ? state.doc.textBetween(
+                                      state.selection.to,
+                                      state.selection.to + 1,
+                                  )
+                                : '';
 
-                        const toggleMark = chain()
+                        let toggleMark = chain()
                             .setTextSelection({from, to})
                             .toggleMark(this.name, attributes, {
                                 extendEmptyMarkRange: true,
-                            });
+                            })
+                            .setMeta('preventAutolink', true)
+                            .setTextSelection(to);
+
+                        if (forwardSymbol === '') {
+                            toggleMark = toggleMark.insertContent(
+                                TUI_TIPTAP_WHITESPACE_HACK,
+                            );
+                        }
 
                         return toggleMark
-                            .setTextSelection(to)
-                            .insertContent(
-                                forwardSymbolIsWhitespace === ' '
-                                    ? ''
-                                    : TUI_TIPTAP_WHITESPACE_HACK,
-                            )
                             .setTextSelection({
                                 from,
                                 to: to - from === 1 ? to : to - 1,
