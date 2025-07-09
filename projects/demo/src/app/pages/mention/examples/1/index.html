@@ -1,10 +1,10 @@
 <tui-editor
     [formControl]="control"
     [tools]="builtInTools"
+    [tuiDropdownOpen]="wysiwyg?.isMentionMode ?? false"
 >
-    <ng-container ngProjectAs="mention">
+    <ng-container *tuiTextfieldDropdown>
         <mentions
-            *ngIf="wysiwyg?.isMentionMode"
             [mentionSuggestions]="wysiwyg?.mentionSuggestions"
             (setMention)="setMention($event)"
         />

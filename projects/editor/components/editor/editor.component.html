@@ -69,7 +69,12 @@
         (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
     />
 
+    <!-- TODO: drop mention in v5 -->
     <ng-container *ngIf="isMentionMode">
         <ng-content select="mention" />
+    </ng-container>
+
+    <ng-container *polymorpheusOutlet="tuiDropdown?.tuiDropdownOpen ? dropdownContent : null as text">
+        {{ text }}
     </ng-container>
 </ng-template>

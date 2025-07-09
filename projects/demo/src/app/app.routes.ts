@@ -50,6 +50,11 @@ export const routes: Routes = [
         title: 'Character counter',
     }),
     route({
+        path: TuiDemoPath.SlashCommand,
+        loadComponent: async () => import('./pages/slash'),
+        title: 'Slash commands',
+    }),
+    route({
         path: TuiDemoPath.Focus,
         loadComponent: async () => import('./pages/focus'),
         title: 'Focus',

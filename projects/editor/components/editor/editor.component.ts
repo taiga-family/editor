@@ -1,10 +1,11 @@
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnDestroy, TemplateRef} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     computed,
+    ContentChild,
     DestroyRef,
     ElementRef,
     EventEmitter,
@@ -14,6 +15,7 @@ import {
     NgZone,
     Output,
     signal,
+    TemplateRef,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
@@ -23,7 +25,6 @@ import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
-    TuiActiveZone,
     tuiAutoFocusOptionsProvider,
     TuiControl,
     tuiInjectElement,
@@ -39,8 +40,10 @@ import {
     tuiAppearanceState,
     TuiDropdown,
     TuiDropdownDirective,
+    TuiDropdownOpen,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
+    TuiTextfieldDropdownDirective,
 } from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorAttachedFile} from '@taiga-ui/editor/common';
 import {
@@ -83,6 +86,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        TuiDropdownDirective,
         TUI_EDITOR_PROVIDERS,
         {
             provide: TUI_APPEARANCE_OPTIONS,
@@ -100,12 +104,14 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
             inputs: ['tuiAppearance: appearance'],
         },
         {
-            directive: TuiActiveZone,
-            outputs: ['tuiActiveZoneChange'],
+            directive: TuiDropdownOpen,
+            inputs: ['tuiDropdownOpen'],
+            outputs: ['tuiDropdownOpenChange'],
         },
     ],
     host: {
         ngSkipHydration: 'true',
+        class: 't-wrapper',
         '(tuiActiveZoneChange)': 'onActiveZone($event)',
         '(click)': 'focus($event)',
     },
@@ -115,7 +121,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly el?: ElementRef<HTMLElement>;
 
     @ViewChild(forwardRef(() => TuiDropdownDirective))
-    private readonly tuiDropdown?: TuiDropdownDirective;
+    private readonly ownDropdown?: TuiDropdownDirective;
 
     private readonly contentProcessor = inject<
         TuiValueTransformer<string | null, string | null>
@@ -124,6 +130,11 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
+
+    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
+    protected dropdownContent?: TemplateRef<unknown>;
+
+    protected readonly tuiDropdown = inject(TuiDropdownOpen, {optional: true});
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
@@ -236,6 +247,20 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         return this.hasMentionPlugin && this.selectionState.before?.startsWith('@');
     }
 
+    public get isLinkSelected(): boolean {
+        const focusElement = this.doc?.getSelection()?.focusNode;
+        const parentFocusElement = focusElement?.parentNode;
+
+        return (
+            parentFocusElement?.nodeName.toLowerCase() === 'a' ||
+            parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
+            focusElement?.nodeName.toLowerCase() === 'a' ||
+            !!focusElement?.parentElement?.closest('a') ||
+            !!focusElement?.parentElement?.closest('tui-edit-link') ||
+            !!focusElement?.parentElement?.closest('tui-dropdown')
+        );
+    }
+
     public override writeValue(value: string | null): void {
         const processed = this.contentProcessor?.fromControlValue(value) ?? value;
 
@@ -272,20 +297,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         );
     }
 
-    protected get isLinkSelected(): boolean {
-        const focusElement = this.doc?.getSelection()?.focusNode;
-        const parentFocusElement = focusElement?.parentNode;
-
-        return (
-            parentFocusElement?.nodeName.toLowerCase() === 'a' ||
-            parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
-            focusElement?.nodeName.toLowerCase() === 'a' ||
-            !!focusElement?.parentElement?.closest('a') ||
-            !!focusElement?.parentElement?.closest('tui-edit-link') ||
-            !!focusElement?.parentElement?.closest('tui-dropdown')
-        );
-    }
-
     protected onModelChange(value: string | null): void {
         const processed = this.contentProcessor?.toControlValue(value) ?? value;
 
@@ -314,7 +325,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected closeDropdown(): void {
-        this.tuiDropdown?.toggle(false);
+        this.ownDropdown?.toggle(false);
     }
 
     protected addLink(link: string): void {
@@ -359,7 +370,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
         this.currentFocusedNodeIsImageAnchor ||
-        this.isMentionMode;
+        this.isMentionMode ||
+        !!this.tuiDropdown?.tuiDropdownOpen;
 
     /**
      * @description:

@@ -1,6 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
@@ -13,7 +14,14 @@ import {Mentions} from './mention';
 
 @Component({
     standalone: true,
-    imports: [Mentions, NgIf, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
+    imports: [
+        Mentions,
+        NgIf,
+        ReactiveFormsModule,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

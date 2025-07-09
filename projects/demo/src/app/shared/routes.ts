@@ -4,6 +4,7 @@ export const TuiDemoPath = {
     Mention: 'mention',
     Details: 'details',
     CharacterCounter: 'character-counter',
+    SlashCommand: 'slash-command',
     Checkbox: 'checkbox',
     ColorPickerTool: 'custom-tool/color-picker',
     EmbedHtml5: 'embed/html5',
