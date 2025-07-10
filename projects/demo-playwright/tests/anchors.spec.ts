@@ -37,9 +37,11 @@ test.describe('Anchors', () => {
         const fullExample = page.locator('tui-doc-example#anchors');
         const editor = fullExample.locator('[contenteditable]').first();
 
+        await page.waitForTimeout(300);
         await editor.focus();
         await editor.fill('');
         await page.mouse.click(0, 0);
+        await page.waitForTimeout(300);
 
         await expect.soft(fullExample).toHaveScreenshot('Anchors-03.png');
 
@@ -59,6 +61,7 @@ test.describe('Anchors', () => {
 
         await expect.soft(fullExample).toHaveScreenshot('Anchors-04.png');
 
+        await page.waitForTimeout(300);
         await page.keyboard.press('Enter');
 
         await expect.soft(fullExample).toHaveScreenshot('Anchors-05.png');
