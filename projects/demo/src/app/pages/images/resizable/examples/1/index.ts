@@ -26,6 +26,7 @@ import {switchMap} from 'rxjs';
                 import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                     tuiCreateImageEditorExtension({injector}),
                 ),
+                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
             ],
         },
         {
@@ -40,7 +41,11 @@ import {switchMap} from 'rxjs';
 export default class Example {
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
 
-    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+    protected readonly builtInTools = [
+        TuiEditorTool.Undo,
+        TuiEditorTool.Img,
+        TuiEditorTool.Link,
+    ];
 
     protected base64Image$ = inject(HttpClient)
         .get('assets/images/lumberjack.png', {responseType: 'blob'})
