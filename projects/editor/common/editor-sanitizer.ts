@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {Sanitizer} from '@angular/core';
 import {InjectionToken} from '@angular/core';
 

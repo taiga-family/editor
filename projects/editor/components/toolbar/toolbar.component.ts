@@ -84,7 +84,6 @@ import {
         TuiUndoButtonTool,
     ],
     templateUrl: './toolbar.template.html',
-    styleUrls: ['./toolbar.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
