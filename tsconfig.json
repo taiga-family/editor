@@ -6,6 +6,7 @@
         "typeRoots": ["node_modules/@types", "node_modules/@taiga-ui/tsconfig"],
         "types": ["node", "ng-dev-mode"],
         "paths": {
+            "@demo/routes": ["./projects/demo/src/app/shared/routes"],
             "@taiga-ui/editor": ["./projects/editor"],
             "@taiga-ui/editor/*": ["./projects/editor/*"]
         }

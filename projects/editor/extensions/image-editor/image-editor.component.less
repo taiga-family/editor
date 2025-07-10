@@ -6,12 +6,6 @@
     &[data-drag-handle] {
         cursor: move;
     }
-
-    &:hover {
-        .t-image-options {
-            opacity: 1;
-        }
-    }
 }
 
 img {
@@ -22,15 +16,30 @@ img {
     position: relative;
 }
 
-.t-image-options {
+.t-image-buttons {
     position: absolute;
     top: 0.625rem;
     right: 0.625rem;
     z-index: 1;
     background: var(--tui-background-base);
+    display: flex;
+    border-radius: var(--tui-radius-s);
+    color: var(--tui-text-primary);
+
+    :host:hover & {
+        opacity: 1;
+    }
 }
 
-.t-image-options:not(._open) {
+.t-image-buttons-link {
+    display: none;
+
+    a > :host & {
+        display: flex;
+    }
+}
+
+.t-image-buttons:not(._open) {
     .transition(opacity);
 
     opacity: 0;

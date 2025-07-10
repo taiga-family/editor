@@ -61,12 +61,9 @@ export class TuiImageEditor
     private readonly win = inject(WA_WINDOW);
 
     protected style?: string | null = null;
-
     protected contenteditable = false;
-
     protected focused = false;
     protected open = false;
-
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly imageOptions = inject(TUI_IMAGE_EDITOR_OPTIONS);
     protected readonly changeDetector = inject(ChangeDetectorRef);

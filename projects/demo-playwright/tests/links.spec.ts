@@ -1,3 +1,4 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
@@ -5,7 +6,10 @@ import {tuiGoto} from '../utils';
 
 test.describe('Links', () => {
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
         await page.locator('[contenteditable]').first().focus();
     });
 

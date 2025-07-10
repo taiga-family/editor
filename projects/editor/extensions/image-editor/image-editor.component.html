@@ -6,19 +6,33 @@
     [tuiDropdownEnabled]="editor.isEditable"
     [tuiDropdownOpen]="open"
 >
-    <button
+    <div
         *ngIf="editor.isEditable"
-        appearance=""
-        size="s"
-        tuiIconButton
-        type="button"
-        class="t-image-options"
+        class="t-image-buttons"
         [class._open]="open"
-        [iconStart]="options.icons.imageExtension.settings"
-        (click.capture.prevent)="openDropdown($event)"
     >
-        Image settings
-    </button>
+        <button
+            appearance=""
+            size="s"
+            tuiIconButton
+            type="button"
+            class="t-image-buttons-link"
+            [iconStart]="options.icons.imageExtension.link"
+        >
+            Image link
+        </button>
+
+        <button
+            appearance=""
+            size="s"
+            tuiIconButton
+            type="button"
+            [iconStart]="options.icons.imageExtension.settings"
+            (click.capture.prevent)="openDropdown($event)"
+        >
+            Image align
+        </button>
+    </div>
 
     <tui-editor-resizable
         #resizable

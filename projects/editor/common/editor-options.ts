@@ -68,6 +68,7 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
         readonly textHilite: string;
         readonly undo: string;
         readonly imageExtension: {
+            readonly link: string;
             readonly settings: string;
             readonly alignJustify: string;
             readonly alignCenter: string;
@@ -152,8 +153,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         colorSelectorDropdownChevron: '@tui.chevron-down',
         colorSelectorDropdownCheck: '@tui.check',
         imageExtension: {
-            // TODO: rename settings to align
-            settings: '@tui.align-left',
+            link: '@tui.link',
+            settings: '@tui.align-left', // TODO(v5): rename settings to align
             alignJustify: '@tui.align-justify',
             alignCenter: '@tui.align-center',
             alignLeft: '@tui.align-left',

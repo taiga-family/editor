@@ -16,7 +16,15 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - uses: taiga-family/ci/actions/setup/variables@v1.132.0
       - uses: taiga-family/ci/actions/setup/node@v1.132.0
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          echo "PLAYWRIGHT_VERSION=$(node -p 'require("./package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
       - uses: taiga-family/ci/actions/setup/playwright@v1.132.0
+        with:
+          playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
+
       - run: npx nx prerender editor-demo -c development
       - uses: taiga-family/ci/actions/run/serve@v1.132.0
         with:

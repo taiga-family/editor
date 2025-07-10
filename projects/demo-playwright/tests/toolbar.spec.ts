@@ -1,3 +1,4 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
@@ -5,7 +6,10 @@ import {tuiGoto} from '../utils';
 
 test.describe('Toolbar', () => {
     test("closes tool's dropdown if opened new tool's dropdown", async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
         await page.locator('[contenteditable]').first().focus();
 
         await expect
@@ -27,7 +31,10 @@ test.describe('Toolbar', () => {
     });
 
     test("closes tool's dropdown if clicked outside", async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__color-button"]').focus();
@@ -46,7 +53,7 @@ test.describe('Toolbar', () => {
     });
 
     test('has the possibility to add custom tool', async ({page}) => {
-        await tuiGoto(page, '/custom-tool/paste-emoji#custom-tool');
+        await tuiGoto(page, `/${TuiDemoPath.PasteEmojiTool}#custom-tool`);
 
         await page.locator('[contenteditable]').first().focus();
         await page.waitForTimeout(300);
@@ -80,7 +87,10 @@ test.describe('Toolbar', () => {
     });
 
     test('make a html table by 2x2', async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
 
         await page.locator('[contenteditable]').first().focus();
         await page.keyboard.type('\n\n\n\n');
@@ -113,7 +123,10 @@ test.describe('Toolbar', () => {
     });
 
     test('set table without style inheritance', async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
 
         await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Meta+A');
@@ -165,7 +178,10 @@ test.describe('Toolbar', () => {
     test('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', async ({
         page,
     }) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
@@ -193,7 +209,10 @@ test.describe('Toolbar', () => {
     });
 
     test('skips disabled tools and selects next tool after disabled', async ({page}) => {
-        await tuiGoto(page, `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`);
+        await tuiGoto(
+            page,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
+        );
 
         await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Meta+A');
