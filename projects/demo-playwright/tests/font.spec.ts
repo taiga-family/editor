@@ -11,10 +11,12 @@ test.describe('Font', () => {
         );
 
         await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').selectText();
+        await page.keyboard.press('Meta+A');
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await page.keyboard.type('Hello world');
 
@@ -25,11 +27,12 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Font-01.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').selectText();
+        await page.keyboard.press('Meta+A');
         await page.locator('[automation-id="toolbar__font-size-button"]').focus();
         await page.keyboard.press('Enter');
 
@@ -37,11 +40,12 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Font-02.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').selectText();
+        await page.keyboard.press('Meta+A');
         await page.locator('[automation-id="toolbar__font-size-button"]').focus();
         await page.keyboard.press('Enter');
 
@@ -49,11 +53,12 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Font-03.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').selectText();
+        await page.keyboard.press('Meta+A');
         await page.locator('[automation-id="toolbar__font-size-button"]').focus();
         await page.keyboard.press('Enter');
 
@@ -61,11 +66,12 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Font-04.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').selectText();
+        await page.keyboard.press('Meta+A');
         await page.locator('[automation-id="toolbar__font-size-button"]').focus();
         await page.keyboard.press('Enter');
 
@@ -73,6 +79,7 @@ test.describe('Font', () => {
         await page.keyboard.press('Enter');
 
         await page.locator('[contenteditable]').first().focus();
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Font-05.png');
     });
