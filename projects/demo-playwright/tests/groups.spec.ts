@@ -1,10 +1,11 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
 
 test.describe('Groups', () => {
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, '/groups');
+        await tuiGoto(page, TuiDemoPath.Groups);
     });
 
     test('simple nested group', async ({page}) => {

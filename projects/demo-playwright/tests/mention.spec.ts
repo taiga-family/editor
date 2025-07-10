@@ -1,10 +1,11 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
 
 test.describe('Mention', () => {
     test('show users in datalist', async ({page}) => {
-        await tuiGoto(page, '/mention');
+        await tuiGoto(page, TuiDemoPath.Mention);
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();

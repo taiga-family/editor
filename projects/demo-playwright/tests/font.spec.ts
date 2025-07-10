@@ -1,3 +1,4 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
@@ -7,7 +8,7 @@ test.describe('Font', () => {
     test('previous text style should not be inherited', async ({page}) => {
         await tuiGoto(
             page,
-            `/starter-kit?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}&style.maxHeight.px=600`,
+            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}&style.maxHeight.px=600`,
         );
 
         await page.locator('[contenteditable]').first().focus();

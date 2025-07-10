@@ -1,10 +1,11 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
 
 test.describe('Reset', () => {
     test('Correct reset value from wysiwyg', async ({page}) => {
-        await tuiGoto(page, '/starter-kit?placeholder=Hello');
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?placeholder=Hello`);
 
         await page.locator('tui-editor [contenteditable]').focus();
         await page.waitForTimeout(300);

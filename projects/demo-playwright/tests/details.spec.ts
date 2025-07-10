@@ -1,10 +1,11 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
 
 test.describe('Details', () => {
     test('Support nested', async ({page}) => {
-        await tuiGoto(page, '/starter-kit?ngModel=<p>World</p>');
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=<p>World</p>`);
 
         const editor = page.locator('tui-editor');
         const details = page.locator('tui-toolbar button').locator('text="Details"');
@@ -30,7 +31,7 @@ test.describe('Details', () => {
     });
 
     test('opening and closing works as it should', async ({page}) => {
-        await tuiGoto(page, '/details');
+        await tuiGoto(page, TuiDemoPath.Details);
 
         const editor = page.locator('tui-editor');
         const content = page.locator('h4 + tui-editor-socket');

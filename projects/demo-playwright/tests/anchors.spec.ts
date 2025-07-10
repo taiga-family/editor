@@ -1,3 +1,4 @@
+import {TuiDemoPath} from '@demo/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
@@ -6,7 +7,7 @@ test.describe('Anchors', () => {
     test.use({viewport: {width: 1280, height: 500}});
 
     test.beforeEach(async ({page}) => {
-        await tuiGoto(page, '/anchors');
+        await tuiGoto(page, TuiDemoPath.Anchors);
     });
 
     test('all content', async ({page}) => {
