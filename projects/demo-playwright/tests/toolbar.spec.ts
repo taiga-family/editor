@@ -129,7 +129,7 @@ test.describe('Toolbar', () => {
         );
 
         await page.locator('[contenteditable]').first().focus();
-        await page.keyboard.press('Meta+A');
+        await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
         await page.waitForTimeout(300);
 
@@ -215,7 +215,7 @@ test.describe('Toolbar', () => {
         );
 
         await page.locator('[contenteditable]').first().focus();
-        await page.keyboard.press('Meta+A');
+        await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
