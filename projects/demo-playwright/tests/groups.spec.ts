@@ -29,7 +29,7 @@ test.describe('Groups', () => {
             .toHaveScreenshot('Groups-03.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.keyboard.press('Meta+A');
+        await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
 
         await expect
