@@ -6,26 +6,31 @@ import {ReplaySubject} from 'rxjs';
 /**
  * Token for Tiptap Editor
  */
-export const TIPTAP_EDITOR = new InjectionToken<Observable<Editor>>('[TIPTAP_EDITOR]');
+export const TIPTAP_EDITOR = new InjectionToken<Observable<Editor>>(
+    ngDevMode ? 'TIPTAP_EDITOR' : '',
+);
 
 /**
  * Lazy loaded Editor
  */
-export const LAZY_TIPTAP_EDITOR = new InjectionToken('[LAZY_TIPTAP_EDITOR]', {
-    factory: () => {
-        const editor$ = new ReplaySubject<typeof Editor>(1);
+export const LAZY_TIPTAP_EDITOR = new InjectionToken(
+    ngDevMode ? 'LAZY_TIPTAP_EDITOR' : '',
+    {
+        factory: () => {
+            const editor$ = new ReplaySubject<typeof Editor>(1);
 
-        import('@tiptap/core')
-            .then(({Editor}) => editor$.next(Editor))
-            .catch(() => editor$.complete());
+            import('@tiptap/core')
+                .then(({Editor}) => editor$.next(Editor))
+                .catch(() => editor$.complete());
 
-        return editor$;
+            return editor$;
+        },
     },
-});
+);
 
 /**
  * The container in which the tip-tap editor is initialized
  */
 export const INITIALIZATION_TIPTAP_CONTAINER = new InjectionToken(
-    '[INITIALIZATION_TIPTAP_CONTAINER]',
+    ngDevMode ? 'INITIALIZATION_TIPTAP_CONTAINER' : '',
 );
