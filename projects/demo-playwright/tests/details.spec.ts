@@ -11,6 +11,7 @@ test.describe('Details', () => {
         const details = page.locator('tui-toolbar button').locator('text="Details"');
         const contenteditable = page.locator('[contenteditable]').first();
 
+        await contenteditable.click();
         await expect.soft(editor).toHaveScreenshot('Details-01.png');
 
         await details.click();
