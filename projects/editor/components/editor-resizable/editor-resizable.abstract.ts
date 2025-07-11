@@ -28,7 +28,7 @@ export abstract class AbstractTuiEditorResizable<
 
     public set node(value: NodeViewProps['node']) {
         this.localNode = value;
-        this.changeDetector.markForCheck();
+        this.changeDetector.detectChanges();
     }
 
     protected get attrs(): T {
