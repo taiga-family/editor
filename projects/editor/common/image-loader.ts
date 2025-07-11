@@ -10,7 +10,7 @@ import {map} from 'rxjs';
 export const TUI_IMAGE_LOADER: InjectionToken<
     TuiHandler<Blob | File, Observable<string>>
 > = new InjectionToken<TuiHandler<Blob | File, Observable<string>>>(
-    '[TUI_IMAGE_LOADER]',
+    ngDevMode ? 'TUI_IMAGE_LOADER' : '',
     {
         factory: () => (file) => {
             const fileReader = new FileReader();
