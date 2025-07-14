@@ -1,0 +1,85 @@
+<tui-editor-resizable
+    #resizable
+    [autoHeight]="true"
+    [isEditable]="editor.isEditable"
+    [width]="width"
+    (sizeChange)="updateSize($event)"
+>
+    <img
+        contenteditable="false"
+        decoding="async"
+        loading="lazy"
+        [alt]="alt"
+        [attr.width]="width"
+        [class.ProseMirror-selectednode]="focused"
+        [src]="getBypassedSrc(attrs.src)"
+        [style.max-width.px]="maxWidth"
+        [style.min-width.px]="minWidth"
+        [title]="title"
+        (load)="onImageLoad()"
+    />
+
+    <div
+        *ngIf="editor.isEditable && containerWidth >= 68"
+        #dropdown="tuiDropdown"
+        tuiDropdownAlign="right"
+        tuiDropdownAppearance="editor-image-options"
+        class="t-image-buttons"
+        [class._open]="open"
+        [tuiDropdown]="list"
+        [tuiDropdownEnabled]="editor.isEditable"
+        [tuiDropdownOpen]="open"
+    >
+        <button
+            appearance="flat"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [iconStart]="options.icons.imageExtension.settings"
+            (click.capture.prevent)="openDropdown($event)"
+        >
+            Image align
+        </button>
+
+        <button
+            *ngIf="supportLinkExtension"
+            appearance="flat"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [iconStart]="options.icons.imageExtension.link"
+            (click)="setLink()"
+        >
+            Image link
+        </button>
+
+        <ng-template #list>
+            <tui-image-align-list
+                [style]="style"
+                (updateAlignStyles)="align($event); open = false"
+            />
+        </ng-template>
+    </div>
+
+    <button
+        *ngIf="linkMark?.attrs?.href && containerWidth >= 32"
+        appearance="reference"
+        size="s"
+        tuiButton
+        type="button"
+        [iconStart]="options.icons.imageExtension.previewLink"
+    >
+        <div
+            *ngIf="containerWidth >= 170"
+            class="t-link-href"
+        >
+            {{ linkMark?.attrs?.href }}
+        </div>
+
+        <tui-icon
+            *ngIf="containerWidth >= 170"
+            class="t-link-preview-edit"
+            [icon]="options.icons.imageExtension.previewEditLink"
+        />
+    </button>
+</tui-editor-resizable>

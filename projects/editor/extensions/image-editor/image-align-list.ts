@@ -5,6 +5,7 @@ import {
     inject,
     Input,
     Output,
+    ViewEncapsulation,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
@@ -12,13 +13,59 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 
 @Component({
     standalone: true,
-    selector: 'tui-image-align',
+    selector: 'tui-image-align-list',
     imports: [TuiButton],
-    templateUrl: './image-align.component.html',
-    styleUrls: ['./image-align.component.less'],
+    template: `
+        <button
+            aria-label="Justify align"
+            size="xs"
+            title=""
+            tuiIconButton
+            type="button"
+            [appearance]="isAlignJustify(style) ? 'outline' : 'flat'"
+            [iconStart]="options.icons.imageExtension.alignJustify"
+            (click.capture)="alignJustify()"
+        >
+            Justify align
+        </button>
+        <button
+            aria-label="Align left"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [appearance]="isAlignLeft(style) ? 'outline' : 'flat'"
+            [iconStart]="options.icons.imageExtension.alignLeft"
+            (click.capture)="alignLeft()"
+        >
+            Left align
+        </button>
+        <button
+            aria-label="Align center"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [appearance]="isAlignCenter(style) ? 'outline' : 'flat'"
+            [iconStart]="options.icons.imageExtension.alignCenter"
+            (click.capture)="alignCenter()"
+        >
+            Center align
+        </button>
+        <button
+            aria-label="Align right"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [appearance]="isAlignRight(style) ? 'outline' : 'flat'"
+            [iconStart]="options.icons.imageExtension.alignRight"
+            (click.capture)="alignRight()"
+        >
+            Right align
+        </button>
+    `,
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiImageAlignComponent {
+export class TuiImageAlignList {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
