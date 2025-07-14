@@ -32,7 +32,7 @@ import {switchMap} from 'rxjs';
         {
             provide: TUI_IMAGE_EDITOR_OPTIONS,
             useValue: {
-                minWidth: 100,
+                minWidth: 20,
                 maxWidth: 800,
             },
         },
