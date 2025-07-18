@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import type {OnInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -6,12 +7,11 @@ import {LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TUI_DOC_ICONS, TuiAddonDoc, TuiDocHeader} from '@taiga-ui/addon-doc';
 import {TUI_DARK_MODE, TuiButton} from '@taiga-ui/core';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
-import {NgIf} from "@angular/common";
 
 @Component({
     standalone: true,
     selector: 'app',
-    imports: [TuiAddonDoc, TuiButton, TuiDocHeader, RouterOutlet, NgIf],
+    imports: [NgIf, RouterOutlet, TuiAddonDoc, TuiButton, TuiDocHeader],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
