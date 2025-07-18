@@ -60,7 +60,7 @@ import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directiv
 import type {TuiSelectionState} from '@taiga-ui/editor/utils';
 import {tuiGetSelectionState, tuiIsSafeLinkRange} from '@taiga-ui/editor/utils';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
+import {delay, fromEvent, map, merge} from 'rxjs';
 
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
@@ -302,7 +302,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
         if (processed !== this.control.value) {
             this.onChange(processed ?? '');
-            this.cd.detectChanges();
         }
     }
 
@@ -403,13 +402,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         }
 
         fromEvent(this.el.nativeElement, TUI_EDITOR_RESIZE_EVENT)
-            .pipe(
-                throttleTime(0),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroy$),
-            )
-            .subscribe(() =>
-                this.editorService.valueChange$.next(this.editorService.getHTML()),
-            );
+            .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroy$))
+            .subscribe(() => this.editorService.stateChange$.next());
     }
 }

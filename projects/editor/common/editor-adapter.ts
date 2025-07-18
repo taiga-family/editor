@@ -3,7 +3,7 @@ import type {Editor, Range} from '@tiptap/core';
 import type {MarkType} from '@tiptap/pm/model';
 import type {EditorState} from '@tiptap/pm/state';
 import type {Observable} from 'rxjs';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiEditorAttachedFile} from './attached';
 import type {TuiEditableIframe} from './iframe';
@@ -23,8 +23,13 @@ export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
     public abstract readonly html: string;
     public abstract editable: boolean;
+
     public readonly stateChange$ = new Subject<void>();
-    public readonly valueChange$ = new BehaviorSubject<string>('');
+    public readonly valueChange$ = this.stateChange$.pipe(
+        startWith(''),
+        map(() => this.html),
+        distinctUntilChanged(),
+    );
 
     public abstract get state(): EditorState | null;
 

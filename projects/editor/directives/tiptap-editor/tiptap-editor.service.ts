@@ -44,17 +44,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
             this.editor = editor;
 
-            const update = (): void => {
-                const content = editor.getHTML();
-                const json = editor.getJSON().content;
-                const value: string = tuiIsEmptyParagraph(json) ? '' : content;
-
-                this.valueChange$.next(value);
-                this.stateChange$.next();
-            };
-
-            editor.on('transaction', update.bind(this));
-            editor.on('update', update.bind(this));
+            editor.on('create', () => this.stateChange$.next());
+            editor.on('blur', () => this.stateChange$.next());
+            editor.on('selectionUpdate', () => this.stateChange$.next());
         });
     }
 
@@ -63,7 +55,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public get html(): string {
-        return this.editor?.getHTML() ?? '';
+        const content = this.editor?.getHTML() ?? '';
+        const json = this.editor?.getJSON().content;
+
+        return tuiIsEmptyParagraph(json) ? '' : content;
     }
 
     public get editable(): boolean {
