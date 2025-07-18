@@ -45,11 +45,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             this.editor = editor;
 
             const update = (): void => {
-                const content = editor.getHTML();
-                const json = editor.getJSON().content;
-                const value: string = tuiIsEmptyParagraph(json) ? '' : content;
-
-                this.valueChange$.next(value);
+                this.valueChange$.next(this.html);
                 this.stateChange$.next();
             };
 
@@ -63,7 +59,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public get html(): string {
-        return this.editor?.getHTML() ?? '';
+        const content = this.editor?.getHTML() ?? '';
+        const json = this.editor?.getJSON()?.content ?? [];
+
+        return tuiIsEmptyParagraph(json) ? '' : content;
     }
 
     public get editable(): boolean {
