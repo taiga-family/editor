@@ -1,38 +1,41 @@
-<header
-    tuiDocHeader
-    [attr.tuiTheme]="darkMode() ? 'dark' : 'light'"
->
-    <div class="t-links">
-        <a
-            href="https://stackblitz.com/github/taiga-family/editor-preview/tree/main?file=apps/demo/src/app/home/home.component.html"
-            rel="noreferrer"
-            target="_blank"
-        >
-            <img
-                alt="stackblitz"
-                src="https://developer.stackblitz.com/img/open_in_stackblitz_small.svg"
-                class="t-stackblitz"
-            />
-            <img
-                alt="stackblitz"
-                src="assets/icons/stackblitz.svg"
-                class="t-stackblitz t-stackblitz_mobile"
-            />
-        </a>
+<router-outlet *ngIf="isLanding(); else portal" />
+<ng-template #portal>
+    <header
+        tuiDocHeader
+        [attr.tuiTheme]="darkMode() ? 'dark' : 'light'"
+    >
+        <div class="t-links">
+            <a
+                href="https://stackblitz.com/github/taiga-family/editor-preview/tree/main?file=apps/demo/src/app/home/home.component.html"
+                rel="noreferrer"
+                target="_blank"
+            >
+                <img
+                    alt="stackblitz"
+                    src="https://developer.stackblitz.com/img/open_in_stackblitz_small.svg"
+                    class="t-stackblitz"
+                />
+                <img
+                    alt="stackblitz"
+                    src="assets/icons/stackblitz.svg"
+                    class="t-stackblitz t-stackblitz_mobile"
+                />
+            </a>
 
-        <button
-            appearance="secondary"
-            size="s"
-            tuiIconButton
-            type="button"
-            class="tui-doc-dark-mode-switch"
-            [iconStart]="icon"
-            [style.border-radius.%]="100"
-            (click)="darkMode.set(!darkMode())"
-        >
-            Change mode
-        </button>
-    </div>
-</header>
+            <button
+                appearance="secondary"
+                size="s"
+                tuiIconButton
+                type="button"
+                class="tui-doc-dark-mode-switch"
+                [iconStart]="icon"
+                [style.border-radius.%]="100"
+                (click)="darkMode.set(!darkMode())"
+            >
+                Change mode
+            </button>
+        </div>
+    </header>
 
-<tui-doc-main />
+    <tui-doc-main />
+</ng-template>
