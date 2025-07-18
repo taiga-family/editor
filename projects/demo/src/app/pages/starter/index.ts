@@ -84,7 +84,7 @@ export default class TuiEditorStarter {
     protected readonly toolsVariants: ReadonlyArray<
         Set<TuiEditorToolType> | readonly TuiEditorToolType[]
     > = [
-        Array.from(TUI_EDITOR_DEFAULT_TOOLS),
+        Array.from(TUI_EDITOR_DEFAULT_TOOLS).filter((tool) => tool !== 'image'),
         [
             TuiEditorTool.Bold,
             TuiEditorTool.Italic,

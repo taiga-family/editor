@@ -2,170 +2,168 @@
     header="Editor"
     type="components"
 >
-    <ng-template pageTab="API">
-        <tui-doc-demo [sticky]="false">
-            <div class="container">
-                <tui-editor
-                    [floatingToolbar]="floating"
-                    [formControl]="control"
-                    [placeholder]="placeholder"
-                    [readOnly]="readOnly"
-                    [style.max-height]="maxHeight"
-                    [style.min-height]="minHeight"
-                    [tools]="tools ?? []"
-                    [tuiAutoFocus]="!isE2E"
-                >
-                    Start typing
-                </tui-editor>
+    <tui-doc-demo [sticky]="false">
+        <div class="container">
+            <tui-editor
+                [floatingToolbar]="floating"
+                [formControl]="control"
+                [placeholder]="placeholder"
+                [readOnly]="readOnly"
+                [style.max-height]="maxHeight"
+                [style.min-height]="minHeight"
+                [tools]="tools ?? []"
+                [tuiAutoFocus]="!isE2E"
+            >
+                Start typing
+            </tui-editor>
 
-                <button
-                    appearance="outline"
+            <button
+                appearance="outline"
+                size="s"
+                tuiButton
+                type="button"
+                class="tui-space_top-3"
+                (click)="control.setValue('')"
+            >
+                Reset
+            </button>
+
+            <ng-container *ngIf="preview">
+                <h4>Update HTML:</h4>
+
+                <tui-radio-list
                     size="s"
-                    tuiButton
-                    type="button"
-                    class="tui-space_top-3"
-                    (click)="control.setValue('')"
-                >
-                    Reset
-                </button>
+                    [items]="updates"
+                    [style.flex-direction]="'row'"
+                    [style.width]="'max-content'"
+                    [(ngModel)]="updateOn"
+                />
 
-                <ng-container *ngIf="preview">
-                    <h4>Update HTML:</h4>
+                <br />
 
-                    <tui-radio-list
-                        size="s"
-                        [items]="updates"
-                        [style.flex-direction]="'row'"
-                        [style.width]="'max-content'"
-                        [(ngModel)]="updateOn"
-                    />
+                <tui-textarea
+                    *ngIf="updateOn === 'change'"
+                    [expandable]="true"
+                    [ngModel]="control.value"
+                    [ngModelOptions]="{updateOn: 'change'}"
+                    (ngModelChange)="control.setValue($event)"
+                />
 
-                    <br />
+                <tui-textarea
+                    *ngIf="updateOn === 'blur'"
+                    [expandable]="true"
+                    [ngModel]="control.value"
+                    [ngModelOptions]="{updateOn: 'blur'}"
+                    (ngModelChange)="control.setValue($event)"
+                />
+            </ng-container>
+        </div>
+    </tui-doc-demo>
+    <tui-doc-documentation>
+        <ng-template
+            documentationPropertyName="Show preview"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="preview"
+        >
+            Just demo
+        </ng-template>
+        <ng-template
+            documentationPropertyName="disabled"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="disabled"
+        >
+            Disabled state (use
+            <code>formControl.disable()</code>
+            )
+        </ng-template>
+        <ng-template
+            documentationPropertyName="[readOnly]"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="readOnly"
+        >
+            Readonly mode
+        </ng-template>
+        <ng-template
+            documentationPropertyName="[floatingToolbar]"
+            documentationPropertyType="boolean"
+            [(documentationPropertyValue)]="floating"
+        >
+            Floating toolbar
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="tools"
+            documentationPropertyType="readonly TuiEditorToolType[] | Set<TuiEditorToolType>"
+            [documentationPropertyValues]="toolsVariants"
+            [(documentationPropertyValue)]="tools"
+        >
+            Allowed edit tools
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="ngModel"
+            documentationPropertyType="string"
+            [documentationPropertyValue]="control.value"
+            (documentationPropertyValueChange)="control.setValue($event)"
+        >
+            Example pass HTML code
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="placeholder"
+            documentationPropertyType="string"
+            [(documentationPropertyValue)]="placeholder"
+        >
+            Placeholder shown on empty focused input
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="style.min-height"
+            documentationPropertyType="string"
+            [(documentationPropertyValue)]="minHeight"
+        >
+            Value of CSS-property "min-height"
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="style.max-height"
+            documentationPropertyType="string"
+            [(documentationPropertyValue)]="maxHeight"
+        >
+            Value of CSS-property "max-height"
+        </ng-template>
+    </tui-doc-documentation>
+    <tui-doc-documentation heading="How to use">
+        <tui-doc-code code="npm i &#64;taiga-ui/{cdk,core,kit,icons,editor}" />
 
-                    <tui-textarea
-                        *ngIf="updateOn === 'change'"
-                        [expandable]="true"
-                        [ngModel]="control.value"
-                        [ngModelOptions]="{updateOn: 'change'}"
-                        (ngModelChange)="control.setValue($event)"
-                    />
+        <ol class="b-demo-steps">
+            <li>
+                <tui-doc-code
+                    filename="styles.less"
+                    [code]="exampleStyles"
+                />
+            </li>
 
-                    <tui-textarea
-                        *ngIf="updateOn === 'blur'"
-                        [expandable]="true"
-                        [ngModel]="control.value"
-                        [ngModelOptions]="{updateOn: 'blur'}"
-                        (ngModelChange)="control.setValue($event)"
-                    />
-                </ng-container>
-            </div>
-        </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="Show preview"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="preview"
-            >
-                Just demo
-            </ng-template>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
-            >
-                Disabled state (use
-                <code>formControl.disable()</code>
-                )
-            </ng-template>
-            <ng-template
-                documentationPropertyName="[readOnly]"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="readOnly"
-            >
-                Readonly mode
-            </ng-template>
-            <ng-template
-                documentationPropertyName="[floatingToolbar]"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="floating"
-            >
-                Floating toolbar
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tools"
-                documentationPropertyType="readonly TuiEditorToolType[] | Set<TuiEditorToolType>"
-                [documentationPropertyValues]="toolsVariants"
-                [(documentationPropertyValue)]="tools"
-            >
-                Allowed edit tools
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="ngModel"
-                documentationPropertyType="string"
-                [documentationPropertyValue]="control.value"
-                (documentationPropertyValueChange)="control.setValue($event)"
-            >
-                Example pass HTML code
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="placeholder"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="placeholder"
-            >
-                Placeholder shown on empty focused input
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.min-height"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="minHeight"
-            >
-                Value of CSS-property "min-height"
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.max-height"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="maxHeight"
-            >
-                Value of CSS-property "max-height"
-            </ng-template>
-        </tui-doc-documentation>
-        <tui-doc-documentation heading="How to use">
-            <tui-doc-code code="npm i &#64;taiga-ui/{cdk,core,kit,icons,editor}" />
+            <li>
+                <tui-doc-code
+                    filename="angular.json (icons are not included in the bundle)"
+                    [code]="exampleIcons"
+                />
+            </li>
 
-            <ol class="b-demo-steps">
-                <li>
-                    <tui-doc-code
-                        filename="styles.less"
-                        [code]="exampleStyles"
-                    />
-                </li>
+            <li>
+                <tui-doc-code
+                    filename="app.component.html"
+                    [code]="template"
+                />
+            </li>
 
-                <li>
-                    <tui-doc-code
-                        filename="angular.json (icons are not included in the bundle)"
-                        [code]="exampleIcons"
-                    />
-                </li>
-
-                <li>
-                    <tui-doc-code
-                        filename="app.component.html"
-                        [code]="template"
-                    />
-                </li>
-
-                <li>
-                    <tui-doc-code
-                        filename="app.component.ts"
-                        [code]="component"
-                    />
-                </li>
-            </ol>
-        </tui-doc-documentation>
-    </ng-template>
+            <li>
+                <tui-doc-code
+                    filename="app.component.ts"
+                    [code]="component"
+                />
+            </li>
+        </ol>
+    </tui-doc-documentation>
 </tui-doc-page>
