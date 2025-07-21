@@ -14,7 +14,7 @@
         (focus)="onBottomFocus()"
     ></div>
 </ng-container>
-<ng-container *ngIf="editor?.stateChange$ | async" />
+<ng-container *ngIf="editor?.valueChange$ | async" />
 <fieldset
     tuiToolbarNavigationManager
     [disabled]="disabled"

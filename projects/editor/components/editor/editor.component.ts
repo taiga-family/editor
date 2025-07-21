@@ -302,7 +302,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
         if (processed !== this.control.value) {
             this.onChange(processed ?? '');
-            this.cd.detectChanges();
         }
     }
 
@@ -409,7 +408,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
                 takeUntilDestroyed(this.destroy$),
             )
             .subscribe(() =>
-                this.editorService.valueChange$.next(this.editorService.getHTML()),
+                this.editorService.valueChange$.next(this.editorService.html),
             );
     }
 }

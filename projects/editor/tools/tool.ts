@@ -71,7 +71,7 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
 
             this.setDisabled(this.getDisableState());
 
-            this.subscription = this.editor?.stateChange$
+            this.subscription = this.editor?.valueChange$
                 .pipe(
                     debounceTime(0),
                     startWith(null),
