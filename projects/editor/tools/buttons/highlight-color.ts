@@ -43,7 +43,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
             tuiPlate
             [style.background]="editor?.getBackgroundColor()"
         >
-            <ng-container *ngIf="editor?.stateChange$ | async" />
+            <ng-container *ngIf="editor?.valueChange$ | async" />
         </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

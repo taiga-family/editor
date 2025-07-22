@@ -23,7 +23,12 @@ export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
     public abstract readonly html: string;
     public abstract editable: boolean;
+
+    /**
+     * @deprecated use valueChange$ instead
+     */
     public readonly stateChange$ = new Subject<void>();
+
     public readonly valueChange$ = new BehaviorSubject<string>('');
 
     public abstract get state(): EditorState | null;

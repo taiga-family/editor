@@ -44,17 +44,13 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
             this.editor = editor;
 
-            const update = (): void => {
+            editor.on('transaction', () => {
                 const content = editor.getHTML();
                 const json = editor.getJSON().content;
                 const value: string = tuiIsEmptyParagraph(json) ? '' : content;
 
                 this.valueChange$.next(value);
-                this.stateChange$.next();
-            };
-
-            editor.on('transaction', update.bind(this));
-            editor.on('update', update.bind(this));
+            });
         });
     }
 
@@ -223,7 +219,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     public isActive$(
         nameOrAttributes: Record<string, string> | string,
     ): Observable<boolean> {
-        return this.stateChange$.pipe(
+        return this.valueChange$.pipe(
             startWith(null),
             map(() => this.isActive(nameOrAttributes)),
             distinctUntilChanged(),
@@ -447,6 +443,9 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.commands.toggleMark(typeOrName, attributes, options);
     }
 
+    /**
+     * @deprecated use {@link html}
+     */
     public getHTML(): string {
         return this.getOriginTiptapEditor()?.getHTML() ?? '';
     }

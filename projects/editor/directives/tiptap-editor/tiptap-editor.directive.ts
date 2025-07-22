@@ -26,6 +26,9 @@ export class TuiTiptapEditor {
     @Output()
     public readonly valueChange = this.editor.valueChange$.pipe(distinctUntilChanged());
 
+    /**
+     * @deprecated use valueChange instead
+     */
     @Output()
     public readonly stateChange = this.editor.stateChange$;
 

@@ -20,7 +20,7 @@ export class ExampleTuiFontSizeTool {
 
     protected readonly sizes = [8, 9, 10, 11, 12, 14, 16, 18, 24, 30];
 
-    protected readonly size$ = this.editor.stateChange$.pipe(
+    protected readonly size$ = this.editor.valueChange$.pipe(
         map(() => this.fontSize),
         distinctUntilChanged(),
     );

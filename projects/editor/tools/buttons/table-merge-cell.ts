@@ -22,7 +22,7 @@ export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnIni
     protected readonly canMergeCells = signal<boolean>(false);
 
     public ngOnInit(): void {
-        this.editor?.stateChange$
+        this.editor?.valueChange$
             .pipe(
                 map(() => this.editor?.canMergeCells() ?? false),
                 distinctUntilChanged(),
