@@ -1,4 +1,5 @@
 export const TuiDemoPath = {
+    GettingStarted: '',
     Anchors: 'anchors',
     Appearance: 'appearance',
     Mention: 'mention',

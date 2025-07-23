@@ -5,6 +5,11 @@ import {TuiDemoPath} from './shared/routes';
 
 export const routes: Routes = [
     route({
+        path: TuiDemoPath.GettingStarted,
+        loadComponent: async () => import('./pages/landing'),
+        title: 'Getting started',
+    }),
+    route({
         path: TuiDemoPath.StarterKit,
         loadComponent: async () => import('./pages/starter'),
         title: 'StarterKit',
@@ -181,6 +186,6 @@ export const routes: Routes = [
     }),
     {
         path: '**',
-        redirectTo: TuiDemoPath.StarterKit,
+        redirectTo: TuiDemoPath.GettingStarted,
     },
 ];

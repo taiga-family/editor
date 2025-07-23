@@ -8,6 +8,7 @@ test.describe('Demo', () => {
         TuiDemoPath.EmbedIframe,
         TuiDemoPath.EmbedPDF,
         TuiDemoPath.EmbedYoutube,
+        TuiDemoPath.GettingStarted,
         TuiDemoPath.StarterKit,
     ]);
 

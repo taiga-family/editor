@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.t-header {
+    position: relative;
+    box-shadow: var(--tui-shadow-small);
+    min-block-size: 41.6875rem;
+    background: #f5f5f4;
+    border-block-end: 0.0625rem solid var(--tui-border-normal);
+    overflow: hidden;
+}
+
+.t-header,
+.t-main {
+    display: flex;
+    padding: 0 3.25rem;
+    justify-content: center;
+    align-items: center;
+
+    @media @tui-mobile {
+        & {
+            padding: 0 1rem;
+        }
+    }
+}
+
+.t-wrapper {
+    z-index: 1;
+    display: flex;
+    inline-size: 80rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.t-tiptap-logo {
+    inline-size: min(5vw, 2.1875rem);
+    block-size: min(5vh, 2.1875rem);
+}
+
+.t-tui-logo {
+    inline-size: min(5vw, 3.125rem);
+}
+
+.t-logo {
+    display: flex;
+    font: var(--tui-font-heading-6);
+    font-size: min(5vw, 2.8125rem);
+    align-items: center;
+    gap: 0.4375rem;
+    margin-block-start: 1.25rem;
+    margin-block-end: 3.125rem;
+}
+
+.t-tiptap {
+    font-style: italic;
+}
+
+.t-and {
+    font-size: min(5vw, 1.4375rem);
+    padding-inline-start: min(1vw, 0.625rem);
+}
+
+.t-tui-text {
+    text-decoration-line: underline;
+    white-space: nowrap;
+}
+
+.t-h1 {
+    font-family: 'Archivo Black', sans-serif;
+    text-shadow: 0.125rem 0.125rem 0.125rem #fff;
+    font-size: min(7vw, 4.0625rem);
+    margin: 0;
+}
+
+.t-h4 {
+    font: var(--tui-font-heading-4);
+    margin: 2rem 0;
+}
+
+.t-circle {
+    position: absolute;
+    inline-size: 12.5rem;
+    block-size: 12.5rem;
+    border-radius: 50%;
+    filter: blur(3.125rem);
+}
+
+.t-green {
+    top: 10%;
+    left: 20%;
+    inline-size: 31.25rem;
+    block-size: 31.25rem;
+    background-image: linear-gradient(180deg, #11aeeb, #35f39d);
+}
+
+.t-blue {
+    background: radial-gradient(circle at center, rgba(76, 0, 255, 0.7), rgba(76, 0, 255, 0));
+}
+
+.t-editor {
+    inline-size: 100%;
+    max-inline-size: 42.5rem;
+    justify-self: center;
+}
+
+.t-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    flex-flow: nowrap;
+}
+
+.t-features {
+    display: flex;
+    margin-block-end: 5rem;
+    gap: 2rem;
+
+    @media @tui-tablet {
+        & {
+            flex-direction: column;
+        }
+    }
+}
+
+.t-features > [tuiCardLarge] {
+    flex: 1;
+}
+
+.t-toolbar::before,
+.t-toolbar::after {
+    content: '';
+    display: flex;
+    flex: 1;
+}
+
+.t-content-editor[tuiCardLarge] {
+    position: relative;
+    display: block;
+    inline-size: calc(100vw - 6rem);
+    padding: 0;
+    margin: -5.9375rem 0 0;
+    gap: 0.0625rem;
+    overflow: auto;
+    overscroll-behavior: auto;
+    max-inline-size: 81.25rem;
+
+    @media @tui-mobile {
+        & {
+            inline-size: calc(100vw - 2rem);
+            margin-block-start: -8.75rem;
+        }
+    }
+}
+
+[tuiAppearance][data-appearance='none'] {
+    outline: none;
+}
