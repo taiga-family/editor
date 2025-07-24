@@ -1,4 +1,9 @@
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Injector,
+    ViewEncapsulation,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
     TUI_EDITOR_EXTENSIONS,
@@ -12,6 +17,7 @@ import {
     imports: [ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
