@@ -1,0 +1,157 @@
+<header class="t-header">
+    <div class="t-circle t-green"></div>
+    <div class="t-circle t-blue"></div>
+    <div class="t-wrapper">
+        <h1 class="t-h1">
+            The editor
+            <br />
+            that just works
+        </h1>
+
+        <div class="t-logo">
+            <tui-icon
+                icon="assets/images/tiptap.svg"
+                class="tiptap-logo"
+            />
+
+            <span class="t-tiptap">Tiptap</span>
+            <span class="t-and">and</span>
+
+            <img
+                alt="Logo"
+                src="assets/images/taiga.svg"
+                class="t-tui-logo"
+            />
+
+            <span class="t-tui-text">Taiga UI</span>
+        </div>
+
+        <button
+            appearance="floating"
+            routerLink="/starter-kit"
+            size="xl"
+            tuiButton
+            type="button"
+        >
+            Read the docs
+        </button>
+    </div>
+</header>
+
+<main class="t-main">
+    <div class="t-wrapper">
+        <div
+            tuiAppearance="floating"
+            tuiCardLarge="normal"
+            class="t-content-editor"
+        >
+            <tui-toolbar
+                class="t-toolbar"
+                [editor]="editorRef.editor"
+                [tools]="builtInTools"
+            />
+
+            <tui-root>
+                <tui-editor
+                    #editorRef
+                    appearance="none"
+                    class="t-editor"
+                    [tools]="[]"
+                    [(ngModel)]="value"
+                />
+            </tui-root>
+        </div>
+
+        <br />
+
+        <h4 class="t-h4">Explore our features</h4>
+
+        <div class="t-features">
+            <div
+                tuiAppearance="floating"
+                tuiCardLarge="normal"
+            >
+                <header tuiHeader>
+                    <h2 tuiTitle>
+                        Angular + Taiga UI Kit
+                        <span tuiSubtitle>
+                            We have full support with modern Angular and tight integration with components and styles of
+                            the ready-made UI kit.
+                        </span>
+                    </h2>
+                </header>
+
+                <footer>
+                    <button
+                        appearance="outline"
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        <a
+                            href="https://taiga-ui.dev"
+                            target="_blank"
+                            tuiLink
+                        >
+                            Learn more
+                        </a>
+                    </button>
+                </footer>
+            </div>
+
+            <div
+                tuiAppearance="floating"
+                tuiCardLarge="normal"
+            >
+                <header tuiHeader>
+                    <h2 tuiTitle>
+                        Own extensions
+                        <span tuiSubtitle>
+                            We supply more advanced versions of extensions for editing images, anchors, and links in
+                            your apps.
+                        </span>
+                    </h2>
+                </header>
+
+                <footer>
+                    <button
+                        appearance="outline"
+                        routerLink="/starter-kit"
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        Learn more
+                    </button>
+                </footer>
+            </div>
+
+            <div
+                tuiAppearance="floating"
+                tuiCardLarge="normal"
+            >
+                <header tuiHeader>
+                    <h2 tuiTitle>
+                        Customizable toolbar
+                        <span tuiSubtitle>
+                            We offer enhanced toolbar customization options, you can either use the standard one or
+                            build your own.
+                        </span>
+                    </h2>
+                </header>
+
+                <footer>
+                    <button
+                        appearance="outline"
+                        routerLink="/toolbar/floating"
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        Learn more
+                    </button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</main>
