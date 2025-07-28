@@ -1,0 +1,22 @@
+name: 🤖 Screenshot Report
+on:
+  workflow_run:
+    workflows: [⚙️ E2E tests]
+    types: [requested, completed]
+    branches-ignore:
+      - 'v[0-9].x'
+      - 'release/**'
+  pull_request:
+    types: [closed]
+
+jobs:
+  awake-screenshot-bot:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: taiga-family/argus@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
