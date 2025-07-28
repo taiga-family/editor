@@ -14,7 +14,7 @@ import {join} from 'node:path';
         'utf-8',
     );
 
-    const routes = ['/'];
+    const routes: string[] = [];
 
     const generated = (
         demoPathEnumContent
