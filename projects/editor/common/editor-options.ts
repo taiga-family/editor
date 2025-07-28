@@ -70,6 +70,8 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
         readonly imageExtension: {
             readonly link: string;
             readonly settings: string;
+            readonly previewLink: string;
+            readonly previewEditLink: string;
             readonly alignJustify: string;
             readonly alignCenter: string;
             readonly alignLeft: string;
@@ -154,6 +156,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
         colorSelectorDropdownCheck: '@tui.check',
         imageExtension: {
             link: '@tui.link',
+            previewLink: '@tui.arrow-up-right',
+            previewEditLink: '@tui.pencil-line',
             settings: '@tui.align-left', // TODO(v5): rename settings to align
             alignJustify: '@tui.align-justify',
             alignCenter: '@tui.align-center',

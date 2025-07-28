@@ -17,7 +17,7 @@ import {Plugin} from '@tiptap/pm/state';
 import type {EditorView, NodeView} from '@tiptap/pm/view';
 import {take, takeWhile} from 'rxjs';
 
-import {TuiImageEditor} from './image-editor.component';
+import {TuiImageEditor} from './image-editor';
 
 function pasteImage(injector: Injector) {
     return (view: EditorView, event: ClipboardEvent | DragEvent): void => {

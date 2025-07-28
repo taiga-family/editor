@@ -4,26 +4,30 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DestroyRef,
     ElementRef,
     inject,
     ViewChild,
+    ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {SafeResourceUrl} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
 import type {TuiDropdownDirective} from '@taiga-ui/core';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import type {TuiEditableImage} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components';
+import type {Mark} from '@tiptap/pm/model';
+import {timer} from 'rxjs';
 
+import {TuiImageAlignList} from './image-align-list';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
-import {TuiImageOptionsPosition} from './image-options-position.directive';
-import {TuiImageAlignComponent} from './options/image-align/image-align.component';
 
 @Component({
     standalone: true,
@@ -33,11 +37,12 @@ import {TuiImageAlignComponent} from './options/image-align/image-align.componen
         TuiButton,
         TuiDropdown,
         TuiEditorResizable,
-        TuiImageAlignComponent,
-        TuiImageOptionsPosition,
+        TuiIcon,
+        TuiImageAlignList,
     ],
-    templateUrl: './image-editor.component.html',
-    styleUrls: ['./image-editor.component.less'],
+    templateUrl: './image-editor.html',
+    styleUrls: ['./image-editor.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style]': 'style',
@@ -56,6 +61,7 @@ export class TuiImageEditor
     @ViewChild('dropdown', {static: true})
     private readonly dropdown?: TuiDropdownDirective;
 
+    private readonly destroy$ = inject(DestroyRef);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
     private readonly win = inject(WA_WINDOW);
@@ -97,6 +103,10 @@ export class TuiImageEditor
         this.notifyUpdate();
     }
 
+    protected get linkMark(): Mark | null {
+        return this.node.marks[0]?.type.name === 'link' ? this.node.marks[0] : null;
+    }
+
     protected get dragHandle(): '' | null {
         return this.attrs.draggable ?? null;
     }
@@ -107,6 +117,14 @@ export class TuiImageEditor
 
     protected get title(): string {
         return this.attrs.title ?? '';
+    }
+
+    protected get containerWidth(): number {
+        return Number(this.resizable?.width ?? 0);
+    }
+
+    protected get supportLinkExtension(): boolean {
+        return !!this.editor.commands.toggleLink;
     }
 
     @tuiPure
@@ -139,6 +157,21 @@ export class TuiImageEditor
         this.style = styles;
         this.attrs.style = styles;
         this.notifyUpdate();
+    }
+
+    protected setLink(): void {
+        if (this.linkMark) {
+            return;
+        }
+
+        // Caretaker note:
+        // This functionality is required to ensure
+        // the dropdown opens properly
+        // because of the editor's quirky behavior.
+        this.resizable?.container?.nativeElement.click();
+        timer(0)
+            .pipe(takeUntilDestroyed(this.destroy$))
+            .subscribe(() => this.editor.commands.toggleLink({href: ''}));
     }
 
     private selectFakeText(): void {
