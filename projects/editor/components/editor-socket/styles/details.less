@@ -90,6 +90,7 @@ details {
     inline-size: 100%;
     border: 0.0625rem solid var(--tui-border-normal);
     border-radius: var(--tui-radius-l);
+    box-sizing: border-box;
 }
 
 div[data-type='details-content'] {
@@ -116,8 +117,8 @@ div[data-type='details-content'] {
     display: flex;
 }
 
-.t-details-wrapper + .t-details-wrapper {
-    margin-top: 1rem;
+details {
+    margin-bottom: 1rem;
 }
 
 details[open] summary::after,

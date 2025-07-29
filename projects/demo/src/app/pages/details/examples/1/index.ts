@@ -45,14 +45,10 @@ export default class Example {
             <p>Content 1</p>
         </details>
 
-        <p></p>
-
         <details>
             <summary><p>Title 2</p></summary>
             <p>Content 2</p>
         </details>
-
-        <p></p>
 
         <!-- legacy details -->
         <div class="t-details-wrapper">
