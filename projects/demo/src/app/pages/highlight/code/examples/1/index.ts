@@ -29,13 +29,11 @@ export default class Example implements OnInit {
 
     protected control = new FormControl('');
 
-    public async ngOnInit(): Promise<void> {
-        const [code] = tuiTryParseMarkdownCodeBlock(
-            await tuiRawLoad(import('./example.md?raw')),
-        );
+    public ngOnInit(): void {
+        void tuiRawLoad(import('./example.md?raw')).then((raw) => {
+            const [code] = tuiTryParseMarkdownCodeBlock(raw);
 
-        if (code) {
-            this.control.patchValue(code);
-        }
+            this.control.patchValue(code ?? null);
+        });
     }
 }

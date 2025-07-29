@@ -40,10 +40,10 @@ export default class Example implements OnInit {
 
     protected control: FormControl = new FormControl('');
 
-    public async ngOnInit(): Promise<void> {
-        const md = await tuiRawLoad(import('./example.md?raw'));
-
-        this.control.patchValue(md);
+    public ngOnInit(): void {
+        void tuiRawLoad(import('./example.md?raw')).then((data) =>
+            this.control.patchValue(data ?? null),
+        );
     }
 
     @tuiPure
