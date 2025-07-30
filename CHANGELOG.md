@@ -1,3 +1,45 @@
+### [4.33.0](https://github.com/taiga-family/editor/compare/v4.32.0...v4.33.0) (2025-07-30)
+
+### 🚀 Features
+
+- improve UI/UX for image options (#1828)
+  [(b2465d0)](https://github.com/taiga-family/editor/commit/b2465d02d664beffff09fee1088ebe9c20aece5e)
+- deprecate state changes event (#1837)
+  [(0c16e81)](https://github.com/taiga-family/editor/commit/0c16e81f1b747e3029ae7a6226d3391b02caa6f4)
+- add ngDevMode for other tokens (#1817)
+  [(fbf4aae)](https://github.com/taiga-family/editor/commit/fbf4aae88f75ed74b7a674c8f05def42019a6a11)
+- increase performance (#1815)
+  [(30a5aa6)](https://github.com/taiga-family/editor/commit/30a5aa6b5879327ed39e8c081b87599d1b4a7b3c)
+- drop unknown files (#1807)
+  [(d020a2d)](https://github.com/taiga-family/editor/commit/d020a2d03128aad2168268d9460b13415b0bb1cb)
+- change image alignment tool icon (#1804)
+  [(84657e6)](https://github.com/taiga-family/editor/commit/84657e651179fd4e84b1438e1c0c66923870fd17)
+- support custom dropdowns (#1794)
+  [(6900ad7)](https://github.com/taiga-family/editor/commit/6900ad7750a0ef956542cfa207b9415ab4e016a1)
+- drop useless html markup (#1799)
+  [(1f9a387)](https://github.com/taiga-family/editor/commit/1f9a387b92c6700907f20220f1724b96c464f1e2)
+
+### 🐞 Bug Fixes
+
+- wrong details width (#1846)
+  [(6360ab2)](https://github.com/taiga-family/editor/commit/6360ab294f071ab2732a9245ac0b1dc5703142ad)
+- pin tiptap dependencies before upgrade to 3.0 (#1842)
+  [(a5faabe)](https://github.com/taiga-family/editor/commit/a5faabed9a4049fe9ebda97f695236674673e8d6)
+- update tiptap to &gt;=2.26.1 (#1826)
+  [(b0d8a2c)](https://github.com/taiga-family/editor/commit/b0d8a2c87ac172f7546b4ade99284e361ba67faa)
+- update tiptap to &gt;=2.26.0 (#1821)
+  [(fc14cf2)](https://github.com/taiga-family/editor/commit/fc14cf216245bc5b1f01610e64f1b1c764419b18)
+- update tiptap to &gt;=2.25.1 (#1816)
+  [(1dc2999)](https://github.com/taiga-family/editor/commit/1dc29995efdc300811bf37c3f4b167a2d7883850)
+- support images as links (#1809)
+  [(cdfa084)](https://github.com/taiga-family/editor/commit/cdfa0848857d92b0d8cfcbaa0e6afd38bcdbe1ff)
+- cannot read properties of undefined when reading nodeSize (#1803)
+  [(2b25d0a)](https://github.com/taiga-family/editor/commit/2b25d0a3c36e9e5b49f146f3a573de7ea929d00c)
+- make sure the dropdown opens properly every time you type (#1801)
+  [(86104dc)](https://github.com/taiga-family/editor/commit/86104dc6fb5dce62e0fa0fc8ab31bb0b2f2f8c43)
+- update tiptap to &gt;=2.25.0 (#1793)
+  [(bfc38c9)](https://github.com/taiga-family/editor/commit/bfc38c93b0bc86231da1b3e84fae7925def386b7)
+
 ### [4.32.0](https://github.com/taiga-family/editor/compare/v4.31.0...v4.32.0) (2025-07-04)
 
 ### 🚀 Features
