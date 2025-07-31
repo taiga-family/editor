@@ -14,7 +14,7 @@ import {TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import type {AbstractTuiEditor, TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import type {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
 

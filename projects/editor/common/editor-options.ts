@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {Provider} from '@angular/core';
 import {InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk';

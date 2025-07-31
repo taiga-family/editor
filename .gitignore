@@ -24,10 +24,10 @@ test-results.json
 .DS_Store
 Thumbs.db
 
-/projects/demo-playwright/tests-results/
-/projects/demo-playwright/tests-report/
-/projects/demo-playwright/snapshots/
-/projects/demo-playwright/playwright/.cache/
+tests-results/
+tests-report/
+snapshots/
+.cache/
 
 # special
 routes.txt

@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
 import {tuiExtractI18n} from '@taiga-ui/i18n';
 

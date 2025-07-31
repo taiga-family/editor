@@ -7,8 +7,17 @@ env:
   PW_RESULT: ./projects/demo-playwright/tests-results
 
 jobs:
+  cypress:
+    name: Cypress / Component Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: taiga-family/ci/actions/setup/variables@v1.136.0
+      - uses: taiga-family/ci/actions/setup/node@v1.136.0
+      - run: npx nx component-test demo-cypress
+
   e2e:
-    name: E2E
+    name: E2E playwright
     runs-on: ubuntu-latest
     outputs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}

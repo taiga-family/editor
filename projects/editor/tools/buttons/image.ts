@@ -9,7 +9,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_IMAGE_LOADER} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {take} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';
