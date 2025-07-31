@@ -18,7 +18,7 @@ import {
 } from '@taiga-ui/core';
 import type {TuiEditorFontOption, TuiEditorOptions} from '@taiga-ui/editor/common';
 import {EDITOR_BLANK_COLOR, TUI_EDITOR_FONT_OPTIONS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 

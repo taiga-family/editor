@@ -8,10 +8,9 @@
     "namedInputs": {
         "default": ["{projectRoot}/**/*", "sharedGlobals"],
         "sharedGlobals": [
-            "{workspaceRoot}/angular.json",
             "{workspaceRoot}/nx.json",
-            "{workspaceRoot}/tsconfig.*.json",
-            "{workspaceRoot}/tsconfig.json"
+            "{workspaceRoot}/tsconfig.json",
+            "{workspaceRoot}/**/tsconfig.*.json"
         ],
         "production": ["default"]
     },

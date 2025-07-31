@@ -1,3 +1,4 @@
+/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,7 +12,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiEditorAttachedFile, TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_ATTACH_FILES_LOADER, TUI_ATTACH_FILES_OPTIONS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import {take} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';
@@ -35,7 +36,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'fileUpload?.nativeElement.click()',
+        '(click)': 'fileUpload?.nativeElement?.click()',
     },
 })
 export class TuiAttachButtonTool extends TuiToolbarTool {

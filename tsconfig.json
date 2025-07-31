@@ -3,8 +3,8 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
-        "typeRoots": ["node_modules/@types", "node_modules/@taiga-ui/tsconfig"],
-        "types": ["node", "ng-dev-mode"],
+        "typeRoots": ["node_modules/@types", "node_modules/cypress/types"],
+        "types": ["node", "cypress"],
         "paths": {
             "@demo/routes": ["./projects/demo/src/app/shared/routes"],
             "@taiga-ui/editor": ["./projects/editor"],

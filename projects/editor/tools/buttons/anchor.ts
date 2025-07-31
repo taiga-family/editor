@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {tuiGetCurrentWordBounds} from '@taiga-ui/editor/utils';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';

@@ -17,7 +17,7 @@ import {
 } from '@taiga-ui/core';
 import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {TUI_EDITOR_CODE_OPTIONS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types/language';
+import type {TuiLanguageEditor} from '@taiga-ui/i18n';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
