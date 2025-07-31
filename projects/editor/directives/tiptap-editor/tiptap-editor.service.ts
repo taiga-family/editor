@@ -54,6 +54,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         });
     }
 
+    public get contentHasBeenUpdated(): boolean {
+        return this.firstInitContent;
+    }
+
     public get isFocused(): boolean {
         return this.editor?.isFocused ?? false;
     }
@@ -345,7 +349,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             this.clearHistory();
         }
 
-        this.firstInitContent = true;
+        this.firstInitContent = !!this.editor;
     }
 
     public clearHistory(): void {
