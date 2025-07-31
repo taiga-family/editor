@@ -149,10 +149,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
                     (extension) => extension.name === 'mention',
                 );
 
-            this.editorService.setValue(this.control.value ?? '', {
-                clearsHistory: true,
-            });
-
+            this.editorService.setValue(this.firstInitialValue, {clearsHistory: true});
             this.editorLoaded.set(true);
             this.cd.detectChanges();
 
@@ -162,6 +159,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             // listen resize events after any DOM changes
             this.listenResizeEvents();
         });
+
+    /**
+     * prevent recursive changes
+     * between control and tiptap editor
+     */
+    protected firstInitialValue = '';
 
     /**
      * @deprecated use placeholder
@@ -259,13 +262,16 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     public override writeValue(value: string | null): void {
-        const processed = this.contentProcessor?.fromControlValue(value) ?? value ?? '';
+        const processed = this.contentProcessor?.fromControlValue(value) ?? value;
 
         super.writeValue(processed);
 
+        if (this.firstInitialValue !== processed) {
+            this.firstInitialValue = processed ?? '';
+        }
+
         if (this.editorLoaded()) {
-            this.editorService.setValue(processed);
-            this.control.control?.markAsDirty();
+            this.editorService.setValue(processed ?? '');
         }
     }
 
@@ -292,11 +298,10 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected onModelChange(value: string | null): void {
-        const previous = this.control.value ?? '';
-        const processed = this.contentProcessor?.toControlValue(value) ?? value ?? '';
+        const processed = this.contentProcessor?.toControlValue(value) ?? value;
 
-        if (processed !== previous && this.editorService.contentHasBeenUpdated) {
-            this.onChange(processed);
+        if (processed !== this.control.value) {
+            this.onChange(processed ?? '');
         }
     }
 

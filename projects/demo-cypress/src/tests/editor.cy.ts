@@ -55,7 +55,7 @@ describe('TuiEditor', () => {
             .invoke('text')
             .then((text) => {
                 expect(text).to.eql('Text');
-                expect(component.control.dirty).to.eql(false);
+                expect(component.control.dirty).to.eql(true);
 
                 component.control.setValue('<p>Hello world</p>');
 
