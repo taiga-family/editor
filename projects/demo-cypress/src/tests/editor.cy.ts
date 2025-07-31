@@ -49,7 +49,8 @@ describe('TuiEditor', () => {
     });
 
     it('control dirty check', () => {
-        cy.wait(1_000); // wait render tiptap editor
+        cy.get('[contenteditable]', {timeout: 10_000}).should('be.visible');
+        cy.wait(5_000); // wait render contenteditable
 
         cy.get('[contenteditable]')
             .invoke('text')
