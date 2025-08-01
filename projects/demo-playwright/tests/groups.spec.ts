@@ -18,11 +18,13 @@ test.describe('Groups', () => {
         await expect
             .soft(page.locator('#draggable-groups tui-editor'))
             .toHaveScreenshot('Groups-02.png');
+        await page.waitForTimeout(300);
 
         await page
             .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
             .focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await expect
             .soft(page.locator('#draggable-groups tui-editor'))
@@ -31,6 +33,7 @@ test.describe('Groups', () => {
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
 
         await expect
             .soft(page.locator('#draggable-groups tui-editor'))
@@ -40,18 +43,20 @@ test.describe('Groups', () => {
             .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
             .focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await page.locator('[contenteditable]').first().focus();
         await page.keyboard.type('12345');
-
         await page
             .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
             .focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await page.locator('[contenteditable]').first().focus();
         await page.keyboard.press('Enter');
         await page.keyboard.type('456');
+        await page.waitForTimeout(300);
 
         await expect
             .soft(page.locator('#draggable-groups tui-editor'))

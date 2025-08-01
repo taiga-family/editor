@@ -21,12 +21,16 @@ test.describe('Slash', () => {
         await page.keyboard.type('ABC');
         await editor.selectText();
         await page.getByTestId('toolbar__link-button').click();
+        await page.waitForTimeout(300);
+
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-02.png');
 
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
+
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-03.png');
@@ -35,6 +39,8 @@ test.describe('Slash', () => {
         await page.keyboard.press('End');
         await page.keyboard.press('Enter');
         await page.keyboard.type('/');
+        await page.waitForTimeout(300);
+
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-04.png');
