@@ -49,23 +49,24 @@ describe('TuiEditor', () => {
     });
 
     it('control dirty check', () => {
-        cy.get('[contenteditable]', {timeout: 10_000}).should('be.visible');
-        cy.wait(5_000); // wait render contenteditable
-
         cy.get('[contenteditable]')
+            .should('be.visible')
             .invoke('text')
-            .then((text) => {
-                expect(text).to.eql('Text');
-                expect(component.control.dirty).to.eql(true);
-
-                component.control.setValue('<p>Hello world</p>');
-
-                cy.get('[contenteditable]')
-                    .invoke('text')
-                    .then((newText) => {
-                        expect(newText).to.eql('Hello world');
-                        expect(component.control.dirty).to.eql(true);
-                    });
-            });
+            .should('eq', 'Text')
+            .then(() => expect(component.control.dirty).to.eql(false))
+            .then(() => expect(component.count).to.eql(0))
+            .then(() => component.control.setValue('<p>Hello</p>'))
+            .get('[contenteditable]')
+            .invoke('text')
+            .should('eq', 'Hello')
+            .then(() => expect(component.control.dirty).to.eql(false))
+            .then(() => expect(component.count).to.eql(1))
+            .get('[contenteditable]')
+            .type('{selectall}{backspace}')
+            .then(() => expect(component.control.dirty).to.eql(true))
+            .then(() => expect(component.count).to.eql(2))
+            .get('[contenteditable]')
+            .type('World')
+            .then(() => expect(component.count).to.eql(7));
     });
 });
