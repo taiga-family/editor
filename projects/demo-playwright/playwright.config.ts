@@ -18,7 +18,9 @@ export default defineConfig({
     workers: process.env.CI ? '100%' : '50%',
     timeout: 10 * 60 * 1000,
     use: {
-        baseURL: `http://localhost:${process.env.NG_SERVER_PORT ?? 3333}`,
+        baseURL:
+            process.env.baseUrl ??
+            `http://localhost:${process.env.NG_SERVER_PORT ?? 3333}`,
         trace: 'on-first-retry',
         testIdAttribute: 'automation-id',
         actionTimeout: 10_000,

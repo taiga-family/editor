@@ -37,6 +37,8 @@ test.describe('Slash', () => {
 
         await editor.click();
         await page.keyboard.press('End');
+        await page.keyboard.press(' ');
+
         await page.keyboard.press('Enter');
         await page.keyboard.type('/');
         await page.waitForTimeout(300);
