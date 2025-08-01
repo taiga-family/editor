@@ -1,3 +1,10 @@
+### [4.34.0](https://github.com/taiga-family/editor/compare/v4.33.0...v4.34.0) (2025-08-01)
+
+### 🐞 Bug Fixes
+
+- mark control as dirty after first real user changes (#1856)
+  [(0dd3d84)](https://github.com/taiga-family/editor/commit/0dd3d84911ceba5e024ce0e67185119c12590df6)
+
 ### [4.33.0](https://github.com/taiga-family/editor/compare/v4.32.0...v4.33.0) (2025-07-30)
 
 ### 🚀 Features
