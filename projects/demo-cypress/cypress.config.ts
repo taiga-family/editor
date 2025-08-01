@@ -4,6 +4,13 @@ import {defineConfig} from 'cypress';
 const preset = nxComponentTestingPreset(__filename);
 
 export default defineConfig({
+    video: false,
+    fixturesFolder: 'src/fixtures',
+    viewportWidth: 500,
+    viewportHeight: 900,
+    responseTimeout: 60000,
+    pageLoadTimeout: 120000,
+    defaultCommandTimeout: 10000,
     component: {
         ...preset,
         devServer: {
