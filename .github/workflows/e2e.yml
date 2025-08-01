@@ -93,7 +93,7 @@ jobs:
 
   result:
     name: E2E result
-    needs: [e2e]
+    needs: [e2e, cypress]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
