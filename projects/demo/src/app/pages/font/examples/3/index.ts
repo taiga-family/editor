@@ -1,12 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiItem} from '@taiga-ui/cdk';
-import {
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditor,
-    TuiEditorSocket,
-    TuiEditorTool,
-} from '@taiga-ui/editor';
+import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {ExampleTuiFontSizeTool} from './font-size-tool';
 
@@ -15,8 +11,8 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
     imports: [
         ExampleTuiFontSizeTool,
         ReactiveFormsModule,
+        TuiContentTable,
         TuiEditor,
-        TuiEditorSocket,
         TuiItem,
     ],
     templateUrl: './index.html',

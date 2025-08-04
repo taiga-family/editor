@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import type {AbstractControl, ValidationErrors} from '@angular/forms';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
 import {TuiError, TuiLoader} from '@taiga-ui/core';
 import {
@@ -15,7 +16,6 @@ import {
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
-    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
@@ -28,8 +28,8 @@ import {ImgbbService} from './imgbb.service';
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
+        TuiContentTable,
         TuiEditor,
-        TuiEditorSocket,
         TuiError,
         TuiFieldErrorPipe,
         TuiLoader,

@@ -2,19 +2,19 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {
     TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
-    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [HttpClientModule, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
+    imports: [HttpClientModule, ReactiveFormsModule, TuiContentTable, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

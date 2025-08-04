@@ -1,4 +1,4 @@
-import {TuiDemoPath} from '@demo/routes';
+import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
 import {tuiGoto} from '../utils';
@@ -35,7 +35,7 @@ test.describe('Details', () => {
         await tuiGoto(page, TuiDemoPath.Details);
 
         const editor = page.locator('tui-editor');
-        const content = page.locator('h4 + tui-editor-socket');
+        const content = page.locator('tui-content-table tui-editor-socket');
 
         await expect.soft(content).toHaveScreenshot('Details-06.png');
         await content.locator('details').first().locator('summary').click();
