@@ -29,7 +29,7 @@ export const TuiMarkdownTightLists = Extension.create({
     addCommands(): any {
         return {
             toggleTight:
-                (tight = null) =>
+                (tight: boolean | null = null) =>
                 ({editor, commands}: any) =>
                     this.options.listTypes.some((name) => {
                         if (!editor.isActive(name)) {

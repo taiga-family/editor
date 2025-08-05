@@ -10,8 +10,8 @@ interface TuiEditLinkParsed {
 }
 
 function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
-    const [url = '', queryParams = ''] = rawUrl.split(/\?/) ?? [];
-    const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER) ?? -1;
+    const [url = '', queryParams = ''] = rawUrl.split(/\?/);
+    const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER);
     const [prefix, path] =
         protocolPosition > -1
             ? [
@@ -29,13 +29,13 @@ function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
     const pathWithQueries = path + (queryParams.length ? `?${queryParams}` : '');
     const result = [prefix, pathWithQueries].filter(Boolean);
 
-    return path?.includes('://') && result.length > 1
+    return path.includes('://') && result.length > 1
         ? splitOsiProtocol(pathWithQueries)
         : result;
 }
 
 function splitSimpleProtocol(rawUrl = ''): Array<string | undefined> {
-    const [url = '', queryParams = ''] = rawUrl.split(/\?/) ?? [];
+    const [url = '', queryParams = ''] = rawUrl.split(/\?/);
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
     const hardUrl = // https://domain.com/path:some:schema:data:test
         (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||

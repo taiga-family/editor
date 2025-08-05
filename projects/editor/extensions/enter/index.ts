@@ -1,5 +1,11 @@
 import {Extension} from '@tiptap/core';
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
+declare const globalThis: ServerSideGlobal;
+
 export const TuiCustomEnter = Extension.create({
     name: 'customEnter',
     addKeyboardShortcuts() {
@@ -7,7 +13,7 @@ export const TuiCustomEnter = Extension.create({
             Enter: ({editor}) => {
                 if (editor.isActive('summary')) {
                     editor.commands.selectNodeForward();
-                    editor?.commands.focus((editor?.state.selection.anchor ?? 0) + 1);
+                    editor.commands.focus(editor.state.selection.anchor + 1);
 
                     if (globalThis.document) {
                         editor.view

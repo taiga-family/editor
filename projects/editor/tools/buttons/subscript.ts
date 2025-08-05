@@ -21,6 +21,6 @@ export class TuiSubscriptButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.subscript;
+        return texts.subscript;
     }
 }

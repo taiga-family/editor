@@ -86,7 +86,7 @@ export default class Example implements OnInit {
             .subscribe(() => {
                 const isLinkSelected = !!this.wysiwyg?.isLinkSelected;
                 const isMentionMode = !!this.wysiwyg?.isMentionMode;
-                const hasSlash = !!this.wysiwyg?.selectionState.before?.startsWith('/');
+                const hasSlash = !!this.wysiwyg?.selectionState.before.startsWith('/');
 
                 this.open = isMentionMode || isLinkSelected ? false : hasSlash;
             });
@@ -96,7 +96,7 @@ export default class Example implements OnInit {
         const before = this.wysiwyg?.selectionState.before;
 
         return before?.startsWith('/') && before.length > 1
-            ? before?.replace('/', '') || ''
+            ? before.replace('/', '') || ''
             : '';
     }
 
@@ -109,7 +109,7 @@ export default class Example implements OnInit {
         }
     }
 
-    protected filter(search: string): readonly MyCommand[] {
+    protected filter(search?: string): readonly MyCommand[] {
         return search?.length
             ? this.items.filter(({name}) =>
                   name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()),

@@ -16,6 +16,12 @@ import {combineLatest, map, ReplaySubject, shareReplay, take} from 'rxjs';
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
+declare const globalThis: ServerSideGlobal;
+
 export const TUI_EDITOR_PROVIDERS = [
     {
         provide: LAZY_EDITOR_EXTENSIONS,

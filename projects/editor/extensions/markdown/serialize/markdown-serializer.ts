@@ -29,7 +29,7 @@ export class TuiMarkdownSerializer {
                     .map((extension) => [
                         extension.name,
                         this.serializeNode(extension as any),
-                    ]) ?? [],
+                    ]),
             ),
         } as Node[];
     }
@@ -53,7 +53,7 @@ export class TuiMarkdownSerializer {
                     .map((extension) => [
                         extension.name,
                         this.serializeMark(extension as any),
-                    ]) ?? [],
+                    ]),
             ),
         } as Mark[];
     }

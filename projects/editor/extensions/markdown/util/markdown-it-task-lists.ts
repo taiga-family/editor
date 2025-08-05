@@ -105,9 +105,9 @@ function makeCheckbox(token: MarkdownIt.Token, TokenConstructor: any): any {
     const checkbox = new TokenConstructor('html_inline', '', 0);
     const disabledAttr = disableCheckboxes ? ' disabled="" ' : '';
 
-    if (token?.content.startsWith('[ ] ')) {
+    if (token.content.startsWith('[ ] ')) {
         checkbox.content = `<input class="task-list-item-checkbox"${disabledAttr}type="checkbox">`;
-    } else if (token?.content.startsWith('[x] ') || token?.content.startsWith('[X] ')) {
+    } else if (token.content.startsWith('[x] ') || token.content.startsWith('[X] ')) {
         checkbox.content = `<input class="task-list-item-checkbox" checked=""${disabledAttr}type="checkbox">`;
     }
 

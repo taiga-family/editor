@@ -73,6 +73,6 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.backColor;
+        return texts.backColor;
     }
 }

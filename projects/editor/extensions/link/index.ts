@@ -70,7 +70,7 @@ export const TuiLink = Link.extend({
         return [
             'a',
             mergeAttributes(HTMLAttributes, {
-                target: HTMLAttributes?.href?.startsWith('#') ? '_self' : '_blank',
+                target: HTMLAttributes.href?.startsWith('#') ? '_self' : '_blank',
             }),
             0,
         ];

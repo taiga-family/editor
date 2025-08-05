@@ -21,7 +21,7 @@ export const TuiMarkdown = Extension.create({
         };
     },
     addCommands() {
-        const commands = (extensions?.Commands?.config as any)?.addCommands?.();
+        const commands = (extensions.Commands.config as any)?.addCommands?.();
 
         return {
             setContent: (content, emitUpdate, parseOptions) => (props) =>

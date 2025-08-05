@@ -25,6 +25,6 @@ export class TuiDetailsRemoveButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.removeDetails;
+        return texts.removeDetails;
     }
 }

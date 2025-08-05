@@ -1,3 +1,9 @@
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
+declare const globalThis: ServerSideGlobal;
+
 function migration(element: Element): void {
     Array.from(element.children).forEach((child) => {
         if (child.children.length) {
@@ -47,15 +53,15 @@ function migrateHeading(selector: string, element: Element): void {
         heading.innerHTML = element.innerHTML;
 
         if (element.parentElement?.tagName === 'P') {
-            const newRef = element.parentElement?.parentElement?.insertBefore(
+            const newRef = element.parentElement.parentElement?.insertBefore(
                 heading,
                 element.parentElement,
             );
 
-            element.parentElement?.removeChild(element);
+            element.parentElement.removeChild(element);
 
-            if (newRef?.nextSibling && !newRef?.nextSibling?.textContent?.trim()) {
-                newRef.nextSibling?.parentElement?.removeChild(newRef.nextSibling);
+            if (newRef?.nextSibling && !newRef.nextSibling.textContent?.trim()) {
+                newRef.nextSibling.parentElement?.removeChild(newRef.nextSibling);
             }
         } else {
             element.parentElement?.replaceChild(heading, element);

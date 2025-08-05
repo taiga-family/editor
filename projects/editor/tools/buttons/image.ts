@@ -47,7 +47,7 @@ export class TuiImageButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.image;
+        return texts.image;
     }
 
     protected onImage(input: HTMLInputElement): void {

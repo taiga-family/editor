@@ -1,4 +1,5 @@
 import type {Editor, Range} from '@tiptap/core';
+import type {ResolvedPos} from '@tiptap/pm/model';
 
 export function tuiGetCurrentWordBounds(editor: Editor): Range {
     const {state} = editor;
@@ -12,7 +13,8 @@ export function tuiGetCurrentWordBounds(editor: Editor): Range {
         };
     }
 
-    if ($anchor) {
+    // TODO: check is it true or not
+    if ($anchor as ResolvedPos | undefined) {
         const {pos} = $anchor;
         const start = $anchor.start();
         const parent = $anchor.parent;

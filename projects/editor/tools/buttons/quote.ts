@@ -29,6 +29,6 @@ export class TuiBlockquoteButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.quote;
+        return texts.quote;
     }
 }

@@ -46,7 +46,7 @@ function pasteImage(injector: Injector) {
                         ? view.state.tr.replaceSelectionWith(node)
                         : null;
 
-                    setTimeout?.(() => {
+                    setTimeout(() => {
                         if (!view.isDestroyed && transaction) {
                             view.dispatch(transaction);
                         }

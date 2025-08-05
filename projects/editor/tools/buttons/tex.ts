@@ -24,6 +24,6 @@ export class TuiTexButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.tex;
+        return texts.tex;
     }
 }

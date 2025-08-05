@@ -47,10 +47,10 @@ export interface TuiStarterKitOptions {
     bulletList: Partial<BulletListOptions> | false;
     code: Partial<CodeOptions> | false;
     codeBlock: Partial<CodeBlockOptions> | false;
-    document: false;
-    enter: false;
+    document: Partial<Record<string, unknown>> | false;
+    enter: Partial<Record<string, unknown>> | false;
     dropcursor: Partial<DropcursorOptions> | false;
-    gapcursor: false;
+    gapcursor: Partial<{allowGapCursor: true}> | false;
     hardBreak: Partial<HardBreakOptions> | false;
     heading: Partial<HeadingOptions> | false;
     history: Partial<HistoryOptions> | false;
@@ -63,7 +63,7 @@ export interface TuiStarterKitOptions {
     paragraph: Partial<ParagraphOptions> | false;
     strike: Partial<StrikeOptions> | false;
     placeholder: Partial<PlaceholderOptions> | false;
-    text: false;
+    text: Partial<Record<string, unknown>> | false;
 }
 
 export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
@@ -107,7 +107,7 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
             extensions.push(
                 Gapcursor.configure({
                     allowGapCursor: true,
-                    ...(options?.gapcursor ?? {}),
+                    ...(options?.gapcursor || {}),
                 }),
             );
         }
@@ -127,7 +127,7 @@ export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
                             (items: any, level: any) => ({
                                 ...(items || {}),
                                 [`Mod-Alt-${level}`]: () =>
-                                    this?.editor.commands.toggleHeading({level}),
+                                    this.editor.commands.toggleHeading({level}),
                             }),
                             {},
                         );

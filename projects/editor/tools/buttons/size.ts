@@ -85,7 +85,7 @@ export class TuiFontSizeButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.font;
+        return texts.font;
     }
 
     protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {

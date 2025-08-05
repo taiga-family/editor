@@ -20,6 +20,10 @@ import {
 } from '@taiga-ui/core';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
 @Directive({
     standalone: true,
     selector: '[tuiToolbarDropdown]',
@@ -34,7 +38,10 @@ export class TuiEditorDropdownToolbar
 {
     private previousTagPosition: DOMRect | null = null;
     private range = inject(TUI_RANGE);
-    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
+
+    private readonly doc: Document | null =
+        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+
     private readonly selection$ = inject(TUI_SELECTION_STREAM);
     private readonly el = inject(ElementRef<HTMLElement>);
     private readonly vcr = inject(ViewContainerRef);
@@ -54,7 +61,7 @@ export class TuiEditorDropdownToolbar
 
             this.range =
                 (contained && tuiIsTextNode(range.commonAncestorContainer)) ||
-                range.commonAncestorContainer?.nodeName === 'P'
+                range.commonAncestorContainer.nodeName === 'P'
                     ? range
                     : this.range;
 
@@ -130,10 +137,8 @@ export class TuiEditorDropdownToolbar
 
     private getRange(): Range {
         const selection = this.doc?.getSelection();
+        const range = selection?.rangeCount ? selection.getRangeAt(0) : this.range;
 
-        return (
-            (selection?.rangeCount && selection.getRangeAt(0)) ||
-            this.range
-        )?.cloneRange();
+        return range.cloneRange();
     }
 }

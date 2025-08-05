@@ -21,6 +21,6 @@ export class TuiStrikeButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.strikeThrough;
+        return texts.strikeThrough;
     }
 }

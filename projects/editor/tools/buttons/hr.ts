@@ -21,6 +21,6 @@ export class TuiHrButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.insertHorizontalRule;
+        return texts.insertHorizontalRule;
     }
 }

@@ -12,7 +12,7 @@ export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
     constructor(
         nodes: readonly Node[],
         marks: readonly Mark[],
-        options: BaseMarkdownSerializerState['options'],
+        options: BaseMarkdownSerializerState['options'] | undefined,
     ) {
         // @ts-ignore
         super(nodes, marks, options ?? {});

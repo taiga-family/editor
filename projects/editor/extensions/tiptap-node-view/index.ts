@@ -154,7 +154,7 @@ export class TuiNodeView extends NodeView<
         this.renderer = new TuiComponentRenderer(this.component, injector, props);
 
         // Register drag handler
-        if (this.extension.config.draggable) {
+        if (this.extension.config.draggable !== undefined) {
             this.renderer.el.nativeElement.ondragstart = (e: DragEvent) => {
                 this.onDragStart(e);
             };

@@ -21,6 +21,6 @@ export class TuiUnderlineButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.underline;
+        return texts.underline;
     }
 }

@@ -104,6 +104,6 @@ export class TuiFontStyleButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.fontStyle;
+        return texts.fontStyle;
     }
 }

@@ -39,7 +39,7 @@ export default class Example {
     `);
 
     protected get characterCount(): CharacterCountStorage | null {
-        return this.wysiwyg?.editor?.getOriginTiptapEditor()?.storage?.characterCount;
+        return this.wysiwyg?.editor?.getOriginTiptapEditor()?.storage.characterCount;
     }
 
     protected get percentage(): number {

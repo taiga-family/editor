@@ -21,6 +21,6 @@ export class TuiBoldButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.bold;
+        return texts.bold;
     }
 }

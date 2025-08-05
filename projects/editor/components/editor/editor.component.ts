@@ -55,7 +55,7 @@ import {
 import {TuiEditLink} from '@taiga-ui/editor/components/edit-link';
 import {TuiEditorSocket} from '@taiga-ui/editor/components/editor-socket';
 import {TuiToolbar} from '@taiga-ui/editor/components/toolbar';
-import {ToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
+import {TuiToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
 import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import type {TuiSelectionState} from '@taiga-ui/editor/utils';
 import {tuiGetSelectionState, tuiIsSafeLinkRange} from '@taiga-ui/editor/utils';
@@ -65,6 +65,10 @@ import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
 @Component({
     standalone: true,
     selector: 'tui-editor',
@@ -72,7 +76,6 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
-        ToolbarHostComponent,
         TuiDropdown,
         TuiEditLink,
         TuiEditorDropdownToolbar,
@@ -80,6 +83,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         TuiScrollbar,
         TuiTiptapEditor,
         TuiToolbar,
+        TuiToolbarHostComponent,
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],
@@ -127,7 +131,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         TuiValueTransformer<string | null, string | null>
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
 
-    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
+    private readonly doc: Document | null =
+        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
 
@@ -226,7 +232,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public get nativeFocusableElement(): HTMLDivElement | null {
         return (
-            this.el?.nativeElement?.querySelector('[contenteditable].ProseMirror') || null
+            this.el?.nativeElement.querySelector('[contenteditable].ProseMirror') || null
         );
     }
 
@@ -237,13 +243,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public get mentionSuggestions(): string {
         const before = this.selectionState.before;
 
-        return before?.startsWith('@') && before.length > 1
-            ? before?.replace('@', '') || ''
+        return before.startsWith('@') && before.length > 1
+            ? before.replace('@', '') || ''
             : '';
     }
 
     public get isMentionMode(): boolean {
-        return this.hasMentionPlugin && this.selectionState.before?.startsWith('@');
+        return this.hasMentionPlugin && this.selectionState.before.startsWith('@');
     }
 
     public get isLinkSelected(): boolean {
@@ -338,8 +344,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected focus(event: KeyboardEvent | MouseEvent): void {
         const isSafeArea =
             this.nativeFocusableElement?.contains(event.target as Node | null) ||
-            Array.from(this.rootEl?.querySelectorAll('tui-toolbar-host') ?? []).some(
-                (toolbar) => toolbar?.contains(event.target as Node | null),
+            Array.from(this.rootEl.querySelectorAll('tui-toolbar-host')).some((toolbar) =>
+                toolbar.contains(event.target as Node | null),
             );
 
         if (isSafeArea) {
@@ -351,7 +357,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private get focusNode(): Node | null {
-        return this.doc?.getSelection?.()?.focusNode ?? null;
+        return this.doc?.getSelection()?.focusNode ?? null;
     }
 
     private get currentFocusedNodeIsImageAnchor(): boolean {
@@ -369,7 +375,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         this.currentFocusedNodeIsTextAnchor(range) ||
         this.currentFocusedNodeIsImageAnchor ||
         this.isMentionMode ||
-        !!this.tuiDropdown?.tuiDropdownOpen;
+        Boolean(this.tuiDropdown?.tuiDropdownOpen);
 
     /**
      * @description:

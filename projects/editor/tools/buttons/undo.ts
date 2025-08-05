@@ -26,6 +26,6 @@ export class TuiUndoButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.undo;
+        return texts.undo;
     }
 }

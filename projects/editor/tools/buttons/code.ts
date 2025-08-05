@@ -67,7 +67,7 @@ export class TuiCodeButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.code;
+        return texts.code;
     }
 
     protected onCode(isCodeBlock: boolean): void {

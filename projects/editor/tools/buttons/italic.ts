@@ -21,6 +21,6 @@ export class TuiItalicButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.italic;
+        return texts.italic;
     }
 }

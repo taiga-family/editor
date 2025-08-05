@@ -17,9 +17,7 @@ export function tuiGetSelectionState(
     let before = $from.nodeBefore?.textContent;
 
     before = (
-        before?.slice(
-            ((before?.lastIndexOf(' ') || before?.lastIndexOf('\n')) ?? 0) + 1,
-        ) ?? ''
+        before?.slice((before.lastIndexOf(' ') || before.lastIndexOf('\n')) + 1) ?? ''
     ).trim();
 
     const after = $to.nodeAfter?.textContent.trim() ?? '';

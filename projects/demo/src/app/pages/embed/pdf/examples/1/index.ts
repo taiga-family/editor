@@ -132,14 +132,14 @@ export default class Example {
         }
 
         this.editor?.editorService
-            ?.getOriginTiptapEditor()
+            .getOriginTiptapEditor()
             ?.chain()
             .focus('end')
             .createParagraphNear()
             .insertContent(file.name)
             .run();
 
-        this.editor?.editorService?.setIframe({
+        this.editor?.editorService.setIframe({
             allowfullscreen: false,
             frameborder: null,
             // For example, src: `https://mozilla.github.io/pdf.js/web/viewer.html?url${file.link}`,
