@@ -11,6 +11,7 @@ import {
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {
@@ -25,7 +26,7 @@ import {map, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiEditor],
+    imports: [ReactiveFormsModule, TuiContentTable, TuiEditor],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

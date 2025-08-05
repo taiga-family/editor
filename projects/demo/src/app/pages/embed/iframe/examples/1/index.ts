@@ -9,6 +9,7 @@ import {
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import type {SafeHtml} from '@angular/platform-browser';
 import {DomSanitizer} from '@angular/platform-browser';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
@@ -17,7 +18,14 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
     standalone: true,
-    imports: [ExampleTuiEmbedTool, ReactiveFormsModule, TuiEditor, TuiIcon, TuiItem],
+    imports: [
+        ExampleTuiEmbedTool,
+        ReactiveFormsModule,
+        TuiContentTable,
+        TuiEditor,
+        TuiIcon,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

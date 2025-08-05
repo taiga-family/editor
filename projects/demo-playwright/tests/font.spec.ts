@@ -1,4 +1,4 @@
-import {TuiDemoPath} from '@demo/routes';
+import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';

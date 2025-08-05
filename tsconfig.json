@@ -6,7 +6,7 @@
         "typeRoots": ["node_modules/@types", "node_modules/cypress/types"],
         "types": ["node", "cypress"],
         "paths": {
-            "@demo/routes": ["./projects/demo/src/app/shared/routes"],
+            "@demo/shared/*": ["./projects/demo/src/app/shared/*"],
             "@taiga-ui/editor": ["./projects/editor"],
             "@taiga-ui/editor/*": ["./projects/editor/*"]
         }

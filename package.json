@@ -90,6 +90,7 @@
         "@taiga-ui/core": "4.47.0",
         "@taiga-ui/cspell-config": "0.297.0",
         "@taiga-ui/eslint-plugin-experience-next": "0.297.0",
+        "@taiga-ui/experimental": "4.47.0",
         "@taiga-ui/icons": "4.47.0",
         "@taiga-ui/layout": "4.47.0",
         "@taiga-ui/legacy": "4.47.0",

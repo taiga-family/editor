@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiContentTable} from '@demo/shared/content-table';
 import {
     TuiDataList,
     TuiDataListComponent,
@@ -27,6 +28,7 @@ interface MyCommand {
     imports: [
         NgForOf,
         ReactiveFormsModule,
+        TuiContentTable,
         TuiDataList,
         TuiDropdown,
         TuiEditor,

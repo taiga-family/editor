@@ -7,11 +7,13 @@
     Placeholder
 </tui-editor>
 
-<h4>HTML:</h4>
-<tui-editor-socket
-    class="socket"
-    [content]="control.value || ''"
-/>
+<tui-content-table [value]="control.value" />
 
-<h4>Markdown:</h4>
-<pre class="markdown">{{ toMarkdown(control.value) }}</pre>
+<tui-accordion class="tui-space_top-6">
+    <button [tuiAccordion]="isE2E">Markdown</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <pre class="markdown">{{ toMarkdown(control.value) }}</pre>
+        </ng-container>
+    </tui-expand>
+</tui-accordion>

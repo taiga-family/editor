@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
@@ -7,6 +8,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/experimental';
 
 import {ImagePreviewExample} from './image-preview/image-preview.component';
 
@@ -15,6 +17,7 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
     imports: [
         ImagePreviewExample,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorImagePreview,
         TuiEditorSocket,
@@ -35,6 +38,7 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
     ],
 })
 export default class Example {
+    protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
 
     protected control = new FormControl('');
