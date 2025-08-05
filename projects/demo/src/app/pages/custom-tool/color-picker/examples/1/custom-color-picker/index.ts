@@ -25,7 +25,7 @@ export class CustomColorPicker {
     protected readonly fontColor$ = this.editor.valueChange$.pipe(
         map(() =>
             this.editor.getOriginTiptapEditor()?.isFocused
-                ? this.editor[`get${this.type}` as const]?.() || 'transparent'
+                ? this.editor[`get${this.type}` as const]() || 'transparent'
                 : 'transparent',
         ),
         distinctUntilChanged(),
@@ -46,6 +46,6 @@ export class CustomColorPicker {
     }
 
     protected setColor(): void {
-        this.editor[`set${this.type}` as const]?.(this.selectedColor);
+        this.editor[`set${this.type}` as const](this.selectedColor);
     }
 }

@@ -21,6 +21,6 @@ export class TuiSuperscriptButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.superscript;
+        return texts.superscript;
     }
 }

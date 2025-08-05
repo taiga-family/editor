@@ -22,6 +22,6 @@ export class TuiInsertGroupButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.insertGroup;
+        return texts.insertGroup;
     }
 }

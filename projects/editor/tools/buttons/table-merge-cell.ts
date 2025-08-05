@@ -19,7 +19,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnInit {
-    protected readonly canMergeCells = signal<boolean>(false);
+    protected readonly canMergeCells? = signal<boolean>(false);
 
     public ngOnInit(): void {
         this.editor?.valueChange$
@@ -28,12 +28,12 @@ export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnIni
                 distinctUntilChanged(),
                 takeUntilDestroyed(this.destroy$),
             )
-            .subscribe((e) => this.canMergeCells.set(e));
+            .subscribe((e) => this.canMergeCells?.set(e));
     }
 
     protected override getDisableState(): boolean {
         return (
-            !(this.editor?.canMergeCells?.() ?? false) &&
+            !(this.editor?.canMergeCells() ?? false) &&
             !(this.editor?.canSplitCells() ?? false)
         );
     }

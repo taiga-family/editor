@@ -31,7 +31,7 @@ export class TuiEditorSocket {
     private readonly editor = inject(TuiTiptapEditor, {optional: true});
     private readonly customSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
     private readonly sanitizer = inject(DomSanitizer);
-    private readonly document = inject(DOCUMENT);
+    private readonly doc = inject(DOCUMENT);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly html = signal<SafeHtml | string | null>(null);
 
@@ -54,14 +54,14 @@ export class TuiEditorSocket {
             return;
         }
 
-        const href = event.target?.closest('a')?.getAttribute('href') ?? '';
+        const href = event.target.closest('a')?.getAttribute('href') ?? '';
 
         if (!href.startsWith('#')) {
             return;
         }
 
-        this.document.location.hash = '';
-        this.document.location.hash = href.replace('#', '');
+        this.doc.location.hash = '';
+        this.doc.location.hash = href.replace('#', '');
         event.preventDefault();
     }
 }

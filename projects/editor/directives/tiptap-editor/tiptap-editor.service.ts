@@ -115,7 +115,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     public getGroupColor(): string {
         if (this.editor?.isActive('group')) {
-            const style = this.editor.getAttributes('group')?.style ?? '';
+            const style = this.editor.getAttributes('group').style ?? '';
             const styles = tuiParseStyle(style);
 
             return styles['background-color'] ?? styles['background'] ?? '';
@@ -133,7 +133,8 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             ?.chain()
             .focus()
             .command(({commands, state}) => {
-                const setImage = (commands.setEditableImage ?? commands.setImage) as
+                const setImage = ((commands as any).setEditableImage ??
+                    commands.setImage) as
                     | ((config: TuiEditableImage) => boolean)
                     | undefined;
 

@@ -33,7 +33,7 @@ import {MyToc} from './my-toc';
                     ({TableOfContents, getHierarchicalIndexes}) => {
                         return TableOfContents.configure({
                             scrollParent: () =>
-                                example.editor?.rootEl?.querySelector<HTMLElement>(
+                                example.editor?.rootEl.querySelector<HTMLElement>(
                                     'tui-scrollbar',
                                 ) ?? win,
                             getIndex: getHierarchicalIndexes,

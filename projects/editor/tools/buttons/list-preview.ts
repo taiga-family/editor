@@ -81,6 +81,6 @@ export class TuiListButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.list;
+        return texts.list;
     }
 }

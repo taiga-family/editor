@@ -117,7 +117,7 @@ export class TuiInsertTableButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.insertTable;
+        return texts.insertTable;
     }
 
     protected addTable({rows, cols}: {cols: number; rows: number}): void {

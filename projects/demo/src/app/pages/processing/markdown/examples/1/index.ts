@@ -41,7 +41,7 @@ export default class Example implements OnInit {
 
     public ngOnInit(): void {
         void tuiRawLoad(import('./example.md?raw')).then((data) =>
-            this.control.patchValue(data ?? null),
+            this.control.patchValue(data),
         );
     }
 

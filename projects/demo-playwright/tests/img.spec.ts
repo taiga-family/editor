@@ -24,7 +24,7 @@ test.describe('Img', () => {
         await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
         const locator = page.locator('.t-handle-right-side');
-        const box = await locator?.boundingBox();
+        const box = await locator.boundingBox();
 
         await page.locator('tui-editor-resizable').hover();
         await locator.hover();

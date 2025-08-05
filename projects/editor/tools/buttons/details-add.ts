@@ -21,6 +21,6 @@ export class TuiDetailsAddButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.setDetails;
+        return texts.setDetails;
     }
 }

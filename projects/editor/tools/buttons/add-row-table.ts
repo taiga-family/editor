@@ -71,7 +71,7 @@ export class TuiAddRowTableButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.rowsColumnsManaging;
+        return texts.rowsColumnsManaging;
     }
 
     protected onTableOption(command: number): void {
@@ -84,6 +84,6 @@ export class TuiAddRowTableButtonTool extends TuiToolbarTool {
             [TuiTableCommands.DeleteRow]: () => this.editor?.deleteRow(),
         };
 
-        registry?.[command]?.();
+        registry[command]?.();
     }
 }

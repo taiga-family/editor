@@ -37,7 +37,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
         '(mousedown)': 'onMouseDown($event, $event.target)',
     },
 })
-export class ToolbarHostComponent {
+export class TuiToolbarHostComponent {
     @ViewChild(TuiToolbarNavigationManager)
     private readonly navigationManager?: TuiToolbarNavigationManager;
 

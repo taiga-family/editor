@@ -22,6 +22,6 @@ export class TuiIndentButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.indent;
+        return texts.indent;
     }
 }

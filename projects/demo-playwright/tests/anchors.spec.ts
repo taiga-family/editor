@@ -1,7 +1,7 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {hideScrollbars, tuiGoto} from '../utils';
 
 test.describe('Anchors', () => {
     test.use({viewport: {width: 1280, height: 500}});
@@ -15,6 +15,8 @@ test.describe('Anchors', () => {
     });
 
     test('viewport position', async ({page}) => {
+        await hideScrollbars(page);
+
         for (const anchor of [
             'moser',
             'thirlwell',
@@ -35,6 +37,8 @@ test.describe('Anchors', () => {
     });
 
     test('make anchor', async ({page}) => {
+        await hideScrollbars(page);
+
         const fullExample = page.locator('tui-doc-example#anchors');
         const editor = fullExample.locator('[contenteditable]').first();
 

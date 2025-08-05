@@ -48,7 +48,7 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
 
             console.info(`Write new diff: ${path}`);
         } catch (error) {
-            console.error(`Can't write diff: ${path}`, (error as Error)?.message);
+            console.error(`Can't write diff: ${path}`, (error as Error).message);
         }
     }
 })();

@@ -32,7 +32,7 @@ export abstract class AbstractTuiEditorResizable<
     }
 
     protected get attrs(): T {
-        return (this.node?.attrs as T) || {src: ''};
+        return (this.node.attrs as T | undefined) ?? ({src: ''} as unknown as T);
     }
 
     protected get width(): number | string | null {

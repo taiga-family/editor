@@ -59,6 +59,6 @@ export class TuiTextColorButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.foreColor;
+        return texts.foreColor;
     }
 }

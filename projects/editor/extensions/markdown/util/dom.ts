@@ -12,7 +12,7 @@ export function tuiExtractElement(node: Node): void {
         prepend?.appendChild(parent.firstChild);
     }
 
-    if ((prepend?.childNodes?.length ?? 0) > 0 && prepend) {
+    if ((prepend?.childNodes.length ?? 0) > 0 && prepend) {
         parent?.parentElement?.insertBefore(prepend, parent);
     }
 
@@ -26,7 +26,7 @@ export function tuiExtractElement(node: Node): void {
 export function tuiUnwrapElement(node: Node): void {
     const parent = node.parentNode;
 
-    while (node?.firstChild) {
+    while (node.firstChild) {
         parent?.insertBefore(node.firstChild, node);
     }
 

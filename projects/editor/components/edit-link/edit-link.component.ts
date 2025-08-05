@@ -34,6 +34,10 @@ import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';
 import {TuiShortUrlPipe} from './pipes/short-url.pipe';
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
 @Component({
     standalone: true,
     selector: 'tui-edit-link',
@@ -75,12 +79,14 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 })
 export class TuiEditLink {
     private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    private readonly doc: Document | null = inject(WA_WINDOW)?.document ?? null;
+    private readonly doc: Document | null =
+        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+
     private isOnlyAnchorMode: boolean = this.detectAnchorMode();
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected url: string = this.getHrefOrAnchorId();
     protected edit = !this.url;
-    protected prefix: TuiEditorLinkPrefix = this.makeDefaultPrefix();
+    protected prefix: TuiEditorLinkPrefix | undefined = this.makeDefaultPrefix();
     protected anchorIds = this.getAllAnchorsIds();
     protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
@@ -203,8 +209,9 @@ export class TuiEditLink {
     private makeDefaultPrefix(): TuiEditorLinkPrefix {
         const a = this.getAnchorElement();
         const defaultPrefix =
-            (tuiEditLinkParseUrl(a?.getAttribute('href') ?? '')
-                .prefix as TuiEditorLinkPrefix) || this.defaultProtocol;
+            (tuiEditLinkParseUrl(a?.getAttribute('href') ?? '').prefix as
+                | TuiEditorLinkPrefix
+                | '') || this.defaultProtocol;
 
         if (a) {
             if (this.isOnlyAnchorMode) {
@@ -230,7 +237,7 @@ export class TuiEditLink {
     }
 
     private getFocusedParentElement(): HTMLElement | null {
-        return this.doc?.getSelection?.()?.focusNode?.parentElement || null;
+        return this.doc?.getSelection()?.focusNode?.parentElement || null;
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {

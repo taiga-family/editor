@@ -20,14 +20,14 @@ export interface MyContentsInfo {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MyToc {
-    private readonly document = inject(DOCUMENT);
+    private readonly doc = inject(DOCUMENT);
 
     @Input()
     public contents?: MyContentsInfo | null;
 
     public onItemClick(event: Event, item: TableOfContentDataItem): void {
-        this.document.location.hash = '';
-        this.document.location.hash = item.id;
+        this.doc.location.hash = '';
+        this.doc.location.hash = item.id;
 
         event.preventDefault();
     }

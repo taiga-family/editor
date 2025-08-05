@@ -20,8 +20,8 @@ export default Mark.create({
                 serialize: {
                     open(_: any, mark: ProseMark) {
                         if (
-                            !((this as any).editor as Editor)?.storage.markdown.options
-                                .html
+                            !((this as any).editor as Editor | undefined)?.storage
+                                .markdown.options.html
                         ) {
                             console.warn(
                                 `Tiptap Markdown: "${mark.type.name}" mark is only available in html mode`,
@@ -34,8 +34,8 @@ export default Mark.create({
                     },
                     close(_: any, mark: ProseMark): string {
                         if (
-                            !((this as any).editor as Editor)?.storage.markdown.options
-                                .html
+                            !((this as any).editor as Editor | undefined)?.storage
+                                .markdown.options.html
                         ) {
                             return '';
                         }

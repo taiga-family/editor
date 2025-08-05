@@ -21,6 +21,6 @@ export class TuiAlignJustifyButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.justifyFull;
+        return texts.justifyFull;
     }
 }

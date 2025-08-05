@@ -24,6 +24,12 @@ export type TuiDetailContentOptions = DetailsContentOptions;
  */
 export type TuiSummaryOptions = DetailsSummaryOptions;
 
+interface ServerSideGlobal extends NodeJS.Global {
+    document: Document | undefined;
+}
+
+declare const globalThis: ServerSideGlobal;
+
 // TODO: rename to TuiDetails in v5
 export const TuiDetailsExtension = Details.extend<DetailsOptions>({
     addAttributes() {

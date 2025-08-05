@@ -29,7 +29,7 @@ export class TuiLinkButtonTool extends TuiToolbarTool {
     }
 
     protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts?.link;
+        return texts.link;
     }
 
     protected onLink(url?: string): void {
