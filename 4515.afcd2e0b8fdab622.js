@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[4515],{4515:n=>{n.exports='<tui-editor\n    class="heading"\n    [formControl]="control"\n    [tools]="builtInTools"\n>\n    <ng-container ngProjectAs="tools">\n        <font-size-tool tuiItem />\n    </ng-container>\n</tui-editor>\n\n<tui-content-table [value]="control.value" />\n'}}]);
