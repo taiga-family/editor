@@ -223,14 +223,14 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__undo-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.mouse.click(0, 0);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-20.png');
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[automation-id="toolbar__redo-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.mouse.click(0, 0);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-21.png');
     });
