@@ -44,6 +44,7 @@ declare const globalThis: ServerSideGlobal;
 export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
     addOptions() {
         return {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             ...this.parent?.(),
             inheritOpen: false,
         };
