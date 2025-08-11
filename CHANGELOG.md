@@ -1,3 +1,12 @@
+### [4.35.0](https://github.com/taiga-family/editor/compare/v4.34.0...v4.35.0) (2025-08-11)
+
+### 🚀 Features
+
+- **editor**: `TuiDetailsExtension` add `inheritOpen` flag (#1867)
+  [(b4f29d7)](https://github.com/taiga-family/editor/commit/b4f29d70d7dc608f319bf87458d4c48c8441afd6)
+- always align bottom of dropdown when opening it (#1866)
+  [(543c92c)](https://github.com/taiga-family/editor/commit/543c92cb33a600ba0b196c9a0241b9dab159a2e7)
+
 ### [4.34.0](https://github.com/taiga-family/editor/compare/v4.33.0...v4.34.0) (2025-08-01)
 
 ### 🐞 Bug Fixes
