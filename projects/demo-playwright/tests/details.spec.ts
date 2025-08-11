@@ -51,4 +51,28 @@ test.describe('Details', () => {
         await expect.soft(editor).toHaveScreenshot('Details-09.png');
         await expect.soft(content).toHaveScreenshot('Details-10.png');
     });
+
+    test('default behavior - details are closed', async ({page}) => {
+        await tuiGoto(page, TuiDemoPath.Details);
+
+        const editor = page.locator('tui-doc-example#details tui-editor');
+        const content = page.locator(
+            'tui-doc-example#details tui-content-table tui-editor-socket',
+        );
+
+        await expect.soft(content).toHaveScreenshot('Details-11.png');
+        await expect.soft(editor).toHaveScreenshot('Details-12.png');
+
+        const contenteditable = editor.locator('[contenteditable]').first();
+        const detailsButton = editor
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        await contenteditable.click();
+        await page.keyboard.press('End');
+        await page.keyboard.press('Enter');
+        await detailsButton.click();
+
+        await expect.soft(editor).toHaveScreenshot('Details-13.png');
+    });
 });
