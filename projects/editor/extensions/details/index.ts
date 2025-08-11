@@ -19,6 +19,16 @@ export type TuiDetailsOptions = DetailsOptions;
  */
 export type TuiDetailContentOptions = DetailsContentOptions;
 
+export interface TuiDetailsExtensionOptions extends DetailsOptions {
+    /**
+     * Whether details should be open by default.
+     * When set to false (default), details will be closed initially.
+     * When set to true, details will be open initially.
+     * @default false
+     */
+    inheritOpen?: boolean;
+}
+
 /**
  * @deprecated: use {@link DetailsSummaryOptions}
  */
@@ -31,11 +41,18 @@ interface ServerSideGlobal extends NodeJS.Global {
 declare const globalThis: ServerSideGlobal;
 
 // TODO: rename to TuiDetails in v5
-export const TuiDetailsExtension = Details.extend<DetailsOptions>({
+export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
+    addOptions() {
+        return {
+            ...this.parent?.(),
+            inheritOpen: false,
+        };
+    },
+
     addAttributes() {
         return {
             open: {
-                default: 'open',
+                default: this.options.inheritOpen,
                 keepOnSplit: false,
                 parseHTML: (element) =>
                     element.getAttribute('open') === 'open' ||
@@ -137,6 +154,9 @@ export const TuiDetailsExtension = Details.extend<DetailsOptions>({
                         {from: range.start, to: range.end},
                         {
                             type: this.name,
+                            attrs: {
+                                open: this.options.inheritOpen,
+                            },
                             content: [
                                 {
                                     type: 'detailsSummary',
