@@ -4,28 +4,26 @@
         heading="Details"
         [component]="component1"
         [content]="example1"
-        [description]="detailsDescription"
+    />
+
+    <tui-doc-example
+        id="configure"
+        heading="Configuration"
+        [component]="component2"
+        [content]="example2"
+        [description]="description"
     >
-        <ng-template #detailsDescription>
+        <ng-template #description>
             <p>
                 <code>TuiDetailsExtension</code>
                 has a flag
-                <code>defaultOpen</code>
-                that controls whether details are open by default after insert into
-                <code>tui-editor</code>
-                . Also component has a flag
                 <code>inheritOpen</code>
-                that means that details inside tui-editor-socket reuse open state from
+                which means that the details element will inherit the open state when opened or closed inside
                 <code>tui-editor</code>
+                when rendered in a
+                <code>tui-editor-socket</code>
                 .
             </p>
         </ng-template>
     </tui-doc-example>
-
-    <tui-doc-example
-        id="details-inherit-open"
-        heading="inheritOpen is true"
-        [component]="component2"
-        [content]="example2"
-    />
 </tui-doc-page>
