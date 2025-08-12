@@ -20,7 +20,6 @@ export type TuiDetailsOptions = DetailsOptions;
 export type TuiDetailContentOptions = DetailsContentOptions;
 
 export interface TuiDetailsExtensionOptions extends DetailsOptions {
-    defaultOpen?: boolean;
     inheritOpen?: boolean;
 }
 
@@ -41,7 +40,6 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
         return {
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             ...this.parent?.(),
-            defaultOpen: true,
             inheritOpen: false,
         };
     },
@@ -49,7 +47,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
     addAttributes() {
         return {
             open: {
-                default: this.options.defaultOpen,
+                default: 'open',
                 keepOnSplit: false,
                 parseHTML: (element) =>
                     element.getAttribute('open') === 'open' ||
@@ -152,9 +150,6 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                         {from: range.start, to: range.end},
                         {
                             type: this.name,
-                            attrs: {
-                                open: this.options.defaultOpen,
-                            },
                             content: [
                                 {
                                     type: 'detailsSummary',
