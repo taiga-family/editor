@@ -1,3 +1,10 @@
+### [4.37.0](https://github.com/taiga-family/editor/compare/v4.36.0...v4.37.0) (2025-08-12)
+
+### 🚀 Features
+
+- drop redundant `defaultOpen` property (#1870)
+  [(ec6256a)](https://github.com/taiga-family/editor/commit/ec6256afac059fccaf7ef2a6ee7406b8e4f72619)
+
 ### [4.36.0](https://github.com/taiga-family/editor/compare/v4.35.0...v4.36.0) (2025-08-12)
 
 ### 🚀 Features
