@@ -10,16 +10,22 @@
             <p>
                 <code>TuiDetailsExtension</code>
                 has a flag
+                <code>defaultOpen</code>
+                that controls whether details are open by default after insert into
+                <code>tui-editor</code>
+                . Also component has a flag
                 <code>inheritOpen</code>
-                that controls whether details are open by default.
-            </p>
-            <p>
-                With default
-                <code>inheritOpen: false</code>
-                , details are closed initially. When
-                <code>inheritOpen: true</code>
-                , details are open by default. This affects both existing details and new ones created via the toolbar.
+                that means that details inside tui-editor-socket reuse open state from
+                <code>tui-editor</code>
+                .
             </p>
         </ng-template>
     </tui-doc-example>
+
+    <tui-doc-example
+        id="details-inherit-open"
+        heading="inheritOpen is true"
+        [component]="component2"
+        [content]="example2"
+    />
 </tui-doc-page>

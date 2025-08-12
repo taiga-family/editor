@@ -34,8 +34,9 @@ test.describe('Details', () => {
     test('opening and closing works as it should', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.Details);
 
-        const editor = page.locator('tui-editor');
-        const content = page.locator('tui-content-table tui-editor-socket');
+        const example = page.locator('#details');
+        const editor = example.locator('tui-editor');
+        const content = example.locator('tui-content-table tui-editor-socket');
 
         await expect.soft(content).toHaveScreenshot('Details-06.png');
         await content.locator('details').first().locator('summary').click();
@@ -55,10 +56,9 @@ test.describe('Details', () => {
     test('default behavior - details are closed', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.Details);
 
-        const editor = page.locator('tui-doc-example#details tui-editor');
-        const content = page.locator(
-            'tui-doc-example#details tui-content-table tui-editor-socket',
-        );
+        const example = page.locator('#details');
+        const editor = example.locator('tui-editor');
+        const content = example.locator('tui-content-table tui-editor-socket');
 
         await expect.soft(content).toHaveScreenshot('Details-11.png');
         await expect.soft(editor).toHaveScreenshot('Details-12.png');

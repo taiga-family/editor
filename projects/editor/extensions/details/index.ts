@@ -20,12 +20,7 @@ export type TuiDetailsOptions = DetailsOptions;
 export type TuiDetailContentOptions = DetailsContentOptions;
 
 export interface TuiDetailsExtensionOptions extends DetailsOptions {
-    /**
-     * Whether details should be open by default.
-     * When set to false (default), details will be closed initially.
-     * When set to true, details will be open initially.
-     * @default false
-     */
+    defaultOpen?: boolean;
     inheritOpen?: boolean;
 }
 
@@ -46,6 +41,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
         return {
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             ...this.parent?.(),
+            defaultOpen: true,
             inheritOpen: false,
         };
     },
@@ -53,7 +49,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
     addAttributes() {
         return {
             open: {
-                default: this.options.inheritOpen,
+                default: this.options.defaultOpen,
                 keepOnSplit: false,
                 parseHTML: (element) =>
                     element.getAttribute('open') === 'open' ||
@@ -61,7 +57,8 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     element.hasAttribute('open') ||
                     element.getAttribute('data-opened'), // legacy
                 renderHTML: (attributes) => ({
-                    open: attributes.open ? 'open' : undefined,
+                    open:
+                        attributes.open && this.options.inheritOpen ? 'open' : undefined,
                 }),
             },
         };
@@ -156,7 +153,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                         {
                             type: this.name,
                             attrs: {
-                                open: this.options.inheritOpen,
+                                open: this.options.defaultOpen,
                             },
                             content: [
                                 {
