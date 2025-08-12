@@ -1,3 +1,10 @@
+### [4.36.0](https://github.com/taiga-family/editor/compare/v4.35.0...v4.36.0) (2025-08-12)
+
+### 🚀 Features
+
+- introduce `defaultOpen` and `inheritOpen` for details component (#1869)
+  [(4b15733)](https://github.com/taiga-family/editor/commit/4b1573388bb02868cd11706b1b52f49cc849b6a6)
+
 ### [4.35.0](https://github.com/taiga-family/editor/compare/v4.34.0...v4.35.0) (2025-08-11)
 
 ### 🚀 Features
