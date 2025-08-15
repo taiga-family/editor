@@ -103,7 +103,7 @@
         "@taiga-ui/testing": "4.48.0",
         "@taiga-ui/tsconfig": "0.304.0",
         "@types/express": "5.0.3",
-        "@types/jasmine": "5.1.8",
+        "@types/jasmine": "5.1.9",
         "@types/jest": "29.5.14",
         "@types/markdown-it": "14.1.2",
         "@types/markdown-it-container": "2.0.10",
