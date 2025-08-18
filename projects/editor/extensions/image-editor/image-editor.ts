@@ -1,5 +1,4 @@
 import {NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -7,23 +6,25 @@ import {
     DestroyRef,
     ElementRef,
     inject,
+    type OnInit,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {SafeResourceUrl} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
-import type {TuiDropdownDirective} from '@taiga-ui/core';
-import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
-import type {TuiEditableImage} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
+import {TuiButton, TuiDropdown, type TuiDropdownDirective, TuiIcon} from '@taiga-ui/core';
+import {
+    TUI_EDITOR_OPTIONS,
+    TUI_EDITOR_RESIZE_EVENT,
+    type TuiEditableImage,
+} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components';
-import type {Mark} from '@tiptap/pm/model';
+import {type Mark} from '@tiptap/pm/model';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';

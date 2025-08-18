@@ -1,18 +1,18 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     inject,
     Input,
+    type QueryList,
     ViewChild,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
 import {EMPTY_QUERY, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 import {tuiHintOptionsProvider} from '@taiga-ui/core';
-import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
+import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 
 import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';

@@ -1,6 +1,5 @@
-import type {Attributes} from '@tiptap/core';
-import {mergeAttributes, Node} from '@tiptap/core';
-import type {DOMOutputSpec, Node as ProseMirrorNode} from '@tiptap/pm/model';
+import {type Attributes, mergeAttributes, Node} from '@tiptap/core';
+import {type DOMOutputSpec, type Node as ProseMirrorNode} from '@tiptap/pm/model';
 
 export interface TuiMentionOptions {
     HTMLAttributes: Record<string, any>;

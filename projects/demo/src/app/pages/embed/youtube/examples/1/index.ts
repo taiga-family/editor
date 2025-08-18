@@ -1,8 +1,7 @@
 import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';

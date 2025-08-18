@@ -1,5 +1,4 @@
-import type {Attrs} from '@tiptap/pm/model';
-import {Node as NodeElement} from '@tiptap/pm/model';
+import {type Attrs, Node as NodeElement} from '@tiptap/pm/model';
 
 export function tuiGetNestedNodes(node: NodeElement): Array<Array<Attrs | string>> {
     const nodes: Array<Array<Attrs | string>> = [];

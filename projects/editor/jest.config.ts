@@ -1,4 +1,4 @@
-import type {Config} from 'jest';
+import {type Config} from 'jest';
 
 import rootConfig from '../../jest.config';
 

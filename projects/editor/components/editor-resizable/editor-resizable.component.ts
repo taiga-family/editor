@@ -1,8 +1,8 @@
 import {NgIf} from '@angular/common';
-import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
     EventEmitter,
     Input,
     Output,

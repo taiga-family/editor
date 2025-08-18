@@ -3,11 +3,11 @@ import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/co
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiLoader} from '@taiga-ui/core';
-import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
+    type TuiEditorAttachedFile,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 

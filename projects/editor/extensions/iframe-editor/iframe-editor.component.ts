@@ -5,11 +5,9 @@ import {
     ElementRef,
     inject,
 } from '@angular/core';
-import type {SafeResourceUrl} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {tuiPure} from '@taiga-ui/cdk';
-import type {TuiEditableIframe} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_RESIZE_EVENT, type TuiEditableIframe} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,

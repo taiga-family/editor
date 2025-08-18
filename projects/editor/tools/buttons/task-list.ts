@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';

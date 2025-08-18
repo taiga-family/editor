@@ -1,9 +1,9 @@
 import {DOCUMENT, NgFor, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import type {
-    TableOfContentData,
-    TableOfContentDataItem,
+import {
+    type TableOfContentData,
+    type TableOfContentDataItem,
 } from '@tiptap/extension-table-of-contents';
 
 export interface MyContentsInfo {

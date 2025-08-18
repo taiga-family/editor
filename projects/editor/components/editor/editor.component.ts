@@ -1,5 +1,4 @@
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -13,6 +12,7 @@ import {
     inject,
     Input,
     NgZone,
+    type OnDestroy,
     Output,
     signal,
     TemplateRef,
@@ -21,13 +21,14 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiBooleanHandler, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_TRUE_HANDLER,
     tuiAutoFocusOptionsProvider,
+    type TuiBooleanHandler,
     TuiControl,
     tuiInjectElement,
+    type TuiValueTransformer,
     tuiWatch,
     tuiZonefree,
 } from '@taiga-ui/cdk';
@@ -45,20 +46,24 @@ import {
     tuiScrollbarOptionsProvider,
     TuiTextfieldDropdownDirective,
 } from '@taiga-ui/core';
-import type {AbstractTuiEditor, TuiEditorAttachedFile} from '@taiga-ui/editor/common';
 import {
+    type AbstractTuiEditor,
     TIPTAP_EDITOR,
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_RESIZE_EVENT,
     TUI_EDITOR_VALUE_TRANSFORMER,
+    type TuiEditorAttachedFile,
 } from '@taiga-ui/editor/common';
 import {TuiEditLink} from '@taiga-ui/editor/components/edit-link';
 import {TuiEditorSocket} from '@taiga-ui/editor/components/editor-socket';
 import {TuiToolbar} from '@taiga-ui/editor/components/toolbar';
 import {TuiToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
 import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import type {TuiSelectionState} from '@taiga-ui/editor/utils';
-import {tuiGetSelectionState, tuiIsSafeLinkRange} from '@taiga-ui/editor/utils';
+import {
+    tuiGetSelectionState,
+    tuiIsSafeLinkRange,
+    type TuiSelectionState,
+} from '@taiga-ui/editor/utils';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 

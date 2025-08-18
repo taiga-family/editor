@@ -1,5 +1,4 @@
-import type {ViewportSize} from '@playwright/test';
-import {defineConfig, devices} from '@playwright/test';
+import {defineConfig, devices, type ViewportSize} from '@playwright/test';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 

@@ -3,11 +3,10 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
-import type {TableOfContentData} from '@tiptap/extension-table-of-contents';
+import {type TableOfContentData} from '@tiptap/extension-table-of-contents';
 import {Subject} from 'rxjs';
 
-import type {MyContentsInfo} from './my-toc';
-import {MyToc} from './my-toc';
+import {type MyContentsInfo, MyToc} from './my-toc';
 
 @Component({
     standalone: true,

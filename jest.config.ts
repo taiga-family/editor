@@ -1,6 +1,6 @@
 import {resolve} from 'node:path';
 
-import type {Config} from 'jest';
+import {type Config} from 'jest';
 import {pathsToModuleNameMapper} from 'ts-jest';
 
 process.env.TZ = 'Europe/Moscow';

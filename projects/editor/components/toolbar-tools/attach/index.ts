@@ -6,7 +6,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {AbstractTuiEditor, TuiEditorAttachedFile} from '@taiga-ui/editor/common';
+import {
+    type AbstractTuiEditor,
+    type TuiEditorAttachedFile,
+} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiAttachButtonTool} from '@taiga-ui/editor/tools';
 

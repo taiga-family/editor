@@ -1,8 +1,8 @@
 import {JsonPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import type {AbstractTuiEditor} from '@taiga-ui/editor';
 import {
+    type AbstractTuiEditor,
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_EXTENSIONS,

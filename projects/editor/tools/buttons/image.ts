@@ -1,15 +1,14 @@
-import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
+    type ElementRef,
     inject,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiEditorOptions} from '@taiga-ui/editor/common';
-import {TUI_IMAGE_LOADER} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
+import {TUI_IMAGE_LOADER, type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {take} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';

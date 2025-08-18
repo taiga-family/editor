@@ -1,9 +1,9 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import type {Observable} from 'rxjs';
+import {type TuiHandler} from '@taiga-ui/cdk';
+import {type Observable} from 'rxjs';
 
-import type {TuiEditorAttachedFile, TuiEditorAttachOptions} from './attached';
+import {type TuiEditorAttachedFile, type TuiEditorAttachOptions} from './attached';
 
 /**
  * files loader options

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, from, map} from 'rxjs';
+import {type TuiEditorAttachedFile} from '@taiga-ui/editor';
+import {BehaviorSubject, from, map, type Observable} from 'rxjs';
 
 /**
  * @description:

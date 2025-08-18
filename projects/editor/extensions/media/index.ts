@@ -1,7 +1,7 @@
 import {TUI_DEFAULT_HTML5_MEDIA_ATTRIBUTES} from '@taiga-ui/editor/common';
 import {tuiGetNestedNodes, tuiParseNodeAttributes} from '@taiga-ui/editor/utils';
 import {mergeAttributes, Node} from '@tiptap/core';
-import type {NodeSpec} from '@tiptap/pm/model';
+import {type NodeSpec} from '@tiptap/pm/model';
 
 export const TuiAudio = Node.create({
     name: 'audio',

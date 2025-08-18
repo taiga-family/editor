@@ -1,6 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {LOCAL_STORAGE} from '@ng-web-apis/common';

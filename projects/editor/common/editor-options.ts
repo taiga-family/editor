@@ -1,8 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk';
-import type {EditorOptions} from '@tiptap/core';
+import {type EditorOptions} from '@tiptap/core';
 
 import {
     EDITOR_BLANK_COLOR,
@@ -10,9 +9,11 @@ import {
 } from './default-editor-colors';
 import {TUI_EDITOR_DEFAULT_TOOLS} from './default-editor-tools';
 import {tuiDefaultFontOptionsHandler} from './default-font-options-handler';
-import type {TuiEditorLinkOptions} from './default-link-options-handler';
-import {TUI_DEFAULT_LINK_OPTIONS} from './default-link-options-handler';
-import type {TuiEditorToolType} from './editor-tool';
+import {
+    TUI_DEFAULT_LINK_OPTIONS,
+    type TuiEditorLinkOptions,
+} from './default-link-options-handler';
+import {type TuiEditorToolType} from './editor-tool';
 
 export interface TuiEditorOptions extends Partial<EditorOptions> {
     readonly blankColor: string;

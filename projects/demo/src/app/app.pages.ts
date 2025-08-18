@@ -1,4 +1,4 @@
-import type {TuiDocRoutePages} from '@taiga-ui/addon-doc';
+import {type TuiDocRoutePages} from '@taiga-ui/addon-doc';
 
 import {TuiDemoPath} from './shared/routes';
 

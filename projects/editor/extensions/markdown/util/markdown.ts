@@ -1,5 +1,4 @@
-import type {StateInline} from 'markdown-it';
-import markdownIt from 'markdown-it';
+import markdownIt, {type StateInline} from 'markdown-it';
 
 const md = markdownIt();
 

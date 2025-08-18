@@ -1,4 +1,4 @@
-import type {Editor} from '@tiptap/core';
+import {type Editor} from '@tiptap/core';
 import MarkdownIt from 'markdown-it';
 
 import {tuiGetMarkdownSpec} from '../extensions/util';

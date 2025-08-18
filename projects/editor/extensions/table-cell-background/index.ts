@@ -1,5 +1,4 @@
-import type {Command, GlobalAttributes} from '@tiptap/core';
-import {Extension} from '@tiptap/core';
+import {type Command, Extension, type GlobalAttributes} from '@tiptap/core';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

@@ -1,8 +1,11 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import type {AbstractTuiEditor} from '@taiga-ui/editor';
-import {TUI_EDITOR_OPTIONS, TuiTiptapEditorService} from '@taiga-ui/editor';
+import {
+    type AbstractTuiEditor,
+    TUI_EDITOR_OPTIONS,
+    TuiTiptapEditorService,
+} from '@taiga-ui/editor';
 import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map, share} from 'rxjs';
 

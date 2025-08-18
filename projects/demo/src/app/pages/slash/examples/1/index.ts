@@ -1,11 +1,11 @@
 import {NgForOf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     ElementRef,
     inject,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';

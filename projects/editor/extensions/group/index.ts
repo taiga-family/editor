@@ -1,6 +1,5 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/editor/utils';
-import type {RawCommands} from '@tiptap/core';
-import {mergeAttributes, Node} from '@tiptap/core';
+import {mergeAttributes, Node, type RawCommands} from '@tiptap/core';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {

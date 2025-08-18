@@ -1,4 +1,4 @@
-import type {TuiLinkAttributes} from './tui-link-attributes';
+import {type TuiLinkAttributes} from './tui-link-attributes';
 
 export interface TuiEditorAttachedFile<T = TuiLinkAttributes> {
     attrs?: T;

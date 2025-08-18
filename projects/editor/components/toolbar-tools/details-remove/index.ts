@@ -1,12 +1,19 @@
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    type OnInit,
+} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
+import {
+    type AbstractTuiEditor,
+    TUI_EDITOR_OPTIONS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
+} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiDetailsRemoveButtonTool} from '@taiga-ui/editor/tools';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 /**
  * @deprecated use {@link TuiDetailsRemoveButtonTool}

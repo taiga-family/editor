@@ -1,9 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {type TuiHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {map, type Observable} from 'rxjs';
 
 /**
  * Image loader handler

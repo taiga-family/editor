@@ -1,26 +1,23 @@
 import {inject, Injectable} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk';
-import type {
-    TuiEditableIframe,
-    TuiEditableImage,
-    TuiEditorAttachedFile,
-    TuiSelectionSnapshot,
-    TuiSetValueOption,
-    TuiYoutubeOptions,
-} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditor,
     EDITOR_BLANK_COLOR,
     TIPTAP_EDITOR,
     TUI_EDITOR_OPTIONS,
+    type TuiEditableIframe,
+    type TuiEditableImage,
+    type TuiEditorAttachedFile,
+    type TuiSelectionSnapshot,
+    type TuiSetValueOption,
+    type TuiYoutubeOptions,
 } from '@taiga-ui/editor/common';
 import type * as TuiEditorTypes from '@taiga-ui/editor/common/types';
 import {tuiGetMarkRange, tuiParseStyle} from '@taiga-ui/editor/utils';
-import type {Editor, Range} from '@tiptap/core';
-import type {MarkType} from '@tiptap/pm/model';
+import {type Editor, type Range} from '@tiptap/core';
+import {type MarkType} from '@tiptap/pm/model';
 import {EditorState} from '@tiptap/pm/state';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 
 import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';
 

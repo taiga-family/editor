@@ -17,10 +17,14 @@ import {
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
-import type {TuiEditorFontOption, TuiEditorOptions} from '@taiga-ui/editor/common';
-import {EDITOR_BLANK_COLOR, TUI_EDITOR_FONT_OPTIONS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    EDITOR_BLANK_COLOR,
+    TUI_EDITOR_FONT_OPTIONS,
+    type TuiEditorFontOption,
+    type TuiEditorOptions,
+} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';

@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
+import {type AbstractTuiEditor, TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiPaintButtonTool} from '@taiga-ui/editor/tools';
 
