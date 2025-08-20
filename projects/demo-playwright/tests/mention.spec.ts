@@ -9,9 +9,12 @@ test.describe('Mention', () => {
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
+        await page.waitForTimeout(300);
+
         await page.keyboard.press('Backspace');
 
         await page.keyboard.type('@');
+        await page.waitForTimeout(300);
 
         await expect
             .soft(page.locator('.t-demo').first())
