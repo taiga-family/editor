@@ -10,6 +10,7 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -83,6 +84,7 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
 export class TuiFontStyleButtonTool extends TuiToolbarTool {
     private toolsSet = new Set(this.options.tools);
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
     protected readonly editorTool = TuiEditorTool;
 
     @Input()
@@ -103,7 +105,7 @@ export class TuiFontStyleButtonTool extends TuiToolbarTool {
         return icons.fontStylePreview;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.fontStyle;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.fontStyle ?? '');
     }
 }

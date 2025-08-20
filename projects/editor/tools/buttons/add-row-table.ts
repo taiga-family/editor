@@ -70,8 +70,8 @@ export class TuiAddRowTableButtonTool extends TuiToolbarTool {
         return icons.addRowTable;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.rowsColumnsManaging;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.rowsColumnsManaging ?? '';
     }
 
     protected onTableOption(command: number): void {

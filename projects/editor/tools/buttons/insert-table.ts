@@ -11,6 +11,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     tuiGetViewportWidth,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
@@ -93,6 +94,7 @@ const MIN_DISTANCE_PX = 70;
 export class TuiInsertTableButtonTool extends TuiToolbarTool {
     private readonly win = inject(WINDOW);
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     protected tableSize = {
         rows: 1,
@@ -116,8 +118,8 @@ export class TuiInsertTableButtonTool extends TuiToolbarTool {
         return icons.insertTable;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.insertTable;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.insertTable ?? '');
     }
 
     protected addTable({rows, cols}: {cols: number; rows: number}): void {

@@ -11,6 +11,7 @@ import {
     TuiDataListComponent,
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiOption,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
@@ -54,8 +55,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiCodeButtonTool extends TuiToolbarTool {
     protected readonly codeOptionsTexts$ = inject(TUI_EDITOR_CODE_OPTIONS);
-
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
@@ -66,8 +67,8 @@ export class TuiCodeButtonTool extends TuiToolbarTool {
         return icons.code;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.code;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.code ?? '');
     }
 
     protected onCode(isCodeBlock: boolean): void {

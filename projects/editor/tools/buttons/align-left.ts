@@ -20,7 +20,7 @@ export class TuiAlignLeftButtonTool extends TuiToolbarTool {
         return icons.textAlignLeft;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.justifyLeft;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.justifyLeft ?? '';
     }
 }

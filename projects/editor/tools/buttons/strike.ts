@@ -20,7 +20,7 @@ export class TuiStrikeButtonTool extends TuiToolbarTool {
         return icons.fontStyleStrike;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.strikeThrough;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.strikeThrough ?? '';
     }
 }

@@ -28,8 +28,8 @@ export class TuiLinkButtonTool extends TuiToolbarTool {
         return icons.link;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.link;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.link ?? '';
     }
 
     protected onLink(url?: string): void {

@@ -10,6 +10,7 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -52,6 +53,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     @Input()
     public colors: ReadonlyMap<string, string> = this.options.colors;
@@ -73,12 +75,12 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
         return icons.paint;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return (
-            (this.editor?.isActive('group') && texts.hiliteGroup) ||
-            (this.editor?.isActive('table') && texts.cellColor) ||
-            ''
-        );
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open()
+            ? ''
+            : (this.editor?.isActive('group') && (texts?.hiliteGroup ?? '')) ||
+                  (this.editor?.isActive('table') && (texts?.cellColor ?? '')) ||
+                  '';
     }
 
     protected setCellColor(color: string): void {

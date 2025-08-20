@@ -15,7 +15,8 @@ jobs:
           persist-credentials: false
       - uses: taiga-family/ci/actions/setup/variables@v1.136.0
       - uses: taiga-family/ci/actions/setup/node@v1.136.0
-      - run: |
+      - name: Run linting tools
+        run: |
           npm run cspell
 
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then

@@ -55,8 +55,8 @@ export class TuiAttachButtonTool extends TuiToolbarTool {
         return icons.attach;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.attach;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.attach ?? '';
     }
 
     protected onAttach(input: HTMLInputElement): void {

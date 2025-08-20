@@ -20,7 +20,7 @@ export class TuiClearButtonTool extends TuiToolbarTool {
         return icons.clear;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.clear;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.clear ?? '';
     }
 }

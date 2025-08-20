@@ -61,7 +61,7 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
 
     protected getDisableState?(): boolean;
 
-    protected abstract getIcon(icons?: TuiEditorOptions['icons']): string;
+    protected abstract getIcon(icons: TuiEditorOptions['icons']): string;
 
     protected abstract getHint(options?: TuiLanguageEditor['toolbarTools']): string;
 

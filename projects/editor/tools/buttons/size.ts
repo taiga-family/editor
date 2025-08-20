@@ -12,6 +12,7 @@ import {
     TuiDataListComponent,
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiOption,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
@@ -70,6 +71,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiFontSizeButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     protected readonly fontsOptions$ = inject(TUI_EDITOR_FONT_OPTIONS).pipe(
         map((texts) => this.options.fontOptions(texts)),
@@ -84,8 +86,8 @@ export class TuiFontSizeButtonTool extends TuiToolbarTool {
         return icons.fontSize;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.font;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.font ?? '');
     }
 
     protected setFontOption({headingLevel, px}: Partial<TuiEditorFontOption>): void {

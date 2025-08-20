@@ -8,6 +8,7 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -70,6 +71,7 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
 })
 export class TuiListButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
@@ -80,7 +82,7 @@ export class TuiListButtonTool extends TuiToolbarTool {
         return icons.listPreview;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.list;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.list ?? '');
     }
 }

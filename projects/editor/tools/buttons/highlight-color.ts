@@ -11,6 +11,7 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -55,6 +56,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     @Input()
     public colors: ReadonlyMap<string, string> = inject(TUI_EDITOR_OPTIONS).colors;
@@ -72,7 +74,7 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
         return icons.textHilite;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.backColor;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.backColor ?? '');
     }
 }

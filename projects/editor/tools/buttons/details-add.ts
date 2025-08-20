@@ -12,7 +12,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor.setDetails()',
+        '(click)': 'editor?.setDetails()',
     },
 })
 export class TuiDetailsAddButtonTool extends TuiToolbarTool {
@@ -20,7 +20,7 @@ export class TuiDetailsAddButtonTool extends TuiToolbarTool {
         return icons.detailsAdd;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.setDetails;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.setDetails ?? '';
     }
 }
