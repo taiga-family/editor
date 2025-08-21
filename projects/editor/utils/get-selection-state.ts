@@ -1,4 +1,4 @@
-import type {AbstractTuiEditor} from '@taiga-ui/editor/common';
+import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 
 export interface TuiSelectionState {
     before: string;

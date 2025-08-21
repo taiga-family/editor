@@ -16,16 +16,14 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
-import type {
-    AbstractTuiEditor,
-    TuiEditorLinkPrefix,
-    TuiEditorLinkProtocol,
-} from '@taiga-ui/editor/common';
 import {
+    type AbstractTuiEditor,
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_HTTPS_PREFIX,
     TUI_EDITOR_LINK_TEXTS,
     TUI_EDITOR_OPTIONS,
+    type TuiEditorLinkPrefix,
+    type TuiEditorLinkProtocol,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiInputInline} from '@taiga-ui/kit';

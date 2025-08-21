@@ -8,20 +8,18 @@ import {
     ViewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
-import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
     TuiEditor,
+    type TuiEditorAttachedFile,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import type {Observable} from 'rxjs';
-import {map, of, switchMap} from 'rxjs';
+import {map, type Observable, of, switchMap} from 'rxjs';
 
 @Injectable({
     providedIn: 'root',

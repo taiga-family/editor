@@ -9,15 +9,13 @@ import {
     Output,
     ViewEncapsulation,
 } from '@angular/core';
-import type {
-    AbstractTuiEditor,
-    TuiEditorAttachedFile,
-    TuiEditorToolType,
-} from '@taiga-ui/editor/common';
 import {
+    type AbstractTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
     TUI_EDITOR_OPTIONS,
+    type TuiEditorAttachedFile,
     TuiEditorTool,
+    type TuiEditorToolType,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {

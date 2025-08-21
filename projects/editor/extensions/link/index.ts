@@ -4,8 +4,7 @@ import {
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
-import type {KeyboardShortcutCommand} from '@tiptap/core';
-import {mergeAttributes} from '@tiptap/core';
+import {type KeyboardShortcutCommand, mergeAttributes} from '@tiptap/core';
 import {Link} from '@tiptap/extension-link';
 
 export const TuiLink = Link.extend({

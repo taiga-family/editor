@@ -1,5 +1,4 @@
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';

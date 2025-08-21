@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {TuiProgress} from '@taiga-ui/kit';
-import type {CharacterCountStorage} from '@tiptap/extension-character-count';
+import {type CharacterCountStorage} from '@tiptap/extension-character-count';
 
 const limit = 280;
 

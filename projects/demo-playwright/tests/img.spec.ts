@@ -25,6 +25,7 @@ test.describe('Img', () => {
 
         const locator = page.locator('.t-handle-right-side');
         const box = await locator.boundingBox();
+        const resizableImage = page.locator('[id="resizable-image"] .t-demo');
 
         await page.locator('tui-editor-resizable').hover();
         await locator.hover();
@@ -38,18 +39,16 @@ test.describe('Img', () => {
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
         );
 
-        await expect
-            .soft(page.locator('[id="resizable-image"] .t-demo'))
-            .toHaveScreenshot('Img-03.png');
+        await expect.soft(resizableImage).toHaveScreenshot('Img-03.png');
 
         await page.mouse.move(
             (box?.x ?? 0) + (box?.width ?? 0) / 2 - 150,
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
         );
 
-        await expect
-            .soft(page.locator('[id="resizable-image"] .t-demo'))
-            .toHaveScreenshot('Img-04.png');
+        await page.mouse.click(0, 0);
+
+        await expect.soft(resizableImage).toHaveScreenshot('Img-04.png');
     });
 
     test('image as link', async ({page}) => {

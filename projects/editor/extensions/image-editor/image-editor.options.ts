@@ -1,6 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
-import type {TuiImageEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiImageEditorOptions} from '@taiga-ui/editor/common';
 
 /**
  * Size of resizable image inside editor

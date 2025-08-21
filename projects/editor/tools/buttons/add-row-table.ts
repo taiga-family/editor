@@ -8,9 +8,8 @@ import {
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
-import type {TuiEditorOptions} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_TABLE_COMMANDS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
+import {TUI_EDITOR_TABLE_COMMANDS, type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';

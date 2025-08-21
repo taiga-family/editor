@@ -4,7 +4,6 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import type {TuiEditorToolType} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_DEFAULT_EXTENSIONS,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -12,6 +11,7 @@ import {
     TUI_IMAGE_EDITOR_OPTIONS,
     TuiEditor,
     TuiEditorTool,
+    type TuiEditorToolType,
 } from '@taiga-ui/editor';
 import {TuiRadioList} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';

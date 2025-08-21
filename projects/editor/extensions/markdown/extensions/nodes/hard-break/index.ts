@@ -1,5 +1,5 @@
 import {Node} from '@tiptap/core';
-import type {Node as ProseNode} from '@tiptap/pm/model';
+import {type Node as ProseNode} from '@tiptap/pm/model';
 
 import HTMLNode from '../html';
 

@@ -1,16 +1,22 @@
 import {DOCUMENT} from '@angular/common';
-import type {ComponentRef, Injector, Type} from '@angular/core';
-import {ApplicationRef, ComponentFactoryResolver, ElementRef} from '@angular/core';
-import type {
-    DecorationWithType,
-    Editor,
-    NodeViewProps,
-    NodeViewRendererOptions,
-    NodeViewRendererProps,
+import {
+    ApplicationRef,
+    ComponentFactoryResolver,
+    type ComponentRef,
+    ElementRef,
+    type Injector,
+    type Type,
+} from '@angular/core';
+import {
+    type DecorationWithType,
+    type Editor,
+    NodeView,
+    type NodeViewProps,
+    type NodeViewRendererOptions,
+    type NodeViewRendererProps,
 } from '@tiptap/core';
-import {NodeView} from '@tiptap/core';
-import type {Node as ProseMirrorNode} from '@tiptap/pm/model';
-import type {Decoration, DecorationSource, EditorView} from '@tiptap/pm/view';
+import {type Node as ProseMirrorNode} from '@tiptap/pm/model';
+import {type Decoration, type DecorationSource, type EditorView} from '@tiptap/pm/view';
 
 /**
  * Copied from

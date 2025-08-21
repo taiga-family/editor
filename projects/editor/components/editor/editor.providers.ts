@@ -1,6 +1,5 @@
 import {Renderer2} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiEditorOptions} from '@taiga-ui/editor/common';
 import {
     INITIALIZATION_TIPTAP_CONTAINER,
     LAZY_EDITOR_EXTENSIONS,
@@ -8,11 +7,18 @@ import {
     TIPTAP_EDITOR,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_OPTIONS,
+    type TuiEditorOptions,
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import type {Editor, Extension, Mark, Node} from '@tiptap/core';
-import type {Observable} from 'rxjs';
-import {combineLatest, map, ReplaySubject, shareReplay, take} from 'rxjs';
+import {type Editor, type Extension, type Mark, type Node} from '@tiptap/core';
+import {
+    combineLatest,
+    map,
+    type Observable,
+    ReplaySubject,
+    shareReplay,
+    take,
+} from 'rxjs';
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';
 

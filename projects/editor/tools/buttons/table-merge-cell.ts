@@ -1,8 +1,7 @@
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, type OnInit, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiEditorOptions} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
+import {type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';

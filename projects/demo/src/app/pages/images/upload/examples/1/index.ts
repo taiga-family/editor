@@ -6,8 +6,12 @@ import {
     Injector,
     ViewChild,
 } from '@angular/core';
-import type {AbstractControl, ValidationErrors} from '@angular/forms';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    type AbstractControl,
+    FormControl,
+    ReactiveFormsModule,
+    type ValidationErrors,
+} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
 import {TuiError, TuiLoader} from '@taiga-ui/core';

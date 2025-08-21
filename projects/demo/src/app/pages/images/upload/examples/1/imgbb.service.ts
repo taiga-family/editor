@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, from, map} from 'rxjs';
+import {BehaviorSubject, from, map, type Observable} from 'rxjs';
 
 /**
  * @description:

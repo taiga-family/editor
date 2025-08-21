@@ -1,13 +1,12 @@
 import {Directive} from '@angular/core';
-import type {Editor, Range} from '@tiptap/core';
-import type {MarkType} from '@tiptap/pm/model';
-import type {EditorState} from '@tiptap/pm/state';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {type Editor, type Range} from '@tiptap/core';
+import {type MarkType} from '@tiptap/pm/model';
+import {type EditorState} from '@tiptap/pm/state';
+import {BehaviorSubject, type Observable, Subject} from 'rxjs';
 
-import type {TuiEditorAttachedFile} from './attached';
-import type {TuiEditableIframe} from './iframe';
-import type {TuiYoutubeOptions} from './youtube';
+import {type TuiEditorAttachedFile} from './attached';
+import {type TuiEditableIframe} from './iframe';
+import {type TuiYoutubeOptions} from './youtube';
 
 export interface TuiSelectionSnapshot {
     anchor: number;

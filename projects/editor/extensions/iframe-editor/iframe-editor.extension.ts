@@ -1,15 +1,16 @@
-import type {Injector} from '@angular/core';
-import type {TuiEditableIframe} from '@taiga-ui/editor/common';
+import {type Injector} from '@angular/core';
+import {type TuiEditableIframe} from '@taiga-ui/editor/common';
 import {TuiNodeView} from '@taiga-ui/editor/extensions/tiptap-node-view';
-import type {
-    Attribute,
-    NodeViewRenderer,
-    NodeViewRendererProps,
-    RawCommands,
+import {
+    type Attribute,
+    mergeAttributes,
+    Node,
+    type NodeViewRenderer,
+    type NodeViewRendererProps,
+    type RawCommands,
 } from '@tiptap/core';
-import {mergeAttributes, Node} from '@tiptap/core';
-import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
-import type {NodeView} from '@tiptap/pm/view';
+import {type DOMOutputSpec, type NodeSpec} from '@tiptap/pm/model';
+import {type NodeView} from '@tiptap/pm/view';
 
 import {TuiIframeEditor} from './iframe-editor.component';
 

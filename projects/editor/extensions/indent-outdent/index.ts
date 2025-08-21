@@ -1,5 +1,4 @@
-import type {Editor, KeyboardShortcutCommand} from '@tiptap/core';
-import {Extension} from '@tiptap/core';
+import {type Editor, Extension, type KeyboardShortcutCommand} from '@tiptap/core';
 
 export function tuiIsListActive(editor: Editor): boolean {
     return (

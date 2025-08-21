@@ -1,20 +1,19 @@
-import type {Injector} from '@angular/core';
+import {type Injector} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import type {TuiEditableImage} from '@taiga-ui/editor/common';
-import {TUI_IMAGE_LOADER} from '@taiga-ui/editor/common';
+import {TUI_IMAGE_LOADER, type TuiEditableImage} from '@taiga-ui/editor/common';
 import {TuiNodeView} from '@taiga-ui/editor/extensions/tiptap-node-view';
-import type {
-    Attribute,
-    Node,
-    NodeViewRenderer,
-    NodeViewRendererProps,
-    RawCommands,
+import {
+    type Attribute,
+    mergeAttributes,
+    type Node,
+    type NodeViewRenderer,
+    type NodeViewRendererProps,
+    type RawCommands,
 } from '@tiptap/core';
-import {mergeAttributes} from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
-import type {DOMOutputSpec, NodeSpec} from '@tiptap/pm/model';
+import {type DOMOutputSpec, type NodeSpec} from '@tiptap/pm/model';
 import {Plugin} from '@tiptap/pm/state';
-import type {EditorView, NodeView} from '@tiptap/pm/view';
+import {type EditorView, type NodeView} from '@tiptap/pm/view';
 import {take, takeWhile} from 'rxjs';
 
 import {TuiImageEditor} from './image-editor';

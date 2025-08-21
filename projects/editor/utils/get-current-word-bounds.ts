@@ -1,5 +1,5 @@
-import type {Editor, Range} from '@tiptap/core';
-import type {ResolvedPos} from '@tiptap/pm/model';
+import {type Editor, type Range} from '@tiptap/core';
+import {type ResolvedPos} from '@tiptap/pm/model';
 
 export function tuiGetCurrentWordBounds(editor: Editor): Range {
     const {state} = editor;

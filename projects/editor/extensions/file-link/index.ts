@@ -1,4 +1,7 @@
-import type {TuiEditorAttachedFile, TuiLinkAttributes} from '@taiga-ui/editor/common';
+import {
+    type TuiEditorAttachedFile,
+    type TuiLinkAttributes,
+} from '@taiga-ui/editor/common';
 import {Extension} from '@tiptap/core';
 
 declare module '@tiptap/core' {

@@ -4,8 +4,7 @@ import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
-import type {User} from './mention';
-import {Mentions} from './mention';
+import {Mentions, type User} from './mention';
 
 @Component({
     standalone: true,

@@ -8,8 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_SANITIZER} from '@taiga-ui/editor/common';
 import {TuiTiptapEditor} from '@taiga-ui/editor/directives';

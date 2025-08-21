@@ -79,6 +79,7 @@ test.describe('Anchors', () => {
 
         await page.getByRole('button', {name: '#Hello'}).click();
         await page.waitForTimeout(1000);
+        await page.mouse.click(0, 0);
 
         await expect.soft(fullExample).toHaveScreenshot('Anchors-07.png');
 

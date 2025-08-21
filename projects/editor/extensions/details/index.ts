@@ -1,13 +1,15 @@
 import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
 import {tuiDeleteNode} from '@taiga-ui/editor/utils';
-import type {RawCommands} from '@tiptap/core';
-import {mergeAttributes} from '@tiptap/core';
-import type {DetailsOptions} from '@tiptap/extension-details';
-import {Details} from '@tiptap/extension-details';
-import type {DetailsContentOptions} from '@tiptap/extension-details-content';
-import {DetailsContent} from '@tiptap/extension-details-content';
-import type {DetailsSummaryOptions} from '@tiptap/extension-details-summary';
-import {DetailsSummary} from '@tiptap/extension-details-summary';
+import {mergeAttributes, type RawCommands} from '@tiptap/core';
+import {Details, type DetailsOptions} from '@tiptap/extension-details';
+import {
+    DetailsContent,
+    type DetailsContentOptions,
+} from '@tiptap/extension-details-content';
+import {
+    DetailsSummary,
+    type DetailsSummaryOptions,
+} from '@tiptap/extension-details-summary';
 
 /**
  * @deprecated use {@link DetailsOptions}

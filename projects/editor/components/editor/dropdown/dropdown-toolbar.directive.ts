@@ -1,22 +1,28 @@
-import type {OnDestroy} from '@angular/core';
-import {Directive, ElementRef, inject, Input, ViewContainerRef} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    inject,
+    Input,
+    type OnDestroy,
+    ViewContainerRef,
+} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     EMPTY_CLIENT_RECT,
     TUI_RANGE,
     TUI_TRUE_HANDLER,
+    type TuiBooleanHandler,
     tuiIsElement,
     tuiIsString,
     tuiIsTextNode,
 } from '@taiga-ui/cdk';
-import type {TuiRectAccessor} from '@taiga-ui/core';
 import {
     TUI_SELECTION_STREAM,
     tuiAsDriver,
     tuiAsRectAccessor,
     TuiDriver,
     tuiGetWordRange,
+    type TuiRectAccessor,
 } from '@taiga-ui/core';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 

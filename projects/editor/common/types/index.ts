@@ -1,12 +1,12 @@
 /* eslint-disable import/no-named-as-default */
-import type {
-    TuiEditableIframe,
-    TuiEditableImage,
-    TuiEditorAttachedFile,
+import {
+    type TuiEditableIframe,
+    type TuiEditableImage,
+    type TuiEditorAttachedFile,
 } from '@taiga-ui/editor/common';
 import type BulletList from '@tiptap/extension-bullet-list';
 import type Highlight from '@tiptap/extension-highlight';
-import type {Image} from '@tiptap/extension-image';
+import {type Image} from '@tiptap/extension-image';
 import type Link from '@tiptap/extension-link';
 import type ListItem from '@tiptap/extension-list-item';
 import type Subscript from '@tiptap/extension-subscript';

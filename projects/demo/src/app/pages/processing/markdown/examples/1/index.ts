@@ -1,6 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {tuiRawLoad} from '@taiga-ui/addon-doc';

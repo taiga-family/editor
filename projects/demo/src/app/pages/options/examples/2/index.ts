@@ -2,12 +2,12 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiAlertService} from '@taiga-ui/core';
-import type {TuiEditorOptions} from '@taiga-ui/editor';
 import {
     TUI_EDITOR_DEFAULT_OPTIONS,
     TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_OPTIONS,
     TuiEditor,
+    type TuiEditorOptions,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 

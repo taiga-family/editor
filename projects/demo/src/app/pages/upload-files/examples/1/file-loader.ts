@@ -1,8 +1,7 @@
-import type {TuiEditorAttachedFile} from '@taiga-ui/editor';
-import type {Observable} from 'rxjs';
-import {finalize, forkJoin} from 'rxjs';
+import {type TuiEditorAttachedFile} from '@taiga-ui/editor';
+import {finalize, forkJoin, type Observable} from 'rxjs';
 
-import type {FileIoService} from './filesio.service';
+import {type FileIoService} from './filesio.service';
 
 export function fileLoader(
     service: FileIoService,

@@ -1,6 +1,5 @@
-import type {Editor} from '@tiptap/core';
-import {Node} from '@tiptap/core';
-import type {Node as ProseNode} from '@tiptap/pm/model';
+import {type Editor, Node} from '@tiptap/core';
+import {type Node as ProseNode} from '@tiptap/pm/model';
 
 export default Node.create({
     name: 'bulletList',

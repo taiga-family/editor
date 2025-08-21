@@ -1,4 +1,3 @@
-import type {OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {
     ChangeDetectorRef,
     computed,
@@ -6,17 +5,30 @@ import {
     Directive,
     inject,
     Input,
+    type OnChanges,
+    type OnDestroy,
     signal,
+    type SimpleChanges,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
 import {TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
-import type {AbstractTuiEditor, TuiEditorOptions} from '@taiga-ui/editor/common';
-import {TUI_EDITOR_OPTIONS, TUI_EDITOR_TOOLBAR_TEXTS} from '@taiga-ui/editor/common';
+import {
+    type AbstractTuiEditor,
+    TUI_EDITOR_OPTIONS,
+    TUI_EDITOR_TOOLBAR_TEXTS,
+    type TuiEditorOptions,
+} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
-import type {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    map,
+    shareReplay,
+    startWith,
+    type Subscription,
+} from 'rxjs';
 
 import {TuiToolbarButtonTool} from './tool-button';
 

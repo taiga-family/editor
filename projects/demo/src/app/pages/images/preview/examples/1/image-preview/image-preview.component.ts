@@ -1,8 +1,12 @@
 import {NgIf} from '@angular/common';
-import type {TemplateRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    type TemplateRef,
+    ViewChild,
+} from '@angular/core';
+import {TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 
 @Component({

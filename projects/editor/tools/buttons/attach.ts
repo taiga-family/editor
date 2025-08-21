@@ -1,18 +1,22 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
+    type ElementRef,
     EventEmitter,
     inject,
     Output,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiEditorAttachedFile, TuiEditorOptions} from '@taiga-ui/editor/common';
-import {TUI_ATTACH_FILES_LOADER, TUI_ATTACH_FILES_OPTIONS} from '@taiga-ui/editor/common';
-import type {TuiLanguageEditor} from '@taiga-ui/i18n';
+import {
+    TUI_ATTACH_FILES_LOADER,
+    TUI_ATTACH_FILES_OPTIONS,
+    type TuiEditorAttachedFile,
+    type TuiEditorOptions,
+} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {take} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';

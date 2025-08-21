@@ -1,5 +1,5 @@
 import {MarkdownSerializerState as BaseMarkdownSerializerState} from '@tiptap/pm/markdown';
-import type {Mark, Node} from '@tiptap/pm/model';
+import {type Mark, type Node} from '@tiptap/pm/model';
 
 import {tuiTrimInline} from '../util/markdown';
 
