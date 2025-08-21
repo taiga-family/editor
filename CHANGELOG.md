@@ -1,3 +1,10 @@
+### [4.38.0](https://github.com/taiga-family/editor/compare/v4.37.0...v4.38.0) (2025-08-21)
+
+### 🐞 Bug Fixes
+
+- wrong bivariant parameters (#1875)
+  [(d4c1abb)](https://github.com/taiga-family/editor/commit/d4c1abb29ccb3ce923b080ed443d2fc75c1e3ac6)
+
 ### [4.37.0](https://github.com/taiga-family/editor/compare/v4.36.0...v4.37.0) (2025-08-12)
 
 ### 🚀 Features
