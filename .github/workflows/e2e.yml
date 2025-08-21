@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.136.0
-      - uses: taiga-family/ci/actions/setup/node@v1.136.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.146.0
+      - uses: taiga-family/ci/actions/setup/node@v1.146.0
       - run: npx nx component-test demo-cypress
 
   e2e:
@@ -23,31 +23,31 @@ jobs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.136.0
-      - uses: taiga-family/ci/actions/setup/node@v1.136.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.146.0
+      - uses: taiga-family/ci/actions/setup/node@v1.146.0
 
       - name: Get installed Playwright version
         id: playwright-version
         run: |
           echo "PLAYWRIGHT_VERSION=$(node -p 'require("./package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
-      - uses: taiga-family/ci/actions/setup/playwright@v1.136.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.146.0
         with:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - run: npx nx prerender editor-demo -c development
-      - uses: taiga-family/ci/actions/run/serve@v1.136.0
+      - uses: taiga-family/ci/actions/run/serve@v1.146.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@v1.136.0
+      - uses: taiga-family/ci/actions/run/clone@v1.146.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.136.0
+      - uses: taiga-family/ci/actions/run/serve@v1.146.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -97,7 +97,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.136.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.146.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
