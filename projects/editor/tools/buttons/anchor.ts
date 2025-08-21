@@ -28,8 +28,8 @@ export class TuiAnchorButtonTool extends TuiToolbarTool {
         return icons.anchor;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.insertAnchor;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.insertAnchor ?? '';
     }
 
     protected onAnchor(): void {

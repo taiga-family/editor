@@ -21,7 +21,7 @@ export class TuiUnorderedListButtonTool extends TuiToolbarTool {
         return icons.listUnOrdered;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.unorderedList;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.unorderedList ?? '';
     }
 }

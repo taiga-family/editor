@@ -25,7 +25,7 @@ export class TuiRemoveGroupButtonTool extends TuiToolbarTool {
         return icons.groupRemove;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.removeGroup;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.removeGroup ?? '';
     }
 }

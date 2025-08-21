@@ -20,7 +20,7 @@ export class TuiSubscriptButtonTool extends TuiToolbarTool {
         return icons.sub;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.subscript;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.subscript ?? '';
     }
 }

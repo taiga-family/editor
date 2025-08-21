@@ -21,7 +21,7 @@ export class TuiOutdentButtonTool extends TuiToolbarTool {
         return icons.outdent;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.outdent;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.outdent ?? '';
     }
 }

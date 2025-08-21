@@ -21,7 +21,7 @@ export class TuiInsertGroupButtonTool extends TuiToolbarTool {
         return icons.groupAdd;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.insertGroup;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.insertGroup ?? '';
     }
 }

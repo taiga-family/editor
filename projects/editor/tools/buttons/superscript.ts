@@ -20,7 +20,7 @@ export class TuiSuperscriptButtonTool extends TuiToolbarTool {
         return icons.sup;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.superscript;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.superscript ?? '';
     }
 }

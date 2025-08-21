@@ -25,7 +25,7 @@ export class TuiRedoButtonTool extends TuiToolbarTool {
         return icons.redo;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.redo;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.redo ?? '';
     }
 }

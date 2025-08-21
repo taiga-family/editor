@@ -8,6 +8,7 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
+    tuiDropdownOpen,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -64,6 +65,7 @@ import {TuiAlignRightButtonTool} from './align-right';
 })
 export class TuiAlignButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
+    protected readonly open = tuiDropdownOpen();
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
@@ -74,7 +76,7 @@ export class TuiAlignButtonTool extends TuiToolbarTool {
         return icons.textAlignPreview;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.justify;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return this.open() ? '' : (texts?.justify ?? '');
     }
 }

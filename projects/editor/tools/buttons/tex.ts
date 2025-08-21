@@ -23,7 +23,7 @@ export class TuiTexButtonTool extends TuiToolbarTool {
         return icons.tex;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.tex;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.tex ?? '';
     }
 }

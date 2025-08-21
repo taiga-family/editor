@@ -20,7 +20,7 @@ export class TuiBoldButtonTool extends TuiToolbarTool {
         return icons.fontStyleBold;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.bold;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.bold ?? '';
     }
 }

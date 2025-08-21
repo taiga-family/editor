@@ -20,7 +20,7 @@ export class TuiHrButtonTool extends TuiToolbarTool {
         return icons.hr;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.insertHorizontalRule;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.insertHorizontalRule ?? '';
     }
 }

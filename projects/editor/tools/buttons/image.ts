@@ -32,7 +32,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'image?.nativeElement.click()',
+        '(click)': 'image?.nativeElement?.click()',
     },
 })
 export class TuiImageButtonTool extends TuiToolbarTool {
@@ -46,8 +46,8 @@ export class TuiImageButtonTool extends TuiToolbarTool {
         return icons.image;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.image;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.image ?? '';
     }
 
     protected onImage(input: HTMLInputElement): void {

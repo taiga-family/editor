@@ -20,7 +20,7 @@ export class TuiUnderlineButtonTool extends TuiToolbarTool {
         return icons.fontStyleUnderline;
     }
 
-    protected getHint(texts: TuiLanguageEditor['toolbarTools']): string {
-        return texts.underline;
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.underline ?? '';
     }
 }

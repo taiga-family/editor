@@ -43,6 +43,8 @@ export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnIni
     }
 
     protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
-        return (this.canMergeCells?.() ? texts?.mergeCells : texts?.splitCells) ?? '';
+        return this.canMergeCells?.()
+            ? (texts?.mergeCells ?? '')
+            : (texts?.splitCells ?? '');
     }
 }
