@@ -58,7 +58,7 @@ jobs:
       - run: tree ${{ env.PW_RESULT }}
       - name: Deploy e2e report
         id: e2e-report
-        uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
         continue-on-error: true
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}

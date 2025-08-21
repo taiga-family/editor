@@ -10,7 +10,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.146.0
       - run: npx nx build editor-demo -- --base-href /
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
-      - uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+      - uses: FirebaseExtended/action-hosting-deploy@v0.10.0
         continue-on-error: true
         if: ${{ env.IS_FORK == 'false' && env.IS_DEPENDABOT == 'false' }}
         with:
