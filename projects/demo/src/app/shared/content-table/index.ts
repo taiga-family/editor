@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {TuiItem} from '@taiga-ui/cdk';
 import {TuiEditorSocket} from '@taiga-ui/editor';
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
@@ -9,14 +9,14 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     imports: [TuiAccordion, TuiEditorSocket, TuiExpand, TuiItem],
     template: `
         <tui-accordion [closeOthers]="false">
-            <button [tuiAccordion]="isE2E">HTML</button>
+            <button [tuiAccordion]="isOpen">HTML</button>
             <tui-expand>
                 <ng-container *tuiItem>
                     <tui-editor-socket [content]="value" />
                 </ng-container>
             </tui-expand>
 
-            <button [tuiAccordion]="isE2E">Text</button>
+            <button [tuiAccordion]="isOpen">Text</button>
             <tui-expand>
                 <ng-container *tuiItem>{{ value }}</ng-container>
             </tui-expand>
@@ -26,7 +26,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiContentTable {
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isOpen = false;
 
     @Input()
     public value?: string | null;
