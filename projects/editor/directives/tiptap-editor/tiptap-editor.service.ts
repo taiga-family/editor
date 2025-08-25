@@ -50,6 +50,8 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
                 this.valueChange$.next(value);
             });
+
+            editor.on('blur', () => this.triggerTransaction());
         });
     }
 
@@ -197,7 +199,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public toggleTaskList(): void {
-        this.editor?.commands.toggleTaskList();
+        this.editor?.chain().focus().toggleTaskList().run();
     }
 
     public sinkListItem(): void {
@@ -372,11 +374,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             }),
         );
 
-        const transaction = this.editor?.state.tr;
-
-        if (transaction) {
-            this.editor?.view.dispatch(transaction);
-        }
+        this.triggerTransaction();
     }
 
     public destroy(): void {
@@ -475,6 +473,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
 
     public getSelectionSnapshot(): TuiSelectionSnapshot | null {
         return this.selectionSnapshot;
+    }
+
+    private triggerTransaction(): void {
+        this.editor?.view.dispatch(this.editor.state.tr);
     }
 }
 

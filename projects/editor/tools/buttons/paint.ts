@@ -63,6 +63,10 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return !this.isBlankColor();
+    }
+
     protected override getDisableState(): boolean {
         return !(
             this.editor?.isActive('table') ??
@@ -92,9 +96,10 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     }
 
     protected isBlankColor(): boolean {
-        return (
-            (this.editor?.getCellColor() ?? this.editor?.getGroupColor()) ===
-            this.options.blankColor
-        );
+        return this.getColor() === this.options.blankColor || this.getColor() === '';
+    }
+
+    protected getColor(): string {
+        return this.editor?.getCellColor() ?? this.editor?.getGroupColor() ?? '';
     }
 }

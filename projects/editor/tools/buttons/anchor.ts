@@ -17,6 +17,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiAnchorButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('jumpAnchor') ?? false;
+    }
+
     protected override getDisableState(): boolean {
         return (
             (this.editor?.isActive('link') ?? false) ||

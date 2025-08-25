@@ -16,6 +16,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiItalicButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('italic') ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.fontStyleItalic;
     }

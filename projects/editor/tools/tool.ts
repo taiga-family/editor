@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
-import {TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
+import {TuiAppearance, TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
@@ -45,11 +45,19 @@ export abstract class TuiToolbarTool implements OnInit {
 
     protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));
     protected readonly readOnly = signal(false);
+    protected readonly activeOnly = signal(false);
+    protected readonly isFocused = signal(false);
 
     protected readonly disabled = tuiDirectiveBinding(
         TuiToolbarButtonTool,
         'disabled',
         computed(() => this.readOnly()),
+    );
+
+    protected readonly active = tuiDirectiveBinding(
+        TuiAppearance,
+        'tuiAppearanceState',
+        computed(() => (this.activeOnly() && this.isFocused() ? 'active' : null)),
     );
 
     protected readonly iconStart = tuiDirectiveBinding(
@@ -71,6 +79,8 @@ export abstract class TuiToolbarTool implements OnInit {
     );
 
     protected getDisableState?(): boolean;
+
+    protected isActive?(): boolean;
 
     protected abstract getIcon(icons: TuiEditorOptions['icons']): string;
 
@@ -108,7 +118,9 @@ export abstract class TuiToolbarTool implements OnInit {
     }
 
     protected updateSignals(): void {
+        this.isFocused.set(this.editor?.isFocused ?? false);
         this.readOnly.set(this.getDisableState?.() ?? false);
+        this.activeOnly.set(this.isActive?.() ?? false);
 
         // caretaker note: trigger computed effect
         this.cd.detectChanges();

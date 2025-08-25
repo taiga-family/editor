@@ -17,6 +17,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiUnorderedListButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('bulletList') ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.listUnOrdered;
     }

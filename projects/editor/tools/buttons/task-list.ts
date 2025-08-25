@@ -16,6 +16,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiTaskListButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('taskList') ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.taskList;
     }
