@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
-import {TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
+import {TuiAppearance, TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
@@ -21,14 +21,7 @@ import {
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    shareReplay,
-    startWith,
-    type Subscription,
-} from 'rxjs';
+import {shareReplay, startWith, type Subscription} from 'rxjs';
 
 import {TuiToolbarButtonTool} from './tool-button';
 
@@ -40,6 +33,7 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));
     protected readonly readOnly = signal(false);
+    protected readonly activeOnly = signal(false);
     protected subscription?: Subscription;
 
     protected readonly disabled = tuiDirectiveBinding(
@@ -52,6 +46,12 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
         TuiIcons,
         'iconStart',
         this.getIcon(this.options.icons),
+    );
+
+    protected readonly active = tuiDirectiveBinding(
+        TuiAppearance,
+        'tuiAppearanceState',
+        computed(() => (this.activeOnly() ? 'active' : null)),
     );
 
     protected readonly tuiHint = tuiDirectiveBinding(
@@ -71,6 +71,8 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
         optional: true,
     });
 
+    protected isActive?(): boolean;
+
     protected getDisableState?(): boolean;
 
     protected abstract getIcon(icons: TuiEditorOptions['icons']): string;
@@ -78,33 +80,30 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
     protected abstract getHint(options?: TuiLanguageEditor['toolbarTools']): string;
 
     public ngOnChanges(changes: SimpleChanges): void {
-        if (changes['editor'] && this.getDisableState) {
-            this.subscription?.unsubscribe();
-
-            this.setDisabled(this.getDisableState());
-
-            this.subscription = this.editor?.valueChange$
-                .pipe(
-                    debounceTime(0),
-                    startWith(null),
-                    map(() => this.getDisableState?.() ?? false),
-                    distinctUntilChanged(),
-                    shareReplay({bufferSize: 1, refCount: true}),
-                    tuiWatch(this.cd),
-                    takeUntilDestroyed(this.destroy$),
-                )
-                .subscribe((disabled) => this.setDisabled(disabled));
+        if (!changes['editor']) {
+            return;
         }
+
+        this.subscription?.unsubscribe();
+
+        this.update();
+
+        this.subscription = this.editor?.valueChange$
+            .pipe(
+                startWith(null),
+                shareReplay({bufferSize: 1, refCount: true}),
+                takeUntilDestroyed(this.destroy$),
+                tuiWatch(this.cd),
+            )
+            .subscribe(() => this.update());
     }
 
     public ngOnDestroy(): void {
         this.subscription?.unsubscribe();
     }
 
-    private setDisabled(disabled: boolean): void {
-        this.readOnly.set(disabled);
-
-        // caretaker note: trigger computed effect
-        this.cd.detectChanges();
+    private update(): void {
+        this.readOnly.set(this.getDisableState?.() ?? false);
+        this.activeOnly.set(this.isActive?.() ?? false);
     }
 }

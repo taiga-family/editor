@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,7 +25,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiHighlightColorTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfieldDropdownDirective],
+    imports: [TuiPaletteModule, TuiTextfieldDropdownDirective],
     template: `
         {{ tuiHint() }}
 
@@ -37,20 +36,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
                 (selectedColor)="editor?.setBackgroundColor($event)"
             />
         </ng-container>
-
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getBackgroundColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        tuiPlateHost: '',
         '[attr.automation-id]': '"toolbar__hilite-button"',
+        '[style.--tui-text-primary]': 'getBackgroundColor()',
     },
 })
 export class TuiHighlightColorButtonTool extends TuiToolbarTool {
@@ -65,8 +56,15 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return !this.isBlankColor();
+    }
+
     protected isBlankColor(): boolean {
-        return this.editor?.getBackgroundColor() === this.options.blankColor;
+        return (
+            this.getBackgroundColor() === this.options.blankColor ||
+            this.getBackgroundColor() === 'transparent'
+        );
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
@@ -75,5 +73,9 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
 
     protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
         return this.open() ? '' : (texts?.backColor ?? '');
+    }
+
+    protected getBackgroundColor(): string {
+        return this.editor?.getBackgroundColor() ?? '';
     }
 }

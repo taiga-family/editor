@@ -78,6 +78,15 @@ export class TuiListButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return (
+            this.editor?.isActive('bulletList') ||
+            this.editor?.isActive('orderedList') ||
+            this.editor?.isActive('taskList') ||
+            false
+        );
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.listPreview;
     }

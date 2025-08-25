@@ -17,6 +17,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiOrderedListButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('orderedList') ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.listOrdered;
     }

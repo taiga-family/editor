@@ -104,6 +104,16 @@ export class TuiFontStyleButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return (
+            this.editor?.isActive('bold') ||
+            this.editor?.isActive('italic') ||
+            this.editor?.isActive('underline') ||
+            this.editor?.isActive('strike') ||
+            false
+        );
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.fontStylePreview;
     }

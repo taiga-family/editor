@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,7 +24,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiPaintTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfieldDropdownDirective],
+    imports: [TuiPaletteModule, TuiTextfieldDropdownDirective],
     template: `
         {{ tuiHint() }}
 
@@ -36,19 +35,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
                 (selectedColor)="setCellColor($event)"
             />
         </ng-container>
-
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getCellColor() ?? editor?.getGroupColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        tuiPlateHost: '',
+        '[style.--tui-text-primary]': 'getColor()',
     },
 })
 export class TuiPaintButtonTool extends TuiToolbarTool {
@@ -61,6 +52,10 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
         this.dropdown.set(template);
+    }
+
+    protected override isActive(): boolean {
+        return !this.isBlankColor();
     }
 
     protected override getDisableState(): boolean {
@@ -92,9 +87,10 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     }
 
     protected isBlankColor(): boolean {
-        return (
-            (this.editor?.getCellColor() ?? this.editor?.getGroupColor()) ===
-            this.options.blankColor
-        );
+        return this.getColor() === this.options.blankColor || this.getColor() === '';
+    }
+
+    protected getColor(): string {
+        return this.editor?.getCellColor() ?? this.editor?.getGroupColor() ?? '';
     }
 }
