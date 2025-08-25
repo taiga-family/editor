@@ -14,7 +14,11 @@ import {
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
-import {TUI_EDITOR_OPTIONS, type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {
+    EDITOR_BLANK_COLOR,
+    TUI_EDITOR_OPTIONS,
+    type TuiEditorOptions,
+} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -41,6 +45,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
         '[attr.automation-id]': '"toolbar__color-button"',
+        '[style.--tui-text-primary]': 'this.editor?.getFontColor()',
     },
 })
 export class TuiTextColorButtonTool extends TuiToolbarTool {
@@ -53,6 +58,10 @@ export class TuiTextColorButtonTool extends TuiToolbarTool {
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {
         this.dropdown.set(template);
+    }
+
+    protected override isActive(): boolean {
+        return this.editor?.getFontColor() !== EDITOR_BLANK_COLOR;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

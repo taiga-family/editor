@@ -70,20 +70,6 @@
     display: none;
 }
 
-[tuiPlateHost] {
-    position: relative;
-}
-
-[tuiPlate] {
-    position: absolute;
-    top: 1.9rem;
-    block-size: 0.25rem;
-    pointer-events: none;
-    left: 50%;
-    transform: translateX(-50%);
-    inline-size: 1.25rem;
-}
-
 [tuiToolbarDropdownContent] {
     padding: 0.5rem;
 }

@@ -62,6 +62,12 @@ export class TuiCodeButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return (
+            (this.editor?.isActive('code') || this.editor?.isActive('codeBlock')) ?? false
+        );
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.code;
     }

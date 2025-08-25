@@ -18,9 +18,6 @@ import {TuiHighlightColorButtonTool} from '@taiga-ui/editor/tools';
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiPlateHost: '',
-    },
 })
 export class TuiHighlightColorTool {
     @Input()
