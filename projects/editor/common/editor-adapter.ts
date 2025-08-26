@@ -32,9 +32,15 @@ export abstract class AbstractTuiEditor {
 
     public abstract get state(): EditorState | null;
 
-    public abstract isActive$(name: Record<string, string> | string): Observable<boolean>;
+    public abstract isActive$(
+        nameOrAttributes: object | string,
+        attributesOrUndefined?: object,
+    ): Observable<boolean>;
 
-    public abstract isActive(name: Record<string, string> | string): boolean;
+    public abstract isActive(
+        nameOrAttributes: object | string,
+        attributesOrUndefined?: object,
+    ): boolean;
 
     public abstract undoDisabled(): boolean;
 

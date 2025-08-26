@@ -266,7 +266,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             parentFocusElement?.parentNode?.nodeName.toLowerCase() === 'a' ||
             focusElement?.nodeName.toLowerCase() === 'a' ||
             !!focusElement?.parentElement?.closest('a') ||
-            !!focusElement?.parentElement?.closest('tui-edit-link') ||
+            !!focusElement?.parentElement?.closest('[tuiEditorRootEditLink]') ||
             !!focusElement?.parentElement?.closest('tui-dropdown')
         );
     }
@@ -365,20 +365,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         return this.doc?.getSelection()?.focusNode ?? null;
     }
 
-    private get currentFocusedNodeIsImageAnchor(): boolean {
-        const node = this.focusNode?.childNodes[0]?.nodeName;
-
-        return (
-            (this.focusNode?.nodeName === 'A' &&
-                node &&
-                ['IMG', 'TUI-IMAGE-EDITOR'].includes(node)) ||
-            false
-        );
-    }
-
     private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
-        this.currentFocusedNodeIsImageAnchor ||
         this.isMentionMode ||
         Boolean(this.tuiDropdown?.tuiDropdownOpen);
 
@@ -392,7 +380,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         return (
             this.focusNode?.nodeName === 'A' ||
             !!this.focusNode?.parentElement?.closest('a') ||
-            !!this.focusNode?.parentElement?.closest('tui-edit-link') ||
+            !!this.focusNode?.parentElement?.closest('[tuiEditorRootEditLink]') ||
             (!!range.startContainer.parentElement?.closest('a') &&
                 tuiIsSafeLinkRange(range))
         );

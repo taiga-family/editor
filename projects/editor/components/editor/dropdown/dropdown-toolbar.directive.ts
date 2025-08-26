@@ -24,6 +24,7 @@ import {
     tuiGetWordRange,
     type TuiRectAccessor,
 } from '@taiga-ui/core';
+import {PM_SELECTED_NODE_CSS_CLASS} from '@taiga-ui/editor/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
 interface ServerSideGlobal extends NodeJS.Global {
@@ -108,7 +109,7 @@ export class TuiEditorDropdownToolbar
                 this.previousTagPosition =
                     element && tuiIsElement(element)
                         ? this.doc
-                              ?.querySelector('.ProseMirror-selectednode')
+                              ?.querySelector(`.${PM_SELECTED_NODE_CSS_CLASS}`)
                               ?.getBoundingClientRect() || element.getBoundingClientRect()
                         : EMPTY_CLIENT_RECT;
 

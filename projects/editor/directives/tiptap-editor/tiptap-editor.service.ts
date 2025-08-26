@@ -210,16 +210,24 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.chain().focus().liftListItem(type).run();
     }
 
-    public isActive(nameOrAttributes: Record<string, string> | string): boolean {
-        return this.editor?.isActive(nameOrAttributes) ?? false;
+    public isActive(
+        nameOrAttributes: object | string,
+        attributesOrUndefined?: object,
+    ): boolean {
+        return (
+            (typeof nameOrAttributes === 'string'
+                ? this.editor?.isActive(nameOrAttributes, attributesOrUndefined)
+                : this.editor?.isActive(nameOrAttributes)) ?? false
+        );
     }
 
     public isActive$(
-        nameOrAttributes: Record<string, string> | string,
+        nameOrAttributes: object | string,
+        attributesOrUndefined?: object,
     ): Observable<boolean> {
         return this.valueChange$.pipe(
             startWith(null),
-            map(() => this.isActive(nameOrAttributes)),
+            map(() => this.isActive(nameOrAttributes, attributesOrUndefined)),
             distinctUntilChanged(),
         );
     }

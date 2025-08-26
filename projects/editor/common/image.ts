@@ -10,4 +10,6 @@ export interface TuiEditableImage {
     title?: string;
     width?: number | string | null;
     style?: string | null;
+    'data-href'?: string | null;
+    'data-editing-href'?: boolean | null;
 }
