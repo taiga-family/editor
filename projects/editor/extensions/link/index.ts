@@ -25,9 +25,16 @@ export const TuiLink = Link.extend({
                         const pos = state.selection.from;
                         const resolvedPos = state.doc.resolve(pos);
                         const node = resolvedPos.nodeAfter || resolvedPos.nodeBefore;
-                        const isNonImageNode = node?.type !== editor.schema.nodes.image;
+                        const isImageNode = node?.type === editor.schema.nodes.image;
 
-                        if (isNonImageNode && !tuiGetSlicedFragment(state).trim()) {
+                        if (isImageNode) {
+                            return typeof (editor.commands as any).setImageLink ===
+                                'function'
+                                ? (chain() as any).setImageLink().run()
+                                : false;
+                        }
+
+                        if (!tuiGetSlicedFragment(state).trim()) {
                             return false;
                         }
 
@@ -48,7 +55,7 @@ export const TuiLink = Link.extend({
                             .setMeta('preventAutolink', true)
                             .setTextSelection(to);
 
-                        if (isNonImageNode && forwardSymbol === '') {
+                        if (forwardSymbol === '') {
                             toggleMark = toggleMark.insertContent(
                                 TUI_TIPTAP_WHITESPACE_HACK,
                             );

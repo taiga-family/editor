@@ -66,6 +66,7 @@
     <tui-edit-link
         *ngIf="isLinkSelected"
         #link
+        tuiEditorRootEditLink
         (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
         (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
     />

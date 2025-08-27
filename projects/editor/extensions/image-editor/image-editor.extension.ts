@@ -11,6 +11,7 @@ import {
     type RawCommands,
 } from '@tiptap/core';
 import {Image} from '@tiptap/extension-image';
+import {isAllowedUri} from '@tiptap/extension-link';
 import {type DOMOutputSpec, type NodeSpec} from '@tiptap/pm/model';
 import {Plugin} from '@tiptap/pm/state';
 import {type EditorView, type NodeView} from '@tiptap/pm/view';
@@ -55,6 +56,14 @@ function pasteImage(injector: Injector) {
     };
 }
 
+function typesafeIsAllowedUri(uri?: string): boolean {
+    if (!uri) {
+        return false;
+    }
+
+    return isAllowedUri(uri) !== null;
+}
+
 export function tuiCreateImageEditorExtension<T, K>({
     injector,
     draggable,
@@ -66,14 +75,53 @@ export function tuiCreateImageEditorExtension<T, K>({
 
     return Image.extend({
         name: 'image',
-        group: 'inline',
-        inline: true,
         priority: 0,
         selectable: true,
         draggable: enableDraggable,
 
         parseHTML(): NodeSpec['parseDOM'] {
             return [
+                {
+                    tag: 'a[href]',
+                    // Caretaker note:
+                    // Tiptap link extension priority is 1000
+                    // ensuring current extension is being handled in precedence
+                    priority: 1001,
+                    getAttrs: (parsedElement: HTMLElement): TuiEditableImage | false => {
+                        if (parsedElement.firstElementChild?.nodeName !== 'IMG') {
+                            return false;
+                        }
+
+                        const [href, style] = ['href', 'style'].map(
+                            (attrName) =>
+                                parsedElement.getAttribute(attrName) ?? undefined,
+                        );
+
+                        if (!typesafeIsAllowedUri(href)) {
+                            return false;
+                        }
+
+                        const [src, width, alt, title] = [
+                            'src',
+                            'width',
+                            'alt',
+                            'title',
+                        ].map(
+                            (attrName) =>
+                                parsedElement.firstElementChild?.getAttribute(attrName) ??
+                                undefined,
+                        );
+
+                        return {
+                            'data-href': href,
+                            src: src ?? '',
+                            style,
+                            width,
+                            alt,
+                            title,
+                        };
+                    },
+                },
                 {
                     tag: 'img',
                 },
@@ -106,11 +154,42 @@ export function tuiCreateImageEditorExtension<T, K>({
                     default: enableDraggable ? '' : null,
                     keepOnSplit: false,
                 },
+                'data-href': {
+                    default: null,
+                    keepOnSplit: false,
+                },
+                'data-editing-href': {
+                    default: null,
+                    keepOnSplit: false,
+                },
             };
         },
 
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
-            return ['img', mergeAttributes(HTMLAttributes)];
+            const {src, width, alt, style, title, 'data-href': href} = HTMLAttributes;
+
+            if (!href) {
+                return ['img', mergeAttributes(HTMLAttributes)];
+            }
+
+            return [
+                'a',
+                mergeAttributes({
+                    target: '_blank',
+                    rel: 'noopener noreferrer nofollow',
+                    href: typesafeIsAllowedUri(href) ? href : '',
+                    style: style,
+                }),
+                [
+                    'img',
+                    mergeAttributes({
+                        src,
+                        width,
+                        alt,
+                        title,
+                    }),
+                ],
+            ];
         },
 
         addNodeView(): NodeViewRenderer {
@@ -129,6 +208,12 @@ export function tuiCreateImageEditorExtension<T, K>({
                         commands.insertContent({
                             type: this.name,
                             attrs,
+                        }),
+                setImageLink:
+                    () =>
+                    ({commands}) =>
+                        commands.updateAttributes(this.name, {
+                            'data-editing-href': true,
                         }),
             };
         },
