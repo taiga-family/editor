@@ -24,8 +24,11 @@ test.describe('Links', () => {
 
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
 
         await page.locator('tui-input-inline input').first().focus();
+        await page.waitForTimeout(300);
+
         await page.locator('tui-input-inline input').first().fill('wysiwyg.com');
         await page.keyboard.press('Enter');
 
