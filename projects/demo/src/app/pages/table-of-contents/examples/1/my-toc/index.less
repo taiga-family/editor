@@ -2,14 +2,14 @@
     flex-grow: 0;
     flex-shrink: 0;
     padding: 0 1rem;
-    width: 12rem;
+    inline-size: 12rem;
 }
 
 .sidebar-options {
-    align-items: flex-start;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
-    height: 100%;
+    block-size: 100%;
     gap: 1rem;
 }
 
@@ -23,7 +23,7 @@
 
     > div {
         border-radius: 0.25rem;
-        padding-left: calc(0.875rem * (var(--level) - 1));
+        padding-inline-start: calc(0.875rem * (var(--level) - 1));
         transition: all 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
 
         &:hover {
@@ -45,8 +45,8 @@
     }
 
     a {
-        color: #2e2b29;
         display: flex;
+        color: #2e2b29;
         gap: 0.25rem;
         text-decoration: none;
 

@@ -32,19 +32,19 @@ tui-editor::after {
 }
 
 [tuiEditorLabel]:empty {
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
 }
 
 [tuiEditorScrollbar] {
     display: flex;
-    padding-bottom: 0.75rem;
+    padding-block-end: 0.75rem;
     box-sizing: border-box;
     flex: 1;
 }
 
 [tuiEditorPlaceholder] {
     position: absolute;
-    margin-top: 1.5625rem;
+    margin-block-start: 1.5625rem;
     color: var(--tui-text-secondary);
     letter-spacing: normal;
     text-transform: none;
@@ -62,6 +62,5 @@ tui-editor > tui-editor-socket {
 
 [tuiTiptapEditor][data-contenteditable='false'] * {
     -webkit-user-drag: none;
-    user-drag: none;
     cursor: default;
 }

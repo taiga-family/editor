@@ -15,7 +15,7 @@
 }
 
 .t-link {
-    margin-left: 1rem;
+    margin-inline-start: 1rem;
 }
 
 .t-stackblitz:active {
@@ -29,13 +29,13 @@
 
 header {
     position: unset;
-    margin-left: 16.25rem;
+    margin-inline-start: 16.25rem;
     box-shadow: none;
 }
 
 @media only screen and (max-width: 768px) {
     header {
-        margin-left: 0;
+        margin-inline-start: 0;
     }
 
     .t-stackblitz {
@@ -44,7 +44,7 @@ header {
 
     .t-stackblitz_mobile {
         display: block;
-        padding-left: 12px;
+        padding-inline-start: 12px;
     }
 
     .t-app-version {
