@@ -17,6 +17,8 @@ export interface TuiSetValueOption {
     clearsHistory?: boolean;
 }
 
+type Attrs = Record<string, unknown>;
+
 @Directive()
 export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
@@ -32,15 +34,11 @@ export abstract class AbstractTuiEditor {
 
     public abstract get state(): EditorState | null;
 
-    public abstract isActive$(
-        nameOrAttributes: object | string,
-        attributesOrUndefined?: object,
-    ): Observable<boolean>;
+    public abstract isActive$(attributes: Attrs): Observable<boolean>;
+    public abstract isActive$(name: string, attributes?: Attrs): Observable<boolean>;
 
-    public abstract isActive(
-        nameOrAttributes: object | string,
-        attributesOrUndefined?: object,
-    ): boolean;
+    public abstract isActive(attributes: Attrs): boolean;
+    public abstract isActive(name: string, attributes?: Attrs): boolean;
 
     public abstract undoDisabled(): boolean;
 

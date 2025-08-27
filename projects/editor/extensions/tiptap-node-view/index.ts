@@ -7,7 +7,7 @@ import {
     type Injector,
     type Type,
 } from '@angular/core';
-import {PM_SELECTED_NODE_CSS_CLASS} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_PM_SELECTED_NODE} from '@taiga-ui/editor/common';
 import {
     type DecorationWithType,
     type Editor,
@@ -215,12 +215,12 @@ export class TuiNodeView extends NodeView<
 
     protected selectNode(): void {
         this.renderer.updateProps({selected: true});
-        this.renderer.dom.classList.add(PM_SELECTED_NODE_CSS_CLASS);
+        this.renderer.dom.classList.add(TUI_EDITOR_PM_SELECTED_NODE);
     }
 
     protected deselectNode(): void {
         this.renderer.updateProps({selected: false});
-        this.renderer.dom.classList.remove(PM_SELECTED_NODE_CSS_CLASS);
+        this.renderer.dom.classList.remove(TUI_EDITOR_PM_SELECTED_NODE);
     }
 
     protected destroy(): void {
