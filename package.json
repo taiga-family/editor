@@ -27,7 +27,7 @@
         "cspell": "cspell --relative --dot --no-progress --gitignore .",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
-        "stylelint": "stylelint './projects/**/*.{less}' --config package.json",
+        "stylelint": "stylelint './**/*.{less,css}' --config package.json",
         "release": "npx syncer && npx nx publish editor"
     },
     "commitlint": {

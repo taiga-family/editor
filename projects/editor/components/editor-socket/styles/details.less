@@ -1,8 +1,8 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 summary {
-    display: flex;
     position: relative;
+    display: flex;
     align-items: center;
     min-block-size: 3.5rem;
     inline-size: 100%;
@@ -108,7 +108,7 @@ div[data-type='details-content'] {
     ol:first-child,
     ol li:first-child,
     ul li:first-child {
-        margin-top: 0;
+        margin-block-start: 0;
     }
 }
 
@@ -118,7 +118,7 @@ div[data-type='details-content'] {
 }
 
 details:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
 }
 
 details[open] summary::after,

@@ -1,17 +1,16 @@
 [tuiToolbar] {
+    display: flex;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overflow: auto;
+    flex-wrap: wrap;
+    align-content: center;
+    box-sizing: border-box;
 
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {
         display: none;
     }
-
-    display: flex;
-    overflow: auto;
-    flex-wrap: wrap;
-    align-content: center;
-    box-sizing: border-box;
 }
 
 [tuiToolbar]._disabled {
@@ -43,8 +42,8 @@
 }
 
 [tuiToolbarTool] {
-    transition: background var(--tui-duration) ease-in-out;
     position: relative;
+    transition: background var(--tui-duration) ease-in-out;
     margin: 0 0.125rem;
     overflow: visible;
 }
@@ -77,9 +76,9 @@
 [tuiPlate] {
     position: absolute;
     top: 1.9rem;
+    left: 50%;
     block-size: 0.25rem;
     pointer-events: none;
-    left: 50%;
     transform: translateX(-50%);
     inline-size: 1.25rem;
 }

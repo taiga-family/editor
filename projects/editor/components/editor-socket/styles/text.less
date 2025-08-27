@@ -15,12 +15,12 @@ h6 {
 h1:first-child,
 h2:first-child,
 p:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
 }
 
 p:last-child,
 pre:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
 }
 
 p:empty::after {
@@ -29,7 +29,7 @@ p:empty::after {
 }
 
 p:first-child {
-    margin-top: 0;
+    margin-block-start: 0;
     min-inline-size: 0.0625rem;
 }
 
@@ -43,7 +43,7 @@ p > span {
 
 blockquote {
     margin: 1.25rem 0 1.25rem 1.5rem;
-    padding-left: 1.0625rem;
+    padding-inline-start: 1.0625rem;
     border-left: 0.0625rem solid var(--tui-border-normal);
 }
 
