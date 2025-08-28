@@ -21,14 +21,7 @@ import {
 } from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    shareReplay,
-    startWith,
-    type Subscription,
-} from 'rxjs';
+import {shareReplay, startWith, type Subscription} from 'rxjs';
 
 import {TuiToolbarButtonTool} from './tool-button';
 
@@ -78,33 +71,29 @@ export abstract class TuiToolbarTool implements OnChanges, OnDestroy {
     protected abstract getHint(options?: TuiLanguageEditor['toolbarTools']): string;
 
     public ngOnChanges(changes: SimpleChanges): void {
-        if (changes['editor'] && this.getDisableState) {
-            this.subscription?.unsubscribe();
-
-            this.setDisabled(this.getDisableState());
-
-            this.subscription = this.editor?.valueChange$
-                .pipe(
-                    debounceTime(0),
-                    startWith(null),
-                    map(() => this.getDisableState?.() ?? false),
-                    distinctUntilChanged(),
-                    shareReplay({bufferSize: 1, refCount: true}),
-                    tuiWatch(this.cd),
-                    takeUntilDestroyed(this.destroy$),
-                )
-                .subscribe((disabled) => this.setDisabled(disabled));
+        if (!changes['editor']) {
+            return;
         }
+
+        this.subscription?.unsubscribe();
+
+        this.update();
+
+        this.subscription = this.editor?.valueChange$
+            .pipe(
+                startWith(null),
+                shareReplay({bufferSize: 1, refCount: true}),
+                takeUntilDestroyed(this.destroy$),
+                tuiWatch(this.cd),
+            )
+            .subscribe(() => this.update());
     }
 
     public ngOnDestroy(): void {
         this.subscription?.unsubscribe();
     }
 
-    private setDisabled(disabled: boolean): void {
-        this.readOnly.set(disabled);
-
-        // caretaker note: trigger computed effect
-        this.cd.detectChanges();
+    private update(): void {
+        this.readOnly.set(this.getDisableState?.() ?? false);
     }
 }

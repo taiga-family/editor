@@ -1,26 +1,20 @@
-<div>
-    <button
-        appearance="icon"
-        automation-id="toolbar__color-button"
-        size="s"
-        tuiIconButton
-        tuiToolbarTool
-        type="button"
-        [iconStart]="icon || ''"
-        [tuiDropdown]="colorDropdown"
-        [tuiDropdownOpen]="false"
-    >
-        Color options
-    </button>
-    <div
-        tuiPlate
-        [style.background]="fontColor$ | async"
-    ></div>
-</div>
-
+<button
+    appearance="icon"
+    automation-id="toolbar__color-button"
+    size="s"
+    tuiIconButton
+    tuiToolbarTool
+    type="button"
+    [iconStart]="icon || ''"
+    [style.--t-toolbar-icon-color]="fontColor$ | async"
+    [tuiDropdown]="colorDropdown"
+    [tuiDropdownOpen]="false"
+>
+    Color options
+</button>
 <ng-template #colorDropdown>
     <tui-color-selector
-        [color]="selectedColor"
+        [color]="selectedColor || 'transparent'"
         [colors]="colors"
         (colorChange)="onValueChange($event)"
     />

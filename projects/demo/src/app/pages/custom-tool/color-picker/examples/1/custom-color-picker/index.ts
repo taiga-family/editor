@@ -16,9 +16,6 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiPlateHost: '',
-    },
 })
 export class CustomColorPicker {
     private readonly defaultOptions = inject(TUI_EDITOR_OPTIONS);
@@ -26,11 +23,7 @@ export class CustomColorPicker {
     protected selectedColor = '';
     protected readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);
     protected readonly fontColor$ = this.editor.valueChange$.pipe(
-        map(() =>
-            this.editor.getOriginTiptapEditor()?.isFocused
-                ? this.editor[`get${this.type}` as const]() || 'transparent'
-                : 'transparent',
-        ),
+        map(() => (this.isBlankColor ? '' : this.color)),
         distinctUntilChanged(),
         share(),
     );
@@ -43,6 +36,18 @@ export class CustomColorPicker {
 
     @Input()
     public type: 'BackgroundColor' | 'FontColor' = 'FontColor';
+
+    protected get color(): string {
+        return this.editor.getOriginTiptapEditor()?.isFocused
+            ? this.editor[`get${this.type}` as const]() || 'transparent'
+            : 'transparent';
+    }
+
+    protected get isBlankColor(): boolean {
+        return (
+            this.color === this.defaultOptions.blankColor || this.color === 'transparent'
+        );
+    }
 
     protected onValueChange(color: string): void {
         this.selectedColor = color;

@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,7 +24,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiPaintTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfieldDropdownDirective],
+    imports: [TuiPaletteModule, TuiTextfieldDropdownDirective],
     template: `
         {{ tuiHint() }}
 
@@ -36,19 +35,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
                 (selectedColor)="setCellColor($event)"
             />
         </ng-container>
-
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getCellColor() ?? editor?.getGroupColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        tuiPlateHost: '',
+        '[style.--t-toolbar-icon-color]': 'getColor()',
     },
 })
 export class TuiPaintButtonTool extends TuiToolbarTool {
@@ -91,10 +82,9 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
         }
     }
 
-    protected isBlankColor(): boolean {
-        return (
-            (this.editor?.getCellColor() ?? this.editor?.getGroupColor()) ===
-            this.options.blankColor
-        );
+    protected getColor(): string {
+        const color = this.editor?.getCellColor() ?? this.editor?.getGroupColor() ?? '';
+
+        return color !== 'transparent' ? color : '';
     }
 }

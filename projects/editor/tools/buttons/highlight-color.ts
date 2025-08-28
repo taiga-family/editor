@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,7 +25,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiHighlightColorTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfieldDropdownDirective],
+    imports: [TuiPaletteModule, TuiTextfieldDropdownDirective],
     template: `
         {{ tuiHint() }}
 
@@ -37,20 +36,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
                 (selectedColor)="editor?.setBackgroundColor($event)"
             />
         </ng-container>
-
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getBackgroundColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        tuiPlateHost: '',
         '[attr.automation-id]': '"toolbar__hilite-button"',
+        '[style.--t-toolbar-icon-color]': 'getBackgroundColor()',
     },
 })
 export class TuiHighlightColorButtonTool extends TuiToolbarTool {
@@ -65,15 +56,17 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
-    protected isBlankColor(): boolean {
-        return this.editor?.getBackgroundColor() === this.options.blankColor;
-    }
-
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textHilite;
     }
 
     protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
         return this.open() ? '' : (texts?.backColor ?? '');
+    }
+
+    protected getBackgroundColor(): string {
+        const color = this.editor?.getBackgroundColor() ?? '';
+
+        return color !== 'transparent' ? color : '';
     }
 }

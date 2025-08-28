@@ -1,4 +1,6 @@
 [tuiToolbar] {
+    --t-toolbar-icon-color: var(--tui-text-tertiary);
+
     display: flex;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -69,20 +71,6 @@
     display: none;
 }
 
-[tuiPlateHost] {
-    position: relative;
-}
-
-[tuiPlate] {
-    position: absolute;
-    top: 1.9rem;
-    left: 50%;
-    block-size: 0.25rem;
-    pointer-events: none;
-    transform: translateX(-50%);
-    inline-size: 1.25rem;
-}
-
 [tuiToolbarDropdownContent] {
     padding: 0.5rem;
 }
@@ -90,4 +78,8 @@
 [tuiPalette] {
     box-sizing: border-box;
     max-inline-size: 22.6rem;
+}
+
+[tuiToolbarTool][tuiAppearance][data-appearance='icon']::before {
+    color: var(--t-toolbar-icon-color);
 }
