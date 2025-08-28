@@ -1,5 +1,8 @@
 <ng-template #toolbarTpl>
-    <tui-toolbar-host [disabled]="!interactive()">
+    <tui-toolbar-host
+        *ngIf="editorLoaded()"
+        [disabled]="!interactive()"
+    >
         <ng-container *polymorpheusOutlet="toolbar ?? defaultToolbar as text; context: {$implicit: editor}">
             {{ text }}
         </ng-container>

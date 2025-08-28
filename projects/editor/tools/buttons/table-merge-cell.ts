@@ -1,8 +1,6 @@
-import {ChangeDetectionStrategy, Component, type OnInit, signal} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
@@ -17,17 +15,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
         '(click)': 'canMergeCells?.() ? editor?.mergeCells() : editor?.splitCell()',
     },
 })
-export class TuiTableMergeCellButtonTool extends TuiToolbarTool implements OnInit {
+export class TuiTableMergeCellButtonTool extends TuiToolbarTool {
     protected readonly canMergeCells? = signal<boolean>(false);
 
-    public ngOnInit(): void {
-        this.editor?.valueChange$
-            .pipe(
-                map(() => this.editor?.canMergeCells() ?? false),
-                distinctUntilChanged(),
-                takeUntilDestroyed(this.destroy$),
-            )
-            .subscribe((e) => this.canMergeCells?.set(e));
+    protected override updateSignals(): void {
+        this.canMergeCells?.set(this.editor?.canMergeCells() ?? false);
+
+        super.updateSignals();
     }
 
     protected override getDisableState(): boolean {
