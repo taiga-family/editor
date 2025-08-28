@@ -56,7 +56,7 @@ function pasteImage(injector: Injector) {
     };
 }
 
-function typesafeIsAllowedUri(uri?: string): boolean {
+function typeSafeIsAllowedUri(uri?: string): boolean {
     if (!uri) {
         return false;
     }
@@ -97,7 +97,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                                 parsedElement.getAttribute(attrName) ?? undefined,
                         );
 
-                        if (!typesafeIsAllowedUri(href)) {
+                        if (!typeSafeIsAllowedUri(href)) {
                             return false;
                         }
 
@@ -165,31 +165,20 @@ export function tuiCreateImageEditorExtension<T, K>({
             };
         },
 
-        renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
-            const {src, width, alt, style, title, 'data-href': href} = HTMLAttributes;
+        renderHTML({HTMLAttributes}): DOMOutputSpec {
+            const {'data-href': href, ...attributes} = HTMLAttributes;
 
-            if (!href) {
-                return ['img', mergeAttributes(HTMLAttributes)];
-            }
-
-            return [
-                'a',
-                mergeAttributes({
-                    target: '_blank',
-                    rel: 'noopener noreferrer nofollow',
-                    href: typesafeIsAllowedUri(href) ? href : '',
-                    style: style,
-                }),
-                [
-                    'img',
-                    mergeAttributes({
-                        src,
-                        width,
-                        alt,
-                        title,
-                    }),
-                ],
-            ];
+            return href
+                ? [
+                      'a',
+                      {
+                          target: '_blank',
+                          rel: 'noopener noreferrer nofollow',
+                          href: typeSafeIsAllowedUri(href) ? href : '',
+                      },
+                      ['img', mergeAttributes(attributes)],
+                  ]
+                : ['img', mergeAttributes(attributes)];
         },
 
         addNodeView(): NodeViewRenderer {

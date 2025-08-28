@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
     "import": ["@taiga-ui/cspell-config/cspell.config.js"],
-    "ignoreWords": ["todoify", "Lyyy", "typesafe"],
+    "ignoreWords": ["todoify", "Lyyy"],
     "files": ["*/*.*"]
 }
