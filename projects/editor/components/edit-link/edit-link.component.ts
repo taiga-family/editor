@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -75,7 +76,7 @@ interface ServerSideGlobal extends NodeJS.Global {
         '(mousedown.capture)': 'onMouseDown($event)',
     },
 })
-export class TuiEditLink {
+export class TuiEditLink implements OnInit {
     private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     private readonly doc: Document | null =
         inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
@@ -91,6 +92,12 @@ export class TuiEditLink {
     @Input('editor')
     public inputEditor: AbstractTuiEditor | null = null;
 
+    @Input()
+    public link?: string;
+
+    @Input()
+    public explicitOnlyLinkEdit = false;
+
     @Output()
     public readonly addLink = new EventEmitter<string>();
 
@@ -105,6 +112,13 @@ export class TuiEditLink {
 
     public get anchorMode(): boolean {
         return this.isOnlyAnchorMode;
+    }
+
+    public ngOnInit(): void {
+        if (this.explicitOnlyLinkEdit) {
+            this.url = this.link ? this.removePrefix(this.link) : '';
+            this.edit = true;
+        }
     }
 
     protected get editor(): AbstractTuiEditor | null {
@@ -128,7 +142,12 @@ export class TuiEditLink {
     }
 
     protected get showAnchorsList(): boolean {
-        return !this.anchorMode && this.edit && this.anchorIds.length > 0;
+        return (
+            !this.explicitOnlyLinkEdit &&
+            !this.anchorMode &&
+            this.edit &&
+            this.anchorIds.length > 0
+        );
     }
 
     protected onSelectionChange(): void {
@@ -183,6 +202,10 @@ export class TuiEditLink {
     }
 
     protected onBlur(url: string): void {
+        if (this.explicitOnlyLinkEdit) {
+            return;
+        }
+
         const range = this.editor?.getSelectionSnapshot();
 
         if (range && !url && !this.url) {

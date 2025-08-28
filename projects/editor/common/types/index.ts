@@ -54,6 +54,7 @@ declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         imageEditor: {
             setEditableImage: (imageConfigs: TuiEditableImage) => ReturnType;
+            setImageLink: () => ReturnType;
         };
     }
 

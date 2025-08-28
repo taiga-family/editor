@@ -11,6 +11,10 @@ tui-image-editor {
         display: flex;
     }
 
+    .ProseMirror-focused &.ProseMirror-selectednode img {
+        outline: 0.125rem solid var(--tui-background-accent-1-hover);
+    }
+
     img {
         pointer-events: none;
     }

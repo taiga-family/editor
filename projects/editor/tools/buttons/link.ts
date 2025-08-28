@@ -20,7 +20,8 @@ export class TuiLinkButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
         return (
             (this.editor?.isActive('link') ?? false) ||
-            (this.editor?.isActive('jumpAnchor') ?? false)
+            (this.editor?.isActive('jumpAnchor') ?? false) ||
+            (this.editor?.isActive('image', {'data-editing-href': true}) ?? false)
         );
     }
 

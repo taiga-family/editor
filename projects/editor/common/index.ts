@@ -20,6 +20,7 @@ export type * from './iframe';
 export type * from './image';
 export * from './image-loader';
 export type * from './parsed-gradient';
+export * from './pm-css-classes';
 export * from './tiptap-editor';
 export type * from './tui-link-attributes';
 export type * from './youtube';

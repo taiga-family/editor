@@ -23,6 +23,8 @@ import {tuiIsEmptyParagraph} from './utils/is-empty-paragraph';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
+type Attrs = Record<string, unknown>;
+
 @Injectable()
 export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef: Observable<Editor | null> = inject(TIPTAP_EDITOR);
@@ -210,16 +212,29 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.chain().focus().liftListItem(type).run();
     }
 
-    public isActive(nameOrAttributes: Record<string, string> | string): boolean {
-        return this.editor?.isActive(nameOrAttributes) ?? false;
+    public isActive(attributes: Attrs): boolean;
+    public isActive(name: string, attributes?: Record<string, unknown>): boolean;
+    public isActive(name: Attrs | string, attributes?: Attrs): boolean {
+        return (
+            (typeof name === 'string'
+                ? this.editor?.isActive(name, attributes)
+                : this.editor?.isActive(name)) ?? false
+        );
     }
 
+    public isActive$(attributes: Attrs): Observable<boolean>;
     public isActive$(
-        nameOrAttributes: Record<string, string> | string,
-    ): Observable<boolean> {
+        name: string,
+        attributes?: Record<string, unknown>,
+    ): Observable<boolean>;
+    public isActive$(name: Attrs | string, attributes?: Attrs): Observable<boolean> {
         return this.valueChange$.pipe(
             startWith(null),
-            map(() => this.isActive(nameOrAttributes)),
+            map(() =>
+                typeof name === 'string'
+                    ? this.isActive(name, attributes)
+                    : this.isActive(name),
+            ),
             distinctUntilChanged(),
         );
     }

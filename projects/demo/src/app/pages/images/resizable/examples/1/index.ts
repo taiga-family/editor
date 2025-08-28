@@ -27,6 +27,7 @@ import {switchMap} from 'rxjs';
                     tuiCreateImageEditorExtension({injector}),
                 ),
                 import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
+                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
             ],
         },
         {
