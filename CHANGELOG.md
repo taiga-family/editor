@@ -1,3 +1,15 @@
+### [4.39.0](https://github.com/taiga-family/editor/compare/v4.38.0...v4.39.0) (2025-08-28)
+
+### 🚀 Features
+
+- allow selecting images with the keyboard (#1893)
+  [(b0a4e4b)](https://github.com/taiga-family/editor/commit/b0a4e4b75c4264037fb1fcc6750d0ba3874a9b3d)
+
+### 🐞 Bug Fixes
+
+- an image can only be selected while the editor is focused (#1894)
+  [(918a783)](https://github.com/taiga-family/editor/commit/918a78380769e7cbc5c9fd928bcead9292da03ae)
+
 ### [4.38.0](https://github.com/taiga-family/editor/compare/v4.37.0...v4.38.0) (2025-08-21)
 
 ### 🐞 Bug Fixes
