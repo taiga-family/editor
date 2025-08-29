@@ -371,6 +371,12 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
                 plugins: this.editor.state.plugins,
             }),
         );
+
+        const transaction = this.editor?.state.tr;
+
+        if (transaction) {
+            this.editor?.view.dispatch(transaction);
+        }
     }
 
     public destroy(): void {
