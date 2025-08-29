@@ -1,3 +1,12 @@
+### [4.40.0](https://github.com/taiga-family/editor/compare/v4.39.0...v4.40.0) (2025-08-29)
+
+### 🚀 Features
+
+- use active state for each button in toolbar (#1887)
+  [(4523146)](https://github.com/taiga-family/editor/commit/4523146b358c27ccdd4d694bb1487c9629b686bc)
+- use synchronous signal updates to ensure editor state consistency (#1903)
+  [(453ca8a)](https://github.com/taiga-family/editor/commit/453ca8ac40d9b70d3181c172835a514bd883fd33)
+
 ### [4.39.0](https://github.com/taiga-family/editor/compare/v4.38.0...v4.39.0) (2025-08-28)
 
 ### 🚀 Features
