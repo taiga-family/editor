@@ -72,6 +72,16 @@ export class TuiAlignButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return (
+            this.editor?.isActive({textAlign: 'center'}) ||
+            this.editor?.isActive({textAlign: 'justify'}) ||
+            this.editor?.isActive({textAlign: 'left'}) ||
+            this.editor?.isActive({textAlign: 'right'}) ||
+            false
+        );
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textAlignPreview;
     }

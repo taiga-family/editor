@@ -16,6 +16,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiAlignLeftButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive({textAlign: 'left'}) ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textAlignLeft;
     }

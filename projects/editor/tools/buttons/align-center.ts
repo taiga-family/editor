@@ -16,6 +16,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiAlignCenterButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive({textAlign: 'center'}) ?? false;
+    }
+
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.textAlignCenter;
     }

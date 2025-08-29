@@ -17,11 +17,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
     },
 })
 export class TuiBlockquoteButtonTool extends TuiToolbarTool {
+    protected override isActive(): boolean {
+        return this.editor?.isActive('blockquote') ?? false;
+    }
+
     protected override getDisableState(): boolean {
-        return (
-            (this.editor?.isActive('bulletList') ?? false) ||
-            (this.editor?.isActive('orderedList') ?? false)
-        );
+        return this.editor?.isActive('blockquote') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

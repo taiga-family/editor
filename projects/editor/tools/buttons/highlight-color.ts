@@ -65,8 +65,15 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
         this.dropdown.set(template);
     }
 
+    protected override isActive(): boolean {
+        return !this.isBlankColor();
+    }
+
     protected isBlankColor(): boolean {
-        return this.editor?.getBackgroundColor() === this.options.blankColor;
+        return (
+            this.getBackgroundColor() === this.options.blankColor ||
+            this.getBackgroundColor() === 'transparent'
+        );
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
@@ -75,5 +82,9 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
 
     protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
         return this.open() ? '' : (texts?.backColor ?? '');
+    }
+
+    protected getBackgroundColor(): string {
+        return this.editor?.getBackgroundColor() ?? '';
     }
 }
