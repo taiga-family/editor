@@ -1,81 +1,66 @@
-import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
+import {LinksPO} from '../utils/page-objects/links.page';
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
-import {tuiGoto} from '../utils';
 
 test.describe('Links', () => {
     test.beforeEach(async ({page}) => {
-        await tuiGoto(
-            page,
-            `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
-        );
-        await page.locator('[contenteditable]').first().focus();
+        const linksPage = new LinksPO(page);
+
+        await linksPage.gotoStarterKitWithModel(HTML_EDITOR_BASIC_EXAMPLE);
+
+        const editor = linksPage.getLinksEditor();
+
+        await editor.focusEditor();
     });
 
     test('check if at least one link exists', async ({page}) => {
-        await page.locator('tui-editor a').first().click();
+        const linksPage = new LinksPO(page);
+        const editor = linksPage.getLinksEditor();
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-01.png');
+        await linksPage.clickFirstLink();
+
+        await expect.soft(editor.editor).toHaveScreenshot('Links-01.png');
     });
 
     test('switch links between', async ({page}) => {
-        await page.locator('tui-editor strong').first().dblclick();
+        const linksPage = new LinksPO(page);
+        const editor = linksPage.getLinksEditor();
 
-        await page.locator('[automation-id="toolbar__link-button"]').focus();
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await linksPage.doubleClickFirstStrong();
+        await linksPage.addLinkToSelection('wysiwyg.com');
 
-        await page.locator('tui-input-inline input').first().focus();
-        await page.waitForTimeout(300);
+        await expect.soft(editor.editor).toHaveScreenshot('Links-02.png');
 
-        await page.locator('tui-input-inline input').first().fill('wysiwyg.com');
-        await page.keyboard.press('Enter');
+        await linksPage.selectAndAddLink('tui-editor h1', 'example.com');
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Links-03.png');
 
-        await page.locator('tui-editor h1').first().selectText();
+        await linksPage.clickFirstStrong();
 
-        await page.locator('[automation-id="toolbar__link-button"]').focus();
-        await page.keyboard.press('Enter');
+        await expect.soft(editor.editor).toHaveScreenshot('Links-04.png');
 
-        await page.locator('tui-input-inline input').first().focus();
-        await page.locator('tui-input-inline input').first().fill('example.com');
-        await page.keyboard.press('Enter');
+        await linksPage.clickOutside();
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-03.png');
+        await linksPage.clickFirstSup();
 
-        await page.locator('tui-editor strong').first().click();
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-04.png');
-
-        await page.mouse.click(0, 0);
-
-        await page.locator('tui-editor sup').first().click();
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-05.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Links-05.png');
     });
 
     test('check that you can write text at the end', async ({page}) => {
-        const editor = page.locator('[contenteditable]').first();
+        const linksPage = new LinksPO(page);
+        const editor = linksPage.getLinksEditor();
 
-        await editor.selectText();
-        await page.keyboard.press('Backspace');
-        await page.keyboard.type('Hello');
-        await editor.selectText();
+        await linksPage.clearAndTypeText('Hello');
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-06.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Links-06.png');
 
-        await page.locator('[automation-id="toolbar__link-button"]').click();
-        await page.keyboard.type('abc.com');
-        await page.keyboard.press('Enter');
+        await linksPage.addLinkViaToolbar('abc.com');
 
         await expect.soft(page).toHaveScreenshot('Links-07.png');
 
-        await editor.click();
-        await page.keyboard.press('End');
-        await page.keyboard.type('World');
+        await linksPage.goToEndAndType('World');
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-08.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Links-08.png');
     });
 });

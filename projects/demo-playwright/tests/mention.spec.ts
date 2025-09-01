@@ -1,17 +1,21 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {DemoPO} from '../utils/page-objects';
 
 test.describe('Mention', () => {
     test('show users in datalist', async ({page}) => {
-        await tuiGoto(page, TuiDemoPath.Mention);
+        const demoPage = new DemoPO(page);
 
-        await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').first().selectText();
-        await page.keyboard.press('Backspace');
+        await demoPage.gotoDemoPath(TuiDemoPath.Mention);
 
-        await page.keyboard.type('@');
+        const editor = demoPage.getEditor();
+
+        await editor.focusEditor();
+        await editor.selectAllText();
+        await editor.pressKey('Backspace');
+
+        await editor.typeText('@');
 
         await expect
             .soft(page.locator('.t-demo').first())

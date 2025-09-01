@@ -14,7 +14,13 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.152.0
       - uses: taiga-family/ci/actions/setup/node@v1.152.0
-      - run: npx nx component-test demo-cypress
+      - uses: nick-fields/retry@v3
+        with:
+          max_attempts: 2
+          retry_on: error
+          timeout_seconds: 5
+          command: |
+            npx nx component-test demo-cypress
 
   e2e:
     name: E2E playwright

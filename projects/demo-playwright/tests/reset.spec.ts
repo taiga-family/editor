@@ -1,30 +1,34 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {DemoPO} from '../utils/page-objects';
 
 test.describe('Reset', () => {
     test('Correct reset value from wysiwyg', async ({page}) => {
-        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?placeholder=Hello`);
+        const demoPage = new DemoPO(page);
 
-        await page.locator('tui-editor [contenteditable]').focus();
-        await page.waitForTimeout(300);
+        await demoPage.goto(`/${TuiDemoPath.StarterKit}?placeholder=Hello`);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Reset-01.png');
+        const editor = demoPage.getEditor();
 
-        await page.locator('button:has-text("Reset")').click();
-        await page.waitForTimeout(300);
+        await editor.focusEditor();
+        await demoPage.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Reset-02.png');
-
-        await page.locator('tui-editor [contenteditable]').fill('12345');
-        await page.waitForTimeout(300);
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Reset-03.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Reset-01.png');
 
         await page.locator('button:has-text("Reset")').click();
-        await page.waitForTimeout(300);
+        await demoPage.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Reset-04.png');
+        await expect.soft(editor.editor).toHaveScreenshot('Reset-02.png');
+
+        await editor.contentEditable.fill('12345');
+        await demoPage.waitForTimeout(300);
+
+        await expect.soft(editor.editor).toHaveScreenshot('Reset-03.png');
+
+        await page.locator('button:has-text("Reset")').click();
+        await demoPage.waitForTimeout(300);
+
+        await expect.soft(editor.editor).toHaveScreenshot('Reset-04.png');
     });
 });

@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 import {TuiDemoPath} from '../../demo/src/app/shared/routes';
-import {tuiGoto} from '../utils';
+import {DemoPO} from '../utils/page-objects';
 
 test.describe('Demo', () => {
     const IGNORE_FLAKY = new Set<string>([
@@ -16,7 +16,9 @@ test.describe('Demo', () => {
         .filter(([, path]) => !IGNORE_FLAKY.has(path))
         .forEach(([name, path]) => {
             test(name, async ({page}) => {
-                await tuiGoto(page, path);
+                const demoPage = new DemoPO(page);
+
+                await demoPage.gotoDemoPath(path);
 
                 test.skip(
                     !page.url().endsWith(path),
@@ -41,7 +43,7 @@ test.describe('Demo', () => {
 
                 for (const [i, example] of examples.entries()) {
                     await example.scrollIntoViewIfNeeded();
-                    await page.waitForTimeout(300);
+                    await demoPage.waitForTimeout(300);
 
                     await expect
                         .soft(example)

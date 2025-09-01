@@ -1,50 +1,32 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {SlashPO} from '../utils/page-objects/slash.page';
 
 test.describe('Slash', () => {
     test('show commands', async ({page}) => {
-        await tuiGoto(page, TuiDemoPath.SlashCommand);
+        const slashPage = new SlashPO(page);
 
-        await page.locator('[contenteditable]').first().focus();
-        await page.keyboard.type('/');
+        await slashPage.gotoDemoPath(TuiDemoPath.SlashCommand);
+
+        await slashPage.triggerSlashCommand();
+
         await expect.soft(page).toHaveScreenshot('Slash-01.png');
     });
 
     test('show link dropdown and commands', async ({page}) => {
-        await tuiGoto(page, TuiDemoPath.SlashCommand);
+        const slashPage = new SlashPO(page);
 
-        const editor = page.locator('[contenteditable]').first();
+        await slashPage.gotoDemoPath(TuiDemoPath.SlashCommand);
 
-        await editor.focus();
-        await page.keyboard.type('ABC');
-        await editor.selectText();
-        await page.getByTestId('toolbar__link-button').click();
-        await page.waitForTimeout(300);
+        await slashPage.selectTextAndAddLink('ABC', 'abc.com');
 
-        await expect
-            .soft(page.locator('.t-demo').first())
-            .toHaveScreenshot('Slash-02.png');
+        await expect.soft(slashPage.demoContainer).toHaveScreenshot('Slash-02.png');
 
-        await page.keyboard.type('abc.com');
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await expect.soft(slashPage.demoContainer).toHaveScreenshot('Slash-03.png');
 
-        await expect
-            .soft(page.locator('.t-demo').first())
-            .toHaveScreenshot('Slash-03.png');
+        await slashPage.navigateToEndAndTriggerSlash();
 
-        await editor.click();
-        await page.keyboard.press('End');
-        await page.keyboard.press(' ');
-
-        await page.keyboard.press('Enter');
-        await page.keyboard.type('/');
-        await page.waitForTimeout(300);
-
-        await expect
-            .soft(page.locator('.t-demo').first())
-            .toHaveScreenshot('Slash-04.png');
+        await expect.soft(slashPage.demoContainer).toHaveScreenshot('Slash-04.png');
     });
 });
