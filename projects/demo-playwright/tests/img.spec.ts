@@ -1,8 +1,8 @@
 import {expect, test} from '@playwright/test';
 
 import {TuiDemoPath} from '../../demo/src/app/shared/routes';
-import {ImgPO} from '../utils/page-objects/img.page';
 import {HTML_BASE64_IMG} from '../stubs/html';
+import {ImgPO} from '../utils/page-objects/img.page';
 
 test.describe('Img', () => {
     test('base64', async ({page}) => {

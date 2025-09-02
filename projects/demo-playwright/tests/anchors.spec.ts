@@ -1,8 +1,8 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {AnchorsPO} from '../utils/page-objects/anchors.page';
 import {hideScrollbars} from '../utils';
+import {AnchorsPO} from '../utils/page-objects/anchors.page';
 
 test.describe('Anchors', () => {
     test.use({viewport: {width: 1280, height: 500}});

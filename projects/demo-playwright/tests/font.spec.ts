@@ -1,8 +1,8 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {FontPO} from '../utils/page-objects/font.page';
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
+import {FontPO} from '../utils/page-objects/font.page';
 
 test.describe('Font', () => {
     test('previous text style should not be inherited', async ({page}) => {

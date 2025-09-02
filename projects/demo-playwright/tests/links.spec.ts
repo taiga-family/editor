@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
-import {LinksPO} from '../utils/page-objects/links.page';
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
+import {LinksPO} from '../utils/page-objects/links.page';
 
 test.describe('Links', () => {
     test.beforeEach(async ({page}) => {
