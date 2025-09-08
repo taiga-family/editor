@@ -74,7 +74,7 @@ export class TuiImageAlignList {
 
     @tuiPure
     protected isAlignCenter(style?: string | null): boolean {
-        return style?.replace(/\s/g, '').includes('justify-content:center') ?? false;
+        return style?.replaceAll(/\s/g, '').includes('justify-content:center') ?? false;
     }
 
     @tuiPure
@@ -84,12 +84,12 @@ export class TuiImageAlignList {
 
     @tuiPure
     protected isAlignLeft(style?: string | null): boolean {
-        return style?.replace(/\s/g, '').includes('float:left') ?? false;
+        return style?.replaceAll(/\s/g, '').includes('float:left') ?? false;
     }
 
     @tuiPure
     protected isAlignRight(style?: string | null): boolean {
-        return style?.replace(/\s/g, '').includes('float:right') ?? false;
+        return style?.replaceAll(/\s/g, '').includes('float:right') ?? false;
     }
 
     protected alignLeft(): void {
