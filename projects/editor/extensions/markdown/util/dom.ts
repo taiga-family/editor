@@ -34,5 +34,5 @@ export function tuiUnwrapElement(node: Node): void {
 }
 
 export function tuiEscapeHTML(value?: string): string {
-    return value?.replace(/</g, '&lt;').replaceAll('>', '&gt;') ?? '';
+    return value?.replaceAll('<', '&lt;').replaceAll('>', '&gt;') ?? '';
 }
