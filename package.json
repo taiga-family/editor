@@ -124,7 +124,7 @@
         "ngx-highlightjs": "10.0.0",
         "nx": "20.1.4",
         "showdown": "2.1.0",
-        "ts-jest": "29.4.2",
+        "ts-jest": "29.4.4",
         "tslib": "2.8.1",
         "typescript": "5.0.4",
         "webpack": "5.101.3"
