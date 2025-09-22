@@ -21,19 +21,17 @@
 <ng-container *polymorpheusOutlet="!floatingToolbar ? toolbarTpl : null as text">
     {{ text }}
 </ng-container>
-
 <div
     tuiEditorLabel
     (mousedown)="focus($event)"
 >
+    <ng-content />
     <div
         *ngIf="hasPlaceholder"
         tuiEditorPlaceholder
     >
         {{ placeholder || exampleText }}
     </div>
-
-    <ng-content />
 </div>
 
 <tui-scrollbar
