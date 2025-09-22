@@ -43,10 +43,6 @@ tui-editor::after {
     margin-block-start: 0.1875rem;
 }
 
-[tuiEditorLabel]._has-label [tuiEditorPlaceholder] {
-    margin-block-start: 0.375rem;
-}
-
 tui-editor > tui-editor-socket {
     display: none !important;
     visibility: hidden;
