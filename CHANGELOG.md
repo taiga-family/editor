@@ -1,3 +1,10 @@
+### [4.41.0](https://github.com/taiga-family/editor/compare/v4.40.0...v4.41.0) (2025-09-22)
+
+### 🐞 Bug Fixes
+
+- align content to top in editor that have no label (#1927)
+  [(74d044e)](https://github.com/taiga-family/editor/commit/74d044eab7afc6384863c9ae4da00a58b5822de8)
+
 ### [4.40.0](https://github.com/taiga-family/editor/compare/v4.39.0...v4.40.0) (2025-08-29)
 
 ### 🚀 Features
