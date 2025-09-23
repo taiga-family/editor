@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TUI_EDITOR_OPTIONS,
     TuiAlignButtonTool,
     TuiEditor,
@@ -27,12 +26,7 @@ import {
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
-        },
-    ],
+    providers: [provideTuiEditor()],
 })
 export default class Example {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

@@ -4,8 +4,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiLoader} from '@taiga-ui/core';
 import {
+    provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
-    TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     type TuiEditorAttachedFile,
     TuiEditorTool,
@@ -21,16 +21,7 @@ import {FileIoService} from './filesio.service';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
-            ],
-        },
+        provideTuiEditor(),
         {
             provide: TUI_ATTACH_FILES_LOADER,
             deps: [FileIoService],

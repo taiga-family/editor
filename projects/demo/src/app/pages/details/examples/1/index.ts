@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -9,20 +9,11 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(
-                    ({TuiDetailsExtension}) => TuiDetailsExtension,
-                ),
-                import('@taiga-ui/editor').then(({TuiSummary}) => TuiSummary),
-                import('@taiga-ui/editor').then(
-                    ({TuiDetailsContent}) => TuiDetailsContent,
-                ),
-            ],
-        },
+        provideTuiEditor({
+            details: true,
+            detailsSummary: true,
+            detailsContent: true,
+        }),
     ],
 })
 export default class Example {

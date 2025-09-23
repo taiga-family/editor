@@ -1,6 +1,6 @@
 import {type Command, Extension, type GlobalAttributes} from '@tiptap/core';
 
-interface BackgroundColorOptions {
+export interface TuiBackgroundColorOptions {
     types: string[];
 }
 
@@ -19,10 +19,10 @@ declare module '@tiptap/core' {
     }
 }
 
-export const TuiBackgroundColor = Extension.create<BackgroundColorOptions>({
+export const TuiBackgroundColor = Extension.create<TuiBackgroundColorOptions>({
     name: 'backgroundColor',
 
-    addOptions(): BackgroundColorOptions {
+    addOptions(): TuiBackgroundColorOptions {
         return {
             types: ['textStyle'],
         };

@@ -3,8 +3,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    INJECTOR,
-    type Injector,
     PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
@@ -13,9 +11,9 @@ import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
+    provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
-    TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     type TuiEditorAttachedFile,
     TuiEditorTool,
@@ -29,19 +27,9 @@ import {map, type Observable, of} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [INJECTOR],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@taiga-ui/editor').then(({tuiCreateIframeEditorExtension}) =>
-                    tuiCreateIframeEditorExtension({injector}),
-                ),
-            ],
-        },
+        provideTuiEditor({
+            iframe: true,
+        }),
         {
             provide: TUI_ATTACH_FILES_LOADER,
             useFactory:

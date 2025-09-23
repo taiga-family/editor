@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -10,14 +10,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useFactory: () => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-            ],
-        },
-    ],
+    providers: [provideTuiEditor()],
 })
 export default class Example implements OnInit {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];

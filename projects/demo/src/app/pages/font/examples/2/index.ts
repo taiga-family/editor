@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TuiEditor,
     tuiEditorOptionsProvider,
     TuiEditorTool,
@@ -22,16 +22,7 @@ import {
                     ngStyle: {'font-size': '1rem'},
                 })),
         }),
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(
-                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
-                ),
-            ],
-        },
+        provideTuiEditor(),
     ],
 })
 export default class Example {
