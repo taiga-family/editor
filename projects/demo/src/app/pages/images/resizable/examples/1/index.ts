@@ -1,10 +1,10 @@
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
@@ -18,18 +18,7 @@ import {switchMap} from 'rxjs';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-            ],
-        },
+        provideTuiEditor({image: true}),
         {
             provide: TUI_IMAGE_EDITOR_OPTIONS,
             useValue: {

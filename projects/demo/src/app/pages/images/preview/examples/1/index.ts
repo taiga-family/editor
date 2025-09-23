@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TuiEditor,
     TuiEditorImagePreview,
     TuiEditorSocket,
@@ -24,18 +24,7 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
-            ],
-        },
-    ],
+    providers: [provideTuiEditor({image: true})],
 })
 export default class Example {
     protected readonly isE2E = inject(TUI_IS_E2E);

@@ -17,7 +17,7 @@ import {
     TuiDropdown,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 interface MyCommand {
     name: string;
@@ -36,17 +36,7 @@ interface MyCommand {
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useFactory: () => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-            ],
-        },
-    ],
+    providers: [provideTuiEditor()],
     host: {
         '(window:keydown.arrowUp)': 'down($event, false)',
         '(window:keydown.arrowDown)': 'down($event, true)',

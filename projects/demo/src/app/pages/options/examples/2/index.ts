@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiAlertService} from '@taiga-ui/core';
 import {
+    provideTuiEditor,
     TUI_EDITOR_DEFAULT_OPTIONS,
-    TUI_EDITOR_EXTENSIONS,
     TUI_EDITOR_OPTIONS,
     TuiEditor,
     type TuiEditorOptions,
@@ -39,12 +39,7 @@ import {
                 };
             },
         },
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-            ],
-        },
+        provideTuiEditor(),
     ],
 })
 export default class Example {

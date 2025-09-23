@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditor,
 } from '@taiga-ui/editor';
@@ -16,10 +15,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
-        },
+        provideTuiEditor(),
         {
             provide: TUI_EDITOR_VALUE_TRANSFORMER,
             useClass: ExampleEditorCleanupHtmlTransformer,

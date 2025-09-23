@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TuiEditor,
     tuiEditorOptionsProvider,
     TuiEditorTool,
@@ -19,12 +19,7 @@ import {
                 preserveWhitespace: 'full',
             },
         }),
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-            ],
-        },
+        provideTuiEditor(),
     ],
 })
 export default class Example {

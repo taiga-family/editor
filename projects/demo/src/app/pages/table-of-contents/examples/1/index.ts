@@ -2,7 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {type TableOfContentData} from '@tiptap/extension-table-of-contents';
 import {Subject} from 'rxjs';
 
@@ -22,28 +22,24 @@ import {type MyContentsInfo, MyToc} from './my-toc';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Example, WA_WINDOW],
-            useFactory: (example: Example, win: Window) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tiptap/extension-table-of-contents').then(
-                    ({TableOfContents, getHierarchicalIndexes}) => {
-                        return TableOfContents.configure({
-                            scrollParent: () =>
-                                example.editor?.rootEl.querySelector<HTMLElement>(
-                                    'tui-scrollbar',
-                                ) ?? win,
-                            getIndex: getHierarchicalIndexes,
-                            onUpdate(items: TableOfContentData, isCreate) {
-                                example.contents.next({items, isCreate});
-                            },
-                        });
-                    },
-                ),
-            ],
-        },
+        provideTuiEditor({}, async (injector) => {
+            const example = injector.get(Example);
+            const win = injector.get(WA_WINDOW);
+
+            const {TableOfContents, getHierarchicalIndexes} = await import(
+                '@tiptap/extension-table-of-contents'
+            );
+
+            return TableOfContents.configure({
+                scrollParent: () =>
+                    example.editor?.rootEl.querySelector<HTMLElement>('tui-scrollbar') ??
+                    win,
+                getIndex: getHierarchicalIndexes,
+                onUpdate(items: TableOfContentData, isCreate) {
+                    example.contents.next({items, isCreate});
+                },
+            });
+        }),
     ],
 })
 export default class Example {

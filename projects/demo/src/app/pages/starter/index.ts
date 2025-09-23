@@ -1,13 +1,12 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
+    provideTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
-    TUI_EDITOR_EXTENSIONS,
     TUI_IMAGE_EDITOR_OPTIONS,
     TuiEditor,
     TuiEditorTool,
@@ -34,14 +33,12 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@taiga-ui/editor').then(({setup}) => setup({injector})),
-            ],
-        },
+        provideTuiEditor({
+            image: true,
+            details: true,
+            detailsSummary: true,
+            detailsContent: true,
+        }),
         {
             provide: TUI_IMAGE_EDITOR_OPTIONS,
             useValue: {

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {type Node} from '@tiptap/pm/model';
 
 @Component({
@@ -10,29 +10,27 @@ import {type Node} from '@tiptap/pm/model';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-placeholder').then(({Placeholder}) =>
-                    Placeholder.configure({
-                        emptyNodeClass: 't-editor-placeholder',
-                        placeholder: (({node}: {node: Node}) => {
-                            if (node.type.name === 'paragraph') {
-                                return "Type '/' for command";
-                            }
+        provideTuiEditor(
+            {
+                placeholder: {
+                    emptyNodeClass: 't-editor-placeholder',
+                    placeholder: ({node}: {node: Node}) => {
+                        if (node.type.name === 'paragraph') {
+                            return "Type '/' for command";
+                        }
 
-                            return null;
-                        }) as any,
-                        showOnlyCurrent: true,
-                        includeChildren: true,
-                    }),
+                        return '';
+                    },
+                    showOnlyCurrent: true,
+                    includeChildren: true,
+                },
+            },
+            async () =>
+                import('@taiga-ui/editor/extensions/group').then(
+                    ({tuiCreateGroupExtension}) =>
+                        tuiCreateGroupExtension({nested: false, createOnEnter: true}),
                 ),
-                import('@taiga-ui/editor').then(({tuiCreateGroupExtension}) =>
-                    tuiCreateGroupExtension({nested: false, createOnEnter: true}),
-                ),
-            ],
-        },
+        ),
     ],
 })
 export default class Example {

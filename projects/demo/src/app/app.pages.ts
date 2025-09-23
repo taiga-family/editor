@@ -110,7 +110,7 @@ export const DEMO_PAGES: TuiDocRoutePages = [
             },
             {
                 section: 'Documentation',
-                title: 'Paste image',
+                title: 'Paste image via link',
                 keywords:
                     'editor, paste image, tool, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.PasteImageTool}`,

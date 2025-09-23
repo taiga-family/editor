@@ -1,11 +1,5 @@
 import {AsyncPipe, DOCUMENT} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    Injector,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {
     type AbstractControl,
     FormControl,
@@ -16,7 +10,7 @@ import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
 import {TuiError, TuiLoader} from '@taiga-ui/core';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
@@ -42,16 +36,7 @@ import {ImgbbService} from './imgbb.service';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
-            ],
-        },
+        provideTuiEditor({image: true}),
         {
             provide: TUI_IMAGE_EDITOR_OPTIONS,
             useValue: {

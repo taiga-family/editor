@@ -1,12 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiRoot} from '@taiga-ui/core';
-import {
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
-    TUI_EDITOR_DEFAULT_TOOLS,
-    TUI_EDITOR_EXTENSIONS,
-    TuiEditor,
-} from '@taiga-ui/editor';
+import {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -22,12 +17,7 @@ import {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: TUI_EDITOR_DEFAULT_EXTENSIONS,
-        },
-    ],
+    providers: [provideTuiEditor()],
 })
 class Test {
     protected readonly builtInTools = TUI_EDITOR_DEFAULT_TOOLS;
