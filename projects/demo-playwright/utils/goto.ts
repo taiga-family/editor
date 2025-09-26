@@ -1,5 +1,6 @@
 import {type Page} from '@playwright/test';
 
+import {tuiHideElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiMockImages} from './mock-images';
 import {tuiWaitForFonts} from './wait-for-fonts';
@@ -60,6 +61,12 @@ export async function tuiGoto(
                 await locator.evaluate((el) => el.remove());
             }
         }
+    }
+
+    const bars = await page.locator('tui-scroll-controls .t-bar').all();
+
+    for (const bar of bars) {
+        await tuiHideElement(bar);
     }
 
     return response;

@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
 
 /**
- * @deprecated: use {@link TuiTextColorButtonTool}
+ * @deprecated use {@link TuiTextColorButtonTool}
  */
 @Component({
     standalone: true,

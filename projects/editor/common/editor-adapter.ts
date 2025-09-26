@@ -172,7 +172,7 @@ export abstract class AbstractTuiEditor {
     public abstract enter(): void;
 
     /**
-     * @deprecated: use {@link unsetDetails}
+     * @deprecated use {@link unsetDetails}
      */
     public abstract removeDetails(): void;
 
