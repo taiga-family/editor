@@ -410,7 +410,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     /**
-     * @deprecated: use {@link unsetDetails}
+     * @deprecated use {@link unsetDetails}
      */
     public removeDetails(): void {
         this.editor?.commands.unsetDetails();

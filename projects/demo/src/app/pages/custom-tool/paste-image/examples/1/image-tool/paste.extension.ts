@@ -24,6 +24,8 @@ export const IMAGE_CLIPBOARD_PASTE_EXTENSION: Partial<NodeConfig<unknown, unknow
                                     return;
                                 }
 
+                                console.info('Image embedded via link', isImage);
+
                                 const transaction =
                                     view.state.tr.replaceSelectionWith(node);
 

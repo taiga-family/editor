@@ -26,7 +26,7 @@ export interface TuiDetailsExtensionOptions extends DetailsOptions {
 }
 
 /**
- * @deprecated: use {@link DetailsSummaryOptions}
+ * @deprecated use {@link DetailsSummaryOptions}
  */
 export type TuiSummaryOptions = DetailsSummaryOptions;
 

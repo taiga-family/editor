@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiInsertGroupButtonTool, TuiRemoveGroupButtonTool} from '@taiga-ui/editor/tools';
 
 /**
- * @deprecated: use {@link TuiInsertGroupButtonTool}
+ * @deprecated use {@link TuiInsertGroupButtonTool}
  */
 @Component({
     standalone: true,

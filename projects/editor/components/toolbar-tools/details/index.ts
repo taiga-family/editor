@@ -4,7 +4,7 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
 import {TuiDetailsAddButtonTool} from '@taiga-ui/editor/tools';
 
 /**
- * @deprecated: use {@link TuiDetailsAddButtonTool}
+ * @deprecated use {@link TuiDetailsAddButtonTool}
  */
 @Component({
     standalone: true,
