@@ -2,9 +2,14 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
-import {tuiRawLoad} from '@taiga-ui/addon-doc';
+import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR, tuiRawLoad} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E, tuiPure, TuiValueTransformer} from '@taiga-ui/cdk';
-import {TUI_EDITOR_VALUE_TRANSFORMER, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {
+    provideTuiEditor,
+    TUI_EDITOR_VALUE_TRANSFORMER,
+    TuiEditor,
+    TuiEditorTool,
+} from '@taiga-ui/editor';
 import {TuiAccordion} from '@taiga-ui/experimental';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
@@ -16,6 +21,15 @@ import {Converter} from 'showdown';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        provideTuiEditor({image: true}),
+        {
+            /**
+             * @description:
+             * prevent parse 'example.md'
+             */
+            provide: TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR,
+            useValue: (value: string): string[] => [value],
+        },
         {
             provide: TUI_EDITOR_VALUE_TRANSFORMER,
             useValue: new (class extends TuiValueTransformer<string, string> {

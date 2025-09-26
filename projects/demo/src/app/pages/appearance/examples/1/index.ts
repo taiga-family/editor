@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiEditor} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -8,6 +8,7 @@ import {TuiEditor} from '@taiga-ui/editor';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideTuiEditor()],
 })
 export default class Example {
     protected readonly control = new FormControl('');

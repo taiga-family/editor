@@ -1,17 +1,11 @@
 import {isPlatformServer} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    inject,
-    Injector,
-    PLATFORM_ID,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
@@ -29,16 +23,9 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateIframeEditorExtension}) =>
-                    tuiCreateIframeEditorExtension({injector}),
-                ),
-            ],
-        },
+        provideTuiEditor({
+            iframe: true,
+        }),
     ],
 })
 export default class Example {

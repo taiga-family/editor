@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {
@@ -10,9 +10,8 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
+    provideTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
-    TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiToolbar,
 } from '@taiga-ui/editor';
@@ -40,14 +39,16 @@ import content from './content.html?raw';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@taiga-ui/editor').then(({setup}) => setup({injector})),
-            ],
-        },
+        provideTuiEditor({
+            image: true,
+            details: true,
+            detailsSummary: true,
+            detailsContent: true,
+            iframe: true,
+            video: true,
+            audio: true,
+            source: true,
+        }),
     ],
 })
 export default class Page {

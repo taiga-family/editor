@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {ExampleTuiFontSizeTool} from './font-size-tool';
 
@@ -17,18 +17,7 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(
-                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
-                ),
-            ],
-        },
-    ],
+    providers: [provideTuiEditor()],
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];

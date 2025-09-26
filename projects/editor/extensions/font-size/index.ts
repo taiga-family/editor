@@ -22,14 +22,14 @@ declare module '@tiptap/core' {
     }
 }
 
-interface FontSizeOptions {
+export interface TuiFontSizeOptions {
     types: string[];
 }
 
-export const TuiFontSizeExtension = Extension.create<FontSizeOptions>({
+export const TuiFontSizeExtension = Extension.create<TuiFontSizeOptions>({
     name: 'fontSize',
 
-    addOptions(): FontSizeOptions {
+    addOptions(): TuiFontSizeOptions {
         return {types: ['textStyle']};
     },
 

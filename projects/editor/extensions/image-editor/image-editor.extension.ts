@@ -19,6 +19,11 @@ import {take, takeWhile} from 'rxjs';
 
 import {TuiImageEditor} from './image-editor';
 
+export interface TuiImageExtensionOptions {
+    injector: Injector;
+    draggable?: boolean;
+}
+
 function pasteImage(injector: Injector) {
     return (view: EditorView, event: ClipboardEvent | DragEvent): void => {
         const dataTransfer =
@@ -233,4 +238,7 @@ export function tuiCreateImageEditorExtension<T, K>({
     });
 }
 
+/**
+ * @deprecated use {@link tuiCreateImageEditorExtension}
+ */
 export const setup = tuiCreateImageEditorExtension;

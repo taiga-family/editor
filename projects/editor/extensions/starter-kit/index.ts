@@ -48,6 +48,9 @@ export interface TuiStarterKitOptions {
     text: Partial<Record<string, unknown>> | false;
 }
 
+/**
+ * @deprecated use {@link provideTuiEditor}
+ */
 export const TuiStarterKit = Extension.create<TuiStarterKitOptions>({
     name: 'starterKit',
 
