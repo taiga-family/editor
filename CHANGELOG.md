@@ -1,3 +1,10 @@
+### [4.43.0](https://github.com/taiga-family/editor/compare/v4.42.0...v4.43.0) (2025-09-30)
+
+### 🚀 Features
+
+- add compatibility with Taiga 5 beta (#1940)
+  [(13328ae)](https://github.com/taiga-family/editor/commit/13328ae145aa3f01815512739bf040cf2cab6f08)
+
 ### [4.42.0](https://github.com/taiga-family/editor/compare/v4.41.0...v4.42.0) (2025-09-30)
 
 ### 🚀 Features
