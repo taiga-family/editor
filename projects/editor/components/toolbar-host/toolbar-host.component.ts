@@ -10,7 +10,7 @@ import {
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, tuiIsFocusedIn} from '@taiga-ui/cdk';
 import {tuiHintOptionsProvider} from '@taiga-ui/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
@@ -61,10 +61,8 @@ export class TuiToolbarHostComponent {
 
     protected get focused(): boolean {
         return (
-            tuiIsNativeFocusedIn(this.el) ||
-            !!this.dropdowns.find(({nativeElement}) =>
-                tuiIsNativeFocusedIn(nativeElement),
-            )
+            tuiIsFocusedIn(this.el) ||
+            !!this.dropdowns.find(({nativeElement}) => tuiIsFocusedIn(nativeElement))
         );
     }
 
