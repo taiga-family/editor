@@ -2,7 +2,7 @@ import {Directive, ElementRef, inject} from '@angular/core';
 import {
     tuiClamp,
     tuiGetClosestFocusable,
-    tuiIsNativeFocusedIn,
+    tuiIsFocusedIn,
     tuiIsNativeMouseFocusable,
 } from '@taiga-ui/cdk';
 
@@ -37,7 +37,7 @@ export class TuiToolbarNavigationManager {
 
     protected onHorizontalNavigation(toPrevious: boolean): void {
         const {toolsContainers} = this;
-        const focusedToolIndex = toolsContainers.findIndex(tuiIsNativeFocusedIn);
+        const focusedToolIndex = toolsContainers.findIndex(tuiIsFocusedIn);
 
         const targetToolIndex = tuiClamp(
             focusedToolIndex + (toPrevious ? -1 : 1),

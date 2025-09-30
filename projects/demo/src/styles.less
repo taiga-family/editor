@@ -31,6 +31,28 @@ tui-root::before {
     position: absolute !important;
 }
 
-tui-doc-example:first-child {
-    padding-block-start: 0 !important;
+tui-doc-page tui-doc-example:first-child {
+    padding-block-start: 0.5rem;
+}
+
+tui-doc-page .t-example.t-example {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin-block-start: 0;
+}
+
+tui-doc-page .t-tabs-wrapper.t-tabs-wrapper {
+    padding: 0;
+}
+
+tui-doc-page .t-demo.t-demo {
+    padding: 1rem 0 0;
+}
+
+tui-doc-page .t-code.t-code {
+    border: 1px solid var(--tui-border-normal);
+    border-top: none;
+    border-bottom: 0;
+    margin-block-end: 0.0625rem;
 }
