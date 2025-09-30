@@ -39,8 +39,22 @@ export const TUI_EDITOR_PROVIDERS = [
                 1,
             );
 
-            Promise.all(extensions)
-                .then((extensions) => extensions$.next(extensions))
+            Promise.all(extensions.flat())
+                .then((extensions) => {
+                    const extensionsWithoutDuplicates = extensions.reduceRight(
+                        (acc, item) => {
+                            if (!acc.seen.has(item.name)) {
+                                acc.seen.add(item.name);
+                                acc.result.unshift(item);
+                            }
+
+                            return acc;
+                        },
+                        {seen: new Set<string>(), result: [] as typeof extensions},
+                    ).result;
+
+                    extensions$.next(extensionsWithoutDuplicates);
+                })
                 .catch(() => extensions$.next([]));
 
             return extensions$;

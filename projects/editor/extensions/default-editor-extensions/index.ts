@@ -16,6 +16,9 @@ import {TuiTableCell} from '@taiga-ui/editor/extensions/table-cell';
 import {TableCellBackground} from '@taiga-ui/editor/extensions/table-cell-background';
 import {type Extension, type Mark, type Node} from '@tiptap/core';
 
+/**
+ * @deprecated use {@link provideTuiEditor}
+ */
 export const TUI_EDITOR_DEFAULT_EXTENSIONS: ReadonlyArray<
     Extension | Mark | Node | Promise<Extension | Mark | Node>
 > = [

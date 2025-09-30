@@ -5,7 +5,7 @@ import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
@@ -23,13 +23,11 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({TuiYoutube}) => TuiYoutube),
-            ],
-        },
+        provideTuiEditor({}, async () =>
+            import('@taiga-ui/editor/extensions/youtube').then(
+                ({TuiYoutube}) => TuiYoutube,
+            ),
+        ),
     ],
 })
 export default class Example {

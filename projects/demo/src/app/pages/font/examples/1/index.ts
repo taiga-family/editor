@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
-    TUI_EDITOR_EXTENSIONS,
+    provideTuiEditor,
     TuiEditor,
     tuiEditorOptionsProvider,
     TuiEditorTool,
@@ -50,53 +50,46 @@ import {mergeAttributes} from '@tiptap/core';
                 },
             ],
         }),
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) =>
-                    TuiStarterKit.configure({heading: false}),
-                ),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tiptap/extension-heading').then(({Heading}) =>
-                    Heading.configure({levels: [1, 2, 3, 4, 5, 6]})
-                        // @note: if you want to add custom css classes
-                        // then you need customize Heading extension
-                        .extend({
-                            renderHTML({node, HTMLAttributes}) {
-                                type Levels = 1 | 2 | 3 | 4 | 5 | 6;
+        provideTuiEditor({}, async () =>
+            import('@tiptap/extension-heading').then(({Heading}) =>
+                Heading.configure({levels: [1, 2, 3, 4, 5, 6]})
+                    // @note: if you want to add custom css classes
+                    // then you need customize Heading extension
+                    .extend({
+                        renderHTML({node, HTMLAttributes}) {
+                            type Levels = 1 | 2 | 3 | 4 | 5 | 6;
 
-                                const classes: Record<Levels, string> = {
-                                    1: 'text-h1',
-                                    2: 'text-h2',
-                                    3: 'text-h3',
-                                    4: 'text-h4',
-                                    5: 'text-h5',
-                                    6: 'text-h6',
-                                };
+                            const classes: Record<Levels, string> = {
+                                1: 'text-h1',
+                                2: 'text-h2',
+                                3: 'text-h3',
+                                4: 'text-h4',
+                                5: 'text-h5',
+                                6: 'text-h6',
+                            };
 
-                                const hasLevel = this.options.levels.includes(
-                                    node.attrs.level,
-                                );
-                                const level: Levels = hasLevel
-                                    ? node.attrs.level
-                                    : this.options.levels[0];
+                            const hasLevel = this.options.levels.includes(
+                                node.attrs.level,
+                            );
+                            const level: Levels = hasLevel
+                                ? node.attrs.level
+                                : this.options.levels[0];
 
-                                return [
-                                    `h${level}`,
-                                    mergeAttributes(
-                                        this.options.HTMLAttributes,
-                                        HTMLAttributes,
-                                        {
-                                            class: `${classes[level]}`,
-                                        },
-                                    ),
-                                    0,
-                                ];
-                            },
-                        }),
-                ),
-            ],
-        },
+                            return [
+                                `h${level}`,
+                                mergeAttributes(
+                                    this.options.HTMLAttributes,
+                                    HTMLAttributes,
+                                    {
+                                        class: `${classes[level]}`,
+                                    },
+                                ),
+                                0,
+                            ];
+                        },
+                    }),
+            ),
+        ),
     ],
 })
 export default class Example {

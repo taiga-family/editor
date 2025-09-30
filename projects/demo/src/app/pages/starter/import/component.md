@@ -10,14 +10,18 @@ import {TUI_EDITOR_DEFAULT_TOOLS} from '@taiga-ui/editor';
     ReactiveFormsModule,
   ],
   providers: [
-    {
-      provide: TUI_EDITOR_EXTENSIONS,
-      deps: [Injector],
-      useFactory: (injector: Injector) => [
-        ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-        import('@taiga-ui/editor').then(({setup}) => setup({injector})),
-      ],
-    },
+    provideTuiEditor({
+      // You can disable these plugins
+      // if you don't need them
+      image: true,
+      iframe: true,
+      video: true,
+      source: true,
+      audio: true,
+      details: true,
+      detailsSummary: true,
+      detailsContent: true,
+    }),
   ],
   // ...
 })

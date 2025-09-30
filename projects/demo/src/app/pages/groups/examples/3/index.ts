@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -10,21 +10,17 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@taiga-ui/editor').then(({tuiCreateGroupExtension}) =>
-                    tuiCreateGroupExtension({
-                        draggable: false,
+        provideTuiEditor({}, async () =>
+            import('@taiga-ui/editor').then(({tuiCreateGroupExtension}) =>
+                tuiCreateGroupExtension({
+                    draggable: false,
 
-                        // @note: you can override css styles with your own classes
-                        groupNodeClass: 'group',
-                        groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
-                    }),
-                ),
-            ],
-        },
+                    // @note: you can override css styles with your own classes
+                    groupNodeClass: 'group',
+                    groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false
+                }),
+            ),
+        ),
     ],
 })
 export default class Example {

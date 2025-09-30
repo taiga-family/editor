@@ -5,9 +5,9 @@ import {
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
 import {type KeyboardShortcutCommand, mergeAttributes} from '@tiptap/core';
-import {Link} from '@tiptap/extension-link';
+import {Link, type LinkOptions} from '@tiptap/extension-link';
 
-export const TuiLink = Link.extend({
+export const TuiLink = Link.extend<LinkOptions>({
     addAttributes() {
         return {
             ...this.parent?.(),

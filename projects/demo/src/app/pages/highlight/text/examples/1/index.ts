@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -12,24 +12,16 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-align').then(({TextAlign}) =>
-                    TextAlign.configure({types: ['heading', 'paragraph']}),
-                ),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tiptap/extension-highlight').then(({Highlight}) =>
-                    Highlight.configure({
-                        multicolor: true,
-                        HTMLAttributes: {
-                            class: 'marked',
-                        },
-                    }),
-                ),
-            ],
-        },
+        provideTuiEditor({textAlign: {types: ['heading', 'paragraph']}}, async () =>
+            import('@tiptap/extension-highlight').then(({Highlight}) =>
+                Highlight.configure({
+                    multicolor: true,
+                    HTMLAttributes: {
+                        class: 'marked',
+                    },
+                }),
+            ),
+        ),
     ],
 })
 export default class Example {

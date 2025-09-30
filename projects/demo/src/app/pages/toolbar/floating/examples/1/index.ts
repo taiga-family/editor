@@ -1,26 +1,12 @@
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
-    TableCellBackground,
-    TUI_EDITOR_EXTENSIONS,
-    TuiBackgroundColor,
+    provideTuiEditor,
     TuiBoldButtonTool,
-    TuiDetailsContent,
-    TuiDetailsExtension,
     TuiEditor,
     TuiEditorTool,
-    TuiFileLink,
-    TuiFontColor,
     TuiFontSizeButtonTool,
-    TuiFontSizeExtension,
     TuiItalicButtonTool,
-    TuiJumpAnchor,
-    TuiLink,
-    TuiStarterKit,
-    TuiSummary,
-    TuiTabExtension,
-    TuiTable,
-    TuiTableCell,
     TuiToolbar,
     TuiUnderlineButtonTool,
 } from '@taiga-ui/editor';
@@ -40,45 +26,11 @@ import {
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                TuiStarterKit.configure({
-                    placeholder: {placeholder: 'Type /'},
-                    heading: {levels: [1, 2, 3, 4, 5, 6]},
-                }),
-                import('@tiptap/extension-text-align').then(({TextAlign}) =>
-                    TextAlign.configure({types: ['heading', 'paragraph']}),
-                ),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tiptap/extension-underline').then(({Underline}) => Underline),
-                import('@tiptap/extension-subscript').then(({Subscript}) => Subscript),
-                import('@tiptap/extension-superscript').then(
-                    ({Superscript}) => Superscript,
-                ),
-                TuiFontColor,
-                TuiLink,
-                TuiJumpAnchor,
-                TuiFileLink,
-                TuiBackgroundColor,
-                TuiTable.configure({resizable: true}),
-                TuiTableCell,
-                import('@tiptap/extension-table-row').then(({TableRow}) => TableRow),
-                import('@tiptap/extension-table-header').then(
-                    ({TableHeader}) => TableHeader,
-                ),
-                TuiTabExtension,
-                TableCellBackground,
-                TuiDetailsContent,
-                TuiDetailsExtension,
-                TuiSummary,
-                TuiFontSizeExtension,
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
-            ],
-        },
+        provideTuiEditor({
+            placeholder: {placeholder: 'Type /'},
+            heading: {levels: [1, 2, 3, 4, 5, 6]},
+            image: true,
+        }),
     ],
 })
 export default class Example {

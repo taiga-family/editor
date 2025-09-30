@@ -1,12 +1,7 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Injector,
-    ViewEncapsulation,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
-import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
     standalone: true,
@@ -16,54 +11,14 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                import('@taiga-ui/editor')
-                    .then(({TuiStarterKit}) => TuiStarterKit)
-                    .then((extension) =>
-                        extension.configure({heading: {levels: [1, 2]}}),
-                    ),
-                import('@tiptap/extension-text-align').then(({TextAlign}) =>
-                    TextAlign.configure({types: ['heading', 'paragraph']}),
-                ),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@tiptap/extension-underline').then(({Underline}) => Underline),
-                import('@tiptap/extension-subscript').then(({Subscript}) => Subscript),
-                import('@tiptap/extension-superscript').then(
-                    ({Superscript}) => Superscript,
-                ),
-                import('@taiga-ui/editor').then(({TuiFontColor}) => TuiFontColor),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@taiga-ui/editor').then(
-                    ({TuiBackgroundColor}) => TuiBackgroundColor,
-                ),
-                import('@taiga-ui/editor').then(({TuiTable}) =>
-                    TuiTable.configure({resizable: true}),
-                ),
-                import('@tiptap/extension-table-row').then(({TableRow}) => TableRow),
-                import('@tiptap/extension-table-cell').then(({TableCell}) => TableCell),
-                import('@tiptap/extension-table-header').then(
-                    ({TableHeader}) => TableHeader,
-                ),
-                import('@taiga-ui/editor').then(({TuiTabExtension}) => TuiTabExtension),
-                import('@taiga-ui/editor').then(
-                    ({TableCellBackground}) => TableCellBackground,
-                ),
-                import('@taiga-ui/editor').then(
-                    ({TuiDetailsContent}) => TuiDetailsContent,
-                ),
-                import('@taiga-ui/editor').then(({TuiDetails}) => TuiDetails),
-                import('@taiga-ui/editor').then(({TuiSummary}) => TuiSummary),
-                import('@taiga-ui/editor').then(
-                    ({TuiFontSizeExtension}) => TuiFontSizeExtension,
-                ),
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
+        provideTuiEditor(
+            {
+                details: true,
+                detailsSummary: true,
+                detailsContent: true,
+                image: true,
+            },
+            async () =>
                 import('@tiptap/extension-focus').then(({FocusClasses}) =>
                     FocusClasses.configure({
                         className: 'has-focus',
@@ -77,8 +32,7 @@ import {TUI_EDITOR_EXTENSIONS, TuiEditor, TuiEditorTool} from '@taiga-ui/editor'
                         mode: 'shallowest',
                     }),
                 ),
-            ],
-        },
+        ),
     ],
 })
 export default class Example {

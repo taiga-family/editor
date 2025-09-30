@@ -12,9 +12,9 @@ import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
+    provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
     TUI_ATTACH_FILES_OPTIONS,
-    TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     type TuiEditorAttachedFile,
     TuiEditorTool,
@@ -40,19 +40,11 @@ export class HttpMockUploader {
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            useValue: [
-                import('@taiga-ui/editor').then(({TuiStarterKit}) => TuiStarterKit),
-                import('@tiptap/extension-text-style').then(({TextStyle}) => TextStyle),
-                import('@taiga-ui/editor').then(({TuiLink}) => TuiLink),
-                import('@taiga-ui/editor').then(({TuiJumpAnchor}) => TuiJumpAnchor),
-                import('@taiga-ui/editor').then(({TuiFileLink}) => TuiFileLink),
-                import('@taiga-ui/editor').then(({TuiVideo}) => TuiVideo),
-                import('@taiga-ui/editor').then(({TuiAudio}) => TuiAudio),
-                import('@taiga-ui/editor').then(({TuiSource}) => TuiSource),
-            ],
-        },
+        provideTuiEditor({
+            video: true,
+            audio: true,
+            source: true,
+        }),
         {
             provide: TUI_ATTACH_FILES_LOADER,
             deps: [HttpMockUploader],

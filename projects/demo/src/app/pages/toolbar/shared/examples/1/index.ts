@@ -1,11 +1,10 @@
 import {JsonPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {
     type AbstractTuiEditor,
-    TUI_EDITOR_DEFAULT_EXTENSIONS,
+    provideTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
-    TUI_EDITOR_EXTENSIONS,
     TuiEditor,
     TuiToolbar,
 } from '@taiga-ui/editor';
@@ -17,18 +16,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: TUI_EDITOR_EXTENSIONS,
-            deps: [Injector],
-            useFactory: (injector: Injector) => [
-                ...TUI_EDITOR_DEFAULT_EXTENSIONS,
-                import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
-                    tuiCreateImageEditorExtension({injector}),
-                ),
-            ],
-        },
-    ],
+    providers: [provideTuiEditor({image: true})],
 })
 export default class Example {
     public editorRef: AbstractTuiEditor | null = null;
