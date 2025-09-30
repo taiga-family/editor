@@ -21,7 +21,9 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     },
 })
 export class CustomColorPicker {
-    private readonly defaultOptions = inject(TUI_EDITOR_OPTIONS);
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
+    protected colors: ReadonlyMap<string, string> =
+        this.options.textColors ?? this.options.colors;
 
     protected selectedColor = '';
     protected readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);
@@ -34,9 +36,6 @@ export class CustomColorPicker {
         distinctUntilChanged(),
         share(),
     );
-
-    @Input()
-    public colors: ReadonlyMap<string, string> = this.defaultOptions.colors;
 
     @Input()
     public icon?: string;

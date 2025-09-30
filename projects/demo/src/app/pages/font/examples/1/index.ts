@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
     provideTuiEditor,
+    provideTuiEditorOptions,
     TuiEditor,
-    tuiEditorOptionsProvider,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {mergeAttributes} from '@tiptap/core';
@@ -16,7 +16,7 @@ import {mergeAttributes} from '@tiptap/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiEditorOptionsProvider({
+        provideTuiEditorOptions({
             fontOptions: () => [
                 {
                     name: 'H1',

@@ -18,6 +18,8 @@ import {type TuiEditorToolType} from './editor-tool';
 export interface TuiEditorOptions extends Partial<EditorOptions> {
     readonly blankColor: string;
     readonly colors: ReadonlyMap<string, string>;
+    readonly textColors: ReadonlyMap<string, string> | null;
+    readonly backgroundColors: ReadonlyMap<string, string> | null;
     readonly fontOptions: typeof tuiDefaultFontOptionsHandler;
     readonly icons: {
         readonly addRowTable: string;
@@ -101,6 +103,8 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     enableDefaultStyles: true,
     tools: TUI_EDITOR_DEFAULT_TOOLS,
     colors: TUI_EDITOR_DEFAULT_EDITOR_COLORS,
+    textColors: null,
+    backgroundColors: null,
     blankColor: EDITOR_BLANK_COLOR,
     linkOptions: TUI_DEFAULT_LINK_OPTIONS,
     fontOptions: tuiDefaultFontOptionsHandler,
@@ -176,6 +180,13 @@ export const TUI_EDITOR_OPTIONS = new InjectionToken(
     },
 );
 
-export function tuiEditorOptionsProvider(options: Partial<TuiEditorOptions>): Provider {
+export function provideTuiEditorOptions(options: Partial<TuiEditorOptions>): Provider {
     return tuiProvideOptions(TUI_EDITOR_OPTIONS, options, TUI_EDITOR_DEFAULT_OPTIONS);
 }
+
+export {
+    /**
+     * @deprecated use {@link provideTuiEditorOptions}
+     */
+    provideTuiEditorOptions as tuiEditorOptionsProvider,
+};

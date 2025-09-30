@@ -14,7 +14,7 @@
                     TipTap.
                 </a>
                 By default you can use a
-                <code>tuiEditorOptionsProvider</code>
+                <code>provideTuiEditorOptions</code>
                 helper to override TUI_EDITOR_OPTIONS.
             </p>
         </ng-template>
@@ -36,7 +36,7 @@
                 <code>colors</code>
             </dt>
             <dd class="tui-space_bottom-5">
-                map of colors in toolbar's dropdowns with color-selection.
+                is a global color palette for text selection backgrounds, table cell backgrounds and text colors.
 
                 <p>
                     It accepts
@@ -46,6 +46,30 @@
                     is the name of the color (used only for hint and accessibility), the
                     <strong>value</strong>
                     – HTML color code.
+                </p>
+            </dd>
+
+            <dt>
+                <code>textColors</code>
+            </dt>
+            <dd class="tui-space_bottom-5">
+                used specifically for text colors, and it defaults to the global color palette.
+
+                <p>
+                    It accepts
+                    <code [innerText]="'ReadonlyMap<string, string> | null'"></code>
+                </p>
+            </dd>
+
+            <dt>
+                <code>backgroundColors</code>
+            </dt>
+            <dd class="tui-space_bottom-5">
+                used for text backgrounds and table cell backgrounds — defaults to the global palette.
+
+                <p>
+                    It accepts
+                    <code [innerText]="'ReadonlyMap<string, string> | null'"></code>
                 </p>
             </dd>
 

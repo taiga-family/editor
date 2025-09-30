@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
     provideTuiEditor,
+    provideTuiEditorOptions,
     TuiEditor,
-    tuiEditorOptionsProvider,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 
@@ -14,7 +14,7 @@ import {
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiEditorOptionsProvider({
+        provideTuiEditorOptions({
             fontOptions: () =>
                 [8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96].map((size) => ({
                     px: size,

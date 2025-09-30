@@ -3,8 +3,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {
     provideTuiEditor,
+    provideTuiEditorOptions,
     TuiEditor,
-    tuiEditorOptionsProvider,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 
@@ -14,7 +14,7 @@ import {
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiEditorOptionsProvider({
+        provideTuiEditorOptions({
             parseOptions: {
                 preserveWhitespace: 'full',
             },
