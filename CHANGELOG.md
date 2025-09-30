@@ -1,3 +1,15 @@
+### [4.42.0](https://github.com/taiga-family/editor/compare/v4.41.0...v4.42.0) (2025-09-30)
+
+### 🚀 Features
+
+- add `provideTuiEditor` (#1933)
+  [(90e42cf)](https://github.com/taiga-family/editor/commit/90e42cf2678a8911d99e8e9a399290bdcd42954f)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^2.26.2 (#1931)
+  [(4f33771)](https://github.com/taiga-family/editor/commit/4f3377180296e79e85a7aea4cc15ec1b09a17046)
+
 ### [4.41.0](https://github.com/taiga-family/editor/compare/v4.40.0...v4.41.0) (2025-09-22)
 
 ### 🐞 Bug Fixes
