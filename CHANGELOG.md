@@ -1,3 +1,10 @@
+### [4.44.0](https://github.com/taiga-family/editor/compare/v4.43.0...v4.44.0) (2025-10-03)
+
+### 🚀 Features
+
+- support separate palettes for text and background color (#1942)
+  [(604cd76)](https://github.com/taiga-family/editor/commit/604cd7620d398892e31d55166900396b894cd3a2)
+
 ### [4.43.0](https://github.com/taiga-family/editor/compare/v4.42.0...v4.43.0) (2025-09-30)
 
 ### 🚀 Features
