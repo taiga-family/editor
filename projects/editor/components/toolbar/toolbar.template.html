@@ -81,13 +81,13 @@
     <button
         *ngIf="enabled(tool.Color)"
         tuiTextColorTool
-        [colors]="colors"
+        [colors]="options.textColors ?? options.colors"
         [editor]="editor"
     ></button>
     <button
         *ngIf="enabled(tool.Hilite)"
         tuiHighlightColorTool
-        [colors]="colors"
+        [colors]="options.backgroundColors ?? options.colors"
         [editor]="editor"
     ></button>
 </section>
@@ -175,7 +175,7 @@
 >
     <button
         tuiPaintTool
-        [colors]="colors"
+        [colors]="options.backgroundColors ?? options.colors"
         [editor]="editor"
     ></button>
 </section>

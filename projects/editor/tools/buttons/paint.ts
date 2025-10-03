@@ -56,7 +56,8 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly open = tuiDropdownOpen();
 
     @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors: ReadonlyMap<string, string> =
+        this.options.backgroundColors ?? this.options.colors;
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {

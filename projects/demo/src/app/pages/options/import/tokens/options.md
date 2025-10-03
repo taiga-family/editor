@@ -1,13 +1,17 @@
 ```ts
-import {tuiEditorOptionsProvider, TuiEditorOptions} from '@taiga-ui/editor';
+import {provideTuiEditorOptions, TuiEditorOptions} from '@taiga-ui/editor';
 
 @Component({
   standalone: true,
   //...
   providers: [
     // ..
-    tuiEditorOptionsProvider({
-      colors: new Map([
+    provideTuiEditorOptions({
+      textColors: new Map([
+        ['red', 'rgba(244, 87, 37, 1)'],
+        ['blue', 'var(--tui-background-accent-1)'],
+      ]),
+      backgroundColors: new Map([
         ['red', 'rgba(244, 87, 37, 1)'],
         ['blue', 'var(--tui-background-accent-1)'],
       ]),

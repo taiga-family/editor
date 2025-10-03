@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
-    inject,
     Input,
     TemplateRef,
     ViewChild,
@@ -14,11 +13,7 @@ import {
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
-import {
-    EDITOR_BLANK_COLOR,
-    TUI_EDITOR_OPTIONS,
-    type TuiEditorOptions,
-} from '@taiga-ui/editor/common';
+import {EDITOR_BLANK_COLOR, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -52,7 +47,8 @@ export class TuiTextColorButtonTool extends TuiToolbarTool {
     protected readonly open = tuiDropdownOpen();
 
     @Input()
-    public colors: ReadonlyMap<string, string> = inject(TUI_EDITOR_OPTIONS).colors;
+    public colors: ReadonlyMap<string, string> =
+        this.options.textColors ?? this.options.colors;
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
     protected set template(template: PolymorpheusContent) {

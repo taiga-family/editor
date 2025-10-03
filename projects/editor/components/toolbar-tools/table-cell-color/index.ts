@@ -20,8 +20,11 @@ import {TuiPaintButtonTool} from '@taiga-ui/editor/tools';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTableCellColorTool {
+    private readonly options = inject(TUI_EDITOR_OPTIONS);
+
     @Input()
-    public colors: ReadonlyMap<string, string> = inject(TUI_EDITOR_OPTIONS).colors;
+    public colors: ReadonlyMap<string, string> =
+        this.options.backgroundColors ?? this.options.colors;
 
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {

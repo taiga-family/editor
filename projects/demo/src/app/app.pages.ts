@@ -15,7 +15,7 @@ export const DEMO_PAGES: TuiDocRoutePages = [
         title: 'Options',
         route: TuiDemoPath.Options,
         keywords:
-            'editor, parse, options, preserveWhitespace, editor props, tuiEditorOptionsProvider, TUI_EDITOR_OPTIONS',
+            'editor, parse, options, preserveWhitespace, editor props, provideTuiEditorOptions, TUI_EDITOR_OPTIONS',
     },
     {
         section: 'Documentation',
