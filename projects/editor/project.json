@@ -12,13 +12,6 @@
                 "project": "projects/{projectName}/ng-package.json"
             }
         },
-        "test": {
-            "executor": "@nx/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/{projectName}"],
-            "options": {
-                "jestConfig": "projects/{projectName}/jest.config.ts"
-            }
-        },
         "publish": {
             "executor": "nx:run-commands",
             "options": {

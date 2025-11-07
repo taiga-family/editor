@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.164.0
-      - uses: taiga-family/ci/actions/setup/node@v1.164.0
-      - run: npx nx test editor --nxBail
+      - uses: taiga-family/ci/actions/setup/variables@v1.170.0
+      - uses: taiga-family/ci/actions/setup/node@v1.170.0
+      - run: npm run test
       - uses: codecov/codecov-action@v5.5.1
         with:
           directory: ./coverage/editor
