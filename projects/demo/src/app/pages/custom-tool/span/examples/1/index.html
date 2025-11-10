@@ -1,0 +1,20 @@
+<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    <ng-container ngProjectAs="tools">
+        <button
+            appearance="icon"
+            iconStart="@tui.paintbrush-vertical"
+            size="s"
+            tuiIconButton
+            tuiToolbarTool
+            type="button"
+            (click)="paint()"
+        >
+            Select
+        </button>
+    </ng-container>
+</tui-editor>
+
+<tui-content-table [value]="control.value" />

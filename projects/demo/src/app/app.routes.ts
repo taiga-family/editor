@@ -85,6 +85,11 @@ export const routes: Routes = [
         title: 'Editor — Paste emoji custom tool',
     }),
     route({
+        path: TuiDemoPath.Span,
+        loadComponent: async () => import('./pages/custom-tool/span'),
+        title: 'Editor — span thread tool',
+    }),
+    route({
         path: TuiDemoPath.ColorPickerTool,
         loadComponent: async () => import('./pages/custom-tool/color-picker'),
         title: 'Editor — Color picker custom tool',
