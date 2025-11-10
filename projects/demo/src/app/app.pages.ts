@@ -123,6 +123,14 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                 route: `/${TuiDemoPath.Font}`,
                 fragment: 'custom-size-tool',
             },
+            {
+                section: 'Documentation',
+                title: 'Span thread tool',
+                keywords:
+                    'editor, custom span thread tool, tool, wysiwyg, редактор, текст, html, rich, text',
+                route: `/${TuiDemoPath.Span}`,
+                fragment: 'span-thread-tool',
+            },
         ],
     },
     {
