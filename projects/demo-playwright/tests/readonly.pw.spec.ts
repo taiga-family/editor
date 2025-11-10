@@ -55,6 +55,7 @@ test.describe('Readonly and Disabled states', () => {
 
         await page
             .locator('tui-editor [contenteditable] tui-editor-resizable')
+            // eslint-disable-next-line playwright/no-force-option
             .hover({force: true});
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Readonly-05.png');

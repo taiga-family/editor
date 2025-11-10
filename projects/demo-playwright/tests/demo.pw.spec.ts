@@ -15,7 +15,7 @@ test.describe('Demo', () => {
     Object.entries(TuiDemoPath)
         .filter(([, path]) => !IGNORE_FLAKY.has(path))
         .forEach(([name, path]) => {
-            test(name, async ({page}) => {
+            test(`${name}`, async ({page}) => {
                 await tuiGoto(page, path);
 
                 test.skip(
