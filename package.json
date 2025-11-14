@@ -104,7 +104,7 @@
         "@taiga-ui/syncer": "0.358.0",
         "@taiga-ui/testing": "4.61.0",
         "@types/express": "5.0.5",
-        "@types/jasmine": "5.1.12",
+        "@types/jasmine": "5.1.13",
         "@types/markdown-it": "14.1.2",
         "@types/markdown-it-container": "2.0.10",
         "@types/showdown": "2.0.6",
