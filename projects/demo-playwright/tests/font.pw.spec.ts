@@ -19,6 +19,7 @@ test.describe('Font', () => {
         await page.locator('[contenteditable]').first().focus();
         await page.waitForTimeout(300);
 
+        await page.keyboard.press('Backspace');
         await page.keyboard.type('Hello world');
 
         await page.locator('[automation-id="toolbar__font-size-button"]').focus();

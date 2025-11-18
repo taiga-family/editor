@@ -36,11 +36,13 @@ export class TuiEditorSocket {
 
     @Input()
     public set content(content: string | null | undefined) {
-        const safety =
-            this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
-            this.sanitizer.bypassSecurityTrustHtml(content ?? '');
-
-        this.html.set(safety);
+        this.html.set(
+            this.sanitizer.bypassSecurityTrustHtml(
+                this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
+                    content ??
+                    '',
+            ),
+        );
     }
 
     /**

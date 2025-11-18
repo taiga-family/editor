@@ -13,6 +13,8 @@ import {
     type TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
+import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
+import {TUI_EDITOR_SANITIZER} from '@taiga-ui/editor';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
 
 import {DEMO_PAGES} from './app.pages';
@@ -71,6 +73,10 @@ export const appConfig: ApplicationConfig = {
                     (context.header[0]?.toLowerCase() ?? '') + context.header.slice(1)
                 ).replaceAll(/[A-Z]/g, (m: string) => `-${m.toLowerCase()}`)}`;
             },
+        },
+        {
+            provide: TUI_EDITOR_SANITIZER,
+            useClass: NgDompurifySanitizer,
         },
     ],
 };
