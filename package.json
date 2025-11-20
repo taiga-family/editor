@@ -95,6 +95,7 @@
         "@taiga-ui/cdk": "4.61.0",
         "@taiga-ui/configs": "0.363.0",
         "@taiga-ui/core": "4.61.0",
+        "@taiga-ui/dompurify": "4.1.11",
         "@taiga-ui/experimental": "4.61.0",
         "@taiga-ui/icons": "4.61.0",
         "@taiga-ui/layout": "4.61.0",
