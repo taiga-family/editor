@@ -111,12 +111,12 @@ export const routes: Routes = [
     }),
     route({
         path: TuiDemoPath.ProcessingLegacyHtml,
-        loadComponent: async () => import('./pages/processing/legacy-html'),
+        loadComponent: async () => import('./pages/legacy-html'),
         title: 'Editor — Legacy html',
     }),
     route({
         path: TuiDemoPath.ProcessingCleanupHtml,
-        loadComponent: async () => import('./pages/processing/cleanup-html'),
+        loadComponent: async () => import('./pages/cleanup-html'),
         title: 'Editor — Cleanup html',
     }),
     route({
@@ -126,12 +126,12 @@ export const routes: Routes = [
     }),
     route({
         path: TuiDemoPath.ProcessingMarkdown,
-        loadComponent: async () => import('./pages/processing/markdown'),
+        loadComponent: async () => import('./pages/markdown'),
         title: 'Editor — Markdown',
     }),
     route({
         path: TuiDemoPath.ProcessingMarkdownExtension,
-        loadComponent: async () => import('./pages/processing/markdown-extension'),
+        loadComponent: async () => import('./pages/markdown-extension'),
         title: 'Editor — Markdown',
     }),
     route({
