@@ -1,3 +1,10 @@
+### [4.46.0](https://github.com/taiga-family/editor/compare/v4.45.0...v4.46.0) (2025-11-20)
+
+### 🚀 Features
+
+- support configuring the `editorProps` option (#1969)
+  [(a51661d)](https://github.com/taiga-family/editor/commit/a51661d0eacdf09891a76b9765ddde0c9d9c9b83)
+
 ### [4.45.0](https://github.com/taiga-family/editor/compare/v4.44.0...v4.45.0) (2025-11-20)
 
 ### 🐞 Bug Fixes
