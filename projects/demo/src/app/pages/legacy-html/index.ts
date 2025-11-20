@@ -10,11 +10,11 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
+        TypeScript: import('./examples/1?raw'),
         HTML: import('./examples/1/index.html?raw'),
         './transformer.ts': import('./examples/1/transformer.ts?raw'),
         './legacy-editor.ts': import(
-            '../../../../../../editor/utils/legacy-converter.ts?raw'
+            '@taiga-ui/editor/utils/legacy-converter.ts?raw'
         ),
     };
 }
