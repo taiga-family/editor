@@ -13,8 +13,6 @@ export default class Example {
         TypeScript: import('./examples/1?raw'),
         HTML: import('./examples/1/index.html?raw'),
         './transformer.ts': import('./examples/1/transformer.ts?raw'),
-        './legacy-editor.ts': import(
-            '@taiga-ui/editor/utils/legacy-converter.ts?raw'
-        ),
+        './legacy-editor.ts': import('@taiga-ui/editor/utils/legacy-converter.ts?raw'),
     };
 }
