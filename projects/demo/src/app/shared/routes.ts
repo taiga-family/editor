@@ -25,6 +25,7 @@ export const TuiDemoPath = {
     PasteEmojiTool: 'custom-tool/paste-emoji',
     PasteImageTool: 'custom-tool/paste-image',
     ProcessingCleanupHtml: 'processing/cleanup-html',
+    ClipboardPaste: 'processing/clipboard-paste',
     ProcessingLegacyHtml: 'processing/legacy-html',
     ProcessingMarkdown: 'processing/markdown',
     ProcessingMarkdownExtension: 'processing/markdown-extension',
