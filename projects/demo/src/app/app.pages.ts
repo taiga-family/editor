@@ -15,7 +15,7 @@ export const DEMO_PAGES: TuiDocRoutePages = [
         title: 'Options',
         route: TuiDemoPath.Options,
         keywords:
-            'editor, parse, options, preserveWhitespace, editor props, provideTuiEditorOptions, TUI_EDITOR_OPTIONS',
+            'editor, parse, options, preserveWhitespace, editor props, keyboard, provideTuiEditorOptions, TUI_EDITOR_OPTIONS',
     },
     {
         section: 'Documentation',
@@ -170,6 +170,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
                 keywords:
                     'editor, processing, content, cleanup html, wysiwyg, редактор, текст, html, rich, text',
                 route: `/${TuiDemoPath.ProcessingCleanupHtml}`,
+            },
+            {
+                section: 'Documentation',
+                title: 'Clipboard paste',
+                keywords: 'remove-inline, styles, clipboard, paste',
+                route: `/${TuiDemoPath.ClipboardPaste}`,
             },
         ],
     },

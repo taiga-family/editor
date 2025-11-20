@@ -1,0 +1,12 @@
+<p style="background-color: var(--tui-background-accent-2-hover); color: var(--tui-background-base)">
+    Select and copy me, and then paste into the editor.
+</p>
+
+<tui-editor
+    class="editor"
+    [formControl]="control"
+>
+    Placeholder
+</tui-editor>
+
+<tui-content-table [value]="control.value" />

@@ -120,6 +120,11 @@ export const routes: Routes = [
         title: 'Editor — Cleanup html',
     }),
     route({
+        path: TuiDemoPath.ClipboardPaste,
+        loadComponent: async () => import('./pages/clipboard-paste'),
+        title: 'Editor — Clipboard paste',
+    }),
+    route({
         path: TuiDemoPath.ProcessingMarkdown,
         loadComponent: async () => import('./pages/processing/markdown'),
         title: 'Editor — Markdown',

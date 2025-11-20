@@ -2,6 +2,7 @@
 import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk';
 import {type EditorOptions} from '@tiptap/core';
+import {type EditorProps} from '@tiptap/pm/view';
 
 import {
     EDITOR_BLANK_COLOR,
@@ -93,6 +94,7 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
      */
     readonly exampleText: string;
     readonly placeholder: string;
+    readonly editorProps?: EditorProps;
 }
 
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
@@ -180,7 +182,9 @@ export const TUI_EDITOR_OPTIONS = new InjectionToken(
     },
 );
 
-export function provideTuiEditorOptions(options: Partial<TuiEditorOptions>): Provider {
+export function provideTuiEditorOptions(
+    options: Partial<TuiEditorOptions> | (() => Partial<TuiEditorOptions>),
+): Provider {
     return tuiProvideOptions(TUI_EDITOR_OPTIONS, options, TUI_EDITOR_DEFAULT_OPTIONS);
 }
 
