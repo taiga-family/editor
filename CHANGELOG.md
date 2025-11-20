@@ -1,3 +1,12 @@
+### [4.45.0](https://github.com/taiga-family/editor/compare/v4.44.0...v4.45.0) (2025-11-20)
+
+### 🐞 Bug Fixes
+
+- safely bypass trust after custom HTML sanitization (#1964)
+  [(629209d)](https://github.com/taiga-family/editor/commit/629209d498e94c4ab0c5c7c03bbba8580a30f041)
+- update tiptap to ^2.27.1 (#1955)
+  [(77ebb43)](https://github.com/taiga-family/editor/commit/77ebb43c520593b1276c9c49814e5e6400853e14)
+
 ### [4.44.0](https://github.com/taiga-family/editor/compare/v4.43.0...v4.44.0) (2025-10-03)
 
 ### 🚀 Features
