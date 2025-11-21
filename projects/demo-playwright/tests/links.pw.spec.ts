@@ -61,6 +61,8 @@ test.describe('Links', () => {
 
         await editor.selectText();
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
+
         await page.keyboard.type('Hello');
         await editor.selectText();
 

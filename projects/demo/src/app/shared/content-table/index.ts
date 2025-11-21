@@ -9,14 +9,14 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     imports: [TuiAccordion, TuiEditorSocket, TuiExpand, TuiItem],
     template: `
         <tui-accordion [closeOthers]="false">
-            <button [tuiAccordion]="isE2E">HTML</button>
+            <button [tuiAccordion]="open ?? isE2E">HTML</button>
             <tui-expand>
                 <ng-container *tuiItem>
                     <tui-editor-socket [content]="value" />
                 </ng-container>
             </tui-expand>
 
-            <button [tuiAccordion]="isE2E">Text</button>
+            <button [tuiAccordion]="open ?? isE2E">Text</button>
             <tui-expand>
                 <ng-container *tuiItem>{{ value }}</ng-container>
             </tui-expand>
@@ -27,6 +27,9 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 })
 export class TuiContentTable {
     protected readonly isE2E = inject(TUI_IS_E2E);
+
+    @Input()
+    public open?: boolean;
 
     @Input()
     public value?: string | null;

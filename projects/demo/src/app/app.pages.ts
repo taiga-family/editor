@@ -14,6 +14,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
         section: 'Documentation',
         title: 'Options',
         route: TuiDemoPath.Options,
+        keywords: 'editor, sanitize, security, санитайзер',
+    },
+    {
+        section: 'Documentation',
+        title: 'Sanitize',
+        route: TuiDemoPath.Sanitize,
         keywords:
             'editor, parse, options, preserveWhitespace, editor props, keyboard, provideTuiEditorOptions, TUI_EDITOR_OPTIONS',
     },

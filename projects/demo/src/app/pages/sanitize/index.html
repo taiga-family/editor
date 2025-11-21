@@ -1,0 +1,23 @@
+<tui-doc-page>
+    <tui-doc-example
+        id="sanitize"
+        [component]="component1"
+        [content]="example1"
+        [description]="description"
+    >
+        <ng-template #description>
+            <p>
+                There is no reason to use one or the other because of security concerns. If someone wants to send
+                malicious content to your server, it doesn’t matter if it’s JSON or HTML. It doesn’t even matter if
+                you’re using Tiptap or not. You should always validate user input. Read more about
+                <a
+                    href="https://www.npmjs.com/package/dompurify"
+                    target="_blank"
+                    tuiLink
+                >
+                    &#64;taiga-ui/dompurify.
+                </a>
+            </p>
+        </ng-template>
+    </tui-doc-example>
+</tui-doc-page>
