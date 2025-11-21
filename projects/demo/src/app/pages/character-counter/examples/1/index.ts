@@ -13,7 +13,7 @@ const limit = 280;
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('@tiptap/extension-character-count').then(({CharacterCount}) =>
                 CharacterCount.configure({
                     limit,

@@ -14,7 +14,7 @@ import {IMAGE_CLIPBOARD_PASTE_EXTENSION} from './image-tool/paste.extension';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async (injector) =>
+        provideTuiEditor(async (injector) =>
             import('@taiga-ui/editor').then(({tuiCreateImageEditorExtension}) =>
                 tuiCreateImageEditorExtension({injector}).extend(
                     IMAGE_CLIPBOARD_PASTE_EXTENSION,

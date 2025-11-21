@@ -10,7 +10,7 @@ import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('@taiga-ui/editor').then(({tuiCreateGroupExtension}) =>
                 tuiCreateGroupExtension({
                     draggable: false,
