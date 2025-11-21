@@ -580,17 +580,32 @@ type AsyncExtension<Options, Storage> = Promise<
     Extension<Options, Storage> | Mark<Options, Storage> | Node<Options, Storage>
 >;
 
+export function provideTuiEditor(options: Partial<Options>): Provider;
 export function provideTuiEditor<O, S>(
-    overrides: Partial<Options> = {},
+    ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
+): Provider;
+export function provideTuiEditor<O, S>(
+    options: Partial<Options>,
+    ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
+): Provider;
+export function provideTuiEditor<O, S>(
+    overrides: Partial<Options> | ((_: Injector) => AsyncExtension<O, S>) | undefined,
     ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
 ): Provider {
-    const options = {...defaults, ...overrides};
+    const options =
+        typeof overrides === 'object' && !Array.isArray(overrides)
+            ? {...defaults, ...overrides}
+            : defaults;
 
     return {
         provide: TUI_EDITOR_EXTENSIONS,
         multi: true,
         useFactory(): ReadonlyArray<AsyncExtension<O, S>> {
             const injector = inject(INJECTOR);
+            const ownExtensions =
+                typeof overrides === 'function'
+                    ? extensions.concat(overrides)
+                    : extensions;
 
             return EXTENSIONS.filter(({key}) => !!options[key])
                 .map(async ({key, loader}): AsyncExtension<O, S> => {
@@ -599,7 +614,7 @@ export function provideTuiEditor<O, S>(
 
                     return loader(extensionOptions, injector);
                 })
-                .concat(extensions.map(async (extension) => extension(injector)));
+                .concat(ownExtensions.map(async (extension) => extension(injector)));
         },
     };
 }

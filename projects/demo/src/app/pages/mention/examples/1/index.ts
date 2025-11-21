@@ -13,7 +13,7 @@ import {Mentions, type User} from './mention';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('@taiga-ui/editor').then(({TuiMention}) => TuiMention),
         ),
     ],

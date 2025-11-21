@@ -23,7 +23,7 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('@taiga-ui/editor/extensions/youtube').then(
                 ({TuiYoutube}) => TuiYoutube,
             ),

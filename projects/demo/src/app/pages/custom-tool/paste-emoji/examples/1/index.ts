@@ -13,7 +13,7 @@ import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('./smiles-tool/emoji.extension').then(
                 ({EmojiExtension}) => EmojiExtension,
             ),

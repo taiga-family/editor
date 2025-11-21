@@ -50,7 +50,7 @@ import {mergeAttributes} from '@tiptap/core';
                 },
             ],
         }),
-        provideTuiEditor({}, async () =>
+        provideTuiEditor(async () =>
             import('@tiptap/extension-heading').then(({Heading}) =>
                 Heading.configure({levels: [1, 2, 3, 4, 5, 6]})
                     // @note: if you want to add custom css classes
