@@ -14,6 +14,7 @@ export const TuiDemoPath = {
     EmbedYoutube: 'embed/youtube',
     Focus: 'focus',
     Options: 'options',
+    Sanitize: 'sanitize',
     Font: 'font',
     Span: 'span',
     Groups: 'groups',

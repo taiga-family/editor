@@ -20,6 +20,11 @@ export const routes: Routes = [
         title: 'ParseOptions',
     }),
     route({
+        path: TuiDemoPath.Sanitize,
+        loadComponent: async () => import('./pages/sanitize'),
+        title: 'Sanitize',
+    }),
+    route({
         path: TuiDemoPath.Font,
         loadComponent: async () => import('./pages/font'),
         title: 'Font',
