@@ -87,19 +87,14 @@ export function tuiCreateImageEditorExtension<T, K>({
         parseHTML(): NodeSpec['parseDOM'] {
             return [
                 {
-                    tag: 'a[href]',
+                    tag: 'a[href] img',
                     // Caretaker note:
                     // Tiptap link extension priority is 1000
                     // ensuring current extension is being handled in precedence
                     priority: 1001,
-                    getAttrs: (parsedElement: HTMLElement): TuiEditableImage | false => {
-                        if (parsedElement.firstElementChild?.nodeName !== 'IMG') {
-                            return false;
-                        }
-
+                    getAttrs: (el: HTMLElement): TuiEditableImage | false => {
                         const [href, style] = ['href', 'style'].map(
-                            (attrName) =>
-                                parsedElement.getAttribute(attrName) ?? undefined,
+                            (attrName) => el.getAttribute(attrName) ?? undefined,
                         );
 
                         if (!typesafeIsAllowedUri(href)) {
@@ -113,8 +108,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                             'title',
                         ].map(
                             (attrName) =>
-                                parsedElement.firstElementChild?.getAttribute(attrName) ??
-                                undefined,
+                                el.firstElementChild?.getAttribute(attrName) ?? undefined,
                         );
 
                         return {
