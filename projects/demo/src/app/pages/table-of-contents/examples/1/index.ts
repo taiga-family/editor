@@ -22,7 +22,7 @@ import {type MyContentsInfo, MyToc} from './my-toc';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({}, async (injector) => {
+        provideTuiEditor(async (injector) => {
             const example = injector.get(Example);
             const win = injector.get(WA_WINDOW);
 
