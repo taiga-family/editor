@@ -25,7 +25,6 @@ import {
     TuiEditLink,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components';
-import {type Mark} from '@tiptap/pm/model';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';
@@ -66,6 +65,9 @@ export class TuiImageEditor
     @ViewChild('resizable', {static: true})
     private readonly resizable?: TuiEditorResizable;
 
+    @ViewChild('img', {read: ElementRef})
+    private readonly img?: ElementRef<HTMLImageElement>;
+
     private readonly destroy$ = inject(DestroyRef);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
@@ -73,7 +75,6 @@ export class TuiImageEditor
 
     protected style?: string | null = null;
     protected contenteditable = false;
-    protected focused = false;
     protected isAlignDropdownOpened = false;
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly imageOptions = inject(TUI_IMAGE_EDITOR_OPTIONS);
@@ -137,10 +138,6 @@ export class TuiImageEditor
         this.editor.commands.setNodeSelection(this.getPos());
     }
 
-    protected get linkMark(): Mark | null {
-        return this.node.marks[0]?.type.name === 'link' ? this.node.marks[0] : null;
-    }
-
     protected get dragHandle(): '' | null {
         return this.attrs.draggable ?? null;
     }
@@ -162,7 +159,13 @@ export class TuiImageEditor
     }
 
     protected get containerWidth(): number {
-        return Number(this.resizable?.width ?? 0);
+        const naturalWidth =
+            this.attrs.width ??
+            this.img?.nativeElement.naturalWidth ??
+            this.resizable?.width ??
+            0;
+
+        return parseInt(naturalWidth as string, 10);
     }
 
     protected get supportLinkExtension(): boolean {
@@ -200,16 +203,10 @@ export class TuiImageEditor
     }
 
     private setInitialSize(): void {
-        const naturalWidth =
-            this.attrs.width ??
-            this.resizable?.container?.nativeElement.querySelector('img')?.naturalWidth ??
-            this.resizable?.width ??
-            0;
+        const containerWidth = this.containerWidth;
 
-        const naturalWidthInt = parseInt(naturalWidth as string, 10);
-
-        if (naturalWidthInt < this.minWidth || naturalWidthInt > this.maxWidth) {
-            this.updateSize([naturalWidthInt]);
+        if (containerWidth < this.minWidth || containerWidth > this.maxWidth) {
+            this.updateSize([containerWidth]);
         }
     }
 
