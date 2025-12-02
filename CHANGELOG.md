@@ -1,3 +1,19 @@
+### [4.47.0](https://github.com/taiga-family/editor/compare/v4.46.0...v4.47.0) (2025-12-02)
+
+### 🚀 Features
+
+- support overload without overrides argument (#1974)
+  [(5c775be)](https://github.com/taiga-family/editor/commit/5c775be51103deb4cc85a1d5c9102e68c1e215e3)
+
+### 🐞 Bug Fixes
+
+- cursor not visible in an empty editor in Safari 26 (#1981)
+  [(b11b551)](https://github.com/taiga-family/editor/commit/b11b5519bf05ae09de0187e5b7bf69898e47d3ac)
+- image align tools is not visible after upload image (#1982)
+  [(2540baf)](https://github.com/taiga-family/editor/commit/2540baf26b646bfcbe9b9ff9624c512b3c0b9b47)
+- parse only `a` containing `img` to avoid breaking links (#1972)
+  [(3bcdd23)](https://github.com/taiga-family/editor/commit/3bcdd23a9de90b8d6b83f2c20e663c51774327c8)
+
 ### [4.46.0](https://github.com/taiga-family/editor/compare/v4.45.0...v4.46.0) (2025-11-20)
 
 ### 🚀 Features
