@@ -90,7 +90,7 @@
         "@nx/angular": "20.1.4",
         "@nx/cypress": "20.1.4",
         "@nx/workspace": "20.1.4",
-        "@playwright/test": "1.56.1",
+        "@playwright/test": "1.57.0",
         "@taiga-ui/addon-doc": "4.61.0",
         "@taiga-ui/cdk": "4.61.0",
         "@taiga-ui/configs": "0.363.0",
