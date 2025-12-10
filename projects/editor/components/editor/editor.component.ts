@@ -174,6 +174,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
             // listen resize events after any DOM changes
             this.listenResizeEvents();
+
+            // TODO: migrate to signal later
+            this.loaded.emit(this.editorLoaded());
         });
 
     /**
@@ -202,6 +205,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     @Output()
     public readonly focusOut = new EventEmitter<void>();
+
+    @Output()
+    public readonly loaded = new EventEmitter<boolean>();
 
     public hasMentionPlugin = false;
     public readonly hovered = toSignal(
