@@ -1,3 +1,10 @@
+### [4.48.0](https://github.com/taiga-family/editor/compare/v4.47.0...v4.48.0) (2025-12-10)
+
+### 🚀 Features
+
+- add `loaded` output event (#1987)
+  [(845fbed)](https://github.com/taiga-family/editor/commit/845fbed13f45bcb328bcb7253353da9f158de76b)
+
 ### [4.47.0](https://github.com/taiga-family/editor/compare/v4.46.0...v4.47.0) (2025-12-02)
 
 ### 🚀 Features
