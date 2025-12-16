@@ -41,6 +41,26 @@ export const TuiMention = Node.create<TuiMentionOptions>({
                 default: null,
                 keepOnSplit: true,
             },
+            dataAttributes: {
+                default: {},
+                keepOnSplit: true,
+                parseHTML: (element) =>
+                    element
+                        .getAttributeNames()
+                        .filter(
+                            (attribute) =>
+                                attribute.startsWith('data-') &&
+                                attribute !== 'data-type',
+                        )
+                        .reduce<Record<string, string | null>>(
+                            (attributes, attribute) => ({
+                                ...attributes,
+                                [attribute]: element.getAttribute(attribute),
+                            }),
+                            {},
+                        ),
+                renderHTML: ({dataAttributes}) => dataAttributes,
+            },
         };
     },
 
