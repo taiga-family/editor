@@ -1,4 +1,9 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiContentTable} from '@demo/shared/content-table';
 import {TuiTextfield} from '@taiga-ui/core';
@@ -11,6 +16,7 @@ import {Mentions, type User} from './mention';
     imports: [Mentions, ReactiveFormsModule, TuiContentTable, TuiEditor, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>
@@ -29,7 +35,7 @@ export default class Example {
     ];
 
     protected control = new FormControl(`
-        <p><span class="my-mention" data-type="mention">@a.inkin</span> FYI</p>
+        <p><span class="my-mention" data-type="mention" data-user="7dabb7f0-099b-4c19-b70c-7a5ebdf53a86">@m.ivanov</span> FYI</p>
     `);
 
     protected setMention(item: User): void {
@@ -39,7 +45,8 @@ export default class Example {
             return;
         }
 
-        const replaceText = `<span class="my-mention" data-type="mention">@${item.login}</span>&nbsp;`;
+        const uuid = crypto.randomUUID();
+        const replaceText = `<span class="my-mention" data-type="mention" data-user="${uuid}">@${item.login}</span>&nbsp;`;
         const to = editor.state.selection.to;
         const from =
             editor.state.selection.from -
