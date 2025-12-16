@@ -1,3 +1,10 @@
+### [4.49.0](https://github.com/taiga-family/editor/compare/v4.48.0...v4.49.0) (2025-12-16)
+
+### 🚀 Features
+
+- support `any` data-attributes inside mention component (#1988)
+  [(f601849)](https://github.com/taiga-family/editor/commit/f6018498b913523bbc73a6f16f165fb74b3ff242)
+
 ### [4.48.0](https://github.com/taiga-family/editor/compare/v4.47.0...v4.48.0) (2025-12-10)
 
 ### 🚀 Features
