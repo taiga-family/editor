@@ -16,8 +16,8 @@ import {Mentions, type User} from './mention';
     imports: [Mentions, ReactiveFormsModule, TuiContentTable, TuiEditor, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>
             import('@taiga-ui/editor').then(({TuiMention}) => TuiMention),
