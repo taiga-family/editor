@@ -37,7 +37,8 @@ export class TuiEditorSocket {
     @Input()
     public set content(content: string | null | undefined) {
         this.html.set(
-            this.sanitizer.bypassSecurityTrustHtml(
+            this.sanitizer.sanitize(
+                SecurityContext.HTML,
                 this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
                     content ??
                     '',
