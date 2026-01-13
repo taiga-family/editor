@@ -99,7 +99,7 @@ Indented code
 
 Block code "fences"
 
-```
+```text
 
 Sample text here...
 
@@ -167,7 +167,7 @@ Footnote 1 link[^first].
 
 Footnote 2 link[^second].
 
-Inline footnote^[Text of inline footnote] definition.
+Inline footnote definition.
 
 Duplicated footnote reference[^second].
 
@@ -201,9 +201,9 @@ Term 2 ~ Definition 2a ~ Definition 2b
 
 This is HTML abbreviation example.
 
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+It converts "HTML"[^HTML], but keep intact partial entries like "xxxHTMLyyy" and so on.
 
-\*[HTML]: Hyper Text Markup Language
+[^HTML]: Hyper Text Markup Language
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 

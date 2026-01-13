@@ -69,7 +69,9 @@ export default class Example implements OnInit {
     public ngOnInit(): void {
         this.markdown$
             .pipe(debounceTime(500), takeUntilDestroyed(this.destroyRef))
-            .subscribe((value) => this.editor?.commands.setContent(value));
+            .subscribe((value) => {
+                this.editor?.commands.setContent(value);
+            });
     }
 
     protected get editor(): Editor | null {

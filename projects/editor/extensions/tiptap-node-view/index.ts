@@ -92,7 +92,7 @@ export abstract class TuiNodeViewNg implements NodeViewProps {
 
 export interface TuiNodeViewRendererOptions extends NodeViewRendererOptions {
     injector: Injector;
-    update?: (node: ProseMirrorNode, decorations: Decoration[]) => boolean;
+    update?(node: ProseMirrorNode, decorations: Decoration[]): boolean;
 }
 
 /**
@@ -148,7 +148,7 @@ export class TuiNodeView extends NodeView<
             selected: false,
             extension: this.extension,
             getPos: () => this.getPos(),
-            updateAttributes: (attributes = {}) => this.updateAttributes(attributes),
+            updateAttributes: (attributes) => this.updateAttributes(attributes),
             deleteNode: () => this.deleteNode(),
             view: this.view,
             innerDecorations: this.innerDecorations,

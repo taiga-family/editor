@@ -4,9 +4,9 @@ import {mergeAttributes, Node, type RawCommands} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         group: {
-            removeGroup: () => ReturnType;
-            setGroup: () => ReturnType;
-            setGroupHilite: (color: string) => ReturnType;
+            removeGroup(): ReturnType;
+            setGroup(): ReturnType;
+            setGroupHilite(color: string): ReturnType;
         };
     }
 }
@@ -139,11 +139,11 @@ export const tuiCreateGroupExtension = (
                                  * @note:
                                  * workaround for `Applying a mismatched transaction`
                                  */
-                                setTimeout(() =>
+                                setTimeout(() => {
                                     editor.commands.updateAttributes(node.type, {
                                         style: `background: ${color}`,
-                                    }),
-                                );
+                                    });
+                                });
 
                                 break;
                             }

@@ -6,18 +6,18 @@ declare module '@tiptap/core' {
             /**
              * Set the font size
              */
-            setFontSize: (fontSize: string) => ReturnType;
+            setFontSize(fontSize: string): ReturnType;
             /**
              * Unset the font size
              */
-            unsetFontSize: () => ReturnType;
+            unsetFontSize(): ReturnType;
         };
         textStyle: {
             /**
              * Remove spans without inline style attributes.
              * @example editor.commands.removeEmptyTextStyle()
              */
-            removeEmptyTextStyle: () => ReturnType;
+            removeEmptyTextStyle(): ReturnType;
         };
     }
 }

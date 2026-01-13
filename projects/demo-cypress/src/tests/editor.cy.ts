@@ -25,7 +25,9 @@ class Test {
     public count = 0;
 
     constructor() {
-        this.control.valueChanges.subscribe(() => this.count++);
+        this.control.valueChanges.subscribe(() => {
+            this.count++;
+        });
     }
 }
 

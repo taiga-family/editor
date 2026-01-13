@@ -12,7 +12,10 @@
         "tiptap"
     ],
     "homepage": "https://github.com/taiga-family/editor",
-    "repository": "https://github.com/taiga-family/editor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/editor"
+    },
     "license": "Apache-2.0",
     "exports": {
         "./styles/*": "./styles/*"

@@ -9,6 +9,7 @@ import {
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -32,7 +33,7 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
         TuiOrderedListButtonTool,
         TuiOutdentButtonTool,
         TuiTaskListButtonTool,
-        TuiTextfieldDropdownDirective,
+        TuiTextfield,
         TuiUnorderedListButtonTool,
     ],
     template: `

@@ -12,14 +12,11 @@ export default class Example {
     protected readonly example1 = {
         HTML: import('./examples/1/index.html?raw'),
         TypeScript: import('./examples/1/index.ts?raw'),
-        './custom-color-picker/custom-color-picker.component.ts': import(
-            './examples/1/custom-color-picker/index.ts?raw'
-        ),
-        './custom-color-picker/custom-color-picker.component.less': import(
-            './examples/1/custom-color-picker/index.less?raw'
-        ),
-        './custom-color-picker/custom-color-picker.component.html': import(
-            './examples/1/custom-color-picker/index.html?raw'
-        ),
+        './custom-color-picker/custom-color-picker.component.ts':
+            import('./examples/1/custom-color-picker/index.ts?raw'),
+        './custom-color-picker/custom-color-picker.component.less':
+            import('./examples/1/custom-color-picker/index.less?raw'),
+        './custom-color-picker/custom-color-picker.component.html':
+            import('./examples/1/custom-color-picker/index.html?raw'),
     };
 }

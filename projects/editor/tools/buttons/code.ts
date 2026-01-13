@@ -8,11 +8,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import {
-    TuiDataListComponent,
+    TuiDataList,
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
     TuiOption,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -26,13 +27,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiCodeTool]',
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        TuiDataListComponent,
-        TuiOption,
-        TuiTextfieldDropdownDirective,
-    ],
+    imports: [AsyncPipe, NgForOf, TuiDataList, TuiOption, TuiTextfield],
     template: `
         {{ tuiHint() }}
 

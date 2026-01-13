@@ -22,22 +22,22 @@ export class TuiEditorMarkdownParser {
 
     protected parse(content: unknown, {inline}: Record<string, any> = {}): string {
         if (typeof content === 'string') {
-            this.editor.extensionManager.extensions.forEach((extension) =>
+            this.editor.extensionManager.extensions.forEach((extension) => {
                 tuiGetMarkdownSpec(extension)?.parse?.setup?.call(
                     {editor: this.editor, options: extension.options},
                     this.md,
-                ),
-            );
+                );
+            });
 
             const renderedHTML = this.md.render(content);
             const element = tuiElementFromString(renderedHTML);
 
-            this.editor.extensionManager.extensions.forEach((extension) =>
+            this.editor.extensionManager.extensions.forEach((extension) => {
                 tuiGetMarkdownSpec(extension)?.parse?.updateDOM?.call(
                     {editor: this.editor, options: extension.options},
                     element,
-                ),
-            );
+                );
+            });
 
             this.normalizeDOM(element, {inline, content});
 

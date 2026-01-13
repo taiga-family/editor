@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiAddRowTableButtonTool} from '@taiga-ui/editor/tools';
 
 /**

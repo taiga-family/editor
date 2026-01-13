@@ -8,7 +8,7 @@ import {Extension} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         fileLink: {
-            setFileLink: (preview: TuiEditorAttachedFile) => ReturnType;
+            setFileLink(preview: TuiEditorAttachedFile): ReturnType;
         };
     }
 }

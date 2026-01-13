@@ -10,11 +10,11 @@ declare module '@tiptap/core' {
             /**
              * Set the background color
              */
-            setBackgroundColor: (backgroundColor: string) => ReturnType;
+            setBackgroundColor(backgroundColor: string): ReturnType;
             /**
              * Unset the background color
              */
-            unsetBackgroundColor: () => ReturnType;
+            unsetBackgroundColor(): ReturnType;
         };
     }
 }
@@ -51,8 +51,8 @@ export const TuiBackgroundColor = Extension.create<TuiBackgroundColorOptions>({
     },
 
     addCommands(): {
-        setBackgroundColor?: (backgroundColor: string) => Command;
-        unsetBackgroundColor?: () => Command;
+        setBackgroundColor?(backgroundColor: string): Command;
+        unsetBackgroundColor?(): Command;
     } {
         return {
             setBackgroundColor:
