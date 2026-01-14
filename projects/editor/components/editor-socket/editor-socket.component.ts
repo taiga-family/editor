@@ -2,13 +2,15 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     inject,
     Input,
+    Renderer2,
     SecurityContext,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
+import {type SafeHtml} from '@angular/platform-browser';
 import {tuiIsElement} from '@taiga-ui/cdk';
 import {TUI_EDITOR_OPTIONS, TUI_EDITOR_SANITIZER} from '@taiga-ui/editor/common';
 import {TuiTiptapEditor} from '@taiga-ui/editor/directives';
@@ -22,27 +24,26 @@ import {TuiTiptapEditor} from '@taiga-ui/editor/directives';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.tui-editor-socket]': 'options.enableDefaultStyles',
-        '[innerHTML]': 'html()',
         '(click)': 'click($event)',
     },
 })
 export class TuiEditorSocket {
     private readonly editor = inject(TuiTiptapEditor, {optional: true});
     private readonly customSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
-    private readonly sanitizer = inject(DomSanitizer);
+    private readonly elementRef = inject(ElementRef);
+    private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly html = signal<SafeHtml | string | null>(null);
 
     @Input()
     public set content(content: string | null | undefined) {
-        this.html.set(
-            this.sanitizer.bypassSecurityTrustHtml(
-                this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
-                    content ??
-                    '',
-            ),
-        );
+        const safe =
+            this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
+            content ??
+            '';
+
+        this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', safe);
     }
 
     /**
