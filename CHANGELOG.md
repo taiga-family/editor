@@ -1,3 +1,12 @@
+### [4.50.0](https://github.com/taiga-family/editor/compare/v4.49.0...v4.50.0) (2026-01-14)
+
+### 🐞 Bug Fixes
+
+- sanitize content by default in `tui-editor-socket` (#1990)
+  [(e5ee04e)](https://github.com/taiga-family/editor/commit/e5ee04e04cd898c374e9d261b9f703d2207a1fe3)
+- update definitely typed (#1983)
+  [(2018822)](https://github.com/taiga-family/editor/commit/201882293fbbf420cceadc56a4ee059df64a9f29)
+
 ### [4.49.0](https://github.com/taiga-family/editor/compare/v4.48.0...v4.49.0) (2025-12-16)
 
 ### 🚀 Features
