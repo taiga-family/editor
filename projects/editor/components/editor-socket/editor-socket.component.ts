@@ -29,7 +29,7 @@ import {TuiTiptapEditor} from '@taiga-ui/editor/directives';
 })
 export class TuiEditorSocket {
     private readonly editor = inject(TuiTiptapEditor, {optional: true});
-    private readonly customSanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
+    private readonly sanitizer = inject(TUI_EDITOR_SANITIZER, {optional: true});
     private readonly elementRef = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
@@ -37,11 +37,9 @@ export class TuiEditorSocket {
     protected readonly html = signal<SafeHtml | string | null>(null);
 
     @Input()
-    public set content(content: string | null | undefined) {
-        const safe =
-            this.customSanitizer?.sanitize(SecurityContext.HTML, content ?? '') ??
-            content ??
-            '';
+    public set content(value: string | null | undefined) {
+        const content = value ?? '';
+        const safe = this.sanitizer?.sanitize(SecurityContext.HTML, content) ?? content;
 
         this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', safe);
     }
