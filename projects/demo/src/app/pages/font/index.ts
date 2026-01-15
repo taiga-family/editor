@@ -27,12 +27,10 @@ export default class Example {
     protected readonly example3 = {
         TypeScript: import('./examples/3/index.ts?raw'),
         HTML: import('./examples/3/index.html?raw'),
-        'font-size-tool/font-size-tool.component.ts': import(
-            './examples/3/font-size-tool?raw'
-        ),
-        'font-size-tool/font-size-tool.template.html': import(
-            './examples/3/font-size-tool/index.html?raw'
-        ),
+        'font-size-tool/font-size-tool.component.ts':
+            import('./examples/3/font-size-tool?raw'),
+        'font-size-tool/font-size-tool.template.html':
+            import('./examples/3/font-size-tool/index.html?raw'),
     };
 
     protected readonly example4 = {

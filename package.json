@@ -12,24 +12,30 @@
     ],
     "homepage": "https://taiga-family.github.io/editor",
     "bugs": "https://github.com/tahiga-family/editor/issues",
-    "repository": "https://github.com/taiga-family/editor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/editor"
+    },
     "license": "Apache-2.0",
     "contributors": [
-        "Alex Inkin <alexander@inkin.ru>"
+        {
+            "name": "Alex Inkin",
+            "email": "alexander@inkin.ru"
+        }
     ],
     "workspaces": [
         "projects/*"
     ],
     "scripts": {
-        "prepare": "husky",
-        "start": "nx serve editor-demo",
-        "lint": "eslint .",
-        "test": "jest .",
         "cspell": "cspell --relative --dot --no-progress --gitignore .",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
+        "lint": "eslint .",
+        "prepare": "husky",
         "prettier": "prettier !package-lock.json !taiga-ui/** . --ignore-path .gitignore",
+        "release": "npx syncer && npx nx publish editor",
+        "start": "nx serve editor-demo",
         "stylelint": "stylelint './**/*.{less,css}' --config package.json",
-        "release": "npx syncer && npx nx publish editor"
+        "test": "jest ."
     },
     "commitlint": {
         "extends": [
@@ -57,12 +63,10 @@
             "@taiga-ui/stylelint-config"
         ]
     },
+    "jest": {
+        "preset": "@taiga-ui/jest-config"
+    },
     "overrides": {
-        "@angular-devkit/build-angular": "$@angular-devkit/build-angular",
-        "@angular-devkit/core": "$@angular-devkit/core",
-        "@taiga-ui/browserslist-config": "0.332.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.332.0",
-        "@taiga-ui/jest-config": "0.332.0",
         "@taiga-ui/tsconfig": "0.332.0"
     },
     "devDependencies": {
@@ -84,26 +88,26 @@
         "@angular/platform-server": "16.2.12",
         "@angular/router": "16.2.12",
         "@babel/core": "7.28.5",
-        "@ng-web-apis/universal": "4.12.2",
+        "@ng-web-apis/common": "4.14.0",
+        "@ng-web-apis/universal": "4.14.0",
         "@nguniversal/builders": "16.2.0",
         "@nguniversal/express-engine": "16.2.0",
         "@nx/angular": "20.1.4",
         "@nx/cypress": "20.1.4",
         "@nx/workspace": "20.1.4",
         "@playwright/test": "1.57.0",
-        "@taiga-ui/addon-doc": "4.61.0",
-        "@taiga-ui/cdk": "4.61.0",
-        "@taiga-ui/configs": "0.363.0",
-        "@taiga-ui/core": "4.61.0",
+        "@taiga-ui/addon-doc": "4.66.0",
+        "@taiga-ui/cdk": "4.66.0",
+        "@taiga-ui/configs": "0.384.0",
+        "@taiga-ui/core": "4.66.0",
         "@taiga-ui/dompurify": "4.1.11",
-        "@taiga-ui/experimental": "4.61.0",
-        "@taiga-ui/icons": "4.61.0",
-        "@taiga-ui/layout": "4.61.0",
-        "@taiga-ui/legacy": "4.61.0",
+        "@taiga-ui/experimental": "4.66.0",
+        "@taiga-ui/icons": "4.66.0",
+        "@taiga-ui/layout": "4.66.0",
+        "@taiga-ui/legacy": "4.66.0",
         "@taiga-ui/polymorpheus": "4.9.0",
-        "@taiga-ui/styles": "4.61.0",
-        "@taiga-ui/syncer": "0.363.0",
-        "@taiga-ui/testing": "4.61.0",
+        "@taiga-ui/styles": "4.66.0",
+        "@taiga-ui/syncer": "0.383.0",
         "@types/express": "5.0.6",
         "@types/jasmine": "5.1.13",
         "@types/markdown-it": "14.1.2",
@@ -113,10 +117,6 @@
         "cypress": "13.17.0",
         "express": "4.21.2",
         "husky": "9.1.7",
-        "jest": "29.7.0",
-        "jest-environment-jsdom": "29.7.0",
-        "jest-preset-angular": "14.6.2",
-        "lint-staged": "15.5.2",
         "markdown-it": "14.1.0",
         "marked": "15.0.12",
         "ng-morph": "4.8.4",
@@ -137,7 +137,6 @@
         "matchPackageNames": [
             "@taiga-ui/editor",
             "^editor$"
-        ],
-        "ignorePackageNames": []
+        ]
     }
 }

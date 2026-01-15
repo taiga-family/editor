@@ -11,6 +11,7 @@ import {
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -39,7 +40,7 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
         TuiBoldButtonTool,
         TuiItalicButtonTool,
         TuiStrikeButtonTool,
-        TuiTextfieldDropdownDirective,
+        TuiTextfield,
         TuiUnderlineButtonTool,
     ],
     template: `

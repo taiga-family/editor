@@ -26,9 +26,8 @@ import {type MyContentsInfo, MyToc} from './my-toc';
             const example = injector.get(Example);
             const win = injector.get(WA_WINDOW);
 
-            const {TableOfContents, getHierarchicalIndexes} = await import(
-                '@tiptap/extension-table-of-contents'
-            );
+            const {TableOfContents, getHierarchicalIndexes} =
+                await import('@tiptap/extension-table-of-contents');
 
             return TableOfContents.configure({
                 scrollParent: () =>

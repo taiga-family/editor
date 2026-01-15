@@ -13,7 +13,7 @@ import {
 import {EMPTY_QUERY, tuiIsFocusedIn} from '@taiga-ui/cdk';
 import {tuiHintOptionsProvider} from '@taiga-ui/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 
 import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
 
@@ -37,7 +37,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
         '(mousedown)': 'onMouseDown($event, $event.target)',
     },
 })
-export class TuiToolbarHostComponent {
+export class TuiToolbarHost {
     @ViewChild(TuiToolbarNavigationManager)
     private readonly navigationManager?: TuiToolbarNavigationManager;
 
@@ -95,3 +95,10 @@ export class TuiToolbarHostComponent {
         this.navigationManager?.findFirstFocusableTool(true)?.focus();
     }
 }
+
+export {
+    /**
+     * @deprecated use {@link TuiToolbarHost}
+     */
+    TuiToolbarHost as TuiToolbarHostComponent,
+};

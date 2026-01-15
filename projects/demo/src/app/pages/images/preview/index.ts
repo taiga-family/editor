@@ -12,14 +12,11 @@ export default class Example {
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw'),
         HTML: import('./examples/1/index.html?raw'),
-        'image-preview/image-preview.template.html': import(
-            './examples/1/image-preview/image-preview.template.html?raw'
-        ),
-        'image-preview/image-preview.style.less': import(
-            './examples/1/image-preview/image-preview.style.less?raw'
-        ),
-        'image-preview/image-preview.component.ts': import(
-            './examples/1/image-preview/image-preview.component.ts?raw'
-        ),
+        'image-preview/image-preview.template.html':
+            import('./examples/1/image-preview/image-preview.template.html?raw'),
+        'image-preview/image-preview.style.less':
+            import('./examples/1/image-preview/image-preview.style.less?raw'),
+        'image-preview/image-preview.component.ts':
+            import('./examples/1/image-preview/image-preview.component.ts?raw'),
     };
 }

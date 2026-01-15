@@ -11,7 +11,7 @@ import {
     TUI_EDITOR_OPTIONS,
     TUI_EDITOR_TOOLBAR_TEXTS,
 } from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiDetailsRemoveButtonTool} from '@taiga-ui/editor/tools';
 import {map, type Observable} from 'rxjs';
 

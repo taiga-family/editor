@@ -1,11 +1,11 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
-    TuiDataListComponent,
+    TuiDataList,
     TuiDropdownDirective,
     TuiOptGroup,
     TuiOption,
-    TuiTextfieldDropdownDirective,
+    TuiTextfield,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {TUI_EDITOR_TABLE_COMMANDS, type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -26,14 +26,7 @@ export const TuiTableCommands = {
 @Component({
     standalone: true,
     selector: 'button[tuiAddRowTableTool]',
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        TuiDataListComponent,
-        TuiOptGroup,
-        TuiOption,
-        TuiTextfieldDropdownDirective,
-    ],
+    imports: [AsyncPipe, NgForOf, TuiDataList, TuiOptGroup, TuiOption, TuiTextfield],
     template: `
         {{ tuiHint() }}
 

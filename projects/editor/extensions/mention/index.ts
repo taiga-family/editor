@@ -3,10 +3,7 @@ import {type DOMOutputSpec, type Node as ProseMirrorNode} from '@tiptap/pm/model
 
 export interface TuiMentionOptions {
     HTMLAttributes: Record<string, any>;
-    renderHTML: (props: {
-        options: TuiMentionOptions;
-        node: ProseMirrorNode;
-    }) => DOMOutputSpec;
+    renderHTML(props: {options: TuiMentionOptions; node: ProseMirrorNode}): DOMOutputSpec;
 }
 
 export const TuiMention = Node.create<TuiMentionOptions>({

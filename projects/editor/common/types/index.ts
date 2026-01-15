@@ -47,14 +47,14 @@ export type {
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         iframe: {
-            setIframe: (options: TuiEditableIframe) => ReturnType;
+            setIframe(options: TuiEditableIframe): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         imageEditor: {
-            setEditableImage: (imageConfigs: TuiEditableImage) => ReturnType;
-            setImageLink: () => ReturnType;
+            setEditableImage(imageConfigs: TuiEditableImage): ReturnType;
+            setImageLink(): ReturnType;
         };
     }
 
@@ -63,33 +63,33 @@ declare module '@tiptap/core' {
             /**
              * Set the font color
              */
-            setFontColor: (fontColor: string) => ReturnType;
+            setFontColor(fontColor: string): ReturnType;
             /**
              * Unset the font color
              */
-            unsetFontColor: () => ReturnType;
+            unsetFontColor(): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         details: {
-            setDetails: () => ReturnType;
-            unsetDetails: () => ReturnType;
+            setDetails(): ReturnType;
+            unsetDetails(): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         group: {
-            removeGroup: () => ReturnType;
-            setGroup: () => ReturnType;
-            setGroupHilite: (color: string) => ReturnType;
+            removeGroup(): ReturnType;
+            setGroup(): ReturnType;
+            setGroupHilite(color: string): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         anchor: {
-            removeAnchor: () => ReturnType;
-            setAnchor: (id: string) => ReturnType;
+            removeAnchor(): ReturnType;
+            setAnchor(id: string): ReturnType;
         };
     }
 
@@ -98,25 +98,25 @@ declare module '@tiptap/core' {
             /**
              * Insert a youtube video
              */
-            setYoutubeVideo: (options: {
+            setYoutubeVideo(options: {
                 height?: number;
                 src: string;
                 start?: number;
                 width?: number;
-            }) => ReturnType;
+            }): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         cellBackground: {
-            setCellBackground: (background: string) => ReturnType;
-            unsetCellBackground: () => ReturnType;
+            setCellBackground(background: string): ReturnType;
+            unsetCellBackground(): ReturnType;
         };
     }
 
     interface Commands<ReturnType> {
         fileLink: {
-            setFileLink: (preview: TuiEditorAttachedFile) => ReturnType;
+            setFileLink(preview: TuiEditorAttachedFile): ReturnType;
         };
     }
 
@@ -125,11 +125,11 @@ declare module '@tiptap/core' {
             /**
              * Set the font size
              */
-            setFontSize: (fontSize: string) => ReturnType;
+            setFontSize(fontSize: string): ReturnType;
             /**
              * Unset the font size
              */
-            unsetFontSize: () => ReturnType;
+            unsetFontSize(): ReturnType;
         };
     }
 
@@ -138,11 +138,11 @@ declare module '@tiptap/core' {
             /**
              * Set the background color
              */
-            setBackgroundColor: (backgroundColor: string) => ReturnType;
+            setBackgroundColor(backgroundColor: string): ReturnType;
             /**
              * Unset the background color
              */
-            unsetBackgroundColor: () => ReturnType;
+            unsetBackgroundColor(): ReturnType;
         };
     }
 }

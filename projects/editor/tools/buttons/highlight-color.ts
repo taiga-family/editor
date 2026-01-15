@@ -11,6 +11,7 @@ import {
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -25,7 +26,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 @Component({
     standalone: true,
     selector: 'button[tuiHighlightColorTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfieldDropdownDirective],
+    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfield],
     template: `
         {{ tuiHint() }}
 

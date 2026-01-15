@@ -1,12 +1,10 @@
 import {inject, INJECTOR, type Injector, type Provider} from '@angular/core';
 import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor/common';
-import {
-    type TuiBackgroundColorOptions,
-    type TuiDetailsExtensionOptions,
-    type TuiFontColorOptions,
-    type TuiFontSizeOptions,
-    type TuiImageExtensionOptions,
-} from '@taiga-ui/editor/extensions';
+import {type TuiBackgroundColorOptions} from '@taiga-ui/editor/extensions/background-color';
+import {type TuiDetailsExtensionOptions} from '@taiga-ui/editor/extensions/details';
+import {type TuiFontColorOptions} from '@taiga-ui/editor/extensions/font-color';
+import {type TuiFontSizeOptions} from '@taiga-ui/editor/extensions/font-size';
+import {type TuiImageExtensionOptions} from '@taiga-ui/editor/extensions/image-editor';
 import {
     type Extension,
     type KeyboardShortcutCommand,
@@ -218,9 +216,8 @@ const EXTENSIONS = [
         key: 'horizontalRule',
         default: true,
         async loader(options: Partial<HorizontalRuleOptions>) {
-            const {TuiHorizontalRule} = await import(
-                '@taiga-ui/editor/extensions/horizontal'
-            );
+            const {TuiHorizontalRule} =
+                await import('@taiga-ui/editor/extensions/horizontal');
 
             return TuiHorizontalRule.configure(options);
         },
@@ -326,9 +323,8 @@ const EXTENSIONS = [
         key: 'fontSize',
         default: true,
         async loader(options: Partial<TuiFontSizeOptions>) {
-            const {TuiFontSizeExtension} = await import(
-                '@taiga-ui/editor/extensions/font-size'
-            );
+            const {TuiFontSizeExtension} =
+                await import('@taiga-ui/editor/extensions/font-size');
 
             return TuiFontSizeExtension.configure(options);
         },
@@ -400,9 +396,8 @@ const EXTENSIONS = [
         key: 'jumpAnchor',
         default: true,
         async loader(options: Partial<Record<string, unknown>>) {
-            const {TuiJumpAnchor} = await import(
-                '@taiga-ui/editor/extensions/jump-anchor'
-            );
+            const {TuiJumpAnchor} =
+                await import('@taiga-ui/editor/extensions/jump-anchor');
 
             return TuiJumpAnchor.configure(options);
         },
@@ -420,9 +415,8 @@ const EXTENSIONS = [
         key: 'backgroundColor',
         default: true,
         async loader(options: Partial<TuiBackgroundColorOptions>) {
-            const {TuiBackgroundColor} = await import(
-                '@taiga-ui/editor/extensions/background-color'
-            );
+            const {TuiBackgroundColor} =
+                await import('@taiga-ui/editor/extensions/background-color');
 
             return TuiBackgroundColor.configure(options);
         },
@@ -467,9 +461,8 @@ const EXTENSIONS = [
         key: 'tableCellBackground',
         default: true,
         async loader(options: Partial<Record<string, unknown>>) {
-            const {TableCellBackground} = await import(
-                '@taiga-ui/editor/extensions/table-cell-background'
-            );
+            const {TableCellBackground} =
+                await import('@taiga-ui/editor/extensions/table-cell-background');
 
             return TableCellBackground.configure(options);
         },
@@ -478,9 +471,8 @@ const EXTENSIONS = [
         key: 'tab',
         default: true,
         async loader(options: Partial<Record<string, unknown>>) {
-            const {TuiTabExtension} = await import(
-                '@taiga-ui/editor/extensions/indent-outdent'
-            );
+            const {TuiTabExtension} =
+                await import('@taiga-ui/editor/extensions/indent-outdent');
 
             return TuiTabExtension.configure(options);
         },
@@ -489,9 +481,8 @@ const EXTENSIONS = [
         key: 'details',
         default: false,
         async loader(options: Partial<TuiDetailsExtensionOptions>) {
-            const {TuiDetailsExtension} = await import(
-                '@taiga-ui/editor/extensions/details'
-            );
+            const {TuiDetailsExtension} =
+                await import('@taiga-ui/editor/extensions/details');
 
             return TuiDetailsExtension.configure(options);
         },
@@ -500,9 +491,8 @@ const EXTENSIONS = [
         key: 'detailsSummary',
         default: false,
         async loader(options: Partial<DetailsSummaryOptions>) {
-            const {TuiDetailsSummary} = await import(
-                '@taiga-ui/editor/extensions/details'
-            );
+            const {TuiDetailsSummary} =
+                await import('@taiga-ui/editor/extensions/details');
 
             return TuiDetailsSummary.configure(options);
         },
@@ -511,9 +501,8 @@ const EXTENSIONS = [
         key: 'detailsContent',
         default: false,
         async loader(options: Partial<DetailsContentOptions>) {
-            const {TuiDetailsContent} = await import(
-                '@taiga-ui/editor/extensions/details'
-            );
+            const {TuiDetailsContent} =
+                await import('@taiga-ui/editor/extensions/details');
 
             return TuiDetailsContent.configure(options);
         },
@@ -522,9 +511,8 @@ const EXTENSIONS = [
         key: 'image',
         default: false,
         async loader(options: Partial<TuiImageExtensionOptions>, injector: Injector) {
-            const {tuiCreateImageEditorExtension} = await import(
-                '@taiga-ui/editor/extensions/image-editor'
-            );
+            const {tuiCreateImageEditorExtension} =
+                await import('@taiga-ui/editor/extensions/image-editor');
 
             return tuiCreateImageEditorExtension({injector, ...options});
         },
@@ -560,9 +548,8 @@ const EXTENSIONS = [
         key: 'iframe',
         default: false,
         async loader(_: Partial<Record<string, unknown>>, injector: Injector) {
-            const {tuiCreateIframeEditorExtension} = await import(
-                '@taiga-ui/editor/extensions/iframe-editor'
-            );
+            const {tuiCreateIframeEditorExtension} =
+                await import('@taiga-ui/editor/extensions/iframe-editor');
 
             return tuiCreateIframeEditorExtension({injector});
         },

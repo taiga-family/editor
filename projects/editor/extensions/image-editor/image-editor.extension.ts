@@ -4,6 +4,7 @@ import {TUI_IMAGE_LOADER, type TuiEditableImage} from '@taiga-ui/editor/common';
 import {TuiNodeView} from '@taiga-ui/editor/extensions/tiptap-node-view';
 import {
     type Attribute,
+    type CommandProps,
     mergeAttributes,
     type Node,
     type NodeViewRenderer,
@@ -22,6 +23,15 @@ import {TuiImageEditor} from './image-editor';
 export interface TuiImageExtensionOptions {
     injector: Injector;
     draggable?: boolean;
+}
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        imageEditor: {
+            setEditableImage(imageConfigs: TuiEditableImage): ReturnType;
+            setImageLink(): ReturnType;
+        };
+    }
 }
 
 function pasteImage(injector: Injector) {
@@ -202,7 +212,7 @@ export function tuiCreateImageEditorExtension<T, K>({
         addCommands(): Partial<RawCommands> {
             return {
                 setEditableImage:
-                    (attrs) =>
+                    (attrs: TuiEditableImage) =>
                     ({commands}) =>
                         commands.insertContent({
                             type: this.name,
@@ -210,7 +220,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                         }),
                 setImageLink:
                     () =>
-                    ({commands}) =>
+                    ({commands}: CommandProps) =>
                         commands.updateAttributes(this.name, {
                             'data-editing-href': true,
                         }),

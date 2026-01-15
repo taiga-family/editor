@@ -1370,7 +1370,7 @@
 - clear contenteditable focus after reset in Safari (#862)
   [(4866dc1)](https://github.com/taiga-family/editor/commit/4866dc13a3895fa5c1c2a7dd9d7bf337ec44e9ce)
 
-### [1.16.0]() (2024-02-29)
+### [1.16.0](https://github.com/taiga-family/editor/releases/tag/v1.16.0) (2024-02-29)
 
 ### 🚀 Features
 

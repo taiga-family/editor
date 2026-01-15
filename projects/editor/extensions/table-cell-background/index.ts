@@ -3,8 +3,8 @@ import {type Command, Extension, type GlobalAttributes} from '@tiptap/core';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         cellBackground: {
-            setCellBackground: (background: string) => ReturnType;
-            unsetCellBackground: () => ReturnType;
+            setCellBackground(background: string): ReturnType;
+            unsetCellBackground(): ReturnType;
         };
     }
 }
@@ -32,8 +32,8 @@ export const TableCellBackground = Extension.create({
     },
 
     addCommands(): {
-        setCellBackground: (background: string) => Command;
-        unsetCellBackground: () => Command;
+        setCellBackground(background: string): Command;
+        unsetCellBackground(): Command;
     } {
         return {
             setCellBackground:

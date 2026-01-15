@@ -9,6 +9,7 @@ import {
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -31,7 +32,7 @@ import {TuiAlignRightButtonTool} from './align-right';
         TuiAlignJustifyButtonTool,
         TuiAlignLeftButtonTool,
         TuiAlignRightButtonTool,
-        TuiTextfieldDropdownDirective,
+        TuiTextfield,
     ],
     template: `
         {{ tuiHint() }}

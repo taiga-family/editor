@@ -20,11 +20,11 @@ import {
     TUI_EDITOR_RESIZE_EVENT,
     type TuiEditableImage,
 } from '@taiga-ui/editor/common';
+import {TuiEditLink} from '@taiga-ui/editor/components/edit-link';
 import {
     AbstractTuiEditorResizable,
-    TuiEditLink,
     TuiEditorResizable,
-} from '@taiga-ui/editor/components';
+} from '@taiga-ui/editor/components/editor-resizable';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';
@@ -199,7 +199,9 @@ export class TuiImageEditor
 
         timer(0)
             .pipe(takeUntilDestroyed(this.destroy$))
-            .subscribe(() => this.editor.commands.setNodeSelection(this.getPos()));
+            .subscribe(() => {
+                this.editor.commands.setNodeSelection(this.getPos());
+            });
     }
 
     private setInitialSize(): void {

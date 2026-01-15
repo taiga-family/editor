@@ -13,6 +13,7 @@ import {
     TuiDropdownDirective,
     tuiDropdownOpen,
     tuiGetViewportWidth,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -30,7 +31,7 @@ const MIN_DISTANCE_PX = 70;
 @Component({
     standalone: true,
     selector: 'button[tuiInsertTableTool]',
-    imports: [TuiRepeatTimes, TuiTextfieldDropdownDirective],
+    imports: [TuiRepeatTimes, TuiTextfield],
     template: `
         {{ tuiHint() }}
 

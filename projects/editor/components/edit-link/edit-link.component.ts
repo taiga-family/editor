@@ -26,7 +26,7 @@ import {
     type TuiEditorLinkPrefix,
     type TuiEditorLinkProtocol,
 } from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';

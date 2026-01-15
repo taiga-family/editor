@@ -17,7 +17,7 @@ import {
     TUI_EDITOR_TOOLBAR_TEXTS,
     type TuiEditorOptions,
 } from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {
     BehaviorSubject,

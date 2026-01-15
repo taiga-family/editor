@@ -17,7 +17,7 @@ import {
     TuiEditorTool,
     type TuiEditorToolType,
 } from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {
     TuiAddRowTableButtonTool,
     TuiAlignButtonTool,

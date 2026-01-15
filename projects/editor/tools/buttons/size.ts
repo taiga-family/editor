@@ -9,11 +9,12 @@ import {
 } from '@angular/core';
 import {TuiItem, tuiPx} from '@taiga-ui/cdk';
 import {
-    TuiDataListComponent,
+    TuiDataList,
     tuiDropdown,
     TuiDropdownDirective,
     tuiDropdownOpen,
     TuiOption,
+    TuiTextfield,
     TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
@@ -39,10 +40,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
         NgClass,
         NgForOf,
         NgStyle,
-        TuiDataListComponent,
+        TuiDataList,
         TuiItem,
         TuiOption,
-        TuiTextfieldDropdownDirective,
+        TuiTextfield,
     ],
     template: `
         {{ tuiHint() }}

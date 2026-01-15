@@ -9,7 +9,7 @@ import {
     TUI_EDITOR_OPTIONS,
     type TuiEditorOptions,
 } from '@taiga-ui/editor/common';
-import {TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {type Editor, type Extension, type Mark, type Node} from '@tiptap/core';
 import {
     combineLatest,

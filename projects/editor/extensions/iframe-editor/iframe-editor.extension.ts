@@ -17,7 +17,7 @@ import {TuiIframeEditor} from './iframe-editor.component';
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         iframe: {
-            setIframe: (options: TuiEditableIframe) => ReturnType;
+            setIframe(options: TuiEditableIframe): ReturnType;
         };
     }
 }

@@ -57,8 +57,11 @@ import {
 import {TuiEditLink} from '@taiga-ui/editor/components/edit-link';
 import {TuiEditorSocket} from '@taiga-ui/editor/components/editor-socket';
 import {TuiToolbar} from '@taiga-ui/editor/components/toolbar';
-import {TuiToolbarHostComponent} from '@taiga-ui/editor/components/toolbar-host';
-import {TuiTiptapEditor, TuiTiptapEditorService} from '@taiga-ui/editor/directives';
+import {TuiToolbarHost} from '@taiga-ui/editor/components/toolbar-host';
+import {
+    TuiTiptapEditor,
+    TuiTiptapEditorService,
+} from '@taiga-ui/editor/directives/tiptap-editor';
 import {
     tuiGetSelectionState,
     tuiIsSafeLinkRange,
@@ -88,7 +91,7 @@ interface ServerSideGlobal extends NodeJS.Global {
         TuiScrollbar,
         TuiTiptapEditor,
         TuiToolbar,
-        TuiToolbarHostComponent,
+        TuiToolbarHost,
     ],
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.less'],

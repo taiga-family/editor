@@ -10,11 +10,11 @@ declare module '@tiptap/core' {
             /**
              * Set the font color
              */
-            setFontColor: (fontColor: string) => ReturnType;
+            setFontColor(fontColor: string): ReturnType;
             /**
              * Unset the font color
              */
-            unsetFontColor: () => ReturnType;
+            unsetFontColor(): ReturnType;
         };
     }
 }
@@ -50,8 +50,8 @@ export const TuiFontColor = Extension.create<TuiFontColorOptions>({
     },
 
     addCommands(): {
-        setFontColor?: (fontColor: string) => Command;
-        unsetFontColor?: () => Command;
+        setFontColor?(fontColor: string): Command;
+        unsetFontColor?(): Command;
     } {
         return {
             setFontColor:
