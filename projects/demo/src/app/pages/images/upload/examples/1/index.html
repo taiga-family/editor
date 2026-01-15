@@ -15,4 +15,12 @@
     [formControl]="control"
 />
 
-<tui-content-table [value]="control.value" />
+<preview-output>
+    <ng-template slot="html">
+        <tui-editor-socket [content]="control.value" />
+    </ng-template>
+
+    <ng-template slot="text">
+        {{ control.value }}
+    </ng-template>
+</preview-output>

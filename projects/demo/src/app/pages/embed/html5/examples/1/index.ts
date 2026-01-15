@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
-import {TuiContentTable} from '@demo/shared/content-table';
+import {PreviewOutput} from '@demo/shared/preview-output';
 import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
@@ -17,6 +17,7 @@ import {
     TUI_ATTACH_FILES_OPTIONS,
     TuiEditor,
     type TuiEditorAttachedFile,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {map, type Observable, of, switchMap} from 'rxjs';
@@ -35,7 +36,7 @@ export class HttpMockUploader {
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiContentTable, TuiEditor],
+    imports: [PreviewOutput, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

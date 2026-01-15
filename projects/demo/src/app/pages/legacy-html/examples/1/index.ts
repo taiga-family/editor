@@ -1,17 +1,18 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
+import {PreviewOutput} from '@demo/shared/preview-output';
 import {
     provideTuiEditor,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditor,
+    TuiEditorSocket,
 } from '@taiga-ui/editor';
 
 import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiContentTable, TuiEditor],
+    imports: [PreviewOutput, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

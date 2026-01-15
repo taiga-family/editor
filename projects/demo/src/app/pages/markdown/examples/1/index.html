@@ -7,13 +7,16 @@
     Placeholder
 </tui-editor>
 
-<tui-content-table [value]="control.value" />
+<preview-output>
+    <ng-template slot="html">
+        <tui-editor-socket [content]="control.value" />
+    </ng-template>
 
-<tui-accordion class="tui-space_top-6">
-    <button [tuiAccordion]="isE2E">Markdown</button>
-    <tui-expand>
-        <ng-container *tuiItem>
-            <pre class="markdown">{{ toMarkdown(control.value) }}</pre>
-        </ng-container>
-    </tui-expand>
-</tui-accordion>
+    <ng-template slot="text">
+        {{ control.value }}
+    </ng-template>
+
+    <ng-template slot="markdown">
+        <pre class="markdown">{{ toMarkdown(control.value) }}</pre>
+    </ng-template>
+</preview-output>

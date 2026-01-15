@@ -5,15 +5,27 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
+import {PreviewOutput} from '@demo/shared/preview-output';
 import {TuiTextfield} from '@taiga-ui/core';
-import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {
+    provideTuiEditor,
+    TuiEditor,
+    TuiEditorSocket,
+    TuiEditorTool,
+} from '@taiga-ui/editor';
 
 import {Mentions, type User} from './mention';
 
 @Component({
     standalone: true,
-    imports: [Mentions, ReactiveFormsModule, TuiContentTable, TuiEditor, TuiTextfield],
+    imports: [
+        Mentions,
+        PreviewOutput,
+        ReactiveFormsModule,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,

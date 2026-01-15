@@ -2,10 +2,15 @@ import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
-import {TuiContentTable} from '@demo/shared/content-table';
+import {PreviewOutput} from '@demo/shared/preview-output';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
-import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {
+    provideTuiEditor,
+    TuiEditor,
+    TuiEditorSocket,
+    TuiEditorTool,
+} from '@taiga-ui/editor';
 
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
@@ -13,9 +18,10 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
     standalone: true,
     imports: [
         ExampleTuiEmbedTool,
+        PreviewOutput,
         ReactiveFormsModule,
-        TuiContentTable,
         TuiEditor,
+        TuiEditorSocket,
         TuiIcon,
         TuiItem,
     ],

@@ -4,7 +4,12 @@
     [tools]="builtInTools"
 />
 
-<tui-content-table
-    [open]="true"
-    [value]="control.value"
-/>
+<preview-output [open]="true">
+    <ng-template slot="html">
+        <tui-editor-socket [content]="control.value" />
+    </ng-template>
+
+    <ng-template slot="text">
+        {{ control.value }}
+    </ng-template>
+</preview-output>

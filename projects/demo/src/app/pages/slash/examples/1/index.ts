@@ -10,14 +10,19 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
+import {PreviewOutput} from '@demo/shared/preview-output';
 import {
     TuiDataList,
     TuiDataListComponent,
     TuiDropdown,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {
+    provideTuiEditor,
+    TuiEditor,
+    TuiEditorSocket,
+    TuiEditorTool,
+} from '@taiga-ui/editor';
 
 interface MyCommand {
     name: string;
@@ -27,11 +32,12 @@ interface MyCommand {
     standalone: true,
     imports: [
         NgForOf,
+        PreviewOutput,
         ReactiveFormsModule,
-        TuiContentTable,
         TuiDataList,
         TuiDropdown,
         TuiEditor,
+        TuiEditorSocket,
         TuiTextfield,
     ],
     templateUrl: './index.html',
