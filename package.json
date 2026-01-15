@@ -87,7 +87,7 @@
         "@angular/platform-browser-dynamic": "16.2.12",
         "@angular/platform-server": "16.2.12",
         "@angular/router": "16.2.12",
-        "@babel/core": "7.28.5",
+        "@babel/core": "7.28.6",
         "@ng-web-apis/common": "4.14.0",
         "@ng-web-apis/universal": "4.14.0",
         "@nguniversal/builders": "16.2.0",
