@@ -1,3 +1,15 @@
+### [4.51.0](https://github.com/taiga-family/editor/compare/v4.50.0...v4.51.0) (2026-01-16)
+
+### 🚀 Features
+
+- small changes (#2002)
+  [(c015cf4)](https://github.com/taiga-family/editor/commit/c015cf4b909fcbadd6be76f91ae154293e812b82)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^2.27.2 (#2005)
+  [(6d203b2)](https://github.com/taiga-family/editor/commit/6d203b20c2dbbd1a7f173a45f8903e434794e2f5)
+
 ### [4.50.0](https://github.com/taiga-family/editor/compare/v4.49.0...v4.50.0) (2026-01-14)
 
 ### 🐞 Bug Fixes
