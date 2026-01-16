@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[6976],{6976:o=>{o.exports='<tui-editor\n    class="heading"\n    [formControl]="control"\n    [tools]="builtInTools"\n/>\n\n<tui-content-table [value]="control.value" />\n'}}]);
