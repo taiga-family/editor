@@ -36,7 +36,7 @@ test.describe('Details', () => {
 
         const example = page.locator('#details');
         const editor = example.locator('tui-editor');
-        const content = example.locator('tui-content-table tui-editor-socket');
+        const content = example.locator('tui-accordion tui-editor-socket');
 
         await expect.soft(content).toHaveScreenshot('Details-06.png');
         await content.locator('details').first().locator('summary').click();
@@ -58,7 +58,7 @@ test.describe('Details', () => {
 
         const example = page.locator('#details');
         const editor = example.locator('tui-editor');
-        const content = example.locator('tui-content-table tui-editor-socket');
+        const content = example.locator('tui-accordion tui-editor-socket');
 
         await expect.soft(content).toHaveScreenshot('Details-11.png');
         await expect.soft(editor).toHaveScreenshot('Details-12.png');

@@ -1,22 +1,30 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR, tuiRawLoad} from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, tuiPure, TuiValueTransformer} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItem, tuiPure, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TUI_EDITOR_VALUE_TRANSFORMER,
     TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 
 @Component({
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, TuiAccordion, TuiContentTable, TuiEditor],
+    imports: [
+        NgIf,
+        ReactiveFormsModule,
+        TuiAccordion,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,8 +49,6 @@ import {Converter} from 'showdown';
     ],
 })
 export default class Example implements OnInit {
-    protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
         TuiEditorTool.Img,
@@ -51,6 +57,8 @@ export default class Example implements OnInit {
     ];
 
     protected control: FormControl = new FormControl('');
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     public ngOnInit(): void {
         void tuiRawLoad(import('./example.md?raw')).then((data) =>

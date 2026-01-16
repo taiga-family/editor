@@ -9,4 +9,18 @@
     Placeholder
 </tui-editor>
 
-<tui-content-table [value]="control.value" />
+<tui-accordion [closeOthers]="false">
+    <button [tuiAccordion]="isE2E">HTML</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <tui-editor-socket [content]="control.value" />
+        </ng-container>
+    </tui-expand>
+
+    <button [tuiAccordion]="isE2E">Text</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            {{ control.value }}
+        </ng-container>
+    </tui-expand>
+</tui-accordion>

@@ -6,16 +6,17 @@ import {
     ReactiveFormsModule,
     type ValidationErrors,
 } from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
-import {TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItem, TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
 import {TuiError, TuiLoader} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
     TUI_IMAGE_LOADER,
     TuiEditor,
+    TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 import {imageLoader} from './image-loader';
@@ -26,10 +27,13 @@ import {ImgbbService} from './imgbb.service';
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
-        TuiContentTable,
+        TuiAccordion,
         TuiEditor,
+        TuiEditorSocket,
         TuiError,
+        TuiExpand,
         TuiFieldErrorPipe,
+        TuiItem,
         TuiLoader,
         TuiValidator,
     ],
@@ -58,6 +62,8 @@ export default class Example {
     protected readonly doc = inject(DOCUMENT);
     protected readonly imgbbService = inject(ImgbbService);
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected control = new FormControl('');
 

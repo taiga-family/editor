@@ -1,11 +1,24 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiContentTable} from '@demo/shared/content-table';
-import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {
+    provideTuiEditor,
+    TuiEditor,
+    TuiEditorSocket,
+    TuiEditorTool,
+} from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiContentTable, TuiEditor],
+    imports: [
+        ReactiveFormsModule,
+        TuiAccordion,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,6 +38,8 @@ import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected control = new FormControl('');
 
