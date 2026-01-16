@@ -5,12 +5,18 @@
     Placeholder
 </tui-editor>
 
-<preview-output>
-    <ng-template slot="html">
-        <tui-editor-socket [content]="control.value" />
-    </ng-template>
+<tui-accordion [closeOthers]="false">
+    <button [tuiAccordion]="isE2E">HTML</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <tui-editor-socket [content]="control.value" />
+        </ng-container>
+    </tui-expand>
 
-    <ng-template slot="text">
-        {{ control.value }}
-    </ng-template>
-</preview-output>
+    <button [tuiAccordion]="isE2E">Text</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            {{ control.value }}
+        </ng-container>
+    </tui-expand>
+</tui-accordion>

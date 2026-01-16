@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
+import {TuiItem} from '@taiga-ui/cdk';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {
     provideTuiEditor,
@@ -9,10 +9,18 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
     standalone: true,
-    imports: [PreviewOutput, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
+    imports: [
+        ReactiveFormsModule,
+        TuiAccordion,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

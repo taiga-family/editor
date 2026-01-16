@@ -2,7 +2,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
+import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -11,16 +11,19 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
     imports: [
         HttpClientModule,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,6 +46,8 @@ export default class Example {
         TuiEditorTool.Img,
         TuiEditorTool.Link,
     ];
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected base64Image$ = inject(HttpClient)
         .get('assets/images/lumberjack.png', {responseType: 'blob'})

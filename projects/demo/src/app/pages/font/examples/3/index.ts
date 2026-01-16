@@ -1,13 +1,13 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
-import {TuiItem} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 import {ExampleTuiFontSizeTool} from './font-size-tool';
 
@@ -15,10 +15,11 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
     standalone: true,
     imports: [
         ExampleTuiFontSizeTool,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
         TuiItem,
     ],
     templateUrl: './index.html',
@@ -27,6 +28,8 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected control = new FormControl(`
         <p>Hello</p>

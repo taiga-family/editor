@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     TuiDataListComponent,
@@ -23,6 +23,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 interface MyCommand {
     name: string;
@@ -32,12 +33,13 @@ interface MyCommand {
     standalone: true,
     imports: [
         NgForOf,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiDataList,
         TuiDropdown,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -56,6 +58,8 @@ export default class Example implements OnInit {
 
     @ViewChild(TuiDataListComponent, {read: ElementRef})
     protected datalist?: ElementRef<HTMLDivElement>;
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected open = true;
 

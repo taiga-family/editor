@@ -2,7 +2,6 @@ import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
-import {PreviewOutput} from '@demo/shared/preview-output';
 import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {
@@ -11,6 +10,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
@@ -18,10 +18,11 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
     standalone: true,
     imports: [
         ExampleTuiYoutubeTool,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
         TuiIcon,
         TuiItem,
     ],
@@ -40,6 +41,8 @@ export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isNotStatic =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected readonly control = new FormControl(

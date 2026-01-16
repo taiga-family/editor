@@ -1,11 +1,12 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    inject,
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
+import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {
     provideTuiEditor,
@@ -13,6 +14,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 import {Mentions, type User} from './mention';
 
@@ -20,10 +22,11 @@ import {Mentions, type User} from './mention';
     standalone: true,
     imports: [
         Mentions,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -39,6 +42,8 @@ import {Mentions, type User} from './mention';
 export default class Example {
     @ViewChild(TuiEditor)
     protected readonly wysiwyg?: TuiEditor;
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,

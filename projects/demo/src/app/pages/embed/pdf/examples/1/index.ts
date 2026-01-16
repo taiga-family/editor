@@ -8,8 +8,7 @@ import {
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
-import {PreviewOutput} from '@demo/shared/preview-output';
-import {TUI_IS_E2E, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TUI_IS_E2E, TuiItem, tuiPure, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
@@ -19,11 +18,19 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {map, type Observable, of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [PreviewOutput, ReactiveFormsModule, TuiEditor, TuiEditorSocket],
+    imports: [
+        ReactiveFormsModule,
+        TuiAccordion,
+        TuiEditor,
+        TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -82,6 +89,8 @@ export default class Example {
     private readonly editor?: TuiEditor;
 
     private readonly sanitizer = inject(DomSanitizer);
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly isNotStatic =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));

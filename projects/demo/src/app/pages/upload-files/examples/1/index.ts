@@ -1,7 +1,7 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {PreviewOutput} from '@demo/shared/preview-output';
+import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {TuiLoader} from '@taiga-ui/core';
 import {
     provideTuiEditor,
@@ -11,6 +11,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 import {fileLoader} from './file-loader';
 import {FileIoService} from './filesio.service';
@@ -19,10 +20,12 @@ import {FileIoService} from './filesio.service';
     standalone: true,
     imports: [
         AsyncPipe,
-        PreviewOutput,
         ReactiveFormsModule,
+        TuiAccordion,
         TuiEditor,
         TuiEditorSocket,
+        TuiExpand,
+        TuiItem,
         TuiLoader,
     ],
     templateUrl: './index.html',
@@ -42,6 +45,8 @@ export default class Example {
     private readonly wysiwyg?: TuiEditor;
 
     protected readonly fileIoService = inject(FileIoService);
+
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
