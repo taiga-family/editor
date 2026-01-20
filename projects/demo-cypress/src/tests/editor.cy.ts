@@ -61,4 +61,14 @@ describe('TuiEditor', () => {
             .type('World')
             .then(() => expect(component.count).to.eql(7));
     });
+
+    it('should make tui-editor not clickable when form control is disabled', () => {
+        cy.get('[contenteditable]')
+            .should('be.visible')
+            .should('have.attr', 'contenteditable', 'true')
+            .then(() => component.control.disable())
+            .get('[contenteditable]')
+            .should('have.attr', 'contenteditable', 'false')
+            .should('have.css', 'pointer-events', 'none');
+    });
 });
