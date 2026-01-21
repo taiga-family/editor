@@ -1,3 +1,10 @@
+### [4.52.0](https://github.com/taiga-family/editor/compare/v4.51.0...v4.52.0) (2026-01-21)
+
+### 🐞 Bug Fixes
+
+- form control should not be touched in disabled mode (#2012)
+  [(1a774bc)](https://github.com/taiga-family/editor/commit/1a774bc82c209a8ea69549206d7e75797b0ae165)
+
 ### [4.51.0](https://github.com/taiga-family/editor/compare/v4.50.0...v4.51.0) (2026-01-16)
 
 ### 🚀 Features
