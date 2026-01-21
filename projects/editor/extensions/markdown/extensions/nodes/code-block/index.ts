@@ -2,9 +2,7 @@ import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 import type MarkdownIt from 'markdown-it';
 
-export default Node.create({
-    name: 'codeBlock',
-}).extend({
+export default Node.create({name: 'codeBlock'}).extend({
     addStorage() {
         return {
             markdown: {

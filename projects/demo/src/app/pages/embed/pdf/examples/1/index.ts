@@ -35,9 +35,7 @@ import {map, type Observable, of} from 'rxjs';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditor({
-            iframe: true,
-        }),
+        provideTuiEditor({iframe: true}),
         {
             provide: TUI_ATTACH_FILES_LOADER,
             useFactory:
@@ -63,9 +61,7 @@ import {map, type Observable, of} from 'rxjs';
                                 /* base64 or link to the file on your server */
                                 link: String(fileReader.result),
 
-                                attrs: {
-                                    type: file.type,
-                                },
+                                attrs: {type: file.type},
                             },
                         ]),
                     );

@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.toggleItalic()',
-    },
+    host: {'(click)': 'editor?.toggleItalic()'},
 })
 export class TuiItalicButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {

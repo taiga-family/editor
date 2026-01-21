@@ -7,9 +7,7 @@ import {tuiExtractI18n} from '@taiga-ui/i18n';
  */
 export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
     ngDevMode ? 'TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES' : '',
-    {
-        factory: () => ['Solid color', 'Gradient'],
-    },
+    {factory: () => ['Solid color', 'Gradient']},
 );
 
 /**
@@ -17,9 +15,7 @@ export const TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, 
  */
 export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_TOOLBAR_TEXTS' : '',
-    {
-        factory: tuiExtractI18n('toolbarTools'),
-    },
+    {factory: tuiExtractI18n('toolbarTools')},
 );
 
 /**
@@ -27,9 +23,7 @@ export const TUI_EDITOR_TOOLBAR_TEXTS = new InjectionToken(
  */
 export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_TABLE_COMMANDS' : '',
-    {
-        factory: tuiExtractI18n('editorTableCommands'),
-    },
+    {factory: tuiExtractI18n('editorTableCommands')},
 );
 
 /**
@@ -37,9 +31,7 @@ export const TUI_EDITOR_TABLE_COMMANDS = new InjectionToken(
  */
 export const TUI_EDITOR_LINK_TEXTS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_LINK_TEXTS' : '',
-    {
-        factory: tuiExtractI18n('editorEditLink'),
-    },
+    {factory: tuiExtractI18n('editorEditLink')},
 );
 
 /**
@@ -47,9 +39,7 @@ export const TUI_EDITOR_LINK_TEXTS = new InjectionToken(
  */
 export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_CODE_OPTIONS' : '',
-    {
-        factory: tuiExtractI18n('editorCodeOptions'),
-    },
+    {factory: tuiExtractI18n('editorCodeOptions')},
 );
 
 /**
@@ -57,7 +47,5 @@ export const TUI_EDITOR_CODE_OPTIONS = new InjectionToken(
  */
 export const TUI_EDITOR_FONT_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_FONT_OPTIONS' : '',
-    {
-        factory: tuiExtractI18n('editorFontOptions'),
-    },
+    {factory: tuiExtractI18n('editorFontOptions')},
 );

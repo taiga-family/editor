@@ -88,9 +88,7 @@ const MIN_DISTANCE_PX = 70;
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        '[attr.automation-id]': '"toolbar__insert-table-button"',
-    },
+    host: {'[attr.automation-id]': '"toolbar__insert-table-button"'},
 })
 export class TuiInsertTableButtonTool extends TuiToolbarTool {
     private readonly win = inject(WINDOW);

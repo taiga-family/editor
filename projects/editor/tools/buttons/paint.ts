@@ -48,9 +48,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        tuiPlateHost: '',
-    },
+    host: {tuiPlateHost: ''},
 })
 export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);

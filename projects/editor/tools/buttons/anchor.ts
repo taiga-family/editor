@@ -12,9 +12,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'onAnchor()',
-    },
+    host: {'(click)': 'onAnchor()'},
 })
 export class TuiAnchorButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {

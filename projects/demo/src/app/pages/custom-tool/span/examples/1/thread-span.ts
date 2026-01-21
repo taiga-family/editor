@@ -8,21 +8,13 @@ export const ThreadSpan = Mark.create({
     },
 
     parseHTML() {
-        return [
-            {
-                tag: 'span[data-thread-id]',
-            },
-        ];
+        return [{tag: 'span[data-thread-id]'}];
     },
 
     addAttributes() {
         return {
-            class: {
-                default: null,
-            },
-            'data-thread-id': {
-                default: null,
-            },
+            class: {default: null},
+            'data-thread-id': {default: null},
         };
     },
 });

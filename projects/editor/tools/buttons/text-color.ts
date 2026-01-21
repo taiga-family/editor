@@ -39,9 +39,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        '[attr.automation-id]': '"toolbar__color-button"',
-    },
+    host: {'[attr.automation-id]': '"toolbar__color-button"'},
 })
 export class TuiTextColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);

@@ -27,9 +27,7 @@ interface ImgbbResponse {
     success: boolean;
 }
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class ImgbbService {
     public readonly loading$ = new BehaviorSubject(false);
 

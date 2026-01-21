@@ -1,8 +1,6 @@
 import {Mark} from '@tiptap/core';
 
-export default Mark.create({
-    name: 'strike',
-}).extend({
+export default Mark.create({name: 'strike'}).extend({
     addStorage() {
         return {
             markdown: {

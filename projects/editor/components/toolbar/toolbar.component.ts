@@ -84,9 +84,7 @@ import {
     templateUrl: './toolbar.template.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiToolbar: '',
-    },
+    host: {tuiToolbar: ''},
 })
 export class TuiToolbar {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

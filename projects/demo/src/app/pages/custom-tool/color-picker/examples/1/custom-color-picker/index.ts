@@ -16,9 +16,7 @@ import {distinctUntilChanged, map, share} from 'rxjs';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiPlateHost: '',
-    },
+    host: {tuiPlateHost: ''},
 })
 export class CustomColorPicker {
     private readonly options = inject(TUI_EDITOR_OPTIONS);

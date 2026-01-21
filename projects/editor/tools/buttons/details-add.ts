@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.setDetails()',
-    },
+    host: {'(click)': 'editor?.setDetails()'},
 })
 export class TuiDetailsAddButtonTool extends TuiToolbarTool {
     protected getIcon(icons: TuiEditorOptions['icons']): string {

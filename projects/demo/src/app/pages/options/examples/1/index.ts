@@ -23,11 +23,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        provideTuiEditorOptions({
-            parseOptions: {
-                preserveWhitespace: 'full',
-            },
-        }),
+        provideTuiEditorOptions({parseOptions: {preserveWhitespace: 'full'}}),
         provideTuiEditor(),
     ],
 })

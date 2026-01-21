@@ -23,9 +23,7 @@ export const TuiFontColor = Extension.create<TuiFontColorOptions>({
     name: 'fontColor',
 
     addOptions(): TuiFontColorOptions {
-        return {
-            types: ['textStyle'],
-        };
+        return {types: ['textStyle']};
     },
 
     addGlobalAttributes(): GlobalAttributes {

@@ -131,9 +131,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                         };
                     },
                 },
-                {
-                    tag: 'img',
-                },
+                {tag: 'img'},
             ];
         },
 
@@ -221,9 +219,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                 setImageLink:
                     () =>
                     ({commands}: CommandProps) =>
-                        commands.updateAttributes(this.name, {
-                            'data-editing-href': true,
-                        }),
+                        commands.updateAttributes(this.name, {'data-editing-href': true}),
             };
         },
 

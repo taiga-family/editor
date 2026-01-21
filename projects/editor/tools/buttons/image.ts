@@ -30,9 +30,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'image?.nativeElement?.click()',
-    },
+    host: {'(click)': 'image?.nativeElement?.click()'},
 })
 export class TuiImageButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);

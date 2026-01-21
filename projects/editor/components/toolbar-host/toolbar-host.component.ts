@@ -25,11 +25,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
     styleUrls: ['./toolbar-host.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiHintOptionsProvider({
-            direction: ['top-left', 'top', 'right'],
-        }),
-    ],
+    providers: [tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']})],
     host: {
         role: 'toolbar',
         tuiToolbarHost: '',

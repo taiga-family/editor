@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.removeFormat()',
-    },
+    host: {'(click)': 'editor?.removeFormat()'},
 })
 export class TuiClearButtonTool extends TuiToolbarTool {
     protected getIcon(icons: TuiEditorOptions['icons']): string {

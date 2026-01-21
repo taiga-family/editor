@@ -18,9 +18,7 @@ import {TuiHighlightColorButtonTool} from '@taiga-ui/editor/tools';
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        tuiPlateHost: '',
-    },
+    host: {tuiPlateHost: ''},
 })
 export class TuiHighlightColorTool {
     private readonly options = inject(TUI_EDITOR_OPTIONS);

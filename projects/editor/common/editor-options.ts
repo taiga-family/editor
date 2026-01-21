@@ -177,9 +177,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
 
 export const TUI_EDITOR_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_EDITOR_OPTIONS' : '',
-    {
-        factory: () => TUI_EDITOR_DEFAULT_OPTIONS,
-    },
+    {factory: () => TUI_EDITOR_DEFAULT_OPTIONS},
 );
 
 export function provideTuiEditorOptions(

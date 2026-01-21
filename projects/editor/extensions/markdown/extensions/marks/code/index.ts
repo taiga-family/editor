@@ -1,9 +1,7 @@
 import {Mark} from '@tiptap/core';
 import {defaultMarkdownSerializer} from '@tiptap/pm/markdown';
 
-export default Mark.create({
-    name: 'code',
-}).extend({
+export default Mark.create({name: 'code'}).extend({
     addStorage() {
         return {
             markdown: {

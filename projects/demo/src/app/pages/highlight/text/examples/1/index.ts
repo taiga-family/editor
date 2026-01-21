@@ -29,9 +29,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
             import('@tiptap/extension-highlight').then(({Highlight}) =>
                 Highlight.configure({
                     multicolor: true,
-                    HTMLAttributes: {
-                        class: 'marked',
-                    },
+                    HTMLAttributes: {class: 'marked'},
                 }),
             ),
         ),

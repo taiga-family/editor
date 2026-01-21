@@ -17,9 +17,7 @@ function findIndexOfAdjacentNode(
     return i;
 }
 
-export default Node.create({
-    name: 'orderedList',
-}).extend({
+export default Node.create({name: 'orderedList'}).extend({
     addStorage() {
         return {
             markdown: {

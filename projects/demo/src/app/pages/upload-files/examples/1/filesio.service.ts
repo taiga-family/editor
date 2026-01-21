@@ -15,9 +15,7 @@ const fileIO = {
 };
 
 // TODO: remove file.io
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class FileIoService {
     public readonly loading$ = new BehaviorSubject(false);
 
@@ -38,9 +36,7 @@ export class FileIoService {
             map((result) => ({
                 name: result.name,
                 link: result.link,
-                attrs: {
-                    class: 'file-link',
-                },
+                attrs: {class: 'file-link'},
             })),
         );
     }

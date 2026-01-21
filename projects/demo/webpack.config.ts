@@ -70,9 +70,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 pure_funcs: ['forwardRef'],
                 global_defs: {ngDevMode: false},
             },
-            format: {
-                comments: false,
-            },
+            format: {comments: false},
         },
     });
 
@@ -99,11 +97,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 },
             },
             {
-                resolve: {
-                    fallback: {
-                        punycode: false,
-                    },
-                },
+                resolve: {fallback: {punycode: false}},
                 module: {
                     /**
                      * With Webpack 5, the raw-loader is no longer needed.
