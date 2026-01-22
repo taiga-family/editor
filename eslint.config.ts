@@ -60,7 +60,5 @@ export default [
             ],
         },
     },
-    {
-        ignores: ['.release-it.js', '**/tests-results/*'],
-    },
+    {ignores: ['.release-it.js', '**/tests-results/*']},
 ];

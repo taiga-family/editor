@@ -4,9 +4,7 @@ import {type Node as ProseNode} from '@tiptap/pm/model';
 import {tuiChildNodes} from '../../../util/prosemirror';
 import HTMLNode from '../html';
 
-export default Node.create({
-    name: 'table',
-}).extend({
+export default Node.create({name: 'table'}).extend({
     addStorage() {
         return {
             markdown: {

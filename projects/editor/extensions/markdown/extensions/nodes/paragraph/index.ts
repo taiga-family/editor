@@ -1,9 +1,7 @@
 import {Node} from '@tiptap/core';
 import {defaultMarkdownSerializer} from '@tiptap/pm/markdown';
 
-export default Node.create({
-    name: 'paragraph',
-}).extend({
+export default Node.create({name: 'paragraph'}).extend({
     addStorage() {
         return {
             markdown: {

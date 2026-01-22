@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'canMergeCells?.() ? editor?.mergeCells() : editor?.splitCell()',
-    },
+    host: {'(click)': 'canMergeCells?.() ? editor?.mergeCells() : editor?.splitCell()'},
 })
 export class TuiTableMergeCellButtonTool extends TuiToolbarTool {
     protected readonly canMergeCells? = signal<boolean>(false);

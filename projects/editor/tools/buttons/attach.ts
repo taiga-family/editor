@@ -39,9 +39,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'fileUpload?.nativeElement?.click()',
-    },
+    host: {'(click)': 'fileUpload?.nativeElement?.click()'},
 })
 export class TuiAttachButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);

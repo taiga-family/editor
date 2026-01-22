@@ -23,9 +23,7 @@ export const TuiBackgroundColor = Extension.create<TuiBackgroundColorOptions>({
     name: 'backgroundColor',
 
     addOptions(): TuiBackgroundColorOptions {
-        return {
-            types: ['textStyle'],
-        };
+        return {types: ['textStyle']};
     },
 
     addGlobalAttributes(): GlobalAttributes {

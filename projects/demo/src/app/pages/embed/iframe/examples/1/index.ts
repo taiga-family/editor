@@ -29,11 +29,7 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        provideTuiEditor({
-            iframe: true,
-        }),
-    ],
+    providers: [provideTuiEditor({iframe: true})],
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);

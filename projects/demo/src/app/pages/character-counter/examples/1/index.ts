@@ -15,9 +15,7 @@ const limit = 280;
     providers: [
         provideTuiEditor(async () =>
             import('@tiptap/extension-character-count').then(({CharacterCount}) =>
-                CharacterCount.configure({
-                    limit,
-                }),
+                CharacterCount.configure({limit}),
             ),
         ),
     ],

@@ -66,9 +66,7 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        '[attr.automation-id]': '"toolbar__ordering-list-button"',
-    },
+    host: {'[attr.automation-id]': '"toolbar__ordering-list-button"'},
 })
 export class TuiListButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);

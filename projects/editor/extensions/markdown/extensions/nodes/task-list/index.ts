@@ -4,9 +4,7 @@ import type MarkdownIt from 'markdown-it';
 import {tuiMarkdownItTaskList} from '../../../util/markdown-it-task-lists';
 import BulletList from '../bullet-list';
 
-export default Node.create({
-    name: 'taskList',
-}).extend({
+export default Node.create({name: 'taskList'}).extend({
     addStorage() {
         return {
             markdown: {

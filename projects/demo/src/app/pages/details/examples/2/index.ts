@@ -23,9 +23,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({
-            details: {
-                inheritOpen: true,
-            },
+            details: {inheritOpen: true},
             detailsSummary: true,
             detailsContent: true,
         }),

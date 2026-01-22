@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'texClicked?.emit()',
-    },
+    host: {'(click)': 'texClicked?.emit()'},
 })
 export class TuiTexButtonTool extends TuiToolbarTool {
     @Output()

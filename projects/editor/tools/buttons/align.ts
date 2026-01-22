@@ -60,9 +60,7 @@ import {TuiAlignRightButtonTool} from './align-right';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        '[attr.automation-id]': '"toolbar__align-button"',
-    },
+    host: {'[attr.automation-id]': '"toolbar__align-button"'},
 })
 export class TuiAlignButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);

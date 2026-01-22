@@ -22,9 +22,7 @@ import {
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {map, type Observable, of, switchMap} from 'rxjs';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class HttpMockUploader {
     public save(_base64: string): Observable<string> {
         return of(

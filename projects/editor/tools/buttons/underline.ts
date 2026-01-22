@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.toggleUnderline()',
-    },
+    host: {'(click)': 'editor?.toggleUnderline()'},
 })
 export class TuiUnderlineButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {

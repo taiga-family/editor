@@ -16,6 +16,4 @@ export interface TuiEditorLinkOptions {
     readonly protocol: TuiEditorLinkProtocol;
 }
 
-export const TUI_DEFAULT_LINK_OPTIONS = {
-    protocol: TUI_EDITOR_LINK_HTTPS_PREFIX,
-} as const;
+export const TUI_DEFAULT_LINK_OPTIONS = {protocol: TUI_EDITOR_LINK_HTTPS_PREFIX} as const;

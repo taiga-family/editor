@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.unsetDetails()',
-    },
+    host: {'(click)': 'editor?.unsetDetails()'},
 })
 export class TuiDetailsRemoveButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {

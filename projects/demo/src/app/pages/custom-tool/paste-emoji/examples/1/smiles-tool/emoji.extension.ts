@@ -11,11 +11,7 @@ export const EmojiExtension = Extension.create({
                         default: '',
                         keepOnSplit: false,
                         renderHTML: ({dataType}) =>
-                            dataType === 'emoji'
-                                ? {
-                                      style: 'display: inline',
-                                  }
-                                : null,
+                            dataType === 'emoji' ? {style: 'display: inline'} : null,
                         parseHTML: (element) => element.getAttribute('data-type'),
                     },
                 },

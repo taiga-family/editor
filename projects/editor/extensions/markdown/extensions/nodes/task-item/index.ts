@@ -1,9 +1,7 @@
 import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 
-export default Node.create({
-    name: 'taskItem',
-}).extend({
+export default Node.create({name: 'taskItem'}).extend({
     addStorage() {
         return {
             markdown: {

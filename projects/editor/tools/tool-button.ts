@@ -10,9 +10,7 @@ import {
 @Directive({
     standalone: true,
     providers: [
-        tuiHintOptionsProvider({
-            direction: ['top-left', 'top', 'right'],
-        }),
+        tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']}),
         tuiButtonOptionsProvider({
             size: 's',
             appearance: 'icon',

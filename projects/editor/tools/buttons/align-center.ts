@@ -11,9 +11,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {
-        '(click)': 'editor?.onAlign("center")',
-    },
+    host: {'(click)': 'editor?.onAlign("center")'},
 })
 export class TuiAlignCenterButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {

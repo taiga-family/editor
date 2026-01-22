@@ -3,9 +3,7 @@ import {type Node as ProseNode} from '@tiptap/pm/model';
 
 import HTMLNode from '../html';
 
-export default Node.create({
-    name: 'hardBreak',
-}).extend({
+export default Node.create({name: 'hardBreak'}).extend({
     addStorage() {
         return {
             markdown: {

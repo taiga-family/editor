@@ -197,11 +197,7 @@ export const TuiSummary = TuiDetailsSummary;
 export const TuiDetailsContent = DetailsContent.extend<DetailsContentOptions>({
     addNodeView: null,
     parseHTML() {
-        return [
-            {
-                tag: 'div[data-type="details-content"]',
-            },
-        ];
+        return [{tag: 'div[data-type="details-content"]'}];
     },
     renderHTML({HTMLAttributes}) {
         return [

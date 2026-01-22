@@ -47,8 +47,6 @@ export default defineConfig({
             scale: 'device',
             threshold: 0.02,
         },
-        toMatchSnapshot: {
-            threshold: 0.02,
-        },
+        toMatchSnapshot: {threshold: 0.02},
     },
 });

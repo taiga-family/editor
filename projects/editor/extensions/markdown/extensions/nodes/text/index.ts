@@ -3,9 +3,7 @@ import {type Node as ProseNode} from '@tiptap/pm/model';
 
 import {tuiEscapeHTML} from '../../../util/dom';
 
-export default Node.create({
-    name: 'text',
-}).extend({
+export default Node.create({name: 'text'}).extend({
     addStorage() {
         return {
             markdown: {

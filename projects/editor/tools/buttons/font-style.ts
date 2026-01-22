@@ -81,9 +81,7 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {
-        '[attr.automation-id]': "'toolbar__font-style-button'",
-    },
+    host: {'[attr.automation-id]': "'toolbar__font-style-button'"},
 })
 export class TuiFontStyleButtonTool extends TuiToolbarTool {
     private toolsSet = new Set(this.options.tools);

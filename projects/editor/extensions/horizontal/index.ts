@@ -31,14 +31,10 @@ export const TuiHorizontalRule = HorizontalRule.extend({
                                 from: Math.max($originFrom.pos - 1, 0),
                                 to: $originTo.pos,
                             },
-                            {
-                                type: this.name,
-                            },
+                            {type: this.name},
                         );
                     } else if (isNodeSelection(selection)) {
-                        currentChain.insertContentAt($originTo.pos, {
-                            type: this.name,
-                        });
+                        currentChain.insertContentAt($originTo.pos, {type: this.name});
                     } else {
                         currentChain.insertContent({type: this.name});
                     }
