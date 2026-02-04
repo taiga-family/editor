@@ -55,9 +55,9 @@ table th {
 /* stylelint-disable-next-line */
 table .column-resize-handle {
     position: absolute;
-    right: -0.125rem;
-    top: 0;
-    bottom: -0.125rem;
+    inset-inline-end: -0.125rem;
+    inset-block-start: 0;
+    inset-block-end: -0.125rem;
     inline-size: 0.25rem;
     background-color: #adf;
     pointer-events: none;
@@ -80,10 +80,10 @@ table th > * {
     &::after {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        inset-block-end: 0;
         background: var(--tui-service-selected-text);
         pointer-events: none;
     }

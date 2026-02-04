@@ -36,8 +36,8 @@ summary::after,
 .t-details-arrow {
     content: '';
     position: absolute;
-    top: 1.5rem;
-    right: 1.25rem;
+    inset-block-start: 1.5rem;
+    inset-inline-end: 1.25rem;
     block-size: 0.575rem;
     inline-size: 0.575rem;
     border: 0.0625rem solid var(--tui-text-tertiary);
@@ -58,8 +58,8 @@ details:hover summary::after,
 
 .t-details-delete {
     position: absolute;
-    top: 1.4rem;
-    right: 2.7rem;
+    inset-block-start: 1.4rem;
+    inset-inline-end: 2.7rem;
     block-size: 1.125rem;
     inline-size: 1.25rem;
     appearance: none;
@@ -123,7 +123,7 @@ details:not(:last-child) {
 
 details[open] summary::after,
 details[open] + .t-details-arrow {
-    top: 1.75rem;
+    inset-block-start: 1.75rem;
     transform: rotate(225deg);
 }
 

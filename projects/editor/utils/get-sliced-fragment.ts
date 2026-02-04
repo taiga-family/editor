@@ -12,5 +12,5 @@ export function tuiGetHtmlFromFragment(
     fragment: Fragment,
     schema: EditorState['schema'],
 ): string {
-    return getHTMLFromFragment(fragment, schema).replaceAll(/<\/?[^>]+(>|$)/g, '');
+    return getHTMLFromFragment(fragment, schema).replaceAll(/<[^>]+(?:>|$)/g, '');
 }
