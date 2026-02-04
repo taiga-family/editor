@@ -18,7 +18,7 @@ import {join} from 'node:path';
 
     const generated = (
         demoPathEnumContent
-            .match(/['"`](.*)['"`]/g)
+            .match(/['"`].*['"`]/g)
             ?.map((route) => route.replaceAll(/['"`]/g, '')) || []
     )
         .filter(Boolean)
