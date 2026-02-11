@@ -116,7 +116,7 @@
         "cypress": "13.17.0",
         "express": "4.22.1",
         "husky": "9.1.7",
-        "markdown-it": "14.1.0",
+        "markdown-it": "14.1.1",
         "marked": "15.0.12",
         "ng-morph": "4.8.4",
         "ng-packagr": "16.2.3",

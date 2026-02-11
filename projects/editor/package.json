@@ -67,7 +67,7 @@
         "@tiptap/starter-kit": "^2.27.2",
         "@types/markdown-it": "^14.1.2",
         "@types/markdown-it-container": "^2.0.11",
-        "markdown-it": "^14.1.0"
+        "markdown-it": "^14.1.1"
     },
     "peerDependenciesMeta": {
         "@types/markdown-it": {
