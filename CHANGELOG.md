@@ -1,3 +1,12 @@
+### [4.53.0](https://github.com/taiga-family/editor/compare/v4.52.0...v4.53.0) (2026-02-20)
+
+### 🐞 Bug Fixes
+
+- compatibility with legacy details (#2034)
+  [(901275f)](https://github.com/taiga-family/editor/commit/901275f7ddaa78dee5197ed5ca8750eb3cd99aef)
+- update dependency markdown-it to v14.1.1 (#2028)
+  [(3a7fc9d)](https://github.com/taiga-family/editor/commit/3a7fc9dfda12c03a4fefe15e4d7860d08f9fe5e8)
+
 ### [4.52.0](https://github.com/taiga-family/editor/compare/v4.51.0...v4.52.0) (2026-01-21)
 
 ### 🐞 Bug Fixes
