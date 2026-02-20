@@ -75,4 +75,19 @@ test.describe('Details', () => {
 
         await expect.soft(editor).toHaveScreenshot('Details-13.png');
     });
+
+    test('nested details - opened and closed state', async ({page}) => {
+        await tuiGoto(page, TuiDemoPath.Details);
+
+        const example = page.locator('#configure');
+        const content = example.locator('tui-editor-socket').filter({hasText: 'Title 1'});
+
+        await content.scrollIntoViewIfNeeded();
+        await expect.soft(content).toHaveScreenshot('Details-14.png');
+
+        const nested = content.locator('details').filter({hasText: 'Title 2'}).nth(1);
+
+        await nested.locator('summary').click();
+        await expect.soft(content).toHaveScreenshot('Details-15.png');
+    });
 });
