@@ -22,7 +22,10 @@ ol:not([data-type]) {
         text-transform: none;
         text-indent: 0;
         text-align: start;
-        text-align-last: start;
+
+        @supports (text-align-last: start) {
+            text-align-last: start;
+        }
     }
 }
 
@@ -41,7 +44,11 @@ ul:not([data-type]) {
         background-color: var(--tui-background-accent-1);
         vertical-align: top;
         box-sizing: border-box;
-        float: inline-start;
+        float: left;
+
+        @supports (float: inline-start) {
+            float: inline-start;
+        }
     }
 }
 
@@ -68,8 +75,12 @@ ol:not([data-type]) > li::before {
     margin: 0 0.75rem 0 -1.5rem;
     color: var(--tui-border-hover);
     vertical-align: top;
-    float: inline-start;
     white-space: nowrap;
+    float: left;
+
+    @supports (float: inline-start) {
+        float: inline-start;
+    }
 }
 
 /* TODO: need more investigate, how refactor for deep details-content */

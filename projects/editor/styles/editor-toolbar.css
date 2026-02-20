@@ -75,8 +75,8 @@
 
 [tuiPlate] {
     position: absolute;
-    top: 1.9rem;
-    left: 50%;
+    inset-block-start: 1.9rem;
+    inset-inline-start: 50%;
     block-size: 0.25rem;
     pointer-events: none;
     transform: translateX(-50%);

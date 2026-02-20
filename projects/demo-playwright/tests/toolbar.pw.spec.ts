@@ -217,6 +217,7 @@ test.describe('Toolbar', () => {
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
         await page.keyboard.press('Backspace');
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
 
@@ -224,6 +225,7 @@ test.describe('Toolbar', () => {
         await page.locator('[automation-id="toolbar__undo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.mouse.click(0, 0);
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-20.png');
 
@@ -231,6 +233,7 @@ test.describe('Toolbar', () => {
         await page.locator('[automation-id="toolbar__redo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.mouse.click(0, 0);
+        await page.waitForTimeout(300);
 
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-21.png');
     });

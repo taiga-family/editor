@@ -35,6 +35,10 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used by a
 large enterprise. This means you can rely on timely support and continuous development.
 
+| **Package**                                                    | **Version**                                                       | **Downloads**                                                                                         |
+| -------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [@taiga-ui/editor](https://npmjs.com/package/@taiga-ui/editor) | ![](https://img.shields.io/npm/v/%40taiga-ui%2Feditor/latest.svg) | [![](https://img.shields.io/npm/dw/@taiga-ui/tsconfig)](https://npmjs.com/package/@taiga-ui/tsconfig) |
+
 ## License
 
 🆓 Feel free to use our library in your commercial and private applications
@@ -42,9 +46,3 @@ large enterprise. This means you can rely on timely support and continuous devel
 **Editor** package is covered by [Apache 2.0](/LICENSE)
 
 Read more about this license [here](https://choosealicense.com/licenses/apache-2.0/)
-
-## Version compatibility
-
-| Editor  | Taiga UI | Supported  | Latest version (npm)                                                                              |
-| ------- | -------- | ---------- | ------------------------------------------------------------------------------------------------- |
-| `4.x.y` | `4.x.y`  | ✅ Current | ![npm version](https://img.shields.io/npm/v/@taiga-ui/editor?label=%40taiga-ui%2Feditor%20~%20v4) |
