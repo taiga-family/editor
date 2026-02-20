@@ -44,7 +44,18 @@ export default class Example {
     protected control = new FormControl(`
         <details open>
             <summary><p>Title 1</p></summary>
-            <p>Content 1</p>
+
+            <div data-type="details-content">
+                <p>Content 1</p>
+
+                <details open>
+                    <summary><p>Title 2</p></summary>
+
+                    <div data-type="details-content">
+                        <p>Content 2</p>
+                    </div>
+                </details>
+            </div>
         </details>
     `);
 }
