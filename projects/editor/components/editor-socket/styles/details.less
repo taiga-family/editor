@@ -33,14 +33,14 @@ details[open] summary {
 }
 
 summary::after,
-.t-details-arrow {
+tui-editor & .t-details-arrow {
     content: '';
     position: absolute;
     inset-block-start: 1.5rem;
     inset-inline-end: 1.25rem;
     block-size: 0.575rem;
     inline-size: 0.575rem;
-    border: 0.0625rem solid var(--tui-text-tertiary);
+    border: solid var(--tui-text-tertiary);
     border-width: 0 0.125rem 0.125rem 0;
     transform: rotate(45deg);
     appearance: none;
@@ -49,6 +49,10 @@ summary::after,
     background: none;
     cursor: pointer;
     outline: none;
+}
+
+& .t-details-arrow {
+    display: none;
 }
 
 details:hover summary::after,
@@ -77,12 +81,9 @@ details:hover summary::after,
     &::after {
         content: '\00d7';
         display: inline-block;
-        font: inherit;
         font-size: 1.5rem;
         color: var(--tui-text-tertiary);
-        block-size: 100%;
-        inline-size: 100%;
-        line-height: 0.8rem;
+        line-height: 1.125rem;
     }
 }
 
@@ -96,7 +97,7 @@ details {
 div[data-type='details-content'] {
     padding: 1.25rem;
     min-block-size: 3rem;
-    border: 0.0625rem solid var(--tui-border-normal);
+    border: solid var(--tui-border-normal);
     border-width: 0.0625rem 0 0;
 
     // Prevents extra margin between
@@ -121,7 +122,7 @@ details:not(:last-child) {
     margin-block-end: 1rem;
 }
 
-details[open] summary::after,
+details[open] > summary::after,
 details[open] + .t-details-arrow {
     inset-block-start: 1.75rem;
     transform: rotate(225deg);
@@ -137,10 +138,11 @@ tui-editor & summary,
     pointer-events: none;
 }
 
-tui-editor & summary::after {
-    content: none;
+details + .t-details-arrow {
+    opacity: 0;
 }
 
 tui-editor & .t-details-arrow {
+    display: block;
     pointer-events: auto;
 }
