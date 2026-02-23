@@ -97,7 +97,7 @@
         "@playwright/test": "1.58.2",
         "@taiga-ui/addon-doc": "4.71.1",
         "@taiga-ui/cdk": "4.71.1",
-        "@taiga-ui/configs": "0.420.0",
+        "@taiga-ui/configs": "0.421.0",
         "@taiga-ui/core": "4.71.1",
         "@taiga-ui/dompurify": "4.1.11",
         "@taiga-ui/experimental": "4.71.1",
