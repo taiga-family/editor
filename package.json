@@ -125,7 +125,7 @@
         "showdown": "2.1.0",
         "tslib": "2.8.1",
         "typescript": "5.0.4",
-        "webpack": "5.105.2"
+        "webpack": "5.105.3"
     },
     "syncer": {
         "includePaths": [
