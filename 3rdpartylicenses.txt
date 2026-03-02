@@ -2407,6 +2407,9 @@ Apache-2.0
    limitations under the License.
 
 
+@taiga-ui/font-watcher
+Apache-2.0
+
 @taiga-ui/i18n
 Apache-2.0
                                  Apache License
