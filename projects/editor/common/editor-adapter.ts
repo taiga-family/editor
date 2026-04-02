@@ -30,7 +30,7 @@ export abstract class AbstractTuiEditor {
      */
     public readonly stateChange$ = new Subject<void>();
 
-    public readonly valueChange$ = new BehaviorSubject<string>('');
+    public readonly valueChange$ = new BehaviorSubject('');
 
     public abstract get state(): EditorState | null;
 

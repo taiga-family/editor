@@ -33,5 +33,5 @@ import {
     },
 })
 export class TuiToolbarButtonTool {
-    public readonly disabled = signal<boolean>(false);
+    public readonly disabled = signal(false);
 }

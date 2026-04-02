@@ -4,5 +4,9 @@
         "outDir": "./out-tsc/spec",
         "types": ["jest"]
     },
-    "exclude": ["**/schematics/**/*", "projects/demo-playwrights", "taiga-ui"]
+    "exclude": [
+        "**/schematics/**/*",
+        "projects/demo-playwrights",
+        "taiga-ui"
+    ]
 }

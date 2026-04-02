@@ -1,33 +1,30 @@
 {
-    "name": "editor",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "name": "editor",
     "projectType": "library",
     "sourceRoot": "projects/editor",
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:ng-packagr",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
-                "tsConfig": "tsconfig.build.json",
-                "project": "projects/{projectName}/ng-package.json"
-            }
+                "project": "projects/{projectName}/ng-package.json",
+                "tsConfig": "tsconfig.build.json"
+            },
+            "outputs": ["{workspaceRoot}/dist/{projectName}"]
         },
         "publish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "parallel": false,
-                "commands": [
-                    "cp ./LICENSE ./README.md ./dist/{projectName}",
-                    "npm publish ./dist/{projectName} --ignore-scripts"
-                ]
-            },
             "dependsOn": [
                 {
-                    "target": "build",
+                    "dependencies": false,
                     "params": "ignore",
-                    "dependencies": false
+                    "target": "build"
                 }
-            ]
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "commands": ["cp ./LICENSE ./README.md ./dist/{projectName}", "npm publish ./dist/{projectName} --ignore-scripts"],
+                "parallel": false
+            }
         }
     }
 }

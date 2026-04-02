@@ -1,9 +1,9 @@
 {
-    "name": "editor-demo-playwright",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "projects/demo-playwright",
-    "projectType": "application",
+    "name": "editor-demo-playwright",
     "prefix": "app",
+    "projectType": "application",
+    "sourceRoot": "projects/demo-playwright",
     "targets": {
         "e2e": {
             "executor": "nx:run-commands",
