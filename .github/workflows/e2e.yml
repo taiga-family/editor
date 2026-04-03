@@ -112,7 +112,7 @@ jobs:
         with:
           pw-result: ${{ env.PW_RESULT }}
 
-      - uses: daun/playwright-report-summary@v3.10.0
+      - uses: daun/playwright-report-summary@v3.11.0
         if: always()
         with:
           custom-info: 'For more information, [see our report](${{ needs.e2e.outputs.details_url }})'
