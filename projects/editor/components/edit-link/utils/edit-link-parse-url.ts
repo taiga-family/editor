@@ -28,7 +28,7 @@ function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
               ]
             : ['', url];
 
-    const pathWithQueries = path + (queryParams.length ? `?${queryParams}` : '');
+    const pathWithQueries = `${path}${queryParams.length ? `?${queryParams}` : ''}`;
     const result = [prefix, pathWithQueries].filter(Boolean);
 
     return path.includes('://') && result.length > 1
@@ -44,7 +44,7 @@ function splitSimpleProtocol(rawUrl = ''): Array<string | undefined> {
         (url.includes('?') && url.lastIndexOf(':') > url.indexOf('?'));
 
     return !hardUrl && prefix && path && !isValidUrl(url)
-        ? [`${prefix}:`, path + (queryParams.length ? `?${queryParams}` : '')]
+        ? [`${prefix}:`, `${path}${queryParams.length ? `?${queryParams}` : ''}`]
         : [];
 }
 
@@ -81,12 +81,7 @@ export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
  */
 function isValidUrl(url: string): boolean {
     return new RegExp(
-        String.raw`^([a-zA-Z]+:\/\/)?` + // protocol
-            String.raw`((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|localhost|` + // domain name
-            String.raw`((\d{1,3}\.){3}\d{1,3}))` + // OR IP (v4) address
-            String.raw`(\:\d+)?(\/[-a-z\d%_.~+\:]*)*` + // port and path
-            String.raw`(\?[)(;&a-z\d%_.~+=-]*)?` + // query string
-            String.raw`(\#[-a-z\d_]*)?$`, // fragment locator
+        `${String.raw`^([a-zA-Z]+:\/\/)?`}${String.raw`((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|localhost|`}${String.raw`((\d{1,3}\.){3}\d{1,3}))`}${String.raw`(\:\d+)?(\/[-a-z\d%_.~+\:]*)*`}${String.raw`(\?[)(;&a-z\d%_.~+=-]*)?`}${String.raw`(\#[-a-z\d_]*)?$`}`, // fragment locator
         'i',
     ).test(url);
 }

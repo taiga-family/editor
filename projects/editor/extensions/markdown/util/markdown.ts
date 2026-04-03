@@ -65,9 +65,7 @@ export function tuiTrimInline(options: TrimOptions): string {
     state = trimEnd({text: state.text, delim, from: state.from, to: state.to});
 
     if (state.to - state.from < delim.length + 1) {
-        state.text =
-            state.text.slice(0, Math.max(0, state.from)) +
-            state.text.slice(Math.max(0, state.to + delim.length));
+        state.text = `${state.text.slice(0, Math.max(0, state.from))}${state.text.slice(Math.max(0, state.to + delim.length))}`;
     }
 
     return state.text;
@@ -82,13 +80,9 @@ interface Options {
 
 export function tuiShiftDelim(options: Options): string {
     const {text, delim, start, offset} = options;
-    let res =
-        text.slice(0, Math.max(0, start)) + text.slice(Math.max(0, start + delim.length));
+    let res = `${text.slice(0, Math.max(0, start))}${text.slice(Math.max(0, start + delim.length))}`;
 
-    res =
-        res.slice(0, Math.max(0, start + offset)) +
-        delim +
-        res.slice(Math.max(0, start + offset));
+    res = `${res.slice(0, Math.max(0, start + offset))}${delim}${res.slice(Math.max(0, start + offset))}`;
 
     return res;
 }
