@@ -14,7 +14,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     host: {'(click)': 'canMergeCells?.() ? editor?.mergeCells() : editor?.splitCell()'},
 })
 export class TuiTableMergeCellButtonTool extends TuiToolbarTool {
-    protected readonly canMergeCells? = signal<boolean>(false);
+    protected readonly canMergeCells? = signal(false);
 
     protected override updateSignals(): void {
         this.canMergeCells?.set(this.editor?.canMergeCells() ?? false);

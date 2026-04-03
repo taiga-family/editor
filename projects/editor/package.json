@@ -17,6 +17,20 @@
         "url": "https://github.com/taiga-family/editor"
     },
     "license": "Apache-2.0",
+    "contributors": [
+        {
+            "email": "alexander@inkin.ru",
+            "name": "Alex Inkin"
+        },
+        {
+            "email": "vladimir.potekh@gmail.com",
+            "name": "Vladimir Potekhin"
+        },
+        {
+            "email": "nikita.s.barsukov@gmail.com",
+            "name": "Nikita Barsukov"
+        }
+    ],
     "exports": {
         "./styles/*": "./styles/*"
     },

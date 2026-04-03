@@ -3,11 +3,15 @@
     "extends": ["github>taiga-family/renovate-config"],
     "packageRules": [
         {
-            "matchPackageNames": ["/^@nx.*/", "/^nx$/"],
-            "enabled": false
+            "enabled": false,
+            "matchPackageNames": ["/^@nx.*/", "/^nx$/"]
         },
         {
-            "matchDepTypes": ["dependencies", "peerDependencies", "optionalDependencies"],
+            "matchDepTypes": [
+                "dependencies",
+                "peerDependencies",
+                "optionalDependencies"
+            ],
             "semanticCommitType": "fix"
         }
     ]

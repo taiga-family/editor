@@ -62,6 +62,7 @@ export default class Example {
             return;
         }
 
+        // eslint-disable-next-line compat/compat
         const uuid = crypto.randomUUID();
         const replaceText = `<span class="my-mention" data-type="mention" data-user="${uuid}">@${item.login}</span>&nbsp;`;
         const to = editor.state.selection.to;

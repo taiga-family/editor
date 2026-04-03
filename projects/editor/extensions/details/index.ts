@@ -125,8 +125,9 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
     addCommands(): Partial<RawCommands> {
         return {
             ...this.parent?.(),
-            setDetails: () => {
-                return ({commands, editor, state}) => {
+            setDetails:
+                () =>
+                ({commands, editor, state}) => {
                     if (editor.isActive('detailsSummary')) {
                         return false;
                     }
@@ -174,8 +175,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     commands.setTextSelection(range.start + 2);
 
                     return true;
-                };
-            },
+                },
             unsetDetails:
                 () =>
                 ({state, dispatch}) =>
