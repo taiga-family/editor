@@ -130,9 +130,7 @@ test.describe('Toolbar', () => {
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
-        await page.keyboard.press('Backspace');
-        await page.waitForTimeout(300);
-
+        await page.locator('[contenteditable]').first().clear();
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-13.png');
 
         await page.locator('[automation-id="toolbar__ordering-list-button"]').focus();
@@ -216,9 +214,7 @@ test.describe('Toolbar', () => {
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
-        await page.keyboard.press('Backspace');
-        await page.waitForTimeout(300);
-
+        await page.locator('[contenteditable]').first().clear();
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
 
         await page.locator('[contenteditable]').first().focus();

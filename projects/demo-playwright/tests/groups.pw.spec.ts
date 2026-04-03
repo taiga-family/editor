@@ -31,13 +31,8 @@ test.describe('Groups', () => {
             .toHaveScreenshot('Groups-03.png');
 
         await page.locator('[contenteditable]').first().focus();
-        await page.waitForTimeout(100);
-
         await page.locator('[contenteditable]').first().selectText();
-        await page.waitForTimeout(100);
-
-        await page.keyboard.press('Backspace');
-        await page.waitForTimeout(100);
+        await page.locator('[contenteditable]').first().clear();
 
         await expect
             .soft(page.locator('#draggable-groups tui-editor'))

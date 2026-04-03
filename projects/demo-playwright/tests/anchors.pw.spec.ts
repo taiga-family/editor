@@ -45,7 +45,7 @@ test.describe('Anchors', () => {
         await page.waitForTimeout(300);
         await editor.focus();
         await editor.selectText();
-        await page.keyboard.press('Backspace');
+        await editor.clear();
         await page.mouse.click(0, 0);
         await page.waitForTimeout(300);
 
