@@ -60,24 +60,19 @@ test.describe('Links', () => {
         const editor = page.locator('[contenteditable]').first();
 
         await editor.selectText();
-        await page.keyboard.press('Backspace');
-        await page.waitForTimeout(300);
-
+        await editor.clear();
         await page.keyboard.type('Hello');
         await editor.selectText();
-
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-06.png');
 
         await page.locator('[automation-id="toolbar__link-button"]').click();
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
-
         await expect.soft(page).toHaveScreenshot('Links-07.png');
 
         await editor.click();
         await page.keyboard.press('End');
         await page.keyboard.type('World');
-
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-08.png');
     });
 });

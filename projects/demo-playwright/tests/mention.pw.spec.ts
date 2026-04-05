@@ -9,7 +9,7 @@ test.describe('Mention', () => {
 
         await page.locator('[contenteditable]').first().focus();
         await page.locator('[contenteditable]').first().selectText();
-        await page.keyboard.press('Backspace');
+        await page.locator('[contenteditable]').first().clear();
 
         await page.keyboard.type('@');
 
