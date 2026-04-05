@@ -89,9 +89,7 @@ import {mergeAttributes} from '@tiptap/core';
                                 mergeAttributes(
                                     this.options.HTMLAttributes,
                                     HTMLAttributes,
-                                    {
-                                        class: `${classes[level]}`,
-                                    },
+                                    {class: classes[level]},
                                 ),
                                 0,
                             ];

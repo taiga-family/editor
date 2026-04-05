@@ -92,7 +92,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public getFontSize(): number {
-        return parseInt(this.editor?.getAttributes('textStyle').fontSize, 10);
+        return Number.parseInt(this.editor?.getAttributes('textStyle').fontSize, 10);
     }
 
     public setFontSize(size: number): void {

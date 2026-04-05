@@ -20,7 +20,7 @@ export function tuiMarkdownItTaskList(md: any, options: any): void {
                 attrSet(
                     tokens[i - 2],
                     'class',
-                    `task-list-item${!disableCheckboxes ? ' enabled' : ''}`,
+                    `task-list-item${disableCheckboxes ? '' : ' enabled'}`,
                 );
                 attrSet(
                     tokens[parentToken(tokens, i - 2)],

@@ -138,7 +138,7 @@ export default class Example {
     }
 
     protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
-        const tag = `${file?.attrs?.type ?? ''}`.split('/')[0];
+        const tag = (file?.attrs?.type ?? '').split('/')[0];
 
         this.wysiwyg?.editor
             ?.getOriginTiptapEditor()
