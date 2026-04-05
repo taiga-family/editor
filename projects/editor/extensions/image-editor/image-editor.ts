@@ -165,7 +165,7 @@ export class TuiImageEditor
             this.resizable?.width ??
             0;
 
-        return parseInt(naturalWidth as string, 10);
+        return Number.parseInt(naturalWidth as string, 10);
     }
 
     protected get supportLinkExtension(): boolean {

@@ -95,9 +95,7 @@ export class TuiEditorMarkdownParser {
             const firstParagraph = node.firstElementChild;
             const {nextElementSibling, innerHTML} = firstParagraph;
             const startSpaces = /^\s+/.exec(content)?.[0] ?? '';
-            const endSpaces = !nextElementSibling
-                ? (/\s+$/.exec(content)?.[0] ?? '')
-                : '';
+            const endSpaces = nextElementSibling ? '' : (/\s+$/.exec(content)?.[0] ?? '');
 
             if (/^\n\n/.exec(content)) {
                 firstParagraph.innerHTML = `${innerHTML}${endSpaces}`;
