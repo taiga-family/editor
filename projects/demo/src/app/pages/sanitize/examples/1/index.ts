@@ -34,7 +34,17 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
-    protected control = new FormControl(`
-        <img src="x" onerror="javascript:alert(1)" />
+    protected control = new FormControl(/* HTML */ `
+        <img
+            src="x"
+            onerror="javascript:alert(1)"
+        />
+        <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+        >
+            <span style="font-size: 15px;">Google</span>
+        </a>
     `);
 }
