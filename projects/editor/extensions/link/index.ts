@@ -1,4 +1,3 @@
-import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
 import {
     tuiGetCurrentWordBounds,
     tuiGetSlicedFragment,
@@ -6,6 +5,7 @@ import {
 } from '@taiga-ui/editor/utils';
 import {type KeyboardShortcutCommand, mergeAttributes} from '@tiptap/core';
 import {Link, type LinkOptions} from '@tiptap/extension-link';
+import {Plugin, PluginKey, TextSelection} from '@tiptap/pm/state';
 
 export const TuiLink = Link.extend<LinkOptions>({
     addAttributes() {
@@ -39,27 +39,13 @@ export const TuiLink = Link.extend<LinkOptions>({
                         }
 
                         const {from, to} = tuiGetCurrentWordBounds(editor);
-                        const forwardSymbol =
-                            state.selection.to < state.doc.content.size
-                                ? state.doc.textBetween(
-                                      state.selection.to,
-                                      state.selection.to + 1,
-                                  )
-                                : '';
-
-                        let toggleMark = chain()
+                        const toggleMark = chain()
                             .setTextSelection({from, to})
                             .toggleMark(this.name, attributes, {
                                 extendEmptyMarkRange: true,
                             })
                             .setMeta('preventAutolink', true)
                             .setTextSelection(to);
-
-                        if (forwardSymbol === '') {
-                            toggleMark = toggleMark.insertContent(
-                                TUI_TIPTAP_WHITESPACE_HACK,
-                            );
-                        }
 
                         return toggleMark
                             .setTextSelection({
@@ -94,6 +80,54 @@ export const TuiLink = Link.extend<LinkOptions>({
                 return command.run();
             },
         };
+    },
+
+    addProseMirrorPlugins() {
+        return [
+            ...(this.parent?.() ?? []),
+            new Plugin({
+                key: new PluginKey('tui-link-boundary-exit'),
+                appendTransaction(transactions, _oldState, newState) {
+                    if (!transactions.some((transaction) => transaction.selectionSet)) {
+                        return null;
+                    }
+
+                    const {selection} = newState;
+
+                    if (!(selection instanceof TextSelection) || !selection.$cursor) {
+                        return null;
+                    }
+
+                    const {$cursor} = selection;
+                    const linkMark = newState.schema.marks['link'];
+
+                    if (!linkMark) {
+                        return null;
+                    }
+
+                    const linkBefore = $cursor.nodeBefore
+                        ? linkMark.isInSet($cursor.nodeBefore.marks)
+                        : null;
+                    const linkAfter = $cursor.nodeAfter
+                        ? linkMark.isInSet($cursor.nodeAfter.marks)
+                        : null;
+
+                    if (!linkBefore || linkAfter) {
+                        return null;
+                    }
+
+                    const storedMarks = newState.storedMarks ?? $cursor.marks();
+
+                    if (!storedMarks.some((mark) => mark.type === linkMark)) {
+                        return null;
+                    }
+
+                    return newState.tr.setStoredMarks(
+                        storedMarks.filter((mark) => mark.type !== linkMark),
+                    );
+                },
+            }),
+        ];
     },
 
     addPasteRules() {

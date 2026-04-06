@@ -75,4 +75,24 @@ test.describe('Links', () => {
         await page.keyboard.type('World');
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-08.png');
     });
+
+    test('typing after link should not extend link mark', async ({page}) => {
+        const editor = page.locator('[contenteditable]').first();
+
+        await editor.selectText();
+        await editor.clear();
+
+        await page.keyboard.type('click here');
+        await editor.selectText();
+
+        await page.locator('[automation-id="toolbar__link-button"]').click();
+        await page.keyboard.type('example.com');
+        await page.keyboard.press('Enter');
+
+        await editor.click();
+        await page.keyboard.press('End');
+        await page.keyboard.type(' plain text');
+
+        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-09.png');
+    });
 });
