@@ -56,6 +56,24 @@ test.describe('Links', () => {
         await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-05.png');
     });
 
+    test('does not create empty link when blurring dropdown without entering URL', async ({
+        page,
+    }) => {
+        await page.locator('tui-editor strong').first().dblclick();
+
+        await page.locator('[automation-id="toolbar__link-button"]').focus();
+        await page.keyboard.press('Enter');
+        await page.waitForTimeout(300);
+
+        await page.locator('tui-input-inline input').first().focus();
+        await page.waitForTimeout(300);
+
+        await page.mouse.click(0, 0);
+        await page.waitForTimeout(300);
+
+        await expect(page.locator('tui-editor a[href=""]')).toHaveCount(0);
+    });
+
     test('check that you can write text at the end', async ({page}) => {
         const editor = page.locator('[contenteditable]').first();
 
