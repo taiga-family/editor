@@ -1,3 +1,12 @@
+### [4.54.0](https://github.com/taiga-family/editor/compare/v4.53.0...v4.54.0) (2026-04-06)
+
+### 🐞 Bug Fixes
+
+- prevent empty link creation on blur without URL input (#2064)
+  [(7e2fdaf)](https://github.com/taiga-family/editor/commit/7e2fdaf154b7efeabf886c00e070da54d62e293b)
+- incorrect behavior on link creation cancellation (#2061)
+  [(288ff22)](https://github.com/taiga-family/editor/commit/288ff22a541e5691db9cc7e2e1f388a1ec75208e)
+
 ### [4.53.0](https://github.com/taiga-family/editor/compare/v4.52.0...v4.53.0) (2026-02-20)
 
 ### 🐞 Bug Fixes
