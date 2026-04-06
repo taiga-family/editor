@@ -214,7 +214,7 @@ export class TuiEditLink implements OnInit {
             if (this.anchorMode) {
                 this.editor?.removeAnchor();
             } else {
-                this.editor?.toggleLink('');
+                this.removeLink.emit();
             }
         }
     }
