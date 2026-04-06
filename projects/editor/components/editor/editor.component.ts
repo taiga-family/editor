@@ -139,7 +139,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         TuiValueTransformer<string | null, string | null>
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
 
-    private readonly doc: Document | null =
+    private readonly doc =
         inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
 
     private readonly zone = inject(NgZone);

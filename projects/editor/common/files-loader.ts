@@ -8,19 +8,16 @@ import {type TuiEditorAttachedFile, type TuiEditorAttachOptions} from './attache
 /**
  * files loader options
  */
-export const TUI_ATTACH_FILES_OPTIONS: InjectionToken<TuiEditorAttachOptions> =
-    new InjectionToken<TuiEditorAttachOptions>(
-        ngDevMode ? 'TUI_ATTACH_FILES_OPTIONS' : '',
-        {
-            factory: () => ({accept: '*/*', multiple: true}),
-        },
-    );
+export const TUI_ATTACH_FILES_OPTIONS = new InjectionToken<TuiEditorAttachOptions>(
+    ngDevMode ? 'TUI_ATTACH_FILES_OPTIONS' : '',
+    {
+        factory: () => ({accept: '*/*', multiple: true}),
+    },
+);
 
 /**
  * files loader handler
  */
-export const TUI_ATTACH_FILES_LOADER: InjectionToken<
+export const TUI_ATTACH_FILES_LOADER = new InjectionToken<
     TuiHandler<File[], Observable<TuiEditorAttachedFile[]>>
-> = new InjectionToken<TuiHandler<File[], Observable<TuiEditorAttachedFile[]>>>(
-    ngDevMode ? 'TUI_ATTACH_FILES_LOADER' : '',
-);
+>(ngDevMode ? 'TUI_ATTACH_FILES_LOADER' : '');

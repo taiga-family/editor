@@ -78,12 +78,12 @@ interface ServerSideGlobal extends NodeJS.Global {
 })
 export class TuiEditLink implements OnInit {
     private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
-    private readonly doc: Document | null =
+    private readonly doc =
         inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
 
-    private isOnlyAnchorMode: boolean = this.detectAnchorMode();
+    private isOnlyAnchorMode = this.detectAnchorMode();
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected url: string = this.getHrefOrAnchorId();
+    protected url = this.getHrefOrAnchorId();
     protected edit = !this.url;
     protected prefix: TuiEditorLinkPrefix | undefined = this.makeDefaultPrefix();
     protected anchorIds = this.getAllAnchorsIds();

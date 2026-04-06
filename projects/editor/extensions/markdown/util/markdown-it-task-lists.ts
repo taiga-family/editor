@@ -34,7 +34,7 @@ export function tuiMarkdownItTaskList(md: any, options: any): void {
 
 function attrSet(token: MarkdownIt.Token, name: string, value: string): void {
     const index = token.attrIndex(name);
-    const attr: [string, string] = [name, value];
+    const attr = [name, value];
 
     if (index < 0) {
         token.attrPush(attr);

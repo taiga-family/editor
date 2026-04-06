@@ -88,7 +88,7 @@ import {
 })
 export class TuiToolbar {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly tool: typeof TuiEditorTool = TuiEditorTool;
+    protected readonly tool = TuiEditorTool;
     protected toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
 
     @Input('editor')
@@ -100,7 +100,7 @@ export class TuiToolbar {
      * @deprecated use provideTuiEditorOptions({ textColors, backgroundColors })
      */
     @Input()
-    public colors: ReadonlyMap<string, string> = this.options.colors;
+    public colors = this.options.colors;
 
     /**
      * @deprecated
