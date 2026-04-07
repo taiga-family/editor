@@ -24,8 +24,7 @@ export class TuiHighlightColorTool {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
 
     @Input()
-    public colors: ReadonlyMap<string, string> =
-        this.options.backgroundColors ?? this.options.colors;
+    public colors = this.options.backgroundColors ?? this.options.colors;
 
     @Input()
     public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
