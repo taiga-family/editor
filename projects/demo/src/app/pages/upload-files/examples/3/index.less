@@ -1,0 +1,13 @@
+.toolbar {
+    margin-block-end: 0.5rem;
+}
+
+.editor {
+    &:not(:last-child) {
+        margin-block-end: 1rem;
+    }
+
+    ::ng-deep .tui-editor-socket .ProseMirror {
+        min-block-size: 8rem;
+    }
+}

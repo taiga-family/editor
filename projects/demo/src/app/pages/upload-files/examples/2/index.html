@@ -1,0 +1,16 @@
+<tui-toolbar
+    class="toolbar"
+    [editor]="editorRef"
+    [tools]="builtInTools"
+    (fileAttached)="attach($event)"
+/>
+
+<tui-loader [showLoader]="!!(uploadService.loading$ | async)">
+    <tui-editor
+        #editorComponent
+        class="editor"
+        [formControl]="control"
+        [tools]="[]"
+        (focusIn)="editorRef = editorComponent.editor"
+    />
+</tui-loader>

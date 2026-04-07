@@ -2,7 +2,7 @@
 @Injectable({
   providedIn: `root`,
 })
-export class MyUploadService {
+export class UploadService {
   readonly loading$ = new BehaviorSubject(false);
 
   upload(file: File): Observable<TuiEditorAttachedFile> {
@@ -28,13 +28,13 @@ export class MyUploadService {
       provide: TUI_ATTACH_FILES_OPTIONS,
       useValue: {
         multiple: true,
-        accept: '.pdf, .doc, .docx .xls, .xlsx',
+        accept: '.pdf, .doc, .docx, .xls, .xlsx',
       },
     },
     {
       provide: TUI_ATTACH_FILES_LOADER,
-      deps: [MyUploadService],
-      useFactory(service: MyUploadService) {
+      deps: [UploadService],
+      useFactory(service: UploadService) {
         return (files: File[]) => forkJoin(files.map((file) => service.upload(file)));
       },
     },
@@ -48,11 +48,6 @@ export class Example {
 
   control = new FormControl('');
 
-  /**
-   * @note: attach file as a link
-   * you can also implement your own file mapping mechanism
-   * because you have all the necessary data for this
-   */
   attach(files: TuiEditorAttachedFile[]): void {
     files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));
   }

@@ -1,33 +1,23 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiLoader} from '@taiga-ui/core';
 import {
+    type AbstractTuiEditor,
     provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
     TuiEditor,
     type TuiEditorAttachedFile,
-    TuiEditorSocket,
     TuiEditorTool,
+    TuiToolbar,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
-import {fileLoader} from './file-loader';
-import {UploadService} from './upload.service';
+import {fileLoader} from '../1/file-loader';
+import {UploadService} from '../1/upload.service';
 
 @Component({
     standalone: true,
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiAccordion,
-        TuiEditor,
-        TuiEditorSocket,
-        TuiExpand,
-        TuiItem,
-        TuiLoader,
-    ],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiEditor, TuiLoader, TuiToolbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,12 +32,9 @@ import {UploadService} from './upload.service';
     ],
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    private readonly wysiwyg?: TuiEditor;
+    protected editorRef: AbstractTuiEditor | null = null;
 
     protected readonly uploadService = inject(UploadService);
-
-    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
@@ -55,9 +42,12 @@ export default class Example {
         TuiEditorTool.Attach,
     ];
 
-    protected control = new FormControl('');
+    protected readonly group = new FormGroup({
+        header: new FormControl(''),
+        main: new FormControl(''),
+    });
 
     protected attach(files: TuiEditorAttachedFile[]): void {
-        files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));
+        files.forEach((file) => this.editorRef?.setFileLink(file));
     }
 }

@@ -1,10 +1,10 @@
 import {type TuiEditorAttachedFile} from '@taiga-ui/editor';
 import {finalize, forkJoin, type Observable} from 'rxjs';
 
-import {type FileIoService} from './filesio.service';
+import {type UploadService} from './upload.service';
 
 export function fileLoader(
-    service: FileIoService,
+    service: UploadService,
 ): (files: File[]) => Observable<TuiEditorAttachedFile[]> {
     return (files: File[]) => {
         service.loading$.next(true);
