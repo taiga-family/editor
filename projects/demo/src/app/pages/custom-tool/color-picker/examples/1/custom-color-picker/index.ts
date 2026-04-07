@@ -20,8 +20,7 @@ import {distinctUntilChanged, map, share} from 'rxjs';
 })
 export class CustomColorPicker {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected colors: ReadonlyMap<string, string> =
-        this.options.textColors ?? this.options.colors;
+    protected colors = this.options.textColors ?? this.options.colors;
 
     protected selectedColor = '';
     protected readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);

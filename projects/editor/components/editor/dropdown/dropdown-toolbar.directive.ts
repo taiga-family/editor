@@ -46,7 +46,7 @@ export class TuiEditorDropdownToolbar
     private previousTagPosition: DOMRect | null = null;
     private range = inject(TUI_RANGE);
 
-    private readonly doc: Document | null =
+    private readonly doc =
         inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
 
     private readonly selection$ = inject(TUI_SELECTION_STREAM);

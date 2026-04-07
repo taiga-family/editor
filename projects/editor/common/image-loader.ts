@@ -6,19 +6,16 @@ import {map, type Observable} from 'rxjs';
 /**
  * Image loader handler
  */
-export const TUI_IMAGE_LOADER: InjectionToken<
+export const TUI_IMAGE_LOADER = new InjectionToken<
     TuiHandler<Blob | File, Observable<string>>
-> = new InjectionToken<TuiHandler<Blob | File, Observable<string>>>(
-    ngDevMode ? 'TUI_IMAGE_LOADER' : '',
-    {
-        factory: () => (file) => {
-            const fileReader = new FileReader();
+>(ngDevMode ? 'TUI_IMAGE_LOADER' : '', {
+    factory: () => (file) => {
+        const fileReader = new FileReader();
 
-            fileReader.readAsDataURL(file);
+        fileReader.readAsDataURL(file);
 
-            return tuiTypedFromEvent(fileReader, 'load').pipe(
-                map(() => String(fileReader.result)),
-            );
-        },
+        return tuiTypedFromEvent(fileReader, 'load').pipe(
+            map(() => String(fileReader.result)),
+        );
     },
-);
+});
