@@ -1,5 +1,4 @@
 import {
-    TUI_TIPTAP_WHITESPACE_HACK,
     type TuiEditorAttachedFile,
     type TuiLinkAttributes,
 } from '@taiga-ui/editor/common';
@@ -42,9 +41,8 @@ export const TuiFileLink = Extension.create({
                                       {extendEmptyMarkRange: true},
                                   )
                                   .setTextSelection(selection.to)
-                                  .insertContent(TUI_TIPTAP_WHITESPACE_HACK)
                             : chain().insertContent(
-                                  `<a href="${fileLink.link}" ${attrs}>${fileLink.name}</a>${TUI_TIPTAP_WHITESPACE_HACK}`,
+                                  `<a href="${fileLink.link}" ${attrs}>${fileLink.name}</a>`,
                               )
                     )
                         .setTextSelection(selection.to)

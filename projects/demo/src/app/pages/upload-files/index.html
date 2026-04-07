@@ -16,9 +16,75 @@
 
     <tui-doc-example
         id="upload-file"
-        description="100 uploads per day, 2GB file size limit, files auto-deleted after 1 download"
         heading="Upload files"
         [component]="component1"
         [content]="example1"
-    />
+        [description]="uploadFilesInfo"
+    >
+        <ng-template #uploadFilesInfo>
+            This demo uses a local mock that produces
+            <code>blob:</code>
+            URLs via
+            <code>URL.createObjectURL</code>
+            , so
+            <code>protocols: ['blob']</code>
+            is added to
+            <code>provideTuiEditor</code>
+            . With a real HTTP upload the server returns an
+            <code>https://</code>
+            URL, which is allowed by default — no extra link configuration needed.
+        </ng-template>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="separate-toolbar"
+        heading="Separate toolbar"
+        [component]="component2"
+        [content]="example2"
+        [description]="separateToolbarInfo"
+    >
+        <ng-template #separateToolbarInfo>
+            When
+            <code>tui-toolbar</code>
+            is used as a separate element outside
+            <code>tui-editor</code>
+            , bind
+            <code>(fileAttached)</code>
+            on
+            <code>tui-toolbar</code>
+            directly — the event does not propagate to
+            <code>tui-editor</code>
+            automatically. The
+            <code>protocols: ['blob']</code>
+            option is only needed for this demo's mock — real
+            <code>https://</code>
+            URLs work without it.
+        </ng-template>
+    </tui-doc-example>
+
+    <tui-doc-example
+        id="shared-toolbar"
+        heading="Shared toolbar"
+        [component]="component3"
+        [content]="example3"
+        [description]="sharedToolbarInfo"
+    >
+        <ng-template #sharedToolbarInfo>
+            A single
+            <code>tui-toolbar</code>
+            can be shared across multiple
+            <code>tui-editor</code>
+            instances. Use
+            <code>(focusIn)</code>
+            to track the active editor and pass it via
+            <code>[editor]</code>
+            . Bind
+            <code>(fileAttached)</code>
+            on the toolbar — files will be attached to whichever editor was last focused. The
+            <code>protocols: ['blob']</code>
+            option is only needed for this demo's mock — real
+            <code>https://</code>
+            URLs work without it.
+        </ng-template>
+    </tui-doc-example>
 </tui-doc-page>
