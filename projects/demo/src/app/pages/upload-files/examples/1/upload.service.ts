@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {type TuiEditorAttachedFile} from '@taiga-ui/editor';
-import {BehaviorSubject, delay, map, of, type Observable} from 'rxjs';
+import {BehaviorSubject, delay, map, type Observable, of} from 'rxjs';
 
 /**
  * Simulates an async file upload by creating a local blob URL.
