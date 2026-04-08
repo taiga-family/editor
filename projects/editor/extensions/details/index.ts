@@ -11,6 +11,15 @@ import {
     type DetailsSummaryOptions,
 } from '@tiptap/extension-details-summary';
 
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        detailsExtended: {
+            setDetails(): ReturnType;
+            unsetDetailsAt(pos?: number): ReturnType;
+        };
+    }
+}
+
 /**
  * @deprecated use {@link DetailsOptions}
  */
@@ -105,10 +114,10 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
 
                 deleteButton.addEventListener(
                     'click',
-                    (e) => {
+                    (event) => {
                         collapseButton.removeEventListener('click', openHandler);
-                        editor.commands.unsetDetails();
-                        e.preventDefault();
+                        event.preventDefault();
+                        editor.commands.unsetDetailsAt((getPos as any)?.());
                     },
                     {capture: true, once: true},
                 );
@@ -176,10 +185,34 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
 
                     return true;
                 },
+            /** @deprecated use {@link unsetDetailsAt} */
             unsetDetails:
                 () =>
                 ({state, dispatch}) =>
                     tuiDeleteNode(state, dispatch, this.name),
+            unsetDetailsAt:
+                (pos?: number) =>
+                ({state, dispatch}) => {
+                    if (pos === undefined) {
+                        return tuiDeleteNode(state, dispatch, this.name);
+                    }
+
+                    const currentNode = state.doc.nodeAt(pos);
+
+                    if (currentNode?.type.name !== this.name) {
+                        return false;
+                    }
+
+                    if (dispatch) {
+                        dispatch(
+                            state.tr
+                                .delete(pos, pos + currentNode.nodeSize)
+                                .scrollIntoView(),
+                        );
+                    }
+
+                    return true;
+                },
         };
     },
 });

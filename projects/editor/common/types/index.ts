@@ -74,7 +74,9 @@ declare module '@tiptap/core' {
     interface Commands<ReturnType> {
         details: {
             setDetails(): ReturnType;
+            /** @deprecated use {@link unsetDetailsAt} */
             unsetDetails(): ReturnType;
+            unsetDetailsAt(pos?: number): ReturnType;
         };
     }
 

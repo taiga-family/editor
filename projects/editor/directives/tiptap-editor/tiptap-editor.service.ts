@@ -405,6 +405,13 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.commands.setDetails();
     }
 
+    public unsetDetailsAt(pos?: number): void {
+        this.editor?.commands.unsetDetailsAt(pos);
+    }
+
+    /**
+     * @deprecated use {@link unsetDetailsAt}
+     */
     public unsetDetails(): void {
         this.editor?.commands.unsetDetails();
     }

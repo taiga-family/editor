@@ -178,7 +178,12 @@ export abstract class AbstractTuiEditor {
 
     public abstract setDetails(): void;
 
+    /**
+     * @deprecated use {@link unsetDetailsAt}
+     */
     public abstract unsetDetails(): void;
+
+    public abstract unsetDetailsAt(pos?: number): void;
 
     public abstract setGroup(): void;
 
