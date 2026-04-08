@@ -90,4 +90,80 @@ test.describe('Details', () => {
         await nested.locator('summary').click();
         await expect.soft(content).toHaveScreenshot('Details-15.png');
     });
+
+    test('delete button on parent removes parent, not nested child', async ({page}) => {
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=<p>Hello</p>`);
+
+        const editor = page.locator('tui-editor');
+        const contenteditable = page.locator('[contenteditable]').first();
+        const detailsButton = page
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        const detailsContent = editor.locator('[data-type="details-content"]');
+
+        await contenteditable.click();
+        await detailsButton.click();
+        await page.keyboard.type('Parent');
+
+        await detailsContent.first().locator('p').click();
+        await detailsButton.click();
+        await page.keyboard.type('Nested');
+
+        await contenteditable.click();
+        await expect.soft(editor).toHaveScreenshot('Details-nested-delete-01.png');
+
+        await editor
+            .locator('.t-details-wrapper')
+            .first()
+            .locator(':scope > .t-details-delete')
+            .click();
+        await expect.soft(editor).toHaveScreenshot('Details-nested-delete-02.png');
+        await expect(editor.locator('.t-details-wrapper')).toHaveCount(0);
+    });
+
+    test('triple-nested details — delete middle, then root', async ({page}) => {
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=<p>World</p>`);
+
+        const editor = page.locator('tui-editor');
+        const contenteditable = page.locator('[contenteditable]').first();
+        const detailsButton = page
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        const detailsContent = editor.locator('[data-type="details-content"]');
+
+        await contenteditable.click();
+        await detailsButton.click();
+        await page.keyboard.type('Root');
+
+        await detailsContent.first().locator('p').click();
+        await detailsButton.click();
+        await page.keyboard.type('Middle');
+
+        await detailsContent.nth(1).locator('p').click();
+        await detailsButton.click();
+        await page.keyboard.type('Deepest');
+
+        await contenteditable.click();
+        await expect.soft(editor).toHaveScreenshot('Details-triple-01.png');
+
+        await editor
+            .locator('.t-details-wrapper')
+            .nth(1)
+            .locator(':scope > .t-details-delete')
+            .click();
+
+        await expect.soft(editor).toHaveScreenshot('Details-triple-02.png');
+        await expect(editor.locator('.t-details-wrapper')).toHaveCount(1);
+
+        await editor
+            .locator('.t-details-wrapper')
+            .first()
+            .locator(':scope > .t-details-delete')
+            .click();
+
+        await expect.soft(editor).toHaveScreenshot('Details-triple-03.png');
+        await expect(editor.locator('.t-details-wrapper')).toHaveCount(0);
+    });
 });
