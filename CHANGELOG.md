@@ -1,3 +1,10 @@
+### [4.56.0](https://github.com/taiga-family/editor/compare/v4.55.0...v4.56.0) (2026-04-08)
+
+### 🐞 Bug Fixes
+
+- font size change doesn't work in tui-toolbar (#2069)
+  [(c024cca)](https://github.com/taiga-family/editor/commit/c024cca5d8035d2c8ca0261ebbc38a99e49193ea)
+
 ### [4.55.0](https://github.com/taiga-family/editor/compare/v4.54.0...v4.55.0) (2026-04-08)
 
 ### 🐞 Bug Fixes
