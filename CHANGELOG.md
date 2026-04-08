@@ -1,3 +1,10 @@
+### [4.55.0](https://github.com/taiga-family/editor/compare/v4.54.0...v4.55.0) (2026-04-08)
+
+### 🐞 Bug Fixes
+
+- incorrect deletion of the nested details (#2068)
+  [(3901f3b)](https://github.com/taiga-family/editor/commit/3901f3b620a960614354e722a4293f1bdd6df5f4)
+
 ### [4.54.0](https://github.com/taiga-family/editor/compare/v4.53.0...v4.54.0) (2026-04-06)
 
 ### 🐞 Bug Fixes
