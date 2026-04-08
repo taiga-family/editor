@@ -15,7 +15,10 @@
     *ngIf="enabled(tool.Size)"
     tuiToolbarBlock
 >
-    <button tuiFontSizeTool></button>
+    <button
+        tuiFontSizeTool
+        [editor]="editor"
+    ></button>
 </section>
 <section
     *ngIf="firstBigBlockEnabled"
