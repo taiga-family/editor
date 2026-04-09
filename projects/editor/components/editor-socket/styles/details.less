@@ -118,8 +118,9 @@ div[data-type='details-content'] {
     display: flex;
 }
 
-details:not(:last-child) {
-    margin-block-end: 1rem;
+details + details,
+.t-details-wrapper + .t-details-wrapper {
+    margin-block-start: 1rem;
 }
 
 details[open] > summary::after,
