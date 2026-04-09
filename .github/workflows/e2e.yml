@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.198.0
-      - uses: taiga-family/ci/actions/setup/node@v1.198.0
-      - uses: taiga-family/ci/actions/setup/cypress@v1.198.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.199.0
+      - uses: taiga-family/ci/actions/setup/node@v1.199.0
+      - uses: taiga-family/ci/actions/setup/cypress@v1.199.0
       - run: npx nx component-test demo-cypress
 
   e2e:
@@ -24,26 +24,26 @@ jobs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.198.0
-      - uses: taiga-family/ci/actions/setup/node@v1.198.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.198.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.199.0
+      - uses: taiga-family/ci/actions/setup/node@v1.199.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.199.0
         with:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - run: npx nx prerender editor-demo -c development
-      - uses: taiga-family/ci/actions/run/serve@v1.198.0
+      - uses: taiga-family/ci/actions/run/serve@v1.199.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@v1.198.0
+      - uses: taiga-family/ci/actions/run/clone@v1.199.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.198.0
+      - uses: taiga-family/ci/actions/run/serve@v1.199.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -73,7 +73,7 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.198.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.199.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v7.0.0
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.198.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.199.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -104,7 +104,7 @@ jobs:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.198.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.199.0
         with:
           pw-result: ${{ env.PW_RESULT }}
 
