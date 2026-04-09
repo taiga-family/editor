@@ -26,6 +26,7 @@
 
 [tuiToolbarBlock] {
     display: flex;
+    flex-wrap: inherit;
     padding: 0.25rem 0;
 }
 
@@ -33,10 +34,18 @@
     display: none;
 }
 
+[tuiToolbarBlock]:not(:last-child) {
+    position: relative;
+    margin-inline-end: 0.5625rem;
+}
+
 [tuiToolbarBlock]:not(:last-child)::after {
     content: '';
-    display: block;
-    margin: 0 0.25rem;
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: -0.3125rem;
+    transform: translateY(-50%);
+    block-size: 50%;
     inline-size: 0.0625rem;
     background: var(--tui-background-neutral-1-pressed);
 }
