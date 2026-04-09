@@ -1,3 +1,12 @@
+### [4.57.0](https://github.com/taiga-family/editor/compare/v4.56.0...v4.57.0) (2026-04-09)
+
+### 🐞 Bug Fixes
+
+- horizontal scroll appears when editor width (#2073)
+  [(1d00b11)](https://github.com/taiga-family/editor/commit/1d00b11e80bc7194290bc1443f069c46018b286b)
+- wrong gapcursor visibility (#2072)
+  [(e253a55)](https://github.com/taiga-family/editor/commit/e253a55b285d0f608b73f78dc7033d363e03d532)
+
 ### [4.56.0](https://github.com/taiga-family/editor/compare/v4.55.0...v4.56.0) (2026-04-08)
 
 ### 🐞 Bug Fixes
