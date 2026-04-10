@@ -1,4 +1,4 @@
-import {expect, test} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 
 import {TuiDemoPath} from '../../demo/src/app/shared/routes';
 import {HTML_BASE64_IMG} from '../stubs/html';
@@ -70,5 +70,65 @@ test.describe('Img', () => {
         await page.locator('body').click({position: {x: 0, y: 0}});
         await img.click();
         await expect.soft(editor).toHaveScreenshot('Img-08.png');
+    });
+
+    test('image options toolbar appears below image on hover', async ({page}) => {
+        await tuiGoto(page, TuiDemoPath.ImagesResizable);
+
+        const editor = page.locator('tui-editor');
+
+        await editor.locator('tui-image-editor').hover();
+        await expect.soft(editor).toHaveScreenshot('Img-09.png');
+
+        await page.getByRole('button', {name: 'Image align'}).click();
+        await expect.soft(editor).toHaveScreenshot('Img-14.png');
+    });
+
+    test.describe('image alignment', () => {
+        // TODO: move it to PageObject
+        async function openAlignDropdown(page: Page): Promise<void> {
+            await page.locator('tui-editor tui-image-editor').hover();
+            await page.getByRole('button', {name: 'Image align'}).click();
+        }
+
+        test('float left', async ({page}) => {
+            await tuiGoto(page, TuiDemoPath.ImagesResizable);
+
+            await openAlignDropdown(page);
+            await page.getByRole('button', {name: 'Align left'}).click();
+
+            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-10.png');
+        });
+
+        test('float right', async ({page}) => {
+            await tuiGoto(page, TuiDemoPath.ImagesResizable);
+
+            await openAlignDropdown(page);
+            await page.getByRole('button', {name: 'Align right'}).click();
+
+            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-11.png');
+        });
+
+        test('center', async ({page}) => {
+            await tuiGoto(page, TuiDemoPath.ImagesResizable);
+
+            await openAlignDropdown(page);
+            await page.getByRole('button', {name: 'Align center'}).click();
+
+            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-12.png');
+        });
+
+        test('reset to default (justify)', async ({page}) => {
+            await tuiGoto(page, TuiDemoPath.ImagesResizable);
+
+            await openAlignDropdown(page);
+            await page.getByRole('button', {name: 'Align left'}).click();
+
+            await page.locator('tui-editor tui-image-editor').hover();
+            await page.getByRole('button', {name: 'Image align'}).click();
+            await page.getByRole('button', {name: 'Justify align'}).click();
+
+            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-13.png');
+        });
     });
 });

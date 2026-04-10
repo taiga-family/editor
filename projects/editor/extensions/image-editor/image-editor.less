@@ -23,8 +23,9 @@ tui-image-editor {
         position: absolute;
         z-index: 1;
         display: flex;
-        inset-block-start: 0.625rem;
-        inset-inline-end: 0.625rem;
+        inset-block-end: 0;
+        inset-inline-start: 50%;
+        transform: translateX(-50%) translateY(100%);
         background: var(--tui-background-base);
         border-radius: var(--tui-radius-m);
         color: var(--tui-text-primary);
