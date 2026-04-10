@@ -48,12 +48,12 @@
     <div
         tuiDropdownDirection="bottom"
         tuiDropdownLimitWidth="auto"
-        [tuiDropdownMinHeight]="64"
         tuiTiptapEditor
         class="tui-editor-socket"
         [attr.data-contenteditable]="interactive()"
         [editable]="interactive()"
         [tuiDropdown]="dropdown"
+        [tuiDropdownMinHeight]="64"
         [tuiToolbarDropdown]="dropdownSelectionHandler"
         [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
         (valueChange)="onModelChange($event)"
