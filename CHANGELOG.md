@@ -1,3 +1,10 @@
+### [4.59.0](https://github.com/taiga-family/editor/compare/v4.58.0...v4.59.0) (2026-04-10)
+
+### 🐞 Bug Fixes
+
+- prefer bottom placement for edit-link dropdown (#2080)
+  [(5d3e3db)](https://github.com/taiga-family/editor/commit/5d3e3dbbb6bf692a9e6a78bb2296b35ca8db2117)
+
 ### [4.58.0](https://github.com/taiga-family/editor/compare/v4.57.0...v4.58.0) (2026-04-10)
 
 ### 🐞 Bug Fixes
