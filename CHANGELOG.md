@@ -1,3 +1,10 @@
+### [4.58.0](https://github.com/taiga-family/editor/compare/v4.57.0...v4.58.0) (2026-04-10)
+
+### 🐞 Bug Fixes
+
+- support change alignment for small image (#2079)
+  [(0ba921a)](https://github.com/taiga-family/editor/commit/0ba921a60b8c3bbc80eaedc9ab57e6ee56b08f56)
+
 ### [4.57.0](https://github.com/taiga-family/editor/compare/v4.56.0...v4.57.0) (2026-04-09)
 
 ### 🐞 Bug Fixes
