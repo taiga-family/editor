@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk';
 import {TuiDropdownService} from '@taiga-ui/core';
 
@@ -8,13 +8,13 @@ import {TuiDropdownService} from '@taiga-ui/core';
     template: `
         <ng-container #viewContainer />
     `,
-    styleUrls: ['./editor-portal-host.style.less'],
+    styleUrl: './editor-portal-host.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {provide: TuiPortalService, useExisting: TuiDropdownService},
         {
             provide: TuiPortals,
-            useExisting: TuiEditorPortalHost,
+            useExisting: forwardRef(() => TuiEditorPortalHost),
         },
     ],
 })

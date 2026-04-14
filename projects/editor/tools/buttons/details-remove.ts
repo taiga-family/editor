@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.unsetDetails()'},
+    host: {'(click)': 'editor()?.unsetDetailsAt()'},
 })
 export class TuiDetailsRemoveButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
-        return !(this.editor?.isActive('details') ?? false);
+        return !(this.editor()?.isActive('details') ?? false);
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.onAlign("left")'},
+    host: {'(click)': 'editor()?.onAlign("left")'},
 })
 export class TuiAlignLeftButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive({textAlign: 'left'}) ?? false;
+        return this.editor()?.isActive({textAlign: 'left'}) ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

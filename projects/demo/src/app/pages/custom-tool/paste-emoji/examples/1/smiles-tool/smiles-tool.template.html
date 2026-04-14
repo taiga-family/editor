@@ -21,13 +21,14 @@
     </button>
     <ng-template #smileDropdown>
         <div class="smiles">
-            <button
-                *ngFor="let smile of smiles"
-                type="button"
-                class="smile"
-                [innerHTML]="smile"
-                (click)="insertSmile(smile)"
-            ></button>
+            @for (smile of smiles; track smile) {
+                <button
+                    type="button"
+                    class="smile"
+                    [innerHTML]="smile"
+                    (click)="insertSmile(smile)"
+                ></button>
+            }
         </div>
     </ng-template>
 </div>

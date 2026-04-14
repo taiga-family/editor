@@ -1,16 +1,15 @@
 <ng-template #toolbarTpl>
-    <tui-toolbar-host
-        *ngIf="editorLoaded()"
-        [disabled]="!interactive()"
-    >
-        <ng-container *polymorpheusOutlet="toolbar ?? defaultToolbar as text; context: {$implicit: editor}">
-            {{ text }}
-        </ng-container>
-    </tui-toolbar-host>
+    @if (editorLoaded()) {
+        <tui-toolbar-host [disabled]="!interactive()">
+            <ng-container *polymorpheusOutlet="toolbar() ?? defaultToolbar as text; context: {$implicit: editor}">
+                {{ text }}
+            </ng-container>
+        </tui-toolbar-host>
+    }
 
     <ng-template #defaultToolbar>
         <tui-toolbar
-            [tools]="tools"
+            [tools]="tools()"
             (fileAttached)="fileAttached.emit($event)"
         >
             <ng-content select="tools" />
@@ -18,7 +17,7 @@
     </ng-template>
 </ng-template>
 
-<ng-container *polymorpheusOutlet="!floatingToolbar ? toolbarTpl : null as text">
+<ng-container *polymorpheusOutlet="!floatingToolbar() ? toolbarTpl : null as text">
     {{ text }}
 </ng-container>
 <div
@@ -26,12 +25,11 @@
     (mousedown)="focus($event)"
 >
     <ng-content />
-    <div
-        *ngIf="hasPlaceholder"
-        tuiEditorPlaceholder
-    >
-        {{ placeholder || exampleText }}
-    </div>
+    @if (hasPlaceholder) {
+        <div tuiEditorPlaceholder>
+            {{ placeholder() || exampleText() }}
+        </div>
+    }
 </div>
 
 <tui-scrollbar
@@ -45,6 +43,7 @@
 <tui-editor-socket />
 
 <ng-template #editorTpl>
+    <!-- tuiDropdownDirection - prevent flaky -->
     <div
         tuiDropdownAlign="left"
         tuiDropdownDirection="bottom"
@@ -56,30 +55,32 @@
         [tuiDropdown]="dropdown"
         [tuiDropdownMinHeight]="64"
         [tuiToolbarDropdown]="dropdownSelectionHandler"
-        [tuiToolbarDropdownPosition]="isLinkSelected ? 'tag' : floatingToolbar ? 'selection' : 'tag'"
+        [tuiToolbarDropdownPosition]="isLinkSelected ? 'tag' : floatingToolbar() ? 'selection' : 'tag'"
         (valueChange)="onModelChange($event)"
     ></div>
 </ng-template>
 
 <ng-template #dropdown>
-    <ng-container *polymorpheusOutlet="floatingToolbar ? toolbarTpl : null as text">
+    <ng-container *polymorpheusOutlet="floatingToolbar() ? toolbarTpl : null as text">
         {{ text }}
     </ng-container>
 
-    <tui-edit-link
-        *ngIf="isLinkSelected"
-        #link
-        tuiEditorRootEditLink
-        (addLink)="link.anchorMode ? addAnchor($event) : addLink($event); closeDropdown()"
-        (removeLink)="link.anchorMode ? removeAnchor() : removeLink(); closeDropdown()"
-    />
+    @if (isLinkSelected) {
+        <tui-edit-link
+            #link
+            tuiEditorRootEditLink
+            [anchorMode]="isJumpAnchorSelected"
+            (addLink)="link.hasAnchorMode() ? addAnchor($event) : addLink($event); closeDropdown()"
+            (removeLink)="link.hasAnchorMode() ? removeAnchor() : removeLink(); closeDropdown()"
+        />
+    }
 
     <!-- TODO: drop mention in v5 -->
-    <ng-container *ngIf="isMentionMode">
+    @if (isMentionMode) {
         <ng-content select="mention" />
-    </ng-container>
+    }
 
-    <ng-container *polymorpheusOutlet="tuiDropdown?.tuiDropdownOpen ? dropdownContent : null as text">
+    <ng-container *polymorpheusOutlet="tuiDropdown?.tuiDropdownOpen ? dropdownContent() : null as text">
         {{ text }}
     </ng-container>
 </ng-template>

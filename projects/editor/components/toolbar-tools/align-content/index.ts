@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiAlignButtonTool} from '@taiga-ui/editor/tools';
@@ -7,22 +7,20 @@ import {TuiAlignButtonTool} from '@taiga-ui/editor/tools';
  * @deprecated use {@link TuiAlignButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-align-content,tui-align-content-tool',
     imports: [TuiAlignButtonTool],
     template: `
         <button
             tuiAlignTool
-            [editor]="editor"
+            [editor]="editor()"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAlignContentTool {
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 }
 
 /**

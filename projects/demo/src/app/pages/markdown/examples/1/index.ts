@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type OnInit} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR, tuiRawLoad} from '@taiga-ui/addon-doc';
@@ -15,9 +14,7 @@ import MarkdownIt from 'markdown-it';
 import {Converter} from 'showdown';
 
 @Component({
-    standalone: true,
     imports: [
-        NgIf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiEditor,
@@ -26,7 +23,7 @@ import {Converter} from 'showdown';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({image: true}),

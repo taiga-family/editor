@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
@@ -10,11 +10,10 @@ import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map, share} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'custom-color-picker',
     imports: [AsyncPipe, TuiButton, TuiColorSelectorModule, TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {tuiPlateHost: ''},
 })
@@ -27,24 +26,22 @@ export class CustomColorPicker {
     protected readonly fontColor$ = this.editor.valueChange$.pipe(
         map(() =>
             this.editor.getOriginTiptapEditor()?.isFocused
-                ? this.editor[`get${this.type}` as const]() || 'transparent'
+                ? this.editor[`get${this.type()}` as const]() || 'transparent'
                 : 'transparent',
         ),
         distinctUntilChanged(),
         share(),
     );
 
-    @Input()
-    public icon?: string;
+    public readonly icon = input('');
 
-    @Input()
-    public type: 'BackgroundColor' | 'FontColor' = 'FontColor';
+    public readonly type = input<'BackgroundColor' | 'FontColor'>('FontColor');
 
     protected onValueChange(color: string): void {
         this.selectedColor = color;
     }
 
     protected setColor(): void {
-        this.editor[`set${this.type}` as const](this.selectedColor);
+        this.editor[`set${this.type()}` as const](this.selectedColor);
     }
 }

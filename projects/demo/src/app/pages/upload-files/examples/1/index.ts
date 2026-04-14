@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {TuiLoader} from '@taiga-ui/core';
@@ -17,7 +17,6 @@ import {fileLoader} from './file-loader';
 import {UploadService} from './upload.service';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
@@ -29,7 +28,7 @@ import {UploadService} from './upload.service';
         TuiLoader,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({link: {protocols: ['blob']}}),
@@ -42,8 +41,7 @@ import {UploadService} from './upload.service';
     ],
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    private readonly wysiwyg?: TuiEditor;
+    private readonly wysiwyg = viewChild.required(TuiEditor);
 
     protected readonly uploadService = inject(UploadService);
 
@@ -58,6 +56,6 @@ export default class Example {
     protected control = new FormControl('');
 
     protected attach(files: TuiEditorAttachedFile[]): void {
-        files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));
+        files.forEach((file) => this.wysiwyg().editor?.setFileLink(file));
     }
 }

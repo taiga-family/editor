@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
@@ -9,7 +9,6 @@ import {Subject} from 'rxjs';
 import {type MyContentsInfo, MyToc} from './my-toc';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, MyToc, ReactiveFormsModule, TuiEditor],
     template: `
         <tui-editor
@@ -19,19 +18,18 @@ import {type MyContentsInfo, MyToc} from './my-toc';
 
         <my-table-of-contents [contents]="contents | async" />
     `,
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async (injector) => {
             const example = injector.get(Example);
             const win = injector.get(WA_WINDOW);
-
             const {TableOfContents, getHierarchicalIndexes} =
                 await import('@tiptap/extension-table-of-contents');
 
             return TableOfContents.configure({
                 scrollParent: () =>
-                    example.editor?.rootEl.querySelector<HTMLElement>('tui-scrollbar') ??
+                    example.editor().rootEl.querySelector<HTMLElement>('tui-scrollbar') ??
                     win,
                 getIndex: getHierarchicalIndexes,
                 onUpdate(items: TableOfContentData, isCreate) {
@@ -50,8 +48,7 @@ export default class Example {
         TuiEditorTool.Underline,
     ];
 
-    @ViewChild(TuiEditor, {static: true})
-    public readonly editor?: TuiEditor;
+    public readonly editor = viewChild.required(TuiEditor);
 
     public readonly contents = new Subject<MyContentsInfo>();
 

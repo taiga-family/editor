@@ -1,11 +1,11 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
     EventEmitter,
     inject,
-    Input,
+    input,
     Output,
     ViewEncapsulation,
 } from '@angular/core';
@@ -49,10 +49,8 @@ import {
 } from '@taiga-ui/editor/tools';
 
 @Component({
-    standalone: true,
     selector: 'tui-toolbar',
     imports: [
-        NgIf,
         TuiAddRowTableButtonTool,
         TuiAlignButtonTool,
         TuiAnchorButtonTool,
@@ -89,24 +87,20 @@ import {
 export class TuiToolbar {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly tool = TuiEditorTool;
-    protected toolsSet = new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
 
-    @Input('editor')
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
     /**
      * @deprecated use provideTuiEditorOptions({ textColors, backgroundColors })
      */
-    @Input()
-    public colors = this.options.colors;
+    public readonly colors = input(this.options.colors);
 
     /**
      * @deprecated
      */
-    @Input()
-    public disabled = false;
+    public readonly disabled = input(false);
 
     @Output()
     public readonly linkAdded = new EventEmitter<string>();
@@ -120,10 +114,13 @@ export class TuiToolbar {
     public readonly el: HTMLElement | null =
         inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
-    @Input()
-    public set tools(value: Set<TuiEditorToolType> | readonly TuiEditorToolType[]) {
-        this.toolsSet = new Set(value);
-    }
+    public readonly tools = input<Set<TuiEditorToolType> | readonly TuiEditorToolType[]>(
+        new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS),
+    );
+
+    protected readonly toolsSet = computed(
+        () => new Set<TuiEditorToolType>(this.tools()),
+    );
 
     protected get formatEnabled(): boolean {
         return (
@@ -156,6 +153,6 @@ export class TuiToolbar {
     }
 
     protected enabled(tool: TuiEditorToolType): boolean {
-        return this.toolsSet.has(tool);
+        return this.toolsSet().has(tool);
     }
 }

@@ -5,7 +5,7 @@
     "sourceRoot": "projects/editor",
     "targets": {
         "build": {
-            "executor": "@angular-devkit/build-angular:ng-packagr",
+            "executor": "@angular/build:ng-packagr",
             "options": {
                 "project": "projects/{projectName}/ng-package.json",
                 "tsConfig": "tsconfig.build.json"

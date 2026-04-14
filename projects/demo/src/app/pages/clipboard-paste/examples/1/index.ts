@@ -11,7 +11,6 @@ import {
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,

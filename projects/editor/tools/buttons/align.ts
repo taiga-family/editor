@@ -1,9 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -15,7 +16,6 @@ import {
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
@@ -25,7 +25,6 @@ import {TuiAlignLeftButtonTool} from './align-left';
 import {TuiAlignRightButtonTool} from './align-right';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiAlignTool]',
     imports: [
         TuiAlignCenterButtonTool,
@@ -41,19 +40,19 @@ import {TuiAlignRightButtonTool} from './align-right';
             <div tuiToolbarDropdownContent>
                 <button
                     tuiAlignLeftTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiAlignCenterTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiAlignRightTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiAlignJustifyTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
             </div>
         </ng-container>
@@ -66,17 +65,21 @@ export class TuiAlignButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
+
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
 
     protected override isActive(): boolean {
         return (
-            this.editor?.isActive({textAlign: 'center'}) ||
-            this.editor?.isActive({textAlign: 'justify'}) ||
-            this.editor?.isActive({textAlign: 'left'}) ||
-            this.editor?.isActive({textAlign: 'right'}) ||
+            this.editor()?.isActive({textAlign: 'center'}) ||
+            this.editor()?.isActive({textAlign: 'justify'}) ||
+            this.editor()?.isActive({textAlign: 'left'}) ||
+            this.editor()?.isActive({textAlign: 'right'}) ||
             false
         );
     }

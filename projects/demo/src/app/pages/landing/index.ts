@@ -20,7 +20,6 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 import content from './content.html?raw';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         RouterLink,
@@ -36,7 +35,7 @@ import content from './content.html?raw';
         TuiToolbar,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({

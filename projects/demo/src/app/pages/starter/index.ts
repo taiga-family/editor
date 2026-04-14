@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
@@ -16,11 +15,9 @@ import {TuiRadioList} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     selector: 'editor-starter-page',
     imports: [
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiAddonDoc,
         TuiAutoFocus,
@@ -30,7 +27,7 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
         TuiTextareaModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({
@@ -50,9 +47,13 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
 })
 export default class TuiEditorStarter {
     protected readonly template = import('./import/template.md?raw');
+
     protected readonly component = import('./import/component.md?raw');
+
     protected readonly exampleStyles = import('./import/styles.less.md?raw');
+
     protected readonly exampleIcons = import('./import/angular.json.md?raw');
+
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly control = new FormControl(/* HTML */ `

@@ -15,7 +15,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
-    standalone: true,
     imports: [
         ExampleTuiEmbedTool,
         ReactiveFormsModule,
@@ -27,7 +26,7 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideTuiEditor({iframe: true})],
 })

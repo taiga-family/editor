@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiAddonDoc],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,13 +9,15 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/1/index.html?raw'),
         'image-preview/image-preview.template.html':
             import('./examples/1/image-preview/image-preview.template.html?raw'),
         'image-preview/image-preview.style.less':
             import('./examples/1/image-preview/image-preview.style.less?raw'),
-        'image-preview/image-preview.component.ts':
-            import('./examples/1/image-preview/image-preview.component.ts?raw'),
+        'image-preview/image-preview.component.ts': import(
+            './examples/1/image-preview/image-preview.component.ts?raw',
+            {with: {loader: 'text'}}
+        ),
     };
 }

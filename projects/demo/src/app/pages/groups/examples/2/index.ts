@@ -10,7 +10,6 @@ import {
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -20,7 +19,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>

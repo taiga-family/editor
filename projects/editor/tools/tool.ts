@@ -3,8 +3,9 @@ import {
     computed,
     DestroyRef,
     Directive,
+    effect,
     inject,
-    Input,
+    input,
     type OnInit,
     signal,
 } from '@angular/core';
@@ -32,11 +33,9 @@ import {TuiToolbarButtonTool} from './tool-button';
 
 @Directive()
 export abstract class TuiToolbarTool implements OnInit {
-    private editorInstance: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
-
-    private readonly editor$ = new BehaviorSubject(this.editorInstance);
+    private readonly editor$ = new BehaviorSubject<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
     protected readonly cd = inject(ChangeDetectorRef);
     protected readonly destroy$ = inject(DestroyRef);
@@ -47,6 +46,10 @@ export abstract class TuiToolbarTool implements OnInit {
     protected readonly readOnly = signal(false);
     protected readonly activeOnly = signal(false);
     protected readonly isFocused = signal(false);
+
+    protected readonly editorEffect = effect(() => {
+        this.editor$.next(this.editor());
+    });
 
     protected readonly disabled = tuiDirectiveBinding(
         TuiToolbarButtonTool,
@@ -78,6 +81,8 @@ export abstract class TuiToolbarTool implements OnInit {
         !this.isMobile && null,
     );
 
+    public readonly editor = input<AbstractTuiEditor | null>(this.editor$.value);
+
     protected getDisableState?(): boolean;
 
     protected isActive?(): boolean;
@@ -86,25 +91,15 @@ export abstract class TuiToolbarTool implements OnInit {
 
     protected abstract getHint(options?: TuiLanguageEditor['toolbarTools']): string;
 
-    @Input()
-    public set editor(editor: AbstractTuiEditor | null) {
-        this.editorInstance = editor;
-        this.editor$.next(editor);
-    }
-
-    public get editor(): AbstractTuiEditor | null {
-        return this.editorInstance;
-    }
-
     public ngOnInit(): void {
         this.editor$
             .pipe(
                 distinctUntilChanged(),
-                switchMap((editor) => {
+                switchMap((editorItem) => {
                     this.updateSignals();
 
-                    return editor
-                        ? editor.valueChange$.pipe(
+                    return editorItem
+                        ? editorItem.valueChange$.pipe(
                               startWith(null),
                               shareReplay({bufferSize: 1, refCount: true}),
                               takeUntilDestroyed(this.destroy$),
@@ -118,7 +113,7 @@ export abstract class TuiToolbarTool implements OnInit {
     }
 
     protected updateSignals(): void {
-        this.isFocused.set(this.editor?.isFocused ?? false);
+        this.isFocused.set(this.editor()?.isFocused ?? false);
         this.readOnly.set(this.getDisableState?.() ?? false);
         this.activeOnly.set(this.isActive?.() ?? false);
 

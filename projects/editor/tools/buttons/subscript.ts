@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.toggleSubscript()'},
+    host: {'(click)': 'editor()?.toggleSubscript()'},
 })
 export class TuiSubscriptButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('subscript') ?? false;
+        return this.editor()?.isActive('subscript') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

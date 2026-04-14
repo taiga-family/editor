@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiBoldButtonTool,
@@ -23,7 +22,7 @@ import {
         TuiUnderlineButtonTool,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({

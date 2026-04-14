@@ -13,7 +13,6 @@ import {TuiAccordion} from '@taiga-ui/experimental';
 import {ImagePreviewExample} from './image-preview/image-preview.component';
 
 @Component({
-    standalone: true,
     imports: [
         ImagePreviewExample,
         ReactiveFormsModule,

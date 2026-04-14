@@ -12,7 +12,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {ExampleTuiFontSizeTool} from './font-size-tool';
 
 @Component({
-    standalone: true,
     imports: [
         ExampleTuiFontSizeTool,
         ReactiveFormsModule,

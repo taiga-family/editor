@@ -28,80 +28,83 @@
     <ng-template #linkEditingDropdown>
         <tui-edit-link
             [explicitOnlyLinkEdit]="true"
-            [link]="attrs['data-href'] ?? undefined"
-            (addLink)="addLink($event)"
-            (removeLink)="removeLink()"
+            [link]="attrs['data-href']"
+            (addLink)="setLink($event)"
+            (removeLink)="setLink(null)"
             (tuiActiveZoneChange)="onEditLinkActiveZoneChange($event)"
         />
     </ng-template>
 
-    <div
-        *ngIf="editor.isEditable"
-        tuiDropdownAlign="right"
-        tuiDropdownAppearance="editor-image-options"
-        tuiDropdownDirection="bottom"
-        tuiDropdownLimitWidth="auto"
-        class="t-image-buttons"
-        [class._open]="isAlignDropdownOpened"
-        [tuiDropdown]="list"
-        [tuiDropdownEnabled]="editor.isEditable"
-        [(tuiDropdownOpen)]="isAlignDropdownOpened"
-    >
-        <button
-            #tuiDropdownHost
-            appearance="flat"
-            size="xs"
-            tuiIconButton
-            type="button"
-            [iconStart]="options.icons.imageExtension.settings"
-            (click)="toggleAlignDropdown($event)"
+    @if (editor.isEditable) {
+        <div
+            tuiDropdownAlign="right"
+            tuiDropdownAppearance="editor-image-options"
+            tuiDropdownDirection="bottom"
+            tuiDropdownLimitWidth="auto"
+            class="t-image-buttons"
+            [class._open]="isAlignDropdownOpened"
+            [tuiDropdown]="list"
+            [tuiDropdownEnabled]="editor.isEditable"
+            [tuiDropdownMinHeight]="0"
+            [(tuiDropdownOpen)]="isAlignDropdownOpened"
         >
-            Image align
-        </button>
+            <button
+                appearance="flat"
+                size="xs"
+                tuiIconButton
+                type="button"
+                [iconStart]="options.icons.imageExtension.settings"
+                (click)="toggleAlignDropdown($event)"
+            >
+                Image align
+            </button>
 
+            @if (supportLinkExtension) {
+                <button
+                    appearance="flat"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                    [disabled]="isLinkDropdownOpened"
+                    [iconStart]="options.icons.imageExtension.link"
+                    (click)="editLink($event)"
+                >
+                    Image link
+                </button>
+            }
+
+            <ng-template #list>
+                <tui-image-align-list
+                    [style]="style"
+                    (updateAlignStyles)="align($event); isAlignDropdownOpened = false"
+                />
+            </ng-template>
+        </div>
+    }
+
+    @if (attrs['data-href']; as href) {
         <button
-            *ngIf="supportLinkExtension"
-            appearance="flat"
-            size="xs"
-            tuiIconButton
+            appearance="reference"
+            size="s"
+            tuiButton
             type="button"
             [disabled]="isLinkDropdownOpened"
-            [iconStart]="options.icons.imageExtension.link"
-            (click)="editLink($event)"
+            [iconStart]="options.icons.imageExtension.previewLink"
+            (click)="openLink(href)"
         >
-            Image link
+            @if (containerWidth >= 170) {
+                <div class="t-link-href">
+                    {{ href }}
+                </div>
+            }
+
+            @if (containerWidth >= 170) {
+                <tui-icon
+                    class="t-link-preview-edit"
+                    [icon]="options.icons.imageExtension.previewEditLink"
+                    (click)="$event.stopPropagation(); editLink($event)"
+                />
+            }
         </button>
-
-        <ng-template #list>
-            <tui-image-align-list
-                [style]="style"
-                (updateAlignStyles)="align($event); isAlignDropdownOpened = false"
-            />
-        </ng-template>
-    </div>
-
-    <button
-        *ngIf="attrs['data-href'] as href"
-        appearance="reference"
-        size="s"
-        tuiButton
-        type="button"
-        [disabled]="isLinkDropdownOpened"
-        [iconStart]="options.icons.imageExtension.previewLink"
-        (click)="openLink(href)"
-    >
-        <div
-            *ngIf="containerWidth >= 170"
-            class="t-link-href"
-        >
-            {{ href }}
-        </div>
-
-        <tui-icon
-            *ngIf="containerWidth >= 170"
-            class="t-link-preview-edit"
-            [icon]="options.icons.imageExtension.previewEditLink"
-            (click.self)="editLink($event)"
-        />
-    </button>
+    }
 </tui-editor-resizable>

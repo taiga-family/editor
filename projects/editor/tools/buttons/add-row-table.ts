@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiDataList,
@@ -24,27 +24,27 @@ export const TuiTableCommands = {
 } as const;
 
 @Component({
-    standalone: true,
     selector: 'button[tuiAddRowTableTool]',
-    imports: [AsyncPipe, NgForOf, TuiDataList, TuiOptGroup, TuiOption, TuiTextfield],
+    imports: [AsyncPipe, TuiDataList, TuiOptGroup, TuiOption, TuiTextfield],
     template: `
         {{ tuiHint() }}
 
         <ng-container *tuiTextfieldDropdown>
             <tui-data-list>
-                <tui-opt-group
-                    *ngFor="let group of tableCommandTexts$ | async; let i = index"
-                >
-                    <!-- TODO: remove "magic" numbers i*2+@Directive({standalone: true, and make code more readable-->
-                    <button
-                        *ngFor="let item of group; let j = index"
-                        tuiOption
-                        type="button"
-                        (click)="onTableOption(i * 2 + j)"
-                    >
-                        {{ item }}
-                    </button>
-                </tui-opt-group>
+                @for (group of tableCommandTexts$ | async; track group; let i = $index) {
+                    <tui-opt-group>
+                        <!-- TODO: remove "magic" numbers i*2+@Directive({standalone: true, and make code more readable-->
+                        @for (item of group; track item; let j = $index) {
+                            <button
+                                tuiOption
+                                type="button"
+                                (click)="onTableOption(i * 2 + j)"
+                            >
+                                {{ item }}
+                            </button>
+                        }
+                    </tui-opt-group>
+                }
             </tui-data-list>
         </ng-container>
     `,
@@ -55,7 +55,7 @@ export class TuiAddRowTableButtonTool extends TuiToolbarTool {
     protected readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
 
     protected override getDisableState(): boolean {
-        return !(this.editor?.isActive('table') ?? false);
+        return !(this.editor()?.isActive('table') ?? false);
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
@@ -68,12 +68,12 @@ export class TuiAddRowTableButtonTool extends TuiToolbarTool {
 
     protected onTableOption(command: number): void {
         const registry: Record<number, () => void> | null = {
-            [TuiTableCommands.InsertColumnAfter]: () => this.editor?.addColumnAfter(),
-            [TuiTableCommands.InsertColumnBefore]: () => this.editor?.addColumnBefore(),
-            [TuiTableCommands.InsertRowAfter]: () => this.editor?.addRowAfter(),
-            [TuiTableCommands.InsertRowBefore]: () => this.editor?.addRowBefore(),
-            [TuiTableCommands.DeleteColumn]: () => this.editor?.deleteColumn(),
-            [TuiTableCommands.DeleteRow]: () => this.editor?.deleteRow(),
+            [TuiTableCommands.InsertColumnAfter]: () => this.editor()?.addColumnAfter(),
+            [TuiTableCommands.InsertColumnBefore]: () => this.editor()?.addColumnBefore(),
+            [TuiTableCommands.InsertRowAfter]: () => this.editor()?.addRowAfter(),
+            [TuiTableCommands.InsertRowBefore]: () => this.editor()?.addRowBefore(),
+            [TuiTableCommands.DeleteColumn]: () => this.editor()?.deleteColumn(),
+            [TuiTableCommands.DeleteRow]: () => this.editor()?.deleteRow(),
         };
 
         registry[command]?.();

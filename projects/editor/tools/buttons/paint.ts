@@ -1,11 +1,11 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
-    Input,
+    input,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -18,33 +18,30 @@ import {
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiPaintTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfield],
+    imports: [TuiPaletteModule, TuiTextfield],
     template: `
         {{ tuiHint() }}
 
         <ng-container *tuiTextfieldDropdown>
             <tui-palette
                 tuiPalette
-                [colors]="colors"
+                [colors]="colors()"
                 (selectedColor)="setCellColor($event)"
             />
         </ng-container>
 
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getCellColor() ?? editor?.getGroupColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
+        @if (!isBlankColor()) {
+            <div
+                tuiPlate
+                [style.background]="editor()?.getCellColor() ?? editor()?.getGroupColor()"
+            ></div>
+        }
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
@@ -54,13 +51,16 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @Input()
-    public colors = this.options.backgroundColors ?? this.options.colors;
+    public readonly colors = input(this.options.backgroundColors ?? this.options.colors);
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
+
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
 
     protected override isActive(): boolean {
         return !this.isBlankColor();
@@ -68,8 +68,8 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
 
     protected override getDisableState(): boolean {
         return !(
-            this.editor?.isActive('table') ??
-            this.editor?.isActive('group') ??
+            this.editor()?.isActive('table') ??
+            this.editor()?.isActive('group') ??
             false
         );
     }
@@ -81,16 +81,16 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
         return this.open()
             ? ''
-            : (this.editor?.isActive('group') && (texts?.hiliteGroup ?? '')) ||
-                  (this.editor?.isActive('table') && (texts?.cellColor ?? '')) ||
+            : (this.editor()?.isActive('group') && (texts?.hiliteGroup ?? '')) ||
+                  (this.editor()?.isActive('table') && (texts?.cellColor ?? '')) ||
                   '';
     }
 
     protected setCellColor(color: string): void {
-        if (this.editor?.isActive('group')) {
-            this.editor.setGroupHilite(color);
-        } else if (this.editor?.isActive('table')) {
-            this.editor.setCellColor(color);
+        if (this.editor()?.isActive('group')) {
+            this.editor()?.setGroupHilite(color);
+        } else if (this.editor()?.isActive('table')) {
+            this.editor()?.setCellColor(color);
         }
     }
 
@@ -99,6 +99,6 @@ export class TuiPaintButtonTool extends TuiToolbarTool {
     }
 
     protected getColor(): string {
-        return this.editor?.getCellColor() ?? this.editor?.getGroupColor() ?? '';
+        return this.editor()?.getCellColor() ?? this.editor()?.getGroupColor() ?? '';
     }
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
@@ -6,16 +6,14 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'youtube-tool',
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
     templateUrl: './youtube-tool.template.html',
-    styleUrls: ['./youtube-tool.styles.less'],
+    styleUrl: './youtube-tool.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiYoutubeTool {
-    @ViewChild('dropdown')
-    private readonly dropdown?: any;
+    private readonly dropdown = viewChild.required<any>('dropdown');
 
     private readonly editor = inject(TuiTiptapEditorService);
 
@@ -36,7 +34,7 @@ export class ExampleTuiYoutubeTool {
             this.editor.setYoutubeVideo({src, width: '100%'});
 
             this.url = '';
-            this.dropdown?.close();
+            this.dropdown().close();
         }
     }
 }

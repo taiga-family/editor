@@ -3,7 +3,7 @@ import {
     Component,
     EventEmitter,
     inject,
-    Input,
+    input,
     Output,
 } from '@angular/core';
 import {
@@ -17,23 +17,21 @@ import {TuiAttachButtonTool} from '@taiga-ui/editor/tools';
  * @deprecated use {@link TuiAttachButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-attach-tool',
     imports: [TuiAttachButtonTool],
     template: `
         <button
             tuiAttachTool
-            [editor]="editor"
+            [editor]="editor()"
             (fileAttached)="fileAttached.emit($event)"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiAttachTool {
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
     @Output()
     public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();

@@ -5,7 +5,6 @@ import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {CustomColorPicker} from './custom-color-picker';
 
 @Component({
-    standalone: true,
     imports: [CustomColorPicker, ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

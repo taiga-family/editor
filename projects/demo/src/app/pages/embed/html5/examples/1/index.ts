@@ -5,7 +5,7 @@ import {
     inject,
     Injectable,
     PLATFORM_ID,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
@@ -33,7 +33,6 @@ export class HttpMockUploader {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -43,7 +42,7 @@ export class HttpMockUploader {
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({
@@ -57,7 +56,11 @@ export class HttpMockUploader {
             useFactory:
                 (uploader: HttpMockUploader) =>
                 ([file]: File[]): Observable<
-                    ReadonlyArray<TuiEditorAttachedFile<{type: string}>>
+                    ReadonlyArray<
+                        TuiEditorAttachedFile<{
+                            type: string;
+                        }>
+                    >
                 > => {
                     if (!file) {
                         return of([]);
@@ -72,9 +75,7 @@ export class HttpMockUploader {
                             {
                                 // Do not return base64 instead of link to binary
                                 // because it's bad idea for your performance
-
                                 link,
-
                                 name: file.name,
                                 attrs: {type: file.type},
                             },
@@ -96,8 +97,7 @@ export class HttpMockUploader {
     },
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    private readonly wysiwyg?: TuiEditor;
+    private readonly wysiwyg = viewChild.required(TuiEditor);
 
     private readonly sanitizer = inject(DomSanitizer);
     private readonly isNotStatic =
@@ -139,8 +139,8 @@ export default class Example {
     protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
         const tag = (file?.attrs?.type ?? '').split('/')[0];
 
-        this.wysiwyg?.editor
-            ?.getOriginTiptapEditor()
+        this.wysiwyg()
+            .editor?.getOriginTiptapEditor()
             ?.commands.insertContent(
                 `<${tag} controls width="100%"><source src="${file?.link}" type="${file?.attrs?.type}"></${tag}><p><a href="${file?.link}" download="${file?.name}">Download ${file?.name}</a></p>`,
             );

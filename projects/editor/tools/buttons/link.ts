@@ -18,14 +18,14 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiLinkButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('link') ?? false;
+        return this.editor()?.isActive('link') ?? false;
     }
 
     protected override getDisableState(): boolean {
         return (
-            (this.editor?.isActive('link') ?? false) ||
-            (this.editor?.isActive('jumpAnchor') ?? false) ||
-            (this.editor?.isActive('image', {'data-editing-href': true}) ?? false)
+            (this.editor()?.isActive('link') ?? false) ||
+            (this.editor()?.isActive('jumpAnchor') ?? false) ||
+            (this.editor()?.isActive('image', {'data-editing-href': true}) ?? false)
         );
     }
 
@@ -38,7 +38,7 @@ export class TuiLinkButtonTool extends TuiToolbarTool {
     }
 
     protected onLink(url?: string): void {
-        this.editor?.takeSelectionSnapshot();
-        this.editor?.toggleLink(url ?? '');
+        this.editor()?.takeSelectionSnapshot();
+        this.editor()?.toggleLink(url ?? '');
     }
 }

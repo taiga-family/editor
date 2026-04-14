@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.onAlign("justify")'},
+    host: {'(click)': 'editor()?.onAlign("justify")'},
 })
 export class TuiAlignJustifyButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive({textAlign: 'justify'}) ?? false;
+        return this.editor()?.isActive({textAlign: 'justify'}) ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

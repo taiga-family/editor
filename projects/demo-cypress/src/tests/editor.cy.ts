@@ -4,7 +4,6 @@ import {TuiRoot} from '@taiga-ui/core';
 import {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiEditor, TuiRoot],
     template: `
         <tui-root>

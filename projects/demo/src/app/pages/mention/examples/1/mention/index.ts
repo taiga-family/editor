@@ -1,12 +1,11 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     EventEmitter,
-    Input,
+    input,
     Output,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
@@ -19,9 +18,8 @@ export interface User {
 }
 
 @Component({
-    standalone: true,
     selector: 'mentions',
-    imports: [NgForOf, TuiAvatar, TuiDataList, TuiInitialsPipe],
+    imports: [TuiAvatar, TuiDataList, TuiInitialsPipe],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -30,8 +28,7 @@ export interface User {
     },
 })
 export class Mentions {
-    @ViewChild('container', {read: ElementRef})
-    protected container?: ElementRef<HTMLDivElement>;
+    protected readonly container = viewChild.required('container', {read: ElementRef});
 
     protected readonly items: readonly User[] = [
         {
@@ -46,8 +43,7 @@ export class Mentions {
         },
     ];
 
-    @Input()
-    public mentionSuggestions?: string;
+    public readonly mentionSuggestions = input<string>();
 
     @Output()
     public readonly setMention = new EventEmitter<User>();
@@ -73,6 +69,6 @@ export class Mentions {
     }
 
     private get el(): HTMLDivElement | null {
-        return this.container?.nativeElement ?? null;
+        return this.container().nativeElement ?? null;
     }
 }

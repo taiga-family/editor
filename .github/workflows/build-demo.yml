@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@v1.200.0
       - uses: taiga-family/ci/actions/setup/node@v1.200.0
-      - run: npx nx prerender editor-demo
+      - run: npx nx build editor-demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
 
 concurrency:

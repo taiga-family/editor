@@ -11,7 +11,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {type Node} from '@tiptap/pm/model';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,

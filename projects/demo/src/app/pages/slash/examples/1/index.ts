@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +5,7 @@ import {
     ElementRef,
     inject,
     type OnInit,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -30,9 +29,7 @@ interface MyCommand {
 }
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiDataList,
@@ -53,11 +50,11 @@ interface MyCommand {
 export default class Example implements OnInit {
     private readonly destroy$ = inject(DestroyRef);
 
-    @ViewChild(TuiEditor, {static: true})
-    protected readonly wysiwyg?: TuiEditor;
+    protected readonly wysiwyg = viewChild.required(TuiEditor);
 
-    @ViewChild(TuiDataListComponent, {read: ElementRef})
-    protected datalist?: ElementRef<HTMLDivElement>;
+    protected readonly datalist = viewChild.required(TuiDataListComponent, {
+        read: ElementRef,
+    });
 
     protected readonly isE2E = inject(TUI_IS_E2E);
 
@@ -84,18 +81,18 @@ export default class Example implements OnInit {
         this.control.valueChanges
             .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() => {
-                const isLinkSelected = !!this.wysiwyg?.isLinkSelected;
-                const isMentionMode = !!this.wysiwyg?.isMentionMode;
-                const hasSlash = !!this.wysiwyg?.selectionState.before.startsWith('/');
+                const isLinkSelected = this.wysiwyg().isLinkSelected;
+                const isMentionMode = this.wysiwyg().isMentionMode;
+                const hasSlash = this.wysiwyg().selectionState.before.startsWith('/');
 
                 this.open = isMentionMode || isLinkSelected ? false : hasSlash;
             });
     }
 
     protected get suggestion(): string {
-        const before = this.wysiwyg?.selectionState.before;
+        const before = this.wysiwyg().selectionState.before;
 
-        return before?.startsWith('/') && before.length > 1
+        return before.startsWith('/') && before.length > 1
             ? before.replace('/', '') || ''
             : '';
     }
@@ -118,7 +115,7 @@ export default class Example implements OnInit {
     }
 
     protected command(command: MyCommand): void {
-        const editor = this.wysiwyg?.editor?.getOriginTiptapEditor();
+        const editor = this.wysiwyg().editor?.getOriginTiptapEditor();
 
         if (!editor) {
             return;
@@ -149,6 +146,6 @@ export default class Example implements OnInit {
     }
 
     private get el(): HTMLDivElement | null {
-        return this.datalist?.nativeElement ?? null;
+        return this.datalist().nativeElement ?? null;
     }
 }

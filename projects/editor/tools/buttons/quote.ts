@@ -13,16 +13,16 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool],
     host: {
         '[attr.automation-id]': '"toolbar__quote-button"',
-        '(click)': 'editor?.toggleBlockquote()',
+        '(click)': 'editor()?.toggleBlockquote()',
     },
 })
 export class TuiBlockquoteButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('blockquote') ?? false;
+        return this.editor()?.isActive('blockquote') ?? false;
     }
 
     protected override getDisableState(): boolean {
-        return this.editor?.isActive('blockquote') ?? false;
+        return this.editor()?.isActive('blockquote') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

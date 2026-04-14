@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.toggleStrike()'},
+    host: {'(click)': 'editor()?.toggleStrike()'},
 })
 export class TuiStrikeButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('strike') ?? false;
+        return this.editor()?.isActive('strike') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

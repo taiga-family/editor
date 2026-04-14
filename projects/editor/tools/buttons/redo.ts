@@ -13,12 +13,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool],
     host: {
         '[attr.automation-id]': '"toolbar__redo-button"',
-        '(click)': 'editor?.redo()',
+        '(click)': 'editor()?.redo()',
     },
 })
 export class TuiRedoButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
-        return this.editor?.redoDisabled() ?? false;
+        return this.editor()?.redoDisabled() ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

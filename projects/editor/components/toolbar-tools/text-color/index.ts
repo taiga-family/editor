@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {type AbstractTuiEditor, TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
@@ -7,14 +7,13 @@ import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
  * @deprecated use {@link TuiTextColorButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-text-color,tui-text-color-tool',
     imports: [TuiTextColorButtonTool],
     template: `
         <button
             tuiTextColorTool
-            [colors]="colors"
-            [editor]="editor"
+            [colors]="colors()"
+            [editor]="editor()"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,13 +21,11 @@ import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
 export class TuiTextColorTool {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Input()
-    public colors = this.options.textColors ?? this.options.colors;
+    public readonly colors = input(this.options.textColors ?? this.options.colors);
 
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 }
 
 /**

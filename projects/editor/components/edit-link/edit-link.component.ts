@@ -1,12 +1,13 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     inject,
-    Input,
+    input,
     type OnInit,
     Output,
+    signal,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -34,13 +35,10 @@ import {TuiShortUrlPipe} from './pipes/short-url.pipe';
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
 @Component({
-    standalone: true,
     selector: 'tui-edit-link',
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAutoFocus,
         TuiButton,
         TuiFilterAnchorsPipe,
@@ -50,7 +48,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
         TuiShortUrlPipe,
     ],
     templateUrl: './edit-link.template.html',
-    styleUrls: ['./edit-link.style.less'],
+    styleUrl: './edit-link.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         /**
@@ -73,27 +71,27 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
     },
 })
 export class TuiEditLink implements OnInit {
-    private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     private readonly doc =
         inject<{document: Partial<Document> | undefined} | undefined>(WA_WINDOW)
             ?.document ?? null;
 
-    private isOnlyAnchorMode = this.detectAnchorMode();
+    protected isOnlyAnchorMode = this.detectAnchorMode();
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected url = this.getHrefOrAnchorId();
     protected edit = !this.url;
     protected prefix: TuiEditorLinkPrefix | undefined = this.makeDefaultPrefix();
-    protected anchorIds = this.getAllAnchorsIds();
+
     protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
-    @Input('editor')
-    public inputEditor: AbstractTuiEditor | null = null;
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
-    @Input()
-    public link?: string;
+    public readonly anchorIds = this.getAllAnchorsIds();
 
-    @Input()
-    public explicitOnlyLinkEdit = false;
+    public readonly link = input<string | null | undefined>(undefined);
+
+    public readonly explicitOnlyLinkEdit = input(false);
 
     @Output()
     public readonly addLink = new EventEmitter<string>();
@@ -101,25 +99,27 @@ export class TuiEditLink implements OnInit {
     @Output()
     public readonly removeLink = new EventEmitter<void>();
 
-    @Input()
-    public set anchorMode(mode: boolean) {
-        this.isOnlyAnchorMode = mode;
-        this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();
-    }
-
-    public get anchorMode(): boolean {
-        return this.isOnlyAnchorMode;
-    }
+    public readonly anchorMode = input<boolean>(false);
+    public readonly hasAnchorMode = signal<boolean>(false);
 
     public ngOnInit(): void {
-        if (this.explicitOnlyLinkEdit) {
-            this.url = this.link ? this.removePrefix(this.link) : '';
+        const mode = this.anchorMode();
+
+        // Caretaker note:
+        // anchorMode sometimes changes after component initialization,
+        // so we need to track only the initial value to determine
+        // if the component should be in anchor mode or not.
+        this.hasAnchorMode.set(mode);
+
+        this.isOnlyAnchorMode = mode;
+        this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();
+
+        if (this.explicitOnlyLinkEdit()) {
+            const link = this.link();
+
+            this.url = link ? this.removePrefix(link) : '';
             this.edit = true;
         }
-    }
-
-    protected get editor(): AbstractTuiEditor | null {
-        return this.injectionEditor ?? this.inputEditor;
     }
 
     protected get defaultProtocol(): TuiEditorLinkProtocol {
@@ -140,8 +140,8 @@ export class TuiEditLink implements OnInit {
 
     protected get showAnchorsList(): boolean {
         return (
-            !this.explicitOnlyLinkEdit &&
-            !this.anchorMode &&
+            !this.explicitOnlyLinkEdit() &&
+            !this.isOnlyAnchorMode &&
             this.edit &&
             this.anchorIds.length > 0
         );
@@ -150,7 +150,10 @@ export class TuiEditLink implements OnInit {
     protected onSelectionChange(): void {
         if (this.isViewMode) {
             this.url = this.getHrefOrAnchorId();
-            this.anchorMode = this.detectAnchorMode();
+            const mode = this.detectAnchorMode();
+
+            this.isOnlyAnchorMode = mode;
+            this.prefix = mode ? TUI_EDITOR_LINK_HASH_PREFIX : this.makeDefaultPrefix();
         }
     }
 
@@ -199,17 +202,17 @@ export class TuiEditLink implements OnInit {
     }
 
     protected onBlur(url: string): void {
-        if (this.explicitOnlyLinkEdit) {
+        if (this.explicitOnlyLinkEdit()) {
             return;
         }
 
-        const range = this.editor?.getSelectionSnapshot();
+        const range = this.editor()?.getSelectionSnapshot();
 
         if (range && !url && !this.url) {
-            this.editor?.setTextSelection({from: range.anchor, to: range.head});
+            this.editor()?.setTextSelection({from: range.anchor, to: range.head});
 
-            if (this.anchorMode) {
-                this.editor?.removeAnchor();
+            if (this.isOnlyAnchorMode) {
+                this.editor()?.removeAnchor();
             } else {
                 this.removeLink.emit();
             }
@@ -306,7 +309,7 @@ export class TuiEditLink implements OnInit {
 
     private getAllAnchorsIds(): string[] {
         const nodes: Element[] = Array.from(
-            this.editor
+            this.editor()
                 ?.getOriginTiptapEditor()
                 ?.view.dom.querySelectorAll('[data-type="jump-anchor"]') ?? [],
         );

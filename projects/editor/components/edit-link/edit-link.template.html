@@ -1,14 +1,16 @@
 <div class="t-edit-link">
-    <ng-container *ngIf="edit; else view">
+    @if (edit) {
         <label class="t-label">
             <div class="t-label-properties">
-                <ng-container *ngIf="anchorMode; else fullOptions">Edit anchor</ng-container>
-                <ng-template #fullOptions>
-                    <span *ngIf="prefixIsHashMode; else urlTitle">Link to anchor</span>
-                    <ng-template #urlTitle>
+                @if (isOnlyAnchorMode) {
+                    Edit anchor
+                } @else {
+                    @if (prefixIsHashMode) {
+                        <span>Link to anchor</span>
+                    } @else {
                         <span>URL</span>
-                    </ng-template>
-                </ng-template>
+                    }
+                }
             </div>
             <div class="t-url">
                 <div class="t-prefix">{{ prefix }}</div>
@@ -19,9 +21,9 @@
                     (keydown.backspace)="onBackspace()"
                     (keydown.prevent.enter)="onSave()"
                 >
-                    <ng-container *ngIf="texts$ | async as text">
+                    @if (texts$ | async; as text) {
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
-                    </ng-container>
+                    }
                     <input
                         tuiAutoFocus
                         [(ngModel)]="url"
@@ -50,8 +52,7 @@
             [iconStart]="options.icons.popupLinkSave"
             (mousedown)="onSave()"
         ></button>
-    </ng-container>
-    <ng-template #view>
+    } @else {
         <a
             target="_blank"
             tuiLink
@@ -82,21 +83,22 @@
             [iconStart]="options.icons.popupPreviewLinkClear"
             (click)="onRemove()"
         ></button>
-    </ng-template>
+    }
 </div>
 
-<ng-container *ngIf="showAnchorsList">
+@if (showAnchorsList) {
     <hr class="t-hr" />
     <tui-scrollbar>
         <div class="t-anchor-list">
-            <button
-                *ngFor="let id of anchorIds | tuiFilterAnchors: prefix ?? '' : url"
-                type="button"
-                class="t-anchor"
-                (mousedown)="setAnchor(id)"
-            >
-                #{{ id }}
-            </button>
+            @for (id of anchorIds | tuiFilterAnchors: prefix ?? '' : url; track id) {
+                <button
+                    type="button"
+                    class="t-anchor"
+                    (mousedown)="setAnchor(id)"
+                >
+                    #{{ id }}
+                </button>
+            }
         </div>
     </tui-scrollbar>
-</ng-container>
+}

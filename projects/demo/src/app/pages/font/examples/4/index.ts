@@ -3,7 +3,6 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiEditor],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

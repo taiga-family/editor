@@ -1,10 +1,11 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
-    Input,
+    input,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -17,13 +18,11 @@ import {
 import {EDITOR_BLANK_COLOR, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiTextColorTool]',
     imports: [TuiPaletteModule, TuiTextfield],
     template: `
@@ -32,8 +31,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
         <ng-container *tuiTextfieldDropdown>
             <tui-palette
                 tuiPalette
-                [colors]="colors"
-                (selectedColor)="editor?.setFontColor($event)"
+                [colors]="colors()"
+                (selectedColor)="editor()?.setFontColor($event)"
             />
         </ng-container>
     `,
@@ -45,16 +44,19 @@ export class TuiTextColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @Input()
-    public colors = this.options.textColors ?? this.options.colors;
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
+
+    public readonly colors = input(this.options.textColors ?? this.options.colors);
 
     protected override isActive(): boolean {
-        return this.editor?.getFontColor() !== EDITOR_BLANK_COLOR;
+        return this.editor()?.getFontColor() !== EDITOR_BLANK_COLOR;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

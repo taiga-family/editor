@@ -8,32 +8,31 @@
         "build": {
             "configurations": {
                 "development": {
-                    "baseHref": "/"
+                    "baseHref": "/",
+                    "extractLicenses": false,
+                    "optimization": false,
+                    "outputMode": "static",
+                    "server": false,
+                    "sourceMap": true,
+                    "ssr": false
                 },
                 "github": {
                     "baseHref": "/editor/"
                 },
                 "production": {
-                    "aot": true,
                     "baseHref": "./",
-                    "buildOptimizer": true,
-                    "extractLicenses": true,
                     "fileReplacements": [
                         {
                             "replace": "projects/demo/src/environments/environment.ts",
                             "with": "projects/demo/src/environments/environment.prod.ts"
                         }
-                    ],
-                    "namedChunks": false,
-                    "optimization": true,
-                    "outputHashing": "all",
-                    "sourceMap": false,
-                    "vendorChunk": false
+                    ]
                 }
             },
             "defaultConfiguration": "production",
-            "executor": "@nx/angular:webpack-browser",
+            "executor": "@nx/angular:application",
             "options": {
+                "allowedCommonJsDependencies": ["showdown"],
                 "aot": true,
                 "assets": [
                     "projects/demo/src/404.html",
@@ -49,27 +48,28 @@
                     }
                 ],
                 "baseHref": "/",
-                "buildOptimizer": false,
-                "customWebpackConfig": {
-                    "path": "projects/demo/webpack.config.ts"
-                },
-                "extractLicenses": false,
-                "index": "projects/demo/src/index.html",
+                "browser": "{projectRoot}/src/main.ts",
+                "index": "{projectRoot}/src/index.html",
                 "inlineStyleLanguage": "less",
-                "main": "projects/demo/src/main.ts",
-                "namedChunks": true,
-                "optimization": false,
-                "outputPath": "dist/demo/browser",
-                "polyfills": "projects/demo/src/polyfills.ts",
-                "scripts": [],
-                "sourceMap": true,
+                "loader": {
+                    ".html": "text",
+                    ".less": "text",
+                    ".md": "text",
+                    ".svg": "text"
+                },
+                "outputMode": "server",
+                "outputPath": "dist/demo",
+                "polyfills": ["zone.js"],
+                "server": "{projectRoot}/src/main.server.ts",
+                "ssr": {
+                    "entry": "{projectRoot}/src/server.ts"
+                },
                 "styles": [
                     "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
                     "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
                     "projects/demo/src/styles.less"
                 ],
-                "tsConfig": "projects/demo/tsconfig.app.json",
-                "vendorChunk": true
+                "tsConfig": "{projectRoot}/tsconfig.app.json"
             }
         },
         "generate-routes-file": {
@@ -77,29 +77,6 @@
             "options": {
                 "command": "ts-node ./projects/demo/server/generate-routes.ts"
             }
-        },
-        "prerender": {
-            "configurations": {
-                "development": {
-                    "browserTarget": "editor-demo:build:production,development"
-                },
-                "production": {}
-            },
-            "defaultConfiguration": "production",
-            "dependsOn": [
-                {
-                    "params": "ignore",
-                    "target": "generate-routes-file"
-                }
-            ],
-            "executor": "@nguniversal/builders:prerender",
-            "options": {
-                "browserTarget": "editor-demo:build:production,github",
-                "guessRoutes": false,
-                "routesFile": "projects/demo/server/routes.txt",
-                "serverTarget": "editor-demo:server:production"
-            },
-            "outputs": ["{workspaceRoot}/dist/demo"]
         },
         "serve": {
             "configurations": {
@@ -110,6 +87,7 @@
                     "buildTarget": "editor-demo:build:production"
                 }
             },
+            "continuous": true,
             "defaultConfiguration": "development",
             "executor": "@nx/angular:dev-server",
             "options": {
@@ -117,29 +95,6 @@
                 "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
                 "sslKey": ".ssl/localhost-key.pem"
-            }
-        },
-        "server": {
-            "configurations": {
-                "development": {},
-                "production": {
-                    "optimization": true,
-                    "outputHashing": "media",
-                    "sourceMap": false
-                }
-            },
-            "defaultConfiguration": "production",
-            "executor": "@angular-builders/custom-webpack:server",
-            "options": {
-                "customWebpackConfig": {
-                    "path": "projects/demo/server/webpack.server.config.ts"
-                },
-                "inlineStyleLanguage": "less",
-                "main": "projects/demo/server/server.ts",
-                "optimization": false,
-                "outputPath": "dist/demo/server",
-                "sourceMap": true,
-                "tsConfig": "projects/demo/tsconfig.server.json"
             }
         }
     }

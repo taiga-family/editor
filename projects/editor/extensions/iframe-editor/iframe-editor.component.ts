@@ -16,11 +16,10 @@ import {
 import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-iframe-editor',
     imports: [TuiEditorResizable],
     templateUrl: './iframe-editor.component.html',
-    styleUrls: ['./iframe-editor.component.less'],
+    styleUrl: './iframe-editor.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIframe> {

@@ -16,10 +16,9 @@ import {fileLoader} from '../1/file-loader';
 import {UploadService} from '../1/upload.service';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, ReactiveFormsModule, TuiEditor, TuiLoader, TuiToolbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({link: {protocols: ['blob']}}),

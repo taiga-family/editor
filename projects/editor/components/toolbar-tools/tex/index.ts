@@ -3,7 +3,7 @@ import {
     Component,
     EventEmitter,
     inject,
-    Input,
+    input,
     Output,
 } from '@angular/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
@@ -14,22 +14,20 @@ import {TuiTexButtonTool} from '@taiga-ui/editor/tools';
  * @deprecated use {@link TuiTexButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-tex-tool',
     imports: [TuiTexButtonTool],
     template: `
         <button
             tuiTexTool
-            [editor]="editor"
+            [editor]="editor()"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTexTool {
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
     @Output()
     public readonly texClicked = new EventEmitter<void>();

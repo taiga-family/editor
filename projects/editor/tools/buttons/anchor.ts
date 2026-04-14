@@ -16,14 +16,14 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiAnchorButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('jumpAnchor') ?? false;
+        return this.editor()?.isActive('jumpAnchor') ?? false;
     }
 
     protected override getDisableState(): boolean {
         return (
-            (this.editor?.isActive('link') ?? false) ||
-            (this.editor?.isActive('jumpAnchor') ?? false) ||
-            (this.editor?.isActive('image') ?? false)
+            (this.editor()?.isActive('link') ?? false) ||
+            (this.editor()?.isActive('jumpAnchor') ?? false) ||
+            (this.editor()?.isActive('image') ?? false)
         );
     }
 
@@ -36,13 +36,15 @@ export class TuiAnchorButtonTool extends TuiToolbarTool {
     }
 
     protected onAnchor(): void {
-        this.editor?.takeSelectionSnapshot();
+        this.editor()?.takeSelectionSnapshot();
 
-        const range = this.editor?.getSelectionSnapshot();
-        const editor = this.editor?.getOriginTiptapEditor();
+        const range = this.editor()?.getSelectionSnapshot();
+        const editor = this.editor()?.getOriginTiptapEditor();
         const {from = range?.anchor} = editor ? tuiGetCurrentWordBounds(editor) : {};
 
-        this.editor?.setAnchor('');
-        this.editor?.getOriginTiptapEditor()?.commands.focus((from ?? 0) + 1);
+        this.editor()?.setAnchor('');
+        this.editor()
+            ?.getOriginTiptapEditor()
+            ?.commands.focus((from ?? 0) + 1);
     }
 }

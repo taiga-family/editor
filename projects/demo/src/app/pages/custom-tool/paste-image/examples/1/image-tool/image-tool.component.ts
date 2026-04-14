@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
@@ -6,16 +6,14 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'image-tool',
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
     templateUrl: './image-tool.template.html',
-    styleUrls: ['./image-tool.styles.less'],
+    styleUrl: './image-tool.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiPasteImageTool {
-    @ViewChild('dropdown')
-    private readonly dropdown?: any;
+    private readonly dropdown = viewChild.required<any>('dropdown');
 
     private readonly editor = inject(TuiTiptapEditorService);
 
@@ -31,6 +29,6 @@ export class ExampleTuiPasteImageTool {
         }
 
         this.editor.setImage(src);
-        this.dropdown?.close();
+        this.dropdown()?.close();
     }
 }

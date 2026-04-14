@@ -4,10 +4,9 @@ import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiButton, TuiEditor],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideTuiEditor()],
 })

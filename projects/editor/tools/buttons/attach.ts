@@ -7,7 +7,7 @@ import {
     EventEmitter,
     inject,
     Output,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
@@ -39,14 +39,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'fileUpload?.nativeElement?.click()'},
+    host: {'(click)': 'fileUpload()?.nativeElement?.click()'},
 })
 export class TuiAttachButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
 
-    @ViewChild('fileUpload')
-    protected fileUpload?: ElementRef<HTMLInputElement>;
+    protected readonly fileUpload = viewChild<ElementRef<HTMLInputElement>>('fileUpload');
 
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
 

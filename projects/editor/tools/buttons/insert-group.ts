@@ -13,7 +13,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool],
     host: {
         '[attr.automation-id]': '"toolbar__group-add-button"',
-        '(click)': 'editor?.setGroup()',
+        '(click)': 'editor()?.setGroup()',
     },
 })
 export class TuiInsertGroupButtonTool extends TuiToolbarTool {

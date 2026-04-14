@@ -1,11 +1,12 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
     inject,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     TuiDataList,
@@ -19,28 +20,27 @@ import {
 } from '@taiga-ui/core';
 import {TUI_EDITOR_CODE_OPTIONS, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiCodeTool]',
-    imports: [AsyncPipe, NgForOf, TuiDataList, TuiOption, TuiTextfield],
+    imports: [AsyncPipe, TuiDataList, TuiOption, TuiTextfield],
     template: `
         {{ tuiHint() }}
 
         <ng-container *tuiTextfieldDropdown>
             <tui-data-list>
-                <button
-                    *ngFor="let item of codeOptionsTexts$ | async; let index = index"
-                    tuiOption
-                    type="button"
-                    (click)="onCode(!!index)"
-                >
-                    {{ item }}
-                </button>
+                @for (item of codeOptionsTexts$ | async; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        (click)="onCode(!!$index)"
+                    >
+                        {{ item }}
+                    </button>
+                }
             </tui-data-list>
         </ng-container>
     `,
@@ -52,14 +52,19 @@ export class TuiCodeButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
+
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
 
     protected override isActive(): boolean {
         return (
-            (this.editor?.isActive('code') || this.editor?.isActive('codeBlock')) ?? false
+            (this.editor()?.isActive('code') || this.editor()?.isActive('codeBlock')) ??
+            false
         );
     }
 
@@ -72,6 +77,6 @@ export class TuiCodeButtonTool extends TuiToolbarTool {
     }
 
     protected onCode(isCodeBlock: boolean): void {
-        this.editor?.[isCodeBlock ? 'toggleCodeBlock' : 'toggleCode']();
+        this.editor()?.[isCodeBlock ? 'toggleCodeBlock' : 'toggleCode']();
     }
 }

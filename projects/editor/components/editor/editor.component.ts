@@ -1,22 +1,23 @@
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     computed,
-    ContentChild,
+    contentChild,
     DestroyRef,
+    effect,
     ElementRef,
     EventEmitter,
     forwardRef,
     inject,
-    Input,
+    input,
     NgZone,
     type OnDestroy,
     Output,
     signal,
     TemplateRef,
-    ViewChild,
+    viewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -74,10 +75,8 @@ import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
 @Component({
-    standalone: true,
     selector: 'tui-editor',
     imports: [
-        NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiDropdown,
@@ -90,7 +89,7 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         TuiToolbarHost,
     ],
     templateUrl: './editor.component.html',
-    styleUrls: ['./editor.component.less'],
+    styleUrl: './editor.component.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -126,11 +125,11 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
     },
 })
 export class TuiEditor extends TuiControl<string> implements OnDestroy {
-    @ViewChild(TuiTiptapEditor, {read: ElementRef})
-    private readonly el?: ElementRef<HTMLElement>;
+    private readonly el = viewChild(TuiTiptapEditor, {read: ElementRef<HTMLDivElement>});
 
-    @ViewChild(forwardRef(() => TuiDropdownDirective))
-    private readonly ownDropdown?: TuiDropdownDirective;
+    private readonly ownDropdown = viewChild<TuiDropdownDirective>(
+        forwardRef(() => TuiDropdownDirective),
+    );
 
     private readonly contentProcessor = inject<
         TuiValueTransformer<string | null, string | null>
@@ -143,8 +142,9 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
 
-    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
-    protected dropdownContent?: TemplateRef<unknown>;
+    protected readonly dropdownContent = contentChild(TuiTextfieldDropdownDirective, {
+        read: TemplateRef,
+    });
 
     protected readonly tuiDropdown = inject(TuiDropdownOpen, {optional: true});
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -183,20 +183,15 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     /**
      * @deprecated use placeholder
      */
-    @Input()
-    public exampleText = this.options.exampleText;
+    public readonly exampleText = input(this.options.exampleText);
 
-    @Input()
-    public placeholder = this.options.placeholder;
+    public readonly placeholder = input(this.options.placeholder);
 
-    @Input()
-    public toolbar?: TemplateRef<unknown> | null = null;
+    public readonly toolbar = input<TemplateRef<unknown> | null>(null);
 
-    @Input()
-    public floatingToolbar = this.options.floatingToolbar;
+    public readonly floatingToolbar = input(this.options.floatingToolbar);
 
-    @Input()
-    public tools = this.options.tools;
+    public readonly tools = input(this.options.tools);
 
     @Output()
     public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
@@ -233,10 +228,11 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public readonly rootEl = tuiInjectElement();
     public readonly editorService = inject(TuiTiptapEditorService);
 
-    @Input('readOnly')
-    public set readOnlyMode(value: boolean) {
-        this.readOnly.set(value);
-    }
+    public readonly readOnlyMode = input<boolean>(false, {alias: 'readOnly'});
+
+    protected readonly readOnlyModeEffect = effect(() => {
+        this.readOnly.set(this.readOnlyMode());
+    });
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
@@ -244,7 +240,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public get nativeFocusableElement(): HTMLDivElement | null {
         return (
-            this.el?.nativeElement.querySelector('[contenteditable].ProseMirror') || null
+            this.el()?.nativeElement.querySelector('[contenteditable].ProseMirror') ||
+            null
         );
     }
 
@@ -297,7 +294,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             return TUI_FALSE_HANDLER;
         }
 
-        return this.floatingToolbar
+        return this.floatingToolbar()
             ? (range) =>
                   (this.value().trim() !== '' && !this.editor?.state?.selection.empty) ||
                   this.openDropdownWhen(range)
@@ -306,8 +303,14 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     protected get hasPlaceholder(): boolean {
         return (
-            !!(this.placeholder || this.exampleText) && !this.value() && !this.readOnly()
+            !!(this.placeholder() || this.exampleText()) &&
+            !this.value() &&
+            !this.readOnly()
         );
+    }
+
+    protected get isJumpAnchorSelected(): boolean {
+        return !!this.focusNode?.parentElement?.closest('[data-type="jump-anchor"]');
     }
 
     protected onModelChange(value: string | null): void {
@@ -341,7 +344,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected closeDropdown(): void {
-        this.ownDropdown?.toggle(false);
+        this.ownDropdown()?.toggle(false);
     }
 
     protected addLink(link: string): void {
@@ -402,11 +405,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private listenResizeEvents(): void {
-        if (!this.el?.nativeElement) {
+        const el = this.el()?.nativeElement;
+
+        if (!el) {
             return;
         }
 
-        fromEvent(this.el.nativeElement, TUI_EDITOR_RESIZE_EVENT)
+        fromEvent(el, TUI_EDITOR_RESIZE_EVENT)
             .pipe(
                 throttleTime(0),
                 tuiZonefree(this.zone),

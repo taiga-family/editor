@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {TuiProgress} from '@taiga-ui/kit';
@@ -7,10 +7,9 @@ import {type CharacterCountStorage} from '@tiptap/extension-character-count';
 const limit = 280;
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiEditor, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>
@@ -21,8 +20,7 @@ const limit = 280;
     ],
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    protected readonly wysiwyg?: TuiEditor;
+    protected readonly wysiwyg = viewChild.required(TuiEditor);
 
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
@@ -33,12 +31,10 @@ export default class Example {
     `);
 
     protected get characterCount(): CharacterCountStorage | null {
-        return this.wysiwyg?.editor?.getOriginTiptapEditor()?.storage.characterCount;
+        return this.wysiwyg().editor?.getOriginTiptapEditor()?.storage.characterCount;
     }
 
     protected get percentage(): number {
-        return this.wysiwyg
-            ? Math.round((100 / this.limit) * (this.characterCount?.characters() ?? 0))
-            : 0;
+        return Math.round((100 / this.limit) * (this.characterCount?.characters() ?? 0));
     }
 }

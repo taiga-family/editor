@@ -13,12 +13,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool],
     host: {
         '[attr.automation-id]': '"toolbar__group-remove-button"',
-        '(click)': 'editor?.removeGroup()',
+        '(click)': 'editor()?.removeGroup()',
     },
 })
 export class TuiRemoveGroupButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
-        return !(this.editor?.isActive('group') ?? false);
+        return !(this.editor()?.isActive('group') ?? false);
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

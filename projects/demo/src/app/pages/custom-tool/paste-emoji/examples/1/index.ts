@@ -7,10 +7,9 @@ import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {ExampleTuiSmilesTool} from './smiles-tool/smiles-tool.component';
 
 @Component({
-    standalone: true,
     imports: [ExampleTuiSmilesTool, ReactiveFormsModule, TuiEditor, TuiIcon, TuiItem],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>

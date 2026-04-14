@@ -1,4 +1,4 @@
-import {Directive, ElementRef, inject} from '@angular/core';
+import {Directive, ElementRef, forwardRef, inject} from '@angular/core';
 import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core';
 
 import {TuiEditorPortalService} from './editor-portal.service';
@@ -8,7 +8,7 @@ import {TuiEditorPortalService} from './editor-portal.service';
     selector: '[tuiEditorPortal]',
     providers: [
         {provide: TuiDropdownService, useExisting: TuiEditorPortalService},
-        tuiAsViewport(TuiEditorPortal),
+        tuiAsViewport(forwardRef(() => TuiEditorPortal)),
     ],
 })
 export class TuiEditorPortal extends TuiRectAccessor {

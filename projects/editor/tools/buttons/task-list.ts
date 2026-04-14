@@ -11,13 +11,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor?.toggleTaskList()',
+        '(click)': 'editor()?.toggleTaskList()',
         '[attr.automation-id]': '"toolbar__task-list-button"',
     },
 })
 export class TuiTaskListButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('taskList') ?? false;
+        return this.editor()?.isActive('taskList') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
