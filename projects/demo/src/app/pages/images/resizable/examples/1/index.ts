@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -18,6 +19,7 @@ import {switchMap} from 'rxjs';
     standalone: true,
     imports: [
         HttpClientModule,
+        NgIf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiEditor,

@@ -40,7 +40,7 @@ jobs:
 
       - uses: taiga-family/ci/actions/run/clone@v1.200.0
         with:
-          branch: snapshots/demo/next/${{ github.base_ref }}
+          branch: snapshots/demo/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.200.0
