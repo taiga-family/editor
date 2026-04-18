@@ -15,7 +15,14 @@
     <button [tuiAccordion]="isE2E">Text</button>
     <tui-expand>
         <ng-container *tuiItem>
-            {{ control.value }}
+            <span
+                *ngIf="!isE2E; else fallback"
+                class="code"
+            >
+                {{ control.value }}
+            </span>
+
+            <ng-template #fallback>Too heavy html code</ng-template>
         </ng-container>
     </tui-expand>
 </tui-accordion>
