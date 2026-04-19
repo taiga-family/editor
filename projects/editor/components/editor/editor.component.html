@@ -56,7 +56,7 @@
         [tuiDropdown]="dropdown"
         [tuiDropdownMinHeight]="64"
         [tuiToolbarDropdown]="dropdownSelectionHandler"
-        [tuiToolbarDropdownPosition]="floatingToolbar ? 'selection' : 'tag'"
+        [tuiToolbarDropdownPosition]="isLinkSelected ? 'tag' : floatingToolbar ? 'selection' : 'tag'"
         (valueChange)="onModelChange($event)"
     ></div>
 </ng-template>
