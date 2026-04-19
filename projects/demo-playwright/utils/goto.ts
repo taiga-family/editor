@@ -1,6 +1,6 @@
 import {type Page} from '@playwright/test';
 
-import {tuiHideElement} from './hide-element';
+import {hideScrollbars} from './hide-scrollbar';
 import {tuiMockDate} from './mock-date';
 import {tuiMockImages} from './mock-images';
 import {tuiWaitForFonts} from './wait-for-fonts';
@@ -9,6 +9,7 @@ import {waitStableState} from './wait-stable-state';
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
     hideHeader?: boolean;
+    hideScrollbar?: boolean;
     hideNavigation?: boolean;
     enableNightMode?: boolean;
 }
@@ -19,6 +20,7 @@ export async function tuiGoto(
     {
         date = new Date(2020, 8, 25, 19, 19),
         hideHeader = true,
+        hideScrollbar = true,
         hideNavigation = true,
         enableNightMode = false,
         ...playwrightGotoOptions
@@ -63,10 +65,8 @@ export async function tuiGoto(
         }
     }
 
-    const bars = await page.locator('tui-scroll-controls .t-bar').all();
-
-    for (const bar of bars) {
-        await tuiHideElement(bar);
+    if (hideScrollbar) {
+        await hideScrollbars(page);
     }
 
     return response;

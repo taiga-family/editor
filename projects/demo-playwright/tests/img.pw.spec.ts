@@ -2,32 +2,46 @@ import {expect, type Page, test} from '@playwright/test';
 
 import {TuiDemoPath} from '../../demo/src/app/shared/routes';
 import {HTML_BASE64_IMG} from '../stubs/html';
-import {tuiGoto} from '../utils';
+import {TuiEditorPO, tuiGoto} from '../utils';
+
+async function openAlignDropdown(page: Page): Promise<void> {
+    const editor = new TuiEditorPO(page.locator('tui-editor'));
+
+    await editor.host.locator('tui-image-editor').hover();
+    await page.getByRole('button', {name: 'Image align'}).click();
+}
 
 test.describe('Img', () => {
     test('base64', async ({page}) => {
         await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=${HTML_BASE64_IMG}`);
-        await page.locator('[contenteditable]').first().focus();
 
-        await expect
-            .soft(page.locator('#demo-content tui-editor'))
-            .toHaveScreenshot('Img-01.png');
+        const editor = new TuiEditorPO(page.locator('#demo-content tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
+
+        await expect.soft(editor.host).toHaveScreenshot('Img-01.png');
     });
 
     test('preview display of images', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.ImagesPreview);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-02.png');
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+
+        await editor.contenteditable();
+        await expect.soft(editor.host).toHaveScreenshot('Img-02.png');
     });
 
     test('resizable image', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
         const locator = page.locator('.t-handle-right-side');
         const box = await locator.boundingBox();
         const resizableImage = page.locator('[id="resizable-image"] .t-demo');
 
-        await page.locator('tui-editor-resizable').hover();
+        await contenteditable.locator('tui-editor-resizable').hover();
         await locator.hover();
         await page.mouse.move(
             (box?.x ?? 0) + (box?.width ?? 0) / 2,
@@ -54,81 +68,103 @@ test.describe('Img', () => {
     test('image as link', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
-        const editor = page.locator('tui-editor');
-        const img = editor.locator('tui-image-editor');
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const img = editor.host.locator('tui-image-editor');
 
+        await editor.contenteditable();
         await img.click();
-        await expect.soft(editor).toHaveScreenshot('Img-05.png');
+        await expect.soft(editor.host).toHaveScreenshot('Img-05.png');
 
-        await editor.locator('[automation-id="toolbar__link-button"]').click();
-        await expect.soft(editor).toHaveScreenshot('Img-06.png');
+        await editor.host.locator('[automation-id="toolbar__link-button"]').click();
+        await expect.soft(editor.host).toHaveScreenshot('Img-06.png');
 
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
-        await expect.soft(editor).toHaveScreenshot('Img-07.png');
+        await img.waitFor({state: 'attached'});
+        await page.mouse.click(0, 0);
+        await expect.soft(editor.host).toHaveScreenshot('Img-07.png');
 
         await page.locator('body').click({position: {x: 0, y: 0}});
+        await img.waitFor({state: 'visible'});
         await img.click();
-        await expect.soft(editor).toHaveScreenshot('Img-08.png');
+        await expect.soft(editor.host).toHaveScreenshot('Img-08.png');
     });
 
     test('image options toolbar appears below image on hover', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
-        const editor = page.locator('tui-editor');
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
 
-        await editor.locator('tui-image-editor').hover();
-        await expect.soft(editor).toHaveScreenshot('Img-09.png');
+        await editor.contenteditable();
+        await editor.host.locator('tui-image-editor').hover();
+        await expect.soft(editor.host).toHaveScreenshot('Img-09.png');
 
         await page.getByRole('button', {name: 'Image align'}).click();
-        await expect.soft(editor).toHaveScreenshot('Img-14.png');
+        await expect.soft(editor.host).toHaveScreenshot('Img-14.png');
     });
 
     test.describe('image alignment', () => {
-        // TODO: move it to PageObject
-        async function openAlignDropdown(page: Page): Promise<void> {
-            await page.locator('tui-editor tui-image-editor').hover();
-            await page.getByRole('button', {name: 'Image align'}).click();
-        }
-
         test('float left', async ({page}) => {
             await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
+            const editor = new TuiEditorPO(page.locator('tui-editor'));
+
             await openAlignDropdown(page);
             await page.getByRole('button', {name: 'Align left'}).click();
+            await page
+                .getByRole('button', {name: 'Align left'})
+                .waitFor({state: 'hidden'});
 
-            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-10.png');
+            await expect.soft(editor.host).toHaveScreenshot('Img-10.png');
         });
 
         test('float right', async ({page}) => {
             await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
+            const editor = new TuiEditorPO(page.locator('tui-editor'));
+
             await openAlignDropdown(page);
             await page.getByRole('button', {name: 'Align right'}).click();
+            await page
+                .getByRole('button', {name: 'Align right'})
+                .waitFor({state: 'hidden'});
 
-            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-11.png');
+            await expect.soft(editor.host).toHaveScreenshot('Img-11.png');
         });
 
         test('center', async ({page}) => {
             await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
+            const editor = new TuiEditorPO(page.locator('tui-editor'));
+
             await openAlignDropdown(page);
             await page.getByRole('button', {name: 'Align center'}).click();
+            await page
+                .getByRole('button', {name: 'Align center'})
+                .waitFor({state: 'hidden'});
 
-            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-12.png');
+            await expect.soft(editor.host).toHaveScreenshot('Img-12.png');
         });
 
         test('reset to default (justify)', async ({page}) => {
             await tuiGoto(page, TuiDemoPath.ImagesResizable);
 
+            const editor = new TuiEditorPO(page.locator('tui-editor'));
+
             await openAlignDropdown(page);
             await page.getByRole('button', {name: 'Align left'}).click();
+            await page
+                .getByRole('button', {name: 'Align left'})
+                .waitFor({state: 'hidden'});
 
-            await page.locator('tui-editor tui-image-editor').hover();
+            await editor.host.locator('tui-image-editor').hover();
             await page.getByRole('button', {name: 'Image align'}).click();
             await page.getByRole('button', {name: 'Justify align'}).click();
+            await page
+                .getByRole('button', {name: 'Justify align'})
+                .waitFor({state: 'hidden'});
 
-            await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Img-13.png');
+            await expect.soft(editor.host).toHaveScreenshot('Img-13.png');
         });
     });
 });
