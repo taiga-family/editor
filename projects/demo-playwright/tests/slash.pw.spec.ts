@@ -1,13 +1,16 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {TuiEditorPO, tuiGoto} from '../utils';
 
 test.describe('Slash', () => {
     test('show commands', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.SlashCommand);
 
-        await page.locator('[contenteditable]').first().focus();
+        const editor = new TuiEditorPO(page.locator('tui-editor').first());
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
         await page.keyboard.type('/');
         await expect.soft(page).toHaveScreenshot('Slash-01.png');
     });
@@ -15,13 +18,14 @@ test.describe('Slash', () => {
     test('show link dropdown and commands', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.SlashCommand);
 
-        const editor = page.locator('[contenteditable]').first();
+        const editor = new TuiEditorPO(page.locator('tui-editor').first());
+        const contenteditable = await editor.contenteditable();
 
-        await editor.focus();
+        await contenteditable.focus();
         await page.keyboard.type('ABC');
-        await editor.selectText();
-        await page.getByTestId('toolbar__link-button').click();
-        await page.waitForTimeout(300);
+        await contenteditable.selectText();
+        await page.getByTestId('toolbar__link-button').focus();
+        await page.keyboard.press('Enter');
 
         await expect
             .soft(page.locator('.t-demo').first())
@@ -29,22 +33,29 @@ test.describe('Slash', () => {
 
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
 
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-03.png');
 
-        await editor.click();
-        await page.keyboard.press('End');
-        await page.keyboard.press(' ');
-
+        await page.mouse.click(0, 0);
+        await contenteditable.click();
         await page.keyboard.press('Enter');
+        await page.keyboard.type('Test');
+
+        await expect
+            .soft(page.locator('.t-demo').first())
+            .toHaveScreenshot('Slash-04.png');
+
+        await page.keyboard.press('End');
+        await page.keyboard.press('Enter');
+
         await page.keyboard.type('/');
         await page.waitForTimeout(300);
 
         await expect
             .soft(page.locator('.t-demo').first())
-            .toHaveScreenshot('Slash-04.png');
+            .toHaveScreenshot('Slash-05.png');
     });
 });

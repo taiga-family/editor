@@ -2,7 +2,7 @@ import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
-import {tuiGoto} from '../utils';
+import {TuiEditorPO, tuiGoto, waitStableState} from '../utils';
 
 test.describe('Links', () => {
     test.beforeEach(async ({page}) => {
@@ -10,56 +10,59 @@ test.describe('Links', () => {
             page,
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
-        await page.locator('[contenteditable]').first().focus();
     });
 
     test('check if at least one link exists', async ({page}) => {
-        await page.locator('tui-editor a').first().click();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-01.png');
+        await contenteditable.click();
+        await editor.host.locator('a').first().scrollIntoViewIfNeeded();
+        await editor.host.locator('a').first().click();
+        // The edit-link dropdown is a portal — wait for it to stabilize separately.
+        await waitStableState(page.locator('tui-edit-link'));
+
+        await expect.soft(editor.host).toHaveScreenshot('Links-01.png');
     });
 
     test('switch links between', async ({page}) => {
-        await page.locator('tui-editor strong').first().dblclick();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
+        await contenteditable.focus();
+        await editor.host.locator('h1').first().selectText();
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
-
         await page.locator('tui-input-inline input').first().focus();
-        await page.waitForTimeout(300);
-
         await page.locator('tui-input-inline input').first().fill('wysiwyg.com');
         await page.keyboard.press('Enter');
+        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
+        await expect.soft(editor.host).toHaveScreenshot('Links-02.png');
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-02.png');
-
-        await page.locator('tui-editor h1').first().selectText();
-
+        await editor.host.locator('sup').first().selectText();
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
-
         await page.locator('tui-input-inline input').first().focus();
         await page.locator('tui-input-inline input').first().fill('example.com');
         await page.keyboard.press('Enter');
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-03.png');
-
-        await page.locator('tui-editor strong').first().click();
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-04.png');
+        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
+        await expect.soft(editor.host).toHaveScreenshot('Links-03.png');
 
         await page.mouse.click(0, 0);
-
-        await page.locator('tui-editor sup').first().click();
-
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-05.png');
+        await editor.host.locator('h1').first().click();
+        // The edit-link dropdown is a portal — wait for it to stabilize separately.
+        await waitStableState(page.locator('tui-edit-link'));
+        await expect.soft(editor.host).toHaveScreenshot('Links-04.png');
     });
 
     test('does not create empty link when blurring dropdown without entering URL', async ({
         page,
     }) => {
-        await page.locator('tui-editor strong').first().dblclick();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
+        await editor.host.locator('strong').first().dblclick();
 
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
@@ -71,46 +74,49 @@ test.describe('Links', () => {
         await page.mouse.click(0, 0);
         await page.waitForTimeout(300);
 
-        await expect(page.locator('tui-editor a[href=""]')).toHaveCount(0);
+        await expect(editor.host.locator('a[href=""]')).toHaveCount(0);
     });
 
     test('check that you can write text at the end', async ({page}) => {
-        const editor = page.locator('[contenteditable]').first();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await editor.selectText();
-        await editor.clear();
+        await contenteditable.selectText();
+        await contenteditable.clear();
         await page.keyboard.type('Hello');
-        await editor.selectText();
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-06.png');
+        await contenteditable.selectText();
+        await expect.soft(editor.host).toHaveScreenshot('Links-06.png');
 
         await page.locator('[automation-id="toolbar__link-button"]').click();
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
         await expect.soft(page).toHaveScreenshot('Links-07.png');
 
-        await editor.click();
+        await contenteditable.click();
         await page.keyboard.press('End');
+        await contenteditable.click();
         await page.keyboard.type('World');
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-08.png');
+        await expect.soft(editor.host).toHaveScreenshot('Links-08.png');
     });
 
     test('typing after link should not extend link mark', async ({page}) => {
-        const editor = page.locator('[contenteditable]').first();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await editor.selectText();
-        await editor.clear();
+        await contenteditable.selectText();
+        await contenteditable.clear();
 
         await page.keyboard.type('click here');
-        await editor.selectText();
+        await contenteditable.selectText();
 
         await page.locator('[automation-id="toolbar__link-button"]').click();
         await page.keyboard.type('example.com');
         await page.keyboard.press('Enter');
 
-        await editor.click();
+        await contenteditable.click();
         await page.keyboard.press('End');
         await page.keyboard.type(' plain text');
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Links-09.png');
+        await expect.soft(editor.host).toHaveScreenshot('Links-09.png');
     });
 });
