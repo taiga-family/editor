@@ -33,10 +33,6 @@ import {TuiFilterAnchorsPipe} from './pipes/filter-anchors.pipe';
 import {TuiShortUrlPipe} from './pipes/short-url.pipe';
 import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
 @Component({
     standalone: true,
     selector: 'tui-edit-link',
@@ -79,7 +75,7 @@ interface ServerSideGlobal extends NodeJS.Global {
 export class TuiEditLink implements OnInit {
     private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     private readonly doc =
-        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
 
     private isOnlyAnchorMode = this.detectAnchorMode();
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

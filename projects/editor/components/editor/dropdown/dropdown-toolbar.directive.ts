@@ -27,10 +27,6 @@ import {
 import {TUI_EDITOR_PM_SELECTED_NODE} from '@taiga-ui/editor/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
 @Directive({
     standalone: true,
     selector: '[tuiToolbarDropdown]',
@@ -47,7 +43,7 @@ export class TuiEditorDropdownToolbar
     private range = inject(TUI_RANGE);
 
     private readonly doc =
-        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
 
     private readonly selection$ = inject(TUI_SELECTION_STREAM);
     private readonly el = inject(ElementRef<HTMLElement>);
