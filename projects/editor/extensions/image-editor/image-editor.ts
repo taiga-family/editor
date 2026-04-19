@@ -30,10 +30,6 @@ import {timer} from 'rxjs';
 import {TuiImageAlignList} from './image-align-list';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
 @Component({
     standalone: true,
     selector: 'tui-image-editor',
@@ -71,7 +67,8 @@ export class TuiImageEditor
     private readonly destroy$ = inject(DestroyRef);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
-    private readonly win: Omit<Window, 'document'> & ServerSideGlobal = inject(WA_WINDOW);
+    private readonly win: Omit<Window, 'document'> & {document: Document | undefined} =
+        inject(WA_WINDOW);
 
     protected style?: string | null = null;
     protected contenteditable = false;

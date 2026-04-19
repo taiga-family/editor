@@ -57,12 +57,11 @@ export class HttpMockUploader {
             useFactory:
                 (uploader: HttpMockUploader) =>
                 ([file]: File[]): Observable<
-                    Array<TuiEditorAttachedFile<{type: string}>>
+                    ReadonlyArray<TuiEditorAttachedFile<{type: string}>>
                 > => {
                     if (!file) {
                         return of([]);
                     }
-
                     const fileReader = new FileReader();
 
                     fileReader.readAsDataURL(file);
