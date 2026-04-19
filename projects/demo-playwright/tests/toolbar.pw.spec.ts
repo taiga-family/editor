@@ -2,7 +2,7 @@ import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
-import {tuiGoto} from '../utils';
+import {TuiEditorPO, tuiGoto} from '../utils';
 
 test.describe('Toolbar', () => {
     test("closes tool's dropdown if opened new tool's dropdown", async ({page}) => {
@@ -10,13 +10,15 @@ test.describe('Toolbar', () => {
             page,
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
-        await page.locator('[contenteditable]').first().focus();
 
-        await expect
-            .soft(page.locator('#demo-content tui-editor'))
-            .toHaveScreenshot('Toolbar-01.png');
+        const editor = new TuiEditorPO(page.locator('#demo-content tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await page.locator('[contenteditable]').first().focus();
+        await contenteditable.focus();
+
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-01.png');
+
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__color-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -25,9 +27,7 @@ test.describe('Toolbar', () => {
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await expect
-            .soft(page.locator('#demo-content tui-editor'))
-            .toHaveScreenshot('Toolbar-02.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-02.png');
     });
 
     test("closes tool's dropdown if clicked outside", async ({page}) => {
@@ -36,54 +36,56 @@ test.describe('Toolbar', () => {
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
 
-        await page.locator('[contenteditable]').first().focus();
+        const editor = new TuiEditorPO(page.locator('#demo-content tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__color-button"]').focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await expect
-            .soft(page.locator('#demo-content tui-editor'))
-            .toHaveScreenshot('Toolbar-03.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-03.png');
 
         await page.mouse.click(0, 0);
 
-        await expect
-            .soft(page.locator('#demo-content tui-editor'))
-            .toHaveScreenshot('Toolbar-04.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-04.png');
     });
 
     test('has the possibility to add custom tool', async ({page}) => {
         await tuiGoto(page, `/${TuiDemoPath.PasteEmojiTool}#custom-tool`);
 
-        await page.locator('[contenteditable]').first().focus();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-05.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-05.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-06.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-06.png');
 
         await page.locator('.smile').first().click();
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-07.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-07.png');
 
         await page.keyboard.type('awesome library for awesome people');
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-08.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-08.png');
 
         await page.locator('[automation-id="smiles-tool__button"]').click();
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-09.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-09.png');
 
         await page.locator('.smile').nth(2).click();
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-10.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-10.png');
     });
 
     test('make a html table by 2x2', async ({page}) => {
@@ -92,14 +94,17 @@ test.describe('Toolbar', () => {
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
 
-        await page.locator('[contenteditable]').first().focus();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
         await page.keyboard.type('\n\n\n\n');
         await page.waitForTimeout(300);
 
         await page.keyboard.press('ArrowUp');
         await page.keyboard.press('ArrowUp');
         await page.keyboard.press('ArrowUp');
-        await page.locator('[contenteditable]').scrollIntoViewIfNeeded();
+        await contenteditable.scrollIntoViewIfNeeded();
         await page.waitForTimeout(100);
 
         await page.locator('[automation-id="toolbar__insert-table-button"]').click();
@@ -128,10 +133,13 @@ test.describe('Toolbar', () => {
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
 
-        await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').first().selectText();
-        await page.locator('[contenteditable]').first().clear();
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-13.png');
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
+        await contenteditable.selectText();
+        await contenteditable.clear();
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-13.png');
 
         await page.locator('[automation-id="toolbar__ordering-list-button"]').focus();
 
@@ -148,12 +156,12 @@ test.describe('Toolbar', () => {
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await page.locator('[contenteditable]').first().focus();
+        await contenteditable.focus();
 
         await page.keyboard.type('12345');
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-14.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-14.png');
 
         await page.locator('[automation-id="toolbar__insert-table-button"]').focus();
 
@@ -170,7 +178,7 @@ test.describe('Toolbar', () => {
         await cell.hover();
         await cell.click();
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-15.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-15.png');
     });
 
     test('focuses nearest left/right active tool on "Arrow Right"/"Arrow Left"', async ({
@@ -181,29 +189,32 @@ test.describe('Toolbar', () => {
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
 
-        await page.locator('[contenteditable]').first().focus();
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-16.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-16.png');
 
-        await page.locator('[contenteditable]').first().focus();
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Enter');
-        await page.waitForTimeout(300);
+        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-17.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-17.png');
 
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-18.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-18.png');
     });
 
     test('skips disabled tools and selects next tool after disabled', async ({page}) => {
@@ -212,25 +223,28 @@ test.describe('Toolbar', () => {
             `/${TuiDemoPath.StarterKit}?ngModel=${HTML_EDITOR_BASIC_EXAMPLE}`,
         );
 
-        await page.locator('[contenteditable]').first().focus();
-        await page.locator('[contenteditable]').first().selectText();
-        await page.locator('[contenteditable]').first().clear();
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-19.png');
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await page.locator('[contenteditable]').first().focus();
+        await contenteditable.focus();
+        await contenteditable.selectText();
+        await contenteditable.clear();
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-19.png');
+
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__undo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.mouse.click(0, 0);
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-20.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-20.png');
 
-        await page.locator('[contenteditable]').first().focus();
+        await contenteditable.focus();
         await page.locator('[automation-id="toolbar__redo-button"]').focus();
         await page.keyboard.press('Enter');
         await page.mouse.click(0, 0);
         await page.waitForTimeout(300);
 
-        await expect.soft(page.locator('tui-editor')).toHaveScreenshot('Toolbar-21.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-21.png');
     });
 });

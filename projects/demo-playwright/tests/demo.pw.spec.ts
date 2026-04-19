@@ -1,7 +1,7 @@
 import {expect, test} from '@playwright/test';
 
 import {TuiDemoPath} from '../../demo/src/app/shared/routes';
-import {tuiGoto} from '../utils';
+import {tuiGoto, waitStableState} from '../utils';
 
 test.describe('Demo', () => {
     const IGNORE_FLAKY = new Set<string>([
@@ -39,8 +39,11 @@ test.describe('Demo', () => {
 
                 const examples = await page.getByTestId('tui-doc-example').all();
 
-                for (const [i, example] of examples.entries()) {
+                for (const [i, raw] of examples.entries()) {
+                    const example = raw.locator('> *').first();
+
                     await example.scrollIntoViewIfNeeded();
+                    await waitStableState(example);
                     await page.waitForTimeout(300);
 
                     await expect

@@ -1,7 +1,7 @@
 import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
-import {tuiGoto} from '../utils';
+import {TuiEditorPO, tuiGoto} from '../utils';
 
 test.describe('Toolbar Shared', () => {
     const cases = [
@@ -14,17 +14,26 @@ test.describe('Toolbar Shared', () => {
         test(`font size change on editor ${i}`, async ({page}) => {
             await tuiGoto(page, `/${TuiDemoPath.ToolbarShared}`);
 
-            const editors = page.locator('[contenteditable]');
+            const editorPOs = Array.from(
+                {length: texts.length},
+                (_, j) => new TuiEditorPO(page.locator('tui-editor').nth(j)),
+            );
+            const contenteditables = await Promise.all(
+                editorPOs.map(async (editorPO) => editorPO.contenteditable()),
+            );
 
             for (const [j, text] of texts.entries()) {
-                await editors.nth(j).click();
-                await editors.nth(j).fill(text);
+                await contenteditables[j]?.click();
+                await page.waitForTimeout(100);
+                await contenteditables[j]?.fill(text);
             }
 
-            await editors.nth(i).selectText();
+            await contenteditables[i]?.selectText();
 
             await page.locator('[automation-id="toolbar__font-size-button"]').click();
+            await page.waitForTimeout(100);
             await page.locator(`[automation-id="${fontAutomationId}"]`).click();
+            await page.waitForTimeout(100);
 
             await expect
                 .soft(page.locator('[automation-id="tui-doc-example"]'))
