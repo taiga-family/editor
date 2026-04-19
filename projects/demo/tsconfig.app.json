@@ -6,6 +6,6 @@
     "angularCompilerOptions": {
         "compilationMode": "full"
     },
-    "files": ["./src/main.ts", "./src/polyfills.ts"],
-    "include": ["src/**/*.d.ts"]
+    "files": ["src/typings.d.ts"],
+    "include": ["src/**/*.ts"]
 }
