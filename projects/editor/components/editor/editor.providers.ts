@@ -22,11 +22,7 @@ import {
 
 import {TuiEditorPortalService} from './portal/editor-portal.service';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
-declare const globalThis: ServerSideGlobal;
+declare const globalThis: {document: Document | undefined};
 
 export const TUI_EDITOR_PROVIDERS = [
     {
