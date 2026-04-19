@@ -30,6 +30,7 @@ snapshots/
 .cache/
 
 # special
+migrations.json
 routes.txt
 .angular
 .nx

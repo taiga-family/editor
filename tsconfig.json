@@ -2,13 +2,16 @@
     "extends": "@taiga-ui/tsconfig",
     "compilerOptions": {
         "baseUrl": "./",
+        "esModuleInterop": true,
         "outDir": "./dist",
         "paths": {
             "@demo/shared/*": ["./projects/demo/src/app/shared/*"],
             "@taiga-ui/editor": ["./projects/editor"],
             "@taiga-ui/editor/*": ["./projects/editor/*"]
         },
+        "target": "es2022",
         "typeRoots": ["node_modules/@types", "node_modules/cypress/types"],
-        "types": ["node", "cypress"]
+        "types": ["node", "cypress"],
+        "useDefineForClassFields": false
     }
 }
