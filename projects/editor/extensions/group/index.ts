@@ -11,11 +11,7 @@ declare module '@tiptap/core' {
     }
 }
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
-declare const globalThis: ServerSideGlobal;
+declare const globalThis: {document: Document | undefined};
 
 export interface TuiEditorGroupOptions {
     readonly createOnEnter: boolean;

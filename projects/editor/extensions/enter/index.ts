@@ -1,10 +1,6 @@
 import {Extension} from '@tiptap/core';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
-declare const globalThis: ServerSideGlobal;
+declare const globalThis: {document: Document | undefined};
 
 export const TuiCustomEnter = Extension.create({
     name: 'customEnter',

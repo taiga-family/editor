@@ -1,8 +1,4 @@
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
-declare const globalThis: ServerSideGlobal;
+declare const globalThis: {document: Document | undefined};
 
 function migration(element: Element): void {
     Array.from(element.children).forEach((child) => {

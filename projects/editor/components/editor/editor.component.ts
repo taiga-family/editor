@@ -73,10 +73,6 @@ import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
 
-interface ServerSideGlobal extends NodeJS.Global {
-    document: Document | undefined;
-}
-
 @Component({
     standalone: true,
     selector: 'tui-editor',
@@ -124,6 +120,7 @@ interface ServerSideGlobal extends NodeJS.Global {
     host: {
         ngSkipHydration: 'true',
         class: 't-wrapper',
+        '[attr.data-loaded]': 'editorLoaded()',
         '(tuiActiveZoneChange)': 'onActiveZone($event)',
         '(click)': 'focus($event)',
     },
@@ -140,7 +137,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
 
     private readonly doc =
-        inject<ServerSideGlobal | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
 
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
