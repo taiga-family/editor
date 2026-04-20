@@ -44,7 +44,8 @@ export class TuiEditorDropdownToolbar
     private range = inject(TUI_RANGE);
 
     private readonly doc =
-        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Partial<Document> | undefined} | undefined>(WA_WINDOW)
+            ?.document ?? null;
 
     private readonly selection$ = inject(TUI_SELECTION_STREAM);
     private readonly el = inject(ElementRef<HTMLElement>);
@@ -107,7 +108,7 @@ export class TuiEditorDropdownToolbar
                     if (!this.previousTagPosition) {
                         // Race condition: focus moved into the dropdown before the first
                         // getClientRect() call outside it could cache a position.
-                        const selectedNode = this.doc?.querySelector(
+                        const selectedNode = this.doc?.querySelector?.(
                             `.${TUI_EDITOR_PM_SELECTED_NODE}`,
                         );
                         const fallbackAnchor = this.el.nativeElement.querySelector(
@@ -134,7 +135,7 @@ export class TuiEditorDropdownToolbar
                 const liveElement: Element | null =
                     element && tuiIsElement(element) && element.isConnected
                         ? element
-                        : (this.doc?.querySelector(`.${TUI_EDITOR_PM_SELECTED_NODE}`) ??
+                        : (this.doc?.querySelector?.(`.${TUI_EDITOR_PM_SELECTED_NODE}`) ??
                           this.el.nativeElement.querySelector(
                               'a[href], a[data-type="jump-anchor"]',
                           ));
@@ -175,7 +176,7 @@ export class TuiEditorDropdownToolbar
     }
 
     private getRange(): Range {
-        const selection = this.doc?.getSelection();
+        const selection = this.doc?.getSelection?.();
         const range = selection?.rangeCount ? selection.getRangeAt(0) : this.range;
 
         return range.cloneRange();

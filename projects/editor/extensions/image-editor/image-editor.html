@@ -10,7 +10,7 @@
         contenteditable="false"
         decoding="async"
         loading="lazy"
-        tuiDropdownAlign="left"
+        tuiDropdownAlign="right"
         tuiDropdownDirection="bottom"
         tuiDropdownLimitWidth="auto"
         [alt]="alt"
@@ -21,6 +21,7 @@
         [title]="title"
         [tuiDropdown]="linkEditingDropdown"
         [tuiDropdownManual]="isLinkDropdownOpened"
+        [tuiDropdownMinHeight]="0"
         (load)="onImageLoad()"
     />
 

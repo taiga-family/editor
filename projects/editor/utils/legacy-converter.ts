@@ -96,6 +96,10 @@ function migrateFontHighlight(element: Element): void {
  * This converter help you to painlessly migrate old tags to the tui-editor[new]
  */
 export function tuiLegacyEditorConverter(content: string): string {
+    if (typeof DOMParser === 'undefined') {
+        return '';
+    }
+
     const tree = new DOMParser().parseFromString(content, 'text/html');
 
     migration(tree.body);
