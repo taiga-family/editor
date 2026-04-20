@@ -8,13 +8,12 @@ import {
     DestroyRef,
     effect,
     ElementRef,
-    EventEmitter,
     forwardRef,
     inject,
     input,
     NgZone,
     type OnDestroy,
-    Output,
+    output,
     signal,
     TemplateRef,
     viewChild,
@@ -193,17 +192,13 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public readonly tools = input(this.options.tools);
 
-    @Output()
-    public readonly fileAttached = new EventEmitter<Array<TuiEditorAttachedFile<any>>>();
+    public readonly fileAttached = output<Array<TuiEditorAttachedFile<any>>>();
 
-    @Output()
-    public readonly focusIn = new EventEmitter<void>();
+    public readonly focusIn = output();
 
-    @Output()
-    public readonly focusOut = new EventEmitter<void>();
+    public readonly focusOut = output();
 
-    @Output()
-    public readonly loaded = new EventEmitter<boolean>();
+    public readonly loaded = output<boolean>();
 
     public hasMentionPlugin = false;
     public readonly hovered = toSignal(

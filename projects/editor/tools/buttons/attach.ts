@@ -4,9 +4,8 @@ import {
     Component,
     DestroyRef,
     type ElementRef,
-    EventEmitter,
     inject,
-    Output,
+    output,
     viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -49,8 +48,7 @@ export class TuiAttachButtonTool extends TuiToolbarTool {
 
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
 
-    @Output()
-    public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
+    public readonly fileAttached = output<TuiEditorAttachedFile[]>();
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.attach;

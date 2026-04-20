@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
@@ -67,8 +60,7 @@ export class TuiImageAlignList {
 
     public readonly style = input<string | null | undefined>(null);
 
-    @Output()
-    public readonly updateAlignStyles = new EventEmitter<string | null>();
+    public readonly updateAlignStyles = output<string | null>();
 
     @tuiPure
     protected isAlignCenter(style?: string | null): boolean {

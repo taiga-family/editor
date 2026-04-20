@@ -2,9 +2,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    EventEmitter,
     input,
-    Output,
+    output,
     viewChild,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -45,8 +44,7 @@ export class Mentions {
 
     public readonly mentionSuggestions = input<string>();
 
-    @Output()
-    public readonly setMention = new EventEmitter<User>();
+    public readonly setMention = output<User>();
 
     @tuiPure
     protected getFilteredItems(items: readonly User[], search?: string): readonly User[] {

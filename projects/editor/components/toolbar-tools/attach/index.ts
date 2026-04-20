@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {
     type AbstractTuiEditor,
     type TuiEditorAttachedFile,
@@ -33,6 +26,5 @@ export class TuiAttachTool {
         inject(TuiTiptapEditorService, {optional: true}),
     );
 
-    @Output()
-    public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
+    public readonly fileAttached = output<TuiEditorAttachedFile[]>();
 }

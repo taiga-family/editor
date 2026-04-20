@@ -3,10 +3,9 @@ import {
     Component,
     computed,
     ElementRef,
-    EventEmitter,
     inject,
     input,
-    Output,
+    output,
     ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -102,14 +101,11 @@ export class TuiToolbar {
      */
     public readonly disabled = input(false);
 
-    @Output()
-    public readonly linkAdded = new EventEmitter<string>();
+    public readonly linkAdded = output<string>();
 
-    @Output()
-    public readonly texClicked = new EventEmitter<void>();
+    public readonly texClicked = output();
 
-    @Output()
-    public readonly fileAttached = new EventEmitter<TuiEditorAttachedFile[]>();
+    public readonly fileAttached = output<TuiEditorAttachedFile[]>();
 
     public readonly el: HTMLElement | null =
         inject(ElementRef, {optional: true})?.nativeElement ?? null;

@@ -2,11 +2,10 @@ import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
     input,
     type OnInit,
-    Output,
+    output,
     signal,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -93,11 +92,9 @@ export class TuiEditLink implements OnInit {
 
     public readonly explicitOnlyLinkEdit = input(false);
 
-    @Output()
-    public readonly addLink = new EventEmitter<string>();
+    public readonly addLink = output<string>();
 
-    @Output()
-    public readonly removeLink = new EventEmitter<void>();
+    public readonly removeLink = output();
 
     public readonly anchorMode = input<boolean>(false);
     public readonly hasAnchorMode = signal<boolean>(false);
@@ -105,10 +102,6 @@ export class TuiEditLink implements OnInit {
     public ngOnInit(): void {
         const mode = this.anchorMode();
 
-        // Caretaker note:
-        // anchorMode sometimes changes after component initialization,
-        // so we need to track only the initial value to determine
-        // if the component should be in anchor mode or not.
         this.hasAnchorMode.set(mode);
 
         this.isOnlyAnchorMode = mode;

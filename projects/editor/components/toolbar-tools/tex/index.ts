@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiTexButtonTool} from '@taiga-ui/editor/tools';
@@ -29,6 +22,5 @@ export class TuiTexTool {
         inject(TuiTiptapEditorService, {optional: true}),
     );
 
-    @Output()
-    public readonly texClicked = new EventEmitter<void>();
+    public readonly texClicked = output();
 }

@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Output} from '@angular/core';
+import {Directive, output} from '@angular/core';
 
 @Directive({
     standalone: true,
@@ -9,8 +9,7 @@ import {Directive, EventEmitter, Output} from '@angular/core';
     },
 })
 export class TuiEditorImagePreview {
-    @Output()
-    public readonly imagePreview = new EventEmitter<HTMLImageElement>();
+    public readonly imagePreview = output<HTMLImageElement>();
 
     protected click(target: HTMLElement): void {
         if (target instanceof HTMLImageElement) {

@@ -2,9 +2,8 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
-    EventEmitter,
     input,
-    Output,
+    output,
     viewChild,
 } from '@angular/core';
 import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
@@ -32,10 +31,7 @@ export class TuiEditorResizable {
 
     public readonly height = input<number | string | null>(null);
 
-    @Output()
-    public readonly sizeChange = new EventEmitter<
-        readonly [width: number, height: number]
-    >();
+    public readonly sizeChange = output<readonly [width: number, height: number]>();
 
     protected get hostWidth(): number | string | null {
         return tuiIsNumber(this.width()) ? tuiPx(this.width() as number) : this.width();
@@ -46,8 +42,8 @@ export class TuiEditorResizable {
             return null;
         }
 
-        return tuiIsNumber(this.height())
-            ? tuiPx(this.height() as number)
-            : this.height();
+        const height = this.height();
+
+        return tuiIsNumber(height) ? tuiPx(height) : height;
     }
 }
