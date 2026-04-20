@@ -1,6 +1,6 @@
-import {NgIf} from '@angular/common';
+import {isPlatformServer, NgIf} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
@@ -41,7 +41,10 @@ import {switchMap} from 'rxjs';
     ],
 })
 export default class Example {
+    private readonly http = inject(HttpClient);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
+    private readonly platformId = inject(PLATFORM_ID);
+    protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,
@@ -49,23 +52,25 @@ export default class Example {
         TuiEditorTool.Link,
     ];
 
-    protected readonly isE2E = inject(TUI_IS_E2E);
-
-    protected base64Image$ = inject(HttpClient)
-        .get('assets/images/lumberjack.png', {responseType: 'blob'})
-        .pipe(switchMap((file) => this.imageLoader(file)));
-
     protected control = new FormControl('');
 
     constructor() {
-        this.base64Image$.pipe(takeUntilDestroyed()).subscribe((src) => {
-            this.control.patchValue(
-                `
+        if (isPlatformServer(this.platformId)) {
+            return;
+        }
+
+        this.http
+            .get('assets/images/lumberjack.png', {responseType: 'blob'})
+            .pipe(
+                switchMap((file) => this.imageLoader(file)),
+                takeUntilDestroyed(),
+            )
+            .subscribe((src) => {
+                this.control.patchValue(`
                     <img src="${src}" width="300" alt="" />
                     <p>Try to drag right border of image!</p>
                     <p>To change min/max size of image use token <code>TUI_IMAGE_EDITOR_OPTIONS</code>.
-                `,
-            );
-        });
+                `);
+            });
     }
 }

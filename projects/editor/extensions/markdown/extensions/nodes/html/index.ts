@@ -46,6 +46,11 @@ function serializeHTML(node: ProseNode, parent: ProseNode): string {
 
 function formatBlock(html: string): string {
     const dom = tuiElementFromString(html);
+
+    if (!dom) {
+        return '';
+    }
+
     const element = dom.firstElementChild;
 
     if (element) {

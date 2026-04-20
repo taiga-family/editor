@@ -19,10 +19,9 @@ export class ExampleTuiPasteImageTool {
 
     private readonly editor = inject(TuiTiptapEditorService);
 
-    protected youtubeLogo =
-        'https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg';
+    protected youtubeLogo = 'assets/icons/google.svg';
 
-    protected placeholder = 'https://image.com/etc.png';
+    protected placeholder = 'Path to Image URL (ex. https://your-site.com/image.png)';
 
     protected url = '';
 
