@@ -1,10 +1,12 @@
 import {
     type ApplicationRef,
+    ErrorHandler,
     importProvidersFrom,
     mergeApplicationConfig,
 } from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideServerRendering, ServerModule} from '@angular/platform-server';
+import {ServerErrorHandler} from '@demo/shared/error-handler';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
 import {AppComponent} from './app/app.component';
@@ -15,6 +17,7 @@ const serverConfig = mergeApplicationConfig(appConfig, {
         importProvidersFrom(ServerModule),
         provideServerRendering(),
         UNIVERSAL_PROVIDERS,
+        {provide: ErrorHandler, useClass: ServerErrorHandler},
     ],
 });
 

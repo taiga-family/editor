@@ -18,6 +18,11 @@ export const TuiMarkdownClipboard = Extension.create({
                 key: new PluginKey('markdownClipboard'),
                 props: {
                     clipboardTextParser: (text, context, plainText): Slice => {
+                        // eslint-disable-next-line unicorn/no-typeof-undefined
+                        if (typeof DOMParser === 'undefined') {
+                            return null as any;
+                        }
+
                         if (plainText || !this.options.transformPastedText) {
                             return null as any; // pasting with shift key prevents formatting
                         }
@@ -26,13 +31,16 @@ export const TuiMarkdownClipboard = Extension.create({
                             inline: true,
                         });
 
-                        return DOMParser.fromSchema(this.editor.schema).parseSlice(
-                            tuiElementFromString(parsed),
-                            {
-                                preserveWhitespace: true,
-                                context,
-                            },
-                        );
+                        const dom = tuiElementFromString(parsed);
+
+                        if (!dom) {
+                            return null as any;
+                        }
+
+                        return DOMParser.fromSchema(this.editor.schema).parseSlice(dom, {
+                            preserveWhitespace: true,
+                            context,
+                        });
                     },
                     clipboardTextSerializer: (slice) => {
                         if (!this.options.transformCopiedText) {

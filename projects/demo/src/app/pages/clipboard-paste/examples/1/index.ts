@@ -33,7 +33,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
                         const div = doc.createElement('div');
 
                         div.innerHTML = html;
-
                         div.querySelectorAll('[style]').forEach((el) =>
                             el.removeAttribute('style'),
                         );
