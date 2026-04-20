@@ -27,7 +27,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
             import('@taiga-ui/editor').then(({tuiCreateGroupExtension}) =>
                 tuiCreateGroupExtension({
                     draggable: false,
-
                     // @note: you can override css styles with your own classes
                     groupNodeClass: 'group',
                     groupPointerNodeClass: '', // anyway element doesn't exists if `draggable` is false

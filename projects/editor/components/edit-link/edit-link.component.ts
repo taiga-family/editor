@@ -75,7 +75,8 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 export class TuiEditLink implements OnInit {
     private readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     private readonly doc =
-        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Partial<Document> | undefined} | undefined>(WA_WINDOW)
+            ?.document ?? null;
 
     private isOnlyAnchorMode = this.detectAnchorMode();
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
@@ -254,7 +255,7 @@ export class TuiEditLink implements OnInit {
     }
 
     private getFocusedParentElement(): HTMLElement | null {
-        return this.doc?.getSelection()?.focusNode?.parentElement || null;
+        return this.doc?.getSelection?.()?.focusNode?.parentElement || null;
     }
 
     private getAnchorElement(): HTMLAnchorElement | null {

@@ -8,6 +8,10 @@ export class ExampleEditorCleanupHtmlTransformer extends TuiValueTransformer<str
     }
 
     public toControlValue(componentValue: string): string {
+        if (typeof DOMParser === 'undefined') {
+            return '';
+        }
+
         const tree = new DOMParser().parseFromString(componentValue, 'text/html');
 
         tree.body.querySelectorAll('*').forEach((element) => {

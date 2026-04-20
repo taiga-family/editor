@@ -137,7 +137,8 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     >(TUI_EDITOR_VALUE_TRANSFORMER, {optional: true});
 
     private readonly doc =
-        inject<{document: Document | undefined} | undefined>(WA_WINDOW)?.document ?? null;
+        inject<{document: Partial<Document> | undefined} | undefined>(WA_WINDOW)
+            ?.document ?? null;
 
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
@@ -264,7 +265,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     public get isLinkSelected(): boolean {
-        const focusElement = this.doc?.getSelection()?.focusNode;
+        const focusElement = this.doc?.getSelection?.()?.focusNode;
         const parentFocusElement = focusElement?.parentNode;
 
         return (
@@ -368,7 +369,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private get focusNode(): Node | null {
-        return this.doc?.getSelection()?.focusNode ?? null;
+        return this.doc?.getSelection?.()?.focusNode ?? null;
     }
 
     private readonly openDropdownWhen = (range: Range): boolean =>

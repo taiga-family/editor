@@ -32,6 +32,10 @@ export class TuiEditorMarkdownParser {
             const renderedHTML = this.md.render(content);
             const element = tuiElementFromString(renderedHTML);
 
+            if (!element) {
+                return '';
+            }
+
             this.editor.extensionManager.extensions.forEach((extension) => {
                 tuiGetMarkdownSpec(extension)?.parse?.updateDOM?.call(
                     {editor: this.editor, options: extension.options},
