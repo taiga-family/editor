@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[9697],{9697:e=>{e.exports=":host {\n    display: flex;\n}\n\ntui-editor {\n    inline-size: 100%;\n    block-size: 28rem;\n}\n"}}]);

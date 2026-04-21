@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/upload-files/examples/1/file-loader.ts"],
+  "sourcesContent": ["import {type TuiEditorAttachedFile} from '@taiga-ui/editor';\nimport {finalize, forkJoin, type Observable} from 'rxjs';\n\nimport {type UploadService} from './upload.service';\n\nexport function fileLoader(\n    service: UploadService,\n): (files: File[]) => Observable<TuiEditorAttachedFile[]> {\n    return (files: File[]) => {\n        service.loading$.next(true);\n\n        return forkJoin(files.map((file) => service.upload(file))).pipe(\n            finalize(() => service.loading$.next(false)),\n        );\n    };\n}\n"],
+  "mappings": ";;;;;;;AAKM,SAAU,WACZ,SAAsB;AAEtB,SAAO,CAAC,UAAiB;AACrB,YAAQ,SAAS,KAAK,IAAI;AAE1B,WAAO,SAAS,MAAM,IAAI,CAAC,SAAS,QAAQ,OAAO,IAAI,CAAC,CAAC,EAAE,KACvD,SAAS,MAAM,QAAQ,SAAS,KAAK,KAAK,CAAC,CAAC;EAEpD;AACJ;",
+  "names": []
+}
