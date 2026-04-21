@@ -1,1 +1,0 @@
-(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[8353],{8353:n=>{n.exports=".toolbar {\n    margin-block-end: 0.5rem;\n}\n\n.editor {\n    &:not(:last-child) {\n        margin-block-end: 1rem;\n    }\n\n    ::ng-deep .tui-editor-socket .ProseMirror {\n        min-block-size: 8rem;\n    }\n}\n"}}]);

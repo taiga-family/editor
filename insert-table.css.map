@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["/home/runner/work/editor/editor/projects/editor/tools/buttons/insert-table.ts"],
+  "sourcesContent": ["\n        .t-size-selector {\n            display: block;\n            padding: 0.75rem;\n        }\n\n        .t-cell {\n            display: inline-block;\n            background-color: var(--tui-background-base);\n            inline-size: 1.25rem;\n            block-size: 1.25rem;\n            border-radius: 0.25rem;\n            margin: 0.125rem;\n            border: 0.0625rem solid var(--tui-border-normal);\n            cursor: pointer;\n        }\n\n        .t-cell_hovered {\n            background-color: var(--tui-background-base-alt);\n        }\n\n        .t-column {\n            white-space: nowrap;\n        }\n\n        .t-description {\n            text-align: center;\n        }\n    "],
+  "mappings": ";AACQ,CAAA;AACI,WAAA;AACA,WAAA;;AAGJ,CAAA;AACI,WAAA;AACA,oBAAkB,IAAA;AAClB,eAAA;AACA,cAAA;AACA,iBAAA;AACA,UAAA;AACA,UAAA,UAAA,MAAwB,IAAA;AACxB,UAAA;;AAGJ,CAAA;AACI,oBAAkB,IAAA;;AAGtB,CAAA;AACI,eAAA;;AAGJ,CAAA;AACI,cAAA;;",
+  "names": []
+}
