@@ -11,11 +11,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'editor?.toggleSuperscript()'},
+    host: {'(click)': 'editor()?.toggleSuperscript()'},
 })
 export class TuiSuperscriptButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('superscript') ?? false;
+        return this.editor()?.isActive('superscript') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

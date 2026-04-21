@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, output} from '@angular/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
@@ -11,11 +11,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'texClicked?.emit()'},
+    host: {'(click)': 'texClicked.emit()'},
 })
 export class TuiTexButtonTool extends TuiToolbarTool {
-    @Output()
-    public readonly texClicked = new EventEmitter<void>();
+    public readonly texClicked = output();
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.tex;

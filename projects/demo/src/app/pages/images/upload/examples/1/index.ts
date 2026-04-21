@@ -1,5 +1,5 @@
 import {AsyncPipe, DOCUMENT} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {
     type AbstractControl,
     FormControl,
@@ -23,7 +23,6 @@ import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
@@ -56,8 +55,7 @@ import {ImgbbService} from './imgbb.service';
     ],
 })
 export default class Example {
-    @ViewChild(TuiEditor, {static: true})
-    private readonly editor?: TuiEditor;
+    private readonly editor = viewChild(TuiEditor);
 
     protected readonly doc = inject(DOCUMENT);
     protected readonly imgbbService = inject(ImgbbService);
@@ -87,7 +85,7 @@ export default class Example {
     }
 
     protected readonly validator = ({value}: AbstractControl): ValidationErrors | null =>
-        this.editor?.focused ||
+        this.editor()?.focused() ||
         this.imgbbService.isLoading ||
         !this.doc.hasFocus() || // possible that file dialog is open
         value.length

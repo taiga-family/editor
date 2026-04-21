@@ -4,7 +4,7 @@ import {
     DestroyRef,
     inject,
     type OnInit,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -33,7 +33,6 @@ More at [documentation](https://taiga-ui.dev)
 `;
 
 @Component({
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TuiEditor, TuiTextareaModule],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,8 +54,7 @@ More at [documentation](https://taiga-ui.dev)
     ],
 })
 export default class Example implements OnInit {
-    @ViewChild(TuiEditor)
-    private readonly editorRef?: TuiEditor;
+    private readonly editorRef = viewChild.required(TuiEditor);
 
     private readonly destroyRef = inject(DestroyRef);
 
@@ -75,7 +73,7 @@ export default class Example implements OnInit {
     }
 
     protected get editor(): Editor | null {
-        return this.editorRef?.editorService.getOriginTiptapEditor() ?? null;
+        return this.editorRef().editorService.getOriginTiptapEditor();
     }
 
     protected get markdown(): string {

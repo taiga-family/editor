@@ -4,7 +4,7 @@ import {
     DestroyRef,
     type ElementRef,
     inject,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_IMAGE_LOADER, type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -15,7 +15,6 @@ import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiImageTool]',
     imports: [],
     template: `
@@ -30,14 +29,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
-    host: {'(click)': 'image?.nativeElement?.click()'},
+    host: {'(click)': 'image()?.nativeElement?.click()'},
 })
 export class TuiImageButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
 
-    @ViewChild('image')
-    protected image?: ElementRef<HTMLInputElement>;
+    protected readonly image = viewChild<ElementRef<HTMLInputElement>>('image');
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.image;
@@ -58,6 +56,6 @@ export class TuiImageButtonTool extends TuiToolbarTool {
 
         this.imageLoader(file)
             .pipe(take(1), takeUntilDestroyed(this.destroyRef))
-            .subscribe((image) => this.editor?.setImage(image));
+            .subscribe((image) => this.editor()?.setImage(image));
     }
 }

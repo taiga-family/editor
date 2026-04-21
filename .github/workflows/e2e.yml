@@ -30,7 +30,7 @@ jobs:
         with:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
-      - run: npx nx prerender editor-demo -c development
+      - run: npx nx build editor-demo -c development
       - uses: taiga-family/ci/actions/run/serve@v1.200.0
         with:
           port: ${{ env.NG_SERVER_PORT }}

@@ -11,10 +11,9 @@ import {
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiAccordion, TuiEditor, TuiToolbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideTuiEditor({image: true})],
 })

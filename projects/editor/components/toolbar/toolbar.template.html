@@ -1,187 +1,191 @@
-<section
-    *ngIf="enabled(tool.Undo)"
-    tuiToolbarBlock
->
-    <button
-        tuiUndoTool
-        [editor]="editor"
-    ></button>
-    <button
-        tuiRedoTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Size)"
-    tuiToolbarBlock
->
-    <button
-        tuiFontSizeTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="firstBigBlockEnabled"
-    tuiToolbarBlock
->
-    <button
-        *ngIf="formatEnabled"
-        tuiFontStyleTool
-        [editor]="editor"
-        [enabledTools]="toolsSet"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Align)"
-        tuiAlignTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.List)"
-        tuiListTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Quote)"
-        tuiBlockquoteTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Link)"
-        tuiLinkTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Anchor)"
-        tuiAnchorTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Attach)"
-        tuiAttachTool
-        [editor]="editor"
-        (fileAttached)="fileAttached.emit($event)"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Sub) || enabled(tool.Sup)"
-    tuiToolbarBlock
->
-    <button
-        *ngIf="enabled(tool.Sub)"
-        tuiSubscriptTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Sup)"
-        tuiSuperscriptTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Color) || enabled(tool.Hilite)"
-    tuiToolbarBlock
->
-    <button
-        *ngIf="enabled(tool.Color)"
-        tuiTextColorTool
-        [colors]="options.textColors ?? options.colors"
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Hilite)"
-        tuiHighlightColorTool
-        [colors]="options.backgroundColors ?? options.colors"
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="secondBigBlockEnabled"
-    tuiToolbarBlock
->
-    <button
-        *ngIf="enabled(tool.Code)"
-        tuiCodeTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Tex)"
-        tuiTexTool
-        [editor]="editor"
-        (texClicked)="texClicked.emit($event)"
-    ></button>
-    <button
-        *ngIf="enabled(tool.Img)"
-        tuiImageTool
-        [editor]="editor"
-    ></button>
-    <button
-        *ngIf="enabled(tool.HR)"
-        tuiHrTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Clear)"
-    tuiToolbarBlock
->
-    <button
-        tuiClearTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Details)"
-    tuiToolbarBlock
->
-    <button
-        tuiDetailsAddTool
-        [editor]="editor"
-    ></button>
-    <button
-        tuiDetailsRemoveTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Group)"
-    tuiToolbarBlock
->
-    <button
-        tuiInsertGroupTool
-        [editor]="editor"
-    ></button>
-    <button
-        tuiRemoveGroupTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.Table)"
-    tuiToolbarBlock
->
-    <button
-        tuiInsertTableTool
-        [editor]="editor"
-    ></button>
-    <button
-        tuiAddRowTableTool
-        [editor]="editor"
-    ></button>
-    <button
-        tuiTableMergeCellTool
-        [editor]="editor"
-    ></button>
-</section>
-<section
-    *ngIf="enabled(tool.CellColor)"
-    tuiToolbarBlock
->
-    <button
-        tuiPaintTool
-        [colors]="options.backgroundColors ?? options.colors"
-        [editor]="editor"
-    ></button>
-</section>
+@if (enabled(tool.Undo)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiUndoTool
+            [editor]="editor()"
+        ></button>
+        <button
+            tuiRedoTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (enabled(tool.Size)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiFontSizeTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (firstBigBlockEnabled) {
+    <section tuiToolbarBlock>
+        @if (formatEnabled) {
+            <button
+                tuiFontStyleTool
+                [editor]="editor()"
+                [enabledTools]="toolsSet()"
+            ></button>
+        }
+        @if (enabled(tool.Align)) {
+            <button
+                tuiAlignTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.List)) {
+            <button
+                tuiListTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Quote)) {
+            <button
+                tuiBlockquoteTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Link)) {
+            <button
+                tuiLinkTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Anchor)) {
+            <button
+                tuiAnchorTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Attach)) {
+            <button
+                tuiAttachTool
+                [editor]="editor()"
+                (fileAttached)="fileAttached.emit($event)"
+            ></button>
+        }
+    </section>
+}
+@if (enabled(tool.Sub) || enabled(tool.Sup)) {
+    <section tuiToolbarBlock>
+        @if (enabled(tool.Sub)) {
+            <button
+                tuiSubscriptTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Sup)) {
+            <button
+                tuiSuperscriptTool
+                [editor]="editor()"
+            ></button>
+        }
+    </section>
+}
+@if (enabled(tool.Color) || enabled(tool.Hilite)) {
+    <section tuiToolbarBlock>
+        @if (enabled(tool.Color)) {
+            <button
+                tuiTextColorTool
+                [colors]="options.textColors ?? options.colors"
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Hilite)) {
+            <button
+                tuiHighlightColorTool
+                [colors]="options.backgroundColors ?? options.colors"
+                [editor]="editor()"
+            ></button>
+        }
+    </section>
+}
+@if (secondBigBlockEnabled) {
+    <section tuiToolbarBlock>
+        @if (enabled(tool.Code)) {
+            <button
+                tuiCodeTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.Tex)) {
+            <button
+                tuiTexTool
+                [editor]="editor()"
+                (texClicked)="texClicked.emit($event)"
+            ></button>
+        }
+        @if (enabled(tool.Img)) {
+            <button
+                tuiImageTool
+                [editor]="editor()"
+            ></button>
+        }
+        @if (enabled(tool.HR)) {
+            <button
+                tuiHrTool
+                [editor]="editor()"
+            ></button>
+        }
+    </section>
+}
+@if (enabled(tool.Clear)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiClearTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (enabled(tool.Details)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiDetailsAddTool
+            [editor]="editor()"
+        ></button>
+        <button
+            tuiDetailsRemoveTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (enabled(tool.Group)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiInsertGroupTool
+            [editor]="editor()"
+        ></button>
+        <button
+            tuiRemoveGroupTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (enabled(tool.Table)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiInsertTableTool
+            [editor]="editor()"
+        ></button>
+        <button
+            tuiAddRowTableTool
+            [editor]="editor()"
+        ></button>
+        <button
+            tuiTableMergeCellTool
+            [editor]="editor()"
+        ></button>
+    </section>
+}
+@if (enabled(tool.CellColor)) {
+    <section tuiToolbarBlock>
+        <button
+            tuiPaintTool
+            [colors]="options.backgroundColors ?? options.colors"
+            [editor]="editor()"
+        ></button>
+    </section>
+}
 <section tuiToolbarBlock>
     <ng-content />
 </section>

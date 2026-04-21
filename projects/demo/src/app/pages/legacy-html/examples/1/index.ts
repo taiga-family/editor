@@ -12,7 +12,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {ExampleEditorConvertLegacyHtmlTransformer} from './transformer';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,

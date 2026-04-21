@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {tuiPure} from '@taiga-ui/cdk';
@@ -7,11 +7,10 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'font-size-tool',
-    imports: [AsyncPipe, NgForOf, TuiButton, TuiDataList, TuiDropdown],
+    imports: [AsyncPipe, TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiFontSizeTool {

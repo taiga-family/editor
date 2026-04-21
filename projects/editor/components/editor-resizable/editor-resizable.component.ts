@@ -1,21 +1,18 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
-    EventEmitter,
-    Input,
-    Output,
-    ViewChild,
+    input,
+    output,
+    viewChild,
 } from '@angular/core';
 import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     selector: 'tui-editor-resizable',
-    imports: [NgIf, TuiResizable, TuiResizer],
+    imports: [TuiResizable, TuiResizer],
     templateUrl: './editor-resizable.component.html',
-    styleUrls: ['./editor-resizable.component.less'],
+    styleUrl: './editor-resizable.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.width]': 'hostWidth',
@@ -23,35 +20,30 @@ import {tuiIsNumber, tuiPx, TuiResizable, TuiResizer} from '@taiga-ui/cdk';
     },
 })
 export class TuiEditorResizable {
-    @ViewChild('container', {static: true})
-    public container?: ElementRef<HTMLDivElement>;
+    public readonly container =
+        viewChild.required<ElementRef<HTMLDivElement>>('container');
 
-    @Input()
-    public isEditable = false;
+    public readonly isEditable = input(false);
 
-    @Input()
-    public autoHeight = false;
+    public readonly autoHeight = input(false);
 
-    @Input()
-    public width: number | string | null = null;
+    public readonly width = input<number | string | null>(null);
 
-    @Input()
-    public height: number | string | null = null;
+    public readonly height = input<number | string | null>(null);
 
-    @Output()
-    public readonly sizeChange = new EventEmitter<
-        readonly [width: number, height: number]
-    >();
+    public readonly sizeChange = output<readonly [width: number, height: number]>();
 
     protected get hostWidth(): number | string | null {
-        return tuiIsNumber(this.width) ? tuiPx(this.width) : this.width;
+        return tuiIsNumber(this.width()) ? tuiPx(this.width() as number) : this.width();
     }
 
     protected get hostHeight(): number | string | null {
-        if (this.autoHeight) {
+        if (this.autoHeight()) {
             return null;
         }
 
-        return tuiIsNumber(this.height) ? tuiPx(this.height) : this.height;
+        const height = this.height();
+
+        return tuiIsNumber(height) ? tuiPx(height) : height;
     }
 }

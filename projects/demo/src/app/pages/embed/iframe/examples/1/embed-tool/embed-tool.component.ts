@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
@@ -6,16 +6,14 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'embed-tool',
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
     templateUrl: './embed-tool.template.html',
-    styleUrls: ['./embed-tool.styles.less'],
+    styleUrl: './embed-tool.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiEmbedTool {
-    @ViewChild('dropdown')
-    private readonly dropdown?: any;
+    private readonly dropdown = viewChild.required<any>('dropdown');
 
     private readonly editor = inject(TuiTiptapEditorService);
 
@@ -27,7 +25,7 @@ export class ExampleTuiEmbedTool {
             this.editor.setIframe({src});
 
             this.url = '';
-            this.dropdown?.close();
+            this.dropdown().close();
         }
     }
 }

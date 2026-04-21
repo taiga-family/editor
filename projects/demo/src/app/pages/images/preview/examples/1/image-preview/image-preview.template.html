@@ -3,13 +3,14 @@
     let-dialog
 >
     <tui-preview [rotatable]="true">
-        <img
-            *ngIf="image"
-            alt=""
-            loading="lazy"
-            class="t-image-preview"
-            [src]="image.src"
-        />
+        @if (image) {
+            <img
+                alt=""
+                loading="lazy"
+                class="t-image-preview"
+                [src]="image.src"
+            />
+        }
 
         <button
             iconStart="@tui.x"

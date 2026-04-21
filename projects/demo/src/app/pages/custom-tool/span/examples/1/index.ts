@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    ViewChild,
+    viewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +17,6 @@ import {
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -28,7 +27,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -38,8 +37,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
     ],
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    private readonly wysiwyg?: TuiEditor;
+    private readonly wysiwyg = viewChild.required(TuiEditor);
 
     protected readonly isE2E = inject(TUI_IS_E2E);
 
@@ -56,7 +54,7 @@ export default class Example {
 
     protected paint(): void {
         const id = Math.floor(Math.random() * 100) + 1;
-        const tiptap = this.wysiwyg?.editor?.getOriginTiptapEditor();
+        const tiptap = this.wysiwyg().editor?.getOriginTiptapEditor();
 
         tiptap
             ?.chain()

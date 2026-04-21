@@ -15,7 +15,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 
 @Component({
-    standalone: true,
     imports: [
         ExampleTuiYoutubeTool,
         ReactiveFormsModule,
@@ -27,7 +26,7 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>

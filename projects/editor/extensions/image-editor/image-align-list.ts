@@ -1,17 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 
 @Component({
-    standalone: true,
     selector: 'tui-image-align-list',
     imports: [TuiButton],
     template: `
@@ -21,7 +13,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             title=""
             tuiIconButton
             type="button"
-            [appearance]="isAlignJustify(style) ? 'outline' : 'flat'"
+            [appearance]="isAlignJustify(style()) ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignJustify"
             (click.capture)="alignJustify()"
         >
@@ -32,7 +24,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignLeft(style) ? 'outline' : 'flat'"
+            [appearance]="isAlignLeft(style()) ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignLeft"
             (click.capture)="alignLeft()"
         >
@@ -43,7 +35,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignCenter(style) ? 'outline' : 'flat'"
+            [appearance]="isAlignCenter(style()) ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignCenter"
             (click.capture)="alignCenter()"
         >
@@ -54,7 +46,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignRight(style) ? 'outline' : 'flat'"
+            [appearance]="isAlignRight(style()) ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignRight"
             (click.capture)="alignRight()"
         >
@@ -66,11 +58,9 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 export class TuiImageAlignList {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
 
-    @Input()
-    public style?: string | null = null;
+    public readonly style = input<string | null | undefined>(null);
 
-    @Output()
-    public readonly updateAlignStyles = new EventEmitter<string | null>();
+    public readonly updateAlignStyles = output<string | null>();
 
     @tuiPure
     protected isAlignCenter(style?: string | null): boolean {

@@ -15,7 +15,6 @@ import {
 } from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAlignButtonTool,

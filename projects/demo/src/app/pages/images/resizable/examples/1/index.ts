@@ -1,4 +1,4 @@
-import {isPlatformServer, NgIf} from '@angular/common';
+import {isPlatformServer} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -16,10 +16,8 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         HttpClientModule,
-        NgIf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiEditor,

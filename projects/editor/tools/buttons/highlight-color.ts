@@ -1,11 +1,11 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
-    Input,
+    input,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -18,33 +18,30 @@ import {
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiHighlightColorTool]',
-    imports: [AsyncPipe, NgIf, TuiPaletteModule, TuiTextfield],
+    imports: [TuiPaletteModule, TuiTextfield],
     template: `
         {{ tuiHint() }}
 
         <ng-container *tuiTextfieldDropdown>
             <tui-palette
                 tuiPalette
-                [colors]="colors"
-                (selectedColor)="editor?.setBackgroundColor($event)"
+                [colors]="colors()"
+                (selectedColor)="editor()?.setBackgroundColor($event)"
             />
         </ng-container>
 
-        <div
-            *ngIf="!isBlankColor()"
-            tuiPlate
-            [style.background]="editor?.getBackgroundColor()"
-        >
-            <ng-container *ngIf="editor?.valueChange$ | async" />
-        </div>
+        @if (!isBlankColor()) {
+            <div
+                tuiPlate
+                [style.background]="editor()?.getBackgroundColor()"
+            ></div>
+        }
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
@@ -57,13 +54,16 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @Input()
-    public colors = this.options.backgroundColors ?? this.options.colors;
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
+
+    public readonly colors = input(this.options.backgroundColors ?? this.options.colors);
 
     protected override isActive(): boolean {
         return !this.isBlankColor();
@@ -85,6 +85,6 @@ export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     }
 
     protected getBackgroundColor(): string {
-        return this.editor?.getBackgroundColor() ?? '';
+        return this.editor()?.getBackgroundColor() ?? '';
     }
 }

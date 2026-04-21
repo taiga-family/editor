@@ -1,16 +1,14 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     inject,
-    Input,
-    type QueryList,
-    ViewChild,
-    ViewChildren,
+    input,
+    viewChild,
+    viewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import {EMPTY_QUERY, tuiIsFocusedIn} from '@taiga-ui/cdk';
+import {tuiIsFocusedIn} from '@taiga-ui/cdk';
 import {tuiHintOptionsProvider} from '@taiga-ui/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
@@ -18,52 +16,49 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor'
 import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-toolbar-host',
-    imports: [AsyncPipe, NgIf, TuiToolbarNavigationManager],
+    imports: [TuiToolbarNavigationManager],
     templateUrl: './toolbar-host.component.html',
-    styleUrls: ['./toolbar-host.style.less'],
+    styleUrl: './toolbar-host.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']})],
     host: {
         role: 'toolbar',
         tuiToolbarHost: '',
-        '[class._disabled]': 'disabled',
+        '[class._disabled]': 'disabled()',
         '(mousedown)': 'onMouseDown($event, $event.target)',
     },
 })
 export class TuiToolbarHost {
-    @ViewChild(TuiToolbarNavigationManager)
-    private readonly navigationManager?: TuiToolbarNavigationManager;
+    private readonly dropdowns = viewChildren('dropdown', {read: ElementRef});
 
-    @ViewChildren('dropdown', {read: ElementRef})
-    private readonly dropdowns: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly navigationManager = viewChild(TuiToolbarNavigationManager);
 
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
 
-    @Input('editor')
-    public inputEditor: AbstractTuiEditor | null = null;
+    public readonly inputEditor = input<AbstractTuiEditor | null>(null, {
+        alias: 'editor',
+    });
 
-    @Input()
-    public disabled = false;
+    public readonly disabled = input(false);
 
     public readonly el: HTMLElement | null =
         inject(ElementRef, {optional: true})?.nativeElement ?? null;
 
     protected get editor(): AbstractTuiEditor | null {
-        return this.injectionEditor ?? this.inputEditor;
+        return this.injectionEditor ?? this.inputEditor();
     }
 
     protected get focused(): boolean {
         return (
             tuiIsFocusedIn(this.el) ||
-            !!this.dropdowns.find(({nativeElement}) => tuiIsFocusedIn(nativeElement))
+            !!this.dropdowns().find(({nativeElement}) => tuiIsFocusedIn(nativeElement))
         );
     }
 
     protected get focusable(): boolean {
-        return !this.focused && !this.disabled;
+        return !this.focused && !this.disabled();
     }
 
     protected onTopFocus(): void {
@@ -84,11 +79,11 @@ export class TuiToolbarHost {
     }
 
     private focusFirst(): void {
-        this.navigationManager?.findFirstFocusableTool()?.focus();
+        this.navigationManager()?.findFirstFocusableTool()?.focus();
     }
 
     private focusLast(): void {
-        this.navigationManager?.findFirstFocusableTool(true)?.focus();
+        this.navigationManager()?.findFirstFocusableTool(true)?.focus();
     }
 }
 

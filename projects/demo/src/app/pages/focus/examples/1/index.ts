@@ -15,7 +15,6 @@ import {
 import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -25,7 +24,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -40,7 +39,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
                 import('@tiptap/extension-focus').then(({FocusClasses}) =>
                     FocusClasses.configure({
                         className: 'has-focus',
-
                         /**
                          * @description:
                          * Apply the class to 'all', the 'shallowest' or the 'deepest' node.

@@ -58,12 +58,12 @@ function parentToken(tokens: MarkdownIt.Token[], index: number): number {
 function isTodoItem(tokens: MarkdownIt.Token[], index: number): boolean {
     return (
         (tokens[index] &&
-            isInline(tokens[index]!) &&
+            isInline(tokens[index]) &&
             tokens[index - 1] &&
             isParagraph(tokens[index - 1]!) &&
             tokens[index - 2] &&
             isListItem(tokens[index - 2]!) &&
-            startsWithTodoMarkdown(tokens[index]!)) ??
+            startsWithTodoMarkdown(tokens[index])) ??
         false
     );
 }

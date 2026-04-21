@@ -2,9 +2,10 @@ import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     ElementRef,
     inject,
-    Input,
+    input,
     Renderer2,
     SecurityContext,
     signal,
@@ -19,7 +20,7 @@ import {TuiTiptapEditor} from '@taiga-ui/editor/directives/tiptap-editor';
     standalone: true,
     selector: 'tui-editor-socket',
     template: '',
-    styleUrls: ['./editor-socket.component.less'],
+    styleUrl: './editor-socket.component.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -36,13 +37,14 @@ export class TuiEditorSocket {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly html = signal<SafeHtml | string | null>(null);
 
-    @Input()
-    public set content(value: string | null | undefined) {
-        const content = value ?? '';
+    public readonly content = input<string | null>(null);
+
+    protected readonly contentEffect = effect(() => {
+        const content = this.content() ?? '';
         const safe = this.sanitizer?.sanitize(SecurityContext.HTML, content) ?? content;
 
         this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', safe);
-    }
+    });
 
     /**
      * @description:

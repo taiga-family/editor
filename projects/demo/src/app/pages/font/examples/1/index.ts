@@ -12,7 +12,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {mergeAttributes} from '@tiptap/core';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -22,7 +21,7 @@ import {mergeAttributes} from '@tiptap/core';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditorOptions({
@@ -67,7 +66,6 @@ import {mergeAttributes} from '@tiptap/core';
                     .extend({
                         renderHTML({node, HTMLAttributes}) {
                             type Levels = 1 | 2 | 3 | 4 | 5 | 6;
-
                             const classes: Record<Levels, string> = {
                                 1: 'text-h1',
                                 2: 'text-h2',
@@ -76,7 +74,6 @@ import {mergeAttributes} from '@tiptap/core';
                                 5: 'text-h5',
                                 6: 'text-h6',
                             };
-
                             const hasLevel = this.options.levels.includes(
                                 node.attrs.level,
                             );

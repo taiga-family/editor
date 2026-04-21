@@ -7,6 +7,7 @@ export default [
         files: ['**/*.html'],
         rules: {
             '@angular-eslint/template/elements-content': 'off',
+            '@angular-eslint/template/prefer-template-literal': 'off',
             '@angular-eslint/template/button-has-type': [
                 'error',
                 {

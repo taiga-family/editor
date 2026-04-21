@@ -1,4 +1,4 @@
-<ng-container *ngIf="!disabled">
+@if (!disabled()) {
     <button
         type="button"
         [style.display]="'none'"
@@ -13,11 +13,11 @@
         [tabIndex]="focusable ? 0 : -1"
         (focus)="onBottomFocus()"
     ></div>
-</ng-container>
-<ng-container *ngIf="editor?.valueChange$ | async" />
+}
+
 <fieldset
     tuiToolbarNavigationManager
-    [disabled]="disabled"
+    [disabled]="disabled()"
 >
     <ng-content />
 </fieldset>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -11,27 +11,25 @@ import {TuiFontStyleButtonTool} from '@taiga-ui/editor/tools';
  * @deprecated use {@link TuiFontStyleButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-font-style,tui-font-style-tool',
     imports: [TuiFontStyleButtonTool],
     template: `
         <button
             tuiFontStyleTool
-            [editor]="editor"
-            [enabledTools]="enabledTools"
+            [editor]="editor()"
+            [enabledTools]="enabledTools()"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiFontStyleTool {
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 
-    @Input()
-    public enabledTools: Set<TuiEditorToolType> | readonly TuiEditorToolType[] =
-        new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS);
+    public readonly enabledTools = input<
+        Set<TuiEditorToolType> | readonly TuiEditorToolType[]
+    >(new Set<TuiEditorToolType>(TUI_EDITOR_DEFAULT_TOOLS));
 }
 
 /**

@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiAddonDoc],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,27 +13,29 @@ export default class Example {
     protected readonly component4 = import('./examples/4');
 
     protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
     };
 
     protected readonly example2 = {
-        TypeScript: import('./examples/2/index.ts?raw'),
+        TypeScript: import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/2/index.html?raw'),
     };
 
     protected readonly example3 = {
-        TypeScript: import('./examples/3/index.ts?raw'),
+        TypeScript: import('./examples/3/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/3/index.html?raw'),
-        'font-size-tool/font-size-tool.component.ts':
-            import('./examples/3/font-size-tool?raw'),
+        'font-size-tool/font-size-tool.component.ts': import(
+            './examples/3/font-size-tool?raw',
+            {with: {loader: 'text'}}
+        ),
         'font-size-tool/font-size-tool.template.html':
             import('./examples/3/font-size-tool/index.html?raw'),
     };
 
     protected readonly example4 = {
-        TypeScript: import('./examples/4/index.ts?raw'),
+        TypeScript: import('./examples/4/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/4/index.html?raw'),
     };
 }

@@ -1,5 +1,6 @@
-<router-outlet *ngIf="isLanding(); else portal" />
-<ng-template #portal>
+@if (isLanding()) {
+    <router-outlet />
+} @else {
     <header
         tuiDocHeader
         [attr.tuiTheme]="darkMode() ? 'dark' : 'light'"
@@ -38,4 +39,4 @@
     </header>
 
     <tui-doc-main />
-</ng-template>
+}

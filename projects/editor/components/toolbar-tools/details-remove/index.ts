@@ -1,8 +1,9 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     inject,
-    Input,
+    input,
     type OnInit,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
@@ -19,7 +20,6 @@ import {map, type Observable} from 'rxjs';
  * @deprecated use {@link TuiDetailsRemoveButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-details-remove,tui-details-remove-tool',
     imports: [TuiDetailsRemoveButtonTool],
     template: `
@@ -38,11 +38,14 @@ export class TuiDetailsRemoveTool implements OnInit {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected disabled$: Observable<boolean> | null = null;
 
-    @Input('editor')
-    public set inputEditor(value: AbstractTuiEditor | null) {
-        this.localEditor = value;
+    protected readonly inputEditorEffect = effect(() => {
+        this.localEditor = this.inputEditor();
         this.initStream();
-    }
+    });
+
+    public readonly inputEditor = input<AbstractTuiEditor | null>(null, {
+        alias: 'editor',
+    });
 
     public ngOnInit(): void {
         this.initStream();

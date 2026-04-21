@@ -1,14 +1,12 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     selector: 'smiles-tool',
-    imports: [NgForOf, TuiButton, TuiDropdown],
+    imports: [TuiButton, TuiDropdown],
     templateUrl: './smiles-tool.template.html',
-    styleUrls: ['./smiles-tool.styles.less'],
+    styleUrl: './smiles-tool.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiSmilesTool {

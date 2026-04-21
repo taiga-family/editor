@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {type AbstractTuiEditor} from '@taiga-ui/editor/common';
 import {TuiTiptapEditorService} from '@taiga-ui/editor/directives/tiptap-editor';
 import {TuiInsertGroupButtonTool, TuiRemoveGroupButtonTool} from '@taiga-ui/editor/tools';
@@ -7,24 +7,22 @@ import {TuiInsertGroupButtonTool, TuiRemoveGroupButtonTool} from '@taiga-ui/edit
  * @deprecated use {@link TuiInsertGroupButtonTool}
  */
 @Component({
-    standalone: true,
     selector: 'tui-editor-group-tool',
     imports: [TuiInsertGroupButtonTool, TuiRemoveGroupButtonTool],
     template: `
         <button
             tuiInsertGroupTool
-            [editor]="editor"
+            [editor]="editor()"
         ></button>
         <button
             tuiRemoveGroupTool
-            [editor]="editor"
+            [editor]="editor()"
         ></button>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiEditorGroupTool {
-    @Input()
-    public editor: AbstractTuiEditor | null = inject(TuiTiptapEditorService, {
-        optional: true,
-    });
+    public readonly editor = input<AbstractTuiEditor | null>(
+        inject(TuiTiptapEditorService, {optional: true}),
+    );
 }

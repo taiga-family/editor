@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -7,7 +6,7 @@ import {
     ElementRef,
     inject,
     type OnInit,
-    ViewChild,
+    viewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -31,10 +30,8 @@ import {TuiImageAlignList} from './image-align-list';
 import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-image-editor',
     imports: [
-        NgIf,
         TuiActiveZone,
         TuiButton,
         TuiDropdown,
@@ -44,7 +41,7 @@ import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
         TuiImageAlignList,
     ],
     templateUrl: './image-editor.html',
-    styleUrls: ['./image-editor.less'],
+    styleUrl: './image-editor.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -58,11 +55,9 @@ export class TuiImageEditor
     extends AbstractTuiEditorResizable<TuiEditableImage>
     implements OnInit
 {
-    @ViewChild('resizable', {static: true})
-    private readonly resizable?: TuiEditorResizable;
+    private readonly img = viewChild('img', {read: ElementRef});
 
-    @ViewChild('img', {read: ElementRef})
-    private readonly img?: ElementRef<HTMLImageElement>;
+    private readonly resizable = viewChild.required<TuiEditorResizable>('resizable');
 
     private readonly destroy$ = inject(DestroyRef);
     private readonly sanitizer = inject(DomSanitizer);
@@ -110,14 +105,6 @@ export class TuiImageEditor
         this.win.open(url, '_blank');
     }
 
-    public addLink(url: string): void {
-        this.setLink(url);
-    }
-
-    public removeLink(): void {
-        this.setLink(null);
-    }
-
     public onEditLinkActiveZoneChange(isActive: boolean): void {
         if (this.isLinkDropdownOpened && !isActive) {
             this.isLinkDropdownOpened = false;
@@ -158,8 +145,8 @@ export class TuiImageEditor
     protected get containerWidth(): number {
         const naturalWidth =
             this.attrs.width ??
-            this.img?.nativeElement.naturalWidth ??
-            this.resizable?.width ??
+            this.img()?.nativeElement.naturalWidth ??
+            this.resizable().width() ??
             0;
 
         return Number.parseInt(naturalWidth as string, 10);

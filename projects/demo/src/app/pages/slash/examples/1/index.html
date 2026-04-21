@@ -4,14 +4,15 @@
     [(tuiDropdownOpen)]="open"
 >
     <tui-data-list *tuiTextfieldDropdown>
-        <button
-            *ngFor="let item of filter(suggestion)"
-            tuiOption
-            type="button"
-            (click)="command(item)"
-        >
-            {{ item.name }}
-        </button>
+        @for (item of filter(suggestion); track item.name) {
+            <button
+                tuiOption
+                type="button"
+                (click)="command(item)"
+            >
+                {{ item.name }}
+            </button>
+        }
     </tui-data-list>
 </tui-editor>
 

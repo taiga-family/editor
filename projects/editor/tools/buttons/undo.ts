@@ -13,12 +13,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool],
     host: {
         '[attr.automation-id]': '"toolbar__undo-button"',
-        '(click)': 'editor?.undo()',
+        '(click)': 'editor()?.undo()',
     },
 })
 export class TuiUndoButtonTool extends TuiToolbarTool {
     protected override getDisableState(): boolean {
-        return this.editor?.undoDisabled() ?? false;
+        return this.editor()?.undoDisabled() ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

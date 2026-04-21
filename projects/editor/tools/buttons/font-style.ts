@@ -1,11 +1,11 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
-    Input,
+    input,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -21,7 +21,6 @@ import {
     type TuiEditorToolType,
 } from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
@@ -33,10 +32,8 @@ import {TuiUnderlineButtonTool} from './underline';
 type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
 
 @Component({
-    standalone: true,
     selector: 'button[tuiFontStyleTool]',
     imports: [
-        NgIf,
         TuiBoldButtonTool,
         TuiItalicButtonTool,
         TuiStrikeButtonTool,
@@ -48,34 +45,38 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
 
         <ng-container *tuiTextfieldDropdown>
             <div tuiToolbarDropdownContent>
-                <button
-                    *ngIf="isEnabled(editorTool.Bold)"
-                    tuiBoldTool
-                    [editor]="editor"
-                >
-                    Toggle bold
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Italic)"
-                    tuiItalicTool
-                    [editor]="editor"
-                >
-                    Toggle italic
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Underline)"
-                    tuiUnderlineTool
-                    [editor]="editor"
-                >
-                    Toggle underline
-                </button>
-                <button
-                    *ngIf="isEnabled(editorTool.Strikethrough)"
-                    tuiStrikeTool
-                    [editor]="editor"
-                >
-                    Toggle strike
-                </button>
+                @if (isEnabled(editorTool.Bold)) {
+                    <button
+                        tuiBoldTool
+                        [editor]="editor()"
+                    >
+                        Toggle bold
+                    </button>
+                }
+                @if (isEnabled(editorTool.Italic)) {
+                    <button
+                        tuiItalicTool
+                        [editor]="editor()"
+                    >
+                        Toggle italic
+                    </button>
+                }
+                @if (isEnabled(editorTool.Underline)) {
+                    <button
+                        tuiUnderlineTool
+                        [editor]="editor()"
+                    >
+                        Toggle underline
+                    </button>
+                }
+                @if (isEnabled(editorTool.Strikethrough)) {
+                    <button
+                        tuiStrikeTool
+                        [editor]="editor()"
+                    >
+                        Toggle strike
+                    </button>
+                }
             </div>
         </ng-container>
     `,
@@ -89,26 +90,33 @@ export class TuiFontStyleButtonTool extends TuiToolbarTool {
     protected readonly open = tuiDropdownOpen();
     protected readonly editorTool = TuiEditorTool;
 
-    @Input()
-    public set enabledTools(value: Tools) {
-        this.toolsSet = new Set(value);
-    }
+    public readonly enabledTools = input<Tools>();
+
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
+
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
+
+    protected readonly enabledToolsEffect = effect(() => {
+        const tools = this.enabledTools();
+
+        this.toolsSet = new Set(tools);
+    });
 
     public isEnabled(tool: TuiEditorToolType): boolean {
         return this.toolsSet.has(tool);
     }
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
-
     protected override isActive(): boolean {
         return (
-            this.editor?.isActive('bold') ||
-            this.editor?.isActive('italic') ||
-            this.editor?.isActive('underline') ||
-            this.editor?.isActive('strike') ||
+            this.editor()?.isActive('bold') ||
+            this.editor()?.isActive('italic') ||
+            this.editor()?.isActive('underline') ||
+            this.editor()?.isActive('strike') ||
             false
         );
     }

@@ -1,8 +1,10 @@
 import {
     Directive,
+    effect,
     ElementRef,
+    forwardRef,
     inject,
-    Input,
+    input,
     type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
@@ -31,8 +33,8 @@ import {BehaviorSubject, combineLatest, map} from 'rxjs';
     standalone: true,
     selector: '[tuiToolbarDropdown]',
     providers: [
-        tuiAsDriver(TuiEditorDropdownToolbar),
-        tuiAsRectAccessor(TuiEditorDropdownToolbar),
+        tuiAsDriver(forwardRef(() => TuiEditorDropdownToolbar)),
+        tuiAsRectAccessor(forwardRef(() => TuiEditorDropdownToolbar)),
     ],
 })
 export class TuiEditorDropdownToolbar
@@ -80,8 +82,21 @@ export class TuiEditorDropdownToolbar
 
     private readonly ghost?: HTMLElement;
 
-    @Input('tuiToolbarDropdownPosition')
-    public position: 'selection' | 'tag' | 'word' = 'selection';
+    public readonly position = input<'selection' | 'tag' | 'word'>('selection', {
+        alias: 'tuiToolbarDropdownPosition',
+    });
+
+    public readonly tuiToolbarDropdown = input<TuiBooleanHandler<Range> | string>(
+        TUI_TRUE_HANDLER,
+    );
+
+    protected readonly tuiToolbarDropdownEffect = effect(() => {
+        const visible = this.tuiToolbarDropdown();
+
+        if (!tuiIsString(visible)) {
+            this.handler$.next(visible);
+        }
+    });
 
     public readonly type = 'dropdown';
 
@@ -89,15 +104,8 @@ export class TuiEditorDropdownToolbar
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
-    @Input()
-    public set tuiToolbarDropdown(visible: TuiBooleanHandler<Range> | string) {
-        if (!tuiIsString(visible)) {
-            this.handler$.next(visible);
-        }
-    }
-
-    public getClientRect(): DOMRect {
-        switch (this.position) {
+    public getClientRect(): ClientRect {
+        switch (this.position()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element = tuiIsElement(commonAncestorContainer)

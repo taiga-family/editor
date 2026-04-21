@@ -25,7 +25,7 @@
                 Reset
             </button>
 
-            <ng-container *ngIf="preview">
+            @if (preview) {
                 <h4>Update HTML:</h4>
 
                 <tui-radio-list
@@ -38,22 +38,24 @@
 
                 <br />
 
-                <tui-textarea
-                    *ngIf="updateOn === 'change'"
-                    [expandable]="true"
-                    [ngModel]="control.value"
-                    [ngModelOptions]="{updateOn: 'change'}"
-                    (ngModelChange)="control.setValue($event)"
-                />
+                @if (updateOn === 'change') {
+                    <tui-textarea
+                        [expandable]="true"
+                        [ngModel]="control.value"
+                        [ngModelOptions]="{updateOn: 'change'}"
+                        (ngModelChange)="control.setValue($event)"
+                    />
+                }
 
-                <tui-textarea
-                    *ngIf="updateOn === 'blur'"
-                    [expandable]="true"
-                    [ngModel]="control.value"
-                    [ngModelOptions]="{updateOn: 'blur'}"
-                    (ngModelChange)="control.setValue($event)"
-                />
-            </ng-container>
+                @if (updateOn === 'blur') {
+                    <tui-textarea
+                        [expandable]="true"
+                        [ngModel]="control.value"
+                        [ngModelOptions]="{updateOn: 'blur'}"
+                        (ngModelChange)="control.setValue($event)"
+                    />
+                }
+            }
         </div>
     </tui-doc-demo>
     <tui-doc-documentation>

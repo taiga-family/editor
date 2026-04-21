@@ -4,7 +4,7 @@ import {
     Component,
     inject,
     PLATFORM_ID,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
@@ -22,7 +22,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {map, type Observable, of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAccordion,
@@ -32,7 +31,7 @@ import {map, type Observable, of} from 'rxjs';
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({iframe: true}),
@@ -41,12 +40,15 @@ import {map, type Observable, of} from 'rxjs';
             useFactory:
                 () =>
                 ([file]: File[]): Observable<
-                    Array<TuiEditorAttachedFile<{type: string}>>
+                    ReadonlyArray<
+                        TuiEditorAttachedFile<{
+                            type: string;
+                        }>
+                    >
                 > => {
                     if (!file) {
                         return of([]);
                     }
-
                     const fileReader = new FileReader();
 
                     // For example, instead of uploading to a file server,
@@ -57,10 +59,8 @@ import {map, type Observable, of} from 'rxjs';
                         map(() => [
                             {
                                 name: file.name,
-
                                 /* base64 or link to the file on your server */
                                 link: String(fileReader.result),
-
                                 attrs: {type: file.type},
                             },
                         ]),
@@ -81,8 +81,7 @@ import {map, type Observable, of} from 'rxjs';
     },
 })
 export default class Example {
-    @ViewChild(TuiEditor)
-    private readonly editor?: TuiEditor;
+    private readonly editor = viewChild.required(TuiEditor);
 
     private readonly sanitizer = inject(DomSanitizer);
 
@@ -123,15 +122,15 @@ export default class Example {
             return;
         }
 
-        this.editor?.editorService
-            .getOriginTiptapEditor()
+        this.editor()
+            .editorService.getOriginTiptapEditor()
             ?.chain()
             .focus('end')
             .createParagraphNear()
             .insertContent(file.name)
             .run();
 
-        this.editor?.editorService.setIframe({
+        this.editor().editorService.setIframe({
             allowfullscreen: false,
             frameborder: null,
             // For example, src: `https://mozilla.github.io/pdf.js/web/viewer.html?url${file.link}`,

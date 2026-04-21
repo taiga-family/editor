@@ -1,5 +1,5 @@
-import {Directive, ElementRef, inject, Input, Output, Renderer2} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {Directive, effect, ElementRef, inject, input, Renderer2} from '@angular/core';
+import {outputFromObservable, takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {INITIALIZATION_TIPTAP_CONTAINER, TIPTAP_EDITOR} from '@taiga-ui/editor/common';
 import {distinctUntilChanged} from 'rxjs';
 
@@ -10,36 +10,36 @@ import {TuiTiptapEditorService} from './tiptap-editor.service';
     selector: '[tuiTiptapEditor]',
 })
 export class TuiTiptapEditor {
-    private canEdit = true;
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly editor = inject(TuiTiptapEditorService);
-    protected editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
+
+    protected readonly editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
+
+    public readonly value = input<string>('');
+    public readonly editable = input(true);
+
+    public readonly valueChange = outputFromObservable(
+        this.editor.valueChange$.pipe(distinctUntilChanged()),
+    );
+
+    /**
+     * @deprecated use valueChange instead
+     */
+    public readonly stateChange = outputFromObservable(this.editor.stateChange$);
 
     protected readonly $ = inject(TIPTAP_EDITOR)
         .pipe(takeUntilDestroyed())
         .subscribe(() => {
             this.renderer.appendChild(this.el.nativeElement, this.editorContainer);
-            this.editable = this.canEdit; // synchronized editable state after first render
+            this.editor.editable = this.editable();
         });
 
-    @Output()
-    public readonly valueChange = this.editor.valueChange$.pipe(distinctUntilChanged());
+    protected readonly valueEffect = effect(() => {
+        this.editor.setValue(this.value());
+    });
 
-    /**
-     * @deprecated use valueChange instead
-     */
-    @Output()
-    public readonly stateChange = this.editor.stateChange$;
-
-    @Input()
-    public set value(value: string) {
-        this.editor.setValue(value);
-    }
-
-    @Input()
-    public set editable(editable: boolean) {
-        this.canEdit = editable;
-        this.editor.editable = editable;
-    }
+    protected readonly editableEffect = effect(() => {
+        this.editor.editable = this.editable();
+    });
 }

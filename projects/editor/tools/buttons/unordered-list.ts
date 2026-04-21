@@ -12,13 +12,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor?.toggleUnorderedList()',
+        '(click)': 'editor()?.toggleUnorderedList()',
         '[attr.automation-id]': '"toolbar__un-ordered-list-button"',
     },
 })
 export class TuiUnorderedListButtonTool extends TuiToolbarTool {
     protected override isActive(): boolean {
-        return this.editor?.isActive('bulletList') ?? false;
+        return this.editor()?.isActive('bulletList') ?? false;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

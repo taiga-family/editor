@@ -1,9 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     forwardRef,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -15,7 +16,6 @@ import {
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
@@ -26,7 +26,6 @@ import {TuiTaskListButtonTool} from './task-list';
 import {TuiUnorderedListButtonTool} from './unordered-list';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiListTool]',
     imports: [
         TuiIndentButtonTool,
@@ -43,23 +42,23 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
             <div tuiToolbarDropdownContent>
                 <button
                     tuiUnorderedListTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiOrderedListTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiTaskListTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiIndentTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
                 <button
                     tuiOutdentTool
-                    [editor]="editor"
+                    [editor]="editor()"
                 ></button>
             </div>
         </ng-container>
@@ -72,16 +71,20 @@ export class TuiListButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
 
-    @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly template = viewChild(
+        forwardRef(() => TuiTextfieldDropdownDirective),
+        {read: TemplateRef},
+    );
+
+    protected readonly templateEffect = effect(() => {
+        this.dropdown.set(this.template());
+    });
 
     protected override isActive(): boolean {
         return (
-            this.editor?.isActive('bulletList') ||
-            this.editor?.isActive('orderedList') ||
-            this.editor?.isActive('taskList') ||
+            this.editor()?.isActive('bulletList') ||
+            this.editor()?.isActive('orderedList') ||
+            this.editor()?.isActive('taskList') ||
             false
         );
     }
