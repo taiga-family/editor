@@ -4,7 +4,7 @@
     [tools]="builtInTools"
     [tuiDropdownOpen]="wysiwyg().isMentionMode"
 >
-    <ng-container *tuiTextfieldDropdown>
+    <ng-container *tuiDropdown>
         <mentions
             [mentionSuggestions]="wysiwyg().mentionSuggestions"
             (setMention)="setMention($event)"

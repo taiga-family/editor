@@ -1,0 +1,35 @@
+@import '@taiga-ui/styles/utils.less';
+
+:host {
+    display: block;
+    border-radius: var(--tui-radius-m);
+    text-align: start;
+
+    :host-context(*:disabled) {
+        pointer-events: none;
+    }
+}
+
+.t-wrapper {
+    display: flex;
+    border-radius: inherit;
+    inline-size: 100%;
+}
+
+.t-textfield {
+    border-radius: inherit;
+    text-align: inherit;
+    inline-size: inherit;
+
+    ::ng-deep .t-input {
+        text-transform: lowercase !important;
+    }
+}
+
+.t-color {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    box-shadow: inset 0 0 0 1px var(--tui-base-03-dark);
+    border-radius: 0.125rem;
+    pointer-events: auto !important;
+}

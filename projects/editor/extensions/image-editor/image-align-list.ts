@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
+import {tuiPure} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-image-align-list',

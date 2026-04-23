@@ -17,7 +17,6 @@ import {TUI_EDITOR_OPTIONS, TUI_EDITOR_SANITIZER} from '@taiga-ui/editor/common'
 import {TuiTiptapEditor} from '@taiga-ui/editor/directives/tiptap-editor';
 
 @Component({
-    standalone: true,
     selector: 'tui-editor-socket',
     template: '',
     styleUrl: './editor-socket.component.less',

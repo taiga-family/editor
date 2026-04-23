@@ -1,9 +1,7 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {inject} from '@angular/core';
 import {type ApplicationConfig} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
-import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DOC_DEFAULT_TABS,
     TUI_DOC_LOGO,
@@ -12,8 +10,8 @@ import {
     TUI_DOC_TITLE,
     type TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
-import {TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
-import {provideEventPlugins} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
+import {provideHighlightOptions} from 'ngx-highlightjs';
 
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
@@ -29,7 +27,17 @@ export const appConfig: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        provideEventPlugins(),
+        provideTaiga(),
+        provideHighlightOptions({
+            coreLibraryLoader: async () => import('highlight.js/lib/core'),
+            lineNumbersLoader: async () => import('ngx-highlightjs/line-numbers'),
+            languages: {
+                typescript: async () => import('highlight.js/lib/languages/typescript'),
+                less: async () => import('highlight.js/lib/languages/less'),
+                xml: async () => import('highlight.js/lib/languages/xml'),
+                bash: async () => import('highlight.js/lib/languages/bash'),
+            },
+        }),
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy,
@@ -49,10 +57,6 @@ export const appConfig: ApplicationConfig = {
         {
             provide: TUI_DOC_PAGES,
             useValue: DEMO_PAGES,
-        },
-        {
-            provide: TUI_IS_PLAYWRIGHT,
-            useFactory: () => Boolean(inject(WA_SESSION_STORAGE).getItem('playwright')),
         },
         {
             provide: TUI_DOC_SOURCE_CODE,

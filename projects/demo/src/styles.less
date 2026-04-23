@@ -1,6 +1,6 @@
-@import (css) url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
-@import '@taiga-ui/styles/taiga-ui-global.less';
-@import '@taiga-ui/core/styles/taiga-ui-theme.less';
+@import (css) url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap');
+@import '@taiga-ui/legacy/styles/taiga-ui-global.less';
+@import '@taiga-ui/styles/taiga-ui-theme.less';
 @import 'highlight.js/styles/github.css';
 
 body {
@@ -12,50 +12,8 @@ body {
     block-size: 100%;
 }
 
-tui-doc-main [tuiDocHeader] {
-    display: none;
-}
-
-tui-doc-navigation.tui-doc-navigation {
-    inset-block-start: 0 !important;
-
-    tui-scrollbar {
-        overscroll-behavior: none;
-    }
-}
-
 .tui-doc-page {
     padding-block-start: 0 !important;
-}
-
-tui-root::before {
-    position: absolute !important;
-}
-
-tui-doc-page tui-doc-example:first-child {
-    padding-block-start: 0.5rem;
-}
-
-tui-doc-page .t-example.t-example {
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    margin-block-start: 0;
-}
-
-tui-doc-page .t-tabs-wrapper.t-tabs-wrapper {
-    padding: 0;
-}
-
-tui-doc-page .t-demo.t-demo {
-    padding: 1rem 0 0;
-}
-
-tui-doc-page .t-code.t-code {
-    border: 1px solid var(--tui-border-normal);
-    border-block-start: none;
-    border-block-end: 0;
-    margin-block-end: 0.0625rem;
 }
 
 [automation-id='tui-doc-example'] > * > tui-accordion {
@@ -64,4 +22,62 @@ tui-doc-page .t-code.t-code {
 
 .code {
     word-break: break-all;
+}
+
+tui-doc-example .t-root-content > .t-content {
+    border-radius: 0;
+    margin-block-start: 0.3125rem;
+    box-shadow: none !important;
+}
+
+tui-doc-example .t-example .t-header {
+    padding: 0.25rem;
+    border-radius: var(--tui-radius-m);
+    border: 1px solid var(--tui-border-normal);
+}
+
+tui-doc-page .t-example.t-example {
+    border: none !important;
+    box-shadow: none;
+    border-radius: 0;
+    margin-block-start: 0;
+}
+
+tui-doc-page .t-demo.t-demo {
+    padding: 0;
+}
+
+tui-doc-page .t-code.t-code {
+    outline: 1px solid var(--tui-border-normal);
+    border-radius: var(--tui-radius-m);
+    inline-size: calc(100% - 2px);
+    margin: 1px auto;
+
+    code {
+        background: var(--tui-background-base);
+    }
+}
+
+tui-doc-page > .t-header {
+    margin-block-end: 0;
+    margin-block-start: 4rem;
+}
+
+tui-doc-demo[tuiTheme] > .t-wrapper > .t-content {
+    padding: 0.5rem;
+}
+
+tui-doc-example > header [tuiLink] {
+    font: var(--tui-typography-heading-h5) !important;
+}
+
+tui-doc-page > .t-header:empty {
+    block-size: 0;
+    padding: 0;
+    margin: 0 0 4.0625rem;
+}
+
+tui-doc-example {
+    padding-block-start: 0;
+    padding-block-end: 2rem;
 }

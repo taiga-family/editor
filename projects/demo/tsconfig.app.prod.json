@@ -1,0 +1,9 @@
+{
+    "extends": "./tsconfig.app.json",
+    "angularCompilerOptions": {
+        "extendedDiagnostics": {
+            "defaultCategory": "error"
+        },
+        "noUnusedLocals": true
+    }
+}

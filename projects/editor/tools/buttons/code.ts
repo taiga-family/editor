@@ -1,9 +1,7 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
     inject,
     TemplateRef,
     viewChild,
@@ -12,10 +10,9 @@ import {
     TuiDataList,
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
+    TuiInput,
     TuiOption,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {TUI_EDITOR_CODE_OPTIONS, type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -26,13 +23,13 @@ import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     selector: 'button[tuiCodeTool]',
-    imports: [AsyncPipe, TuiDataList, TuiOption, TuiTextfield],
+    imports: [TuiDataList, TuiInput, TuiOption],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-data-list>
-                @for (item of codeOptionsTexts$ | async; track item) {
+                @for (item of codeOptionsTexts(); track item) {
                     <button
                         tuiOption
                         type="button"
@@ -48,14 +45,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiCodeButtonTool extends TuiToolbarTool {
-    protected readonly codeOptionsTexts$ = inject(TUI_EDITOR_CODE_OPTIONS);
+    protected readonly codeOptionsTexts = inject(TUI_EDITOR_CODE_OPTIONS);
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());

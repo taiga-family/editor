@@ -1,0 +1,27 @@
+<div
+    class="t-wrapper"
+    [tuiDropdown]="picker"
+    [(tuiDropdownOpen)]="open"
+>
+    <div
+        class="t-color"
+        [style.background]="background()"
+    ></div>
+    <input
+        class="t-input"
+        [disabled]="disabled()"
+        [maskito]="maskitoOptions()"
+        [readOnly]="readOnly()"
+        [value]="value()"
+        (input)="onInput($event)"
+    />
+    <ng-content />
+</div>
+
+<ng-template #picker>
+    <tui-color-selector
+        [color]="value()"
+        [colors]="colors()"
+        (colorChange)="onChange($event)"
+    />
+</ng-template>

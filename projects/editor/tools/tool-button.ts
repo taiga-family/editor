@@ -8,9 +8,8 @@ import {
 } from '@taiga-ui/core';
 
 @Directive({
-    standalone: true,
     providers: [
-        tuiHintOptionsProvider({direction: ['top-left', 'top', 'right']}),
+        tuiHintOptionsProvider({direction: ['top-start', 'top', 'end']}),
         tuiButtonOptionsProvider({
             size: 's',
             appearance: 'icon',

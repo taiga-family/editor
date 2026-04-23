@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
 import {type Extension, type Mark, type Node} from '@tiptap/core';
 import {type Observable} from 'rxjs';

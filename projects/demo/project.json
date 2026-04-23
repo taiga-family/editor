@@ -26,7 +26,8 @@
                             "replace": "projects/demo/src/environments/environment.ts",
                             "with": "projects/demo/src/environments/environment.prod.ts"
                         }
-                    ]
+                    ],
+                    "tsConfig": "{projectRoot}/tsconfig.app.prod.json"
                 }
             },
             "defaultConfiguration": "production",
@@ -65,8 +66,8 @@
                     "entry": "{projectRoot}/src/server.ts"
                 },
                 "styles": [
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-                    "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+                    "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+                    "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
                     "projects/demo/src/styles.less"
                 ],
                 "tsConfig": "{projectRoot}/tsconfig.app.json"

@@ -1,13 +1,8 @@
 import {Directive, ElementRef, inject} from '@angular/core';
-import {
-    tuiClamp,
-    tuiGetClosestFocusable,
-    tuiIsFocusedIn,
-    tuiIsNativeMouseFocusable,
-} from '@taiga-ui/cdk';
+import {tuiClamp, tuiGetClosestFocusable, tuiIsFocusedIn} from '@taiga-ui/cdk';
+import {tuiIsMouseFocusable} from '@taiga-ui/editor/utils';
 
 @Directive({
-    standalone: true,
     selector: '[tuiToolbarNavigationManager]',
     host: {
         '(keydown.arrowLeft.prevent)': 'onHorizontalNavigation(true)',
@@ -23,9 +18,9 @@ export class TuiToolbarNavigationManager {
             : this.toolsContainers;
 
         for (const el of tools) {
-            const focusableElement = tuiIsNativeMouseFocusable(el)
+            const focusableElement = tuiIsMouseFocusable(el)
                 ? el
-                : tuiGetClosestFocusable({initial: el, root: el, keyboard: false});
+                : tuiGetClosestFocusable({initial: el, root: el});
 
             if (focusableElement) {
                 return focusableElement;
@@ -59,14 +54,13 @@ export class TuiToolbarNavigationManager {
     }
 
     private findPreviousTool(wrapper?: HTMLElement | null): HTMLElement | null {
-        if (!wrapper || tuiIsNativeMouseFocusable(wrapper)) {
+        if (!wrapper || tuiIsMouseFocusable(wrapper)) {
             return wrapper ?? null;
         }
 
         const lookedInside = tuiGetClosestFocusable({
             initial: wrapper,
             root: wrapper,
-            keyboard: false,
         });
 
         return (
@@ -75,18 +69,16 @@ export class TuiToolbarNavigationManager {
                 initial: wrapper,
                 root: this.el,
                 previous: true,
-                keyboard: false,
             })
         );
     }
 
     private findNextTool(wrapper?: HTMLElement | null): HTMLElement | null {
-        return !wrapper || tuiIsNativeMouseFocusable(wrapper)
+        return !wrapper || tuiIsMouseFocusable(wrapper)
             ? (wrapper ?? null)
             : tuiGetClosestFocusable({
                   initial: wrapper,
                   root: this.el,
-                  keyboard: false,
               });
     }
 }

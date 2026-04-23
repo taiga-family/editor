@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-import {TUI_IS_E2E, TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {
     provideTuiEditor,
@@ -11,8 +12,7 @@ import {
     TuiEditorTool,
     type TuiEditorToolType,
 } from '@taiga-ui/editor';
-import {TuiRadioList} from '@taiga-ui/kit';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
+import {TuiRadioList, TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
     selector: 'editor-starter-page',
@@ -24,7 +24,7 @@ import {TuiTextareaModule} from '@taiga-ui/legacy';
         TuiButton,
         TuiEditor,
         TuiRadioList,
-        TuiTextareaModule,
+        TuiTextarea,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -50,7 +50,7 @@ export default class TuiEditorStarter {
     protected readonly component = import('./import/component.md?raw');
     protected readonly exampleStyles = import('./import/styles.less.md?raw');
     protected readonly exampleIcons = import('./import/angular.json.md?raw');
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly control = new FormControl(/* HTML */ `
         <h2>What is Lorem Ipsum?</h2>

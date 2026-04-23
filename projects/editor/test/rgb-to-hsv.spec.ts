@@ -1,0 +1,8 @@
+import {describe, expect, it} from '@jest/globals';
+import {tuiRgbToHsv} from '@taiga-ui/editor';
+
+describe('rgbToHsv', () => {
+    it('works', () => {
+        expect(tuiRgbToHsv(42, 42, 84)).toEqual([240, 0.5, 84]);
+    });
+});

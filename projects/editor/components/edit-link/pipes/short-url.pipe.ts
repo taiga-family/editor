@@ -4,10 +4,7 @@ const MAX_LENGTH = 60;
 const START = MAX_LENGTH - 20;
 const END = MAX_LENGTH - START - 10;
 
-@Pipe({
-    standalone: true,
-    name: 'tuiShortUrl',
-})
+@Pipe({name: 'tuiShortUrl'})
 export class TuiShortUrlPipe implements PipeTransform {
     public transform(url: string): string {
         return url.length < MAX_LENGTH

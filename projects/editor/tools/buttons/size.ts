@@ -3,20 +3,19 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
     inject,
     TemplateRef,
     viewChild,
 } from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {TuiItem, tuiPx} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
+    TuiInput,
     TuiOption,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {
@@ -39,14 +38,14 @@ import {TuiToolbarButtonTool} from '../tool-button';
         NgClass,
         NgStyle,
         TuiDataList,
+        TuiInput,
         TuiItem,
         TuiOption,
-        TuiTextfield,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-data-list>
                 @for (item of fontsOptions$ | async; track item) {
                     <button
@@ -75,18 +74,14 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiFontSizeButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());
     });
 
-    protected readonly fontsOptions$ = inject(TUI_EDITOR_FONT_OPTIONS).pipe(
+    protected readonly fontsOptions$ = toObservable(inject(TUI_EDITOR_FONT_OPTIONS)).pipe(
         map((texts) => this.options.fontOptions(texts)),
     );
 

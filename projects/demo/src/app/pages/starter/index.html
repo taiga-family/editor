@@ -39,107 +39,116 @@
                 <br />
 
                 @if (updateOn === 'change') {
-                    <tui-textarea
-                        [expandable]="true"
-                        [ngModel]="control.value"
-                        [ngModelOptions]="{updateOn: 'change'}"
-                        (ngModelChange)="control.setValue($event)"
-                    />
+                    <tui-textfield>
+                        <textarea
+                            tuiTextarea
+                            [ngModel]="control.value"
+                            [ngModelOptions]="{updateOn: 'change'}"
+                            (ngModelChange)="control.setValue($event)"
+                        ></textarea>
+                    </tui-textfield>
                 }
 
                 @if (updateOn === 'blur') {
-                    <tui-textarea
-                        [expandable]="true"
-                        [ngModel]="control.value"
-                        [ngModelOptions]="{updateOn: 'blur'}"
-                        (ngModelChange)="control.setValue($event)"
-                    />
+                    <tui-textfield>
+                        <textarea
+                            tuiTextarea
+                            [ngModel]="control.value"
+                            [ngModelOptions]="{updateOn: 'blur'}"
+                            (ngModelChange)="control.setValue($event)"
+                        ></textarea>
+                    </tui-textfield>
                 }
             }
         </div>
     </tui-doc-demo>
-    <tui-doc-documentation>
-        <ng-template
-            documentationPropertyName="Show preview"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="preview"
+    <table tuiDocAPI>
+        <tr
+            name="Show preview"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="preview"
         >
             Just demo
-        </ng-template>
-        <ng-template
-            documentationPropertyName="disabled"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="disabled"
+        </tr>
+        <tr
+            name="disabled"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="disabled"
         >
             Disabled state (use
             <code>formControl.disable()</code>
             )
-        </ng-template>
-        <ng-template
-            documentationPropertyName="[readOnly]"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="readOnly"
+        </tr>
+        <tr
+            name="[readOnly]"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="readOnly"
         >
             Readonly mode
-        </ng-template>
-        <ng-template
-            documentationPropertyName="[floatingToolbar]"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="floating"
+        </tr>
+        <tr
+            name="[floatingToolbar]"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="floating"
         >
             Floating toolbar
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="tools"
-            documentationPropertyType="readonly TuiEditorToolType[] | Set<TuiEditorToolType>"
-            [documentationPropertyValues]="toolsVariants"
-            [(documentationPropertyValue)]="tools"
+        </tr>
+        <tr
+            name="[tools]"
+            tuiDocAPIItem
+            type="readonly TuiEditorToolType[] | Set<TuiEditorToolType>"
+            [items]="toolsVariants"
+            [(value)]="tools"
         >
             Allowed edit tools
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="ngModel"
-            documentationPropertyType="string"
-            [documentationPropertyValue]="control.value"
-            (documentationPropertyValueChange)="control.setValue($event)"
+        </tr>
+        <tr
+            name="[ngModel]"
+            tuiDocAPIItem
+            type="string"
+            [value]="control.value"
+            (valueChange)="control.setValue($event ?? '')"
         >
             Example pass HTML code
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="placeholder"
-            documentationPropertyType="string"
-            [(documentationPropertyValue)]="placeholder"
+        </tr>
+        <tr
+            name="[placeholder]"
+            tuiDocAPIItem
+            type="string"
+            [(value)]="placeholder"
         >
             Placeholder shown on empty focused input
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="style.min-height"
-            documentationPropertyType="string"
-            [(documentationPropertyValue)]="minHeight"
+        </tr>
+        <tr
+            name="[style.min-height]"
+            tuiDocAPIItem
+            type="string"
+            [(value)]="minHeight"
         >
             Value of CSS-property "min-height"
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="style.max-height"
-            documentationPropertyType="string"
-            [(documentationPropertyValue)]="maxHeight"
+        </tr>
+        <tr
+            name="[style.max-height]"
+            tuiDocAPIItem
+            type="string"
+            [(value)]="maxHeight"
         >
             Value of CSS-property "max-height"
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="output"
-            documentationPropertyName="loaded"
-            documentationPropertyType="boolean"
+        </tr>
+        <tr
+            name="(loaded)"
+            tuiDocAPIItem
+            type="boolean"
         >
             Emits when editor is loaded
-        </ng-template>
-    </tui-doc-documentation>
-    <tui-doc-documentation heading="How to use">
+        </tr>
+    </table>
+    <h3>How to use</h3>
+    <table tuiDocAPI>
         <tui-doc-code code="npm i &#64;taiga-ui/{cdk,core,kit,icons,editor}" />
 
         <ol class="b-demo-steps">
@@ -171,5 +180,5 @@
                 />
             </li>
         </ol>
-    </tui-doc-documentation>
+    </table>
 </tui-doc-page>

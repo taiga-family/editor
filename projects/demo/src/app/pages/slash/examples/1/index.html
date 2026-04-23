@@ -3,7 +3,7 @@
     [tools]="builtInTools"
     [(tuiDropdownOpen)]="open"
 >
-    <tui-data-list *tuiTextfieldDropdown>
+    <tui-data-list *tuiDropdown>
         @for (item of filter(suggestion); track item.name) {
             <button
                 tuiOption

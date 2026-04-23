@@ -6,7 +6,6 @@ import {
     computed,
     contentChild,
     DestroyRef,
-    effect,
     ElementRef,
     forwardRef,
     inject,
@@ -40,11 +39,11 @@ import {
     tuiAppearanceMode,
     tuiAppearanceState,
     TuiDropdown,
+    TuiDropdownContent,
     TuiDropdownDirective,
     TuiDropdownOpen,
     TuiScrollbar,
     tuiScrollbarOptionsProvider,
-    TuiTextfieldDropdownDirective,
 } from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
@@ -141,7 +140,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly zone = inject(NgZone);
     private readonly destroy$ = inject(DestroyRef);
 
-    protected readonly dropdownContent = contentChild(TuiTextfieldDropdownDirective, {
+    protected readonly dropdownContent = contentChild(TuiDropdownContent, {
         read: TemplateRef,
     });
 
@@ -215,11 +214,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public readonly rootEl = tuiInjectElement();
     public readonly editorService = inject(TuiTiptapEditorService);
-    public readonly readOnlyMode = input<boolean>(false, {alias: 'readOnly'});
-
-    protected readonly readOnlyModeEffect = effect(() => {
-        this.readOnly.set(this.readOnlyMode());
-    });
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
@@ -365,7 +359,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     private readonly openDropdownWhen = (range: Range): boolean =>
         this.currentFocusedNodeIsTextAnchor(range) ||
         this.isMentionMode ||
-        Boolean(this.tuiDropdown?.tuiDropdownOpen);
+        Boolean(this.tuiDropdown?.open());
 
     /**
      * @description:

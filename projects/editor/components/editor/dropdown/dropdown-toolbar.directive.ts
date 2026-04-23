@@ -1,3 +1,4 @@
+import {isPlatformBrowser} from '@angular/common';
 import {
     Directive,
     effect,
@@ -6,12 +7,12 @@ import {
     inject,
     input,
     type OnDestroy,
+    PLATFORM_ID,
     ViewContainerRef,
 } from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     EMPTY_CLIENT_RECT,
-    TUI_RANGE,
     TUI_TRUE_HANDLER,
     type TuiBooleanHandler,
     tuiIsElement,
@@ -30,7 +31,6 @@ import {TUI_EDITOR_PM_SELECTED_NODE} from '@taiga-ui/editor/common';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiToolbarDropdown]',
     providers: [
         tuiAsDriver(forwardRef(() => TuiEditorDropdownToolbar)),
@@ -43,7 +43,6 @@ export class TuiEditorDropdownToolbar
 {
     private previousTagPosition: DOMRect | null = null;
     private previousSelectionRect: DOMRect | null = null;
-    private range = inject(TUI_RANGE);
 
     private readonly doc =
         inject<{document: Partial<Document> | undefined} | undefined>(WA_WINDOW)
@@ -81,6 +80,10 @@ export class TuiEditorDropdownToolbar
     );
 
     private readonly ghost?: HTMLElement;
+
+    protected range = isPlatformBrowser(inject(PLATFORM_ID))
+        ? new Range()
+        : ({} as unknown as Range);
 
     public readonly position = input<'selection' | 'tag' | 'word'>('selection', {
         alias: 'tuiToolbarDropdownPosition',

@@ -86,7 +86,7 @@ test.describe('Details', () => {
     test('nested details - opened and closed state', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.Details);
 
-        const example = page.locator('#configure');
+        const example = page.locator('#configuration');
         const content = example.locator('tui-editor-socket').filter({hasText: 'Title 1'});
 
         await content.scrollIntoViewIfNeeded();

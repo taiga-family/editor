@@ -21,7 +21,7 @@
                     (keydown.backspace)="onBackspace()"
                     (keydown.prevent.enter)="onSave()"
                 >
-                    @if (texts$ | async; as text) {
+                    @if (texts(); as text) {
                         {{ prefixIsHashMode ? text.anchorExample : text.urlExample }}
                     }
                     <input

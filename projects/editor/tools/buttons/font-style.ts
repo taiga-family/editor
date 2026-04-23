@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
+    inject,
     input,
     TemplateRef,
     viewChild,
@@ -10,9 +10,8 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
+    TuiDropdownOpen,
+    TuiInput,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {
@@ -35,15 +34,15 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
     selector: 'button[tuiFontStyleTool]',
     imports: [
         TuiBoldButtonTool,
+        TuiInput,
         TuiItalicButtonTool,
         TuiStrikeButtonTool,
-        TuiTextfield,
         TuiUnderlineButtonTool,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div tuiToolbarDropdownContent>
                 @if (isEnabled(editorTool.Bold)) {
                     <button
@@ -87,14 +86,10 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
 export class TuiFontStyleButtonTool extends TuiToolbarTool {
     private toolsSet = new Set(this.options.tools);
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
+    protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly editorTool = TuiEditorTool;
     public readonly enabledTools = input<Tools>();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());

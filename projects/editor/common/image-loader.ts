@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {InjectionToken} from '@angular/core';
 import {type TuiHandler, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {map, type Observable, of} from 'rxjs';

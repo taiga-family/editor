@@ -1,0 +1,8 @@
+@for (item of value(); track $index) {
+    <div
+        class="t-circle"
+        [style.inset-inline-start.%]="item * 100"
+        (dblclick)="onClick(index)"
+        (mousedown)="onMouseDown(index)"
+    ></div>
+}

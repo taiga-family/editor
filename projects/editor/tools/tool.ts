@@ -9,8 +9,9 @@ import {
     type OnInit,
     signal,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {TUI_IS_MOBILE, tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
+import {tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
@@ -39,9 +40,9 @@ export abstract class TuiToolbarTool implements OnInit {
 
     protected readonly cd = inject(ChangeDetectorRef);
     protected readonly destroy$ = inject(DestroyRef);
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-    protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));
+    protected readonly texts = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly readOnly = signal(false);
     protected readonly activeOnly = signal(false);
     protected readonly isFocused = signal(false);
@@ -70,13 +71,19 @@ export abstract class TuiToolbarTool implements OnInit {
 
     protected readonly tuiHint = tuiDirectiveBinding(
         TuiHintDirective,
-        'tuiHint',
+        'content',
         computed((texts = this.texts()) => this.getHint(texts)),
+    );
+
+    protected readonly tuiHintAppearance = tuiDirectiveBinding(
+        TuiHintDirective,
+        'appearance',
+        '',
     );
 
     protected readonly tuiHintManual = tuiDirectiveBinding(
         TuiHintManual,
-        'tuiHintManual',
+        'visible',
         !this.isMobile && null,
     );
 

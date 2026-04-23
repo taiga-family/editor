@@ -2,16 +2,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
+    inject,
     TemplateRef,
     viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
+    TuiDropdownOpen,
+    TuiInput,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -31,12 +30,12 @@ import {TuiAlignRightButtonTool} from './align-right';
         TuiAlignJustifyButtonTool,
         TuiAlignLeftButtonTool,
         TuiAlignRightButtonTool,
-        TuiTextfield,
+        TuiInput,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div tuiToolbarDropdownContent>
                 <button
                     tuiAlignLeftTool
@@ -63,12 +62,8 @@ import {TuiAlignRightButtonTool} from './align-right';
 })
 export class TuiAlignButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());

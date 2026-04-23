@@ -1,4 +1,4 @@
-<tui-loader [showLoader]="!!(uploadService.loading$ | async)">
+<tui-loader [loading]="!!(uploadService.loading$ | async)">
     <tui-editor
         class="editor"
         [formControl]="control"
