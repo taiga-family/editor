@@ -1,4 +1,5 @@
 import {type ChangeDetectorRef, Directive} from '@angular/core';
+import {type TuiMutable} from '@taiga-ui/editor/common';
 import {TuiNodeViewNg} from '@taiga-ui/editor/extensions/tiptap-node-view';
 import {type NodeViewProps} from '@tiptap/core';
 
@@ -7,9 +8,11 @@ export interface TuiEditorResizableContainer {
     width?: number | string | null;
 }
 
+type Attrs<T> = T | (Partial<TuiMutable<T>> & TuiEditorResizableContainer);
+
 @Directive()
 export abstract class AbstractTuiEditorResizable<
-    T extends TuiEditorResizableContainer,
+    T extends Attrs<TuiEditorResizableContainer | null>,
 > extends TuiNodeViewNg {
     protected abstract readonly changeDetector: ChangeDetectorRef;
     private localNode!: NodeViewProps['node'];
@@ -30,15 +33,18 @@ export abstract class AbstractTuiEditorResizable<
         this.changeDetector.detectChanges();
     }
 
-    protected get attrs(): T {
-        return (this.node.attrs as T | undefined) ?? ({src: ''} as unknown as T);
+    protected get attrs(): Attrs<T> {
+        return (
+            (this.node.attrs as Partial<TuiMutable<T>> | null) ??
+            ({src: ''} as unknown as T)
+        );
     }
 
     protected get width(): number | string | null {
-        return (this.currentWidth || this.attrs.width) ?? null;
+        return (this.currentWidth || this.attrs?.width) ?? null;
     }
 
     protected get height(): number | string | null {
-        return (this.currentHeight || this.attrs.height) ?? null;
+        return (this.currentHeight || this.attrs?.height) ?? null;
     }
 }

@@ -14,13 +14,9 @@ import {TuiInputInline} from '@taiga-ui/kit';
 })
 export class ExampleTuiPasteImageTool {
     private readonly dropdown = viewChild.required<any>('dropdown');
-
     private readonly editor = inject(TuiTiptapEditorService);
-
     protected youtubeLogo = 'assets/icons/google.svg';
-
     protected placeholder = 'Path to Image URL (ex. https://your-site.com/image.png)';
-
     protected url = '';
 
     protected insertImage(src: string): void {

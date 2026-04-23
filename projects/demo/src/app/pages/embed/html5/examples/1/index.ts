@@ -98,8 +98,8 @@ export class HttpMockUploader {
 })
 export default class Example {
     private readonly wysiwyg = viewChild.required(TuiEditor);
-
     private readonly sanitizer = inject(DomSanitizer);
+
     private readonly isNotStatic =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 

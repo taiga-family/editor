@@ -25,9 +25,9 @@ import {
         },
     ],
     host: {
+        tuiIconButton: '',
         tuiItem: '',
         tuiToolbarTool: '',
-        tuiIconButton: '',
         type: 'button',
         '[disabled]': 'disabled()',
     },

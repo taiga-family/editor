@@ -40,7 +40,6 @@ import {Mentions, type User} from './mention';
 })
 export default class Example {
     protected readonly wysiwyg = viewChild.required(TuiEditor);
-
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [

@@ -20,9 +20,9 @@ import {distinctUntilChanged, map, share} from 'rxjs';
 export class CustomColorPicker {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
     protected colors = this.options.textColors ?? this.options.colors;
-
     protected selectedColor = '';
     protected readonly editor: AbstractTuiEditor = inject(TuiTiptapEditorService);
+
     protected readonly fontColor$ = this.editor.valueChange$.pipe(
         map(() =>
             this.editor.getOriginTiptapEditor()?.isFocused
@@ -34,7 +34,6 @@ export class CustomColorPicker {
     );
 
     public readonly icon = input('');
-
     public readonly type = input<'BackgroundColor' | 'FontColor'>('FontColor');
 
     protected onValueChange(color: string): void {

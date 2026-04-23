@@ -32,9 +32,7 @@ import {TuiToolbarNavigationManager} from './toolbar-navigation-manager.directiv
 })
 export class TuiToolbarHost {
     private readonly dropdowns = viewChildren('dropdown', {read: ElementRef});
-
     private readonly navigationManager = viewChild(TuiToolbarNavigationManager);
-
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
 
     public readonly inputEditor = input<AbstractTuiEditor | null>(null, {

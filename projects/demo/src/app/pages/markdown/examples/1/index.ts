@@ -39,6 +39,7 @@ import {Converter} from 'showdown';
             provide: TUI_EDITOR_VALUE_TRANSFORMER,
             useValue: new (class extends TuiValueTransformer<string, string> {
                 public readonly toControlValue = (value: string): string => value;
+
                 public readonly fromControlValue = (value: string): string =>
                     new MarkdownIt().render(value);
             })(),
@@ -54,7 +55,6 @@ export default class Example implements OnInit {
     ];
 
     protected control: FormControl = new FormControl('');
-
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     public ngOnInit(): void {

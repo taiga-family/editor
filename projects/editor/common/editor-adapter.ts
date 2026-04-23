@@ -29,7 +29,6 @@ export abstract class AbstractTuiEditor {
      * @deprecated use valueChange$ instead
      */
     public readonly stateChange$ = new Subject<void>();
-
     public readonly valueChange$ = new BehaviorSubject('');
 
     public abstract get state(): EditorState | null;

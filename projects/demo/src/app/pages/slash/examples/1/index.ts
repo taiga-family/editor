@@ -43,13 +43,12 @@ interface MyCommand {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideTuiEditor()],
     host: {
-        '(window:keydown.arrowUp)': 'down($event, false)',
         '(window:keydown.arrowDown)': 'down($event, true)',
+        '(window:keydown.arrowUp)': 'down($event, false)',
     },
 })
 export default class Example implements OnInit {
     private readonly destroy$ = inject(DestroyRef);
-
     protected readonly wysiwyg = viewChild.required(TuiEditor);
 
     protected readonly datalist = viewChild.required(TuiDataListComponent, {
@@ -57,7 +56,6 @@ export default class Example implements OnInit {
     });
 
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected open = true;
 
     protected readonly builtInTools = [

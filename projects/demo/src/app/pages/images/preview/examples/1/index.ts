@@ -28,7 +28,6 @@ import {ImagePreviewExample} from './image-preview/image-preview.component';
 export default class Example {
     protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
-
     protected control = new FormControl('');
 
     constructor() {

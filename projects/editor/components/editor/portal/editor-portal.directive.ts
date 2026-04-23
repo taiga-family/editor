@@ -13,7 +13,6 @@ import {TuiEditorPortalService} from './editor-portal.service';
 })
 export class TuiEditorPortal extends TuiRectAccessor {
     private readonly el: HTMLElement = inject(ElementRef).nativeElement;
-
     public readonly type = 'viewport';
 
     public getClientRect(): ClientRect {

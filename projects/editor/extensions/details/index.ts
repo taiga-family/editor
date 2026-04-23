@@ -1,4 +1,4 @@
-import {TUI_EDITOR_RESIZE_EVENT} from '@taiga-ui/editor/common';
+import {TUI_EDITOR_RESIZE_EVENT, type TuiMutable} from '@taiga-ui/editor/common';
 import {tuiDeleteNode} from '@taiga-ui/editor/utils';
 import {mergeAttributes, type RawCommands} from '@tiptap/core';
 import {Details, type DetailsOptions} from '@tiptap/extension-details';
@@ -96,8 +96,8 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     const pos = (getPos as any)?.() ?? 0;
 
                     details.open = !details.open;
-                    (node.attrs as unknown as Record<string, unknown>).open =
-                        details.open;
+
+                    (node.attrs as TuiMutable<{open: boolean}>).open = details.open;
 
                     event.target?.dispatchEvent(
                         new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),

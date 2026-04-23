@@ -32,7 +32,6 @@ import {UploadService} from '../1/upload.service';
 })
 export default class Example {
     protected editorRef: AbstractTuiEditor | null = null;
-
     protected readonly uploadService = inject(UploadService);
 
     protected readonly builtInTools = [

@@ -45,8 +45,6 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected control = new FormControl('<p>Hello world</p>');
 }

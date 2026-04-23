@@ -21,9 +21,7 @@ const limit = 280;
 })
 export default class Example {
     protected readonly wysiwyg = viewChild.required(TuiEditor);
-
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected limit = limit;
 
     protected control = new FormControl(`

@@ -16,6 +16,5 @@ import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected control = new FormControl('<p>Hello</p>');
 }

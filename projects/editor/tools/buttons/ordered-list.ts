@@ -12,8 +12,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor()?.toggleOrderedList()',
         '[attr.automation-id]': '"toolbar__ordered-list-button"',
+        '(click)': 'editor()?.toggleOrderedList()',
     },
 })
 export class TuiOrderedListButtonTool extends TuiToolbarTool {

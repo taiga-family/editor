@@ -38,9 +38,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 })
 export default class Example {
     private readonly wysiwyg = viewChild.required(TuiEditor);
-
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected readonly control = new FormControl(`

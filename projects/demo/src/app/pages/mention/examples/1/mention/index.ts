@@ -22,8 +22,8 @@ export interface User {
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '(window:keydown.arrowUp)': 'down($event, false)',
         '(window:keydown.arrowDown)': 'down($event, true)',
+        '(window:keydown.arrowUp)': 'down($event, false)',
     },
 })
 export class Mentions {
@@ -43,7 +43,6 @@ export class Mentions {
     ];
 
     public readonly mentionSuggestions = input<string>();
-
     public readonly setMention = output<User>();
 
     @tuiPure

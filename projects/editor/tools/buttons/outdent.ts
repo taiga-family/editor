@@ -12,8 +12,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor()?.liftListItem()',
         '[attr.automation-id]': '"toolbar_outdent-button"',
+        '(click)': 'editor()?.liftListItem()',
     },
 })
 export class TuiOutdentButtonTool extends TuiToolbarTool {

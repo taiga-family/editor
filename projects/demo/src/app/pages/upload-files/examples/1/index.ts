@@ -42,9 +42,7 @@ import {UploadService} from './upload.service';
 })
 export default class Example {
     private readonly wysiwyg = viewChild.required(TuiEditor);
-
     protected readonly uploadService = inject(UploadService);
-
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected readonly builtInTools = [
