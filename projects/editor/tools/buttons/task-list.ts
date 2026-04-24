@@ -11,8 +11,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor()?.toggleTaskList()',
         '[attr.automation-id]': '"toolbar__task-list-button"',
+        '(click)': 'editor()?.toggleTaskList()',
     },
 })
 export class TuiTaskListButtonTool extends TuiToolbarTool {

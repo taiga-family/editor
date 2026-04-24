@@ -19,7 +19,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
 })
 export default class Example {
     public editorRef: AbstractTuiEditor | null = null;
-
     public readonly builtInTools = TUI_EDITOR_DEFAULT_TOOLS;
 
     public readonly group = new FormGroup({

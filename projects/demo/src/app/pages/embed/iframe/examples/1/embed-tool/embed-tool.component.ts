@@ -14,9 +14,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 })
 export class ExampleTuiEmbedTool {
     private readonly dropdown = viewChild.required<any>('dropdown');
-
     private readonly editor = inject(TuiTiptapEditorService);
-
     protected placeholder = 'https://my-embed.site.com/etc1235';
     protected url = '';
 

@@ -41,7 +41,6 @@ export abstract class TuiToolbarTool implements OnInit {
     protected readonly destroy$ = inject(DestroyRef);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     protected readonly texts = toSignal(inject(TUI_EDITOR_TOOLBAR_TEXTS));
     protected readonly readOnly = signal(false);
     protected readonly activeOnly = signal(false);

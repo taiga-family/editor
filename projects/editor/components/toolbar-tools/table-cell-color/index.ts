@@ -20,7 +20,6 @@ import {TuiPaintButtonTool} from '@taiga-ui/editor/tools';
 })
 export class TuiTableCellColorTool {
     private readonly options = inject(TUI_EDITOR_OPTIONS);
-
     public readonly colors = input(this.options.backgroundColors ?? this.options.colors);
 
     public readonly editor = input<AbstractTuiEditor | null>(

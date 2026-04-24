@@ -38,12 +38,13 @@ import {ExampleTuiYoutubeTool} from './youtube-tool/youtube-tool.component';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
+
     private readonly isNotStatic =
         inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected readonly builtInTools = [TuiEditorTool.Undo];
+
     protected readonly control = new FormControl(
         this.isNotStatic
             ? ''

@@ -20,7 +20,6 @@ import {TuiTextColorButtonTool} from '@taiga-ui/editor/tools';
 })
 export class TuiTextColorTool {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     public readonly colors = input(this.options.textColors ?? this.options.colors);
 
     public readonly editor = input<AbstractTuiEditor | null>(

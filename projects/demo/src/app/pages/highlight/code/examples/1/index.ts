@@ -26,9 +26,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 })
 export default class Example implements OnInit {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Code];
-
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected control = new FormControl('');
 
     public ngOnInit(): void {

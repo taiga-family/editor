@@ -49,7 +49,6 @@ export default class Example {
     ];
 
     public readonly editor = viewChild.required(TuiEditor);
-
     public readonly contents = new Subject<MyContentsInfo>();
 
     // cspell:disable

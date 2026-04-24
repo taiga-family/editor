@@ -119,8 +119,8 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         ngSkipHydration: 'true',
         class: 't-wrapper',
         '[attr.data-loaded]': 'editorLoaded()',
-        '(tuiActiveZoneChange)': 'onActiveZone($event)',
         '(click)': 'focus($event)',
+        '(tuiActiveZoneChange)': 'onActiveZone($event)',
     },
 })
 export class TuiEditor extends TuiControl<string> implements OnDestroy {
@@ -183,24 +183,16 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
      * @deprecated use placeholder
      */
     public readonly exampleText = input(this.options.exampleText);
-
     public readonly placeholder = input(this.options.placeholder);
-
     public readonly toolbar = input<TemplateRef<unknown> | null>(null);
-
     public readonly floatingToolbar = input(this.options.floatingToolbar);
-
     public readonly tools = input(this.options.tools);
-
     public readonly fileAttached = output<Array<TuiEditorAttachedFile<any>>>();
-
     public readonly focusIn = output();
-
     public readonly focusOut = output();
-
     public readonly loaded = output<boolean>();
-
     public hasMentionPlugin = false;
+
     public readonly hovered = toSignal(
         merge(
             fromEvent(tuiInjectElement(), 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
@@ -210,6 +202,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public readonly focused = tuiAppearanceFocus(false);
     public readonly m = tuiAppearanceMode(this.mode);
+
     public readonly s = tuiAppearanceState(
         computed(() => {
             if (this.disabled()) {
@@ -222,7 +215,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public readonly rootEl = tuiInjectElement();
     public readonly editorService = inject(TuiTiptapEditorService);
-
     public readonly readOnlyMode = input<boolean>(false, {alias: 'readOnly'});
 
     protected readonly readOnlyModeEffect = effect(() => {

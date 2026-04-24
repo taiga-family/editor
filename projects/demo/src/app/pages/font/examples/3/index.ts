@@ -27,7 +27,6 @@ import {ExampleTuiFontSizeTool} from './font-size-tool';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected readonly isE2E = inject(TUI_IS_E2E);
 
     protected control = new FormControl(`

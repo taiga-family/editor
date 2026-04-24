@@ -12,8 +12,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool],
     host: {
-        '(click)': 'editor()?.sinkListItem()',
         '[attr.automation-id]': '"toolbar_indent-button"',
+        '(click)': 'editor()?.sinkListItem()',
     },
 })
 export class TuiIndentButtonTool extends TuiToolbarTool {

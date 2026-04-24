@@ -10,8 +10,8 @@ import {
     standalone: true,
     selector: '[tuiToolbarNavigationManager]',
     host: {
-        '(keydown.arrowRight.prevent)': 'onHorizontalNavigation(false)',
         '(keydown.arrowLeft.prevent)': 'onHorizontalNavigation(true)',
+        '(keydown.arrowRight.prevent)': 'onHorizontalNavigation(false)',
     },
 })
 export class TuiToolbarNavigationManager {

@@ -10,6 +10,7 @@ export default class Example {
     protected readonly component1 = import('./examples/1');
     protected readonly component2 = import('./examples/2');
     protected readonly component3 = import('./examples/3');
+
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/1/index.html?raw'),

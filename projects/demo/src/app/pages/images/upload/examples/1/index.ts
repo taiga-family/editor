@@ -56,13 +56,10 @@ import {ImgbbService} from './imgbb.service';
 })
 export default class Example {
     private readonly editor = viewChild(TuiEditor);
-
     protected readonly doc = inject(DOCUMENT);
     protected readonly imgbbService = inject(ImgbbService);
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];
-
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected control = new FormControl('');
 
     constructor() {

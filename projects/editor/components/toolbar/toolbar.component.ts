@@ -100,11 +100,8 @@ export class TuiToolbar {
      * @deprecated
      */
     public readonly disabled = input(false);
-
     public readonly linkAdded = output<string>();
-
     public readonly texClicked = output();
-
     public readonly fileAttached = output<TuiEditorAttachedFile[]>();
 
     public readonly el: HTMLElement | null =

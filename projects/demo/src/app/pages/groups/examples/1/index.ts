@@ -47,9 +47,7 @@ import {type Node} from '@tiptap/pm/model';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
-
     protected readonly isE2E = inject(TUI_IS_E2E);
-
     protected control = new FormControl('');
 
     constructor() {

@@ -89,7 +89,6 @@ export class TuiFontStyleButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = tuiDropdownOpen();
     protected readonly editorTool = TuiEditorTool;
-
     public readonly enabledTools = input<Tools>();
 
     protected readonly template = viewChild(

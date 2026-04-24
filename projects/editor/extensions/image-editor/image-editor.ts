@@ -45,10 +45,10 @@ import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style]': 'style',
+        '[attr.contenteditable]': 'contenteditable',
         '[attr.data-drag-handle]': 'dragHandle',
         '[attr.data-editing-href]': 'isLinkDropdownOpened',
-        '[attr.contenteditable]': 'contenteditable',
+        '[style]': 'style',
     },
 })
 export class TuiImageEditor
@@ -56,12 +56,11 @@ export class TuiImageEditor
     implements OnInit
 {
     private readonly img = viewChild('img', {read: ElementRef});
-
     private readonly resizable = viewChild.required<TuiEditorResizable>('resizable');
-
     private readonly destroy$ = inject(DestroyRef);
     private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
+
     private readonly win: Omit<Window, 'document'> & {document: Document | undefined} =
         inject(WA_WINDOW);
 

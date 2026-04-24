@@ -57,9 +57,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
 })
 export class TuiImageAlignList {
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
-
     public readonly style = input<string | null | undefined>(null);
-
     public readonly updateAlignStyles = output<string | null>();
 
     @tuiPure

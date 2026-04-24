@@ -19,6 +19,7 @@ export * from './i18n';
 export type * from './iframe';
 export type * from './image';
 export * from './image-loader';
+export type * from './mutable';
 export type * from './parsed-gradient';
 export * from './pm-css-classes';
 export * from './tiptap-editor';

@@ -9,7 +9,6 @@ import {TuiLink} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly exampleOptions = import('./import/tokens/options.md?raw');
-
     protected readonly component1 = import('./examples/1');
 
     protected readonly example1 = {

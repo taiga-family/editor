@@ -12,6 +12,5 @@ import {CustomColorPicker} from './custom-color-picker';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo];
-
     protected readonly control = new FormControl('');
 }

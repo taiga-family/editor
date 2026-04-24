@@ -8,6 +8,7 @@ import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 })
 export default class Example {
     protected readonly component1 = import('./examples/1');
+
     protected readonly example1 = {
         TypeScript: import('./examples/1?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/1/index.html?raw'),

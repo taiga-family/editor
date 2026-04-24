@@ -13,9 +13,7 @@ export class TuiTiptapEditor {
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly editor = inject(TuiTiptapEditorService);
-
     protected readonly editorContainer = inject(INITIALIZATION_TIPTAP_CONTAINER);
-
     public readonly value = input<string>('');
     public readonly editable = input(true);
 

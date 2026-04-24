@@ -79,7 +79,6 @@ export class TuiEditLink implements OnInit {
     protected url = this.getHrefOrAnchorId();
     protected edit = !this.url;
     protected prefix: TuiEditorLinkPrefix | undefined = this.makeDefaultPrefix();
-
     protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
 
     public readonly editor = input<AbstractTuiEditor | null>(
@@ -87,15 +86,10 @@ export class TuiEditLink implements OnInit {
     );
 
     public readonly anchorIds = this.getAllAnchorsIds();
-
     public readonly link = input<string | null | undefined>(undefined);
-
     public readonly explicitOnlyLinkEdit = input(false);
-
     public readonly addLink = output<string>();
-
     public readonly removeLink = output();
-
     public readonly anchorMode = input<boolean>(false);
     public readonly hasAnchorMode = signal<boolean>(false);
 

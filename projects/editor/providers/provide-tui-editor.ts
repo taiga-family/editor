@@ -556,12 +556,9 @@ const EXTENSIONS = [
     },
 ] as const;
 
-const defaults = EXTENSIONS.reduce((options, extension) => {
-    (options as Record<keyof Options, Record<string, unknown> | boolean>)[extension.key] =
-        extension.default;
-
-    return options;
-}, {} as Options);
+const defaults = Object.fromEntries(
+    EXTENSIONS.map(({key, default: defaultValue}) => [key, defaultValue] as const),
+) as unknown as Options;
 
 type AsyncExtension<Options, Storage> = Promise<
     Extension<Options, Storage> | Mark<Options, Storage> | Node<Options, Storage>
