@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/table-of-contents/examples/1/my-toc/index.ts?raw
-var my_toc_default = "import {DOCUMENT} from '@angular/common';\nimport {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';\nimport {RouterLink} from '@angular/router';\nimport {\n    type TableOfContentData,\n    type TableOfContentDataItem,\n} from '@tiptap/extension-table-of-contents';\n\nexport interface MyContentsInfo {\n    isCreate?: boolean;\n    items: TableOfContentData;\n}\n\n@Component({\n    selector: 'my-table-of-contents',\n    imports: [RouterLink],\n    templateUrl: './index.html',\n    styleUrl: './index.less',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class MyToc {\n    private readonly doc = inject(DOCUMENT);\n\n    public readonly contents = input<MyContentsInfo | null>();\n\n    public onItemClick(event: Event, item: TableOfContentDataItem): void {\n        this.doc.location.hash = '';\n        this.doc.location.hash = item.id;\n\n        event.preventDefault();\n    }\n}\n";
-export {
-  my_toc_default as default
-};
-//# sourceMappingURL=chunk-TYDCVBE4.js.map

@@ -1,0 +1,8 @@
+import "./chunk-4MWRP73S.js";
+
+// projects/demo/src/app/pages/custom-tool/paste-image/examples/1/image-tool/image-tool.component.ts?raw
+var image_tool_component_default = "import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';\nimport {FormsModule} from '@angular/forms';\nimport {TuiAutoFocus} from '@taiga-ui/cdk';\nimport {TuiButton, TuiDropdown} from '@taiga-ui/core';\nimport {TuiTiptapEditorService} from '@taiga-ui/editor';\nimport {TuiInputInline} from '@taiga-ui/kit';\n\n@Component({\n    selector: 'image-tool',\n    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],\n    templateUrl: './image-tool.template.html',\n    styleUrl: './image-tool.styles.less',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ExampleTuiPasteImageTool {\n    private readonly dropdown = viewChild.required<any>('dropdown');\n    private readonly editor = inject(TuiTiptapEditorService);\n    protected youtubeLogo = 'assets/icons/google.svg';\n    protected placeholder = 'Path to Image URL (ex. https://your-site.com/image.png)';\n    protected url = '';\n\n    protected insertImage(src: string): void {\n        if (!src) {\n            return;\n        }\n\n        this.editor.setImage(src);\n        this.dropdown()?.close();\n    }\n}\n";
+export {
+  image_tool_component_default as default
+};
+//# sourceMappingURL=chunk-XJCDQYXW.js.map
