@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
-      - uses: taiga-family/ci/actions/setup/node@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
-      - uses: taiga-family/ci/actions/setup/cypress@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/setup/variables@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
+      - uses: taiga-family/ci/actions/setup/node@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
+      - uses: taiga-family/ci/actions/setup/cypress@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
       - run: npx nx component-test demo-cypress
 
   e2e:
@@ -24,26 +24,26 @@ jobs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
-      - uses: taiga-family/ci/actions/setup/node@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
-      - uses: taiga-family/ci/actions/setup/playwright@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/setup/variables@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
+      - uses: taiga-family/ci/actions/setup/node@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
+      - uses: taiga-family/ci/actions/setup/playwright@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
         with:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - run: npx nx build editor-demo -c development
-      - uses: taiga-family/ci/actions/run/serve@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/run/serve@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/run/clone@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/run/serve@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -73,7 +73,7 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/setup/variables@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -104,7 +104,7 @@ jobs:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@8daf3354cad97676fd0bb06cc12f2498441130c1 # v1.200.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@ef883fc6417f920333ffa8b903683d7d6b914615 # v1.201.0
         with:
           pw-result: ${{ env.PW_RESULT }}
 
