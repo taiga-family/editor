@@ -73,7 +73,7 @@
         "@angular/animations": "19.2.20",
         "@angular/build": "19.2.23",
         "@angular/cdk": "19.2.19",
-        "@angular/cli": "19.2.23",
+        "@angular/cli": "19.2.24",
         "@angular/common": "19.2.20",
         "@angular/compiler": "19.2.20",
         "@angular/compiler-cli": "19.2.20",
