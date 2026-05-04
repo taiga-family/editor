@@ -1,4 +1,3 @@
-import { tuiPure } from "@taiga-ui/legacy";
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -25,6 +24,7 @@ import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
+import {tuiPure} from '@taiga-ui/legacy';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';

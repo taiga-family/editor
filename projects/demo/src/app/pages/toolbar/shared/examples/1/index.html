@@ -39,5 +39,7 @@
 <!-- TODO: (Taiga UI migration) tui-accordion-item has been removed. Use new tuiAccordion instead. See example https://taiga-ui.dev/components/accordion -->
 <tui-accordion [rounded]="false">
     <button [tuiAccordion]="true">Output</button>
-    <tui-expand><pre><code>{{ group.value|json }}</code></pre></tui-expand>
+    <tui-expand>
+        <pre><code>{{ group.value|json }}</code></pre>
+    </tui-expand>
 </tui-accordion>

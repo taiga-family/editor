@@ -1,4 +1,3 @@
-import { provideTaiga } from "@taiga-ui/core";
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {inject} from '@angular/core';
 import {type ApplicationConfig} from '@angular/platform-browser';
@@ -14,6 +13,8 @@ import {
     type TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
+import {provideTaiga} from '@taiga-ui/core';
+
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
 import {TUI_LOGO_CONTENT} from './shared/logo';

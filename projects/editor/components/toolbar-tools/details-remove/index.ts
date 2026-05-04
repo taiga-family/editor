@@ -1,4 +1,3 @@
-import { WA_IS_MOBILE } from "@ng-web-apis/platform";
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,6 +6,7 @@ import {
     input,
     type OnInit,
 } from '@angular/core';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,

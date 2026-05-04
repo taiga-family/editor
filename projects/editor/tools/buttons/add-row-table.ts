@@ -1,6 +1,13 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import { TuiDataList, TuiDropdownDirective, TuiOptGroup, TuiOption, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
+import {
+    TuiDataList,
+    TuiDropdownDirective,
+    TuiInput,
+    TuiOptGroup,
+    TuiOption,
+    TuiWithDropdownOpen,
+} from '@taiga-ui/core';
 import {TUI_EDITOR_TABLE_COMMANDS, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
@@ -18,7 +25,7 @@ export const TuiTableCommands = {
 
 @Component({
     selector: 'button[tuiAddRowTableTool]',
-    imports: [AsyncPipe, TuiDataList, TuiOptGroup, TuiOption, TuiInput],
+    imports: [AsyncPipe, TuiDataList, TuiInput, TuiOptGroup, TuiOption],
     template: `
         {{ tuiHint() }}
 

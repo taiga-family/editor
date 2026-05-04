@@ -1,7 +1,3 @@
-import { TuiExpand } from "@taiga-ui/core";
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
-import { tuiPure } from "@taiga-ui/legacy";
 import {isPlatformServer} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -13,7 +9,9 @@ import {
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem, tuiTypedFromEvent} from '@taiga-ui/cdk';
+import {TuiExpand} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
@@ -23,6 +21,8 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
+import {tuiPure} from '@taiga-ui/legacy';
 import {map, type Observable, of, switchMap} from 'rxjs';
 
 @Injectable({providedIn: 'root'})

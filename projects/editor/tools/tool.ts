@@ -1,4 +1,3 @@
-import { WA_IS_MOBILE } from "@ng-web-apis/platform";
 import {
     ChangeDetectorRef,
     computed,
@@ -11,6 +10,7 @@ import {
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {WA_IS_MOBILE} from '@ng-web-apis/platform';
 import {tuiDirectiveBinding, tuiWatch} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiHintDirective, TuiHintManual, TuiIcons} from '@taiga-ui/core';
 import {

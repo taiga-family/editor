@@ -1,5 +1,5 @@
-import { provideTaiga } from "@taiga-ui/core";
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
+import {provideTaiga} from '@taiga-ui/core';
 import {mount} from 'cypress/angular';
 
 declare global {

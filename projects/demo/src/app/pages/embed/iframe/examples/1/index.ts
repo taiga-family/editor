@@ -1,18 +1,19 @@
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
-import { tuiPure } from "@taiga-ui/legacy";
 import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk';
-import { TuiIcon, TuiExpand } from '@taiga-ui/core';
+import {TuiExpand, TuiIcon} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
+import {tuiPure} from '@taiga-ui/legacy';
+
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({

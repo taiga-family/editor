@@ -1,8 +1,7 @@
-import { TuiExpand } from "@taiga-ui/core";
-import { TuiAccordion } from "@taiga-ui/kit";
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItem} from '@taiga-ui/cdk';
+import {TuiExpand} from '@taiga-ui/core';
 import {NgDompurifySanitizer} from '@taiga-ui/dompurify';
 import {
     provideTuiEditor,
@@ -11,6 +10,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     imports: [

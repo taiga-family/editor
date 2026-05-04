@@ -1,4 +1,3 @@
-import { WA_IS_IOS } from "@ng-web-apis/platform";
 import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -11,11 +10,8 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {
-    TuiAutoFocus,
-    tuiAutoFocusOptionsProvider,
-    tuiIsElement,
-} from '@taiga-ui/cdk';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {TuiAutoFocus, tuiAutoFocusOptionsProvider, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,

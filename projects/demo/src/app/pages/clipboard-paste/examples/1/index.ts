@@ -1,16 +1,16 @@
-import { TuiExpand } from "@taiga-ui/core";
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk';
+import {TuiExpand} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     provideTuiEditorOptions,
     TuiEditor,
     TuiEditorSocket,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     imports: [

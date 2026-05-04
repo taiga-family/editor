@@ -6,7 +6,14 @@ import {
     TemplateRef,
     viewChild,
 } from '@angular/core';
-import { tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
+import {
+    tuiDropdown,
+    TuiDropdownDirective,
+    tuiDropdownOpen,
+    TuiInput,
+    TuiTextfieldDropdownDirective,
+    TuiWithDropdownOpen,
+} from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 

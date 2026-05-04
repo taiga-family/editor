@@ -1,4 +1,3 @@
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {
@@ -7,8 +6,9 @@ import {
     ReactiveFormsModule,
     type ValidationErrors,
 } from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem, TuiValidationError, TuiValidator} from '@taiga-ui/cdk';
-import { TuiError, TuiLoader, TuiExpand } from '@taiga-ui/core';
+import {TuiError, TuiExpand, TuiLoader} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -17,7 +17,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import { TuiAccordion } from '@taiga-ui/kit';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 import {imageLoader} from './image-loader';
 import {ImgbbService} from './imgbb.service';

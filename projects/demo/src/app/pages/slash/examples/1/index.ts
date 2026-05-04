@@ -1,5 +1,3 @@
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,13 +9,21 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import { TuiDataList, TuiDataListComponent, TuiDropdown, TuiInput, TuiExpand } from '@taiga-ui/core';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {
+    TuiDataList,
+    TuiDataListComponent,
+    TuiDropdown,
+    TuiExpand,
+    TuiInput,
+} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 interface MyCommand {
     name: string;

@@ -1,14 +1,14 @@
-import { tuiPure } from "@taiga-ui/legacy";
 import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
+import {tuiPure} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-image-align-list',
     imports: [TuiButton],
     template: `
         <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
-<button
+        <button
             aria-label="Justify align"
             size="xs"
             title=""
@@ -21,7 +21,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             Justify align
         </button>
         <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
-<button
+        <button
             aria-label="Align left"
             size="xs"
             tuiIconButton
@@ -33,7 +33,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             Left align
         </button>
         <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
-<button
+        <button
             aria-label="Align center"
             size="xs"
             tuiIconButton
@@ -45,7 +45,7 @@ import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
             Center align
         </button>
         <!-- TODO: (Taiga UI migration) [appearance] binding uses a dynamic expression. If it can produce "error"/"success"/"glass", replace with "negative"/"positive"/"secondary-grayscale" -->
-<button
+        <button
             aria-label="Align right"
             size="xs"
             tuiIconButton

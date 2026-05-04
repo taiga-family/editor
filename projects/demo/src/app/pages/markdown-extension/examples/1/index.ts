@@ -1,4 +1,3 @@
-import { TuiTextarea } from "@taiga-ui/kit";
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,6 +9,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
+import {TuiTextarea} from '@taiga-ui/kit';
 import {type Editor} from '@tiptap/core';
 import {debounceTime, Subject} from 'rxjs';
 

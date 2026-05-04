@@ -1,6 +1,6 @@
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
@@ -12,7 +12,7 @@ import {
     TuiEditorTool,
     type TuiEditorToolType,
 } from '@taiga-ui/editor';
-import { TuiRadioList, TuiTextarea } from '@taiga-ui/kit';
+import {TuiRadioList, TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
     selector: 'editor-starter-page',

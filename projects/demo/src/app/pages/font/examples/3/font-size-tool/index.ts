@@ -1,9 +1,9 @@
-import { tuiPure } from "@taiga-ui/legacy";
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
+import {tuiPure} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({

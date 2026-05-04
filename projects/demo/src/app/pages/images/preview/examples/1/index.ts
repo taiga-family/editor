@@ -1,7 +1,6 @@
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     provideTuiEditor,
     TuiEditor,
@@ -9,6 +8,8 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
+
 import {ImagePreviewExample} from './image-preview/image-preview.component';
 
 @Component({

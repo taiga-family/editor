@@ -1,12 +1,11 @@
-import { TuiExpand } from "@taiga-ui/core";
-import { TuiAccordion } from "@taiga-ui/kit";
-import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {isPlatformServer} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk';
+import {TuiExpand} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -15,6 +14,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({

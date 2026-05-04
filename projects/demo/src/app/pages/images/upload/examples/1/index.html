@@ -1,6 +1,6 @@
 <tui-loader
-    [overlay]="true"
     [loading]="!!(imgbbService.loading$ | async)"
+    [overlay]="true"
 >
     <tui-editor
         class="editor"
@@ -10,10 +10,7 @@
     />
 </tui-loader>
 
-<tui-error
-    
-    [formControl]="control"
-/>
+<tui-error [formControl]="control" />
 
 <tui-accordion [closeOthers]="false">
     <button [tuiAccordion]="isE2E">HTML</button>

@@ -1,4 +1,3 @@
-import { tuiPure } from "@taiga-ui/legacy";
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -12,6 +11,7 @@ import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
+import {tuiPure} from '@taiga-ui/legacy';
 
 import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
