@@ -1,5 +1,5 @@
+import { provideTaiga } from "@taiga-ui/core";
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {mount} from 'cypress/angular';
 
 declare global {
@@ -17,7 +17,7 @@ export const stableMount: typeof mount = (component, config) =>
         providers: [
             ...(config?.providers || []),
             provideNoopAnimations(),
-            NG_EVENT_PLUGINS,
+            provideTaiga(),
         ],
     }).then((mountResponse) =>
         cy

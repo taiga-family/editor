@@ -1,17 +1,18 @@
+import { TuiAccordion } from "@taiga-ui/kit";
+import { WA_IS_E2E } from "@ng-web-apis/platform";
+import { tuiPure } from "@taiga-ui/legacy";
 import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
-import {TUI_IS_E2E, TuiItem, tuiPure} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiItem} from '@taiga-ui/cdk';
+import { TuiIcon, TuiExpand } from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
-
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
 @Component({
@@ -34,9 +35,9 @@ export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
 
     private readonly isNotStatic =
-        inject(TUI_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
+        inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
     protected readonly builtInTools = [TuiEditorTool.Undo];
 
     protected readonly control = new FormControl(

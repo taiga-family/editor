@@ -1,13 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {
-    TuiDataList,
-    TuiDropdownDirective,
-    TuiOptGroup,
-    TuiOption,
-    TuiTextfield,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { TuiDataList, TuiDropdownDirective, TuiOptGroup, TuiOption, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {TUI_EDITOR_TABLE_COMMANDS, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
@@ -25,11 +18,11 @@ export const TuiTableCommands = {
 
 @Component({
     selector: 'button[tuiAddRowTableTool]',
-    imports: [AsyncPipe, TuiDataList, TuiOptGroup, TuiOption, TuiTextfield],
+    imports: [AsyncPipe, TuiDataList, TuiOptGroup, TuiOption, TuiInput],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-data-list>
                 @for (group of tableCommandTexts$ | async; track group; let i = $index) {
                     <tui-opt-group>

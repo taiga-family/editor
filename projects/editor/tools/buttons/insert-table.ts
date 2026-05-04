@@ -9,15 +9,7 @@ import {
 } from '@angular/core';
 import {WINDOW} from '@ng-web-apis/common';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {
-    tuiDropdown,
-    TuiDropdownDirective,
-    tuiDropdownOpen,
-    tuiGetViewportWidth,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, tuiGetViewportWidth, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
@@ -30,11 +22,11 @@ const MIN_DISTANCE_PX = 70;
 
 @Component({
     selector: 'button[tuiInsertTableTool]',
-    imports: [TuiRepeatTimes, TuiTextfield],
+    imports: [TuiRepeatTimes, TuiInput],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div class="t-size-selector">
                 <div
                     *tuiRepeatTimes="let x of columnsNumber"

@@ -1,3 +1,4 @@
+import { tuiPure } from "@taiga-ui/legacy";
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -6,7 +7,6 @@ import {
     inject,
 } from '@angular/core';
 import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
-import {tuiPure} from '@taiga-ui/cdk';
 import {TUI_EDITOR_RESIZE_EVENT, type TuiEditableIframe} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,

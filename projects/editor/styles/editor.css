@@ -2,7 +2,7 @@ tui-editor {
     position: relative;
     display: block;
     isolation: isolate;
-    font: var(--tui-font-text-m);
+    font: var(--tui-typography-body-m);
     border-radius: var(--tui-radius-m);
     max-block-size: inherit;
     min-block-size: 10rem;
@@ -21,7 +21,7 @@ tui-editor::after {
 }
 
 [tuiEditorLabel] {
-    font: var(--tui-font-text-s);
+    font: var(--tui-typography-body-s);
     color: var(--tui-text-secondary);
     pointer-events: none;
     will-change: transform;

@@ -6,14 +6,7 @@ import {
     TemplateRef,
     viewChild,
 } from '@angular/core';
-import {
-    tuiDropdown,
-    TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
@@ -31,12 +24,12 @@ import {TuiAlignRightButtonTool} from './align-right';
         TuiAlignJustifyButtonTool,
         TuiAlignLeftButtonTool,
         TuiAlignRightButtonTool,
-        TuiTextfield,
+        TuiInput,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div tuiToolbarDropdownContent>
                 <button
                     tuiAlignLeftTool

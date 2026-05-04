@@ -8,7 +8,7 @@
 
     <tui-loader
         [overlay]="true"
-        [showLoader]="!!(uploadService.loading$ | async)"
+        [loading]="!!(uploadService.loading$ | async)"
     >
         <tui-editor
             #header

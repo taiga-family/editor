@@ -5,11 +5,13 @@
     Placeholder
 </tui-editor>
 
-<tui-textarea
-    class="tui-space_top-5"
-    [ngModel]="markdown"
-    [style.min-height.rem]="30"
-    (ngModelChange)="markdown$.next($event)"
->
-    Markdown
-</tui-textarea>
+<!-- TODO: (Taiga UI migration) tui-textarea migration (see https://taiga-ui.dev/components/textarea):
+     - Legacy tui-textarea had a fixed height of 20 rows by default. New component auto-resizes between [min] (default: 1) and [max] (default: 3) rows. Set min and max explicitly if the previous layout needs to be preserved.
+     - Unrecognized attribute "class="tui-space_top-5"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+     - Unrecognized attribute "[style.min-height.rem]="30"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+     - Unrecognized attribute "(ngModelChange)="markdown$.next($event)"" was placed on <tui-textfield>. Move it to <textarea tuiTextarea> if it targets the native element.
+-->
+<tui-textfield class="tui-space_top-5" [style.min-height.rem]="30" (ngModelChange)="markdown$.next($event)">
+<label tuiLabel>Markdown</label>
+<textarea tuiTextarea [ngModel]="markdown"></textarea>
+</tui-textfield>

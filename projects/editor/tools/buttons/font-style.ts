@@ -7,14 +7,7 @@ import {
     TemplateRef,
     viewChild,
 } from '@angular/core';
-import {
-    tuiDropdown,
-    TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {
     type TuiEditorOptions,
     TuiEditorTool,
@@ -37,13 +30,13 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
         TuiBoldButtonTool,
         TuiItalicButtonTool,
         TuiStrikeButtonTool,
-        TuiTextfield,
+        TuiInput,
         TuiUnderlineButtonTool,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div tuiToolbarDropdownContent>
                 @if (isEnabled(editorTool.Bold)) {
                     <button

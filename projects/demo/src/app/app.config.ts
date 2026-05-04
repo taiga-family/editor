@@ -1,3 +1,4 @@
+import { provideTaiga } from "@taiga-ui/core";
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {inject} from '@angular/core';
 import {type ApplicationConfig} from '@angular/platform-browser';
@@ -13,8 +14,6 @@ import {
     type TuiDocSourceCodePathOptions,
 } from '@taiga-ui/addon-doc';
 import {TUI_IS_PLAYWRIGHT} from '@taiga-ui/cdk';
-import {provideEventPlugins} from '@taiga-ui/event-plugins';
-
 import {DEMO_PAGES} from './app.pages';
 import {routes} from './app.routes';
 import {TUI_LOGO_CONTENT} from './shared/logo';
@@ -29,7 +28,7 @@ export const appConfig: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        provideEventPlugins(),
+        provideTaiga(),
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy,

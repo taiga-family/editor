@@ -7,14 +7,7 @@ import {
     TemplateRef,
     viewChild,
 } from '@angular/core';
-import {
-    tuiDropdown,
-    TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {EDITOR_BLANK_COLOR, type TuiEditorOptions} from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 import {TuiPaletteModule} from '@taiga-ui/legacy';
@@ -24,11 +17,11 @@ import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     selector: 'button[tuiTextColorTool]',
-    imports: [TuiPaletteModule, TuiTextfield],
+    imports: [TuiPaletteModule, TuiInput],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-palette
                 tuiPalette
                 [colors]="colors()"

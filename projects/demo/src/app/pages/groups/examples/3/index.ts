@@ -1,13 +1,15 @@
+import { TuiExpand } from "@taiga-ui/core";
+import { TuiAccordion } from "@taiga-ui/kit";
+import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TuiEditor,
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
     imports: [
@@ -36,7 +38,7 @@ import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 })
 export default class Example {
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Group];
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
     protected control = new FormControl('');
 
     constructor() {

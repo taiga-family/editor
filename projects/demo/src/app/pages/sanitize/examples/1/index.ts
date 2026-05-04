@@ -1,3 +1,5 @@
+import { TuiExpand } from "@taiga-ui/core";
+import { TuiAccordion } from "@taiga-ui/kit";
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiItem} from '@taiga-ui/cdk';
@@ -9,7 +11,6 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
     imports: [

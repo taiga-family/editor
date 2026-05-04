@@ -1,3 +1,4 @@
+import { WA_IS_IOS } from "@ng-web-apis/platform";
 import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
@@ -11,7 +12,6 @@ import {
 import {FormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {
-    TUI_IS_IOS,
     TuiAutoFocus,
     tuiAutoFocusOptionsProvider,
     tuiIsElement,
@@ -56,7 +56,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
          * https://github.com/taiga-family/editor/issues/1717
          */
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: true,
         },
         tuiAutoFocusOptionsProvider({

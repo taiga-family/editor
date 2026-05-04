@@ -1,3 +1,4 @@
+import { WA_IS_MOBILE } from "@ng-web-apis/platform";
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +7,6 @@ import {
     input,
     type OnInit,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
@@ -32,7 +32,7 @@ import {map, type Observable} from 'rxjs';
 })
 export class TuiDetailsRemoveTool implements OnInit {
     private localEditor: AbstractTuiEditor | null = null;
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobile = inject(WA_IS_MOBILE);
     protected readonly injectionEditor = inject(TuiTiptapEditorService, {optional: true});
     protected readonly texts$ = inject(TUI_EDITOR_TOOLBAR_TEXTS);
     protected readonly options = inject(TUI_EDITOR_OPTIONS);

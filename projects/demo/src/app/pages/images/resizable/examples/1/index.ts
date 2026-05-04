@@ -1,9 +1,12 @@
+import { TuiExpand } from "@taiga-ui/core";
+import { TuiAccordion } from "@taiga-ui/kit";
+import { WA_IS_E2E } from "@ng-web-apis/platform";
 import {isPlatformServer} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
+import {TuiItem} from '@taiga-ui/cdk';
 import {
     provideTuiEditor,
     TUI_IMAGE_EDITOR_OPTIONS,
@@ -12,7 +15,6 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
 import {switchMap} from 'rxjs';
 
 @Component({
@@ -42,7 +44,7 @@ export default class Example {
     private readonly http = inject(HttpClient);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly platformId = inject(PLATFORM_ID);
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,

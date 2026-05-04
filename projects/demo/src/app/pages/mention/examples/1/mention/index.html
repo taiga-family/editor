@@ -9,10 +9,10 @@
                 (keydown.enter)="setMention.emit(item)"
             >
                 {{ item.name }}
-                <tui-avatar
+                <span [tuiAvatar]="item.avatar || (item.name | tuiInitials)"
                     size="s"
-                    [src]="item.avatar || (item.name | tuiInitials)"
-                />
+                   
+                ></span>
             </button>
         }
     </div>

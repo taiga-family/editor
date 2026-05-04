@@ -9,16 +9,7 @@ import {
     viewChild,
 } from '@angular/core';
 import {TuiItem, tuiPx} from '@taiga-ui/cdk';
-import {
-    TuiDataList,
-    tuiDropdown,
-    TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiOption,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
-    TuiWithDropdownOpen,
-} from '@taiga-ui/core';
+import { TuiDataList, tuiDropdown, TuiDropdownDirective, tuiDropdownOpen, TuiOption, TuiTextfieldDropdownDirective, TuiWithDropdownOpen, TuiInput } from '@taiga-ui/core';
 import {
     EDITOR_BLANK_COLOR,
     TUI_EDITOR_FONT_OPTIONS,
@@ -41,12 +32,12 @@ import {TuiToolbarButtonTool} from '../tool-button';
         TuiDataList,
         TuiItem,
         TuiOption,
-        TuiTextfield,
+        TuiInput,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-data-list>
                 @for (item of fontsOptions$ | async; track item) {
                     <button

@@ -1,3 +1,4 @@
+import { tuiPure } from "@taiga-ui/legacy";
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,9 +7,8 @@ import {
     output,
     viewChild,
 } from '@angular/core';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiDataList} from '@taiga-ui/core';
+import { TuiAvatar, TuiInitialsPipe } from '@taiga-ui/kit';
 
 export interface User {
     name: string;
