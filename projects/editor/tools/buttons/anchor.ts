@@ -7,7 +7,6 @@ import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiAnchorTool]',
     template: '{{ tuiHint() }}',
     changeDetection: ChangeDetectionStrategy.OnPush,

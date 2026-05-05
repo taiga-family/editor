@@ -9,12 +9,13 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E} from '@taiga-ui/cdk';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {
     TuiDataList,
     TuiDataListComponent,
     TuiDropdown,
-    TuiTextfield,
+    TuiExpand,
+    TuiInput,
 } from '@taiga-ui/core';
 import {
     provideTuiEditor,
@@ -22,7 +23,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 interface MyCommand {
     name: string;
@@ -37,7 +38,7 @@ interface MyCommand {
         TuiEditor,
         TuiEditorSocket,
         TuiExpand,
-        TuiTextfield,
+        TuiInput,
     ],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,7 +56,7 @@ export default class Example implements OnInit {
         read: ElementRef,
     });
 
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
     protected open = true;
 
     protected readonly builtInTools = [

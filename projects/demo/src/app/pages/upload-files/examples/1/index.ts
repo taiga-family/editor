@@ -1,8 +1,9 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
-import {TuiLoader} from '@taiga-ui/core';
+import {WA_IS_E2E} from '@ng-web-apis/platform';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiExpand, TuiLoader} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_ATTACH_FILES_LOADER,
@@ -11,7 +12,7 @@ import {
     TuiEditorSocket,
     TuiEditorTool,
 } from '@taiga-ui/editor';
-import {TuiAccordion, TuiExpand} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 import {fileLoader} from './file-loader';
 import {UploadService} from './upload.service';
@@ -43,7 +44,7 @@ import {UploadService} from './upload.service';
 export default class Example {
     private readonly wysiwyg = viewChild.required(TuiEditor);
     protected readonly uploadService = inject(UploadService);
-    protected readonly isE2E = inject(TUI_IS_E2E);
+    protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly builtInTools = [
         TuiEditorTool.Undo,

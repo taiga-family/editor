@@ -5,10 +5,7 @@ import {distinctUntilChanged} from 'rxjs';
 
 import {TuiTiptapEditorService} from './tiptap-editor.service';
 
-@Directive({
-    standalone: true,
-    selector: '[tuiTiptapEditor]',
-})
+@Directive({selector: '[tuiTiptapEditor]'})
 export class TuiTiptapEditor {
     private readonly el = inject(ElementRef);
     private readonly renderer = inject(Renderer2);

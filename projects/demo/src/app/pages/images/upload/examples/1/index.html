@@ -1,6 +1,6 @@
 <tui-loader
+    [loading]="!!(imgbbService.loading$ | async)"
     [overlay]="true"
-    [showLoader]="!!(imgbbService.loading$ | async)"
 >
     <tui-editor
         class="editor"
@@ -10,10 +10,7 @@
     />
 </tui-loader>
 
-<tui-error
-    [error]="[] | tuiFieldError | async"
-    [formControl]="control"
-/>
+<tui-error [formControl]="control" />
 
 <tui-accordion [closeOthers]="false">
     <button [tuiAccordion]="isE2E">HTML</button>

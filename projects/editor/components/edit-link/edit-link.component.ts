@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,12 +9,8 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {
-    TUI_IS_IOS,
-    TuiAutoFocus,
-    tuiAutoFocusOptionsProvider,
-    tuiIsElement,
-} from '@taiga-ui/cdk';
+import {WA_IS_IOS} from '@ng-web-apis/platform';
+import {TuiAutoFocus, tuiAutoFocusOptionsProvider, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiScrollbar} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
@@ -36,7 +31,6 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
 @Component({
     selector: 'tui-edit-link',
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAutoFocus,
         TuiButton,
@@ -56,7 +50,7 @@ import {tuiEditLinkParseUrl} from './utils/edit-link-parse-url';
          * https://github.com/taiga-family/editor/issues/1717
          */
         {
-            provide: TUI_IS_IOS,
+            provide: WA_IS_IOS,
             useValue: true,
         },
         tuiAutoFocusOptionsProvider({
@@ -79,7 +73,7 @@ export class TuiEditLink implements OnInit {
     protected url = this.getHrefOrAnchorId();
     protected edit = !this.url;
     protected prefix: TuiEditorLinkPrefix | undefined = this.makeDefaultPrefix();
-    protected readonly texts$ = inject(TUI_EDITOR_LINK_TEXTS);
+    protected readonly texts = inject(TUI_EDITOR_LINK_TEXTS);
 
     public readonly editor = input<AbstractTuiEditor | null>(
         inject(TuiTiptapEditorService, {optional: true}),

@@ -2,16 +2,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
+    inject,
     TemplateRef,
     viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
+    TuiDropdownOpen,
+    TuiInput,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -29,16 +28,16 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
     selector: 'button[tuiListTool]',
     imports: [
         TuiIndentButtonTool,
+        TuiInput,
         TuiOrderedListButtonTool,
         TuiOutdentButtonTool,
         TuiTaskListButtonTool,
-        TuiTextfield,
         TuiUnorderedListButtonTool,
     ],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div tuiToolbarDropdownContent>
                 <button
                     tuiUnorderedListTool
@@ -69,12 +68,8 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
 })
 export class TuiListButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());

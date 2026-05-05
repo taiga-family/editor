@@ -1,10 +1,14 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
+        "noUnusedLocals": false,
         "outDir": "../out-tsc/app"
     },
     "angularCompilerOptions": {
-        "compilationMode": "full"
+        "compilationMode": "full",
+        "extendedDiagnostics": {
+            "defaultCategory": "warning"
+        }
     },
     "files": ["src/typings.d.ts"],
     "include": ["src/**/*.ts"]

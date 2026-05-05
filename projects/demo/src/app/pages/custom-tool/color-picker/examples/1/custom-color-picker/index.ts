@@ -4,14 +4,14 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {
     type AbstractTuiEditor,
     TUI_EDITOR_OPTIONS,
+    TuiColorSelector,
     TuiTiptapEditorService,
 } from '@taiga-ui/editor';
-import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map, share} from 'rxjs';
 
 @Component({
     selector: 'custom-color-picker',
-    imports: [AsyncPipe, TuiButton, TuiColorSelectorModule, TuiDropdown],
+    imports: [AsyncPipe, TuiButton, TuiColorSelector, TuiDropdown],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

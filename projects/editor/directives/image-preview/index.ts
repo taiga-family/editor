@@ -1,7 +1,6 @@
 import {Directive, output} from '@angular/core';
 
 @Directive({
-    standalone: true,
     selector: 'tui-editor-socket[imagePreview]',
     host: {
         class: '_preview-image',

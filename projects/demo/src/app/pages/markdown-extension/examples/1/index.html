@@ -4,12 +4,14 @@
 >
     Placeholder
 </tui-editor>
-
-<tui-textarea
+<tui-textfield
     class="tui-space_top-5"
-    [ngModel]="markdown"
     [style.min-height.rem]="30"
-    (ngModelChange)="markdown$.next($event)"
 >
-    Markdown
-</tui-textarea>
+    <label tuiLabel>Markdown</label>
+    <textarea
+        tuiTextarea
+        [ngModel]="markdown"
+        (ngModelChange)="markdown$.next($event)"
+    ></textarea>
+</tui-textfield>

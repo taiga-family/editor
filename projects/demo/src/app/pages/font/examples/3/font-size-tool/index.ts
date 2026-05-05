@@ -1,9 +1,9 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {tuiPure} from '@taiga-ui/cdk';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
+import {tuiPure} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 })
 export class ExampleTuiFontSizeTool {
     private readonly editor = inject(TuiTiptapEditorService);
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     protected readonly sizes = [8, 9, 10, 11, 12, 14, 16, 18, 24, 30];
 
     protected readonly size$ = this.editor.valueChange$.pipe(

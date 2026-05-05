@@ -1,21 +1,20 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     effect,
-    forwardRef,
     inject,
+    signal,
     TemplateRef,
     viewChild,
 } from '@angular/core';
-import {WINDOW} from '@ng-web-apis/common';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
+    TuiDropdownOpen,
     tuiGetViewportWidth,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
+    TuiInput,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -30,27 +29,30 @@ const MIN_DISTANCE_PX = 70;
 
 @Component({
     selector: 'button[tuiInsertTableTool]',
-    imports: [TuiRepeatTimes, TuiTextfield],
+    imports: [TuiInput],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <div class="t-size-selector">
-                <div
-                    *tuiRepeatTimes="let x of columnsNumber"
-                    class="t-column"
-                >
-                    <div
-                        *tuiRepeatTimes="let y of rowsNumber"
-                        class="t-cell"
-                        [class.t-cell_hovered]="tableSelectHovered(y, x)"
-                        (click)="addTable(tableSize)"
-                        (mouseenter)="updateCurrentSize(y + 1, x + 1, $event)"
-                    ></div>
-                </div>
-                <div class="t-description">
-                    {{ tableSize.cols }}&#215;{{ tableSize.rows }}
-                </div>
+                @for (_ of '-'.repeat(columnsNumber()); track $index; let x = $index) {
+                    <div class="t-column">
+                        @for (
+                            _ of '-'.repeat(rowsNumber());
+                            track $index;
+                            let y = $index
+                        ) {
+                            <div
+                                class="t-cell"
+                                [class.t-cell_hovered]="tableSelectHovered(y, x)"
+                                (click)="addTable()"
+                                (mouseenter)="updateCurrentSize(y + 1, x + 1, $event)"
+                            ></div>
+                        }
+                    </div>
+                }
+
+                <div class="t-description">{{ cols() }}&#215;{{ rows() }}</div>
             </div>
         </ng-container>
     `,
@@ -88,31 +90,31 @@ const MIN_DISTANCE_PX = 70;
     host: {'[attr.automation-id]': '"toolbar__insert-table-button"'},
 })
 export class TuiInsertTableButtonTool extends TuiToolbarTool {
-    private readonly win = inject(WINDOW);
+    private readonly win = inject(WA_WINDOW);
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected tableSize = {
-        rows: 1,
-        cols: 1,
-    };
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly cols = signal(1);
+    protected readonly rows = signal(1);
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());
     });
 
-    protected get columnsNumber(): number {
-        return Math.min(Math.max(3, this.tableSize.cols + 1), MAX_COLS_NUMBER);
-    }
+    protected readonly resetEffect = effect(() => {
+        if (this.open()) {
+            this.rows.set(1);
+            this.cols.set(1);
+        }
+    });
 
-    protected get rowsNumber(): number {
-        return Math.min(Math.max(3, this.tableSize.rows + 1), MAX_ROWS_NUMBER);
-    }
+    protected readonly columnsNumber = computed(() =>
+        Math.min(Math.max(3, this.cols() + 1), MAX_COLS_NUMBER),
+    );
+
+    protected readonly rowsNumber = computed(() =>
+        Math.min(Math.max(3, this.rows() + 1), MAX_ROWS_NUMBER),
+    );
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.insertTable;
@@ -122,7 +124,7 @@ export class TuiInsertTableButtonTool extends TuiToolbarTool {
         return this.open() ? '' : (texts?.insertTable ?? '');
     }
 
-    protected addTable({rows, cols}: {cols: number; rows: number}): void {
+    protected addTable(): void {
         this.editor()?.enter(); // @note: clear previous styles
 
         const prevLine = this.editor()?.state?.selection.anchor;
@@ -134,16 +136,17 @@ export class TuiInsertTableButtonTool extends TuiToolbarTool {
         this.editor()?.enter();
 
         this.editor()?.setTextSelection(prevLine ?? 0);
-        this.editor()?.insertTable(rows, cols);
+        this.editor()?.insertTable(this.rows(), this.cols());
     }
 
-    protected tableSelectHovered(x: number, y: number): boolean {
-        return x < this.tableSize.rows && y < this.tableSize.cols;
+    protected tableSelectHovered(row: number, col: number): boolean {
+        return row < this.rows() && col < this.cols();
     }
 
     protected updateCurrentSize(rows: number, cols: number, event: MouseEvent): void {
         if (tuiGetViewportWidth(this.win) - event.clientX > MIN_DISTANCE_PX) {
-            this.tableSize = {rows, cols};
+            this.rows.set(rows);
+            this.cols.set(cols);
             this.cd.detectChanges();
         }
     }

@@ -10,19 +10,23 @@ test.describe('Groups', () => {
 
     test('simple nested group', async ({page}) => {
         await expect
-            .soft(page.locator('#nested-groups tui-editor'))
+            .soft(page.locator('#simple-create-nested-groups tui-editor'))
             .toHaveScreenshot('Groups-01.png');
     });
 
     test('draggable groups', async ({page}) => {
-        const editor = new TuiEditorPO(page.locator('#draggable-groups tui-editor'));
+        const editor = new TuiEditorPO(
+            page.locator('#draggable-groups-the-looks-like-in--notion tui-editor'),
+        );
         const contenteditable = await editor.contenteditable();
 
         await expect.soft(editor.host).toHaveScreenshot('Groups-02.png');
         await page.waitForTimeout(300);
 
         await page
-            .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
+            .locator(
+                '#draggable-groups-the-looks-like-in--notion [automation-id="toolbar__group-add-button"]',
+            )
             .focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -36,7 +40,9 @@ test.describe('Groups', () => {
         await expect.soft(editor.host).toHaveScreenshot('Groups-04.png');
 
         await page
-            .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
+            .locator(
+                '#draggable-groups-the-looks-like-in--notion [automation-id="toolbar__group-add-button"]',
+            )
             .focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
@@ -44,7 +50,9 @@ test.describe('Groups', () => {
         await contenteditable.focus();
         await page.keyboard.type('12345');
         await page
-            .locator('#draggable-groups [automation-id="toolbar__group-add-button"]')
+            .locator(
+                '#draggable-groups-the-looks-like-in--notion [automation-id="toolbar__group-add-button"]',
+            )
             .focus();
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);

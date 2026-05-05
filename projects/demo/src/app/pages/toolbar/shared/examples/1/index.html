@@ -36,12 +36,10 @@
     </tui-editor>
 </form>
 
-<tui-accordion [rounded]="false">
-    <tui-accordion-item [open]="true">
-        Output
+<tui-accordion>
+    <button [tuiAccordion]="true">Output</button>
 
-        <ng-template tuiAccordionItemContent>
-            <pre><code>{{ group.value|json }}</code></pre>
-        </ng-template>
-    </tui-accordion-item>
+    <tui-expand>
+        <pre><code>{{ group.value|json }}</code></pre>
+    </tui-expand>
 </tui-accordion>

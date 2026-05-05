@@ -1,4 +1,3 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,7 +21,6 @@ import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiAttachTool]',
     template: `
         <input

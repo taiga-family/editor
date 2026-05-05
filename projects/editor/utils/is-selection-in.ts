@@ -1,4 +1,4 @@
-import {tuiIsNodeIn} from '@taiga-ui/cdk';
+import {tuiIsNodeIn} from './is-node-in';
 
 /**
  * Checks if selection is inside a specific selector

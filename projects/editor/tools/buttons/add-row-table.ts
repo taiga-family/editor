@@ -1,11 +1,10 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
     TuiDataList,
     TuiDropdownDirective,
+    TuiInput,
     TuiOptGroup,
     TuiOption,
-    TuiTextfield,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {TUI_EDITOR_TABLE_COMMANDS, type TuiEditorOptions} from '@taiga-ui/editor/common';
@@ -25,13 +24,13 @@ export const TuiTableCommands = {
 
 @Component({
     selector: 'button[tuiAddRowTableTool]',
-    imports: [AsyncPipe, TuiDataList, TuiOptGroup, TuiOption, TuiTextfield],
+    imports: [TuiDataList, TuiInput, TuiOptGroup, TuiOption],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-data-list>
-                @for (group of tableCommandTexts$ | async; track group; let i = $index) {
+                @for (group of tableCommandTexts(); track group; let i = $index) {
                     <tui-opt-group>
                         <!-- TODO: remove "magic" numbers i*2+@Directive({standalone: true, and make code more readable-->
                         @for (item of group; track item; let j = $index) {
@@ -52,7 +51,7 @@ export const TuiTableCommands = {
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiAddRowTableButtonTool extends TuiToolbarTool {
-    protected readonly tableCommandTexts$ = inject(TUI_EDITOR_TABLE_COMMANDS);
+    protected readonly tableCommandTexts = inject(TUI_EDITOR_TABLE_COMMANDS);
 
     protected override getDisableState(): boolean {
         return !(this.editor()?.isActive('table') ?? false);

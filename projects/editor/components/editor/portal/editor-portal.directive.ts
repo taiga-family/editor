@@ -1,13 +1,12 @@
 import {Directive, ElementRef, forwardRef, inject} from '@angular/core';
-import {tuiAsViewport, TuiDropdownService, TuiRectAccessor} from '@taiga-ui/core';
+import {tuiAsViewport, TuiPopupService, TuiRectAccessor} from '@taiga-ui/core';
 
 import {TuiEditorPortalService} from './editor-portal.service';
 
 @Directive({
-    standalone: true,
     selector: '[tuiEditorPortal]',
     providers: [
-        {provide: TuiDropdownService, useExisting: TuiEditorPortalService},
+        {provide: TuiPopupService, useExisting: TuiEditorPortalService},
         tuiAsViewport(forwardRef(() => TuiEditorPortal)),
     ],
 })

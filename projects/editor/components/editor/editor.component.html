@@ -43,9 +43,8 @@
 <tui-editor-socket />
 
 <ng-template #editorTpl>
-    <!-- tuiDropdownDirection - prevent flaky -->
     <div
-        tuiDropdownAlign="left"
+        tuiDropdownAlign="start"
         tuiDropdownDirection="bottom"
         tuiDropdownLimitWidth="auto"
         tuiTiptapEditor
@@ -80,7 +79,7 @@
         <ng-content select="mention" />
     }
 
-    <ng-container *polymorpheusOutlet="tuiDropdown?.tuiDropdownOpen ? dropdownContent() : null as text">
+    <ng-container *polymorpheusOutlet="tuiDropdown?.open() ? dropdownContent() : null as text">
         {{ text }}
     </ng-container>
 </ng-template>

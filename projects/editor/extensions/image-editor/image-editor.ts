@@ -12,7 +12,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiActiveZone, tuiPure} from '@taiga-ui/cdk';
+import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {
     TUI_EDITOR_OPTIONS,
@@ -24,6 +24,7 @@ import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
+import {tuiPure} from '@taiga-ui/legacy';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';

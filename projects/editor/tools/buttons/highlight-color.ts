@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    forwardRef,
+    inject,
     input,
     TemplateRef,
     viewChild,
@@ -10,25 +10,24 @@ import {
 import {
     tuiDropdown,
     TuiDropdownDirective,
-    tuiDropdownOpen,
-    TuiTextfield,
-    TuiTextfieldDropdownDirective,
+    TuiDropdownOpen,
+    TuiInput,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {TuiEditorPalette} from '@taiga-ui/editor/components/palette';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
-import {TuiPaletteModule} from '@taiga-ui/legacy';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
 
 @Component({
     selector: 'button[tuiHighlightColorTool]',
-    imports: [TuiPaletteModule, TuiTextfield],
+    imports: [TuiEditorPalette, TuiInput],
     template: `
         {{ tuiHint() }}
 
-        <ng-container *tuiTextfieldDropdown>
+        <ng-container *tuiDropdown>
             <tui-palette
                 tuiPalette
                 [colors]="colors()"
@@ -52,12 +51,8 @@ import {TuiToolbarButtonTool} from '../tool-button';
 })
 export class TuiHighlightColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
-    protected readonly open = tuiDropdownOpen();
-
-    protected readonly template = viewChild(
-        forwardRef(() => TuiTextfieldDropdownDirective),
-        {read: TemplateRef},
-    );
+    protected readonly open = inject(TuiDropdownOpen).open;
+    protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {
         this.dropdown.set(this.template());

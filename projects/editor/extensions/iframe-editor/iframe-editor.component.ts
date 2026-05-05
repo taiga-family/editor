@@ -6,12 +6,12 @@ import {
     inject,
 } from '@angular/core';
 import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
-import {tuiPure} from '@taiga-ui/cdk';
 import {TUI_EDITOR_RESIZE_EVENT, type TuiEditableIframe} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
+import {tuiPure} from '@taiga-ui/legacy';
 
 import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
