@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/mention/examples/1/mention/index.html"],
+  "sourcesContent": ["<tui-data-list>\n    <div #container>\n        @for (item of items | filterItems: mentionSuggestions(); track item.login) {\n            <button\n                #button\n                tuiOption\n                type=\"button\"\n                (click)=\"setMention.emit(item)\"\n                (keydown.enter)=\"setMention.emit(item)\"\n            >\n                {{ item.name }}\n                <span\n                    size=\"s\"\n                    [tuiAvatar]=\"item.avatar || (item.name | tuiInitials)\"\n                ></span>\n            </button>\n        }\n    </div>\n</tui-data-list>\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}
