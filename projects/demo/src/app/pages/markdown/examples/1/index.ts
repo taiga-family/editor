@@ -12,12 +12,13 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {TuiAccordion} from '@taiga-ui/kit';
-import {tuiPure} from '@taiga-ui/legacy';
 import MarkdownIt from 'markdown-it';
-import {Converter} from 'showdown';
+
+import {MakeMarkdownPipe} from './make-markdown';
 
 @Component({
     imports: [
+        MakeMarkdownPipe,
         ReactiveFormsModule,
         TuiAccordion,
         TuiEditor,
@@ -63,13 +64,6 @@ export default class Example implements OnInit {
     public ngOnInit(): void {
         void tuiRawLoad(import('./example.md?raw')).then((data) =>
             this.control.patchValue(data),
-        );
-    }
-
-    @tuiPure
-    protected toMarkdown(html: string): string {
-        return new Converter().makeMarkdown(
-            html.replaceAll('&lt;', '<').replaceAll('&gt;', '>'),
         );
     }
 }

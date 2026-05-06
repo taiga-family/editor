@@ -10,7 +10,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdown, TuiIcon} from '@taiga-ui/core';
@@ -24,7 +23,7 @@ import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
-import {tuiPure} from '@taiga-ui/legacy';
+import {TuiTrustResourceUrlPipe} from '@taiga-ui/editor/pipes';
 import {timer} from 'rxjs';
 
 import {TuiImageAlignList} from './image-align-list';
@@ -40,6 +39,7 @@ import {TUI_IMAGE_EDITOR_OPTIONS} from './image-editor.options';
         TuiEditorResizable,
         TuiIcon,
         TuiImageAlignList,
+        TuiTrustResourceUrlPipe,
     ],
     templateUrl: './image-editor.html',
     styleUrl: './image-editor.less',
@@ -59,7 +59,6 @@ export class TuiImageEditor
     private readonly img = viewChild('img', {read: ElementRef});
     private readonly resizable = viewChild.required<TuiEditorResizable>('resizable');
     private readonly destroy$ = inject(DestroyRef);
-    private readonly sanitizer = inject(DomSanitizer);
     private readonly el = inject(ElementRef);
 
     private readonly win: Omit<Window, 'document'> & {document: Document | undefined} =
@@ -154,11 +153,6 @@ export class TuiImageEditor
 
     protected get supportLinkExtension(): boolean {
         return Boolean(this.editor.commands.toggleLink);
-    }
-
-    @tuiPure
-    protected getBypassedSrc(src: string): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(src);
     }
 
     protected toggleAlignDropdown(event: Event): void {

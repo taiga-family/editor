@@ -22,6 +22,7 @@ import {ExampleEditorCleanupHtmlTransformer} from './transformer';
         TuiExpand,
         TuiItem,
     ],
+    exportAs: 'cleanup-example',
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

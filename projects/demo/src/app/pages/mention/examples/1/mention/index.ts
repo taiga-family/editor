@@ -8,17 +8,13 @@ import {
 } from '@angular/core';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiAvatar, TuiInitialsPipe} from '@taiga-ui/kit';
-import {tuiPure} from '@taiga-ui/legacy';
 
-export interface User {
-    name: string;
-    avatar: string;
-    login: string;
-}
+import {FilterItems} from './filter';
+import {type User} from './user';
 
 @Component({
     selector: 'mentions',
-    imports: [TuiAvatar, TuiDataList, TuiInitialsPipe],
+    imports: [FilterItems, TuiAvatar, TuiDataList, TuiInitialsPipe],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -44,17 +40,6 @@ export class Mentions {
 
     public readonly mentionSuggestions = input<string>();
     public readonly setMention = output<User>();
-
-    @tuiPure
-    protected getFilteredItems(items: readonly User[], search?: string): readonly User[] {
-        return search?.length
-            ? items.filter(
-                  ({name, login}) =>
-                      login.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()) ||
-                      name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()),
-              )
-            : items;
-    }
 
     protected down(event: Event, isDown: boolean): void {
         const buttons = Array.from(this.el?.querySelectorAll('button') ?? []);

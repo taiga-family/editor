@@ -16,6 +16,10 @@ export default class Example {
         'mention.ts': import('./examples/1/mention/index.ts?raw', {
             with: {loader: 'text'},
         }),
+        'filter.ts': import('./examples/1/mention/filter.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'user.ts': import('./examples/1/mention/user.ts?raw', {with: {loader: 'text'}}),
         'mention.html': import('./examples/1/mention/index.html?raw'),
     };
 }

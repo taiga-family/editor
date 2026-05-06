@@ -14,5 +14,8 @@ export default class Example {
         HTML: import('./examples/1/index.html?raw'),
         LESS: import('./examples/1/index.less?raw'),
         'example.md': import('./examples/1/example.md?raw'),
+        'make-markdown.ts': import('./examples/1/make-markdown.ts?raw', {
+            with: {loader: 'text'},
+        }),
     };
 }

@@ -26,7 +26,7 @@
     <button [tuiAccordion]="isE2E">Markdown</button>
     <tui-expand>
         <ng-container *tuiItem>
-            <pre class="markdown">{{ toMarkdown(control.value) }}</pre>
+            <pre class="markdown">{{ control.value | makeMarkdown }}</pre>
         </ng-container>
     </tui-expand>
 </tui-accordion>

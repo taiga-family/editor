@@ -1,7 +1,6 @@
 import {isPlatformServer} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem} from '@taiga-ui/cdk';
 import {TuiExpand, TuiIcon} from '@taiga-ui/core';
@@ -12,7 +11,6 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {TuiAccordion} from '@taiga-ui/kit';
-import {tuiPure} from '@taiga-ui/legacy';
 
 import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
 
@@ -29,12 +27,11 @@ import {ExampleTuiEmbedTool} from './embed-tool/embed-tool.component';
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
+    exportAs: 'iframe-example',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideTuiEditor({iframe: true})],
 })
 export default class Example {
-    private readonly sanitizer = inject(DomSanitizer);
-
     private readonly isNotStatic =
         inject(WA_IS_E2E) || isPlatformServer(inject(PLATFORM_ID));
 
@@ -69,9 +66,4 @@ export default class Example {
     `,
         Validators.required,
     );
-
-    @tuiPure
-    protected safe(content: string | null): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
-    }
 }

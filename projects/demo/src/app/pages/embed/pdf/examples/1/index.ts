@@ -7,7 +7,6 @@ import {
     viewChild,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {WA_IS_E2E} from '@ng-web-apis/platform';
 import {TuiItem, tuiTypedFromEvent} from '@taiga-ui/cdk';
 import {TuiExpand} from '@taiga-ui/core';
@@ -21,7 +20,6 @@ import {
     TuiEditorTool,
 } from '@taiga-ui/editor';
 import {TuiAccordion} from '@taiga-ui/kit';
-import {tuiPure} from '@taiga-ui/legacy';
 import {map, type Observable, of} from 'rxjs';
 
 @Component({
@@ -35,6 +33,7 @@ import {map, type Observable, of} from 'rxjs';
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
+    exportAs: 'pdf-example',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor({iframe: true}),
@@ -85,7 +84,6 @@ import {map, type Observable, of} from 'rxjs';
 })
 export default class Example {
     private readonly editor = viewChild.required(TuiEditor);
-    private readonly sanitizer = inject(DomSanitizer);
     protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly isNotStatic =
@@ -112,11 +110,6 @@ export default class Example {
     `,
         Validators.required,
     );
-
-    @tuiPure
-    protected safe(content: string | null): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(content ?? '');
-    }
 
     protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
         if (!file) {
