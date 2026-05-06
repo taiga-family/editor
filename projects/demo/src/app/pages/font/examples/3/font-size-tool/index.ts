@@ -3,7 +3,6 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
-import {tuiPure} from '@taiga-ui/legacy';
 import {distinctUntilChanged, map} from 'rxjs';
 
 @Component({
@@ -63,7 +62,6 @@ export class ExampleTuiFontSizeTool {
         return this.sizes.indexOf(this.fontSize);
     }
 
-    @tuiPure
     private getDefaultFontSize(element?: Element): number {
         return element
             ? Number(

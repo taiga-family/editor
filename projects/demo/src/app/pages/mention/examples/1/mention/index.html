@@ -1,6 +1,6 @@
 <tui-data-list>
     <div #container>
-        @for (item of getFilteredItems(items, mentionSuggestions()); track item.login) {
+        @for (item of items | filterItems: mentionSuggestions(); track item.login) {
             <button
                 #button
                 tuiOption

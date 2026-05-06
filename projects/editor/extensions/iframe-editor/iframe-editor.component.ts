@@ -5,25 +5,23 @@ import {
     ElementRef,
     inject,
 } from '@angular/core';
-import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {TUI_EDITOR_RESIZE_EVENT, type TuiEditableIframe} from '@taiga-ui/editor/common';
 import {
     AbstractTuiEditorResizable,
     TuiEditorResizable,
 } from '@taiga-ui/editor/components/editor-resizable';
-import {tuiPure} from '@taiga-ui/legacy';
+import {TuiTrustResourceUrlPipe} from '@taiga-ui/editor/pipes';
 
 import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 
 @Component({
     selector: 'tui-iframe-editor',
-    imports: [TuiEditorResizable],
+    imports: [TuiEditorResizable, TuiTrustResourceUrlPipe],
     templateUrl: './iframe-editor.component.html',
     styleUrl: './iframe-editor.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIframe> {
-    private readonly sanitizer = inject(DomSanitizer);
     private readonly el: ElementRef<HTMLDivElement> = inject(ElementRef);
     protected readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
     protected readonly changeDetector = inject(ChangeDetectorRef);
@@ -45,10 +43,5 @@ export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIfram
         this.el.nativeElement.dispatchEvent(
             new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
         );
-    }
-
-    @tuiPure
-    protected get src(): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.attrs.src ?? '');
     }
 }

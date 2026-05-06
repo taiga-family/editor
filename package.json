@@ -126,5 +126,6 @@
             "@taiga-ui/editor",
             "^editor$"
         ]
-    }
+    },
+    "web-types": "node_modules/@taiga-ui/event-plugins/web-types.json"
 }

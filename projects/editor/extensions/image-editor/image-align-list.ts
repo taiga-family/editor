@@ -1,7 +1,13 @@
-import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    input,
+    output,
+} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core';
 import {TUI_EDITOR_OPTIONS} from '@taiga-ui/editor/common';
-import {tuiPure} from '@taiga-ui/legacy';
 
 @Component({
     selector: 'tui-image-align-list',
@@ -13,7 +19,7 @@ import {tuiPure} from '@taiga-ui/legacy';
             title=""
             tuiIconButton
             type="button"
-            [appearance]="isAlignJustify(style()) ? 'outline' : 'flat'"
+            [appearance]="isAlignJustify() ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignJustify"
             (click.capture)="alignJustify()"
         >
@@ -24,7 +30,7 @@ import {tuiPure} from '@taiga-ui/legacy';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignLeft(style()) ? 'outline' : 'flat'"
+            [appearance]="isAlignLeft() ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignLeft"
             (click.capture)="alignLeft()"
         >
@@ -35,7 +41,7 @@ import {tuiPure} from '@taiga-ui/legacy';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignCenter(style()) ? 'outline' : 'flat'"
+            [appearance]="isAlignCenter() ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignCenter"
             (click.capture)="alignCenter()"
         >
@@ -46,7 +52,7 @@ import {tuiPure} from '@taiga-ui/legacy';
             size="xs"
             tuiIconButton
             type="button"
-            [appearance]="isAlignRight(style()) ? 'outline' : 'flat'"
+            [appearance]="isAlignRight() ? 'outline' : 'flat'"
             [iconStart]="options.icons.imageExtension.alignRight"
             (click.capture)="alignRight()"
         >
@@ -60,25 +66,25 @@ export class TuiImageAlignList {
     public readonly style = input<string | null | undefined>(null);
     public readonly updateAlignStyles = output<string | null>();
 
-    @tuiPure
-    protected isAlignCenter(style?: string | null): boolean {
-        return style?.replaceAll(/\s/g, '').includes('justify-content:center') ?? false;
-    }
+    protected readonly isAlignCenter = computed(
+        (style = this.style()) =>
+            style?.replaceAll(/\s/g, '').includes('justify-content:center') ?? false,
+    );
 
-    @tuiPure
-    protected isAlignJustify(style?: string | null): boolean {
-        return style === null || style === undefined || style === '';
-    }
+    protected readonly isAlignJustify = computed(
+        (style = this.style()): boolean =>
+            style === null || style === undefined || style === '',
+    );
 
-    @tuiPure
-    protected isAlignLeft(style?: string | null): boolean {
-        return style?.replaceAll(/\s/g, '').includes('float:left') ?? false;
-    }
+    protected readonly isAlignLeft = computed(
+        (style = this.style()) =>
+            style?.replaceAll(/\s/g, '').includes('float:left') ?? false,
+    );
 
-    @tuiPure
-    protected isAlignRight(style?: string | null): boolean {
-        return style?.replaceAll(/\s/g, '').includes('float:right') ?? false;
-    }
+    protected readonly isAlignRight = computed(
+        (style = this.style()): boolean =>
+            style?.replaceAll(/\s/g, '').includes('float:right') ?? false,
+    );
 
     protected alignLeft(): void {
         this.updateAlignStyles.emit('float: left');

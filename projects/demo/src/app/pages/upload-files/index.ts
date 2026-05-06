@@ -42,7 +42,11 @@ export default class Example {
         TypeScript: import('./examples/3/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/3/index.html?raw'),
         LESS: import('./examples/3/index.less?raw'),
-        './upload.service.ts': import('./examples/1/upload.service.ts?raw'),
-        './file-loader.ts': import('./examples/1/file-loader.ts?raw'),
+        './upload.service.ts': import('./examples/1/upload.service.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        './file-loader.ts': import('./examples/1/file-loader.ts?raw', {
+            with: {loader: 'text'},
+        }),
     };
 }
