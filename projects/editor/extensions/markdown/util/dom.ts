@@ -1,15 +1,12 @@
 export function tuiElementFromString(value: any): HTMLElement | null {
-    if (typeof DOMParser === 'undefined') {
-        return null;
-    }
-
-    return new window.DOMParser().parseFromString(`<body>${value}</body>`, 'text/html')
-        .body;
+    return typeof DOMParser === 'undefined'
+        ? null
+        : new window.DOMParser().parseFromString(`<body>${value}</body>`, 'text/html')
+              .body;
 }
 
 export function tuiExtractElement(node: Node): void {
     const parent = node.parentElement;
-
     const prepend = parent?.cloneNode();
 
     while (parent?.firstChild && parent.firstChild !== node) {

@@ -111,6 +111,7 @@ export class TuiEditorDropdownToolbar
         switch (this.position()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
+
                 const element = tuiIsElement(commonAncestorContainer)
                     ? commonAncestorContainer
                     : commonAncestorContainer.parentNode;
@@ -122,9 +123,11 @@ export class TuiEditorDropdownToolbar
                         const selectedNode = this.doc?.querySelector?.(
                             `.${TUI_EDITOR_PM_SELECTED_NODE}`,
                         );
+
                         const fallbackAnchor = this.el.nativeElement.querySelector(
                             'a[href], a[data-type="jump-anchor"]',
                         );
+
                         const rect = (
                             selectedNode ?? fallbackAnchor
                         )?.getBoundingClientRect();

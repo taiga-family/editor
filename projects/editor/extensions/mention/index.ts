@@ -71,26 +71,24 @@ export const TuiMention = Node.create<TuiMentionOptions>({
             node,
         });
 
-        if (typeof html === 'string') {
-            return [
-                'span',
-                mergeAttributes(
-                    {'data-type': this.name},
-                    this.options.HTMLAttributes,
-                    HTMLAttributes,
-                ),
-                html,
-            ];
-        }
-
-        return [
-            'span',
-            mergeAttributes(
-                {'data-type': this.name},
-                this.options.HTMLAttributes,
-                HTMLAttributes,
-            ),
-            (html as any)?.[2],
-        ];
+        return typeof html === 'string'
+            ? [
+                  'span',
+                  mergeAttributes(
+                      {'data-type': this.name},
+                      this.options.HTMLAttributes,
+                      HTMLAttributes,
+                  ),
+                  html,
+              ]
+            : [
+                  'span',
+                  mergeAttributes(
+                      {'data-type': this.name},
+                      this.options.HTMLAttributes,
+                      HTMLAttributes,
+                  ),
+                  (html as any)?.[2],
+              ];
     },
 });

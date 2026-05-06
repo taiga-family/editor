@@ -146,6 +146,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     }
 
                     const slice = state.doc.slice(range.start, range.end);
+
                     const match = schema.nodes.detailsContent?.contentMatch.matchFragment(
                         slice.content,
                     );

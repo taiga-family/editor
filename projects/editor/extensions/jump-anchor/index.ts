@@ -21,13 +21,7 @@ export const TuiJumpAnchor = Mark.create({
             id: {
                 default: null,
                 parseHTML: (element) => element.getAttribute('id'),
-                renderHTML: (attributes) => {
-                    if (!attributes.id) {
-                        return {};
-                    }
-
-                    return {id: attributes.id};
-                },
+                renderHTML: (attributes) => (attributes.id ? {id: attributes.id} : {}),
             },
         };
     },
@@ -48,6 +42,7 @@ export const TuiJumpAnchor = Mark.create({
                     const {from, to} = tuiGetCurrentWordBounds(editor);
                     const sliced = tuiGetSlicedFragment(state);
                     const forwardSymbolIsWhitespace = sliced === ' ';
+
                     const jumpAnchorMark = chain()
                         .setTextSelection({from, to})
                         .extendMarkRange('jumpAnchor')

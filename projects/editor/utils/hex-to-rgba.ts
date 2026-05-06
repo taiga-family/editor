@@ -9,11 +9,7 @@ const getAlphaFloat = (a?: number, alpha?: number): number => {
         return Number((a / 255).toFixed(2));
     }
 
-    if (typeof alpha !== 'number' || alpha < 0 || alpha > 1) {
-        return 1;
-    }
-
-    return alpha;
+    return typeof alpha !== 'number' || alpha < 0 || alpha > 1 ? 1 : alpha;
 };
 
 export function tuiHexToRGBA(hex: string, alpha?: number): string {
@@ -36,8 +32,10 @@ export function tuiParseHex(
 
     const chunkSize = Math.floor((hex.length - 1) / 3);
     const hexArr = getChunksFromString(hex.slice(1), chunkSize);
+
     const [r = Number.NaN, g = Number.NaN, b = Number.NaN, a] =
         hexArr?.map(convertHexUnitTo256) ?? [];
+
     const floatAlpha = getAlphaFloat(a, alpha);
 
     return [r, g, b, floatAlpha];

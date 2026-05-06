@@ -18,6 +18,7 @@ test.describe('Groups', () => {
         const editor = new TuiEditorPO(
             page.locator('#draggable-groups-the-looks-like-in--notion tui-editor'),
         );
+
         const contenteditable = await editor.contenteditable();
 
         await expect.soft(editor.host).toHaveScreenshot('Groups-02.png');

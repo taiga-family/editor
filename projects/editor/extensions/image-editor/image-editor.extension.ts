@@ -38,6 +38,7 @@ function pasteImage(injector: Injector) {
     return (view: EditorView, event: ClipboardEvent | DragEvent): void => {
         const dataTransfer =
             event instanceof DragEvent ? event.dataTransfer : event.clipboardData;
+
         const imagesFiles = Array.from(dataTransfer?.files ?? []).filter((file) =>
             /image/i.test(file.type),
         );
@@ -57,6 +58,7 @@ function pasteImage(injector: Injector) {
                 )
                 .subscribe((src) => {
                     const node = view.state.schema.nodes.image?.create({src});
+
                     const transaction = node
                         ? view.state.tr.replaceSelectionWith(node)
                         : null;
@@ -72,11 +74,7 @@ function pasteImage(injector: Injector) {
 }
 
 function typesafeIsAllowedUri(uri?: string): boolean {
-    if (!uri) {
-        return false;
-    }
-
-    return isAllowedUri(uri) !== null;
+    return uri ? isAllowedUri(uri) !== null : false;
 }
 
 export function tuiCreateImageEditorExtension<T, K>({
@@ -175,28 +173,26 @@ export function tuiCreateImageEditorExtension<T, K>({
         renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
             const {src, width, alt, style, title, 'data-href': href} = HTMLAttributes;
 
-            if (!href) {
-                return ['img', mergeAttributes(HTMLAttributes)];
-            }
-
-            return [
-                'a',
-                mergeAttributes({
-                    target: '_blank',
-                    rel: 'noopener noreferrer nofollow',
-                    href: typesafeIsAllowedUri(href) ? href : '',
-                    style: style,
-                }),
-                [
-                    'img',
-                    mergeAttributes({
-                        src,
-                        width,
-                        alt,
-                        title,
-                    }),
-                ],
-            ];
+            return href
+                ? [
+                      'a',
+                      mergeAttributes({
+                          target: '_blank',
+                          rel: 'noopener noreferrer nofollow',
+                          href: typesafeIsAllowedUri(href) ? href : '',
+                          style: style,
+                      }),
+                      [
+                          'img',
+                          mergeAttributes({
+                              src,
+                              width,
+                              alt,
+                              title,
+                          }),
+                      ],
+                  ]
+                : ['img', mergeAttributes(HTMLAttributes)];
         },
 
         addNodeView(): NodeViewRenderer {

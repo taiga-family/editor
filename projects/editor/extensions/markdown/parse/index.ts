@@ -124,11 +124,9 @@ export class TuiEditorMarkdownParser {
                     return rendered;
                 }
 
-                if (rendered?.endsWith('\n')) {
-                    return rendered.slice(0, -1);
-                }
-
-                return rendered ?? '';
+                return rendered?.endsWith('\n')
+                    ? rendered.slice(0, -1)
+                    : (rendered ?? '');
             };
 
         md.renderer.rules.hardbreak = withoutNewLine(md.renderer.rules.hardbreak);

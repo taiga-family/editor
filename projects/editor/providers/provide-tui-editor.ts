@@ -586,6 +586,7 @@ export function provideTuiEditor<O, S>(
         multi: true,
         useFactory(): ReadonlyArray<AsyncExtension<O, S>> {
             const injector = inject(INJECTOR);
+
             const ownExtensions =
                 typeof overrides === 'function'
                     ? extensions.concat(overrides)

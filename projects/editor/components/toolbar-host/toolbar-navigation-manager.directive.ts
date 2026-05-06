@@ -39,7 +39,9 @@ export class TuiToolbarNavigationManager {
             0,
             toolsContainers.length - 1,
         );
+
         const targetToolWrapper = toolsContainers[targetToolIndex];
+
         const targetTool = toPrevious
             ? this.findPreviousTool(targetToolWrapper)
             : this.findNextTool(targetToolWrapper);

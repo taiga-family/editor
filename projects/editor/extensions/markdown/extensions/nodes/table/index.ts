@@ -70,19 +70,17 @@ function isMarkdownSerializable(node: ProseNode): boolean {
     const firstRow = rows[0];
     const bodyRows = rows.slice(1);
 
-    if (
-        tuiChildNodes(firstRow).some(
-            (cell) =>
-                cell.type.name !== 'tableHeader' || hasSpan(cell) || cell.childCount > 1,
-        )
-    ) {
-        return false;
-    }
-
-    return !bodyRows.some((row) =>
-        tuiChildNodes(row).some(
-            (cell) =>
-                cell.type.name === 'tableHeader' || hasSpan(cell) || cell.childCount > 1,
-        ),
-    );
+    return tuiChildNodes(firstRow).some(
+        (cell) =>
+            cell.type.name !== 'tableHeader' || hasSpan(cell) || cell.childCount > 1,
+    )
+        ? false
+        : !bodyRows.some((row) =>
+              tuiChildNodes(row).some(
+                  (cell) =>
+                      cell.type.name === 'tableHeader' ||
+                      hasSpan(cell) ||
+                      cell.childCount > 1,
+              ),
+          );
 }

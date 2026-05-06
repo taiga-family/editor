@@ -37,7 +37,6 @@ function trimStart(options: TrimOptions): any {
 
 function trimEnd(options: TrimOptions): any {
     const {text, delim, from, to} = options;
-
     let pos = to;
     let res = text;
 
@@ -55,6 +54,7 @@ function trimEnd(options: TrimOptions): any {
 
 export function tuiTrimInline(options: TrimOptions): string {
     const {text, delim, from, to} = options;
+
     let state = {
         text,
         from,

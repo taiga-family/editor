@@ -64,6 +64,7 @@ export default class Example {
         const uuid = crypto.randomUUID();
         const replaceText = `<span class="my-mention" data-type="mention" data-user="${uuid}">@${item.login}</span>&nbsp;`;
         const to = editor.state.selection.to;
+
         const from =
             editor.state.selection.from - this.wysiwyg().mentionSuggestions.length - 1;
 

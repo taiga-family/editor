@@ -76,9 +76,11 @@ import {mergeAttributes} from '@tiptap/core';
                                 5: 'text-h5',
                                 6: 'text-h6',
                             };
+
                             const hasLevel = this.options.levels.includes(
                                 node.attrs.level,
                             );
+
                             const level: Levels = hasLevel
                                 ? node.attrs.level
                                 : this.options.levels[0];

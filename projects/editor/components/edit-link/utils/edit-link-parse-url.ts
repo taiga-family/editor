@@ -14,6 +14,7 @@ interface TuiEditLinkParsed {
 function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
     const [url = '', queryParams = ''] = rawUrl.split(/\?/);
     const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER);
+
     const [prefix, path] =
         protocolPosition > -1
             ? [
@@ -39,6 +40,7 @@ function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
 function splitSimpleProtocol(rawUrl = ''): Array<string | undefined> {
     const [url = '', queryParams = ''] = rawUrl.split(/\?/);
     const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
+
     const hardUrl = // https://domain.com/path:some:schema:data:test
         (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||
         (url.includes('?') && url.lastIndexOf(':') > url.indexOf('?'));
@@ -69,11 +71,9 @@ export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
         return {prefix: url.slice(0, 1), path: url.slice(1)};
     }
 
-    if (url.startsWith('./')) {
-        return {prefix: url.slice(0, 2), path: url.slice(2)};
-    }
-
-    return {prefix, path: prefix === '' ? url : path};
+    return url.startsWith('./')
+        ? {prefix: url.slice(0, 2), path: url.slice(2)}
+        : {prefix, path: prefix === '' ? url : path};
 }
 
 /**

@@ -28,13 +28,8 @@ import {type Node} from '@tiptap/pm/model';
             {
                 placeholder: {
                     emptyNodeClass: 't-editor-placeholder',
-                    placeholder: ({node}: {node: Node}) => {
-                        if (node.type.name === 'paragraph') {
-                            return "Type '/' for command";
-                        }
-
-                        return '';
-                    },
+                    placeholder: ({node}: {node: Node}) =>
+                        node.type.name === 'paragraph' ? "Type '/' for command" : '',
                     showOnlyCurrent: true,
                     includeChildren: true,
                 },

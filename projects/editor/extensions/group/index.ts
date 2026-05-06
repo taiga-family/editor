@@ -48,13 +48,8 @@ export const tuiCreateGroupExtension = (
                 style: {
                     default: null,
                     parseHTML: (element) => element.getAttribute('style'),
-                    renderHTML: (attributes) => {
-                        if (!attributes.style) {
-                            return {};
-                        }
-
-                        return {style: attributes.style};
-                    },
+                    renderHTML: (attributes) =>
+                        attributes.style ? {style: attributes.style} : {},
                 },
             };
         },
@@ -108,9 +103,11 @@ export const tuiCreateGroupExtension = (
                         this.editor.chain().focus().run();
 
                         const content = tuiGetSelectedContent(state, '');
+
                         const wrapped = content.trim().startsWith('<p>')
                             ? content
                             : `<p>${content}</p>`;
+
                         const result = `<div data-type="group">${wrapped}</div>`;
 
                         return commands.insertContent(result);

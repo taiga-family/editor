@@ -19,6 +19,7 @@ export function tuiGetCurrentWordBounds(editor: Editor): Range {
         const start = $anchor.start();
         const parent = $anchor.parent;
         const textBefore = parent.textBetween(0, pos - start, undefined, '\uFFFC');
+
         const textAfter = parent.textBetween(
             pos - start,
             parent.content.size,
@@ -31,6 +32,7 @@ export function tuiGetCurrentWordBounds(editor: Editor): Range {
             .replaceAll(/\uFFFC/g, '')
             .split(/\b/)
             .pop();
+
         const wordAfter = textAfter
             // eslint-disable-next-line unicorn/prefer-string-replace-all
             .replaceAll(/\uFFFC/g, '')

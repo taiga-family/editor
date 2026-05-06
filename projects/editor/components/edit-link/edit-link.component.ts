@@ -210,6 +210,7 @@ export class TuiEditLink implements OnInit {
 
     private makeDefaultPrefix(): TuiEditorLinkPrefix {
         const a = this.getAnchorElement();
+
         const defaultPrefix =
             (tuiEditLinkParseUrl(a?.getAttribute('href') ?? '').prefix as
                 | TuiEditorLinkPrefix
@@ -272,6 +273,7 @@ export class TuiEditLink implements OnInit {
                 : `${this.prefix ?? ''}${url}`;
 
         const {prefix, path} = tuiEditLinkParseUrl(fullPath);
+
         const expectAnchorMode =
             this.isOnlyAnchorMode ||
             prefix === TUI_EDITOR_LINK_HASH_PREFIX ||

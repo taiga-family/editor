@@ -18,6 +18,7 @@ test.describe('Toolbar Shared', () => {
                 {length: texts.length},
                 (_, j) => new TuiEditorPO(page.locator('tui-editor').nth(j)),
             );
+
             const contenteditables = await Promise.all(
                 editorPOs.map(async (editorPO) => editorPO.contenteditable()),
             );
