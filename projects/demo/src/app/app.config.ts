@@ -1,4 +1,5 @@
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {provideExperimentalZonelessChangeDetection} from '@angular/core';
 import {type ApplicationConfig} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -19,6 +20,7 @@ import {TUI_LOGO_CONTENT} from './shared/logo';
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideExperimentalZonelessChangeDetection(),
         provideAnimations(),
         provideRouter(
             routes,

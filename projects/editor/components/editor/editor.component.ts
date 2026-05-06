@@ -67,7 +67,7 @@ import {
     type TuiSelectionState,
 } from '@taiga-ui/editor/utils';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {delay, fromEvent, map, merge, throttleTime} from 'rxjs';
+import {fromEvent, map, merge, throttleTime} from 'rxjs';
 
 import {TuiEditorDropdownToolbar} from './dropdown/dropdown-toolbar.directive';
 import {TUI_EDITOR_PROVIDERS} from './editor.providers';
@@ -115,7 +115,6 @@ import {TUI_EDITOR_PROVIDERS} from './editor.providers';
         },
     ],
     host: {
-        ngSkipHydration: 'true',
         class: 't-wrapper',
         '[attr.data-loaded]': 'editorLoaded()',
         '(click)': 'focus($event)',
@@ -149,34 +148,33 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
     protected readonly cd = inject(ChangeDetectorRef);
+    public readonly editorService = inject(TuiTiptapEditorService);
 
-    protected readonly $ = this.editorLoaded$
-        .pipe(delay(0), takeUntilDestroyed())
-        .subscribe(() => {
-            this.hasMentionPlugin = !!this.editorService
-                .getOriginTiptapEditor()
-                ?.extensionManager.extensions.find(
-                    (extension) => extension.name === 'mention',
-                );
+    protected readonly $ = this.editorLoaded$.pipe(takeUntilDestroyed()).subscribe(() => {
+        this.hasMentionPlugin = !!this.editorService
+            .getOriginTiptapEditor()
+            ?.extensionManager.extensions.find(
+                (extension) => extension.name === 'mention',
+            );
 
-            const processed =
-                this.contentProcessor?.fromControlValue(this.control.value) ??
-                this.control.value ??
-                '';
+        const processed =
+            this.contentProcessor?.fromControlValue(this.control.value) ??
+            this.control.value ??
+            '';
 
-            this.editorService.setValue(processed, {clearsHistory: true});
-            this.editorLoaded.set(true);
-            this.cd.detectChanges();
+        this.editorService.setValue(processed, {clearsHistory: true});
+        this.editorLoaded.set(true);
+        this.cd.detectChanges();
 
-            // patch after rendered contenteditable element
-            this.patchContentEditableElement();
+        // patch after rendered contenteditable element
+        this.patchContentEditableElement();
 
-            // listen resize events after any DOM changes
-            this.listenResizeEvents();
+        // listen resize events after any DOM changes
+        this.listenResizeEvents();
 
-            // TODO: migrate to signal later
-            this.loaded.emit(this.editorLoaded());
-        });
+        // TODO: migrate to signal later
+        this.loaded.emit(this.editorLoaded());
+    });
 
     /**
      * @deprecated use placeholder
@@ -197,6 +195,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
             fromEvent(tuiInjectElement(), 'mouseenter').pipe(map(TUI_TRUE_HANDLER)),
             fromEvent(tuiInjectElement(), 'mouseleave').pipe(map(TUI_FALSE_HANDLER)),
         ).pipe(tuiWatch(this.cdr)),
+        {initialValue: false},
     );
 
     public readonly focused = tuiAppearanceFocus(false);
@@ -213,7 +212,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     );
 
     public readonly rootEl = tuiInjectElement();
-    public readonly editorService = inject(TuiTiptapEditorService);
 
     public get editor(): AbstractTuiEditor | null {
         return this.editorService.getOriginTiptapEditor() ? this.editorService : null;
