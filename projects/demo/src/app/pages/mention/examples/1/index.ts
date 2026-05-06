@@ -17,7 +17,7 @@ import {
 import {TuiAccordion} from '@taiga-ui/kit';
 
 import {Mentions} from './mention';
-import {User} from "./mention/user";
+import {type User} from './mention/user';
 
 @Component({
     imports: [
