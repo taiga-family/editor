@@ -316,25 +316,28 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         }
     }
 
-    protected addAnchor(anchor: string): void {
-        this.editor?.setAnchor(anchor);
+    protected addLink(link: TuiEditLink, href: string): void {
+        if (link.hasAnchorMode()) {
+            this.editor?.setAnchor(href);
+        } else {
+            this.editor?.selectClosest();
+            this.editor?.setLink(href);
+
+            this.ownDropdown()?.toggle(false);
+
+            this.zone.runOutsideAngular(() =>
+                setTimeout(() => this.ownDropdown()?.toggle(true)),
+            );
+        }
     }
 
-    protected removeAnchor(): void {
-        this.editor?.removeAnchor();
-    }
-
-    protected closeDropdown(): void {
-        this.ownDropdown()?.toggle(false);
-    }
-
-    protected addLink(link: string): void {
-        this.editor?.selectClosest();
-        this.editor?.setLink(link);
-    }
-
-    protected removeLink(): void {
-        this.editor?.unsetLink();
+    protected removeLink(link: TuiEditLink): void {
+        if (link.hasAnchorMode()) {
+            this.editor?.removeAnchor();
+        } else {
+            this.editor?.unsetLink();
+            this.ownDropdown()?.toggle(false);
+        }
     }
 
     protected focus(event: KeyboardEvent | MouseEvent): void {

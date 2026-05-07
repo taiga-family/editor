@@ -69,8 +69,8 @@
             #link
             tuiEditorRootEditLink
             [anchorMode]="isJumpAnchorSelected"
-            (addLink)="link.hasAnchorMode() ? addAnchor($event) : addLink($event); closeDropdown()"
-            (removeLink)="link.hasAnchorMode() ? removeAnchor() : removeLink(); closeDropdown()"
+            (addLink)="addLink(link, $event)"
+            (removeLink)="removeLink(link)"
         />
     }
 
