@@ -2,7 +2,7 @@ import {TuiDemoPath} from '@demo/shared/routes';
 import {expect, test} from '@playwright/test';
 
 import {HTML_EDITOR_BASIC_EXAMPLE} from '../stubs/html';
-import {TuiEditorPO, tuiGoto, waitStableState} from '../utils';
+import {TuiEditorPO, tuiGoto} from '../utils';
 
 test.describe('Links', () => {
     test.beforeEach(async ({page}) => {
@@ -19,8 +19,7 @@ test.describe('Links', () => {
         await contenteditable.click();
         await editor.host.locator('a').first().scrollIntoViewIfNeeded();
         await editor.host.locator('a').first().click();
-        // The edit-link dropdown is a portal — wait for it to stabilize separately.
-        await waitStableState(page.locator('tui-edit-link'));
+        await expect(page.locator('tui-edit-link')).toBeVisible();
 
         await expect.soft(editor.host).toHaveScreenshot('Links-01.png');
     });
@@ -36,7 +35,6 @@ test.describe('Links', () => {
         await page.locator('tui-input-inline input').first().focus();
         await page.locator('tui-input-inline input').first().fill('wysiwyg.com');
         await page.keyboard.press('Enter');
-        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
         await expect.soft(editor.host).toHaveScreenshot('Links-02.png');
 
         await editor.host.locator('sup').first().selectText();
@@ -50,8 +48,7 @@ test.describe('Links', () => {
 
         await page.mouse.click(0, 0);
         await editor.host.locator('h1').first().click();
-        // The edit-link dropdown is a portal — wait for it to stabilize separately.
-        await waitStableState(page.locator('tui-edit-link'));
+        await expect(page.locator('tui-dropdown')).toBeVisible();
         await expect.soft(editor.host).toHaveScreenshot('Links-04.png');
     });
 

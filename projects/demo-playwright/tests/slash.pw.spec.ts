@@ -12,6 +12,7 @@ test.describe('Slash', () => {
 
         await contenteditable.focus();
         await page.keyboard.type('/');
+        await expect(page.locator('tui-dropdown')).toBeVisible();
         await expect.soft(page).toHaveScreenshot('Slash-01.png');
     });
 
@@ -52,7 +53,7 @@ test.describe('Slash', () => {
         await page.keyboard.press('Enter');
 
         await page.keyboard.type('/');
-        await page.waitForTimeout(300);
+        await expect(page.locator('tui-dropdown')).toBeVisible();
 
         await expect
             .soft(page.locator('.t-demo').first())

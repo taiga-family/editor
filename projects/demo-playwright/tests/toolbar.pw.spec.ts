@@ -191,21 +191,22 @@ test.describe('Toolbar', () => {
 
         const editor = new TuiEditorPO(page.locator('tui-editor'));
         const contenteditable = await editor.contenteditable();
+        const dropdown = page.locator('[automation-id="toolbar__align-button"]');
 
         await contenteditable.focus();
+        await editor.toolbar.scrollIntoViewIfNeeded();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
-
+        await expect(dropdown).toBeVisible();
         await expect.soft(editor.host).toHaveScreenshot('Toolbar-16.png');
 
         await contenteditable.focus();
         await page.locator('[automation-id="toolbar__align-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
+        await expect(dropdown).toBeVisible();
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Enter');
-        await page.locator('[tuiToolbarDropdownContent]').waitFor({state: 'visible'});
+        await expect(dropdown).toBeVisible();
 
         await expect.soft(editor.host).toHaveScreenshot('Toolbar-17.png');
 
