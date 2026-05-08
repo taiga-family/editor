@@ -1,0 +1,9 @@
+import"./chunk-DAQOROHW.js";var o=`:host {
+    ::ng-deep .tui-editor-socket [data-type='group'] {
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border: 0.0625rem solid var(--tui-border-normal);
+    }
+}
+`;export{o as default};

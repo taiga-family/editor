@@ -1,0 +1,18 @@
+import"./chunk-DAQOROHW.js";var l=`<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    Placeholder
+</tui-editor>
+<tui-textfield
+    class="tui-space_top-5"
+    [style.min-height.rem]="30"
+>
+    <label tuiLabel>Markdown</label>
+    <textarea
+        tuiTextarea
+        [ngModel]="markdown"
+        (ngModelChange)="markdown$.next($event)"
+    ></textarea>
+</tui-textfield>
+`;export{l as default};

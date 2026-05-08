@@ -1,0 +1,46 @@
+import"./chunk-DAQOROHW.js";var r=`<form [formGroup]="group">
+    <tui-toolbar
+        class="toolbar"
+        [editor]="editorRef"
+        [tools]="builtInTools"
+    />
+
+    <tui-editor
+        #header
+        formControlName="header"
+        class="editor"
+        [tools]="[]"
+        (focusIn)="editorRef = header.editor"
+    >
+        Header
+    </tui-editor>
+
+    <tui-editor
+        #main
+        formControlName="main"
+        class="editor"
+        [tools]="[]"
+        (focusIn)="editorRef = main.editor"
+    >
+        Main
+    </tui-editor>
+
+    <tui-editor
+        #footer
+        formControlName="footer"
+        class="editor"
+        [tools]="[]"
+        (focusIn)="editorRef = footer.editor"
+    >
+        Footer
+    </tui-editor>
+</form>
+
+<tui-accordion>
+    <button [tuiAccordion]="true">Output</button>
+
+    <tui-expand>
+        <pre><code>{{ group.value|json }}</code></pre>
+    </tui-expand>
+</tui-accordion>
+`;export{r as default};

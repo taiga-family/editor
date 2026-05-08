@@ -1,0 +1,30 @@
+import"./chunk-DAQOROHW.js";var i=`<div class="sidebar">
+    <div class="sidebar-options">
+        <h2>Table of contents</h2>
+        <div class="table-of-contents">
+            @for (item of contents()?.items ?? []; track item.id) {
+                <div
+                    [class.is-active]="item.isActive"
+                    [class.is-scrolled-over]="!contents()?.isCreate && item.isScrolledOver"
+                    [style.--level]="item.level"
+                >
+                    <a
+                        routerLink="."
+                        [attr.data-item-index]="item.itemIndex"
+                        [fragment]="item.id"
+                        (click)="onItemClick($event, item)"
+                    >
+                        {{ item.textContent }}
+                    </a>
+                </div>
+            }
+
+            @if (!(contents()?.items ?? []).length) {
+                <div class="empty-state">
+                    <p>Start editing your document to see the outline.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+`;export{i as default};

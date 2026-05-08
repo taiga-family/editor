@@ -1,0 +1,8 @@
+import"./chunk-DAQOROHW.js";var d=`::ng-deep .marked {
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
+    margin: 0 0.3125rem;
+    box-shadow: 0 0 0 0.125rem rgba(0, 123, 255, 0.25);
+    line-height: 2.6rem;
+}
+`;export{d as default};

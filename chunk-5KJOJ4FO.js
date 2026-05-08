@@ -1,0 +1,27 @@
+import"./chunk-DAQOROHW.js";var n=`<p style="background-color: var(--tui-background-accent-2-hover); color: var(--tui-background-base)">
+    Select and copy me, and then paste into the editor.
+</p>
+
+<tui-editor
+    class="editor"
+    [formControl]="control"
+>
+    Placeholder
+</tui-editor>
+
+<tui-accordion [closeOthers]="false">
+    <button [tuiAccordion]="isE2E">HTML</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <tui-editor-socket [content]="control.value" />
+        </ng-container>
+    </tui-expand>
+
+    <button [tuiAccordion]="isE2E">Text</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <span class="code">{{ control.value }}</span>
+        </ng-container>
+    </tui-expand>
+</tui-accordion>
+`;export{n as default};

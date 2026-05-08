@@ -1,0 +1,21 @@
+import"./chunk-DAQOROHW.js";var n=`<tui-toolbar
+    [editor]="editorRef.editor"
+    [tools]="builtInTools"
+/>
+
+<tui-editor
+    #editorRef
+    appearance="no-border"
+    [floatingToolbar]="true"
+    [formControl]="control"
+    [style.max-height.px]="400"
+    [tools]="[]"
+>
+    <ng-container ngProjectAs="tools">
+        <button tuiFontSizeTool></button>
+        <button tuiBoldTool></button>
+        <button tuiItalicTool></button>
+        <button tuiUnderlineTool></button>
+    </ng-container>
+</tui-editor>
+`;export{n as default};

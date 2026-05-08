@@ -1,0 +1,13 @@
+import"./chunk-DAQOROHW.js";var n=`:host {
+    position: relative;
+}
+
+.t-color-save {
+    position: sticky;
+    inset-inline-start: 0;
+    inset-block-end: 0;
+    inline-size: 100%;
+    box-shadow: inset 0 0.0625rem var(--tui-background-neutral-1-hover);
+    background: var(--tui-background-base) !important;
+}
+`;export{n as default};

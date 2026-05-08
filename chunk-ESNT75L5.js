@@ -1,0 +1,32 @@
+import"./chunk-DAQOROHW.js";var o=`.editor {
+    min-block-size: 12.5rem;
+    max-block-size: 12.5rem;
+
+    ::ng-deep {
+        tui-toolbar {
+            position: absolute;
+            z-index: 1;
+            inset-inline-start: 0;
+            inset-block-end: 0;
+            inline-size: 100%;
+
+            [tuiToolbar] {
+                box-shadow: 0 -0.0625rem 0.0625rem var(--tui-background-neutral-1-hover);
+            }
+        }
+
+        tui-scrollbar {
+            margin-block-end: 2.875rem;
+            padding: 0;
+        }
+
+        .t-placeholder {
+            margin-block-start: 1.625rem;
+        }
+
+        [tuiToolbarBlock]:last-child {
+            margin-inline-start: auto;
+        }
+    }
+}
+`;export{o as default};

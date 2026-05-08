@@ -1,0 +1,41 @@
+import"./chunk-DAQOROHW.js";var h=`:host ::ng-deep {
+    .text-h1,
+    .text-h2,
+    .text-h3,
+    .text-h4,
+    .text-h5,
+    .text-h6 {
+        margin: 0.3125rem 0;
+    }
+
+    .text-h1,
+    .text-h1[tuiOption] {
+        color: #f00;
+    }
+
+    .text-h2,
+    .text-h2[tuiOption] {
+        color: #00f;
+    }
+
+    .text-h3,
+    .text-h3[tuiOption] {
+        color: #008000;
+    }
+
+    .text-h4,
+    .text-h4[tuiOption] {
+        color: #808080;
+    }
+
+    .text-h5,
+    .text-h5[tuiOption] {
+        color: #ffc0cb;
+    }
+
+    .text-h6,
+    .text-h6[tuiOption] {
+        color: #8a2be2;
+    }
+}
+`;export{h as default};

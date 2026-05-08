@@ -1,0 +1,15 @@
+import"./chunk-DAQOROHW.js";var t=`import {Injectable} from '@angular/core';
+import {TuiValueTransformer} from '@taiga-ui/cdk';
+import {tuiLegacyEditorConverter} from '@taiga-ui/editor';
+
+@Injectable()
+export class ExampleEditorConvertLegacyHtmlTransformer extends TuiValueTransformer<string> {
+    public fromControlValue(controlValue: string): string {
+        return tuiLegacyEditorConverter(controlValue);
+    }
+
+    public toControlValue(componentValue: string): string {
+        return componentValue;
+    }
+}
+`;export{t as default};

@@ -1,0 +1,41 @@
+import"./chunk-DAQOROHW.js";var a=`@font-face {
+    font-family: 'Monaspace';
+    src: url('https://assets.codepen.io/2585/MonaspaceKrypton-SyntaxHighlighter-Regular.woff2') format('woff2');
+}
+
+/* stylelint-disable -- unsupported-browser-features */
+@font-palette-values --kung-fury {
+    @font-palette-values --kung-fury {
+        font-family: Monaspace, sans-serif;
+        override-colors:
+            0 hsl(188 100% 75%),
+            /* curlies and tags */ 1 hsl(250 100% 80%),
+            /* ? */ 2 hsl(188 100% 75%),
+            /* function */ 3 hsl(188 100% 75%),
+            /* ? */ 4 hsl(250 100% 80%),
+            /* () */ 5 hsl(210 40% 98%),
+            /* property name */ 6 hsl(210 40% 80%),
+            /* ? */ 7 hsl(300 100% 80%) /* numbers */;
+    }
+}
+/* stylelint-enable */
+
+:host {
+    ::ng-deep {
+        .tui-editor-socket pre:has(code[class='language-ts']) {
+            background: var(--tui-background-accent-opposite-hover);
+            min-inline-size: 0;
+            overflow-x: auto;
+            padding: 2ch;
+        }
+
+        code[class='language-ts'] {
+            font-family: 'Monaspace', monospace;
+            /* stylelint-disable-next-line -- unsupported browser feature */
+            font-palette: --kung-fury;
+            color: var(--tui-background-base);
+            text-shadow: none;
+        }
+    }
+}
+`;export{a as default};

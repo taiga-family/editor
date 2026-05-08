@@ -1,0 +1,17 @@
+import"./chunk-DAQOROHW.js";var e=`<tui-toolbar
+    class="toolbar"
+    [editor]="editorRef"
+    [tools]="builtInTools"
+    (fileAttached)="attach($event)"
+/>
+
+<tui-loader [loading]="!!(uploadService.loading$ | async)">
+    <tui-editor
+        #editorComponent
+        class="editor"
+        [formControl]="control"
+        [tools]="[]"
+        (focusIn)="editorRef = editorComponent.editor"
+    />
+</tui-loader>
+`;export{e as default};

@@ -1,0 +1,27 @@
+import"./chunk-DAQOROHW.js";var t=`import {Injectable} from '@angular/core';
+import {TuiValueTransformer} from '@taiga-ui/cdk';
+
+@Injectable()
+export class ExampleEditorCleanupHtmlTransformer extends TuiValueTransformer<string> {
+    public fromControlValue(controlValue: string): string {
+        return controlValue;
+    }
+
+    public toControlValue(componentValue: string): string {
+        if (typeof DOMParser === 'undefined') {
+            return '';
+        }
+
+        const tree = new DOMParser().parseFromString(componentValue, 'text/html');
+
+        tree.body.querySelectorAll('*').forEach((element) => {
+            // now we can manipulate with any elements
+            // and cleanup any attributes (class for example)
+            element.removeAttribute('class');
+            element.removeAttribute('style');
+        });
+
+        return tree.body.innerHTML;
+    }
+}
+`;export{t as default};

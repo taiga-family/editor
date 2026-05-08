@@ -1,0 +1,36 @@
+import"./chunk-DAQOROHW.js";var e=`@import '@taiga-ui/styles/utils.less';
+
+.tool-button {
+    .transition(background);
+
+    &:hover {
+        background: var(--tui-background-neutral-1-hover);
+    }
+}
+
+.smiles {
+    display: flex;
+    max-inline-size: 18rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smile {
+    .transition(background);
+
+    appearance: none;
+    border: 0;
+    background: none;
+    text-decoration: none;
+    flex: 1 0 21%;
+    cursor: pointer;
+    border-radius: var(--tui-radius-s);
+    font: var(--tui-typography-heading-h4);
+    padding: 1rem;
+
+    &:hover {
+        background: var(--tui-background-neutral-1-hover);
+    }
+}
+`;export{e as default};

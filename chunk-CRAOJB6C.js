@@ -1,0 +1,14 @@
+import"./chunk-DAQOROHW.js";var r=`.editor {
+    min-block-size: 30rem;
+}
+
+.markdown {
+    font-family: monospace;
+    padding: 0.375rem 0.5rem;
+    background: var(--tui-background-base-alt);
+    color: var(--tui-text-secondary);
+    box-shadow: inset 0 -0.125rem var(--tui-background-neutral-1);
+    font-size: 0.875rem;
+    white-space: break-spaces;
+}
+`;export{r as default};

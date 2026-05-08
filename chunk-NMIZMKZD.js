@@ -1,0 +1,41 @@
+import"./chunk-DAQOROHW.js";var i=`<div
+    #dropdown
+    tuiDropdownAlign="start"
+    tuiDropdownDirection="bottom"
+    tuiDropdownLimitWidth="auto"
+    [tuiDropdown]="youtubeDropdown"
+    [tuiDropdownMinHeight]="0"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance="icon"
+        automation-id="embed-tool__button"
+        iconStart="@tui.code"
+        size="s"
+        tuiIconButton
+        tuiToolbarTool
+        type="button"
+        class="tool-button"
+    >
+        Embedded tool
+    </button>
+    <ng-template #youtubeDropdown>
+        <div class="embed-tool-content">
+            <label class="t-label">
+                <div class="t-label-properties">Embed URL</div>
+                <div class="t-url">
+                    <tui-input-inline
+                        tuiAutoFocus
+                        class="t-input"
+                        [class.t-input_filled]="url"
+                        [(ngModel)]="url"
+                        (keydown.enter)="embedSource(url)"
+                    >
+                        {{ placeholder }}
+                    </tui-input-inline>
+                </div>
+            </label>
+        </div>
+    </ng-template>
+</div>
+`;export{i as default};

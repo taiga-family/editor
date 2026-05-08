@@ -1,0 +1,21 @@
+import"./chunk-DAQOROHW.js";var e=`<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+/>
+
+<tui-accordion class="tui-space_top-6">
+    <button [tuiAccordion]="isE2E">HTML</button>
+
+    <tui-expand>
+        <ng-container *tuiItem>
+            <tui-editor-socket
+                [content]="control.value"
+                (imagePreview)="preview.showImage($event)"
+            >
+                <image-preview-example #preview />
+            </tui-editor-socket>
+        </ng-container>
+    </tui-expand>
+</tui-accordion>
+`;export{e as default};

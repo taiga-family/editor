@@ -1,0 +1,20 @@
+import"./chunk-DAQOROHW.js";var n=`<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    Write message...
+
+    <ng-container ngProjectAs="tools">
+        <button
+            appearance="secondary"
+            size="s"
+            tuiButton
+            type="button"
+            (click)="send()"
+        >
+            Send
+        </button>
+    </ng-container>
+</tui-editor>
+`;export{n as default};

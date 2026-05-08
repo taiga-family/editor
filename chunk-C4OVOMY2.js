@@ -1,0 +1,10 @@
+import"./chunk-DAQOROHW.js";var e=`.my-mention {
+    display: inline-block;
+    background: var(--tui-autofill);
+    outline: 0.0625rem solid var(--tui-background-accent-opposite-hover);
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.3rem;
+    cursor: default;
+    margin: 1px;
+}
+`;export{e as default};

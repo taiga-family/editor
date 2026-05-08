@@ -1,0 +1,14 @@
+import"./chunk-DAQOROHW.js";var i=`.editor {
+    min-block-size: 30rem;
+
+    ::ng-deep .group {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        border-radius: 0.5rem;
+        border: 0.0625rem solid var(--tui-border-normal);
+    }
+}
+`;export{i as default};

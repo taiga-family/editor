@@ -1,0 +1,34 @@
+import"./chunk-DAQOROHW.js";var n=`<tui-editor
+    [formControl]="control"
+    [tools]="builtInTools"
+    [(tuiDropdownOpen)]="open"
+>
+    <tui-data-list *tuiDropdown>
+        @for (item of filter(suggestion); track item.name) {
+            <button
+                tuiOption
+                type="button"
+                (click)="command(item)"
+            >
+                {{ item.name }}
+            </button>
+        }
+    </tui-data-list>
+</tui-editor>
+
+<tui-accordion [closeOthers]="false">
+    <button [tuiAccordion]="isE2E">HTML</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <tui-editor-socket [content]="control.value" />
+        </ng-container>
+    </tui-expand>
+
+    <button [tuiAccordion]="isE2E">Text</button>
+    <tui-expand>
+        <ng-container *tuiItem>
+            <span class="code">{{ control.value }}</span>
+        </ng-container>
+    </tui-expand>
+</tui-accordion>
+`;export{n as default};

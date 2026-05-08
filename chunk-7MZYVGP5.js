@@ -1,0 +1,18 @@
+import"./chunk-DAQOROHW.js";var t=`:host {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+tui-toolbar.toolbar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+    background: var(--tui-base-01);
+}
+
+tui-editor.editor {
+    min-block-size: auto;
+    border-radius: 0;
+}
+`;export{t as default};

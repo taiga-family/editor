@@ -1,0 +1,58 @@
+import"./chunk-DAQOROHW.js";var o=`.sidebar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0 1rem;
+    inline-size: 12rem;
+}
+
+.sidebar-options {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    block-size: 100%;
+    gap: 1rem;
+}
+
+.table-of-contents {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    gap: 0.25rem;
+    overflow: auto;
+    text-decoration: none;
+
+    > div {
+        border-radius: 0.25rem;
+        padding-inline-start: calc(0.875rem * (var(--level) - 1));
+        transition: all 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+
+        &:hover {
+            background-color: rgba(61, 37, 20, 0.08);
+        }
+    }
+
+    .empty-state {
+        color: rgba(28, 25, 23, 0.6);
+        user-select: none;
+    }
+
+    .is-scrolled-over a {
+        color: rgba(28, 25, 23, 0.6);
+    }
+
+    .is-active a {
+        color: var(--tui-background-accent-1);
+    }
+
+    a {
+        display: flex;
+        color: #2e2b29;
+        gap: 0.25rem;
+        text-decoration: none;
+
+        &::before {
+            content: attr(data-item-index) '.';
+        }
+    }
+}
+`;export{o as default};

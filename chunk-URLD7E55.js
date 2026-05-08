@@ -1,0 +1,57 @@
+import"./chunk-DAQOROHW.js";var i=`<button
+    appearance="flat"
+    iconStart="@tui.minus"
+    size="s"
+    tuiIconButton
+    tuiToolbarTool
+    type="button"
+    (click)="decrease()"
+>
+    Decrease size
+</button>
+<div
+    #fonts
+    tuiDropdownAlign="start"
+    tuiDropdownDirection="bottom"
+    tuiDropdownLimitWidth="auto"
+    [tuiDropdown]="fontsDropdown"
+    [tuiDropdownMinHeight]="0"
+    [tuiDropdownOpen]="false"
+>
+    <button
+        appearance="flat"
+        size="s"
+        tuiButton
+        tuiToolbarTool
+        type="button"
+    >
+        {{ size$ | async }}
+    </button>
+
+    <ng-template #fontsDropdown>
+        <tui-data-list>
+            @for (size of sizes; track size) {
+                <button
+                    tuiOption
+                    type="button"
+                    (click)="setFontSize(size)"
+                >
+                    {{ size }}
+                </button>
+            }
+        </tui-data-list>
+    </ng-template>
+</div>
+
+<button
+    appearance="flat"
+    iconStart="@tui.plus"
+    size="s"
+    tuiIconButton
+    tuiToolbarTool
+    type="button"
+    (click)="increase()"
+>
+    Increase size
+</button>
+`;export{i as default};

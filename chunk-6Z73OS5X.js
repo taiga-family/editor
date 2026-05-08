@@ -1,0 +1,15 @@
+import"./chunk-DAQOROHW.js";var i=`<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    <ng-container ngProjectAs="tools">
+        <image-tool tuiItem />
+
+        <span class="hint">
+            <tui-icon icon="@tui.arrow-left" />
+            click it
+        </span>
+    </ng-container>
+</tui-editor>
+`;export{i as default};

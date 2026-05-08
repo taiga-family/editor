@@ -1,0 +1,17 @@
+import"./chunk-DAQOROHW.js";var i=`<tui-editor
+    class="editor"
+    [formControl]="control"
+    [tools]="builtInTools"
+>
+    Smiles are custom tool. Try it.
+
+    <ng-container ngProjectAs="tools">
+        <smiles-tool tuiItem />
+
+        <span class="hint">
+            <tui-icon icon="@tui.arrow-left" />
+            click it
+        </span>
+    </ng-container>
+</tui-editor>
+`;export{i as default};
