@@ -123,6 +123,7 @@ test.describe('Toolbar', () => {
         await cell.hover();
         await cell.click();
 
+        await expect(page.locator('tui-table-size-selector, .t-size-selector').first()).toBeHidden();
         await expect.soft(editor.host).toHaveScreenshot('Toolbar-12.png');
     });
 
