@@ -4893,7 +4893,7 @@ var DEMO_PAGES = [
 var routes = [
   tuiProvideRoutePageTab({
     path: TuiDemoPath.GettingStarted,
-    loadComponent: async () => import("./chunk-KKD4UMPV.js"),
+    loadComponent: async () => import("./chunk-OXM2XBWL.js"),
     title: "Getting started"
   }),
   tuiProvideRoutePageTab({
