@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/markdown/examples/1/index.less?raw
-var __default = ".editor {\n    min-block-size: 30rem;\n}\n\n.markdown {\n    font-family: monospace;\n    padding: 0.375rem 0.5rem;\n    background: var(--tui-background-base-alt);\n    color: var(--tui-text-secondary);\n    box-shadow: inset 0 -0.125rem var(--tui-background-neutral-1);\n    font-size: 0.875rem;\n    white-space: break-spaces;\n}\n";
-export {
-  __default as default
-};
-//# sourceMappingURL=chunk-TQCIFCFA.js.map

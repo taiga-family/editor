@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/toolbar/bottom/examples/1/index.less?raw
-var __default = ".editor {\n    min-block-size: 12.5rem;\n    max-block-size: 12.5rem;\n\n    ::ng-deep {\n        tui-toolbar {\n            position: absolute;\n            z-index: 1;\n            inset-inline-start: 0;\n            inset-block-end: 0;\n            inline-size: 100%;\n\n            [tuiToolbar] {\n                box-shadow: 0 -0.0625rem 0.0625rem var(--tui-background-neutral-1-hover);\n            }\n        }\n\n        tui-scrollbar {\n            margin-block-end: 2.875rem;\n            padding: 0;\n        }\n\n        .t-placeholder {\n            margin-block-start: 1.625rem;\n        }\n\n        [tuiToolbarBlock]:last-child {\n            margin-inline-start: auto;\n        }\n    }\n}\n";
-export {
-  __default as default
-};
-//# sourceMappingURL=chunk-N5F3UB5W.js.map

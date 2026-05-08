@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/clipboard-paste/examples/1/index.ts?raw
-var __default = "import {DOCUMENT} from '@angular/common';\nimport {ChangeDetectionStrategy, Component, inject} from '@angular/core';\nimport {FormControl, ReactiveFormsModule} from '@angular/forms';\nimport {WA_IS_E2E} from '@ng-web-apis/platform';\nimport {TuiItem} from '@taiga-ui/cdk';\nimport {TuiExpand} from '@taiga-ui/core';\nimport {\n    provideTuiEditor,\n    provideTuiEditorOptions,\n    TuiEditor,\n    TuiEditorSocket,\n} from '@taiga-ui/editor';\nimport {TuiAccordion} from '@taiga-ui/kit';\n\n@Component({\n    imports: [\n        ReactiveFormsModule,\n        TuiAccordion,\n        TuiEditor,\n        TuiEditorSocket,\n        TuiExpand,\n        TuiItem,\n    ],\n    templateUrl: './index.html',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n    providers: [\n        provideTuiEditor(),\n        provideTuiEditorOptions(() => {\n            const doc = inject(DOCUMENT);\n\n            return {\n                editorProps: {\n                    transformPastedHTML(html: string): string {\n                        const div = doc.createElement('div');\n\n                        div.innerHTML = html;\n                        div.querySelectorAll('[style]').forEach((el) =>\n                            el.removeAttribute('style'),\n                        );\n\n                        return div.innerHTML;\n                    },\n                },\n            };\n        }),\n    ],\n})\nexport default class Example {\n    protected readonly isE2E = inject(WA_IS_E2E);\n    protected control = new FormControl('');\n}\n";
-export {
-  __default as default
-};
-//# sourceMappingURL=chunk-DVW2WGSQ.js.map

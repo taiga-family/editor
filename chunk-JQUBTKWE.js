@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/embed/iframe/examples/1/embed-tool/embed-tool.component.ts?raw
-var embed_tool_component_default = "import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';\nimport {FormsModule} from '@angular/forms';\nimport {TuiAutoFocus} from '@taiga-ui/cdk';\nimport {TuiButton, TuiDropdown} from '@taiga-ui/core';\nimport {TuiTiptapEditorService} from '@taiga-ui/editor';\nimport {TuiInputInline} from '@taiga-ui/kit';\n\n@Component({\n    selector: 'embed-tool',\n    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],\n    templateUrl: './embed-tool.template.html',\n    styleUrl: './embed-tool.styles.less',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ExampleTuiEmbedTool {\n    private readonly dropdown = viewChild.required<any>('dropdown');\n    private readonly editor = inject(TuiTiptapEditorService);\n    protected placeholder = 'https://my-embed.site.com/etc1235';\n    protected url = '';\n\n    protected embedSource(src: string): void {\n        if (src) {\n            this.editor.setIframe({src});\n\n            this.url = '';\n            this.dropdown().close();\n        }\n    }\n}\n";
-export {
-  embed_tool_component_default as default
-};
-//# sourceMappingURL=chunk-JQUBTKWE.js.map

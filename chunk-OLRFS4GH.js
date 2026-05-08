@@ -1,8 +1,0 @@
-import "./chunk-4MWRP73S.js";
-
-// projects/demo/src/app/pages/upload-files/examples/2/index.ts?raw
-var __default = "import {AsyncPipe} from '@angular/common';\nimport {ChangeDetectionStrategy, Component, inject} from '@angular/core';\nimport {FormControl, ReactiveFormsModule} from '@angular/forms';\nimport {TuiLoader} from '@taiga-ui/core';\nimport {\n    type AbstractTuiEditor,\n    provideTuiEditor,\n    TUI_ATTACH_FILES_LOADER,\n    TuiEditor,\n    type TuiEditorAttachedFile,\n    TuiEditorTool,\n    TuiToolbar,\n} from '@taiga-ui/editor';\n\nimport {fileLoader} from '../1/file-loader';\nimport {UploadService} from '../1/upload.service';\n\n@Component({\n    imports: [AsyncPipe, ReactiveFormsModule, TuiEditor, TuiLoader, TuiToolbar],\n    templateUrl: './index.html',\n    styleUrl: './index.less',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n    providers: [\n        provideTuiEditor({link: {protocols: ['blob']}}),\n        UploadService,\n        {\n            provide: TUI_ATTACH_FILES_LOADER,\n            deps: [UploadService],\n            useFactory: fileLoader,\n        },\n    ],\n})\nexport default class Example {\n    protected editorRef: AbstractTuiEditor | null = null;\n    protected readonly uploadService = inject(UploadService);\n\n    protected readonly builtInTools = [\n        TuiEditorTool.Undo,\n        TuiEditorTool.Link,\n        TuiEditorTool.Attach,\n    ];\n\n    protected readonly control = new FormControl('');\n\n    protected attach(files: TuiEditorAttachedFile[]): void {\n        files.forEach((file) => this.editorRef?.setFileLink(file));\n    }\n}\n";
-export {
-  __default as default
-};
-//# sourceMappingURL=chunk-OLRFS4GH.js.map
