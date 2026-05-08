@@ -47,28 +47,25 @@ export async function tuiGoto(
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await tuiWaitForFonts(page);
-    await expect(app).toBeAttached();
-    await expect(app.locator('[ngh]')).toHaveCount(0);
 
     if (hideHeader) {
-        for (const locator of await page.locator('[tuidocheader]').all()) {
-            if (await locator.isVisible()) {
-                await locator.evaluate((el) => el.remove());
-            }
+        for (const locator of await page.locator('[tuiDocHeader]').all()) {
+            await locator.evaluate((el) => el.remove());
         }
     }
 
     if (hideNavigation) {
         for (const locator of await page.locator('tui-doc-navigation').all()) {
-            if (await locator.isVisible()) {
-                await locator.evaluate((el) => el.remove());
-            }
+            await locator.evaluate((el) => el.remove());
         }
     }
 
     if (hideScrollbar) {
         await hideScrollbars(page);
     }
+
+    await expect(app).toBeAttached();
+    await expect(app.locator('[ngh]')).toHaveCount(0);
 
     return response;
 }
