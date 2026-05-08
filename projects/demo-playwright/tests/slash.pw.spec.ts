@@ -43,7 +43,7 @@ test.describe('Slash', () => {
         await contenteditable.click();
         await page.keyboard.press('End');
         await page.keyboard.press('End');
-        await page.keyboard.press('Space');
+        await page.keyboard.type('.');
         await page.keyboard.press('Enter');
         await page.keyboard.type('Test');
 
@@ -53,7 +53,7 @@ test.describe('Slash', () => {
 
         await page.keyboard.press('End');
         await page.keyboard.press('End');
-        await page.keyboard.press('Space');
+        await page.keyboard.type('.');
         await page.keyboard.press('Enter');
 
         await page.keyboard.type('/');
