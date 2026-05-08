@@ -6,6 +6,7 @@ export function tuiParseColor(color: string): [number, number, number, number] {
         .replace('rgba(', '')
         .replace('rgb(', '')
         .replace(')', '');
+
     const array = stripped.split(',').map((item) => Number.parseFloat(item));
 
     if (array.length === 4) {

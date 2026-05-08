@@ -39,6 +39,7 @@ export const TuiLink = Link.extend<LinkOptions>({
                         }
 
                         const {from, to} = tuiGetCurrentWordBounds(editor);
+
                         const toggleMark = chain()
                             .setTextSelection({from, to})
                             .toggleMark(this.name, attributes, {
@@ -73,6 +74,7 @@ export const TuiLink = Link.extend<LinkOptions>({
             'Mod-k': ({editor}) => {
                 const isLink = this.editor.isActive('link');
                 const editorChain = editor.chain().focus();
+
                 const command = isLink
                     ? editorChain.unsetLink()
                     : editorChain.toggleLink({href: ''});
@@ -108,6 +110,7 @@ export const TuiLink = Link.extend<LinkOptions>({
                     const linkBefore = $cursor.nodeBefore
                         ? linkMark.isInSet($cursor.nodeBefore.marks)
                         : null;
+
                     const linkAfter = $cursor.nodeAfter
                         ? linkMark.isInSet($cursor.nodeAfter.marks)
                         : null;
@@ -118,13 +121,11 @@ export const TuiLink = Link.extend<LinkOptions>({
 
                     const storedMarks = newState.storedMarks ?? $cursor.marks();
 
-                    if (!storedMarks.some((mark) => mark.type === linkMark)) {
-                        return null;
-                    }
-
-                    return newState.tr.setStoredMarks(
-                        storedMarks.filter((mark) => mark.type !== linkMark),
-                    );
+                    return storedMarks.some((mark) => mark.type === linkMark)
+                        ? newState.tr.setStoredMarks(
+                              storedMarks.filter((mark) => mark.type !== linkMark),
+                          )
+                        : null;
                 },
             }),
         ];

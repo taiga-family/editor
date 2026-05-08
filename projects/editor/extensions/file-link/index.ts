@@ -28,6 +28,7 @@ export const TuiFileLink = Extension.create({
                 ({state, chain}) => {
                     const {selection} = state;
                     const selectedSize = Math.abs(selection.to - selection.from);
+
                     const attrs = fileLink.attrs
                         ? linkAttributesToString(fileLink.attrs)
                         : '';

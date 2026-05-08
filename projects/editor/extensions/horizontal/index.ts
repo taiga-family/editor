@@ -10,7 +10,6 @@ export const TuiHorizontalRule = HorizontalRule.extend({
                 ({chain, state, editor}) => {
                     const {selection} = state;
                     const {$from: $originFrom, $to: $originTo} = selection;
-
                     const currentChain = chain();
 
                     if (editor.isActive('summary')) {

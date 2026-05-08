@@ -64,6 +64,7 @@ test.describe('Details', () => {
         await expect.soft(editor.host).toHaveScreenshot('Details-12.png');
 
         const contenteditable = await editor.contenteditable();
+
         const detailsButton = editor.host
             .locator('tui-toolbar button')
             .locator('text="Details"');
@@ -103,6 +104,7 @@ test.describe('Details', () => {
 
         const editor = new TuiEditorPO(page.locator('tui-editor'));
         const contenteditable = await editor.contenteditable();
+
         const detailsButton = page
             .locator('tui-toolbar button')
             .locator('text="Details"');
@@ -134,6 +136,7 @@ test.describe('Details', () => {
 
         const editor = new TuiEditorPO(page.locator('tui-editor'));
         const contenteditable = await editor.contenteditable();
+
         const detailsButton = page
             .locator('tui-toolbar button')
             .locator('text="Details"');

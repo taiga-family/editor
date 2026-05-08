@@ -27,7 +27,9 @@ export class TuiEditorResizable {
     public readonly sizeChange = output<readonly [width: number, height: number]>();
 
     protected get hostWidth(): number | string | null {
-        return tuiIsNumber(this.width()) ? tuiPx(this.width() as number) : this.width();
+        const width = this.width();
+
+        return tuiIsNumber(width) ? tuiPx(width) : width;
     }
 
     protected get hostHeight(): number | string | null {
