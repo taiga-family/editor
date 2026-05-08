@@ -110,7 +110,9 @@ test.describe('Toolbar', () => {
         await page.locator('[automation-id="toolbar__insert-table-button"]').click();
         await page.waitForTimeout(100);
 
-        await expect(page.locator('tui-table-size-selector, .t-size-selector').first()).toBeVisible();
+        await expect(
+            page.locator('tui-table-size-selector, .t-size-selector').first(),
+        ).toBeVisible();
         await expect.soft(editor.host).toHaveScreenshot('Toolbar-11.png');
 
         const cell = page
@@ -123,7 +125,9 @@ test.describe('Toolbar', () => {
         await cell.hover();
         await cell.click();
 
-        await expect(page.locator('tui-table-size-selector, .t-size-selector').first()).toBeHidden();
+        await expect(
+            page.locator('tui-table-size-selector, .t-size-selector').first(),
+        ).toBeHidden();
         await expect.soft(editor.host).toHaveScreenshot('Toolbar-12.png');
     });
 
