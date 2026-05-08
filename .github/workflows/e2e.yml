@@ -27,8 +27,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
       - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
       - uses: taiga-family/ci/actions/setup/playwright@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
-        with:
-          playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - run: npx nx build editor-demo -c development
       - uses: taiga-family/ci/actions/run/serve@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
