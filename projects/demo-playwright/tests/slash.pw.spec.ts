@@ -34,14 +34,14 @@ test.describe('Slash', () => {
 
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
-        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
+        await expect(page.locator('tui-input-inline')).toBeHidden();
 
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-03.png');
 
-        await page.mouse.click(0, 0);
         await contenteditable.click();
+        await page.keyboard.press('End');
         await page.keyboard.press('Enter');
         await page.keyboard.type('Test');
 

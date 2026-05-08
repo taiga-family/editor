@@ -43,11 +43,13 @@ test.describe('Img', () => {
 
         await contenteditable.locator('tui-editor-resizable').hover();
         await locator.hover();
+
         await page.mouse.move(
             (box?.x ?? 0) + (box?.width ?? 0) / 2,
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
         );
         await page.mouse.down();
+
         await page.mouse.move(
             (box?.x ?? 0) + (box?.width ?? 0) / 2 + 100,
             (box?.y ?? 0) + (box?.height ?? 0) / 2,
@@ -61,7 +63,6 @@ test.describe('Img', () => {
         );
 
         await page.mouse.click(0, 0);
-
         await expect.soft(resizableImage).toHaveScreenshot('Img-04.png');
     });
 
@@ -74,16 +75,13 @@ test.describe('Img', () => {
         await editor.contenteditable();
         await img.click();
         await expect.soft(editor.host).toHaveScreenshot('Img-05.png');
-
         await editor.host.locator('[automation-id="toolbar__link-button"]').click();
         await expect.soft(editor.host).toHaveScreenshot('Img-06.png');
-
         await page.keyboard.type('abc.com');
         await page.keyboard.press('Enter');
         await img.waitFor({state: 'attached'});
         await page.mouse.click(0, 0);
         await expect.soft(editor.host).toHaveScreenshot('Img-07.png');
-
         await page.locator('body').click({position: {x: 0, y: 0}});
         await expect(img).toBeVisible();
         await img.click();
@@ -98,7 +96,6 @@ test.describe('Img', () => {
         await editor.contenteditable();
         await editor.host.locator('tui-image-editor').hover();
         await expect.soft(editor.host).toHaveScreenshot('Img-09.png');
-
         await page.getByRole('button', {name: 'Image align'}).click();
         await expect.soft(editor.host).toHaveScreenshot('Img-14.png');
     });
@@ -110,11 +107,11 @@ test.describe('Img', () => {
             const editor = new TuiEditorPO(page.locator('tui-editor'));
 
             await openAlignDropdown(page);
-            await page.getByRole('button', {name: 'Align left'}).click();
-            await page
-                .getByRole('button', {name: 'Align left'})
-                .waitFor({state: 'hidden'});
 
+            const button = page.getByRole('button', {name: 'Align left'});
+
+            await button.click();
+            await expect(button).toBeHidden();
             await expect.soft(editor.host).toHaveScreenshot('Img-10.png');
         });
 
@@ -124,11 +121,11 @@ test.describe('Img', () => {
             const editor = new TuiEditorPO(page.locator('tui-editor'));
 
             await openAlignDropdown(page);
-            await page.getByRole('button', {name: 'Align right'}).click();
-            await page
-                .getByRole('button', {name: 'Align right'})
-                .waitFor({state: 'hidden'});
 
+            const button = page.getByRole('button', {name: 'Align right'});
+
+            await button.click();
+            await expect(button).toBeHidden();
             await expect.soft(editor.host).toHaveScreenshot('Img-11.png');
         });
 
@@ -138,11 +135,11 @@ test.describe('Img', () => {
             const editor = new TuiEditorPO(page.locator('tui-editor'));
 
             await openAlignDropdown(page);
-            await page.getByRole('button', {name: 'Align center'}).click();
-            await page
-                .getByRole('button', {name: 'Align center'})
-                .waitFor({state: 'hidden'});
 
+            const button = page.getByRole('button', {name: 'Align center'});
+
+            await button.click();
+            await expect(button).toBeHidden();
             await expect.soft(editor.host).toHaveScreenshot('Img-12.png');
         });
 
@@ -152,18 +149,18 @@ test.describe('Img', () => {
             const editor = new TuiEditorPO(page.locator('tui-editor'));
 
             await openAlignDropdown(page);
-            await page.getByRole('button', {name: 'Align left'}).click();
-            await page
-                .getByRole('button', {name: 'Align left'})
-                .waitFor({state: 'hidden'});
 
+            const buttonAlignLeft = page.getByRole('button', {name: 'Align left'});
+
+            await buttonAlignLeft.click();
+            await expect(buttonAlignLeft).toBeHidden();
             await editor.host.locator('tui-image-editor').hover();
-            await page.getByRole('button', {name: 'Image align'}).click();
-            await page.getByRole('button', {name: 'Justify align'}).click();
-            await page
-                .getByRole('button', {name: 'Justify align'})
-                .waitFor({state: 'hidden'});
 
+            const buttonJustifyAlign = page.getByRole('button', {name: 'Justify align'});
+
+            await page.getByRole('button', {name: 'Image align'}).click();
+            await buttonJustifyAlign.click();
+            await expect(buttonJustifyAlign).toBeHidden();
             await expect.soft(editor.host).toHaveScreenshot('Img-13.png');
         });
     });

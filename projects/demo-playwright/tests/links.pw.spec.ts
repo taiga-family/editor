@@ -43,7 +43,7 @@ test.describe('Links', () => {
         await page.locator('tui-input-inline input').first().focus();
         await page.locator('tui-input-inline input').first().fill('example.com');
         await page.keyboard.press('Enter');
-        await page.locator('tui-input-inline').waitFor({state: 'hidden'});
+        await expect(page.locator('tui-input-inline')).toBeHidden();
         await expect.soft(editor.host).toHaveScreenshot('Links-03.png');
 
         await page.mouse.click(0, 0);
