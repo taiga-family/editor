@@ -16,12 +16,20 @@
   --tui-duration-fastest: calc(var(--tui-duration-moderate) / 4);
 }
 :root,
-:host {
+:host,
+[tuiTheme=light] {
   --tui-shadow-small: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
   --tui-shadow-small-hover: 0px 14px 42px 0px rgba(0, 0, 0, 0.12);
   --tui-shadow-medium: 0px 6px 34px 0px rgba(0, 0, 0, 0.12);
   --tui-shadow-medium-hover: 0px 18px 60px 0px rgba(0, 0, 0, 0.18);
   --tui-shadow-popup: 0px 8px 28px 0px rgba(0, 0, 0, 0.16);
+}
+[tuiTheme=dark] {
+  --tui-shadow-small: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-small-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-medium: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-medium-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-popup: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 :root,
 :host {
@@ -401,7 +409,7 @@
   color: var(--tui-text-primary);
 }
 [tuiAppearance][data-appearance=floating] {
-  background: var(--tui-background-elevation-2);
+  background-color: var(--tui-background-elevation-2);
   color: var(--tui-text-primary);
   box-shadow: var(--tui-shadow-small);
 }
@@ -418,11 +426,11 @@
   box-shadow: var(--tui-shadow-small-hover);
 }
 [tuiAppearance][data-appearance=floating]:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled):active:not([data-state]) {
-  background: var(--tui-background-base-alt);
+  background-color: var(--tui-background-base-alt);
   box-shadow: var(--tui-shadow-small);
 }
 [tuiAppearance][data-appearance=floating][data-state=active] {
-  background: var(--tui-background-base-alt);
+  background-color: var(--tui-background-base-alt);
   box-shadow: var(--tui-shadow-small);
 }
 [tuiAppearance][data-appearance=outline],
@@ -3160,12 +3168,20 @@ svg use {
   --tui-duration-fastest: calc(var(--tui-duration-moderate) / 4);
 }
 :root,
-:host {
+:host,
+[tuiTheme=light] {
   --tui-shadow-small: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
   --tui-shadow-small-hover: 0px 14px 42px 0px rgba(0, 0, 0, 0.12);
   --tui-shadow-medium: 0px 6px 34px 0px rgba(0, 0, 0, 0.12);
   --tui-shadow-medium-hover: 0px 18px 60px 0px rgba(0, 0, 0, 0.18);
   --tui-shadow-popup: 0px 8px 28px 0px rgba(0, 0, 0, 0.16);
+}
+[tuiTheme=dark] {
+  --tui-shadow-small: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-small-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-medium: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-medium-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  --tui-shadow-popup: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 :root,
 :host {
@@ -3545,7 +3561,7 @@ svg use {
   color: var(--tui-text-primary);
 }
 [tuiAppearance][data-appearance=floating] {
-  background: var(--tui-background-elevation-2);
+  background-color: var(--tui-background-elevation-2);
   color: var(--tui-text-primary);
   box-shadow: var(--tui-shadow-small);
 }
@@ -3562,11 +3578,11 @@ svg use {
   box-shadow: var(--tui-shadow-small-hover);
 }
 [tuiAppearance][data-appearance=floating]:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled):active:not([data-state]) {
-  background: var(--tui-background-base-alt);
+  background-color: var(--tui-background-base-alt);
   box-shadow: var(--tui-shadow-small);
 }
 [tuiAppearance][data-appearance=floating][data-state=active] {
-  background: var(--tui-background-base-alt);
+  background-color: var(--tui-background-base-alt);
   box-shadow: var(--tui-shadow-small);
 }
 [tuiAppearance][data-appearance=outline],
