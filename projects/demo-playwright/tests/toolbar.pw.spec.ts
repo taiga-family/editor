@@ -110,8 +110,7 @@ test.describe('Toolbar', () => {
         await page.locator('[automation-id="toolbar__insert-table-button"]').click();
         await page.waitForTimeout(100);
 
-        // TODO: flaky, then was changed to fullPage
-        await expect.soft(page).toHaveScreenshot('Toolbar-11.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-11.png');
 
         const cell = page
             .locator('tui-table-size-selector .t-column')
@@ -123,8 +122,7 @@ test.describe('Toolbar', () => {
         await cell.hover();
         await cell.click();
 
-        // TODO: flaky, then was changed to fullPage
-        await expect.soft(page).toHaveScreenshot('Toolbar-12.png');
+        await expect.soft(editor.host).toHaveScreenshot('Toolbar-12.png');
     });
 
     test('set table without style inheritance', async ({page}) => {
