@@ -3,24 +3,28 @@ import {
     type TuiEditableImage,
     type TuiEditorAttachedFile,
 } from '@taiga-ui/editor/common';
-import type BulletList from '@tiptap/extension-bullet-list';
-import type Highlight from '@tiptap/extension-highlight';
+import {type Highlight} from '@tiptap/extension-highlight';
 import {type Image} from '@tiptap/extension-image';
-import type Link from '@tiptap/extension-link';
-import type ListItem from '@tiptap/extension-list-item';
-import type Subscript from '@tiptap/extension-subscript';
-import type Superscript from '@tiptap/extension-superscript';
-import type Table from '@tiptap/extension-table';
-import type TableCell from '@tiptap/extension-table-cell';
-import type TableHeader from '@tiptap/extension-table-header';
-import type TableRow from '@tiptap/extension-table-row';
-import type TaskItem from '@tiptap/extension-task-item';
-import type TaskList from '@tiptap/extension-task-list';
-import type TextAlign from '@tiptap/extension-text-align';
-import type TextStyle from '@tiptap/extension-text-style';
-import type Underline from '@tiptap/extension-underline';
-import type Youtube from '@tiptap/extension-youtube';
-import type StarterKit from '@tiptap/starter-kit';
+import {type Link} from '@tiptap/extension-link';
+import {
+    type BulletList,
+    type ListItem,
+    type TaskItem,
+    type TaskList,
+} from '@tiptap/extension-list';
+import {type Subscript} from '@tiptap/extension-subscript';
+import {type Superscript} from '@tiptap/extension-superscript';
+import {
+    type Table,
+    type TableCell,
+    type TableHeader,
+    type TableRow,
+} from '@tiptap/extension-table';
+import {type TextAlign} from '@tiptap/extension-text-align';
+import {type TextStyle} from '@tiptap/extension-text-style';
+import {type Underline} from '@tiptap/extension-underline';
+import {type Youtube} from '@tiptap/extension-youtube';
+import {type StarterKit} from '@tiptap/starter-kit';
 
 export type {
     BulletList,

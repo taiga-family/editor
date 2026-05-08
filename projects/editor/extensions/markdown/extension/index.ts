@@ -1,11 +1,47 @@
-import {Extension, extensions} from '@tiptap/core';
+import {
+    type CommandProps,
+    type Content,
+    Extension,
+    extensions,
+    type InsertContentAtOptions,
+    type Range,
+    type RawCommands,
+    type SetContentOptions,
+} from '@tiptap/core';
+import {type Fragment, type Node as ProseMirrorNode} from '@tiptap/pm/model';
 
 import {TuiMarkdownClipboard} from '../clipboard';
 import {TuiEditorMarkdownParser} from '../parse';
 import {TuiMarkdownSerializer} from '../serialize';
 import {TuiMarkdownTightLists} from '../tight-lists';
 
-export const TuiMarkdown = Extension.create({
+export interface TuiMarkdownOptions {
+    html: boolean;
+    tightLists: boolean;
+    tightListClass: string;
+    bulletListMarker: string;
+    linkify: boolean;
+    breaks: boolean;
+    transformPastedText: boolean;
+    transformCopiedText: boolean;
+}
+
+export interface TuiMarkdownStorage {
+    options: TuiMarkdownOptions;
+    parser: TuiEditorMarkdownParser;
+    serializer: TuiMarkdownSerializer;
+    getMarkdown(): string;
+}
+
+declare module '@tiptap/core' {
+    interface Storage {
+        markdown: TuiMarkdownStorage;
+    }
+}
+
+type MarkdownContent = Content | Fragment | ProseMirrorNode;
+
+export const TuiMarkdown = Extension.create<TuiMarkdownOptions>({
     name: 'markdown',
     priority: 50,
     addOptions() {
@@ -20,22 +56,41 @@ export const TuiMarkdown = Extension.create({
             transformCopiedText: false,
         };
     },
-    addCommands() {
-        const commands = (extensions.Commands.config as any)?.addCommands?.();
+    addCommands(): Partial<RawCommands> {
+        const commands = (
+            extensions.Commands.config as {
+                addCommands?(): Partial<RawCommands>;
+            }
+        ).addCommands?.();
 
         return {
-            setContent: (content, emitUpdate, parseOptions) => (props) =>
-                commands?.setContent?.(
-                    props.editor.storage.markdown.parser.parse(content),
-                    emitUpdate,
-                    parseOptions,
-                )(props),
-            insertContentAt: (range, content, options) => (props) =>
-                commands?.insertContentAt?.(
-                    range,
-                    props.editor.storage.markdown.parser.parse(content, {inline: true}),
-                    options,
-                )(props),
+            setContent:
+                (content: MarkdownContent, options?: SetContentOptions) =>
+                (props: CommandProps) => {
+                    const command = commands?.setContent?.(
+                        props.editor.storage.markdown.parser.parse(content),
+                        options,
+                    );
+
+                    return command?.(props) ?? false;
+                },
+            insertContentAt:
+                (
+                    range: Range | number,
+                    content: MarkdownContent,
+                    options?: InsertContentAtOptions,
+                ) =>
+                (props: CommandProps) => {
+                    const command = commands?.insertContentAt?.(
+                        range,
+                        props.editor.storage.markdown.parser.parse(content, {
+                            inline: true,
+                        }),
+                        options,
+                    );
+
+                    return command?.(props) ?? false;
+                },
         };
     },
     onBeforeCreate() {

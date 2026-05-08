@@ -354,7 +354,10 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             return;
         }
 
-        this.editor?.commands.setContent(value, false, this.options.parseOptions);
+        this.editor?.commands.setContent(value, {
+            emitUpdate: false,
+            parseOptions: this.options.parseOptions,
+        });
 
         if (options.clearsHistory || !this.firstInitContent) {
             this.clearHistory();

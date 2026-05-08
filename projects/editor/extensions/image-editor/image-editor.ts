@@ -118,7 +118,7 @@ export class TuiImageEditor
         // This functionality is required to ensure
         // the editor updates its state with/without link wrap
         // because of the editor's quirky behavior.
-        this.editor.commands.setNodeSelection(this.getPos());
+        this.setNodeSelection();
     }
 
     protected get dragHandle(): '' | null {
@@ -177,9 +177,7 @@ export class TuiImageEditor
 
         timer(0)
             .pipe(takeUntilDestroyed(this.destroy$))
-            .subscribe(() => {
-                this.editor.commands.setNodeSelection(this.getPos());
-            });
+            .subscribe(() => this.setNodeSelection());
     }
 
     private setInitialSize(): void {
@@ -194,5 +192,13 @@ export class TuiImageEditor
         this.el.nativeElement.dispatchEvent(
             new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
         );
+    }
+
+    private setNodeSelection(): void {
+        const pos = this.getPos();
+
+        if (pos !== undefined) {
+            this.editor.commands.setNodeSelection(pos);
+        }
     }
 }
