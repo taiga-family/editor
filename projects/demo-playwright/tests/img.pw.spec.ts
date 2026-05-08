@@ -85,7 +85,7 @@ test.describe('Img', () => {
         await expect.soft(editor.host).toHaveScreenshot('Img-07.png');
 
         await page.locator('body').click({position: {x: 0, y: 0}});
-        await img.waitFor({state: 'visible'});
+        await expect(img).toBeVisible();
         await img.click();
         await expect.soft(editor.host).toHaveScreenshot('Img-08.png');
     });

@@ -1,10 +1,9 @@
-import {type Page} from '@playwright/test';
+import {expect, type Page} from '@playwright/test';
 
 import {hideScrollbars} from './hide-scrollbar';
 import {tuiMockDate} from './mock-date';
 import {tuiMockImages} from './mock-images';
 import {tuiWaitForFonts} from './wait-for-fonts';
-import {waitStableState} from './wait-stable-state';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date;
@@ -43,11 +42,13 @@ export async function tuiGoto(
     await tuiMockDate(page, date);
 
     const response = await page.goto(url, playwrightGotoOptions);
+    const app = page.locator('app');
 
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await tuiWaitForFonts(page);
-    await waitStableState(page.locator('app'));
+    await expect(app).toBeAttached();
+    await expect(app.locator('[ngh]')).toHaveCount(0);
 
     if (hideHeader) {
         for (const locator of await page.locator('[tuidocheader]').all()) {
