@@ -13,7 +13,6 @@ export function tuiGetSelectionState(
     }
 
     const {$from, $to} = editor.state.selection;
-
     let before = $from.nodeBefore?.textContent;
 
     before = (

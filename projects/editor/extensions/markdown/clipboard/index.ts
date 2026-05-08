@@ -33,24 +33,19 @@ export const TuiMarkdownClipboard = Extension.create({
 
                         const dom = tuiElementFromString(parsed);
 
-                        if (!dom) {
-                            return null as any;
-                        }
-
-                        return DOMParser.fromSchema(this.editor.schema).parseSlice(dom, {
-                            preserveWhitespace: true,
-                            context,
-                        });
+                        return dom
+                            ? DOMParser.fromSchema(this.editor.schema).parseSlice(dom, {
+                                  preserveWhitespace: true,
+                                  context,
+                              })
+                            : (null as any);
                     },
-                    clipboardTextSerializer: (slice) => {
-                        if (!this.options.transformCopiedText) {
-                            return null;
-                        }
-
-                        return this.editor.storage.markdown.serializer.serialize(
-                            slice.content,
-                        );
-                    },
+                    clipboardTextSerializer: (slice) =>
+                        this.options.transformCopiedText
+                            ? this.editor.storage.markdown.serializer.serialize(
+                                  slice.content,
+                              )
+                            : null,
                 },
             }),
         ];

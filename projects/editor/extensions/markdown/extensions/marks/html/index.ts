@@ -31,14 +31,10 @@ export default Mark.create({
                         return getMarkTags(mark)?.[0] ?? '';
                     },
                     close(_: any, mark: ProseMark): string {
-                        if (
-                            !((this as any).editor as Editor | undefined)?.storage
-                                .markdown.options.html
-                        ) {
-                            return '';
-                        }
-
-                        return getMarkTags(mark)?.[1] ?? '';
+                        return ((this as any).editor as Editor | undefined)?.storage
+                            .markdown.options.html
+                            ? (getMarkTags(mark)?.[1] ?? '')
+                            : '';
                     },
                 },
                 parse: {

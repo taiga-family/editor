@@ -26,6 +26,7 @@ const COLOR = [
     KEYWORD,
     ')',
 ];
+
 const REGEXP_ARRAY = [
     String.raw`\s*(`,
     ...COLOR,
@@ -48,6 +49,7 @@ function getPosition(match: string, stops: number): string {
 export function tuiParseGradient(input: string): TuiParsedGradient {
     // eslint-disable-next-line regexp/no-super-linear-backtracking,regexp/no-useless-non-capturing-group,regexp/optimal-quantifier-concatenation,regexp/prefer-w
     const stopsRegexp = new RegExp(REGEXP_ARRAY.join(''), 'gi');
+
     const stopsString =
         input.startsWith('to') || /^\d/.exec(input)
             ? input.slice(Math.max(0, input.indexOf(',') + 1)).trim()
@@ -56,8 +58,8 @@ export function tuiParseGradient(input: string): TuiParsedGradient {
     const side = input.startsWith('to')
         ? (input.split(',')[0] as TuiGradientDirection)
         : 'to bottom';
-    let stops: TuiParsedGradient['stops'] = [];
 
+    let stops: TuiParsedGradient['stops'] = [];
     let matchColorStop = stopsRegexp.exec(stopsString);
 
     while (matchColorStop !== null) {

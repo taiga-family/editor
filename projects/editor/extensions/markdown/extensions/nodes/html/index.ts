@@ -34,14 +34,10 @@ function serializeHTML(node: ProseNode, parent: ProseNode): string {
     const schema = node.type.schema;
     const html = getHTMLFromFragment(Fragment.from(node), schema);
 
-    if (
-        node.isBlock &&
+    return node.isBlock &&
         (parent instanceof Fragment || parent.type.name === schema.topNodeType.name)
-    ) {
-        return formatBlock(html);
-    }
-
-    return html;
+        ? formatBlock(html)
+        : html;
 }
 
 function formatBlock(html: string): string {

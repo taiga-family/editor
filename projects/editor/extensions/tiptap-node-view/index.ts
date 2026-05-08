@@ -28,7 +28,6 @@ export class TuiComponentRenderer<C, P> {
 
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
         const applicationRef = injector.get(ApplicationRef);
-
         const componentFactoryResolver = injector.get(ComponentFactoryResolver);
         const factory = componentFactoryResolver.resolveComponentFactory(component);
 
@@ -130,11 +129,7 @@ export class TuiNodeView extends NodeView<
     }
 
     public override get contentDOM(): HTMLElement | null {
-        if (this.node.isLeaf) {
-            return null;
-        }
-
-        return this.contentDOMElement;
+        return this.node.isLeaf ? null : this.contentDOMElement;
     }
 
     public override mount(): void {

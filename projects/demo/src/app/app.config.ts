@@ -69,14 +69,12 @@ export const appConfig: ApplicationConfig = {
                     return `${link}/${context.path}`;
                 }
 
-                if (context.package.toLowerCase() !== 'kit') {
-                    return null;
-                }
-
-                return `${link}/${context.package.toLowerCase()}/src/lib/editor/${`${context.header[0]?.toLowerCase() ?? ''}${context.header.slice(1)}`.replaceAll(
-                    /[A-Z]/g,
-                    (m: string) => `-${m.toLowerCase()}`,
-                )}`;
+                return context.package.toLowerCase() === 'kit'
+                    ? `${link}/${context.package.toLowerCase()}/src/lib/editor/${`${context.header[0]?.toLowerCase() ?? ''}${context.header.slice(1)}`.replaceAll(
+                          /[A-Z]/g,
+                          (m: string) => `-${m.toLowerCase()}`,
+                      )}`
+                    : null;
             },
         },
     ],

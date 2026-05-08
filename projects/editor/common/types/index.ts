@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import {
     type TuiEditableIframe,
     type TuiEditableImage,
