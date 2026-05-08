@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: taiga-family/ci/actions/setup/variables@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
       - uses: taiga-family/ci/actions/setup/node@c5bcf64b54eb51e9274fa667e69cfd0d2f37adfd # v1.209.0
-      - run: npx nx build editor-demo -- --base-href /
+      - run: npx nx build editor-demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
       - uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
         continue-on-error: true

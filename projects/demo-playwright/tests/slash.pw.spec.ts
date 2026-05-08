@@ -42,6 +42,8 @@ test.describe('Slash', () => {
 
         await contenteditable.click();
         await page.keyboard.press('End');
+        await page.keyboard.press('End');
+        await page.keyboard.press('Space');
         await page.keyboard.press('Enter');
         await page.keyboard.type('Test');
 
@@ -50,6 +52,8 @@ test.describe('Slash', () => {
             .toHaveScreenshot('Slash-04.png');
 
         await page.keyboard.press('End');
+        await page.keyboard.press('End');
+        await page.keyboard.press('Space');
         await page.keyboard.press('Enter');
 
         await page.keyboard.type('/');
