@@ -76,9 +76,9 @@ test.describe('Img', () => {
         await img.click();
         await expect.soft(editor.host).toHaveScreenshot('Img-05.png');
         await editor.host.locator('[automation-id="toolbar__link-button"]').click();
+        await expect(editor.link.input).toBeVisible();
         await expect.soft(editor.host).toHaveScreenshot('Img-06.png');
-        await page.keyboard.type('abc.com');
-        await page.keyboard.press('Enter');
+        await editor.link.submit('abc.com');
         await img.waitFor({state: 'attached'});
         await page.mouse.click(0, 0);
         await expect.soft(editor.host).toHaveScreenshot('Img-07.png');

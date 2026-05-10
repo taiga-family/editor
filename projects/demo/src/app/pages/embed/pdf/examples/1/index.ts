@@ -83,7 +83,7 @@ import {map, type Observable, of} from 'rxjs';
     },
 })
 export default class Example {
-    private readonly editor = viewChild.required(TuiEditor);
+    private readonly wysiwyg = viewChild.required(TuiEditor);
     protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly isNotStatic =
@@ -116,7 +116,7 @@ export default class Example {
             return;
         }
 
-        this.editor()
+        this.wysiwyg()
             .editorService.getOriginTiptapEditor()
             ?.chain()
             .focus('end')
@@ -124,7 +124,7 @@ export default class Example {
             .insertContent(file.name)
             .run();
 
-        this.editor().editorService.setIframe({
+        this.wysiwyg().editorService.setIframe({
             allowfullscreen: false,
             frameborder: null,
             // For example, src: `https://mozilla.github.io/pdf.js/web/viewer.html?url${file.link}`,

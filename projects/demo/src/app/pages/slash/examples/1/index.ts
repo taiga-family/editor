@@ -52,7 +52,7 @@ export default class Example implements OnInit {
     private readonly destroy$ = inject(DestroyRef);
     protected readonly wysiwyg = viewChild.required(TuiEditor);
 
-    protected readonly datalist = viewChild.required(TuiDataListComponent, {
+    protected readonly datalist = viewChild(TuiDataListComponent, {
         read: ElementRef,
     });
 
@@ -145,6 +145,6 @@ export default class Example implements OnInit {
     }
 
     private get el(): HTMLDivElement | null {
-        return this.datalist().nativeElement ?? null;
+        return this.datalist()?.nativeElement ?? null;
     }
 }

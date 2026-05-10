@@ -41,6 +41,8 @@
 <tui-editor-socket />
 
 <ng-template #editorTpl>
+    @let toolbarPosition = floatingToolbar() ? 'selection' : 'tag';
+
     <div
         tuiDropdownAlign="start"
         tuiDropdownDirection="bottom"
@@ -52,7 +54,7 @@
         [tuiDropdown]="dropdown"
         [tuiDropdownMinHeight]="64"
         [tuiToolbarDropdown]="dropdownSelectionHandler"
-        [tuiToolbarDropdownPosition]="isLinkSelected ? 'tag' : floatingToolbar() ? 'selection' : 'tag'"
+        [tuiToolbarDropdownPosition]="isLinkSelected ? 'tag' : toolbarPosition"
         (valueChange)="onModelChange($event)"
     ></div>
 </ng-template>

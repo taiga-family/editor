@@ -29,8 +29,9 @@ import {type MyContentsInfo, MyToc} from './my-toc';
 
             return TableOfContents.configure({
                 scrollParent: () =>
-                    example.editor().rootEl.querySelector<HTMLElement>('tui-scrollbar') ??
-                    win,
+                    example
+                        .wysiwyg()
+                        .rootEl.querySelector<HTMLElement>('tui-scrollbar') ?? win,
                 getIndex: getHierarchicalIndexes,
                 onUpdate(items: TableOfContentData, isCreate) {
                     example.contents.next({items, isCreate});
@@ -48,7 +49,7 @@ export default class Example {
         TuiEditorTool.Underline,
     ];
 
-    public readonly editor = viewChild.required(TuiEditor);
+    public readonly wysiwyg = viewChild.required(TuiEditor);
     public readonly contents = new Subject<MyContentsInfo>();
 
     // cspell:disable

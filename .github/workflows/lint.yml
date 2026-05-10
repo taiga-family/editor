@@ -15,6 +15,8 @@ jobs:
           persist-credentials: false
       - uses: taiga-family/ci/actions/setup/variables@a581d05631ddf95b3aa5d391c3e472c538641620 # v1.211.0
       - uses: taiga-family/ci/actions/setup/node@a581d05631ddf95b3aa5d391c3e472c538641620 # v1.211.0
+        with:
+          audit: true
       - name: Run linting tools
         run: |
           npm run cspell

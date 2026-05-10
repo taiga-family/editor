@@ -54,7 +54,7 @@ More at [documentation](https://taiga-ui.dev)
     ],
 })
 export default class Example implements OnInit {
-    private readonly editorRef = viewChild.required(TuiEditor);
+    private readonly wysiwyg = viewChild.required(TuiEditor);
     private readonly destroyRef = inject(DestroyRef);
     protected markdown$ = new Subject<string>();
     protected readonly builtInTools = [TuiEditorTool.Undo];
@@ -69,7 +69,7 @@ export default class Example implements OnInit {
     }
 
     protected get editor(): Editor | null {
-        return this.editorRef().editorService.getOriginTiptapEditor();
+        return this.wysiwyg().editorService.getOriginTiptapEditor();
     }
 
     protected get markdown(): string {

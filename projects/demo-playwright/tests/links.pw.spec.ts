@@ -32,18 +32,25 @@ test.describe('Links', () => {
         await editor.host.locator('h1').first().selectText();
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.locator('tui-input-inline input').first().focus();
-        await page.locator('tui-input-inline input').first().fill('wysiwyg.com');
-        await page.keyboard.press('Enter');
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.submit('wysiwyg.com');
+        await expect(editor.link.inlineInput).toBeHidden();
+        await page.mouse.click(0, 0);
+        await editor.host.locator('h1').first().click();
+        await expect(editor.link.preview('wysiwyg.com')).toBeVisible();
+        await page.mouse.move(0, 0);
         await expect.soft(editor.host).toHaveScreenshot('Links-02.png');
 
         await editor.host.locator('sup').first().selectText();
         await page.locator('[automation-id="toolbar__link-button"]').focus();
         await page.keyboard.press('Enter');
-        await page.locator('tui-input-inline input').first().focus();
-        await page.locator('tui-input-inline input').first().fill('example.com');
-        await page.keyboard.press('Enter');
-        await expect(page.locator('tui-input-inline')).toBeHidden();
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.submit('example.com');
+        await expect(editor.link.inlineInput).toBeHidden();
+        await page.mouse.click(0, 0);
+        await editor.host.locator('sup').first().click();
+        await expect(editor.link.preview('example.com')).toBeVisible();
+        await page.mouse.move(0, 0);
         await expect.soft(editor.host).toHaveScreenshot('Links-03.png');
 
         await page.mouse.click(0, 0);
@@ -65,7 +72,8 @@ test.describe('Links', () => {
         await page.keyboard.press('Enter');
         await page.waitForTimeout(300);
 
-        await page.locator('tui-input-inline input').first().focus();
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.fill('');
         await page.waitForTimeout(300);
 
         await page.mouse.click(0, 0);
@@ -85,13 +93,13 @@ test.describe('Links', () => {
         await expect.soft(editor.host).toHaveScreenshot('Links-06.png');
 
         await page.locator('[automation-id="toolbar__link-button"]').click();
-        await page.keyboard.type('abc.com');
-        await page.keyboard.press('Enter');
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.submit('abc.com');
+        await expect(editor.link.inlineInput).toBeHidden();
+        await expect(editor.link.preview('abc.com')).toBeVisible();
         await expect.soft(page).toHaveScreenshot('Links-07.png');
 
-        await contenteditable.click();
-        await page.keyboard.press('End');
-        await contenteditable.click();
+        await editor.placeCaretAtEnd(contenteditable.locator('a').first());
         await page.keyboard.type('World');
         await expect.soft(editor.host).toHaveScreenshot('Links-08.png');
     });
@@ -107,11 +115,12 @@ test.describe('Links', () => {
         await contenteditable.selectText();
 
         await page.locator('[automation-id="toolbar__link-button"]').click();
-        await page.keyboard.type('example.com');
-        await page.keyboard.press('Enter');
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.submit('example.com');
+        await expect(editor.link.inlineInput).toBeHidden();
+        await expect(editor.link.preview('example.com')).toBeVisible();
 
-        await contenteditable.click();
-        await page.keyboard.press('End');
+        await editor.placeCaretAtEnd(contenteditable.locator('a').first());
         await page.keyboard.type(' plain text');
 
         await expect.soft(editor.host).toHaveScreenshot('Links-09.png');
