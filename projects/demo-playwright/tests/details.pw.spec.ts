@@ -63,22 +63,20 @@ test.describe('Details', () => {
         await expect.soft(content).toHaveScreenshot('Details-11.png');
         await expect.soft(editor.host).toHaveScreenshot('Details-12.png');
 
-        const contenteditable = await editor.contenteditable();
-
         const detailsButton = editor.host
             .locator('tui-toolbar button')
             .locator('text="Details"');
 
-        await contenteditable.click();
-        await page.keyboard.press('End');
+        const contenteditable = await editor.contenteditable();
+
+        await editor.placeCaretAtEnd();
         await page.keyboard.press('Enter');
 
-        const wrapperCount = await editor.host.locator('.t-details-wrapper').count();
+        const topLevelDetails = contenteditable.locator(':scope > .t-details-wrapper');
+        const wrapperCount = await topLevelDetails.count();
 
         await detailsButton.click();
-        await expect(editor.host.locator('.t-details-wrapper')).toHaveCount(
-            wrapperCount + 1,
-        );
+        await expect(topLevelDetails).toHaveCount(wrapperCount + 1);
         await page.mouse.click(0, 0);
 
         await expect.soft(editor.host).toHaveScreenshot('Details-13.png');

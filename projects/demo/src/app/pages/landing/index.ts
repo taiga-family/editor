@@ -1,14 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
-import {
-    TuiAppearance,
-    TuiButton,
-    TuiIcon,
-    TuiLink,
-    TuiRoot,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiRoot, TuiTitle} from '@taiga-ui/core';
 import {
     provideTuiEditor,
     TUI_EDITOR_DEFAULT_TOOLS,
@@ -23,13 +16,11 @@ import content from './content.html?raw';
     imports: [
         FormsModule,
         RouterLink,
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiEditor,
         TuiHeader,
         TuiIcon,
-        TuiLink,
         TuiRoot,
         TuiTitle,
         TuiToolbar,

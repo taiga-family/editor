@@ -51,11 +51,7 @@ interface MyCommand {
 export default class Example implements OnInit {
     private readonly destroy$ = inject(DestroyRef);
     protected readonly wysiwyg = viewChild.required(TuiEditor);
-
-    protected readonly datalist = viewChild.required(TuiDataListComponent, {
-        read: ElementRef,
-    });
-
+    protected readonly datalist = viewChild(TuiDataListComponent, {read: ElementRef});
     protected readonly isE2E = inject(WA_IS_E2E);
     protected open = true;
 
@@ -145,6 +141,6 @@ export default class Example implements OnInit {
     }
 
     private get el(): HTMLDivElement | null {
-        return this.datalist().nativeElement ?? null;
+        return this.datalist()?.nativeElement ?? null;
     }
 }

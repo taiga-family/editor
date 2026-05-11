@@ -23,7 +23,7 @@ import {type User} from './user';
     },
 })
 export class Mentions {
-    protected readonly container = viewChild.required('container', {read: ElementRef});
+    protected readonly container = viewChild('container', {read: ElementRef});
 
     protected readonly items: readonly User[] = [
         {
@@ -51,6 +51,6 @@ export class Mentions {
     }
 
     private get el(): HTMLDivElement | null {
-        return this.container().nativeElement ?? null;
+        return this.container()?.nativeElement ?? null;
     }
 }

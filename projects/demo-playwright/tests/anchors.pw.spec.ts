@@ -37,41 +37,39 @@ test.describe('Anchors', () => {
 
     test('make anchor', async ({page}) => {
         const fullExample = page.locator('tui-doc-example#anchors');
-        const editorPO = new TuiEditorPO(fullExample.locator('tui-editor'));
-        const editor = await editorPO.contenteditable();
+        const editor = new TuiEditorPO(fullExample.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
 
-        await editor.focus();
-        await editor.selectText();
-        await editor.clear();
+        await contenteditable.focus();
+        await contenteditable.selectText();
+        await contenteditable.clear();
         await page.mouse.click(0, 0);
         await expect.soft(fullExample).toHaveScreenshot('Anchors-03-empty.png');
 
-        await editor.focus();
+        await contenteditable.focus();
         await page.keyboard.type('\n\nHello\n\nLink to anchor\n');
-        await expect(editor.getByText('Hello')).toBeVisible();
-        await editor.getByText('Hello').selectText();
+        await expect(contenteditable.getByText('Hello')).toBeVisible();
+        await contenteditable.getByText('Hello').selectText();
         await page.getByTestId('tui-doc-example').getByRole('button').nth(3).click();
-        await expect(editor.locator('a')).toBeVisible();
+        await expect(contenteditable.locator('a')).toBeVisible();
 
         await expect(page.locator('tui-dropdown')).toBeVisible();
-        await page.keyboard.press('H');
-        await page.keyboard.press('e');
-        await page.keyboard.press('l');
-        await page.keyboard.press('l');
-        await page.keyboard.press('o');
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.fill('Hello');
         await expect(page.locator('tui-edit-link')).toBeVisible();
         await expect.soft(fullExample).toHaveScreenshot('Anchors-04-hello-text.png');
 
-        await page.keyboard.press('Enter');
+        await editor.link.input.press('Enter');
         await expect.soft(fullExample).toHaveScreenshot('Anchors-05.png');
 
-        await editor.getByText('Link to anchor').selectText();
+        await contenteditable.getByText('Link to anchor').selectText();
         await page.getByTestId('toolbar__link-button').click();
 
         const anchorButton = page.getByRole('button', {name: '#Hello'});
 
         await expect(anchorButton).toBeVisible();
         await expect(page.locator('tui-dropdown')).toBeVisible();
+        await page.mouse.move(0, 0);
         await expect.soft(fullExample).toHaveScreenshot('Anchors-06.png');
 
         await anchorButton.click();

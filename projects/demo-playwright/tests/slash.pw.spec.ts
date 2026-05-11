@@ -27,22 +27,21 @@ test.describe('Slash', () => {
         await contenteditable.selectText();
         await page.getByTestId('toolbar__link-button').focus();
         await page.keyboard.press('Enter');
+        await expect(editor.link.input).toBeVisible();
 
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-02.png');
 
-        await page.keyboard.type('abc.com');
-        await page.keyboard.press('Enter');
-        await expect(page.locator('tui-input-inline')).toBeHidden();
+        await editor.link.submit('abc.com');
+        await expect(editor.link.inlineInput).toBeHidden();
+        await expect(editor.link.preview('abc.com')).toBeVisible();
 
         await expect
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-03.png');
 
-        await contenteditable.click();
-        await page.keyboard.press('End');
-        await page.keyboard.press('End');
+        await editor.placeCaretAtEnd(contenteditable.locator('a').first());
         await page.keyboard.type('.');
         await page.keyboard.press('Enter');
         await page.keyboard.type('Test');
@@ -51,8 +50,7 @@ test.describe('Slash', () => {
             .soft(page.locator('.t-demo').first())
             .toHaveScreenshot('Slash-04.png');
 
-        await page.keyboard.press('End');
-        await page.keyboard.press('End');
+        await editor.placeCaretAtEnd();
         await page.keyboard.type('.');
         await page.keyboard.press('Enter');
 

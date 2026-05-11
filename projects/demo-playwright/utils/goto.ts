@@ -48,11 +48,8 @@ export async function tuiGoto(
     await page.waitForLoadState('load');
     await tuiWaitForFonts(page);
 
-    if (hideHeader) {
-        for (const locator of await page.locator('[tuiDocHeader]').all()) {
-            await locator.evaluate((el) => el.remove());
-        }
-    }
+    await expect(app.locator('[ngh]')).toHaveCount(0);
+    await expect(app).toBeAttached();
 
     if (hideNavigation) {
         for (const locator of await page.locator('tui-doc-navigation').all()) {
@@ -64,8 +61,22 @@ export async function tuiGoto(
         await hideScrollbars(page);
     }
 
-    await expect(app).toBeAttached();
-    await expect(app.locator('[ngh]')).toHaveCount(0);
+    if (hideHeader) {
+        await page.addStyleTag({
+            content: /* CSS */ `
+                [tuiDocHeader],
+                header[tuiDocHeader] {
+                    display: none !important;
+                }
+            `,
+        });
+
+        for (const locator of await page
+            .locator('header[tuiDocHeader], [tuiDocHeader]')
+            .all()) {
+            await locator.evaluate((el) => el.remove());
+        }
+    }
 
     return response;
 }
