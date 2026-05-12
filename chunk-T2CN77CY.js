@@ -1,0 +1,29 @@
+import"./chunk-DAQOROHW.js";var e=`<tui-data-list>
+    <div #container>
+        @let filtered = items | filterItems: mentionSuggestions();
+
+        @for (item of filtered; track item.login) {
+            <button
+                #button
+                tuiOption
+                type="button"
+                (click)="setMention.emit(item)"
+                (keydown.enter.prevent)="setMention.emit(item)"
+            >
+                {{ item.name }}
+                <span
+                    size="s"
+                    [tuiAvatar]="item.name | tuiInitials"
+                >
+                    @if (item.avatar) {
+                        <img
+                            alt=""
+                            [src]="item.avatar"
+                        />
+                    }
+                </span>
+            </button>
+        }
+    </div>
+</tui-data-list>
+`;export{e as default};
