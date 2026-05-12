@@ -1,18 +1,27 @@
 <tui-data-list>
     <div #container>
-        @for (item of items | filterItems: mentionSuggestions(); track item.login) {
+        @let filtered = items | filterItems: mentionSuggestions();
+
+        @for (item of filtered; track item.login) {
             <button
                 #button
                 tuiOption
                 type="button"
                 (click)="setMention.emit(item)"
-                (keydown.enter)="setMention.emit(item)"
+                (keydown.enter.prevent)="setMention.emit(item)"
             >
                 {{ item.name }}
                 <span
                     size="s"
-                    [tuiAvatar]="item.avatar || (item.name | tuiInitials)"
-                ></span>
+                    [tuiAvatar]="item.name | tuiInitials"
+                >
+                    @if (item.avatar) {
+                        <img
+                            alt=""
+                            [src]="item.avatar"
+                        />
+                    }
+                </span>
             </button>
         }
     </div>
