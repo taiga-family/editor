@@ -32,7 +32,7 @@ import "./chunk-KWSTWQNB.js";
 // projects/demo/src/app/pages/mention/index.ts
 var _Example = class _Example {
   constructor() {
-    this.component1 = import("./chunk-GVS6ASBI.js");
+    this.component1 = import("./chunk-QG76ID3O.js");
     this.example1 = {
       TypeScript: import("./chunk-KR6ORFYF.js"),
       HTML: import("./chunk-MKKPBF3N.js"),
@@ -40,7 +40,7 @@ var _Example = class _Example {
       "mention.ts": import("./chunk-ZGSWEGQ2.js"),
       "filter.ts": import("./chunk-JPJROKLJ.js"),
       "user.ts": import("./chunk-GY3R4RB3.js"),
-      "mention.html": import("./chunk-DB76M5X6.js")
+      "mention.html": import("./chunk-IG33LKAF.js")
     };
   }
 };
@@ -71,4 +71,4 @@ var Example = _Example;
 export {
   Example as default
 };
-//# sourceMappingURL=chunk-T6ZSUOMJ.js.map
+//# sourceMappingURL=chunk-DQNE5GKO.js.map

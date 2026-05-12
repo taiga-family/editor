@@ -4933,7 +4933,7 @@ var routes = [
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Mention,
-    loadComponent: async () => import("./chunk-T6ZSUOMJ.js"),
+    loadComponent: async () => import("./chunk-DQNE5GKO.js"),
     title: "Mention"
   }),
   tuiProvideRoutePageTab({
