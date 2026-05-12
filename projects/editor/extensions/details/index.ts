@@ -1,15 +1,14 @@
 import {TUI_EDITOR_RESIZE_EVENT, type TuiMutable} from '@taiga-ui/editor/common';
 import {tuiDeleteNode} from '@taiga-ui/editor/utils';
 import {mergeAttributes, type RawCommands} from '@tiptap/core';
-import {Details, type DetailsOptions} from '@tiptap/extension-details';
 import {
+    Details,
     DetailsContent,
     type DetailsContentOptions,
-} from '@tiptap/extension-details-content';
-import {
+    type DetailsOptions,
     DetailsSummary,
     type DetailsSummaryOptions,
-} from '@tiptap/extension-details-summary';
+} from '@tiptap/extension-details';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -45,8 +44,16 @@ declare const globalThis: {document: Document | undefined};
 export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
     addOptions() {
         return {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             ...this.parent?.(),
+            persist: false,
+            openClassName: 'is-open',
+            HTMLAttributes: {},
+            renderToggleButton: ({element, isOpen}) => {
+                element.setAttribute(
+                    'aria-label',
+                    isOpen ? 'Collapse details content' : 'Expand details content',
+                );
+            },
             inheritOpen: false,
         };
     },
@@ -93,7 +100,11 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                 details.open = node.attrs.open;
 
                 const openHandler = (event: Event): void => {
-                    const pos = (getPos as any)?.() ?? 0;
+                    const pos = getPos();
+
+                    if (pos === undefined) {
+                        return;
+                    }
 
                     details.open = !details.open;
 
@@ -113,7 +124,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     (event) => {
                         collapseButton.removeEventListener('click', openHandler);
                         event.preventDefault();
-                        editor.commands.unsetDetailsAt((getPos as any)?.());
+                        editor.commands.unsetDetailsAt(getPos());
                     },
                     {capture: true, once: true},
                 );

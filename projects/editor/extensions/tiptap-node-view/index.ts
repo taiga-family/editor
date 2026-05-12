@@ -200,8 +200,15 @@ export class TuiNodeView extends NodeView<
 
     protected handleSelectionUpdate(): void {
         const {from, to} = this.editor.state.selection;
+        const pos = this.getPos();
 
-        if (from <= this.getPos() && to >= this.getPos() + this.node.nodeSize) {
+        if (pos === undefined) {
+            this.deselectNode();
+
+            return;
+        }
+
+        if (from <= pos && to >= pos + this.node.nodeSize) {
             this.selectNode();
         } else {
             this.deselectNode();

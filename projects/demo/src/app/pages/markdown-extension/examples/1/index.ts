@@ -73,6 +73,6 @@ export default class Example implements OnInit {
     }
 
     protected get markdown(): string {
-        return this.editor?.storage.markdown?.getMarkdown() ?? '';
+        return this.editor?.storage.markdown.getMarkdown() ?? '';
     }
 }

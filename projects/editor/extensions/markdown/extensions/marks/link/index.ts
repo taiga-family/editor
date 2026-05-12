@@ -1,5 +1,5 @@
 import {Mark} from '@tiptap/core';
-import {defaultMarkdownSerializer} from '@tiptap/pm/markdown';
+import {defaultMarkdownSerializer} from 'prosemirror-markdown';
 
 export default Mark.create({name: 'link'}).extend({
     addStorage() {

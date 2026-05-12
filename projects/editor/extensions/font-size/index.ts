@@ -1,4 +1,5 @@
 import {Extension} from '@tiptap/core';
+import {type TextStyleAttributes} from '@tiptap/extension-text-style';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -18,6 +19,12 @@ declare module '@tiptap/core' {
              * @example editor.commands.removeEmptyTextStyle()
              */
             removeEmptyTextStyle(): ReturnType;
+            /**
+             * Toggle a text style
+             * @param attributes The text style attributes
+             * @example editor.commands.toggleTextStyle({ fontWeight: 'bold' })
+             */
+            toggleTextStyle(attributes?: TextStyleAttributes): ReturnType;
         };
     }
 }

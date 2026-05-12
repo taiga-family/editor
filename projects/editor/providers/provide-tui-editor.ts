@@ -13,32 +13,37 @@ import {
 } from '@tiptap/core';
 import {type BlockquoteOptions} from '@tiptap/extension-blockquote';
 import {type BoldOptions} from '@tiptap/extension-bold';
-import {type BulletListOptions} from '@tiptap/extension-bullet-list';
 import {type CodeOptions} from '@tiptap/extension-code';
 import {type CodeBlockOptions} from '@tiptap/extension-code-block';
-import {type DetailsContentOptions} from '@tiptap/extension-details-content';
-import {type DetailsSummaryOptions} from '@tiptap/extension-details-summary';
-import {type DropcursorOptions} from '@tiptap/extension-dropcursor';
+import {
+    type DetailsContentOptions,
+    type DetailsSummaryOptions,
+} from '@tiptap/extension-details';
 import {type HardBreakOptions} from '@tiptap/extension-hard-break';
 import {type HeadingOptions} from '@tiptap/extension-heading';
-import {type HistoryOptions} from '@tiptap/extension-history';
 import {type HorizontalRuleOptions} from '@tiptap/extension-horizontal-rule';
 import {type ItalicOptions} from '@tiptap/extension-italic';
 import {type LinkOptions} from '@tiptap/extension-link';
-import {type ListItemOptions} from '@tiptap/extension-list-item';
-import {type OrderedListOptions} from '@tiptap/extension-ordered-list';
+import {
+    type BulletListOptions,
+    type ListItemOptions,
+    type OrderedListOptions,
+    type TaskItemOptions,
+    type TaskListOptions,
+} from '@tiptap/extension-list';
 import {type ParagraphOptions} from '@tiptap/extension-paragraph';
-import {type PlaceholderOptions} from '@tiptap/extension-placeholder';
 import {type StrikeOptions} from '@tiptap/extension-strike';
 import {type SubscriptExtensionOptions} from '@tiptap/extension-subscript';
 import {type SuperscriptExtensionOptions} from '@tiptap/extension-superscript';
-import {type TableHeaderOptions} from '@tiptap/extension-table-header';
-import {type TableRowOptions} from '@tiptap/extension-table-row';
-import {type TaskItemOptions} from '@tiptap/extension-task-item';
-import {type TaskListOptions} from '@tiptap/extension-task-list';
+import {type TableHeaderOptions, type TableRowOptions} from '@tiptap/extension-table';
 import {type TextAlignOptions} from '@tiptap/extension-text-align';
 import {type TextStyleOptions} from '@tiptap/extension-text-style';
 import {type UnderlineOptions} from '@tiptap/extension-underline';
+import {
+    type DropcursorOptions,
+    type PlaceholderOptions,
+    type UndoRedoOptions,
+} from '@tiptap/extensions';
 import {type StarterKitOptions} from '@tiptap/starter-kit';
 
 interface Options {
@@ -53,7 +58,7 @@ interface Options {
     gapcursor: Partial<{allowGapCursor: boolean}> | boolean;
     hardBreak: Partial<HardBreakOptions> | boolean;
     heading: Partial<HeadingOptions> | boolean;
-    history: Partial<HistoryOptions> | boolean;
+    history: Partial<UndoRedoOptions> | boolean;
     horizontalRule: Partial<HorizontalRuleOptions> | boolean;
     italic: Partial<ItalicOptions> | boolean;
     taskList: Partial<TaskListOptions> | boolean;
@@ -97,7 +102,7 @@ const EXTENSIONS = [
         key: 'listItem',
         default: true,
         async loader(options: Partial<ListItemOptions>) {
-            const {ListItem} = await import('@tiptap/extension-list-item');
+            const {ListItem} = await import('@tiptap/extension-list');
 
             return ListItem.configure(options);
         },
@@ -124,7 +129,7 @@ const EXTENSIONS = [
         key: 'bulletList',
         default: true,
         async loader(options: Partial<BulletListOptions>) {
-            const {BulletList} = await import('@tiptap/extension-bullet-list');
+            const {BulletList} = await import('@tiptap/extension-list');
 
             return BulletList.configure(options);
         },
@@ -160,7 +165,7 @@ const EXTENSIONS = [
         key: 'dropcursor',
         default: true,
         async loader(options: Partial<DropcursorOptions>) {
-            const {Dropcursor} = await import('@tiptap/extension-dropcursor');
+            const {Dropcursor} = await import('@tiptap/extensions');
 
             return Dropcursor.configure(options);
         },
@@ -169,7 +174,7 @@ const EXTENSIONS = [
         key: 'gapcursor',
         default: true,
         async loader({allowGapCursor = true}) {
-            const {Gapcursor} = await import('@tiptap/extension-gapcursor');
+            const {Gapcursor} = await import('@tiptap/extensions');
 
             return Gapcursor.configure({allowGapCursor});
         },
@@ -206,10 +211,10 @@ const EXTENSIONS = [
     {
         key: 'history',
         default: true,
-        async loader(options: Partial<HistoryOptions>) {
-            const {History} = await import('@tiptap/extension-history');
+        async loader(options: Partial<UndoRedoOptions>) {
+            const {UndoRedo} = await import('@tiptap/extensions');
 
-            return History.configure(options);
+            return UndoRedo.configure(options);
         },
     },
     {
@@ -244,7 +249,7 @@ const EXTENSIONS = [
         key: 'taskList',
         default: true,
         async loader(options: Partial<TaskListOptions>) {
-            const {TaskList} = await import('@tiptap/extension-task-list');
+            const {TaskList} = await import('@tiptap/extension-list');
 
             return TaskList.configure(options);
         },
@@ -253,7 +258,7 @@ const EXTENSIONS = [
         key: 'taskItem',
         default: true,
         async loader(options: Partial<TaskItemOptions>) {
-            const {TaskItem} = await import('@tiptap/extension-task-item');
+            const {TaskItem} = await import('@tiptap/extension-list');
 
             return TaskItem.configure({nested: true, ...options});
         },
@@ -262,7 +267,7 @@ const EXTENSIONS = [
         key: 'orderedList',
         default: true,
         async loader(options: Partial<OrderedListOptions>) {
-            const {OrderedList} = await import('@tiptap/extension-ordered-list');
+            const {OrderedList} = await import('@tiptap/extension-list');
 
             return OrderedList.configure(options);
         },
@@ -298,7 +303,7 @@ const EXTENSIONS = [
         key: 'placeholder',
         default: false,
         async loader(options: Partial<PlaceholderOptions>) {
-            const {Placeholder} = await import('@tiptap/extension-placeholder');
+            const {Placeholder} = await import('@tiptap/extensions');
 
             return Placeholder.configure({
                 emptyNodeClass: 't-editor-placeholder',
@@ -443,7 +448,7 @@ const EXTENSIONS = [
         key: 'tableRow',
         default: true,
         async loader(options: Partial<TableRowOptions>) {
-            const {TableRow} = await import('@tiptap/extension-table-row');
+            const {TableRow} = await import('@tiptap/extension-table');
 
             return TableRow.configure(options);
         },
@@ -452,7 +457,7 @@ const EXTENSIONS = [
         key: 'tableHeader',
         default: true,
         async loader(options: Partial<TableHeaderOptions>) {
-            const {TableHeader} = await import('@tiptap/extension-table-header');
+            const {TableHeader} = await import('@tiptap/extension-table');
 
             return TableHeader.configure(options);
         },
@@ -560,21 +565,20 @@ const defaults = Object.fromEntries(
     EXTENSIONS.map(({key, default: defaultValue}) => [key, defaultValue] as const),
 ) as unknown as Options;
 
-type AsyncExtension<Options, Storage> = Promise<
-    Extension<Options, Storage> | Mark<Options, Storage> | Node<Options, Storage>
->;
+type AsyncExtension = Promise<Extension | Mark | Node>;
 
-export function provideTuiEditor(options: Partial<Options>): Provider;
-export function provideTuiEditor<O, S>(
-    ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
+type AsyncExtensionFactory = (_: Injector) => AsyncExtension;
+
+export function provideTuiEditor(
+    ...extensions: readonly AsyncExtensionFactory[]
 ): Provider;
-export function provideTuiEditor<O, S>(
+export function provideTuiEditor(
     options: Partial<Options>,
-    ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
+    ...extensions: readonly AsyncExtensionFactory[]
 ): Provider;
-export function provideTuiEditor<O, S>(
-    overrides: Partial<Options> | ((_: Injector) => AsyncExtension<O, S>) | undefined,
-    ...extensions: ReadonlyArray<(_: Injector) => AsyncExtension<O, S>>
+export function provideTuiEditor(
+    overrides?: AsyncExtensionFactory | Partial<Options>,
+    ...extensions: readonly AsyncExtensionFactory[]
 ): Provider {
     const options =
         typeof overrides === 'object' && !Array.isArray(overrides)
@@ -584,7 +588,7 @@ export function provideTuiEditor<O, S>(
     return {
         provide: TUI_EDITOR_EXTENSIONS,
         multi: true,
-        useFactory(): ReadonlyArray<AsyncExtension<O, S>> {
+        useFactory(): readonly AsyncExtension[] {
             const injector = inject(INJECTOR);
 
             const ownExtensions =
@@ -593,7 +597,7 @@ export function provideTuiEditor<O, S>(
                     : extensions;
 
             return EXTENSIONS.filter(({key}) => !!options[key])
-                .map(async ({key, loader}): AsyncExtension<O, S> => {
+                .map(async ({key, loader}): AsyncExtension => {
                     const config = options[key];
                     const extensionOptions = typeof config === 'boolean' ? {} : config;
 

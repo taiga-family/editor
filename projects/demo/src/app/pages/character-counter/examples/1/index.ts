@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, viewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';
 import {TuiProgress} from '@taiga-ui/kit';
-import {type CharacterCountStorage} from '@tiptap/extension-character-count';
+import {type CharacterCountStorage} from '@tiptap/extensions';
 
 const limit = 280;
 
@@ -13,7 +13,7 @@ const limit = 280;
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         provideTuiEditor(async () =>
-            import('@tiptap/extension-character-count').then(({CharacterCount}) =>
+            import('@tiptap/extensions').then(({CharacterCount}) =>
                 CharacterCount.configure({limit}),
             ),
         ),
@@ -29,7 +29,9 @@ export default class Example {
     `);
 
     protected get characterCount(): CharacterCountStorage | null {
-        return this.wysiwyg().editor?.getOriginTiptapEditor()?.storage.characterCount;
+        return (
+            this.wysiwyg().editor?.getOriginTiptapEditor()?.storage.characterCount ?? null
+        );
     }
 
     protected get percentage(): number {

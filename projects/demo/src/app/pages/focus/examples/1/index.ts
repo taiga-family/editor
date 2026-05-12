@@ -38,8 +38,8 @@ import {TuiAccordion} from '@taiga-ui/kit';
                 image: true,
             },
             async () =>
-                import('@tiptap/extension-focus').then(({FocusClasses}) =>
-                    FocusClasses.configure({
+                import('@tiptap/extensions').then(({Focus}) =>
+                    Focus.configure({
                         className: 'has-focus',
                         /**
                          * @description:

@@ -1,4 +1,5 @@
 import {type Editor} from '@tiptap/core';
+import {type Fragment, type Node as ProseMirrorNode} from '@tiptap/pm/model';
 import MarkdownIt from 'markdown-it';
 
 import {tuiGetMarkdownSpec} from '../extensions/util';
@@ -20,7 +21,13 @@ export class TuiEditorMarkdownParser {
         );
     }
 
-    protected parse(content: unknown, {inline}: Record<string, any> = {}): string {
+    public parse(content: string, options?: Record<string, unknown>): string;
+    public parse<T extends Fragment | ProseMirrorNode>(
+        content: T,
+        options?: Record<string, unknown>,
+    ): T;
+    public parse<T>(content: T, options?: Record<string, unknown>): T | string;
+    public parse(content: unknown, {inline}: Record<string, any> = {}): unknown {
         if (typeof content === 'string') {
             this.editor.extensionManager.extensions.forEach((extension) => {
                 tuiGetMarkdownSpec(extension)?.parse?.setup?.call(
@@ -48,7 +55,7 @@ export class TuiEditorMarkdownParser {
             return element.innerHTML;
         }
 
-        return content as string;
+        return content;
     }
 
     protected normalizeDOM(

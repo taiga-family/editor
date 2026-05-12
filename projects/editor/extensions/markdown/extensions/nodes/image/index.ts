@@ -1,5 +1,5 @@
 import {Node} from '@tiptap/core';
-import {defaultMarkdownSerializer} from '@tiptap/pm/markdown';
+import {defaultMarkdownSerializer} from 'prosemirror-markdown';
 
 export default Node.create({name: 'image'}).extend({
     addStorage() {

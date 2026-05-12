@@ -1,5 +1,5 @@
 import {type Editor, type Mark as Mark2, type Node as Node2} from '@tiptap/core';
-import {type Mark, type Node} from '@tiptap/pm/model';
+import {type Fragment, type Mark, type Node} from '@tiptap/pm/model';
 
 import HTMLMark from '../extensions/marks/html';
 import HardBreak from '../extensions/nodes/hard-break';
@@ -58,12 +58,12 @@ export class TuiMarkdownSerializer {
         } as Mark[];
     }
 
-    public serialize(content: Node): any {
+    public serialize(content: Fragment | Node): any {
         const state = new TuiMarkdownSerializerState(this.nodes, this.marks, {
             hardBreakNodeName: HardBreak.name,
         });
 
-        state.renderContent(content);
+        state.renderContent(content as Node);
 
         return state.out;
     }
