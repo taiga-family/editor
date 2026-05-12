@@ -81,6 +81,8 @@ import {
   ɵsetClassDebugInfo,
   ɵɵProvidersFeature,
   ɵɵadvance,
+  ɵɵconditional,
+  ɵɵdeclareLet,
   ɵɵdefineComponent,
   ɵɵdefinePipe,
   ɵɵelement,
@@ -101,6 +103,7 @@ import {
   ɵɵresetView,
   ɵɵresolveWindow,
   ɵɵrestoreView,
+  ɵɵsanitizeUrl,
   ɵɵtemplate,
   ɵɵtext,
   ɵɵtextInterpolate,
@@ -158,30 +161,42 @@ var FilterItems = _FilterItems;
 // projects/demo/src/app/pages/mention/examples/1/mention/index.ts
 var _c0 = ["container"];
 var _forTrack0 = ($index, $item) => $item.login;
-function Mentions_For_4_Template(rf, ctx) {
+function Mentions_For_6_Conditional_5_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "img", 5);
+  }
+  if (rf & 2) {
+    const item_r2 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275property("src", item_r2.avatar, \u0275\u0275sanitizeUrl);
+  }
+}
+function Mentions_For_6_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "button", 3, 1);
-    \u0275\u0275listener("click", function Mentions_For_4_Template_button_click_0_listener() {
+    \u0275\u0275listener("click", function Mentions_For_6_Template_button_click_0_listener() {
       const item_r2 = \u0275\u0275restoreView(_r1).$implicit;
       const ctx_r2 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r2.setMention.emit(item_r2));
-    })("keydown.enter", function Mentions_For_4_Template_button_keydown_enter_0_listener() {
+    })("keydown.enter.prevent", function Mentions_For_6_Template_button_keydown_enter_prevent_0_listener() {
       const item_r2 = \u0275\u0275restoreView(_r1).$implicit;
       const ctx_r2 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r2.setMention.emit(item_r2));
     });
     \u0275\u0275text(2);
-    \u0275\u0275element(3, "span", 4);
+    \u0275\u0275elementStart(3, "span", 4);
     \u0275\u0275pipe(4, "tuiInitials");
-    \u0275\u0275elementEnd();
+    \u0275\u0275template(5, Mentions_For_6_Conditional_5_Template, 1, 1, "img", 5);
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     const item_r2 = ctx.$implicit;
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate1(" ", item_r2.name, " ");
     \u0275\u0275advance();
-    \u0275\u0275property("tuiAvatar", item_r2.avatar || \u0275\u0275pipeBind1(4, 2, item_r2.name));
+    \u0275\u0275property("tuiAvatar", \u0275\u0275pipeBind1(4, 3, item_r2.name));
+    \u0275\u0275advance(2);
+    \u0275\u0275conditional(item_r2.avatar ? 5 : -1);
   }
 }
 var _Mentions = class _Mentions {
@@ -231,16 +246,18 @@ _Mentions.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _Menti
       return ctx.down($event, false);
     }, false, \u0275\u0275resolveWindow);
   }
-}, inputs: { mentionSuggestions: [1, "mentionSuggestions"] }, outputs: { setMention: "setMention" }, decls: 6, vars: 3, consts: [["container", ""], ["button", ""], ["tuiOption", "", "type", "button"], ["tuiOption", "", "type", "button", 3, "click", "keydown.enter"], ["size", "s", 3, "tuiAvatar"]], template: function Mentions_Template(rf, ctx) {
+}, inputs: { mentionSuggestions: [1, "mentionSuggestions"] }, outputs: { setMention: "setMention" }, decls: 7, vars: 3, consts: [["container", ""], ["button", ""], ["tuiOption", "", "type", "button"], ["tuiOption", "", "type", "button", 3, "click", "keydown.enter.prevent"], ["size", "s", 3, "tuiAvatar"], ["alt", "", 3, "src"]], template: function Mentions_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "tui-data-list")(1, "div", null, 0);
-    \u0275\u0275repeaterCreate(3, Mentions_For_4_Template, 5, 4, "button", 2, _forTrack0);
-    \u0275\u0275pipe(5, "filterItems");
+    \u0275\u0275declareLet(3);
+    \u0275\u0275pipe(4, "filterItems");
+    \u0275\u0275repeaterCreate(5, Mentions_For_6_Template, 6, 5, "button", 2, _forTrack0);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(3);
-    \u0275\u0275repeater(\u0275\u0275pipeBind2(5, 0, ctx.items, ctx.mentionSuggestions()));
+    const filtered_r4 = \u0275\u0275pipeBind2(4, 0, ctx.items, ctx.mentionSuggestions());
+    \u0275\u0275advance(5);
+    \u0275\u0275repeater(filtered_r4);
   }
 }, dependencies: [FilterItems, TuiAvatar, TuiDataListComponent, TuiOption, TuiInitialsPipe], encapsulation: 2, changeDetection: 0 });
 var Mentions = _Mentions;
@@ -250,7 +267,7 @@ var Mentions = _Mentions;
     args: [{ selector: "mentions", imports: [FilterItems, TuiAvatar, TuiDataList, TuiInitialsPipe], changeDetection: ChangeDetectionStrategy.OnPush, host: {
       "(window:keydown.arrowDown)": "down($event, true)",
       "(window:keydown.arrowUp)": "down($event, false)"
-    }, template: '<tui-data-list>\n    <div #container>\n        @for (item of items | filterItems: mentionSuggestions(); track item.login) {\n            <button\n                #button\n                tuiOption\n                type="button"\n                (click)="setMention.emit(item)"\n                (keydown.enter)="setMention.emit(item)"\n            >\n                {{ item.name }}\n                <span\n                    size="s"\n                    [tuiAvatar]="item.avatar || (item.name | tuiInitials)"\n                ></span>\n            </button>\n        }\n    </div>\n</tui-data-list>\n' }]
+    }, template: '<tui-data-list>\n    <div #container>\n        @let filtered = items | filterItems: mentionSuggestions();\n\n        @for (item of filtered; track item.login) {\n            <button\n                #button\n                tuiOption\n                type="button"\n                (click)="setMention.emit(item)"\n                (keydown.enter.prevent)="setMention.emit(item)"\n            >\n                {{ item.name }}\n                <span\n                    size="s"\n                    [tuiAvatar]="item.name | tuiInitials"\n                >\n                    @if (item.avatar) {\n                        <img\n                            alt=""\n                            [src]="item.avatar"\n                        />\n                    }\n                </span>\n            </button>\n        }\n    </div>\n</tui-data-list>\n' }]
   }], null, null);
 })();
 (() => {
@@ -403,4 +420,4 @@ var Example = _Example;
 export {
   Example as default
 };
-//# sourceMappingURL=chunk-GVS6ASBI.js.map
+//# sourceMappingURL=chunk-QG76ID3O.js.map
