@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    EventEmitter,
     inject,
     input,
-    Output,
+    output,
 } from '@angular/core';
 import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -58,6 +57,7 @@ export class TuiColorSelector {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected open = false;
+    protected rgba = this.selectorOptions.color;
 
     protected readonly colorEffect = effect(() => {
         const color = this.color();
@@ -75,11 +75,7 @@ export class TuiColorSelector {
 
     public readonly colors = input(this.selectorOptions.colors);
     public readonly color = input<string>('');
-
-    @Output()
-    public readonly colorChange = new EventEmitter<string>();
-
-    protected rgba = this.selectorOptions.color;
+    public readonly colorChange = output<string>();
     public readonly modes = inject(TUI_COLOR_SELECTOR_MODE_NAMES);
     public currentMode = this.modes[this.selectorOptions.mode];
     public readonly buttons = this.selectorOptions.gradient.buttons;

@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    model,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, model, output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiPickerService} from '@taiga-ui/editor/services';
 
@@ -24,9 +17,7 @@ export class TuiLinearMultiPicker {
         .pipe(takeUntilDestroyed())
         .subscribe(([x]) => this.onPicker(x));
 
-    @Output()
-    public readonly indexChange = new EventEmitter<number>();
-
+    public readonly indexChange = output<number>();
     public index = Number.NaN;
 
     public onMouseUp(): void {
