@@ -1,11 +1,5 @@
 import {type KeyValue, KeyValuePipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
@@ -20,8 +14,7 @@ export class TuiEditorPalette {
         new Map<string, string>(),
     );
 
-    @Output()
-    public readonly selectedColor = new EventEmitter<string>();
+    public readonly selectedColor = output<string>();
 
     public originalOrder = (
         _a: KeyValue<string, string>,

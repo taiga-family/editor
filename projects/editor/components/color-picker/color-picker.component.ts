@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     effect,
-    EventEmitter,
     inject,
     input,
-    Output,
+    output,
 } from '@angular/core';
 import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
@@ -45,10 +44,8 @@ export class TuiColorPicker {
         this.point = [s, 1 - v / 255];
     });
 
-    @Output()
-    public readonly colorChange = new EventEmitter<
-        [h: number, s: number, v: number, opacity: number]
-    >();
+    public readonly colorChange =
+        output<[r: number, g: number, b: number, opacity: number]>();
 
     public get currentColor(): [h: number, s: number, v: number] {
         return this.getCurrentColor(this.hue, this.point);
