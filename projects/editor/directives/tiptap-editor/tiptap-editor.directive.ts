@@ -18,11 +18,6 @@ export class TuiTiptapEditor {
         this.editor.valueChange$.pipe(distinctUntilChanged()),
     );
 
-    /**
-     * @deprecated use valueChange instead
-     */
-    public readonly stateChange = outputFromObservable(this.editor.stateChange$);
-
     protected readonly $ = inject(TIPTAP_EDITOR)
         .pipe(takeUntilDestroyed())
         .subscribe(() => {

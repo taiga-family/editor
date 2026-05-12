@@ -19,29 +19,13 @@ declare module '@tiptap/core' {
     }
 }
 
-/**
- * @deprecated use {@link DetailsOptions}
- */
-export type TuiDetailsOptions = DetailsOptions;
-
-/**
- * @deprecated use {@link DetailsContentOptions}
- */
-export type TuiDetailContentOptions = DetailsContentOptions;
-
 export interface TuiDetailsExtensionOptions extends DetailsOptions {
     inheritOpen?: boolean;
 }
 
-/**
- * @deprecated use {@link DetailsSummaryOptions}
- */
-export type TuiSummaryOptions = DetailsSummaryOptions;
-
 declare const globalThis: {document: Document | undefined};
 
-// TODO: rename to TuiDetails in v5
-export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
+export const TuiDetails = Details.extend<TuiDetailsExtensionOptions>({
     addOptions() {
         return {
             ...this.parent?.(),
@@ -193,11 +177,6 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
 
                     return true;
                 },
-            /** @deprecated use {@link unsetDetailsAt} */
-            unsetDetails:
-                () =>
-                ({state, dispatch}) =>
-                    tuiDeleteNode(state, dispatch, this.name),
             unsetDetailsAt:
                 (pos?: number) =>
                 ({state, dispatch}) => {
@@ -229,11 +208,6 @@ export const TuiDetailsSummary = DetailsSummary.extend<DetailsSummaryOptions>({
     content: 'block+',
     group: 'block',
 });
-
-/**
- * @deprecated use {@link TuiDetailsSummary}
- */
-export const TuiSummary = TuiDetailsSummary;
 
 export const TuiDetailsContent = DetailsContent.extend<DetailsContentOptions>({
     addNodeView: null,

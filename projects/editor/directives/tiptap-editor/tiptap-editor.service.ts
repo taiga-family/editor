@@ -413,20 +413,6 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.commands.unsetDetailsAt(pos);
     }
 
-    /**
-     * @deprecated use {@link unsetDetailsAt}
-     */
-    public unsetDetails(): void {
-        this.editor?.commands.unsetDetails();
-    }
-
-    /**
-     * @deprecated use {@link unsetDetails}
-     */
-    public removeDetails(): void {
-        this.editor?.commands.unsetDetails();
-    }
-
     public setGroup(): void {
         this.editor?.commands.setGroup();
     }
@@ -469,13 +455,6 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         options?: {extendEmptyMarkRange?: boolean},
     ): void {
         this.editor?.commands.toggleMark(typeOrName, attributes, options);
-    }
-
-    /**
-     * @deprecated use {@link html}
-     */
-    public getHTML(): string {
-        return this.getOriginTiptapEditor()?.getHTML() ?? '';
     }
 
     public takeSelectionSnapshot(): void {

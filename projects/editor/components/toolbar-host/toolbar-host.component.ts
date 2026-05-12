@@ -84,10 +84,3 @@ export class TuiToolbarHost {
         this.navigationManager()?.findFirstFocusableTool(true)?.focus();
     }
 }
-
-export {
-    /**
-     * @deprecated use {@link TuiToolbarHost}
-     */
-    TuiToolbarHost as TuiToolbarHostComponent,
-};

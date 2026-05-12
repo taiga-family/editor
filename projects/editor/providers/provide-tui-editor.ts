@@ -486,10 +486,9 @@ const EXTENSIONS = [
         key: 'details',
         default: false,
         async loader(options: Partial<TuiDetailsExtensionOptions>) {
-            const {TuiDetailsExtension} =
-                await import('@taiga-ui/editor/extensions/details');
+            const {TuiDetails} = await import('@taiga-ui/editor/extensions/details');
 
-            return TuiDetailsExtension.configure(options);
+            return TuiDetails.configure(options);
         },
     },
     {

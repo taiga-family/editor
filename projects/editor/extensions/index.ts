@@ -1,5 +1,4 @@
 export * from '@taiga-ui/editor/extensions/background-color';
-export * from '@taiga-ui/editor/extensions/default-editor-extensions';
 export * from '@taiga-ui/editor/extensions/details';
 export * from '@taiga-ui/editor/extensions/enter';
 export * from '@taiga-ui/editor/extensions/file-link';
@@ -15,7 +14,6 @@ export * from '@taiga-ui/editor/extensions/link';
 export * from '@taiga-ui/editor/extensions/markdown';
 export * from '@taiga-ui/editor/extensions/media';
 export * from '@taiga-ui/editor/extensions/mention';
-export * from '@taiga-ui/editor/extensions/starter-kit';
 export * from '@taiga-ui/editor/extensions/table';
 export * from '@taiga-ui/editor/extensions/table-cell';
 export * from '@taiga-ui/editor/extensions/table-cell-background';
