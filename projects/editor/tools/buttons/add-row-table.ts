@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {
     TuiDataList,
     TuiDropdownDirective,
@@ -30,16 +30,15 @@ export const TuiTableCommands = {
 
         <ng-container *tuiDropdown>
             <tui-data-list>
-                @for (group of tableCommandTexts(); track group; let i = $index) {
+                @for (group of tableCommands(); track $index) {
                     <tui-opt-group>
-                        <!-- TODO: remove "magic" numbers i*2+@Directive({standalone: true, and make code more readable-->
-                        @for (item of group; track item; let j = $index) {
+                        @for (item of group; track item.command) {
                             <button
                                 tuiOption
                                 type="button"
-                                (click)="onTableOption(i * 2 + j)"
+                                (click)="onTableOption(item.command)"
                             >
-                                {{ item }}
+                                {{ item.text }}
                             </button>
                         }
                     </tui-opt-group>
@@ -51,7 +50,30 @@ export const TuiTableCommands = {
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
 })
 export class TuiAddRowTableButtonTool extends TuiToolbarTool {
-    protected readonly tableCommandTexts = inject(TUI_EDITOR_TABLE_COMMANDS);
+    private readonly tableCommandTexts = inject(TUI_EDITOR_TABLE_COMMANDS);
+
+    protected readonly tableCommands = computed(() => {
+        const [
+            [insertColBefore, insertColAfter],
+            [insertRowBefore, insertRowAfter],
+            [deleteCol, deleteRow],
+        ] = this.tableCommandTexts();
+
+        return [
+            [
+                {text: insertColBefore, command: TuiTableCommands.InsertColumnBefore},
+                {text: insertColAfter, command: TuiTableCommands.InsertColumnAfter},
+            ],
+            [
+                {text: insertRowBefore, command: TuiTableCommands.InsertRowBefore},
+                {text: insertRowAfter, command: TuiTableCommands.InsertRowAfter},
+            ],
+            [
+                {text: deleteCol, command: TuiTableCommands.DeleteColumn},
+                {text: deleteRow, command: TuiTableCommands.DeleteRow},
+            ],
+        ];
+    });
 
     protected override getDisableState(): boolean {
         return !(this.editor()?.isActive('table') ?? false);
