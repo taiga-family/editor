@@ -12,4 +12,3 @@ export * from '@taiga-ui/editor/components/linear-picker';
 export * from '@taiga-ui/editor/components/palette';
 export * from '@taiga-ui/editor/components/toolbar';
 export * from '@taiga-ui/editor/components/toolbar-host';
-export * from '@taiga-ui/editor/components/toolbar-tools';

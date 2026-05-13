@@ -91,15 +91,6 @@ export class TuiToolbar {
         inject(TuiTiptapEditorService, {optional: true}),
     );
 
-    /**
-     * @deprecated use provideTuiEditorOptions({ textColors, backgroundColors })
-     */
-    public readonly colors = input(this.options.colors);
-
-    /**
-     * @deprecated
-     */
-    public readonly disabled = input(false);
     public readonly linkAdded = output<string>();
     public readonly texClicked = output();
     public readonly fileAttached = output<TuiEditorAttachedFile[]>();

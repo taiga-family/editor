@@ -166,20 +166,12 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         this.editorLoaded.set(true);
         this.cd.detectChanges();
 
-        // patch after rendered contenteditable element
         this.patchContentEditableElement();
-
-        // listen resize events after any DOM changes
         this.listenResizeEvents();
 
-        // TODO: migrate to signal later
         this.loaded.emit(this.editorLoaded());
     });
 
-    /**
-     * @deprecated use placeholder
-     */
-    public readonly exampleText = input(this.options.exampleText);
     public readonly placeholder = input(this.options.placeholder);
     public readonly toolbar = input<TemplateRef<unknown> | null>(null);
     public readonly floatingToolbar = input(this.options.floatingToolbar);
@@ -281,11 +273,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     protected get hasPlaceholder(): boolean {
-        return (
-            !!(this.placeholder() || this.exampleText()) &&
-            !this.value() &&
-            !this.readOnly()
-        );
+        return !!this.placeholder() && !this.value() && !this.readOnly();
     }
 
     protected get isJumpAnchorSelected(): boolean {

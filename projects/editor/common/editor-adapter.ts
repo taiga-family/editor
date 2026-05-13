@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {type Editor, type Range} from '@tiptap/core';
 import {type MarkType} from '@tiptap/pm/model';
 import {type EditorState} from '@tiptap/pm/state';
-import {BehaviorSubject, type Observable, Subject} from 'rxjs';
+import {BehaviorSubject, type Observable} from 'rxjs';
 
 import {type TuiEditorAttachedFile} from './attached';
 import {type TuiEditableIframe} from './iframe';
@@ -24,11 +24,6 @@ export abstract class AbstractTuiEditor {
     public abstract readonly isFocused: boolean;
     public abstract readonly html: string;
     public abstract editable: boolean;
-
-    /**
-     * @deprecated use valueChange$ instead
-     */
-    public readonly stateChange$ = new Subject<void>();
     public readonly valueChange$ = new BehaviorSubject('');
 
     public abstract get state(): EditorState | null;
@@ -170,17 +165,7 @@ export abstract class AbstractTuiEditor {
 
     public abstract enter(): void;
 
-    /**
-     * @deprecated use {@link unsetDetails}
-     */
-    public abstract removeDetails(): void;
-
     public abstract setDetails(): void;
-
-    /**
-     * @deprecated use {@link unsetDetailsAt}
-     */
-    public abstract unsetDetails(): void;
 
     public abstract unsetDetailsAt(pos?: number): void;
 
@@ -199,6 +184,4 @@ export abstract class AbstractTuiEditor {
     public abstract setYoutubeVideo(options: TuiYoutubeOptions): void;
 
     public abstract setIframe(options: TuiEditableIframe): void;
-
-    public abstract getHTML(): string;
 }

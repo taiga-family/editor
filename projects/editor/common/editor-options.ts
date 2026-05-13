@@ -73,7 +73,7 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
         readonly undo: string;
         readonly imageExtension: {
             readonly link: string;
-            readonly settings: string;
+            readonly align: string;
             readonly previewLink: string;
             readonly previewEditLink: string;
             readonly alignJustify: string;
@@ -88,10 +88,6 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
     readonly translate: 'no' | 'yes';
     readonly tools: Set<TuiEditorToolType> | readonly TuiEditorToolType[];
     readonly floatingToolbar: boolean;
-    /**
-     * @deprecated use placeholder
-     */
-    readonly exampleText: string;
     readonly placeholder: string;
     readonly editorProps?: EditorProps;
 }
@@ -99,7 +95,6 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
 export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
     translate: 'no',
     spellcheck: false,
-    exampleText: '',
     placeholder: '',
     enableDefaultStyles: true,
     tools: TUI_EDITOR_DEFAULT_TOOLS,
@@ -165,7 +160,7 @@ export const TUI_EDITOR_DEFAULT_OPTIONS: TuiEditorOptions = {
             link: '@tui.link',
             previewLink: '@tui.arrow-up-right',
             previewEditLink: '@tui.pencil-line',
-            settings: '@tui.align-left', // TODO(v5): rename settings to align
+            align: '@tui.align-left',
             alignJustify: '@tui.align-justify',
             alignCenter: '@tui.align-center',
             alignLeft: '@tui.align-left',
@@ -184,10 +179,3 @@ export function provideTuiEditorOptions(
 ): Provider {
     return tuiProvideOptions(TUI_EDITOR_OPTIONS, options, TUI_EDITOR_DEFAULT_OPTIONS);
 }
-
-export {
-    /**
-     * @deprecated use {@link provideTuiEditorOptions}
-     */
-    provideTuiEditorOptions as tuiEditorOptionsProvider,
-};

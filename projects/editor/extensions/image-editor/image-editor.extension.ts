@@ -233,8 +233,3 @@ export function tuiCreateImageEditorExtension<T, K>({
         },
     });
 }
-
-/**
- * @deprecated use {@link tuiCreateImageEditorExtension}
- */
-export const setup = tuiCreateImageEditorExtension;
