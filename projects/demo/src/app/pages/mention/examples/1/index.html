@@ -2,11 +2,11 @@
     placeholder="Required text *"
     [formControl]="control"
     [tools]="builtInTools"
-    [tuiDropdownOpen]="wysiwyg().isMentionMode"
+    [tuiDropdownOpen]="isMentionMode"
 >
     <ng-container *tuiDropdown>
         <mentions
-            [mentionSuggestions]="wysiwyg().mentionSuggestions"
+            [mentionSuggestions]="mentionSuggestions"
             (setMention)="setMention($event)"
         />
     </ng-container>

@@ -151,12 +151,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public readonly editorService = inject(TuiTiptapEditorService);
 
     protected readonly $ = this.editorLoaded$.pipe(takeUntilDestroyed()).subscribe(() => {
-        this.hasMentionPlugin = !!this.editorService
-            .getOriginTiptapEditor()
-            ?.extensionManager.extensions.find(
-                (extension) => extension.name === 'mention',
-            );
-
         const processed =
             this.contentProcessor?.fromControlValue(this.control.value) ??
             this.control.value ??
@@ -180,7 +174,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public readonly focusIn = output();
     public readonly focusOut = output();
     public readonly loaded = output<boolean>();
-    public hasMentionPlugin = false;
 
     public readonly hovered = toSignal(
         merge(
@@ -218,18 +211,6 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
 
     public get selectionState(): TuiSelectionState {
         return tuiGetSelectionState(this.editor);
-    }
-
-    public get mentionSuggestions(): string {
-        const before = this.selectionState.before;
-
-        return before.startsWith('@') && before.length > 1
-            ? before.replace('@', '') || ''
-            : '';
-    }
-
-    public get isMentionMode(): boolean {
-        return this.hasMentionPlugin && this.selectionState.before.startsWith('@');
     }
 
     public get isLinkSelected(): boolean {
@@ -346,9 +327,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     private readonly openDropdownWhen = (range: Range): boolean =>
-        this.currentFocusedNodeIsTextAnchor(range) ||
-        this.isMentionMode ||
-        Boolean(this.tuiDropdown?.open());
+        this.currentFocusedNodeIsTextAnchor(range) || Boolean(this.tuiDropdown?.open());
 
     /**
      * @description:

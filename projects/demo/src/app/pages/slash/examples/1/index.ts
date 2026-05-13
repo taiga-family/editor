@@ -77,8 +77,9 @@ export default class Example implements OnInit {
             .pipe(takeUntilDestroyed(this.destroy$))
             .subscribe(() => {
                 const isLinkSelected = this.wysiwyg().isLinkSelected;
-                const isMentionMode = this.wysiwyg().isMentionMode;
-                const hasSlash = this.wysiwyg().selectionState.before.startsWith('/');
+                const before = this.wysiwyg().selectionState.before;
+                const isMentionMode = before.startsWith('@');
+                const hasSlash = before.startsWith('/');
 
                 this.open = isMentionMode || isLinkSelected ? false : hasSlash;
             });
