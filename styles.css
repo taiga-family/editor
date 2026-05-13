@@ -24,13 +24,6 @@
   --tui-shadow-medium-hover: 0px 18px 60px 0px rgba(0, 0, 0, 0.18);
   --tui-shadow-popup: 0px 8px 28px 0px rgba(0, 0, 0, 0.16);
 }
-[tuiTheme=dark] {
-  --tui-shadow-small: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-small-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-medium: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-medium-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-popup: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-}
 :root,
 :host {
   --tui-typography-family-text:
@@ -3175,13 +3168,6 @@ svg use {
   --tui-shadow-medium: 0px 6px 34px 0px rgba(0, 0, 0, 0.12);
   --tui-shadow-medium-hover: 0px 18px 60px 0px rgba(0, 0, 0, 0.18);
   --tui-shadow-popup: 0px 8px 28px 0px rgba(0, 0, 0, 0.16);
-}
-[tuiTheme=dark] {
-  --tui-shadow-small: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-small-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-medium: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-medium-hover: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  --tui-shadow-popup: 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 :root,
 :host {
