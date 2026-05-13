@@ -33,7 +33,9 @@ ul[data-type] {
             inline-size: 100%;
             block-size: 100%;
             background: currentColor;
-            mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center / 100%;
+            mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>');
+            mask-position: center;
+            mask-size: 100%;
             transform: scale(0);
             transition:
                 transform var(--tui-duration) ease-in-out,
