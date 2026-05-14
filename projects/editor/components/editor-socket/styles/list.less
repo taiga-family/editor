@@ -83,7 +83,9 @@ ol:not([data-type]) > li::before {
     }
 }
 
-/* TODO: need more investigate, how refactor for deep details-content */
+// The first [data-type='details-content'] level uses counter details-item independently.
+// The second block has higher selector specificity, so CSS cascade switches to details-item2
+// for all nesting depths >= 2. counters() then accumulates across those deeper levels only.
 
 [data-type='details-content'] ol {
     counter-reset: details-item;
