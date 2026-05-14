@@ -1,11 +1,11 @@
 import {
+    tuiCreateMarkBoundaryExitPlugin,
     tuiGetCurrentWordBounds,
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
 import {type KeyboardShortcutCommand, mergeAttributes} from '@tiptap/core';
 import {Link, type LinkOptions} from '@tiptap/extension-link';
-import {Plugin, PluginKey, TextSelection} from '@tiptap/pm/state';
 
 export const TuiLink = Link.extend<LinkOptions>({
     addAttributes() {
@@ -85,50 +85,7 @@ export const TuiLink = Link.extend<LinkOptions>({
     },
 
     addProseMirrorPlugins() {
-        return [
-            ...(this.parent?.() ?? []),
-            new Plugin({
-                key: new PluginKey('tui-link-boundary-exit'),
-                appendTransaction(transactions, _oldState, newState) {
-                    if (!transactions.some((transaction) => transaction.selectionSet)) {
-                        return null;
-                    }
-
-                    const {selection} = newState;
-
-                    if (!(selection instanceof TextSelection) || !selection.$cursor) {
-                        return null;
-                    }
-
-                    const {$cursor} = selection;
-                    const linkMark = newState.schema.marks['link'];
-
-                    if (!linkMark) {
-                        return null;
-                    }
-
-                    const linkBefore = $cursor.nodeBefore
-                        ? linkMark.isInSet($cursor.nodeBefore.marks)
-                        : null;
-
-                    const linkAfter = $cursor.nodeAfter
-                        ? linkMark.isInSet($cursor.nodeAfter.marks)
-                        : null;
-
-                    if (!linkBefore || linkAfter) {
-                        return null;
-                    }
-
-                    const storedMarks = newState.storedMarks ?? $cursor.marks();
-
-                    return storedMarks.some((mark) => mark.type === linkMark)
-                        ? newState.tr.setStoredMarks(
-                              storedMarks.filter((mark) => mark.type !== linkMark),
-                          )
-                        : null;
-                },
-            }),
-        ];
+        return [...(this.parent?.() ?? []), tuiCreateMarkBoundaryExitPlugin(this.name)];
     },
 
     addPasteRules() {

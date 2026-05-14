@@ -1,3 +1,4 @@
+export * from './create-mark-boundary-exit-plugin';
 export * from './delete-nodes';
 export * from './get-current-word-bounds';
 export * from './get-gradient-data';
