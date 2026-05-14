@@ -28,36 +28,12 @@ import {mergeAttributes} from '@tiptap/core';
     providers: [
         provideTuiEditorOptions({
             fontOptions: () => [
-                {
-                    name: 'H1',
-                    headingLevel: 1,
-                    ngClass: 'text-h1',
-                },
-                {
-                    name: 'H2',
-                    headingLevel: 2,
-                    ngClass: 'text-h2',
-                },
-                {
-                    name: 'H3',
-                    headingLevel: 3,
-                    ngClass: 'text-h3',
-                },
-                {
-                    name: 'H4',
-                    headingLevel: 4,
-                    ngClass: 'text-h4',
-                },
-                {
-                    name: 'H5',
-                    headingLevel: 5,
-                    ngClass: 'text-h5',
-                },
-                {
-                    name: 'H6',
-                    headingLevel: 6,
-                    ngClass: 'text-h6',
-                },
+                {name: 'H1', headingLevel: 1},
+                {name: 'H2', headingLevel: 2},
+                {name: 'H3', headingLevel: 3},
+                {name: 'H4', headingLevel: 4},
+                {name: 'H5', headingLevel: 5},
+                {name: 'H6', headingLevel: 6},
             ],
         }),
         provideTuiEditor(async () =>

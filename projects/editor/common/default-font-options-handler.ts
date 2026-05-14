@@ -4,7 +4,7 @@ import {type TuiEditorFontOption} from './editor-font-option';
 
 export function tuiDefaultFontOptionsHandler(
     texts: TuiLanguageEditor['editorFontOptions'],
-): ReadonlyArray<Partial<TuiEditorFontOption>> {
+): readonly TuiEditorFontOption[] {
     return [
         {
             px: 13,
