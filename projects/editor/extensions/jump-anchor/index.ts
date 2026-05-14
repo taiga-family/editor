@@ -1,5 +1,7 @@
-import {TUI_TIPTAP_WHITESPACE_HACK} from '@taiga-ui/editor/common';
-import {tuiGetCurrentWordBounds, tuiGetSlicedFragment} from '@taiga-ui/editor/utils';
+import {
+    tuiCreateMarkBoundaryExitPlugin,
+    tuiGetCurrentWordBounds,
+} from '@taiga-ui/editor/utils';
 import {Mark, mergeAttributes} from '@tiptap/core';
 
 declare module '@tiptap/core' {
@@ -38,24 +40,15 @@ export const TuiJumpAnchor = Mark.create({
         return {
             setAnchor:
                 (id) =>
-                ({chain, state, editor}) => {
+                ({chain, editor}) => {
                     const {from, to} = tuiGetCurrentWordBounds(editor);
-                    const sliced = tuiGetSlicedFragment(state);
-                    const forwardSymbolIsWhitespace = sliced === ' ';
 
-                    const jumpAnchorMark = chain()
+                    return chain()
                         .setTextSelection({from, to})
                         .extendMarkRange('jumpAnchor')
-                        .setMark('jumpAnchor', {id});
-
-                    return (
-                        forwardSymbolIsWhitespace
-                            ? jumpAnchorMark.setTextSelection(to - 1)
-                            : jumpAnchorMark
-                                  .setTextSelection(to)
-                                  .insertContent(TUI_TIPTAP_WHITESPACE_HACK)
-                                  .setTextSelection(to - 1)
-                    ).run();
+                        .setMark('jumpAnchor', {id})
+                        .setTextSelection(to)
+                        .run();
                 },
 
             removeAnchor:
@@ -63,5 +56,9 @@ export const TuiJumpAnchor = Mark.create({
                 ({chain}) =>
                     chain().unsetMark(this.name, {extendEmptyMarkRange: true}).run(),
         };
+    },
+
+    addProseMirrorPlugins() {
+        return [tuiCreateMarkBoundaryExitPlugin(this.name)];
     },
 });

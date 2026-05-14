@@ -14,7 +14,6 @@ export * from './editor-tool';
 export * from './editor-value-transformer';
 export * from './files-loader';
 export type * from './gradient-direction';
-export * from './hack';
 export * from './i18n';
 export type * from './iframe';
 export type * from './image';
