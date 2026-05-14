@@ -1,6 +1,7 @@
 import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
 import {tuiChildNodes} from '../../../util/prosemirror';
 import HTMLNode from '../html';
 
@@ -8,7 +9,11 @@ export default Node.create({name: 'table'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode, parent: ProseNode) {
+                serialize(
+                    state: TuiMarkdownSerializerState,
+                    node: ProseNode,
+                    parent: ProseNode,
+                ) {
                     if (!isMarkdownSerializable(node)) {
                         HTMLNode.storage.markdown.serialize.call(
                             this,
@@ -69,6 +74,10 @@ function isMarkdownSerializable(node: ProseNode): boolean {
     const rows = tuiChildNodes(node);
     const firstRow = rows[0];
     const bodyRows = rows.slice(1);
+
+    if (!firstRow) {
+        return false;
+    }
 
     return tuiChildNodes(firstRow).some(
         (cell) =>

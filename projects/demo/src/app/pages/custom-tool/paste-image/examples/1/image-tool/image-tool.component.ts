@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
@@ -13,7 +13,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiPasteImageTool {
-    private readonly dropdown = viewChild.required<any>('dropdown');
+    private readonly dropdown = viewChild.required('dropdown', {read: TuiDropdownOpen});
     private readonly editor = inject(TuiTiptapEditorService);
     protected youtubeLogo = 'assets/icons/google.svg';
     protected placeholder = 'Path to Image URL (ex. https://your-site.com/image.png)';
@@ -25,6 +25,6 @@ export class ExampleTuiPasteImageTool {
         }
 
         this.editor.setImage(src);
-        this.dropdown()?.close();
+        this.dropdown().toggle(false);
     }
 }

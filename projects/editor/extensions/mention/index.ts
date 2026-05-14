@@ -88,7 +88,7 @@ export const TuiMention = Node.create<TuiMentionOptions>({
                       this.options.HTMLAttributes,
                       HTMLAttributes,
                   ),
-                  (html as any)?.[2],
+                  Array.isArray(html) ? html[2] : undefined,
               ];
     },
 });

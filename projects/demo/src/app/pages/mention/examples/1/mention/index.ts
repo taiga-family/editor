@@ -45,7 +45,7 @@ export class Mentions {
         const buttons = Array.from(this.el?.querySelectorAll('button') ?? []);
         const button = isDown ? buttons[0] : buttons[buttons.length - 1];
 
-        if (!this.el?.contains(event.target as any)) {
+        if (!this.el?.contains(event.target as Node)) {
             button?.focus();
         }
     }

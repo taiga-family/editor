@@ -2,33 +2,45 @@ import type MarkdownIt from 'markdown-it';
 
 type Token = ReturnType<MarkdownIt['parse']>[number];
 
+type TokenConstructor = new (
+    type: string,
+    tag: string,
+    nesting: MarkdownIt.Token.Nesting,
+) => Token;
+
+interface TaskListOptions {
+    enabled?: boolean;
+    label?: boolean;
+    labelAfter?: boolean;
+}
+
 let disableCheckboxes = true;
 let useLabelWrapper = false;
 let useLabelAfter = false;
 
-export function tuiMarkdownItTaskList(md: any, options: any): void {
+export function tuiMarkdownItTaskList(md: MarkdownIt, options?: TaskListOptions): void {
     if (options) {
         disableCheckboxes = !options.enabled;
         useLabelWrapper = !!options.label;
         useLabelAfter = !!options.labelAfter;
     }
 
-    md.core.ruler.after('inline', 'github-task-lists', (state: any) => {
+    md.core.ruler.after('inline', 'github-task-lists', (state: MarkdownIt.StateCore) => {
         const tokens = state.tokens;
 
         for (let i = 2; i < tokens.length; i++) {
             if (isTodoItem(tokens, i)) {
-                todoify(tokens[i], state.Token);
+                todoify(tokens[i]!, state.Token);
                 attrSet(
-                    tokens[i - 2],
+                    tokens[i - 2]!,
                     'class',
                     `task-list-item${disableCheckboxes ? '' : ' enabled'}`,
                 );
-                attrSet(
-                    tokens[parentToken(tokens, i - 2)],
-                    'class',
-                    'contains-task-list',
-                );
+                const parentIdx = parentToken(tokens, i - 2);
+
+                if (parentIdx >= 0) {
+                    attrSet(tokens[parentIdx]!, 'class', 'contains-task-list');
+                }
             }
         }
     });
@@ -70,7 +82,7 @@ function isTodoItem(tokens: Token[], index: number): boolean {
     );
 }
 
-function todoify(token: Token, TokenConstructor: any): void {
+function todoify(token: Token, TokenConstructor: TokenConstructor): void {
     token.children?.unshift(makeCheckbox(token, TokenConstructor));
 
     if (token.children?.[1]) {
@@ -103,7 +115,7 @@ function todoify(token: Token, TokenConstructor: any): void {
     }
 }
 
-function makeCheckbox(token: Token, TokenConstructor: any): any {
+function makeCheckbox(token: Token, TokenConstructor: TokenConstructor): Token {
     const checkbox = new TokenConstructor('html_inline', '', 0);
     const disabledAttr = disableCheckboxes ? ' disabled="" ' : '';
 
@@ -118,7 +130,7 @@ function makeCheckbox(token: Token, TokenConstructor: any): any {
 
 // these next two functions are kind of hacky; probably should really be a
 // true block-level token with .tag=='label'
-function beginLabel(TokenConstructor: any): Token {
+function beginLabel(TokenConstructor: TokenConstructor): Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = '<label>';
@@ -126,7 +138,7 @@ function beginLabel(TokenConstructor: any): Token {
     return token;
 }
 
-function endLabel(TokenConstructor: any): Token {
+function endLabel(TokenConstructor: TokenConstructor): Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = '</label>';
@@ -134,11 +146,15 @@ function endLabel(TokenConstructor: any): Token {
     return token;
 }
 
-function afterLabel(content: string, id: string, TokenConstructor: any): Token {
+function afterLabel(
+    content: string,
+    id: string,
+    TokenConstructor: TokenConstructor,
+): Token {
     const token = new TokenConstructor('html_inline', '', 0);
 
     token.content = `<label class="task-list-item-label" for="${id}">${content}</label>`;
-    token.attrs = [{for: id}];
+    token.attrs = [['for', id]];
 
     return token;
 }

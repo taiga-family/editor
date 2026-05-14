@@ -1,11 +1,13 @@
 import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
+
 export default Node.create({name: 'taskItem'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode) {
+                serialize(state: TuiMarkdownSerializerState, node: ProseNode) {
                     const check = node.attrs.checked ? '[x]' : '[ ]';
 
                     state.write(`${check} `);

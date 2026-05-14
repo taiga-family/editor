@@ -45,7 +45,7 @@ export default class Example {
         main: new FormControl(''),
     });
 
-    protected attach(files: TuiEditorAttachedFile[]): void {
+    protected attach(files: Array<TuiEditorAttachedFile<unknown>>): void {
         files.forEach((file) => this.editorRef?.setFileLink(file));
     }
 }

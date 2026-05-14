@@ -1,20 +1,29 @@
 import {type Mark, type Node} from '@tiptap/pm/model';
-import {MarkdownSerializerState as BaseMarkdownSerializerState} from 'prosemirror-markdown';
+import {
+    type MarkdownSerializer,
+    MarkdownSerializerState as BaseMarkdownSerializerState,
+} from 'prosemirror-markdown';
 
 import {tuiTrimInline} from '../util/markdown';
 
+interface TuiMarkdownInline {
+    start: number;
+    end?: number;
+    delimiter: string;
+}
+
 export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
     public inTable = false;
-    public inlines: any[];
-    public out: any;
-    public marks: any;
+    public inlines: TuiMarkdownInline[];
+    declare public out: string;
+    declare public marks: MarkdownSerializer['marks'];
 
     constructor(
-        nodes: readonly Node[],
-        marks: readonly Mark[],
+        nodes: MarkdownSerializer['nodes'],
+        marks: MarkdownSerializer['marks'],
         options: BaseMarkdownSerializerState['options'] | undefined,
     ) {
-        // @ts-ignore
+        // @ts-ignore — MarkdownSerializerState has no typed constructor in prosemirror-markdown declarations
         super(nodes, marks, options ?? {});
 
         this.inlines = [];
@@ -24,14 +33,15 @@ export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
         super.render(node, parent, index);
         const top = this.inlines[this.inlines.length - 1];
 
-        if (top?.start && top?.end) {
+        if (top?.start && top.end) {
             const {delimiter, start, end} = this.normalizeInline(top);
 
             this.out = tuiTrimInline({
                 text: this.out,
                 delim: delimiter,
                 from: start,
-                to: end,
+
+                to: end!,
             });
             this.inlines.pop();
         }
@@ -45,29 +55,31 @@ export class TuiMarkdownSerializerState extends BaseMarkdownSerializerState {
     ): string {
         const info = this.marks[mark.type.name];
 
-        if (info.expelEnclosingWhitespace) {
+        if (info?.expelEnclosingWhitespace) {
             if (open) {
                 this.inlines.push({
                     start: this.out.length,
-                    delimiter: info.open,
+                    delimiter: typeof info.open === 'string' ? info.open : '',
                 });
             } else {
                 const top = this.inlines.pop();
 
-                this.inlines.push({
-                    ...top,
-                    end: this.out.length,
-                });
+                if (top) {
+                    this.inlines.push({
+                        ...top,
+                        end: this.out.length,
+                    });
+                }
             }
         }
 
         return super.markString(mark, open, parent, index);
     }
 
-    protected normalizeInline(inline: any): any {
+    protected normalizeInline(inline: TuiMarkdownInline): TuiMarkdownInline {
         let {start} = inline;
 
-        while (this.out.charAt(start).match(/\s/)) {
+        while (/\s/.exec(this.out.charAt(start))) {
             start++;
         }
 

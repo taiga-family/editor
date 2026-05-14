@@ -1,4 +1,12 @@
-import {Extension} from '@tiptap/core';
+import {type CommandProps, Extension, type RawCommands} from '@tiptap/core';
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        markdownTightLists: {
+            toggleTight(tight?: boolean | null): ReturnType;
+        };
+    }
+}
 
 export const TuiMarkdownTightLists = Extension.create({
     name: 'markdownTightLists',
@@ -26,11 +34,11 @@ export const TuiMarkdownTightLists = Extension.create({
             },
         ];
     },
-    addCommands(): any {
+    addCommands(): Partial<RawCommands> {
         return {
             toggleTight:
                 (tight: boolean | null = null) =>
-                ({editor, commands}: any) =>
+                ({editor, commands}: CommandProps) =>
                     this.options.listTypes.some((name) => {
                         if (!editor.isActive(name)) {
                             return false;
@@ -39,7 +47,7 @@ export const TuiMarkdownTightLists = Extension.create({
                         const attrs = editor.getAttributes(name);
 
                         return commands.updateAttributes(name, {
-                            tight: tight ?? !attrs?.tight,
+                            tight: tight ?? !attrs.tight,
                         });
                     }),
         };

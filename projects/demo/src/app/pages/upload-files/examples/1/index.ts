@@ -54,7 +54,7 @@ export default class Example {
 
     protected control = new FormControl('');
 
-    protected attach(files: TuiEditorAttachedFile[]): void {
+    protected attach(files: Array<TuiEditorAttachedFile<unknown>>): void {
         files.forEach((file) => this.wysiwyg().editor?.setFileLink(file));
     }
 }

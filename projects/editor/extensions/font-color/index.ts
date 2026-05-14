@@ -1,4 +1,4 @@
-import {type Command, Extension, type GlobalAttributes} from '@tiptap/core';
+import {Extension, type GlobalAttributes} from '@tiptap/core';
 
 export interface TuiFontColorOptions {
     types: string[];
@@ -47,10 +47,7 @@ export const TuiFontColor = Extension.create<TuiFontColorOptions>({
         ];
     },
 
-    addCommands(): {
-        setFontColor?(fontColor: string): Command;
-        unsetFontColor?(): Command;
-    } {
+    addCommands() {
         return {
             setFontColor:
                 (fontColor) =>

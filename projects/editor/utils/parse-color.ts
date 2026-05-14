@@ -1,12 +1,7 @@
 const DEFAULT: [number, number, number, number] = [0, 0, 0, 1];
 
 export function tuiParseColor(color: string): [number, number, number, number] {
-    const stripped = color
-        .replace('#', '')
-        .replace('rgba(', '')
-        .replace('rgb(', '')
-        .replace(')', '');
-
+    const stripped = color.replaceAll(/^(?:#|rgba?\()|\)/gu, '');
     const array = stripped.split(',').map((item) => Number.parseFloat(item));
 
     if (array.length === 4) {

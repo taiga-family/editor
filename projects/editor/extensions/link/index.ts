@@ -4,8 +4,14 @@ import {
     tuiGetSlicedFragment,
     tuiParseNodeAttributes,
 } from '@taiga-ui/editor/utils';
-import {type KeyboardShortcutCommand, mergeAttributes} from '@tiptap/core';
+import {
+    type KeyboardShortcutCommand,
+    mergeAttributes,
+    type SingleCommands,
+} from '@tiptap/core';
 import {Link, type LinkOptions} from '@tiptap/extension-link';
+
+type CommandsWithImageLink = SingleCommands & {setImageLink?(): boolean};
 
 export const TuiLink = Link.extend<LinkOptions>({
     addAttributes() {
@@ -28,9 +34,10 @@ export const TuiLink = Link.extend<LinkOptions>({
                         const isImageNode = node?.type === editor.schema.nodes.image;
 
                         if (isImageNode) {
-                            return typeof (editor.commands as any).setImageLink ===
-                                'function'
-                                ? (chain() as any).setImageLink().run()
+                            const commands = editor.commands as CommandsWithImageLink;
+
+                            return typeof commands.setImageLink === 'function'
+                                ? commands.setImageLink()
                                 : false;
                         }
 

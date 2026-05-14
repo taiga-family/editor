@@ -1,4 +1,4 @@
-export function tuiElementFromString(value: any): HTMLElement | null {
+export function tuiElementFromString(value: string): HTMLElement | null {
     return typeof DOMParser === 'undefined'
         ? null
         : new window.DOMParser().parseFromString(`<body>${value}</body>`, 'text/html')

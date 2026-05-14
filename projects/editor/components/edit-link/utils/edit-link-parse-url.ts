@@ -1,5 +1,3 @@
-// TODO: fix lint
-/* eslint-disable regexp/no-dupe-characters-character-class,regexp/no-unused-capturing-group,regexp/no-super-linear-backtracking,regexp/no-useless-escape,regexp/prefer-w,regexp/strict */
 import {
     TUI_EDITOR_LINK_HASH_PREFIX,
     TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER,
@@ -12,7 +10,7 @@ interface TuiEditLinkParsed {
 }
 
 function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
-    const [url = '', queryParams = ''] = rawUrl.split(/\?/);
+    const [url = '', queryParams = ''] = rawUrl.split('?');
     const protocolPosition = url.indexOf(TUI_EDITOR_LINK_OSI_PROTOCOL_DIVIDER);
 
     const [prefix, path] =
@@ -38,8 +36,8 @@ function splitOsiProtocol(rawUrl = ''): Array<string | undefined> {
 }
 
 function splitSimpleProtocol(rawUrl = ''): Array<string | undefined> {
-    const [url = '', queryParams = ''] = rawUrl.split(/\?/);
-    const [prefix, path] = url.split(/:/).slice(-2).filter(Boolean);
+    const [url = '', queryParams = ''] = rawUrl.split('?');
+    const [prefix, path] = url.split(':').slice(-2).filter(Boolean);
 
     const hardUrl = // https://domain.com/path:some:schema:data:test
         (url.includes('/') && url.lastIndexOf(':') > url.indexOf('/')) ||
@@ -76,12 +74,8 @@ export function tuiEditLinkParseUrl(url = ''): TuiEditLinkParsed {
         : {prefix, path: prefix === '' ? url : path};
 }
 
-/**
- * @internal
- */
 function isValidUrl(url: string): boolean {
-    return new RegExp(
-        `${String.raw`^([a-zA-Z]+:\/\/)?`}${String.raw`((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|localhost|`}${String.raw`((\d{1,3}\.){3}\d{1,3}))`}${String.raw`(\:\d+)?(\/[-a-z\d%_.~+\:]*)*`}${String.raw`(\?[)(;&a-z\d%_.~+=-]*)?`}${String.raw`(\#[-a-z\d_]*)?$`}`, // fragment locator
-        'i',
-    ).test(url);
+    return /^(?:[a-z]+:\/\/)?(?:(?:[a-z\d][-a-z\d]*\.)+[a-z]{2,}|localhost|(?:\d{1,3}\.){3}\d{1,3})(?::\d+)?(?:\/[-\w%.~+:]*)*(?:\?[-\w%.~+;:&()=]*)?(?:#[-\w]*)?$/iu.test(
+        url,
+    );
 }

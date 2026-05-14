@@ -1,3 +1,5 @@
-export function tuiChildNodes(node: any): any[] {
-    return node?.content?.content ?? [];
+import {type Node} from '@tiptap/pm/model';
+
+export function tuiChildNodes(node: Node): readonly Node[] {
+    return node.content.content;
 }

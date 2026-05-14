@@ -20,7 +20,7 @@ import {
     type DetailsSummaryOptions,
 } from '@tiptap/extension-details';
 import {type HardBreakOptions} from '@tiptap/extension-hard-break';
-import {type HeadingOptions} from '@tiptap/extension-heading';
+import {type HeadingOptions, type Level} from '@tiptap/extension-heading';
 import {type HorizontalRuleOptions} from '@tiptap/extension-horizontal-rule';
 import {type ItalicOptions} from '@tiptap/extension-italic';
 import {type LinkOptions} from '@tiptap/extension-link';
@@ -197,8 +197,11 @@ const EXTENSIONS = [
             return Heading.configure({levels: [1, 2, 3, 4, 5, 6], ...options}).extend({
                 addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {
                     return this.options.levels.reduce(
-                        (items: any, level: any) => ({
-                            ...(items || {}),
+                        (
+                            items: Record<string, KeyboardShortcutCommand>,
+                            level: Level,
+                        ) => ({
+                            ...items,
                             [`Mod-Alt-${level}`]: () =>
                                 this.editor.commands.toggleHeading({level}),
                         }),

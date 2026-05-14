@@ -1,4 +1,4 @@
-import {type Command, Extension, type GlobalAttributes} from '@tiptap/core';
+import {Extension, type GlobalAttributes} from '@tiptap/core';
 
 export interface TuiBackgroundColorOptions {
     types: string[];
@@ -48,10 +48,7 @@ export const TuiBackgroundColor = Extension.create<TuiBackgroundColorOptions>({
         ];
     },
 
-    addCommands(): {
-        setBackgroundColor?(backgroundColor: string): Command;
-        unsetBackgroundColor?(): Command;
-    } {
+    addCommands() {
         return {
             setBackgroundColor:
                 (backgroundColor) =>

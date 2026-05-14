@@ -1,6 +1,8 @@
 import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
+
 function findIndexOfAdjacentNode(
     node: ProseNode,
     parent: ProseNode,
@@ -21,7 +23,12 @@ export default Node.create({name: 'orderedList'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode, parent: ProseNode, index: number) {
+                serialize(
+                    state: TuiMarkdownSerializerState,
+                    node: ProseNode,
+                    parent: ProseNode,
+                    index: number,
+                ) {
                     const start = node.attrs.start || 1;
                     const maxW = String(start + node.childCount - 1).length;
                     const space = state.repeat(' ', maxW + 2);
@@ -31,7 +38,7 @@ export default Node.create({name: 'orderedList'}).extend({
                     state.renderList(node, space, (i: number) => {
                         const nStr = String(start + i);
 
-                        return state.repeat(' ', maxW - nStr.length) + nStr + separator;
+                        return `${state.repeat(' ', maxW - nStr.length)}${nStr}${separator}`;
                     });
                 },
                 parse: {
