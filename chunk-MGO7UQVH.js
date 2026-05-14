@@ -1,0 +1,14 @@
+import"./chunk-DAQOROHW.js";var c=`<button
+    tuiItem
+    tuiOption
+    type="button"
+    [style.font-weight]="ctx.$implicit.weight"
+    (click)="ctx.setFontOption(ctx.$implicit)"
+>
+    {{ ctx.$implicit.name }}
+
+    @if (ctx.$implicit.px) {
+        <small>{{ ctx.$implicit.px }}px</small>
+    }
+</button>
+`;export{c as default};
