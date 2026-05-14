@@ -129,6 +129,46 @@ test.describe('Details', () => {
         await expect(editor.host.locator('.t-details-wrapper')).toHaveCount(0);
     });
 
+    test('ordered list counters inside nested details-content', async ({page}) => {
+        const html = encodeURIComponent(`
+            <details open>
+                <summary><p>Level 1</p></summary>
+                <div data-type="details-content">
+                    <ol>
+                        <li><p>Item 1</p>
+                            <details open>
+                                <summary><p>Level 2</p></summary>
+                                <div data-type="details-content">
+                                    <ol>
+                                        <li><p>Item 1.1</p>
+                                            <details open>
+                                                <summary><p>Level 3</p></summary>
+                                                <div data-type="details-content">
+                                                    <ol>
+                                                        <li><p>Item 1.1.1</p></li>
+                                                        <li><p>Item 1.1.2</p></li>
+                                                    </ol>
+                                                </div>
+                                            </details>
+                                        </li>
+                                        <li><p>Item 1.2</p></li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </li>
+                        <li><p>Item 2</p></li>
+                    </ol>
+                </div>
+            </details>
+        `);
+
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=${html}`);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+
+        await expect.soft(editor.host).toHaveScreenshot('Details-ol-nested-counters.png');
+    });
+
     test('triple-nested details — delete middle, then root', async ({page}) => {
         await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=<p>World</p>`);
 
