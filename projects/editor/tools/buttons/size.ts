@@ -1,4 +1,4 @@
-import {AsyncPipe, LowerCasePipe, NgClass, NgStyle} from '@angular/common';
+import {AsyncPipe, LowerCasePipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,9 +22,11 @@ import {
     EDITOR_BLANK_COLOR,
     TUI_EDITOR_FONT_OPTIONS,
     type TuiEditorFontOption,
+    type TuiEditorFontOptionContext,
     type TuiEditorOptions,
 } from '@taiga-ui/editor/common';
 import {type TuiLanguageEditor} from '@taiga-ui/i18n';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 import {TuiToolbarTool} from '../tool';
@@ -35,8 +37,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
     imports: [
         AsyncPipe,
         LowerCasePipe,
-        NgClass,
-        NgStyle,
+        PolymorpheusOutlet,
         TuiDataList,
         TuiInput,
         TuiItem,
@@ -48,22 +49,26 @@ import {TuiToolbarButtonTool} from '../tool-button';
         <ng-container *tuiDropdown>
             <tui-data-list>
                 @for (item of fontsOptions$ | async; track item) {
-                    <button
-                        tuiItem
-                        tuiOption
-                        type="button"
-                        [attr.automation-id]="
-                            'tui_font__' + (item.name || '' | lowercase)
-                        "
-                        [ngClass]="item?.ngClass || {}"
-                        [ngStyle]="item?.ngStyle || {}"
-                        [style.font-family]="item.family"
-                        [style.font-size.px]="item.px"
-                        [style.font-weight]="item.weight"
-                        (click)="setFontOption(item)"
-                    >
-                        {{ item.name }}
-                    </button>
+                    @if (options.fontOptionContent; as content) {
+                        <ng-container
+                            *polymorpheusOutlet="content; context: getContext(item)"
+                        />
+                    } @else {
+                        <button
+                            tuiItem
+                            tuiOption
+                            type="button"
+                            [attr.automation-id]="
+                                'tui_font__' + (item.name || '' | lowercase)
+                            "
+                            [style.font-family]="item.family"
+                            [style.font-size.px]="item.px"
+                            [style.font-weight]="item.weight"
+                            (click)="setFontOption(item)"
+                        >
+                            {{ item.name }}
+                        </button>
+                    }
                 }
             </tui-data-list>
         </ng-container>
@@ -84,6 +89,10 @@ export class TuiFontSizeButtonTool extends TuiToolbarTool {
     protected readonly fontsOptions$ = toObservable(inject(TUI_EDITOR_FONT_OPTIONS)).pipe(
         map((texts) => this.options.fontOptions(texts)),
     );
+
+    protected getContext(item: TuiEditorFontOption): TuiEditorFontOptionContext {
+        return {$implicit: item, setFontOption: (option) => this.setFontOption(option)};
+    }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
         return icons.fontSize;

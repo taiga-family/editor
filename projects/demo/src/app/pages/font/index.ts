@@ -11,6 +11,7 @@ export default class Example {
     protected readonly component2 = import('./examples/2');
     protected readonly component3 = import('./examples/3');
     protected readonly component4 = import('./examples/4');
+    protected readonly component5 = import('./examples/5');
 
     protected readonly example1 = {
         TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
@@ -37,5 +38,14 @@ export default class Example {
     protected readonly example4 = {
         TypeScript: import('./examples/4/index.ts?raw', {with: {loader: 'text'}}),
         HTML: import('./examples/4/index.html?raw'),
+    };
+
+    protected readonly example5 = {
+        TypeScript: import('./examples/5/index.ts?raw', {with: {loader: 'text'}}),
+        'font-option/index.ts': import('./examples/5/font-option/index.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'font-option/index.html': import('./examples/5/font-option/index.html?raw'),
+        'font-option/index.less': import('./examples/5/font-option/index.less?raw'),
     };
 }

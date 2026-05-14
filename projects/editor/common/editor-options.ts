@@ -1,5 +1,6 @@
 import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type EditorOptions} from '@tiptap/core';
 import {type EditorProps} from '@tiptap/pm/view';
 
@@ -13,6 +14,7 @@ import {
     TUI_DEFAULT_LINK_OPTIONS,
     type TuiEditorLinkOptions,
 } from './default-link-options-handler';
+import {type TuiEditorFontOptionContext} from './editor-font-option';
 import {type TuiEditorToolType} from './editor-tool';
 
 export interface TuiEditorOptions extends Partial<EditorOptions> {
@@ -20,6 +22,7 @@ export interface TuiEditorOptions extends Partial<EditorOptions> {
     readonly colors: ReadonlyMap<string, string>;
     readonly textColors: ReadonlyMap<string, string> | null;
     readonly backgroundColors: ReadonlyMap<string, string> | null;
+    readonly fontOptionContent?: PolymorpheusContent<TuiEditorFontOptionContext>;
     readonly fontOptions: typeof tuiDefaultFontOptionsHandler;
     readonly icons: {
         readonly addRowTable: string;

@@ -24,4 +24,19 @@
         [component]="component4"
         [content]="example4"
     />
+
+    <tui-doc-example
+        heading="Override font option template"
+        [component]="component5"
+        [content]="example5"
+        [description]="description"
+    >
+        <ng-template #description>
+            Provide
+            <code>fontOptionContent</code>
+            property via
+            <code>provideTuiEditorOptions</code>
+            to fully customize how each option is rendered inside the font dropdown
+        </ng-template>
+    </tui-doc-example>
 </tui-doc-page>
