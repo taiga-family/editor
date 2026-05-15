@@ -1,3 +1,24 @@
+## [5.0.0](https://github.com/taiga-family/editor/compare/v4.59.0...v5.0.0) (2026-05-15)
+
+### 🚀 Features
+
+- introduce &#x60;fontOptionContent&#x60; ([#2156](https://github.com/taiga-family/editor/pull/2156))
+  [(efc5def)](https://github.com/taiga-family/editor/commit/efc5defe35ac9db1fbfdab4dbedd872599a3553c)
+- drop hardcode mention content ([#2151](https://github.com/taiga-family/editor/pull/2151))
+  [(4d0d8aa)](https://github.com/taiga-family/editor/commit/4d0d8aa39f5b2140c13ae81bfdd05d036127feb2)
+- migration to TipTap v3 ([#2132](https://github.com/taiga-family/editor/pull/2132))
+  [(8d824d0)](https://github.com/taiga-family/editor/commit/8d824d00e29d0f22d77760f7c31df83c766122ed)
+- ssr safe ([#2095](https://github.com/taiga-family/editor/pull/2095))
+  [(a7d583c)](https://github.com/taiga-family/editor/commit/a7d583c78bf39f00e182a60460003f61f46e3af6)
+- floating toolbar position shouldn&#x27;t jump when you click on the tool
+  ([#2093](https://github.com/taiga-family/editor/pull/2093))
+  [(67fc26b)](https://github.com/taiga-family/editor/commit/67fc26b4aac9eecb9a9166ca4c4b4cbb9b89114e)
+
+### 🐞 Bug Fixes
+
+- reopen link after closed dropdown ([#2126](https://github.com/taiga-family/editor/pull/2126))
+  [(d54d090)](https://github.com/taiga-family/editor/commit/d54d0905988455e31dcd121dead5e118d983079c)
+
 ### [4.59.0](https://github.com/taiga-family/editor/compare/v4.58.0...v4.59.0) (2026-04-10)
 
 ### 🐞 Bug Fixes
