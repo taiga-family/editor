@@ -1,18 +1,150 @@
 ## [5.0.0](https://github.com/taiga-family/editor/compare/v4.59.0...v5.0.0) (2026-05-15)
 
+### 💥 Breaking Changes
+
+#### TipTap v3
+
+TipTap has been updated from v2 to v3. Package imports have been reorganized — many extensions that were in separate
+packages are now consolidated:
+
+```ts
+// before
+import {CharacterCount} from '@tiptap/extension-character-count';
+import {Focus} from '@tiptap/extension-focus';
+import {TaskItem} from '@tiptap/extension-task-item';
+import {TaskList} from '@tiptap/extension-task-list';
+
+// after
+import {CharacterCount, Focus} from '@tiptap/extensions';
+import {TaskItem, TaskList} from '@tiptap/extension-list';
+import {TableRow, TableHeader} from '@tiptap/extension-table';
+```
+
+The `setContent` command signature has changed:
+
+```ts
+// before
+editor.commands.setContent(value, false, parseOptions);
+
+// after
+editor.commands.setContent(value, {emitUpdate: false, parseOptions});
+```
+
+#### `fontOptionContent` introduced ([#2156](https://github.com/taiga-family/editor/pull/2156))
+
+`ngClass` and `ngStyle` fields have been removed from `TuiEditorFontOption`. Use the new `fontOptionContent` option in
+`provideTuiEditorOptions` to fully customise how font/size options are rendered:
+
+```ts
+// before
+provideTuiEditorOptions({
+  fontOptions: () => [
+    {name: 'H1', headingLevel: 1, ngClass: 'text-h1'},
+    {name: 'H2', headingLevel: 2, ngClass: 'text-h2'},
+  ],
+});
+
+// after — define a component and pass it via fontOptionContent
+provideTuiEditorOptions({
+  fontOptions: () => [
+    {name: 'H1', headingLevel: 1},
+    {name: 'H2', headingLevel: 2},
+  ],
+  fontOptionContent: FontOptionComponent, // implements TuiEditorFontOptionContext
+});
+```
+
+#### Mention content is no longer hardcoded ([#2151](https://github.com/taiga-family/editor/pull/2151))
+
+`isMentionMode` and `mentionSuggestions` are no longer exposed on `TuiEditor`. Implement them in your component using
+`selectionState`:
+
+```ts
+// before
+[tuiDropdownOpen]="wysiwyg().isMentionMode"
+[mentionSuggestions]="wysiwyg().mentionSuggestions"
+
+// after — manage state in your component
+protected isMentionMode = false;
+
+public ngOnInit(): void {
+    this.control.valueChanges
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => {
+            this.isMentionMode = this.wysiwyg().selectionState.before.startsWith('@');
+        });
+}
+
+protected get mentionSuggestions(): string {
+    const before = this.wysiwyg().selectionState.before;
+    return before.startsWith('@') && before.length > 1 ? before.slice(1) : '';
+}
+```
+
+#### `stateChange$` removed
+
+`AbstractTuiEditor.stateChange$` (deprecated since v4) has been removed. Use `valueChange$` instead.
+
+#### `TUI_TIPTAP_WHITESPACE_HACK` removed ([#2157](https://github.com/taiga-family/editor/pull/2157))
+
+The exported constant `TUI_TIPTAP_WHITESPACE_HACK` has been removed — it is no longer needed with TipTap v3.
+
+#### Deprecated toolbar aliases removed ([#2146](https://github.com/taiga-family/editor/pull/2146))
+
+All deprecated toolbar tool aliases have been removed. Use the canonical names:
+
+| Removed                 | Use instead                   |
+| ----------------------- | ----------------------------- |
+| `TuiAlignContentTool`   | `TuiAlignButtonTool`          |
+| `TuiAnchorTool`         | `TuiAnchorButtonTool`         |
+| `TuiAttachTool`         | `TuiAttachButtonTool`         |
+| `TuiClearFormatTool`    | `TuiClearButtonTool`          |
+| `TuiCodeTool`           | `TuiCodeButtonTool`           |
+| `TuiDetailsTool`        | `TuiDetailsAddButtonTool`     |
+| `TuiDetailsRemoveTool`  | `TuiDetailsRemoveButtonTool`  |
+| `TuiFontSizeTool`       | `TuiFontSizeButtonTool`       |
+| `TuiFontStyleTool`      | `TuiFontStyleButtonTool`      |
+| `TuiHighlightColorTool` | `TuiHighlightColorButtonTool` |
+| `TuiImageTool`          | `TuiImageButtonTool`          |
+| `TuiInsertGroupTool`    | `TuiInsertGroupButtonTool`    |
+| `TuiInsertTableTool`    | `TuiInsertTableButtonTool`    |
+| `TuiLinkTool`           | `TuiLinkButtonTool`           |
+| `TuiListTool`           | `TuiListButtonTool`           |
+| `TuiPaintTool`          | `TuiPaintButtonTool`          |
+| `TuiRedoTool`           | `TuiRedoButtonTool`           |
+| `TuiSubscriptTool`      | `TuiSubscriptButtonTool`      |
+| `TuiSuperscriptTool`    | `TuiSuperscriptButtonTool`    |
+| `TuiTableMergeCellTool` | `TuiTableMergeCellButtonTool` |
+| `TuiTexTool`            | `TuiTexButtonTool`            |
+| `TuiTextColorTool`      | `TuiTextColorButtonTool`      |
+| `TuiUndoTool`           | `TuiUndoButtonTool`           |
+
+Also renamed: `TuiDetailsExtension` → `TuiDetails`, `TuiToolbarHostComponent` → `TuiToolbarHost`. `TuiDetailsOptions`
+(deprecated alias for `DetailsOptions`) was removed; use `TuiDetailsExtensionOptions` instead.
+
+#### Taiga UI v5 ([#2097](https://github.com/taiga-family/editor/pull/2097))
+
+Peer dependency on `@taiga-ui/*` has been updated from v4 to v5. Follow the
+[Taiga UI v5 migration guide](https://taiga-ui.dev/migration) before upgrading.
+
+#### Angular 19 ([#2084](https://github.com/taiga-family/editor/pull/2084))
+
+Minimum required Angular version is now **19**. Angular 16 is no longer supported.
+
 ### 🚀 Features
 
-- introduce &#x60;fontOptionContent&#x60; ([#2156](https://github.com/taiga-family/editor/pull/2156))
-  [(efc5def)](https://github.com/taiga-family/editor/commit/efc5defe35ac9db1fbfdab4dbedd872599a3553c)
-- drop hardcode mention content ([#2151](https://github.com/taiga-family/editor/pull/2151))
-  [(4d0d8aa)](https://github.com/taiga-family/editor/commit/4d0d8aa39f5b2140c13ae81bfdd05d036127feb2)
-- migration to TipTap v3 ([#2132](https://github.com/taiga-family/editor/pull/2132))
+- **TipTap v3**: upgraded from TipTap v2 to v3 ([#2132](https://github.com/taiga-family/editor/pull/2132))
   [(8d824d0)](https://github.com/taiga-family/editor/commit/8d824d00e29d0f22d77760f7c31df83c766122ed)
-- ssr safe ([#2095](https://github.com/taiga-family/editor/pull/2095))
+- **`fontOptionContent`**: full control over font/size option rendering via polymorpheus content
+  ([#2156](https://github.com/taiga-family/editor/pull/2156))
+  [(efc5def)](https://github.com/taiga-family/editor/commit/efc5defe35ac9db1fbfdab4dbedd872599a3553c)
+- **SSR**: editor is now SSR-safe ([#2095](https://github.com/taiga-family/editor/pull/2095))
   [(a7d583c)](https://github.com/taiga-family/editor/commit/a7d583c78bf39f00e182a60460003f61f46e3af6)
-- floating toolbar position shouldn&#x27;t jump when you click on the tool
+- **floating toolbar**: position no longer jumps on tool click
   ([#2093](https://github.com/taiga-family/editor/pull/2093))
   [(67fc26b)](https://github.com/taiga-family/editor/commit/67fc26b4aac9eecb9a9166ca4c4b4cbb9b89114e)
+- **zoneless**: compatible with Angular zoneless + hydration ([#2125](https://github.com/taiga-family/editor/pull/2125))
+  [(2bf12cc)](https://github.com/taiga-family/editor/commit/2bf12ccf02630dfed10f186fffe4be0b103babe2)
 
 ### 🐞 Bug Fixes
 
