@@ -1,6 +1,7 @@
 import {
     type CommandProps,
     type Content,
+    type Editor,
     Extension,
     extensions,
     type InsertContentAtOptions,
@@ -31,6 +32,12 @@ export interface TuiMarkdownStorage {
     parser: TuiEditorMarkdownParser;
     serializer: TuiMarkdownSerializer;
     getMarkdown(): string;
+    initialContent?: Content;
+}
+
+export interface TuiMarkdownContext {
+    editor: Editor;
+    options: Record<string, unknown>;
 }
 
 declare module '@tiptap/core' {
@@ -101,14 +108,14 @@ export const TuiMarkdown = Extension.create<TuiMarkdownOptions>({
             getMarkdown: () =>
                 this.editor.storage.markdown.serializer.serialize(this.editor.state.doc),
         };
-        (this.editor.options as any).initialContent = this.editor.options.content;
+        this.editor.storage.markdown.initialContent = this.editor.options.content;
         this.editor.options.content = this.editor.storage.markdown.parser.parse(
             this.editor.options.content,
         );
     },
     onCreate() {
-        this.editor.options.content = (this.editor.options as any).initialContent;
-        delete (this.editor.options as any).initialContent;
+        this.editor.options.content = this.editor.storage.markdown.initialContent ?? null;
+        this.editor.storage.markdown.initialContent = undefined;
     },
     addStorage() {
         return {

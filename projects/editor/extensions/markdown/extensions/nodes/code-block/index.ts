@@ -2,11 +2,14 @@ import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 import type MarkdownIt from 'markdown-it';
 
+import {type TuiMarkdownContext} from '../../../extension';
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
+
 export default Node.create({name: 'codeBlock'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode) {
+                serialize(state: TuiMarkdownSerializerState, node: ProseNode) {
                     state.write(`\`\`\`${node.attrs.language || ''}\n`);
                     state.text(node.textContent, false);
                     state.ensureNewLine();
@@ -14,10 +17,12 @@ export default Node.create({name: 'codeBlock'}).extend({
                     state.closeBlock(node);
                 },
                 parse: {
-                    setup(markdown: MarkdownIt) {
+                    setup(this: TuiMarkdownContext, markdown: MarkdownIt) {
                         markdown.set({
                             langPrefix:
-                                (this as any).options?.languageClassPrefix ?? 'language-',
+                                (this.options['languageClassPrefix'] as
+                                    | string
+                                    | undefined) ?? 'language-',
                         });
                     },
                     updateDOM(element: Element) {

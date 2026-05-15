@@ -1,5 +1,7 @@
-import {type Editor, getHTMLFromFragment, Mark} from '@tiptap/core';
+import {getHTMLFromFragment, Mark} from '@tiptap/core';
 import {Fragment, type Mark as ProseMark} from '@tiptap/pm/model';
+
+import {type TuiMarkdownContext} from '../../../extension';
 
 function getMarkTags(mark: ProseMark): [string, string] | null {
     const schema = mark.type.schema;
@@ -16,11 +18,8 @@ export default Mark.create({
         return {
             markdown: {
                 serialize: {
-                    open(_: any, mark: ProseMark) {
-                        if (
-                            !((this as any).editor as Editor | undefined)?.storage
-                                .markdown.options.html
-                        ) {
+                    open(this: TuiMarkdownContext, _: unknown, mark: ProseMark) {
+                        if (!this.editor.storage.markdown.options.html) {
                             console.warn(
                                 `Tiptap Markdown: "${mark.type.name}" mark is only available in html mode`,
                             );
@@ -30,9 +29,8 @@ export default Mark.create({
 
                         return getMarkTags(mark)?.[0] ?? '';
                     },
-                    close(_: any, mark: ProseMark): string {
-                        return ((this as any).editor as Editor | undefined)?.storage
-                            .markdown.options.html
+                    close(this: TuiMarkdownContext, _: unknown, mark: ProseMark): string {
+                        return this.editor.storage.markdown.options.html
                             ? (getMarkTags(mark)?.[1] ?? '')
                             : '';
                     },

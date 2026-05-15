@@ -1,13 +1,19 @@
 import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
 
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
 import HTMLNode from '../html';
 
 export default Node.create({name: 'hardBreak'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode, parent: ProseNode, index: number) {
+                serialize(
+                    state: TuiMarkdownSerializerState,
+                    node: ProseNode,
+                    parent: ProseNode,
+                    index: number,
+                ) {
                     for (let i = index + 1; i < parent.childCount; i++) {
                         if (parent.child(i).type !== node.type) {
                             state.write(

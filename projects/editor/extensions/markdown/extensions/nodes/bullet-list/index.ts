@@ -1,19 +1,23 @@
-import {type Editor, Node} from '@tiptap/core';
+import {Node} from '@tiptap/core';
 import {type Node as ProseNode} from '@tiptap/pm/model';
+
+import {type TuiMarkdownContext} from '../../../extension';
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
 
 export default Node.create({name: 'bulletList'}).extend({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode) {
+                serialize(
+                    this: TuiMarkdownContext,
+                    state: TuiMarkdownSerializerState,
+                    node: ProseNode,
+                ) {
                     return state.renderList(
                         node,
                         '  ',
                         () =>
-                            `${
-                                ((this as any)?.editor as Editor | undefined)?.storage
-                                    .markdown.options.bulletListMarker || '-'
-                            } `,
+                            `${this.editor.storage.markdown.options.bulletListMarker || '-'} `,
                     );
                 },
                 parse: {

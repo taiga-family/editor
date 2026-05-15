@@ -27,7 +27,7 @@ export class TuiEditorMarkdownParser {
         options?: Record<string, unknown>,
     ): T;
     public parse<T>(content: T, options?: Record<string, unknown>): T | string;
-    public parse(content: unknown, {inline}: Record<string, any> = {}): unknown {
+    public parse(content: unknown, {inline}: Record<string, unknown> = {}): unknown {
         if (typeof content === 'string') {
             this.editor.extensionManager.extensions.forEach((extension) => {
                 tuiGetMarkdownSpec(extension)?.parse?.setup?.call(
@@ -60,7 +60,7 @@ export class TuiEditorMarkdownParser {
 
     protected normalizeDOM(
         node: Element,
-        {inline, content}: Record<string, any>,
+        {inline, content}: {inline?: unknown; content: string},
     ): Element {
         this.normalizeBlocks(node);
 
@@ -123,8 +123,7 @@ export class TuiEditorMarkdownParser {
     protected withPatchedRenderer(md: MarkdownIt): MarkdownIt {
         const withoutNewLine =
             (renderer: MarkdownIt.Renderer.RenderRule | undefined) =>
-            (...args: any[]): string => {
-                // @ts-ignore
+            (...args: Parameters<MarkdownIt.Renderer.RenderRule>): string => {
                 const rendered = renderer?.(...args);
 
                 if (rendered === '\n') {
@@ -142,7 +141,7 @@ export class TuiEditorMarkdownParser {
         md.renderer.rules.code_block = withoutNewLine(md.renderer.rules.code_block);
         md.renderer.renderToken = withoutNewLine(
             md.renderer.renderToken.bind(md.renderer),
-        );
+        ) as unknown as typeof md.renderer.renderToken;
 
         return md;
     }

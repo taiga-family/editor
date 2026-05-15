@@ -20,11 +20,11 @@ export const TuiMarkdownClipboard = Extension.create({
                     clipboardTextParser: (text, context, plainText): Slice => {
                         // eslint-disable-next-line unicorn/no-typeof-undefined
                         if (typeof DOMParser === 'undefined') {
-                            return null as any;
+                            return null as unknown as Slice;
                         }
 
                         if (plainText || !this.options.transformPastedText) {
-                            return null as any; // pasting with shift key prevents formatting
+                            return null as unknown as Slice; // pasting with shift key prevents formatting
                         }
 
                         const parsed = this.editor.storage.markdown.parser.parse(text, {
@@ -38,14 +38,14 @@ export const TuiMarkdownClipboard = Extension.create({
                                   preserveWhitespace: true,
                                   context,
                               })
-                            : (null as any);
+                            : (null as unknown as Slice);
                     },
                     clipboardTextSerializer: (slice) =>
                         this.options.transformCopiedText
                             ? this.editor.storage.markdown.serializer.serialize(
                                   slice.content,
                               )
-                            : null,
+                            : '',
                 },
             }),
         ];

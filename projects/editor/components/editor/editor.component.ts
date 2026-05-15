@@ -170,7 +170,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     public readonly toolbar = input<TemplateRef<unknown> | null>(null);
     public readonly floatingToolbar = input(this.options.floatingToolbar);
     public readonly tools = input(this.options.tools);
-    public readonly fileAttached = output<Array<TuiEditorAttachedFile<any>>>();
+    public readonly fileAttached = output<Array<TuiEditorAttachedFile<unknown>>>();
     public readonly focusIn = output();
     public readonly focusOut = output();
     public readonly loaded = output<boolean>();

@@ -1,3 +1,8 @@
+import {type AnyExtension} from '@tiptap/core';
+import type MarkdownIt from 'markdown-it';
+import {type MarkdownSerializer} from 'prosemirror-markdown';
+
+import {type TuiMarkdownContext} from '../../extension';
 import Bold from '../marks/bold';
 import Code from '../marks/code';
 import HTMLMark from '../marks/html';
@@ -19,6 +24,14 @@ import Table from '../nodes/table';
 import TaskItem from '../nodes/task-item';
 import TaskList from '../nodes/task-list';
 import Text from '../nodes/text';
+
+export interface TuiMarkdownSpec {
+    serialize?: MarkdownSerializer['marks'][string] | MarkdownSerializer['nodes'][string];
+    parse?: {
+        setup?(this: TuiMarkdownContext, md: MarkdownIt): void;
+        updateDOM?(element: Element): void;
+    };
+}
 
 const extensions = [
     Blockquote,
@@ -44,11 +57,11 @@ const extensions = [
     Strike,
 ] as const;
 
-export function tuiGetMarkdownSpec(extension: any): any {
-    const markdownSpec = extension.storage?.markdown;
+export function tuiGetMarkdownSpec(extension: AnyExtension): TuiMarkdownSpec | null {
+    const markdownSpec = extension.storage.markdown as TuiMarkdownSpec | undefined;
 
     const defaultMarkdownSpec = extensions.find((e) => e.name === extension.name)?.storage
-        .markdown;
+        .markdown as TuiMarkdownSpec | undefined;
 
     return markdownSpec || defaultMarkdownSpec
         ? {

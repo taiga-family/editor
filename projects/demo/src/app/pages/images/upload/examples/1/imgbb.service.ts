@@ -36,7 +36,9 @@ export class ImgbbService {
 
         formData.append('image', base64.split(',').pop() ?? '');
 
-        return new URLSearchParams(formData as any);
+        return new URLSearchParams(
+            Array.from(formData.entries()) as Array<[string, string]>,
+        );
     }
 
     public get isLoading(): boolean {

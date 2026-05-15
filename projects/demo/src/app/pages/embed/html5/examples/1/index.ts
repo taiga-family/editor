@@ -131,13 +131,14 @@ export default class Example {
         Validators.required,
     );
 
-    protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
-        const tag = (file?.attrs?.type ?? '').split('/')[0];
+    protected attach([file]: Array<TuiEditorAttachedFile<unknown>>): void {
+        const attrs = file?.attrs as {type?: string} | undefined;
+        const tag = (attrs?.type ?? '').split('/')[0];
 
         this.wysiwyg()
             .editor?.getOriginTiptapEditor()
             ?.commands.insertContent(
-                `<${tag} controls width="100%"><source src="${file?.link}" type="${file?.attrs?.type}"></${tag}><p><a href="${file?.link}" download="${file?.name}">Download ${file?.name}</a></p>`,
+                `<${tag} controls width="100%"><source src="${file?.link}" type="${attrs?.type}"></${tag}><p><a href="${file?.link}" download="${file?.name}">Download ${file?.name}</a></p>`,
             );
     }
 }

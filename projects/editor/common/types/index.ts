@@ -49,103 +49,52 @@ export type {
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
-        iframe: {
-            setIframe(options: TuiEditableIframe): ReturnType;
+        anchor: {
+            removeAnchor(): ReturnType;
+            setAnchor(id: string): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
-        imageEditor: {
-            setEditableImage(imageConfigs: TuiEditableImage): ReturnType;
-            setImageLink(): ReturnType;
+        backgroundColor: {
+            setBackgroundColor(backgroundColor: string): ReturnType;
+            unsetBackgroundColor(): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
-        fontColor: {
-            /**
-             * Set the font color
-             */
-            setFontColor(fontColor: string): ReturnType;
-            /**
-             * Unset the font color
-             */
-            unsetFontColor(): ReturnType;
+        cellBackground: {
+            setCellBackground(background: string): ReturnType;
+            unsetCellBackground(): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
         details: {
             setDetails(): ReturnType;
             unsetDetailsAt(pos?: number): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
+        fileLink: {
+            setFileLink(preview: TuiEditorAttachedFile<unknown>): ReturnType;
+        };
+        fontColor: {
+            setFontColor(fontColor: string): ReturnType;
+            unsetFontColor(): ReturnType;
+        };
+        fontSize: {
+            setFontSize(fontSize: string): ReturnType;
+            unsetFontSize(): ReturnType;
+        };
         group: {
             removeGroup(): ReturnType;
             setGroup(): ReturnType;
             setGroupHilite(color: string): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
-        anchor: {
-            removeAnchor(): ReturnType;
-            setAnchor(id: string): ReturnType;
+        iframe: {
+            setIframe(options: TuiEditableIframe): ReturnType;
         };
-    }
-
-    interface Commands<ReturnType> {
+        imageEditor: {
+            setEditableImage(imageConfigs: TuiEditableImage): ReturnType;
+            setImageLink(): ReturnType;
+        };
         youtube: {
-            /**
-             * Insert a youtube video
-             */
             setYoutubeVideo(options: {
                 height?: number;
                 src: string;
                 start?: number;
                 width?: number;
             }): ReturnType;
-        };
-    }
-
-    interface Commands<ReturnType> {
-        cellBackground: {
-            setCellBackground(background: string): ReturnType;
-            unsetCellBackground(): ReturnType;
-        };
-    }
-
-    interface Commands<ReturnType> {
-        fileLink: {
-            setFileLink(preview: TuiEditorAttachedFile): ReturnType;
-        };
-    }
-
-    interface Commands<ReturnType> {
-        fontSize: {
-            /**
-             * Set the font size
-             */
-            setFontSize(fontSize: string): ReturnType;
-            /**
-             * Unset the font size
-             */
-            unsetFontSize(): ReturnType;
-        };
-    }
-
-    interface Commands<ReturnType> {
-        backgroundColor: {
-            /**
-             * Set the background color
-             */
-            setBackgroundColor(backgroundColor: string): ReturnType;
-            /**
-             * Unset the background color
-             */
-            unsetBackgroundColor(): ReturnType;
         };
     }
 }

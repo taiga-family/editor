@@ -3,7 +3,7 @@ import {Converter} from 'showdown';
 
 @Pipe({name: 'makeMarkdown'})
 export class MakeMarkdownPipe implements PipeTransform {
-    public transform(html?: string | null): any {
+    public transform(html?: string | null): string {
         return new Converter().makeMarkdown(
             html?.replaceAll('&lt;', '<').replaceAll('&gt;', '>') ?? '',
         );

@@ -1,5 +1,6 @@
 import {tuiDeleteNode, tuiGetSelectedContent} from '@taiga-ui/editor/utils';
 import {mergeAttributes, Node, type RawCommands} from '@tiptap/core';
+import {type NodeView} from '@tiptap/pm/view';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -63,36 +64,35 @@ export const tuiCreateGroupExtension = (
         },
 
         addNodeView() {
-            return ({HTMLAttributes, node}): any => {
-                if (globalThis.document) {
-                    const dom = document.createElement('div');
-                    const content = document.createElement('div');
+            return globalThis.document
+                ? ({HTMLAttributes, node}): NodeView => {
+                      const dom = document.createElement('div');
+                      const content = document.createElement('div');
 
-                    dom.classList.add(groupNodeClass);
-                    content.setAttribute('data-type', 'group');
+                      dom.classList.add(groupNodeClass);
+                      content.setAttribute('data-type', 'group');
 
-                    if (HTMLAttributes.style) {
-                        (node.attrs as any).style = HTMLAttributes.style;
-                        content.setAttribute('style', HTMLAttributes.style);
-                    }
+                      if (HTMLAttributes.style) {
+                          Object.assign(node.attrs, {style: HTMLAttributes.style});
 
-                    if (draggable) {
-                        const pointer = document.createElement('div');
+                          content.setAttribute('style', HTMLAttributes.style);
+                      }
 
-                        pointer.classList.add(groupPointerNodeClass);
-                        pointer.innerHTML = '';
-                        pointer.contentEditable = 'false';
+                      if (draggable) {
+                          const pointer = document.createElement('div');
 
-                        dom.append(pointer, content);
-                    } else {
-                        dom.append(content);
-                    }
+                          pointer.classList.add(groupPointerNodeClass);
+                          pointer.innerHTML = '';
+                          pointer.contentEditable = 'false';
 
-                    return {dom, contentDOM: content};
-                }
+                          dom.append(pointer, content);
+                      } else {
+                          dom.append(content);
+                      }
 
-                return null;
-            };
+                      return {dom, contentDOM: content};
+                  }
+                : null;
         },
 
         addCommands(): Partial<RawCommands> {

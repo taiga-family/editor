@@ -111,7 +111,7 @@ export default class Example {
         Validators.required,
     );
 
-    protected attach([file]: Array<TuiEditorAttachedFile<{type: string}>>): void {
+    protected attach([file]: Array<TuiEditorAttachedFile<unknown>>): void {
         if (!file) {
             return;
         }

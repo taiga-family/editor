@@ -134,21 +134,28 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
             ?.chain()
             .focus()
             .command(({commands, state}) => {
-                const setImage = ((commands as any).setEditableImage ??
-                    commands.setImage) as
-                    | ((config: TuiEditableImage) => boolean)
-                    | undefined;
+                // both commands are optional: available only when their extensions are loaded
+                const optionalCommands = commands as Omit<
+                    typeof commands,
+                    'setEditableImage' | 'setImage'
+                > & {
+                    setEditableImage?(config: TuiEditableImage): boolean;
+                    setImage?: typeof commands.setImage;
+                };
 
-                if (setImage) {
-                    const anchor = state.selection.anchor;
+                const setImage =
+                    optionalCommands.setEditableImage ?? optionalCommands.setImage;
 
-                    setImage({src});
-                    commands.setTextSelection(anchor);
-
-                    return true;
+                if (!setImage) {
+                    return false;
                 }
 
-                return false;
+                const anchor = state.selection.anchor;
+
+                setImage({src});
+                commands.setTextSelection(anchor);
+
+                return true;
             })
             .run();
     }
@@ -433,12 +440,17 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
         this.editor?.commands.removeAnchor();
     }
 
-    public setFileLink(preview: TuiEditorAttachedFile): void {
+    public setFileLink<T>(preview: TuiEditorAttachedFile<T>): void {
         this.editor?.commands.setFileLink(preview);
     }
 
     public setYoutubeVideo(options: TuiYoutubeOptions): void {
-        this.editor?.commands.setYoutubeVideo(options as any);
+        // TipTap restricts width/height to number, but the iframe attribute accepts strings like '100%'
+        this.editor?.commands.setYoutubeVideo(
+            options as unknown as Parameters<
+                typeof this.editor.commands.setYoutubeVideo
+            >[0],
+        );
     }
 
     public setIframe(options: TuiEditableIframe): void {

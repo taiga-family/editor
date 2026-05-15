@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core';
 import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
@@ -13,7 +13,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleTuiEmbedTool {
-    private readonly dropdown = viewChild.required<any>('dropdown');
+    private readonly dropdown = viewChild.required('dropdown', {read: TuiDropdownOpen});
     private readonly editor = inject(TuiTiptapEditorService);
     protected placeholder = 'https://my-embed.site.com/etc1235';
     protected url = '';
@@ -23,7 +23,7 @@ export class ExampleTuiEmbedTool {
             this.editor.setIframe({src});
 
             this.url = '';
-            this.dropdown().close();
+            this.dropdown().toggle(false);
         }
     }
 }

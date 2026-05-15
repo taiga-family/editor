@@ -179,7 +179,7 @@ export abstract class AbstractTuiEditor {
 
     public abstract removeAnchor(): void;
 
-    public abstract setFileLink(preview: TuiEditorAttachedFile): void;
+    public abstract setFileLink<T>(preview: TuiEditorAttachedFile<T>): void;
 
     public abstract setYoutubeVideo(options: TuiYoutubeOptions): void;
 

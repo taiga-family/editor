@@ -9,6 +9,7 @@ import {
     DetailsSummary,
     type DetailsSummaryOptions,
 } from '@tiptap/extension-details';
+import {type NodeView} from '@tiptap/pm/view';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -69,58 +70,58 @@ export const TuiDetails = Details.extend<TuiDetailsExtensionOptions>({
     },
 
     addNodeView() {
-        return ({node, getPos, editor}): any => {
-            if (globalThis.document) {
-                const wrapper = document.createElement('div');
-                const details = document.createElement('details');
-                const collapseButton = document.createElement('button');
-                const deleteButton = document.createElement('button');
+        return globalThis.document
+            ? ({node, getPos, editor}): NodeView => {
+                  const wrapper = document.createElement('div');
+                  const details = document.createElement('details');
+                  const collapseButton = document.createElement('button');
+                  const deleteButton = document.createElement('button');
 
-                wrapper.className = 't-details-wrapper';
-                collapseButton.className = 't-details-arrow';
-                collapseButton.type = 'button';
-                deleteButton.className = 't-details-delete';
-                deleteButton.type = 'button';
-                details.open = node.attrs.open;
+                  wrapper.className = 't-details-wrapper';
+                  collapseButton.className = 't-details-arrow';
+                  collapseButton.type = 'button';
+                  deleteButton.className = 't-details-delete';
+                  deleteButton.type = 'button';
+                  details.open = node.attrs.open;
 
-                const openHandler = (event: Event): void => {
-                    const pos = getPos();
+                  const openHandler = (event: Event): void => {
+                      const pos = getPos();
 
-                    if (pos === undefined) {
-                        return;
-                    }
+                      if (pos === undefined) {
+                          return;
+                      }
 
-                    details.open = !details.open;
+                      details.open = !details.open;
 
-                    (node.attrs as TuiMutable<{open: boolean}>).open = details.open;
+                      (node.attrs as TuiMutable<{open: boolean}>).open = details.open;
 
-                    event.target?.dispatchEvent(
-                        new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
-                    );
+                      event.target?.dispatchEvent(
+                          new CustomEvent(TUI_EDITOR_RESIZE_EVENT, {bubbles: true}),
+                      );
 
-                    editor.chain().focus().setTextSelection(pos).run();
-                };
+                      editor.chain().focus().setTextSelection(pos).run();
+                  };
 
-                collapseButton.addEventListener('click', openHandler);
+                  collapseButton.addEventListener('click', openHandler);
 
-                deleteButton.addEventListener(
-                    'click',
-                    (event) => {
-                        collapseButton.removeEventListener('click', openHandler);
-                        event.preventDefault();
-                        editor.commands.unsetDetailsAt(getPos());
-                    },
-                    {capture: true, once: true},
-                );
+                  deleteButton.addEventListener(
+                      'click',
+                      (event) => {
+                          collapseButton.removeEventListener('click', openHandler);
+                          event.preventDefault();
+                          editor.commands.unsetDetailsAt(getPos());
+                      },
+                      {capture: true, once: true},
+                  );
 
-                wrapper.append(details, collapseButton, deleteButton);
+                  wrapper.append(details, collapseButton, deleteButton);
 
-                return {
-                    dom: wrapper,
-                    contentDOM: details,
-                };
-            }
-        };
+                  return {
+                      dom: wrapper,
+                      contentDOM: details,
+                  };
+              }
+            : null;
     },
     addCommands(): Partial<RawCommands> {
         return {

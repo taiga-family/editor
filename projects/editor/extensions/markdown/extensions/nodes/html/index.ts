@@ -1,6 +1,8 @@
-import {type Editor, getHTMLFromFragment, Node} from '@tiptap/core';
+import {getHTMLFromFragment, Node} from '@tiptap/core';
 import {Fragment, type Node as ProseNode} from '@tiptap/pm/model';
 
+import {type TuiMarkdownContext} from '../../../extension';
+import {type TuiMarkdownSerializerState} from '../../../serialize/state';
 import {tuiElementFromString} from '../../../util/dom';
 
 export default Node.create({
@@ -8,8 +10,13 @@ export default Node.create({
     addStorage() {
         return {
             markdown: {
-                serialize(state: any, node: ProseNode, parent: ProseNode) {
-                    if (((this as any).editor as Editor).storage.markdown.options.html) {
+                serialize(
+                    this: TuiMarkdownContext,
+                    state: TuiMarkdownSerializerState,
+                    node: ProseNode,
+                    parent: ProseNode,
+                ) {
+                    if (this.editor.storage.markdown.options.html) {
                         state.write(serializeHTML(node, parent));
                     } else {
                         console.warn(

@@ -10,15 +10,12 @@ interface TrimOptions {
 }
 
 function scanDelims(text: string, pos: number): StateInline.Scanned {
-    // @ts-ignore
-    md.inline.State.prototype.scanDelims.call({src: text, posMax: text.length});
-    // @ts-ignore
-    const state = new md.inline.State(text, null, null, []);
+    const state = new md.inline.State(text, md, null, []);
 
     return state.scanDelims(pos, true);
 }
 
-function trimStart(options: TrimOptions): any {
+function trimStart(options: TrimOptions): TrimOptions {
     const {text, delim, from, to} = options;
     let pos = from;
     let res = text;
@@ -32,10 +29,10 @@ function trimStart(options: TrimOptions): any {
         pos++;
     }
 
-    return {text: res, from: pos, to};
+    return {text: res, delim, from: pos, to};
 }
 
-function trimEnd(options: TrimOptions): any {
+function trimEnd(options: TrimOptions): TrimOptions {
     const {text, delim, from, to} = options;
     let pos = to;
     let res = text;
@@ -49,7 +46,7 @@ function trimEnd(options: TrimOptions): any {
         pos--;
     }
 
-    return {text: res, from, to: pos};
+    return {text: res, delim, from, to: pos};
 }
 
 export function tuiTrimInline(options: TrimOptions): string {

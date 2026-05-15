@@ -1,5 +1,6 @@
 import {type Editor, type Mark as Mark2, type Node as Node2} from '@tiptap/core';
-import {type Fragment, type Mark, type Node} from '@tiptap/pm/model';
+import {type Fragment, type Node} from '@tiptap/pm/model';
+import {type MarkdownSerializer} from 'prosemirror-markdown';
 
 import HTMLMark from '../extensions/marks/html';
 import HardBreak from '../extensions/nodes/hard-break';
@@ -10,8 +11,7 @@ import {TuiMarkdownSerializerState} from './state';
 export class TuiMarkdownSerializer {
     constructor(protected readonly editor: Editor) {}
 
-    public get nodes(): readonly Node[] {
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    public get nodes(): MarkdownSerializer['nodes'] {
         return {
             ...Object.fromEntries(
                 Object.keys(this.editor.schema.nodes).map((name) => [
@@ -24,18 +24,17 @@ export class TuiMarkdownSerializer {
                     .filter(
                         (extension) =>
                             extension.type === 'node' &&
-                            this.serializeNode(extension as any),
+                            this.serializeNode(extension as Node2),
                     )
                     .map((extension) => [
                         extension.name,
-                        this.serializeNode(extension as any),
+                        this.serializeNode(extension as Node2),
                     ]),
             ),
-        } as Node[];
+        } as unknown as MarkdownSerializer['nodes'];
     }
 
-    public get marks(): readonly Mark[] {
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    public get marks(): MarkdownSerializer['marks'] {
         return {
             ...Object.fromEntries(
                 Object.keys(this.editor.schema.marks).map((name) => [
@@ -48,17 +47,17 @@ export class TuiMarkdownSerializer {
                     .filter(
                         (extension) =>
                             extension.type === 'mark' &&
-                            this.serializeMark(extension as any),
+                            this.serializeMark(extension as Mark2),
                     )
                     .map((extension) => [
                         extension.name,
-                        this.serializeMark(extension as any),
+                        this.serializeMark(extension as Mark2),
                     ]),
             ),
-        } as Mark[];
+        } as unknown as MarkdownSerializer['marks'];
     }
 
-    public serialize(content: Fragment | Node): any {
+    public serialize(content: Fragment | Node): string {
         const state = new TuiMarkdownSerializerState(this.nodes, this.marks, {
             hardBreakNodeName: HardBreak.name,
         });
@@ -68,18 +67,20 @@ export class TuiMarkdownSerializer {
         return state.out;
     }
 
-    public serializeNode(node: Node2): any {
-        return tuiGetMarkdownSpec(node)?.serialize?.bind({
-            editor: this.editor,
-            options: node.options,
-        });
+    public serializeNode(node: Node2): MarkdownSerializer['nodes'][string] | undefined {
+        const serialize = tuiGetMarkdownSpec(node)?.serialize;
+
+        return typeof serialize === 'function'
+            ? serialize.bind({editor: this.editor, options: node.options})
+            : undefined;
     }
 
-    public serializeMark(mark: Mark2): any {
+    public serializeMark(mark: Mark2): MarkdownSerializer['marks'][string] | null {
         const serialize = tuiGetMarkdownSpec(mark)?.serialize;
 
-        return serialize
-            ? {
+        return !serialize || typeof serialize === 'function'
+            ? null
+            : {
                   ...serialize,
                   open:
                       typeof serialize.open === 'function'
@@ -95,7 +96,6 @@ export class TuiMarkdownSerializer {
                                 options: mark.options,
                             })
                           : serialize.close,
-              }
-            : null;
+              };
     }
 }

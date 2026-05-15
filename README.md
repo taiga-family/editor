@@ -10,6 +10,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@taiga-ui/editor.svg)](https://npmjs.com/package/@taiga-ui/editor)
 [![All packages CI](https://github.com/taiga-family/editor/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/taiga-family/editor/actions/workflows/build.yml)
+[![](https://img.shields.io/npm/dw/@taiga-ui/editor)](https://npmjs.com/package/@taiga-ui/editor)
 
 </div>
 
@@ -34,10 +35,6 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 Editor is a part of [Taiga UI](https://github.com/taiga-family/taiga-ui) libraries family which is backed and used by a
 large enterprise. This means you can rely on timely support and continuous development.
-
-| **Package**                                                    | **Version**                                                       | **Downloads**                                                                                         |
-| -------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| [@taiga-ui/editor](https://npmjs.com/package/@taiga-ui/editor) | ![](https://img.shields.io/npm/v/%40taiga-ui%2Feditor/latest.svg) | [![](https://img.shields.io/npm/dw/@taiga-ui/tsconfig)](https://npmjs.com/package/@taiga-ui/tsconfig) |
 
 ## License
 
