@@ -1,0 +1,30 @@
+import"./chunk-DAQOROHW.js";var t=`import {ChangeDetectionStrategy, Component, inject, viewChild} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiDropdown, TuiDropdownOpen} from '@taiga-ui/core';
+import {TuiTiptapEditorService} from '@taiga-ui/editor';
+import {TuiInputInline} from '@taiga-ui/kit';
+
+@Component({
+    selector: 'embed-tool',
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
+    templateUrl: './embed-tool.template.html',
+    styleUrl: './embed-tool.styles.less',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ExampleTuiEmbedTool {
+    private readonly dropdown = viewChild.required('dropdown', {read: TuiDropdownOpen});
+    private readonly editor = inject(TuiTiptapEditorService);
+    protected placeholder = 'https://my-embed.site.com/etc1235';
+    protected url = '';
+
+    protected embedSource(src: string): void {
+        if (src) {
+            this.editor.setIframe({src});
+
+            this.url = '';
+            this.dropdown().toggle(false);
+        }
+    }
+}
+`;export{t as default};
