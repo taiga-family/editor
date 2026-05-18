@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
-      - uses: taiga-family/ci/actions/setup/node@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
-      - uses: taiga-family/ci/actions/setup/cypress@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/variables@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/setup/node@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/setup/cypress@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
       - run: npx nx component-test demo-cypress
 
   e2e:
@@ -24,24 +24,24 @@ jobs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
-      - uses: taiga-family/ci/actions/setup/node@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
-      - uses: taiga-family/ci/actions/setup/playwright@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/variables@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/setup/node@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: taiga-family/ci/actions/setup/playwright@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
 
       - run: npx nx build editor-demo -c development
-      - uses: taiga-family/ci/actions/run/serve@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/run/serve@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/ci/actions/run/clone@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/run/clone@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/run/serve@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -71,7 +71,7 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -88,7 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/variables@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -102,7 +102,7 @@ jobs:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
 
-      - uses: taiga-family/ci/actions/setup/playwright-diff-check@252022b9287ebd3a55cf1bfe576e39aa99e99928 # v1.214.0
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
         with:
           pw-result: ${{ env.PW_RESULT }}
 
