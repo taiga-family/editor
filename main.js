@@ -7,10 +7,10 @@ import {
   TuiAddonDoc,
   TuiDocMain,
   tuiProvideRoutePageTab
-} from "./chunk-5KHKUJED.js";
-import "./chunk-34YKIHCK.js";
-import "./chunk-CLCX3JH2.js";
-import "./chunk-WFC365XV.js";
+} from "./chunk-5BCUYUXB.js";
+import "./chunk-STT5GWZO.js";
+import "./chunk-CZ44SNJO.js";
+import "./chunk-FGUPXREW.js";
 import {
   NavigationEnd,
   Router,
@@ -18,16 +18,16 @@ import {
   provideRouter,
   withInMemoryScrolling
 } from "./chunk-TNPUBTXS.js";
-import "./chunk-ZB4FQPU6.js";
-import "./chunk-VBCJONIF.js";
+import "./chunk-APMVHMIW.js";
+import "./chunk-3CRZRPMF.js";
 import {
   PolymorpheusComponent,
   TUI_DARK_MODE,
   TuiButton,
   TuiLink,
   provideTaiga
-} from "./chunk-42JXV3G3.js";
-import "./chunk-4FRPOUVT.js";
+} from "./chunk-CV6PGG7O.js";
+import "./chunk-UOQYRYT2.js";
 import {
   provideHighlightOptions
 } from "./chunk-GZISCF73.js";
@@ -36,11 +36,11 @@ import {
   DomRendererFactory2,
   bootstrapApplication
 } from "./chunk-YQZG6ATW.js";
-import "./chunk-BQB57HZN.js";
+import "./chunk-2UOD7KNB.js";
 import {
   WA_LOCAL_STORAGE,
   toSignal
-} from "./chunk-EEBAV3RI.js";
+} from "./chunk-6HH4HFWJ.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -4893,197 +4893,197 @@ var DEMO_PAGES = [
 var routes = [
   tuiProvideRoutePageTab({
     path: TuiDemoPath.GettingStarted,
-    loadComponent: async () => import("./chunk-B7NAPOGJ.js"),
+    loadComponent: async () => import("./chunk-76NPDDUZ.js"),
     title: "Getting started"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.StarterKit,
-    loadComponent: async () => import("./chunk-IMD7EINL.js"),
+    loadComponent: async () => import("./chunk-2PXCYJX3.js"),
     title: "StarterKit"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Options,
-    loadComponent: async () => import("./chunk-3HMS4R3Y.js"),
+    loadComponent: async () => import("./chunk-I2C53UZC.js"),
     title: "ParseOptions"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Sanitize,
-    loadComponent: async () => import("./chunk-MPJSFHOS.js"),
+    loadComponent: async () => import("./chunk-UCKCK7YO.js"),
     title: "Sanitize"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Font,
-    loadComponent: async () => import("./chunk-YJVAUSWG.js"),
+    loadComponent: async () => import("./chunk-CYQ5G7XA.js"),
     title: "Font"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Anchors,
-    loadComponent: async () => import("./chunk-XRFHY6YK.js"),
+    loadComponent: async () => import("./chunk-YJ4QKTZW.js"),
     title: "Anchors"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Appearance,
-    loadComponent: async () => import("./chunk-R6SVWEJS.js"),
+    loadComponent: async () => import("./chunk-26SZOBVO.js"),
     title: "Appearance"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Checkbox,
-    loadComponent: async () => import("./chunk-2B6CBXJU.js"),
+    loadComponent: async () => import("./chunk-JAHB4DUV.js"),
     title: "Checkbox"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Mention,
-    loadComponent: async () => import("./chunk-JGOFXD4O.js"),
+    loadComponent: async () => import("./chunk-HTAV5HRM.js"),
     title: "Mention"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Details,
-    loadComponent: async () => import("./chunk-DV3WHVQE.js"),
+    loadComponent: async () => import("./chunk-ZTVL7H3Q.js"),
     title: "Details"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.CharacterCounter,
-    loadComponent: async () => import("./chunk-IR6GR3J5.js"),
+    loadComponent: async () => import("./chunk-HABADJ56.js"),
     title: "Character counter"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.SlashCommand,
-    loadComponent: async () => import("./chunk-6X52NYPC.js"),
+    loadComponent: async () => import("./chunk-BCNLQ6OV.js"),
     title: "Slash commands"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Focus,
-    loadComponent: async () => import("./chunk-WZFHG7L7.js"),
+    loadComponent: async () => import("./chunk-5EUTKD3S.js"),
     title: "Focus"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Groups,
-    loadComponent: async () => import("./chunk-4J2SOWGY.js"),
+    loadComponent: async () => import("./chunk-LJMGCXOM.js"),
     title: "Groups"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.TableOfContents,
-    loadComponent: async () => import("./chunk-UH4SLIN6.js"),
+    loadComponent: async () => import("./chunk-W3UMDWRV.js"),
     title: "Table of Contents"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.UploadFiles,
-    loadComponent: async () => import("./chunk-6BJMN3FH.js"),
+    loadComponent: async () => import("./chunk-7HQ3MYPB.js"),
     title: "Upload files"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.PasteEmojiTool,
-    loadComponent: async () => import("./chunk-TS6T4OZV.js"),
+    loadComponent: async () => import("./chunk-KN4FHZSC.js"),
     title: "Editor \u2014 Paste emoji custom tool"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.Span,
-    loadComponent: async () => import("./chunk-UWRZLAET.js"),
+    loadComponent: async () => import("./chunk-4KX5FIHD.js"),
     title: "Editor \u2014 span thread tool"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ColorPickerTool,
-    loadComponent: async () => import("./chunk-7RKW3MA6.js"),
+    loadComponent: async () => import("./chunk-CF7I2IND.js"),
     title: "Editor \u2014 Color picker custom tool"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.PasteImageTool,
-    loadComponent: async () => import("./chunk-NT6UZ7IE.js"),
+    loadComponent: async () => import("./chunk-FFEPU4CK.js"),
     title: "Editor \u2014 Paste image custom tool"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.PasteImageTool,
-    loadComponent: async () => import("./chunk-NT6UZ7IE.js"),
+    loadComponent: async () => import("./chunk-FFEPU4CK.js"),
     title: "Editor \u2014 Paste image custom tool"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.HighlightText,
-    loadComponent: async () => import("./chunk-TVXDZ75H.js"),
+    loadComponent: async () => import("./chunk-GFOY3SVO.js"),
     title: "Editor \u2014 Highlight text"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ProcessingLegacyHtml,
-    loadComponent: async () => import("./chunk-TATIQCRR.js"),
+    loadComponent: async () => import("./chunk-UXZRNW5G.js"),
     title: "Editor \u2014 Legacy html"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ProcessingCleanupHtml,
-    loadComponent: async () => import("./chunk-NTQKZXNZ.js"),
+    loadComponent: async () => import("./chunk-YWCGDLXD.js"),
     title: "Editor \u2014 Cleanup html"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ClipboardPaste,
-    loadComponent: async () => import("./chunk-YGNMYW5R.js"),
+    loadComponent: async () => import("./chunk-2WVMCBR3.js"),
     title: "Editor \u2014 Clipboard paste"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ProcessingMarkdown,
-    loadComponent: async () => import("./chunk-WQIODP33.js"),
+    loadComponent: async () => import("./chunk-UIBOMHZ4.js"),
     title: "Editor \u2014 Markdown"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ProcessingMarkdownExtension,
-    loadComponent: async () => import("./chunk-OI62OYW5.js"),
+    loadComponent: async () => import("./chunk-4TJ6TKJZ.js"),
     title: "Editor \u2014 Markdown"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.HighlightCode,
-    loadComponent: async () => import("./chunk-JXKANNMR.js"),
+    loadComponent: async () => import("./chunk-YC64WCCD.js"),
     title: "Editor \u2014 Highlight code"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ImagesResizable,
-    loadComponent: async () => import("./chunk-TX2J3HB7.js"),
+    loadComponent: async () => import("./chunk-VXO6PJ5Y.js"),
     title: "Editor  \u2014 Resizable images"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ImagesPreview,
-    loadComponent: async () => import("./chunk-SKPVI277.js"),
+    loadComponent: async () => import("./chunk-EQO7XX3K.js"),
     title: "Editor  \u2014 Preview images"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.UploadImages,
-    loadComponent: async () => import("./chunk-WVDZILMW.js"),
+    loadComponent: async () => import("./chunk-JJDX6R4M.js"),
     title: "Editor \u2014 Upload images"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.EmbedYoutube,
-    loadComponent: async () => import("./chunk-VQALWOYY.js"),
+    loadComponent: async () => import("./chunk-XMK7XD3S.js"),
     title: "Editor \u2014 YouTube"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.EmbedIframe,
-    loadComponent: async () => import("./chunk-T77RNKPW.js"),
+    loadComponent: async () => import("./chunk-UA4FXPWU.js"),
     title: "Editor \u2014 Iframe"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.EmbedHtml5,
-    loadComponent: async () => import("./chunk-SDA54UXK.js"),
+    loadComponent: async () => import("./chunk-6C4M4X54.js"),
     title: "Editor \u2014 HTML5"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.EmbedPDF,
-    loadComponent: async () => import("./chunk-7Y5H74KL.js"),
+    loadComponent: async () => import("./chunk-PXDN3KWT.js"),
     title: "Editor \u2014 PDF"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ToolbarBottom,
-    loadComponent: async () => import("./chunk-GLLHL22Z.js"),
+    loadComponent: async () => import("./chunk-JUTYIVJK.js"),
     title: "Editor \u2014 Toolbar"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ToolbarFloating,
-    loadComponent: async () => import("./chunk-YKDIKANM.js"),
+    loadComponent: async () => import("./chunk-V4BD2TFV.js"),
     title: "Editor \u2014 Toolbar"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ToolbarShared,
-    loadComponent: async () => import("./chunk-H47PKD5W.js"),
+    loadComponent: async () => import("./chunk-WYMIM7RH.js"),
     title: "Editor \u2014 Toolbar"
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ToolbarCustom,
-    loadComponent: async () => import("./chunk-MGAO5XXR.js"),
+    loadComponent: async () => import("./chunk-OZDYYPRT.js"),
     title: "Editor \u2014 Toolbar"
   }),
   {
