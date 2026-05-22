@@ -34,6 +34,7 @@ import {TuiToolbarButtonTool} from '../tool-button';
 export class TuiImageButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
+
     protected readonly image = viewChild<ElementRef<HTMLInputElement>>('image');
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

@@ -15,7 +15,9 @@ export abstract class AbstractTuiEditorResizable<
     T extends Attrs<TuiEditorResizableContainer | null>,
 > extends TuiNodeViewNg {
     protected abstract readonly changeDetector: ChangeDetectorRef;
+
     private localNode!: NodeViewProps['node'];
+
     protected currentHeight = 0;
     protected currentWidth = 0;
 

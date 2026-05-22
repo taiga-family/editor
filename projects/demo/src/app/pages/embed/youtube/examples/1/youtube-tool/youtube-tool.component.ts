@@ -15,6 +15,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 export class ExampleTuiYoutubeTool {
     private readonly dropdown = viewChild.required('dropdown', {read: TuiDropdownOpen});
     private readonly editor = inject(TuiTiptapEditorService);
+
     protected youtubeLogo = 'https://cdn.worldvectorlogo.com/logos/play-icon.svg';
     protected placeholder = 'https://www.youtube.com/embed/abc..';
     protected url = '';

@@ -85,10 +85,13 @@ type Tools = Set<TuiEditorToolType> | readonly TuiEditorToolType[];
 })
 export class TuiFontStyleButtonTool extends TuiToolbarTool {
     private toolsSet = new Set(this.options.tools);
+
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly editorTool = TuiEditorTool;
+
     public readonly enabledTools = input<Tools>();
+
     protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {

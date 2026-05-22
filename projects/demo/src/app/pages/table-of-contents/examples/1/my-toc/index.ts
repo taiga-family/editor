@@ -20,6 +20,7 @@ export interface MyContentsInfo {
 })
 export class MyToc {
     private readonly doc = inject(DOCUMENT);
+
     public readonly contents = input<MyContentsInfo | null>();
 
     public onItemClick(event: Event, item: TableOfContentDataItem): void {

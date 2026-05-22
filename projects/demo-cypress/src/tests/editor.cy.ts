@@ -20,6 +20,7 @@ import {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/e
 })
 class Test {
     protected readonly builtInTools = TUI_EDITOR_DEFAULT_TOOLS;
+
     public control = new FormControl('<p>Text</p>');
     public count = 0;
 

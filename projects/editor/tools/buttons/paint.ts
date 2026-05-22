@@ -49,7 +49,9 @@ import {TuiToolbarButtonTool} from '../tool-button';
 export class TuiPaintButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = inject(TuiDropdownOpen).open;
+
     public readonly colors = input(this.options.backgroundColors ?? this.options.colors);
+
     protected readonly template = viewChild(TemplateRef);
 
     protected readonly templateEffect = effect(() => {

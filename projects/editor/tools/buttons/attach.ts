@@ -41,8 +41,10 @@ import {TuiToolbarButtonTool} from '../tool-button';
 export class TuiAttachButtonTool extends TuiToolbarTool {
     private readonly destroyRef = inject(DestroyRef);
     private readonly filesLoader = inject(TUI_ATTACH_FILES_LOADER, {optional: true});
+
     protected readonly fileUpload = viewChild<ElementRef<HTMLInputElement>>('fileUpload');
     protected readonly attachOptions = inject(TUI_ATTACH_FILES_OPTIONS);
+
     public readonly fileAttached = output<TuiEditorAttachedFile[]>();
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {

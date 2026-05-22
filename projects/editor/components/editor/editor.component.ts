@@ -148,6 +148,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     protected readonly editorLoaded = signal(false);
     protected readonly editorLoaded$ = inject(TIPTAP_EDITOR);
     protected readonly cd = inject(ChangeDetectorRef);
+
     public readonly editorService = inject(TuiTiptapEditorService);
 
     protected readonly $ = this.editorLoaded$.pipe(takeUntilDestroyed()).subscribe(() => {
