@@ -55,6 +55,7 @@ import {ImgbbService} from './imgbb.service';
 })
 export default class Example {
     private readonly editor = viewChild(TuiEditor);
+
     protected readonly doc = inject(DOCUMENT);
     protected readonly imgbbService = inject(ImgbbService);
     protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Img];

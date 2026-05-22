@@ -56,6 +56,7 @@ More at [documentation](https://taiga-ui.dev)
 export default class Example implements OnInit {
     private readonly wysiwyg = viewChild.required(TuiEditor);
     private readonly destroyRef = inject(DestroyRef);
+
     protected markdown$ = new Subject<string>();
     protected readonly builtInTools = [TuiEditorTool.Undo];
     protected control: FormControl = new FormControl(markdown);

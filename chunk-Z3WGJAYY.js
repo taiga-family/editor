@@ -6,25 +6,27 @@ import {TuiTiptapEditorService} from '@taiga-ui/editor';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    selector: 'embed-tool',
+    selector: 'image-tool',
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiDropdown, TuiInputInline],
-    templateUrl: './embed-tool.template.html',
-    styleUrl: './embed-tool.styles.less',
+    templateUrl: './image-tool.template.html',
+    styleUrl: './image-tool.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExampleTuiEmbedTool {
+export class ExampleTuiPasteImageTool {
     private readonly dropdown = viewChild.required('dropdown', {read: TuiDropdownOpen});
     private readonly editor = inject(TuiTiptapEditorService);
-    protected placeholder = 'https://my-embed.site.com/etc1235';
+
+    protected youtubeLogo = 'assets/icons/google.svg';
+    protected placeholder = 'Path to Image URL (ex. https://your-site.com/image.png)';
     protected url = '';
 
-    protected embedSource(src: string): void {
-        if (src) {
-            this.editor.setIframe({src});
-
-            this.url = '';
-            this.dropdown().toggle(false);
+    protected insertImage(src: string): void {
+        if (!src) {
+            return;
         }
+
+        this.editor.setImage(src);
+        this.dropdown().toggle(false);
     }
 }
 `;export{t as default};

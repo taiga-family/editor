@@ -15,6 +15,7 @@ import {distinctUntilChanged, map} from 'rxjs';
 export class ExampleTuiFontSizeTool {
     private readonly editor = inject(TuiTiptapEditorService);
     private readonly win = inject(WA_WINDOW);
+
     protected readonly sizes = [8, 9, 10, 11, 12, 14, 16, 18, 24, 30];
 
     protected readonly size$ = this.editor.valueChange$.pipe(

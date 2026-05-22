@@ -44,6 +44,7 @@ import {type User} from './mention/user';
 })
 export default class Example implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
+
     protected readonly wysiwyg = viewChild.required(TuiEditor);
     protected readonly isE2E = inject(WA_IS_E2E);
 
