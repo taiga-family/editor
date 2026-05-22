@@ -30,6 +30,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     private readonly editorRef: Observable<Editor | null> = inject(TIPTAP_EDITOR);
     private readonly options = inject(TUI_EDITOR_OPTIONS);
     private firstInitContent = false;
+
     protected selectionSnapshot: TuiSelectionSnapshot | null = null;
     protected editor?: Editor;
 

@@ -91,6 +91,7 @@ const MIN_DISTANCE_PX = 70;
 })
 export class TuiInsertTableButtonTool extends TuiToolbarTool {
     private readonly win = inject(WA_WINDOW);
+
     protected readonly dropdown = tuiDropdown(null);
     protected readonly open = inject(TuiDropdownOpen).open;
     protected readonly cols = signal(1);

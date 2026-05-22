@@ -33,8 +33,10 @@ export class TuiEditorSocket {
     private readonly elementRef = inject(ElementRef);
     private readonly renderer = inject(Renderer2);
     private readonly doc = inject(DOCUMENT);
+
     protected readonly options = inject(TUI_EDITOR_OPTIONS);
     protected readonly html = signal<SafeHtml | string | null>(null);
+
     public readonly content = input<string | null>(null);
 
     protected readonly contentEffect = effect(() => {

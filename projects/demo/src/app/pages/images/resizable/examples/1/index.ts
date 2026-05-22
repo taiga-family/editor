@@ -44,6 +44,7 @@ export default class Example {
     private readonly http = inject(HttpClient);
     private readonly imageLoader = inject(TUI_IMAGE_LOADER);
     private readonly platformId = inject(PLATFORM_ID);
+
     protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly builtInTools = [

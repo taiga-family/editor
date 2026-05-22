@@ -84,6 +84,7 @@ import {map, type Observable, of} from 'rxjs';
 })
 export default class Example {
     private readonly wysiwyg = viewChild.required(TuiEditor);
+
     protected readonly isE2E = inject(WA_IS_E2E);
 
     protected readonly isNotStatic =

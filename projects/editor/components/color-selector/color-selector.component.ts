@@ -55,6 +55,7 @@ export class TuiColorSelector {
     private currentStop = this.selectorOptions.gradient.stop;
     private direction = this.selectorOptions.gradient.direction;
     private readonly sanitizer = inject(DomSanitizer);
+
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected open = false;
     protected rgba = this.selectorOptions.color;

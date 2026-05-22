@@ -22,7 +22,9 @@ import {tuiHsvToRgb, tuiRgbToHsv} from '@taiga-ui/editor/utils';
 })
 export class TuiColorPicker {
     private readonly sanitizer = inject(DomSanitizer);
+
     public readonly color = input<[number, number, number, number]>([0, 0, 0, 1]);
+
     protected point: TuiPoint = [0, 1];
     protected hue = 0;
     protected opacity = 1;

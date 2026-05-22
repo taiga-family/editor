@@ -23,6 +23,7 @@ import {TUI_IFRAME_EDITOR_OPTIONS} from './iframe-editor.options';
 })
 export class TuiIframeEditor extends AbstractTuiEditorResizable<TuiEditableIframe> {
     private readonly el: ElementRef<HTMLDivElement> = inject(ElementRef);
+
     protected readonly options = inject(TUI_IFRAME_EDITOR_OPTIONS);
     protected readonly changeDetector = inject(ChangeDetectorRef);
 
