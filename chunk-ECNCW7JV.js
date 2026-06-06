@@ -1,0 +1,1 @@
+import{a,b}from"./chunk-UVUQL3LA.js";import"./chunk-BVO46SGL.js";import"./chunk-JZH4PHMS.js";import"./chunk-JINKT2FQ.js";import"./chunk-EW2GO4AL.js";import"./chunk-DAQOROHW.js";export{a as TUI_EDITOR_GROUP_DEFAULT_OPTIONS,b as tuiCreateGroupExtension};
