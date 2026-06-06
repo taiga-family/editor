@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-      - uses: taiga-family/ci/actions/setup/variables@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
-      - uses: taiga-family/ci/actions/setup/node@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.220.0
+      - uses: taiga-family/ci/actions/setup/node@v1.220.0
       - run: npx nx build editor-demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
       - uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
