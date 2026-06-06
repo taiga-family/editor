@@ -27,7 +27,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
       - uses: taiga-family/ci/actions/setup/node@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
         with:
-            node-version: 22.x
+          node-version: 22.x
       - uses: taiga-family/ci/actions/setup/playwright@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
 
       - run: npx nx build editor-demo -c development
