@@ -10,9 +10,9 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: taiga-family/ci/actions/setup/variables@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
-      - uses: taiga-family/ci/actions/setup/node@3a3e5222b178072df6cb0d7dfb85baf101de8852 # v1.215.0
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: taiga-family/ci/actions/setup/variables@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
+      - uses: taiga-family/ci/actions/setup/node@5762a222cd9305487d147b1bdf6018fc718206bd # v1.219.0
       - run: npm run test
       - uses: codecov/codecov-action@e79a6962e0d4c0c17b229090214935d2e33f8354 # v6.0.1
         with:
