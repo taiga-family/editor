@@ -150,6 +150,11 @@ export const routes: Routes = [
         title: 'Editor  — Resizable images',
     }),
     route({
+        path: TuiDemoPath.ImagesLink,
+        loadComponent: async () => import('./pages/images/link'),
+        title: 'Editor  — Image as link',
+    }),
+    route({
         path: TuiDemoPath.ImagesPreview,
         loadComponent: async () => import('./pages/images/preview'),
         title: 'Editor  — Preview images',

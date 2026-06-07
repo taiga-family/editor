@@ -112,6 +112,7 @@ export class TuiImageEditor
 
     public setLink(url: string | null): void {
         this.attrs['data-href'] = url;
+        this.attrs['data-target'] = null;
         this.isLinkDropdownOpened = false;
 
         // Caretaker note:

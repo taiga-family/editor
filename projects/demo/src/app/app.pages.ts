@@ -216,6 +216,13 @@ export const DEMO_PAGES: TuiDocRoutePages = [
             },
             {
                 section: 'Documentation',
+                title: 'Image as link',
+                keywords:
+                    'editor, image link, linked image, href, target, wysiwyg, редактор, картинка, ссылка, html, rich, text',
+                route: `/${TuiDemoPath.ImagesLink}`,
+            },
+            {
+                section: 'Documentation',
                 title: 'Preview images',
                 keywords:
                     'editor, preview, images, wysiwyg, редактор, текст, html, rich, text',

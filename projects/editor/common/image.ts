@@ -11,5 +11,6 @@ export interface TuiEditableImage {
     width?: number | string | null;
     style?: string | null;
     'data-href'?: string | null;
+    'data-target'?: string | null;
     'data-editing-href'?: boolean | null;
 }
