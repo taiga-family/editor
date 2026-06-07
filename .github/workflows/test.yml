@@ -14,7 +14,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@6e89be341f2bb8247f26ac563e72344e6c9cf9ad # v1.220.0
       - uses: taiga-family/ci/actions/setup/node@6e89be341f2bb8247f26ac563e72344e6c9cf9ad # v1.220.0
       - run: npm run test
-      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v6.0.2
+      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
         with:
           directory: ./coverage/editor
           flags: editor
