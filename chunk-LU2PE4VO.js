@@ -1,0 +1,15 @@
+import{Da as N,ia as O,n as M}from"./chunk-UIAOP23X.js";import"./chunk-P2UTOPPM.js";import"./chunk-J66LCKH7.js";import"./chunk-K5P7PVTD.js";import"./chunk-45NFEOVH.js";import"./chunk-SMY2BZZ3.js";import"./chunk-DE6YCATB.js";import"./chunk-FSGOUI54.js";import"./chunk-UVUQL3LA.js";import"./chunk-7R5SRWF2.js";import"./chunk-7XSQY7R3.js";import"./chunk-OGRFG7NU.js";import"./chunk-F576MP2K.js";import"./chunk-BJPR54Z3.js";import"./chunk-Z2T66FIY.js";import"./chunk-FFHAPTBQ.js";import"./chunk-JEXZUBYX.js";import{a as D,b,c as h}from"./chunk-2AXTR5CC.js";import"./chunk-3FBUPCOW.js";import{d as A}from"./chunk-DX5KBAL4.js";import{ea as I}from"./chunk-BAA3ZYRV.js";import"./chunk-4WXGW7TF.js";import"./chunk-IYFUTBCA.js";import"./chunk-6V6HQ5HP.js";import"./chunk-ESOI36ZA.js";import"./chunk-4GRDYTU4.js";import{c as x,s as F}from"./chunk-XIC3XBPK.js";import"./chunk-BVO46SGL.js";import"./chunk-JTVV2ACU.js";import{D as _,r as g,u as z,z as S}from"./chunk-JZH4PHMS.js";import{$b as i,Cc as C,Fb as T,Lb as m,Sb as o,ac as p,bc as c,cc as d,dc as f,ic as u,pb as n,qa as y,sc as l,tc as v}from"./chunk-JINKT2FQ.js";import"./chunk-2ODOLIGW.js";import"./chunk-HYZR6AYQ.js";import"./chunk-NXPOHUN6.js";import"./chunk-EW2GO4AL.js";import"./chunk-DAQOROHW.js";function j(r,t){if(r&1&&(d(0),c(1,"tui-editor-socket",4),f()),r&2){let e=u();n(),o("content",e.control.value)}}function k(r,t){if(r&1&&(d(0),i(1,"span",5),l(2),p(),f()),r&2){let e=u();n(2),v(e.control.value)}}var a=class a{constructor(){this.builtInTools=[x.Undo,x.Size];this.isE2E=y(I);this.control=new z(`
+        <p><span style="font-size: 96px">96</span></p>
+        <p><span style="font-size: 72px">72</span></p>
+        <p><span style="font-size: 48px">48</span></p>
+        <p><span style="font-size: 36px">36</span></p>
+        <p><span style="font-size: 30px">30</span></p>
+        <p><span style="font-size: 24px">24</span></p>
+        <p><span style="font-size: 18px">18</span></p>
+        <p><span style="font-size: 14px">14</span></p>
+        <p><span style="font-size: 12px">12</span></p>
+        <p><span style="font-size: 11px">11</span></p>
+        <p><span style="font-size: 10px">10</span></p>
+        <p><span style="font-size: 9px">9</span></p>
+        <p><span style="font-size: 8px">8</span></p>
+    `)}};a.\u0275fac=function(e){return new(e||a)},a.\u0275cmp=T({type:a,selectors:[["ng-component"]],features:[C([F({fontOptions:()=>[8,9,10,11,12,14,18,24,30,36,48,60,72,96].map(t=>({px:t,name:`${t}`}))}),N()])],decls:10,vars:5,consts:[[1,"heading",3,"formControl","tools"],[3,"closeOthers"],[3,"tuiAccordion"],[4,"tuiItem"],[3,"content"],[1,"code"]],template:function(e,s){e&1&&(c(0,"tui-editor",0),i(1,"tui-accordion",1)(2,"button",2),l(3,"HTML"),p(),i(4,"tui-expand"),m(5,j,2,1,"ng-container",3),p(),i(6,"button",2),l(7,"Text"),p(),i(8,"tui-expand"),m(9,k,3,1,"ng-container",3),p()()),e&2&&(o("formControl",s.control)("tools",s.builtInTools),n(),o("closeOthers",!1),n(),o("tuiAccordion",s.isE2E),n(4),o("tuiAccordion",s.isE2E))},dependencies:[_,g,S,h,b,D,A,O,M],encapsulation:2,changeDetection:0});var E=a;export{E as default};
