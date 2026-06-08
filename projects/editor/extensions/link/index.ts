@@ -67,13 +67,11 @@ export const TuiLink = Link.extend<LinkOptions>({
     },
 
     renderHTML({HTMLAttributes}) {
-        return [
-            'a',
-            mergeAttributes(HTMLAttributes, {
-                target: HTMLAttributes.href?.startsWith('#') ? '_self' : '_blank',
-            }),
-            0,
-        ];
+        const target = HTMLAttributes.href?.startsWith('#')
+            ? '_self'
+            : (HTMLAttributes.target ?? '_blank');
+
+        return ['a', mergeAttributes(HTMLAttributes, {target}), 0];
     },
 
     addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {

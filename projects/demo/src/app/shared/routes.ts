@@ -21,6 +21,7 @@ export const TuiDemoPath = {
     TableOfContents: 'table-of-contents',
     HighlightCode: 'highlight/code',
     HighlightText: 'highlight/text',
+    ImagesLink: 'images/link',
     ImagesPreview: 'images/preview',
     ImagesResizable: 'images/resizable',
     PasteEmojiTool: 'custom-tool/paste-emoji',

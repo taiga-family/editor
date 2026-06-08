@@ -101,31 +101,24 @@ export function tuiCreateImageEditorExtension<T, K>({
                     // ensuring current extension is being handled in precedence
                     priority: 1001,
                     getAttrs: (el: HTMLElement): TuiEditableImage | false => {
-                        const [href, style] = ['href', 'style'].map(
-                            (attrName) => el.getAttribute(attrName) ?? undefined,
-                        );
+                        const link = el.closest<HTMLAnchorElement>('a[href]');
+                        const href = link?.getAttribute('href') ?? undefined;
 
-                        if (!typesafeIsAllowedUri(href)) {
+                        if (!href || !typesafeIsAllowedUri(href)) {
                             return false;
                         }
 
-                        const [src, width, alt, title] = [
-                            'src',
-                            'width',
-                            'alt',
-                            'title',
-                        ].map(
-                            (attrName) =>
-                                el.firstElementChild?.getAttribute(attrName) ?? undefined,
-                        );
+                        const style =
+                            link?.getAttribute('style') ?? el.getAttribute('style');
 
                         return {
                             'data-href': href,
-                            src: src ?? '',
+                            'data-target': link?.getAttribute('target'),
+                            src: el.getAttribute('src') ?? '',
                             style,
-                            width,
-                            alt,
-                            title,
+                            width: el.getAttribute('width') ?? undefined,
+                            alt: el.getAttribute('alt') ?? undefined,
+                            title: el.getAttribute('title') ?? undefined,
                         };
                     },
                 },
@@ -163,6 +156,10 @@ export function tuiCreateImageEditorExtension<T, K>({
                     default: null,
                     keepOnSplit: false,
                 },
+                'data-target': {
+                    default: null,
+                    keepOnSplit: false,
+                },
                 'data-editing-href': {
                     default: null,
                     keepOnSplit: false,
@@ -170,17 +167,28 @@ export function tuiCreateImageEditorExtension<T, K>({
             };
         },
 
-        renderHTML({HTMLAttributes}: Record<string, any>): DOMOutputSpec {
-            const {src, width, alt, style, title, 'data-href': href} = HTMLAttributes;
+        renderHTML({HTMLAttributes}): DOMOutputSpec {
+            const attrs = HTMLAttributes as Partial<TuiEditableImage>;
+
+            const {
+                src,
+                width,
+                alt,
+                style,
+                title,
+                draggable,
+                'data-href': href,
+                'data-target': target,
+            } = attrs;
 
             return href
                 ? [
                       'a',
                       mergeAttributes({
-                          target: '_blank',
+                          target: href.startsWith('#') ? '_self' : (target ?? '_blank'),
                           rel: 'noopener noreferrer nofollow',
                           href: typesafeIsAllowedUri(href) ? href : '',
-                          style: style,
+                          style,
                       }),
                       [
                           'img',
@@ -192,7 +200,7 @@ export function tuiCreateImageEditorExtension<T, K>({
                           }),
                       ],
                   ]
-                : ['img', mergeAttributes(HTMLAttributes)];
+                : ['img', mergeAttributes({src, width, alt, style, title, draggable})];
         },
 
         addNodeView(): NodeViewRenderer {
