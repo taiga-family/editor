@@ -1,3 +1,16 @@
+### [5.1.0](https://github.com/taiga-family/editor/compare/v5.0.0...v5.1.0) (2026-06-08)
+
+### 🐞 Bug Fixes
+
+- disappears url and target ([#2189](https://github.com/taiga-family/editor/pull/2189))
+  [(4488961)](https://github.com/taiga-family/editor/commit/4488961b70d5156b7296197b003f1b923a773853)
+- update dependency markdown-it to v14.2.0 ([#2186](https://github.com/taiga-family/editor/pull/2186))
+  [(2c1d15d)](https://github.com/taiga-family/editor/commit/2c1d15d571ce85402c896c985ad626979246f742)
+- update tiptap to ^3.23.6 ([#2179](https://github.com/taiga-family/editor/pull/2179))
+  [(cc2632b)](https://github.com/taiga-family/editor/commit/cc2632b0806c526e6652a32ccaf3eee50ba341ce)
+- update tiptap to ^3.23.1 ([#2168](https://github.com/taiga-family/editor/pull/2168))
+  [(4d0b697)](https://github.com/taiga-family/editor/commit/4d0b697222db7148f667ecd1f53878400442c142)
+
 ## [5.0.0](https://github.com/taiga-family/editor/compare/v4.59.0...v5.0.0) (2026-05-15)
 
 ### 💥 Breaking Changes
