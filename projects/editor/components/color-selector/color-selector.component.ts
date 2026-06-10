@@ -4,7 +4,7 @@ import {
     effect,
     inject,
     input,
-    output,
+    model,
 } from '@angular/core';
 import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -75,8 +75,7 @@ export class TuiColorSelector {
     });
 
     public readonly colors = input(this.selectorOptions.colors);
-    public readonly color = input<string>('');
-    public readonly colorChange = output<string>();
+    public readonly color = model<string>('');
     public readonly modes = inject(TUI_COLOR_SELECTOR_MODE_NAMES);
     public currentMode = this.modes[this.selectorOptions.mode];
     public readonly buttons = this.selectorOptions.gradient.buttons;
@@ -194,7 +193,7 @@ export class TuiColorSelector {
     }
 
     private updateColor(color: string): void {
-        this.colorChange.emit(color);
+        this.color.set(color);
     }
 
     private getGradient(direction: TuiGradientDirection): string {
