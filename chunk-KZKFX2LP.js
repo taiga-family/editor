@@ -1,1 +1,0 @@
-import{Za as e}from"./chunk-EW2GO4AL.js";import"./chunk-DAQOROHW.js";var r=e.create({name:"emoji",addGlobalAttributes(){return[{types:["paragraph"],attributes:{dataType:{default:"",keepOnSplit:!1,renderHTML:({dataType:t})=>t==="emoji"?{style:"display: inline"}:null,parseHTML:t=>t.getAttribute("data-type")}}}]}});export{r as EmojiExtension};
