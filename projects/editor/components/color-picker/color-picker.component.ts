@@ -1,11 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    effect,
-    inject,
-    input,
-    output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, effect, inject, model} from '@angular/core';
 import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {type TuiPoint} from '@taiga-ui/core/types';
@@ -23,7 +16,7 @@ import {tuiHsvToRgb, tuiRgbToHsv} from '@taiga-ui/editor/utils';
 export class TuiColorPicker {
     private readonly sanitizer = inject(DomSanitizer);
 
-    public readonly color = input<[number, number, number, number]>([0, 0, 0, 1]);
+    public readonly color = model<[number, number, number, number]>([0, 0, 0, 1]);
 
     protected point: TuiPoint = [0, 1];
     protected hue = 0;
@@ -45,9 +38,6 @@ export class TuiColorPicker {
         this.hue = h / 360;
         this.point = [s, 1 - v / 255];
     });
-
-    public readonly colorChange =
-        output<[r: number, g: number, b: number, opacity: number]>();
 
     public get currentColor(): [h: number, s: number, v: number] {
         return this.getCurrentColor(this.hue, this.point);
@@ -88,6 +78,6 @@ export class TuiColorPicker {
     }
 
     private updateColor(): void {
-        this.colorChange.emit([...this.currentColor, this.opacity]);
+        this.color.set([...this.currentColor, this.opacity]);
     }
 }
