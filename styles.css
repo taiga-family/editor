@@ -34,7 +34,8 @@
     "Manrope",
     system-ui,
     sans-serif;
-  --tui-font-offset: 0rem;
+  --tui-font-offset: calc(var(--t-font-offset, 0) * 1px);
+  --tui-font-scale: calc((22 + var(--t-font-offset, 0)) / 22);
   --tui-typography-heading-h1: bold calc(var(--tui-font-offset) + 3.125rem) / calc(56 / 50) var(--tui-typography-family-display);
   --tui-typography-heading-h2: bold calc(var(--tui-font-offset) + 2.75rem) / calc(48 / 44) var(--tui-typography-family-display);
   --tui-typography-heading-h3: bold calc(var(--tui-font-offset) + 2.25rem) / calc(40 / 36) var(--tui-typography-family-display);
@@ -102,9 +103,9 @@
     --tui-border-normal: rgba(255, 255, 255, 0.14);
     --tui-border-hover: rgba(255, 255, 255, 0.6);
     --tui-border-focus: rgba(255, 255, 255, 0.64);
-    --tui-status-negative: #ff8c67;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.32);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.4);
+    --tui-status-negative: #ff4d4d;
+    --tui-status-negative-pale: rgba(255, 77, 77, 0.24);
+    --tui-status-negative-pale-hover: rgba(255, 77, 77, 0.32);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.32);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.4);
@@ -122,8 +123,8 @@
     --tui-text-action-hover: #526ed3;
     --tui-text-positive: #44c596;
     --tui-text-positive-hover: #3aa981;
-    --tui-text-negative: #ff8c67;
-    --tui-text-negative-hover: #bb593a;
+    --tui-text-negative: #ff4d4d;
+    --tui-text-negative-hover: #f66;
   }
   [tuiTheme=light] {
     color-scheme: light;
@@ -157,9 +158,9 @@
     --tui-border-normal: rgba(0, 0, 0, 0.1);
     --tui-border-hover: rgba(0, 0, 0, 0.16);
     --tui-border-focus: rgba(51, 51, 51, 0.64);
-    --tui-status-negative: #f45725;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.12);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.24);
+    --tui-status-negative: #ff291a;
+    --tui-status-negative-pale: rgba(245, 34, 34, 0.08);
+    --tui-status-negative-pale-hover: rgba(245, 34, 34, 0.16);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.12);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.24);
@@ -179,8 +180,8 @@
     --tui-text-action-hover: #6c86e2;
     --tui-text-positive: #3aa981;
     --tui-text-positive-hover: #7ac5aa;
-    --tui-text-negative: #dd4c1e;
-    --tui-text-negative-hover: #e38163;
+    --tui-text-negative: #ff291a;
+    --tui-text-negative-hover: #ff4d4d;
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: #ea97c4;
     --tui-chart-categorical-02: #a0c5df;
@@ -242,9 +243,9 @@
     --tui-border-normal: rgba(0, 0, 0, 0.1);
     --tui-border-hover: rgba(0, 0, 0, 0.16);
     --tui-border-focus: rgba(51, 51, 51, 0.64);
-    --tui-status-negative: #f45725;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.12);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.24);
+    --tui-status-negative: #ff291a;
+    --tui-status-negative-pale: rgba(245, 34, 34, 0.08);
+    --tui-status-negative-pale-hover: rgba(245, 34, 34, 0.16);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.12);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.24);
@@ -264,8 +265,8 @@
     --tui-text-action-hover: #6c86e2;
     --tui-text-positive: #3aa981;
     --tui-text-positive-hover: #7ac5aa;
-    --tui-text-negative: #dd4c1e;
-    --tui-text-negative-hover: #e38163;
+    --tui-text-negative: #ff291a;
+    --tui-text-negative-hover: #ff4d4d;
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: #ea97c4;
     --tui-chart-categorical-02: #a0c5df;
@@ -3179,7 +3180,8 @@ svg use {
     "Manrope",
     system-ui,
     sans-serif;
-  --tui-font-offset: 0rem;
+  --tui-font-offset: calc(var(--t-font-offset, 0) * 1px);
+  --tui-font-scale: calc((22 + var(--t-font-offset, 0)) / 22);
   --tui-typography-heading-h1: bold calc(var(--tui-font-offset) + 3.125rem) / calc(56 / 50) var(--tui-typography-family-display);
   --tui-typography-heading-h2: bold calc(var(--tui-font-offset) + 2.75rem) / calc(48 / 44) var(--tui-typography-family-display);
   --tui-typography-heading-h3: bold calc(var(--tui-font-offset) + 2.25rem) / calc(40 / 36) var(--tui-typography-family-display);
@@ -3247,9 +3249,9 @@ svg use {
     --tui-border-normal: rgba(255, 255, 255, 0.14);
     --tui-border-hover: rgba(255, 255, 255, 0.6);
     --tui-border-focus: rgba(255, 255, 255, 0.64);
-    --tui-status-negative: #ff8c67;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.32);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.4);
+    --tui-status-negative: #ff4d4d;
+    --tui-status-negative-pale: rgba(255, 77, 77, 0.24);
+    --tui-status-negative-pale-hover: rgba(255, 77, 77, 0.32);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.32);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.4);
@@ -3267,8 +3269,8 @@ svg use {
     --tui-text-action-hover: #526ed3;
     --tui-text-positive: #44c596;
     --tui-text-positive-hover: #3aa981;
-    --tui-text-negative: #ff8c67;
-    --tui-text-negative-hover: #bb593a;
+    --tui-text-negative: #ff4d4d;
+    --tui-text-negative-hover: #f66;
   }
   [tuiTheme=light] {
     color-scheme: light;
@@ -3302,9 +3304,9 @@ svg use {
     --tui-border-normal: rgba(0, 0, 0, 0.1);
     --tui-border-hover: rgba(0, 0, 0, 0.16);
     --tui-border-focus: rgba(51, 51, 51, 0.64);
-    --tui-status-negative: #f45725;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.12);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.24);
+    --tui-status-negative: #ff291a;
+    --tui-status-negative-pale: rgba(245, 34, 34, 0.08);
+    --tui-status-negative-pale-hover: rgba(245, 34, 34, 0.16);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.12);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.24);
@@ -3324,8 +3326,8 @@ svg use {
     --tui-text-action-hover: #6c86e2;
     --tui-text-positive: #3aa981;
     --tui-text-positive-hover: #7ac5aa;
-    --tui-text-negative: #dd4c1e;
-    --tui-text-negative-hover: #e38163;
+    --tui-text-negative: #ff291a;
+    --tui-text-negative-hover: #ff4d4d;
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: #ea97c4;
     --tui-chart-categorical-02: #a0c5df;
@@ -3387,9 +3389,9 @@ svg use {
     --tui-border-normal: rgba(0, 0, 0, 0.1);
     --tui-border-hover: rgba(0, 0, 0, 0.16);
     --tui-border-focus: rgba(51, 51, 51, 0.64);
-    --tui-status-negative: #f45725;
-    --tui-status-negative-pale: rgba(244, 87, 37, 0.12);
-    --tui-status-negative-pale-hover: rgba(244, 87, 37, 0.24);
+    --tui-status-negative: #ff291a;
+    --tui-status-negative-pale: rgba(245, 34, 34, 0.08);
+    --tui-status-negative-pale-hover: rgba(245, 34, 34, 0.16);
     --tui-status-positive: #4ac99b;
     --tui-status-positive-pale: rgba(74, 201, 155, 0.12);
     --tui-status-positive-pale-hover: rgba(74, 201, 155, 0.24);
@@ -3409,8 +3411,8 @@ svg use {
     --tui-text-action-hover: #6c86e2;
     --tui-text-positive: #3aa981;
     --tui-text-positive-hover: #7ac5aa;
-    --tui-text-negative: #dd4c1e;
-    --tui-text-negative-hover: #e38163;
+    --tui-text-negative: #ff291a;
+    --tui-text-negative-hover: #ff4d4d;
     --tui-chart-categorical-00: var(--tui-background-accent-1);
     --tui-chart-categorical-01: #ea97c4;
     --tui-chart-categorical-02: #a0c5df;
