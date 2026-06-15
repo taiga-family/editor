@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {
     ApplicationRef,
-    ComponentFactoryResolver,
     type ComponentRef,
+    createComponent,
     ElementRef,
     type Injector,
     type Type,
@@ -24,20 +24,22 @@ import {type Decoration, type DecorationSource, type EditorView} from '@tiptap/p
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/AngularRenderer.ts ngx-tiptap}
  */
 export class TuiComponentRenderer<C, P> {
+    private readonly applicationRef: ApplicationRef;
     private readonly componentRef: ComponentRef<C>;
 
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
-        const applicationRef = injector.get(ApplicationRef);
-        const componentFactoryResolver = injector.get(ComponentFactoryResolver);
-        const factory = componentFactoryResolver.resolveComponentFactory(component);
+        this.applicationRef = injector.get(ApplicationRef);
 
-        this.componentRef = factory.create(injector, []);
+        this.componentRef = createComponent(component, {
+            environmentInjector: this.applicationRef.injector,
+            elementInjector: injector,
+        });
 
         // set input props to the component
         this.updateProps(props);
 
         // Attach to the view so that the change detector knows to run
-        applicationRef.attachView(this.componentRef.hostView);
+        this.applicationRef.attachView(this.componentRef.hostView);
     }
 
     public get el(): ElementRef {
