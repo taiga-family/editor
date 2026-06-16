@@ -1,0 +1,124 @@
+import {
+  TuiAddonDoc,
+  TuiDocExample,
+  TuiDocPage
+} from "./chunk-HIROPWVQ.js";
+import "./chunk-URCI2WZE.js";
+import "./chunk-OASLAXI3.js";
+import "./chunk-EF4ATJ2Z.js";
+import "./chunk-OKHG23JX.js";
+import "./chunk-D5HJUDO5.js";
+import "./chunk-5JTIYZOP.js";
+import "./chunk-CFSNFPMI.js";
+import "./chunk-X7GRIVH7.js";
+import "./chunk-BILNAO2Z.js";
+import "./chunk-M562FPU2.js";
+import "./chunk-43GMD6GA.js";
+import "./chunk-KD3HJTV7.js";
+import "./chunk-CGIMAQGG.js";
+import "./chunk-4FOPQVVL.js";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  setClassMetadata,
+  ɵsetClassDebugInfo,
+  ɵɵadvance,
+  ɵɵdefineComponent,
+  ɵɵelement,
+  ɵɵelementEnd,
+  ɵɵelementStart,
+  ɵɵproperty,
+  ɵɵreference,
+  ɵɵtemplate,
+  ɵɵtemplateRefExtractor,
+  ɵɵtext
+} from "./chunk-G7TA3DS4.js";
+import "./chunk-KWSTWQNB.js";
+
+// projects/demo/src/app/pages/font/index.ts
+function Example_ng_template_6_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275text(0, " Provide ");
+    \u0275\u0275elementStart(1, "code");
+    \u0275\u0275text(2, "fontOptionContent");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3, " property via ");
+    \u0275\u0275elementStart(4, "code");
+    \u0275\u0275text(5, "provideTuiEditorOptions");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(6, " to fully customize how each option is rendered inside the font dropdown ");
+  }
+}
+var _Example = class _Example {
+  constructor() {
+    this.component1 = import("./chunk-EUMBT7B7.js");
+    this.component2 = import("./chunk-G2GXDRRG.js");
+    this.component3 = import("./chunk-KXGY3Z4E.js");
+    this.component4 = import("./chunk-UP3KECLQ.js");
+    this.component5 = import("./chunk-YJYFK4PH.js");
+    this.example1 = {
+      TypeScript: import("./chunk-PYGYMDVF.js"),
+      HTML: import("./chunk-U7PADLLV.js"),
+      LESS: import("./chunk-L2NVWT2N.js")
+    };
+    this.example2 = {
+      TypeScript: import("./chunk-XMERYFVN.js"),
+      HTML: import("./chunk-JWADQRA2.js")
+    };
+    this.example3 = {
+      TypeScript: import("./chunk-QQ6VO43T.js"),
+      HTML: import("./chunk-3IUGDBJM.js"),
+      "font-size-tool/font-size-tool.component.ts": import("./chunk-MBDN4THU.js"),
+      "font-size-tool/font-size-tool.template.html": import("./chunk-UTYA45AO.js")
+    };
+    this.example4 = {
+      TypeScript: import("./chunk-5EQUVTM3.js"),
+      HTML: import("./chunk-5X2NRWNV.js")
+    };
+    this.example5 = {
+      TypeScript: import("./chunk-AW2ZKJAT.js"),
+      "font-option/index.ts": import("./chunk-644G7JXR.js"),
+      "font-option/index.html": import("./chunk-NUSH3XFY.js"),
+      "font-option/index.less": import("./chunk-2QHREMPJ.js")
+    };
+  }
+};
+_Example.\u0275fac = function Example_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _Example)();
+};
+_Example.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _Example, selectors: [["ng-component"]], decls: 8, vars: 11, consts: [["description", ""], ["description", "The Heading extension adds support for headings of different levels. Headings are rendered with h1, h2, h3, h4, h5 or h6 HTML tags. By default all six heading levels (or styles) are enabled, but you can pass an array to only allow a few levels. Check the usage example to see how this is done. Type #  at the beginning of a new line and it will magically transform to a heading, same for ## , ### , #### , #####  and ######.", "heading", "Heading", 3, "component", "content"], ["description", "You can use any size for paragraph like in your Google Docs", "heading", "Font size", 3, "component", "content"], ["heading", "Custom font size tool", 3, "component", "content"], ["heading", "Disable default font hotkeys", 3, "component", "content"], ["heading", "Override font option template", 3, "component", "content", "description"]], template: function Example_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "tui-doc-page");
+    \u0275\u0275element(1, "tui-doc-example", 1)(2, "tui-doc-example", 2)(3, "tui-doc-example", 3)(4, "tui-doc-example", 4);
+    \u0275\u0275elementStart(5, "tui-doc-example", 5);
+    \u0275\u0275template(6, Example_ng_template_6_Template, 7, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const description_r1 = \u0275\u0275reference(7);
+    \u0275\u0275advance();
+    \u0275\u0275property("component", ctx.component1)("content", ctx.example1);
+    \u0275\u0275advance();
+    \u0275\u0275property("component", ctx.component2)("content", ctx.example2);
+    \u0275\u0275advance();
+    \u0275\u0275property("component", ctx.component3)("content", ctx.example3);
+    \u0275\u0275advance();
+    \u0275\u0275property("component", ctx.component4)("content", ctx.example4);
+    \u0275\u0275advance();
+    \u0275\u0275property("component", ctx.component5)("content", ctx.example5)("description", description_r1);
+  }
+}, dependencies: [TuiDocExample, TuiDocPage], encapsulation: 2, changeDetection: 0 });
+var Example = _Example;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Example, [{
+    type: Component,
+    args: [{ imports: [TuiAddonDoc], changeDetection: ChangeDetectionStrategy.OnPush, template: '<tui-doc-page>\n    <tui-doc-example\n        description="The Heading extension adds support for headings of different levels. Headings are rendered with h1, h2, h3, h4, h5 or h6 HTML tags. By default all six heading levels (or styles) are enabled, but you can pass an array to only allow a few levels. Check the usage example to see how this is done. Type #  at the beginning of a new line and it will magically transform to a heading, same for ## , ### , #### , #####  and ######."\n        heading="Heading"\n        [component]="component1"\n        [content]="example1"\n    />\n\n    <tui-doc-example\n        description="You can use any size for paragraph like in your Google Docs"\n        heading="Font size"\n        [component]="component2"\n        [content]="example2"\n    />\n\n    <tui-doc-example\n        heading="Custom font size tool"\n        [component]="component3"\n        [content]="example3"\n    />\n\n    <tui-doc-example\n        heading="Disable default font hotkeys"\n        [component]="component4"\n        [content]="example4"\n    />\n\n    <tui-doc-example\n        heading="Override font option template"\n        [component]="component5"\n        [content]="example5"\n        [description]="description"\n    >\n        <ng-template #description>\n            Provide\n            <code>fontOptionContent</code>\n            property via\n            <code>provideTuiEditorOptions</code>\n            to fully customize how each option is rendered inside the font dropdown\n        </ng-template>\n    </tui-doc-example>\n</tui-doc-page>\n' }]
+  }], null, null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(Example, { className: "Example", filePath: "projects/demo/src/app/pages/font/index.ts", lineNumber: 9 });
+})();
+export {
+  Example as default
+};
+//# sourceMappingURL=chunk-PKME6HLS.js.map
