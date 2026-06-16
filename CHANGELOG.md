@@ -1,3 +1,12 @@
+## [5.2.0](https://github.com/taiga-family/editor/compare/v5.1.0...v5.2.0) (2026-06-16)
+
+### 🐞 Bug Fixes
+
+- tiptap rendering to Angular 21+ ([#2201](https://github.com/taiga-family/editor/pull/2201))
+  [(3b44ba5)](https://github.com/taiga-family/editor/commit/3b44ba5f6199870df9b5924a9849ada3d0a6b773)
+- update tiptap to ^3.24.0 ([#2197](https://github.com/taiga-family/editor/pull/2197))
+  [(aa938ed)](https://github.com/taiga-family/editor/commit/aa938ed535ef6736e9df0f9797a7873e0c1c783d)
+
 ### [5.1.0](https://github.com/taiga-family/editor/compare/v5.0.0...v5.1.0) (2026-06-08)
 
 ### 🐞 Bug Fixes
