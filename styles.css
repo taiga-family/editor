@@ -3,17 +3,13 @@
 /* node_modules/@taiga-ui/styles/taiga-ui-theme.less */
 :root,
 :host {
+  --tui-duration: 300ms;
   --tui-curve-expressive-standard: cubic-bezier(0.4, 0.1, 0.2, 1);
   --tui-curve-expressive-entrance: cubic-bezier(0.35, 1.3, 0.25, 1);
   --tui-curve-expressive-exit: cubic-bezier(0.4, 0, 1, 1);
   --tui-curve-productive-standard: cubic-bezier(0.2, 0, 0.4, 0.9);
   --tui-curve-productive-entrance: cubic-bezier(0, 0, 0.4, 0.9);
   --tui-curve-productive-exit: cubic-bezier(0.2, 0, 1, 1);
-  --tui-duration-moderate: 300ms;
-  --tui-duration-slowest: calc(var(--tui-duration-moderate) / 0.429);
-  --tui-duration-slow: calc(var(--tui-duration-moderate) / 0.6);
-  --tui-duration-fast: calc(var(--tui-duration-moderate) / 2);
-  --tui-duration-fastest: calc(var(--tui-duration-moderate) / 4);
 }
 :root,
 :host,
@@ -70,6 +66,10 @@
   --tui-inline-start: left;
   --tui-inline-end: right;
   --tui-inline: 1;
+  --tui-duration-slowest: calc(var(--tui-duration) / 0.429);
+  --tui-duration-slow: calc(var(--tui-duration) / 0.6);
+  --tui-duration-fast: calc(var(--tui-duration) / 2);
+  --tui-duration-fastest: calc(var(--tui-duration) / 4);
 }
 @supports (font-size: 1lh) {
   :root,
@@ -3149,17 +3149,13 @@ svg use {
 }
 :root,
 :host {
+  --tui-duration: 300ms;
   --tui-curve-expressive-standard: cubic-bezier(0.4, 0.1, 0.2, 1);
   --tui-curve-expressive-entrance: cubic-bezier(0.35, 1.3, 0.25, 1);
   --tui-curve-expressive-exit: cubic-bezier(0.4, 0, 1, 1);
   --tui-curve-productive-standard: cubic-bezier(0.2, 0, 0.4, 0.9);
   --tui-curve-productive-entrance: cubic-bezier(0, 0, 0.4, 0.9);
   --tui-curve-productive-exit: cubic-bezier(0.2, 0, 1, 1);
-  --tui-duration-moderate: 300ms;
-  --tui-duration-slowest: calc(var(--tui-duration-moderate) / 0.429);
-  --tui-duration-slow: calc(var(--tui-duration-moderate) / 0.6);
-  --tui-duration-fast: calc(var(--tui-duration-moderate) / 2);
-  --tui-duration-fastest: calc(var(--tui-duration-moderate) / 4);
 }
 :root,
 :host,
@@ -3216,6 +3212,10 @@ svg use {
   --tui-inline-start: left;
   --tui-inline-end: right;
   --tui-inline: 1;
+  --tui-duration-slowest: calc(var(--tui-duration) / 0.429);
+  --tui-duration-slow: calc(var(--tui-duration) / 0.6);
+  --tui-duration-fast: calc(var(--tui-duration) / 2);
+  --tui-duration-fastest: calc(var(--tui-duration) / 4);
 }
 @supports (font-size: 1lh) {
   :root,
