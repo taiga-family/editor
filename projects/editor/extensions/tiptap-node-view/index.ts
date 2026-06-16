@@ -24,14 +24,13 @@ import {type Decoration, type DecorationSource, type EditorView} from '@tiptap/p
  * {@link https://github.com/sibiraj-s/ngx-tiptap/blob/master/projects/ngx-tiptap/src/lib/AngularRenderer.ts ngx-tiptap}
  */
 export class TuiComponentRenderer<C, P> {
-    private readonly applicationRef: ApplicationRef;
     private readonly componentRef: ComponentRef<C>;
 
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
-        this.applicationRef = injector.get(ApplicationRef);
+        const applicationRef = injector.get(ApplicationRef);
 
         this.componentRef = createComponent(component, {
-            environmentInjector: this.applicationRef.injector,
+            environmentInjector: applicationRef.injector,
             elementInjector: injector,
         });
 
@@ -39,7 +38,7 @@ export class TuiComponentRenderer<C, P> {
         this.updateProps(props);
 
         // Attach to the view so that the change detector knows to run
-        this.applicationRef.attachView(this.componentRef.hostView);
+        applicationRef.attachView(this.componentRef.hostView);
     }
 
     public get el(): ElementRef {
