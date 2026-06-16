@@ -23,7 +23,9 @@
             "name": "Alex Inkin"
         }
     ],
-    "workspaces": ["projects/*"],
+    "workspaces": [
+        "projects/*"
+    ],
     "scripts": {
         "cspell": "cspell --relative --dot --no-progress --gitignore .",
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-cypress",
@@ -36,17 +38,30 @@
         "test": "jest ."
     },
     "commitlint": {
-        "extends": ["@taiga-ui/commitlint-config"]
+        "extends": [
+            "@taiga-ui/commitlint-config"
+        ]
     },
     "lint-staged": {
-        "*.less": ["stylelint --fix"],
-        "*.{js,ts,html}": ["eslint --fix", "prettier --write"],
-        "*.{svg,yml,md,less,json}": ["prettier --write"]
+        "*.less": [
+            "stylelint --fix"
+        ],
+        "*.{js,ts,html}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{svg,yml,md,less,json}": [
+            "prettier --write"
+        ]
     },
-    "browserslist": ["extends @taiga-ui/browserslist-config"],
+    "browserslist": [
+        "extends @taiga-ui/browserslist-config"
+    ],
     "prettier": "@taiga-ui/prettier-config",
     "stylelint": {
-        "extends": ["@taiga-ui/stylelint-config"]
+        "extends": [
+            "@taiga-ui/stylelint-config"
+        ]
     },
     "jest": {
         "preset": "@taiga-ui/jest-config"
@@ -103,7 +118,13 @@
         "typescript": "5.8.3"
     },
     "syncer": {
-        "includePaths": ["./projects", "./package-lock.json"],
-        "matchPackageNames": ["@taiga-ui/editor", "^editor$"]
+        "includePaths": [
+            "./projects",
+            "./package-lock.json"
+        ],
+        "matchPackageNames": [
+            "@taiga-ui/editor",
+            "^editor$"
+        ]
     }
 }
