@@ -1,1 +1,0 @@
-import{Za as e}from"./chunk-XSAI7AEQ.js";function i(t){return t.isActive("bulletList")||t.isActive("orderedList")||t.isActive("taskList")}var r=e.create({name:"indent",addKeyboardShortcuts(){return{Tab:()=>i(this.editor)?!1:this.editor.commands.insertContent("	")}}});export{i as a,r as b};

@@ -1,0 +1,1 @@
+import{a as r}from"./chunk-FELRUIV7.js";import{ca as e}from"./chunk-RHWM3AIW.js";var s=r.extend({renderHTML({HTMLAttributes:i}){let t=e(this.options.HTMLAttributes,i);return t.colwidth&&(t.style=`width: ${t.colwidth}px; ${t.style}`),["td",t,0]}});export{s as a};

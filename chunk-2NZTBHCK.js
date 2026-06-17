@@ -1,0 +1,1 @@
+import{Db as t}from"./chunk-RHWM3AIW.js";import"./chunk-DAQOROHW.js";var r=t.create({name:"text",group:"inline",parseMarkdown:e=>({type:"text",text:e.text||""}),renderMarkdown:e=>e.text||""}),n=r;export{r as Text,n as default};

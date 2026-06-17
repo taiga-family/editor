@@ -1,0 +1,1 @@
+import{nb as a}from"./chunk-RHWM3AIW.js";import"./chunk-DAQOROHW.js";var e=a.create({name:"threadSpan",renderHTML({HTMLAttributes:r}){return["span",r,0]},parseHTML(){return[{tag:"span[data-thread-id]"}]},addAttributes(){return{class:{default:null},"data-thread-id":{default:null}}}});export{e as ThreadSpan};
