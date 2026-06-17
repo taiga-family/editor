@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/taiga-family/editor/compare/v5.2.0...v5.2.1) (2026-06-17)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^3.25.0 ([#2206](https://github.com/taiga-family/editor/pull/2206))
+  [(00054ed)](https://github.com/taiga-family/editor/commit/00054ed1cc80babf51900657943d04c234a54e2e)
+
 ## [5.2.0](https://github.com/taiga-family/editor/compare/v5.1.0...v5.2.0) (2026-06-16)
 
 ### 🐞 Bug Fixes

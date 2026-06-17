@@ -1,6 +1,6 @@
 {
     "name": "editor",
-    "version": "5.2.0",
+    "version": "5.2.1",
     "private": true,
     "description": "Rich text editor extension with related Taiga UI components",
     "keywords": [
