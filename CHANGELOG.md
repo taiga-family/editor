@@ -1,3 +1,12 @@
+## [5.4.0](https://github.com/taiga-family/editor/compare/v5.3.0...v5.4.0) (2026-06-19)
+
+### 🐞 Bug Fixes
+
+- support editor inside dialog ([#2212](https://github.com/taiga-family/editor/pull/2212))
+  [(4503a2b)](https://github.com/taiga-family/editor/commit/4503a2b3c8cb15511fe636e8e35138ed821821f5)
+- update tiptap to ^3.26.0 ([#2213](https://github.com/taiga-family/editor/pull/2213))
+  [(04b0d28)](https://github.com/taiga-family/editor/commit/04b0d28d056a9264b4481cc88018a9cf643406f2)
+
 ## [5.3.0](https://github.com/taiga-family/editor/compare/v5.2.1...v5.3.0) (2026-06-19)
 
 ### 🐞 Bug Fixes
