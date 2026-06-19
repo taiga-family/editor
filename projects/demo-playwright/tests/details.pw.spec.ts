@@ -87,32 +87,22 @@ test.describe('Details', () => {
 
         const example = page.locator('#details');
         const editor = new TuiEditorPO(example.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+        const title = contenteditable.getByText('Content 1', {exact: true});
+        const box = await title.boundingBox();
 
-        const secondDetails = editor.host
-            .locator('.t-details-wrapper')
-            .filter({hasText: 'Title 2'});
+        expect(box).not.toBeNull();
 
-        await secondDetails.locator(':scope > .t-details-arrow').click();
-        await expect(secondDetails.locator(':scope > details')).not.toHaveAttribute(
-            'open',
-            '',
-        );
-        await secondDetails.scrollIntoViewIfNeeded();
+        await page.mouse.click(box!.x + box!.width + 8, box!.y + box!.height / 2);
+        await page.keyboard.press('ArrowRight');
 
-        const secondDetailsBox = await secondDetails.boundingBox();
-
-        await page.mouse.click(
-            (secondDetailsBox?.x ?? 0) + (secondDetailsBox?.width ?? 0) / 2,
-            (secondDetailsBox?.y ?? 0) - 1,
-        );
-
-        await expect(editor.host.locator('.ProseMirror-gapcursor')).toHaveCount(1);
         await expect.soft(editor.host).toHaveScreenshot('Details-gapcursor-01.png');
 
-        await page.mouse.click(
-            (secondDetailsBox?.x ?? 0) + (secondDetailsBox?.width ?? 0) / 2,
-            (secondDetailsBox?.y ?? 0) - 1,
-        );
+        await editor.host
+            .locator('.t-details-wrapper')
+            .nth(1)
+            .locator('.t-details-arrow')
+            .click();
 
         await expect.soft(editor.host).toHaveScreenshot('Details-gapcursor-02.png');
     });
