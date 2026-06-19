@@ -1,0 +1,8 @@
+import "./chunk-KWSTWQNB.js";
+
+// projects/demo/src/app/pages/dialog/examples/1/index.ts?raw
+var __default = "import {ChangeDetectionStrategy, Component} from '@angular/core';\nimport {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';\nimport {TuiButton, TuiDialog} from '@taiga-ui/core';\nimport {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/editor';\n\n@Component({\n    imports: [ReactiveFormsModule, TuiButton, TuiDialog, TuiEditor],\n    templateUrl: './index.html',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n    providers: [provideTuiEditor()],\n})\nexport default class Example {\n    protected readonly tools = TUI_EDITOR_DEFAULT_TOOLS;\n    protected readonly form = new FormGroup({content: new FormControl('')});\n    protected open = false;\n\n    protected showDialog(): void {\n        this.open = true;\n    }\n}\n";
+export {
+  __default as default
+};
+//# sourceMappingURL=chunk-YPRHSPX3.js.map
