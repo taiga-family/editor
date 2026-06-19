@@ -61,6 +61,12 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Dialog',
+        route: TuiDemoPath.Dialog,
+        keywords: 'editor, dialog, popup, modal, wysiwyg, редактор, текст, html',
+    },
+    {
+        section: 'Documentation',
         title: 'Character counter',
         route: TuiDemoPath.CharacterCounter,
         keywords: 'editor, counter, character',
