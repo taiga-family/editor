@@ -82,6 +82,41 @@ test.describe('Details', () => {
         await expect.soft(editor.host).toHaveScreenshot('Details-13.png');
     });
 
+    test('keeps spacing when gap cursor is between details', async ({page}) => {
+        await tuiGoto(page, TuiDemoPath.Details);
+
+        const example = page.locator('#details');
+        const editor = new TuiEditorPO(example.locator('tui-editor'));
+
+        const secondDetails = editor.host
+            .locator('.t-details-wrapper')
+            .filter({hasText: 'Title 2'});
+
+        await secondDetails.locator(':scope > .t-details-arrow').click();
+        await expect(secondDetails.locator(':scope > details')).not.toHaveAttribute(
+            'open',
+            '',
+        );
+        await secondDetails.scrollIntoViewIfNeeded();
+
+        const secondDetailsBox = await secondDetails.boundingBox();
+
+        await page.mouse.click(
+            (secondDetailsBox?.x ?? 0) + (secondDetailsBox?.width ?? 0) / 2,
+            (secondDetailsBox?.y ?? 0) - 1,
+        );
+
+        await expect(editor.host.locator('.ProseMirror-gapcursor')).toHaveCount(1);
+        await expect.soft(editor.host).toHaveScreenshot('Details-gapcursor-01.png');
+
+        await page.mouse.click(
+            (secondDetailsBox?.x ?? 0) + (secondDetailsBox?.width ?? 0) / 2,
+            (secondDetailsBox?.y ?? 0) - 1,
+        );
+
+        await expect.soft(editor.host).toHaveScreenshot('Details-gapcursor-02.png');
+    });
+
     test('nested details - opened and closed state', async ({page}) => {
         await tuiGoto(page, TuiDemoPath.Details);
 
