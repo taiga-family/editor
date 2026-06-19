@@ -22,6 +22,7 @@ import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     TUI_FALSE_HANDLER,
+    TUI_LEAVE,
     TUI_TRUE_HANDLER,
     tuiAutoFocusOptionsProvider,
     type TuiBooleanHandler,
@@ -239,7 +240,24 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.editor?.destroy();
+        const editor = this.editor;
+        const root = this.rootEl;
+
+        setTimeout(() => {
+            const leaving = root.closest<HTMLElement>(`.${TUI_LEAVE}`);
+
+            if (!leaving) {
+                editor?.destroy();
+
+                return;
+            }
+
+            const animations = leaving.getAnimations();
+
+            void Promise.allSettled(animations.map(async ({finished}) => finished)).then(
+                () => editor?.destroy(),
+            );
+        });
     }
 
     protected get dropdownSelectionHandler(): TuiBooleanHandler<Range> {

@@ -4,6 +4,7 @@ export const TuiDemoPath = {
     Appearance: 'appearance',
     Mention: 'mention',
     Details: 'details',
+    Dialog: 'dialog',
     CharacterCounter: 'character-counter',
     SlashCommand: 'slash-command',
     Checkbox: 'checkbox',
