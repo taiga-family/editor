@@ -1,3 +1,10 @@
+## [5.3.0](https://github.com/taiga-family/editor/compare/v5.2.1...v5.3.0) (2026-06-19)
+
+### 🐞 Bug Fixes
+
+- keeps spacing when gap cursor is between details ([#2211](https://github.com/taiga-family/editor/pull/2211))
+  [(ce89e65)](https://github.com/taiga-family/editor/commit/ce89e6526441dda62e65abc4a26b7d762318e73d)
+
 ## [5.2.1](https://github.com/taiga-family/editor/compare/v5.2.0...v5.2.1) (2026-06-17)
 
 ### 🐞 Bug Fixes
