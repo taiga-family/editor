@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/starter/import/angular.json.md"],
-  "sourcesContent": ["```json5\n{\n  //...\n  assets: [\n    {\n      glob: '**/*',\n      input: 'node_modules/@taiga-ui/icons/src',\n      output: 'assets/taiga-ui/icons',\n    },\n  ],\n}\n```\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

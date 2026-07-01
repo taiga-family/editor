@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/app.component.css"],
-  "sourcesContent": ["[tuiDocHeader] {\n    color: var(--tui-text-primary);\n    background: var(--tui-background-base);\n}\n\n.t-links {\n    display: flex;\n    gap: 0.625rem;\n    align-items: center;\n    font: var(--tui-typography-body-s);\n}\n\n.t-links > * {\n    display: flex;\n}\n\n.t-link {\n    margin-inline-start: 1rem;\n}\n\n.t-stackblitz:active {\n    transform: scale(0.98);\n    box-shadow: 0.1875rem 0.125rem 1.375rem 0.0625rem rgba(0, 0, 0, 0.24);\n}\n\n.t-stackblitz_mobile {\n    display: none;\n}\n\nheader {\n    position: unset;\n    margin-inline-start: 16.25rem;\n    box-shadow: none;\n}\n\n@media only screen and (max-width: 768px) {\n    header {\n        margin-inline-start: 0;\n    }\n\n    .t-stackblitz {\n        display: none;\n    }\n\n    .t-stackblitz_mobile {\n        display: block;\n        padding-inline-start: 12px;\n    }\n\n    .t-app-version {\n        display: none !important;\n    }\n}\n"],
-  "mappings": ";AAAA,CAAC;AACG,SAAO,IAAI;AACX,cAAY,IAAI;AACpB;AAEA,CAAC;AACG,WAAS;AACT,OAAK;AACL,eAAa;AACb,QAAM,IAAI;AACd;AAEA,CAPC,QAOQ,EAAE;AACP,WAAS;AACb;AAEA,CAAC;AACG,uBAAqB;AACzB;AAEA,CAAC,YAAY;AACT,aAAW,MAAM;AACjB,cAAY,UAAU,SAAS,SAAS,UAAU,KAAK,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE;AACpE;AAEA,CAAC;AACG,WAAS;AACb;AAEA;AACI,YAAU;AACV,uBAAqB;AACrB,cAAY;AAChB;AAEA,OAAO,iBAAgB,WAAY;AAC/B;AACI,yBAAqB;AACzB;AAEA,GApBH;AAqBO,aAAS;AACb;AAEA,GAnBH;AAoBO,aAAS;AACT,0BAAsB;AAC1B;AAEA,GAAC;AACG,aAAS;AACb;AACJ;",
-  "names": []
-}

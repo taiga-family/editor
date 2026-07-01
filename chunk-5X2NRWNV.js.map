@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/font/examples/4/index.html"],
-  "sourcesContent": ["<tui-editor\n    [formControl]=\"control\"\n    [tools]=\"builtInTools\"\n/>\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

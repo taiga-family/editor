@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/extensions/table/index.ts"],
-  "sourcesContent": ["import {mergeAttributes} from '@tiptap/core';\nimport {createColGroup, Table} from '@tiptap/extension-table';\n\nexport const TuiTable = Table.extend({\n    renderHTML({node, HTMLAttributes}) {\n        const {colgroup, tableWidth, tableMinWidth} = createColGroup(\n            node,\n            this.options.cellMinWidth,\n        );\n\n        return [\n            'div',\n            {class: 'tui-table-wrapper'},\n            [\n                'table',\n                mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {\n                    style: tableWidth\n                        ? `width: ${tableWidth}`\n                        : `min-width: ${tableMinWidth}`,\n                }),\n                colgroup,\n                ['tbody', 0],\n            ],\n        ];\n    },\n})\n    .configure({\n        resizable: true,\n        lastColumnResizable: true,\n        allowTableNodeSelection: true,\n    })\n    .extend();\n"],
-  "mappings": ";;;;;;;;;AAGO,IAAM,WAAW,MAAM,OAAO;EACjC,WAAW,EAAC,MAAM,eAAc,GAAC;AAC7B,UAAM,EAAC,UAAU,YAAY,cAAa,IAAI,eAC1C,MACA,KAAK,QAAQ,YAAY;AAG7B,WAAO;MACH;MACA,EAAC,OAAO,oBAAmB;MAC3B;QACI;QACA,gBAAgB,KAAK,QAAQ,gBAAgB,gBAAgB;UACzD,OAAO,aACD,UAAU,UAAU,KACpB,cAAc,aAAa;SACpC;QACD;QACA,CAAC,SAAS,CAAC;;;EAGvB;CACH,EACI,UAAU;EACP,WAAW;EACX,qBAAqB;EACrB,yBAAyB;CAC5B,EACA,OAAM;",
-  "names": []
-}

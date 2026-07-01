@@ -1,8 +1,0 @@
-import "./chunk-KWSTWQNB.js";
-
-// projects/demo/src/app/pages/clipboard-paste/examples/1/index.html?raw
-var __default = '<p style="background-color: var(--tui-background-accent-2-hover); color: var(--tui-background-base)">\n    Select and copy me, and then paste into the editor.\n</p>\n\n<tui-editor\n    class="editor"\n    [formControl]="control"\n>\n    Placeholder\n</tui-editor>\n\n<tui-accordion [closeOthers]="false">\n    <button [tuiAccordion]="isE2E">HTML</button>\n    <tui-expand>\n        <ng-container *tuiItem>\n            <tui-editor-socket [content]="control.value" />\n        </ng-container>\n    </tui-expand>\n\n    <button [tuiAccordion]="isE2E">Text</button>\n    <tui-expand>\n        <ng-container *tuiItem>\n            <span class="code">{{ control.value }}</span>\n        </ng-container>\n    </tui-expand>\n</tui-accordion>\n';
-export {
-  __default as default
-};
-//# sourceMappingURL=chunk-SK3QO5ZT.js.map

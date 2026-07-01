@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[8296],{8296:e=>{e.exports="::ng-deep .marked {\n    padding: 0.3125rem;\n    border-radius: 0.3125rem;\n    margin: 0 0.3125rem;\n    box-shadow: 0 0 0 0.125rem rgba(0, 123, 255, 0.25);\n    line-height: 2.6rem;\n}\n"}}]);

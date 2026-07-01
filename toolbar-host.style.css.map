@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/components/toolbar-host/toolbar-host.style.less"],
-  "sourcesContent": ["[tuiToolbarHost] {\n    display: block;\n    isolation: isolate;\n}\n\n[tuiToolbarHost]._disabled {\n    pointer-events: none;\n}\n\n[tuiToolbarHost] button[disabled] {\n    pointer-events: none;\n}\n\n[tuiToolbarNavigationManager] {\n    padding: 0;\n    margin: 0;\n    border: 0;\n}\n"],
-  "mappings": ";AAAA,CAAA;AACI,WAAA;AACA,aAAA;;AAGJ,CAAA,eAAgB,CAAA;AACZ,kBAAA;;AAGJ,CAAA,gBAAiB,MAAM,CAAA;AACnB,kBAAA;;AAGJ,CAAA;AACI,WAAA;AACA,UAAA;AACA,UAAA;;",
-  "names": []
-}

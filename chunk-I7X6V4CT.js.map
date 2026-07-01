@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/extensions/table-cell/index.ts"],
-  "sourcesContent": ["import {mergeAttributes} from '@tiptap/core';\nimport {TableCell} from '@tiptap/extension-table';\n\nexport const TuiTableCell = TableCell.extend({\n    renderHTML({HTMLAttributes}) {\n        const attrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);\n\n        if (attrs.colwidth) {\n            attrs.style = `width: ${attrs.colwidth}px; ${attrs.style}`;\n        }\n\n        return ['td', attrs, 0];\n    },\n});\n"],
-  "mappings": ";;;;;;;;AAGO,IAAM,eAAe,UAAU,OAAO;EACzC,WAAW,EAAC,eAAc,GAAC;AACvB,UAAM,QAAQ,gBAAgB,KAAK,QAAQ,gBAAgB,cAAc;AAEzE,QAAI,MAAM,UAAU;AAChB,YAAM,QAAQ,UAAU,MAAM,QAAQ,OAAO,MAAM,KAAK;IAC5D;AAEA,WAAO,CAAC,MAAM,OAAO,CAAC;EAC1B;CACH;",
-  "names": []
-}

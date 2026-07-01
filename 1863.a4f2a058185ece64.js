@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[1863],{1863:(a,e,d)=>{d.r(e),d.d(e,{ThreadSpan:()=>t});const t=d(6426).Mark.create({name:"threadSpan",renderHTML:({HTMLAttributes:a})=>["span",a,0],parseHTML:()=>[{tag:"span[data-thread-id]"}],addAttributes:()=>({class:{default:null},"data-thread-id":{default:null}})})}}]);

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/font/examples/5/font-option/index.html"],
-  "sourcesContent": ["<button\n    tuiItem\n    tuiOption\n    type=\"button\"\n    [style.font-weight]=\"ctx.$implicit.weight\"\n    (click)=\"ctx.setFontOption(ctx.$implicit)\"\n>\n    {{ ctx.$implicit.name }}\n\n    @if (ctx.$implicit.px) {\n        <small>{{ ctx.$implicit.px }}px</small>\n    }\n</button>\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

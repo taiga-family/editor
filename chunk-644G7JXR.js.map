@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/font/examples/5/font-option/index.ts"],
-  "sourcesContent": ["import {ChangeDetectionStrategy, Component} from '@angular/core';\nimport {TuiItem} from '@taiga-ui/cdk';\nimport {TuiOption} from '@taiga-ui/core';\nimport {type TuiEditorFontOptionContext} from '@taiga-ui/editor';\nimport {injectContext} from '@taiga-ui/polymorpheus';\n\n@Component({\n    imports: [TuiItem, TuiOption],\n    templateUrl: './index.html',\n    styleUrl: './index.less',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class FontOption {\n    protected readonly ctx = injectContext<TuiEditorFontOptionContext>();\n}\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

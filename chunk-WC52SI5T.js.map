@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/custom-tool/paste-emoji/examples/1/smiles-tool/emoji.extension.ts"],
-  "sourcesContent": ["import {Extension, type GlobalAttributes} from '@tiptap/core';\n\nexport const EmojiExtension = Extension.create({\n    name: 'emoji',\n    addGlobalAttributes(): GlobalAttributes {\n        return [\n            {\n                types: ['paragraph'],\n                attributes: {\n                    dataType: {\n                        default: '',\n                        keepOnSplit: false,\n                        renderHTML: ({dataType}) =>\n                            dataType === 'emoji' ? {style: 'display: inline'} : null,\n                        parseHTML: (element) => element.getAttribute('data-type'),\n                    },\n                },\n            },\n        ];\n    },\n});\n"],
-  "mappings": ";;;;;;AAEO,IAAM,iBAAiB,UAAU,OAAO;EAC3C,MAAM;EACN,sBAAmB;AACf,WAAO;MACH;QACI,OAAO,CAAC,WAAW;QACnB,YAAY;UACR,UAAU;YACN,SAAS;YACT,aAAa;YACb,YAAY,CAAC,EAAC,SAAQ,MAClB,aAAa,UAAU,EAAC,OAAO,kBAAiB,IAAI;YACxD,WAAW,CAAC,YAAY,QAAQ,aAAa,WAAW;;;;;EAK5E;CACH;",
-  "names": []
-}

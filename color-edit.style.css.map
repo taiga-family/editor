@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/components/color-edit/color-edit.style.less"],
-  "sourcesContent": [":host {\n    display: flex;\n}\n\n.t-select {\n    inline-size: 5.875rem;\n}\n\n.t-opacity {\n    inline-size: 4.275rem;\n}\n\n.t-rgb,\n.t-opacity {\n    text-align: center;\n}\n"],
-  "mappings": ";AAAA;AACI,WAAA;;AAGJ,CAAA;AACI,eAAA;;AAGJ,CAAA;AACI,eAAA;;AAGJ,CAAA;AACA,CALA;AAMI,cAAA;;",
-  "names": []
-}

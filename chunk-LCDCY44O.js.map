@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/table-of-contents/examples/1/index.less"],
-  "sourcesContent": [":host {\n    display: flex;\n}\n\ntui-editor {\n    inline-size: 100%;\n    block-size: 28rem;\n}\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

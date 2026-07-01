@@ -1,0 +1,1 @@
+(self.webpackChunkeditor_demo=self.webpackChunkeditor_demo||[]).push([[809],{809:e=>{e.exports=".t-image-preview {\n    inline-size: 100%;\n}\n"}}]);

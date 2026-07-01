@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/components/input-color/input-color.style.less"],
-  "sourcesContent": ["@import '@taiga-ui/styles/utils.less';\n\n:host {\n    display: block;\n    border-radius: var(--tui-radius-m);\n    text-align: start;\n\n    :host-context(*:disabled) {\n        pointer-events: none;\n    }\n}\n\n.t-wrapper {\n    display: flex;\n    border-radius: inherit;\n    inline-size: 100%;\n}\n\n.t-textfield {\n    border-radius: inherit;\n    text-align: inherit;\n    inline-size: inherit;\n\n    ::ng-deep .t-input {\n        text-transform: lowercase !important;\n    }\n}\n\n.t-color {\n    inline-size: 1.5rem;\n    block-size: 1.5rem;\n    box-shadow: inset 0 0 0 1px var(--tui-base-03-dark);\n    border-radius: 0.125rem;\n    pointer-events: auto !important;\n}\n"],
-  "mappings": ";AAEA;AACI,WAAA;AACA,iBAAe,IAAA;AACf,cAAA;;AAHJ,MAKI,cAAa,CAAA,CAAA;AACT,kBAAA;;AAIR,CAAA;AACI,WAAA;AACA,iBAAA;AACA,eAAA;;AAGJ,CAAA;AACI,iBAAA;AACA,cAAA;AACA,eAAA;;AAHJ,CAAA,YAKI,UAAU,CAAA;AACN,kBAAA;;AAIR,CAAA;AACI,eAAA;AACA,cAAA;AACA,cAAA,MAAA,EAAA,EAAA,EAAA,IAA4B,IAAA;AAC5B,iBAAA;AACA,kBAAA;;",
-  "names": []
-}

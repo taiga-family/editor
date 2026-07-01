@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/pages/images/preview/examples/1/image-preview/image-preview.style.less"],
-  "sourcesContent": [".t-image-preview {\n    inline-size: 100%;\n}\n"],
-  "mappings": ";;;AAAA;",
-  "names": []
-}

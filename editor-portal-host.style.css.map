@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/editor/components/editor/portal/editor-portal-host.style.less"],
-  "sourcesContent": [":host {\n    position: absolute;\n    display: block;\n    inset-block-start: 0;\n    inset-inline-start: 0;\n    block-size: 100%;\n    inline-size: 100%;\n    pointer-events: none;\n}\n"],
-  "mappings": ";AAAA;AACI,YAAA;AACA,WAAA;AACA,qBAAA;AACA,sBAAA;AACA,cAAA;AACA,eAAA;AACA,kBAAA;;",
-  "names": []
-}
