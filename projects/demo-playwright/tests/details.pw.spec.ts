@@ -68,7 +68,7 @@ test.describe('Details', () => {
             .locator('tui-toolbar button')
             .locator('text="Details"');
 
-        await contenteditable.click();
+        await contenteditable.locator('p', {hasText: 'Content 1'}).click();
         await page.keyboard.press('End');
         await page.keyboard.press('Enter');
 
