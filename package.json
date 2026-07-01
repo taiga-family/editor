@@ -127,6 +127,11 @@
         "typescript": "5.0.4",
         "webpack": "5.106.1"
     },
+    "engines": {
+        "node": ">= 26",
+        "npm": ">= 11",
+        "yarn": "Please use npm instead of yarn to install dependencies"
+    },
     "syncer": {
         "includePaths": [
             "./projects",
