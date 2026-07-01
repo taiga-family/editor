@@ -60,7 +60,7 @@ export const TuiDetailsExtension = Details.extend<TuiDetailsExtensionOptions>({
                     element.getAttribute('open') === 'open' ||
                     element.getAttribute('open') === 'true' ||
                     element.hasAttribute('open') ||
-                    element.getAttribute('data-opened'), // legacy
+                    element.hasAttribute('data-opened'), // legacy
                 renderHTML: (attributes) => ({
                     open:
                         attributes.open && this.options.inheritOpen ? 'open' : undefined,
