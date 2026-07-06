@@ -1,3 +1,12 @@
+## [5.4.1](https://github.com/taiga-family/editor/compare/v5.4.0...v5.4.1) (2026-07-06)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^3.27.1 ([#2223](https://github.com/taiga-family/editor/pull/2223))
+  [(6b5b645)](https://github.com/taiga-family/editor/commit/6b5b6450a835e5239ab431ea731ae49b5bccc68f)
+- **details**: parseHTML return only boolean value ([#2226](https://github.com/taiga-family/editor/pull/2226))
+  [(1879ad0)](https://github.com/taiga-family/editor/commit/1879ad0f70b17e689a33aa3d08f35293cc16394f)
+
 ## [5.4.0](https://github.com/taiga-family/editor/compare/v5.3.0...v5.4.0) (2026-06-19)
 
 ### 🐞 Bug Fixes
