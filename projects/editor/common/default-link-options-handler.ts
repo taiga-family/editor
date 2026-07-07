@@ -9,8 +9,7 @@ export type TuiEditorLinkProtocol =
     | `${string}${typeof TUI_EDITOR_LINK_SIMPLE_PROTOCOL_DIVIDER}`;
 
 export type TuiEditorLinkPrefix =
-    | TuiEditorLinkProtocol
-    | typeof TUI_EDITOR_LINK_HASH_PREFIX;
+    TuiEditorLinkProtocol | typeof TUI_EDITOR_LINK_HASH_PREFIX;
 
 export interface TuiEditorLinkOptions {
     readonly protocol: TuiEditorLinkProtocol;

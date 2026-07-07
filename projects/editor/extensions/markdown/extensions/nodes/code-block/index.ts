@@ -21,8 +21,7 @@ export default Node.create({name: 'codeBlock'}).extend({
                         markdown.set({
                             langPrefix:
                                 (this.options['languageClassPrefix'] as
-                                    | string
-                                    | undefined) ?? 'language-',
+                                    string | undefined) ?? 'language-',
                         });
                     },
                     updateDOM(element: Element) {
