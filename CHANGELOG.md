@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/taiga-family/editor/compare/v5.4.1...v5.4.2) (2026-07-22)
+
+### 🐞 Bug Fixes
+
+- `Details` specify font-family for cross ([#2235](https://github.com/taiga-family/editor/pull/2235))
+  [(c14249c)](https://github.com/taiga-family/editor/commit/c14249cd7e103b76ae2bd2e70dc93d087830c099)
+
 ## [5.4.1](https://github.com/taiga-family/editor/compare/v5.4.0...v5.4.1) (2026-07-06)
 
 ### 🐞 Bug Fixes
