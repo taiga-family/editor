@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiError, TuiRoot, tuiValidationErrorsProvider} from '@taiga-ui/core';
 import {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/editor';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiEditor, TuiRoot],
+    imports: [ReactiveFormsModule, TuiEditor, TuiError, TuiRoot],
     template: `
         <tui-root>
             <tui-editor
@@ -13,15 +13,22 @@ import {provideTuiEditor, TUI_EDITOR_DEFAULT_TOOLS, TuiEditor} from '@taiga-ui/e
             >
                 Typing...
             </tui-editor>
+            <tui-error [formControl]="control" />
+            <button
+                data-testid="outside"
+                type="button"
+            >
+                Outside
+            </button>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideTuiEditor()],
+    providers: [provideTuiEditor(), tuiValidationErrorsProvider({required: 'Required'})],
 })
 class Test {
     protected readonly builtInTools = TUI_EDITOR_DEFAULT_TOOLS;
 
-    public control = new FormControl('<p>Text</p>');
+    public control = new FormControl('<p>Text</p>', Validators.required);
     public count = 0;
 
     constructor() {
@@ -70,5 +77,23 @@ describe('TuiEditor', () => {
             .get('[contenteditable]')
             .should('have.attr', 'contenteditable', 'false')
             .should('have.css', 'pointer-events', 'none');
+    });
+
+    it('marks the control as touched after the editor loses focus', () => {
+        cy.get('[contenteditable]')
+            .should('be.visible')
+            .type('{selectall}{backspace}')
+            .then(() => {
+                expect(component.control.invalid).to.eql(true);
+                expect(component.control.dirty).to.eql(true);
+                expect(component.control.touched).to.eql(false);
+            })
+            .get('[data-testid="outside"]')
+            .click()
+            .then(() => expect(component.control.touched).to.eql(true))
+            .get('tui-editor')
+            .should('have.attr', 'data-mode', 'invalid')
+            .get('tui-error')
+            .should('contain.text', 'Required');
     });
 });
