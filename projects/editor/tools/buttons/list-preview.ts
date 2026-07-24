@@ -21,7 +21,6 @@ import {TuiToolbarButtonTool} from '../tool-button';
 import {TuiIndentButtonTool} from './indent';
 import {TuiOrderedListButtonTool} from './ordered-list';
 import {TuiOutdentButtonTool} from './outdent';
-import {TuiTaskListButtonTool} from './task-list';
 import {TuiUnorderedListButtonTool} from './unordered-list';
 
 @Component({
@@ -31,7 +30,6 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
         TuiInput,
         TuiOrderedListButtonTool,
         TuiOutdentButtonTool,
-        TuiTaskListButtonTool,
         TuiUnorderedListButtonTool,
     ],
     template: `
@@ -45,10 +43,6 @@ import {TuiUnorderedListButtonTool} from './unordered-list';
                 ></button>
                 <button
                     tuiOrderedListTool
-                    [editor]="editor()"
-                ></button>
-                <button
-                    tuiTaskListTool
                     [editor]="editor()"
                 ></button>
                 <button
@@ -79,7 +73,6 @@ export class TuiListButtonTool extends TuiToolbarTool {
         return (
             this.editor()?.isActive('bulletList') ||
             this.editor()?.isActive('orderedList') ||
-            this.editor()?.isActive('taskList') ||
             false
         );
     }
