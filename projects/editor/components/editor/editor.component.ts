@@ -298,6 +298,7 @@ export class TuiEditor extends TuiControl<string> implements OnDestroy {
         if (focused) {
             this.focusIn.emit();
         } else {
+            this.onTouched();
             this.focusOut.emit();
         }
     }
