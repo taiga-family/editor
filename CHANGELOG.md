@@ -1,3 +1,16 @@
+## [5.5.0](https://github.com/taiga-family/editor/compare/v5.4.2...v5.5.0) (2026-07-27)
+
+### 🚀 Features
+
+- **editor**: move task list toggle out of list dropdown to main toolbar
+  ([#2238](https://github.com/taiga-family/editor/pull/2238))
+  [(39e4e05)](https://github.com/taiga-family/editor/commit/39e4e05e957417d13795c444828c2c66c3721a93)
+
+### 🐞 Bug Fixes
+
+- mark editor control as touched on blur ([#2239](https://github.com/taiga-family/editor/pull/2239))
+  [(5668b98)](https://github.com/taiga-family/editor/commit/5668b98297683d7983da2d48fca4693658582b42)
+
 ## [5.4.2](https://github.com/taiga-family/editor/compare/v5.4.1...v5.4.2) (2026-07-22)
 
 ### 🐞 Bug Fixes
