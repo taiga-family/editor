@@ -1044,8 +1044,8 @@ input[type=radio][data-appearance=secondary] {
     outline-color,
     border-color,
     color;
-  transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-duration: calc(var(--tui-duration) / 2);
+  transition-timing-function: var(--tui-curve-productive-standard);
   --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
   background-color: var(--tui-background-base);
   color: var(--tui-text-tertiary);
@@ -1524,7 +1524,7 @@ svg use {
 .tui-island_hoverable {
   transition-property: all;
   transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-timing-function: var(--tui-curve-productive-standard);
   background: var(--tui-background-elevation-2);
   box-shadow: var(--tui-shadow-small);
   cursor: pointer;
@@ -2939,7 +2939,7 @@ svg use {
 .tui-table__tr {
   transition-property: background;
   transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-timing-function: var(--tui-curve-productive-standard);
   outline: none;
 }
 .tui-table__tr:not(.tui-table__tr_hover_disabled):hover {
@@ -3068,7 +3068,7 @@ svg use {
   text-decoration: none;
   transition-property: color;
   transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-timing-function: var(--tui-curve-productive-standard);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -3099,7 +3099,7 @@ svg use {
 .tui-table__sort:hover .tui-table__sort-icon {
   transition-property: transform;
   transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-timing-function: var(--tui-curve-productive-standard);
   opacity: 1;
 }
 .tui-table__sort_active.tui-table__sort_up .tui-table__sort-icon {
@@ -4190,8 +4190,8 @@ input[type=radio][data-appearance=secondary] {
     outline-color,
     border-color,
     color;
-  transition-duration: var(--tui-duration, 300ms);
-  transition-timing-function: ease-in-out;
+  transition-duration: calc(var(--tui-duration) / 2);
+  transition-timing-function: var(--tui-curve-productive-standard);
   --t-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
   background-color: var(--tui-background-base);
   color: var(--tui-text-tertiary);
