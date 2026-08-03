@@ -6,6 +6,136 @@
 
 ### 🐞 Bug Fixes
 
+- compatibility with angular 22 (#2241)
+  [(7cd8b34)](https://github.com/taiga-family/editor/commit/7cd8b34eacac440a218f56b874075faa83d49a58)
+- **details**: parseHTML return only boolean value (#2224)
+  [(c83e4c5)](https://github.com/taiga-family/editor/commit/c83e4c52f56a76dbf51f68ecae4aa9cfbad9f163)
+
+### [5.5.0](https://github.com/taiga-family/editor/compare/v5.4.2...v5.5.0) (2026-07-27)
+
+### 🚀 Features
+
+- **editor**: move task list toggle out of list dropdown to main toolbar (#2238)
+  [(39e4e05)](https://github.com/taiga-family/editor/commit/39e4e05e957417d13795c444828c2c66c3721a93)
+
+### 🐞 Bug Fixes
+
+- mark editor control as touched on blur (#2239)
+  [(5668b98)](https://github.com/taiga-family/editor/commit/5668b98297683d7983da2d48fca4693658582b42)
+
+### [5.4.2](https://github.com/taiga-family/editor/compare/v5.4.1...v5.4.2) (2026-07-22)
+
+### 🐞 Bug Fixes
+
+- `Details` specify font-family for cross (#2235)
+  [(c14249c)](https://github.com/taiga-family/editor/commit/c14249cd7e103b76ae2bd2e70dc93d087830c099)
+
+### [5.4.1](https://github.com/taiga-family/editor/compare/v5.4.0...v5.4.1) (2026-07-06)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^3.27.1 (#2223)
+  [(6b5b645)](https://github.com/taiga-family/editor/commit/6b5b6450a835e5239ab431ea731ae49b5bccc68f)
+- **details**: parseHTML return only boolean value (#2226)
+  [(1879ad0)](https://github.com/taiga-family/editor/commit/1879ad0f70b17e689a33aa3d08f35293cc16394f)
+
+### [5.4.0](https://github.com/taiga-family/editor/compare/v5.3.0...v5.4.0) (2026-06-19)
+
+### 🐞 Bug Fixes
+
+- support editor inside dialog (#2212)
+  [(4503a2b)](https://github.com/taiga-family/editor/commit/4503a2b3c8cb15511fe636e8e35138ed821821f5)
+- update tiptap to ^3.26.0 (#2213)
+  [(04b0d28)](https://github.com/taiga-family/editor/commit/04b0d28d056a9264b4481cc88018a9cf643406f2)
+
+### [5.3.0](https://github.com/taiga-family/editor/compare/v5.2.1...v5.3.0) (2026-06-19)
+
+### 🐞 Bug Fixes
+
+- keeps spacing when gap cursor is between details (#2211)
+  [(ce89e65)](https://github.com/taiga-family/editor/commit/ce89e6526441dda62e65abc4a26b7d762318e73d)
+
+### [5.2.1](https://github.com/taiga-family/editor/compare/v5.2.0...v5.2.1) (2026-06-17)
+
+### 🐞 Bug Fixes
+
+- update tiptap to ^3.25.0 (#2206)
+  [(00054ed)](https://github.com/taiga-family/editor/commit/00054ed1cc80babf51900657943d04c234a54e2e)
+
+### [5.2.0](https://github.com/taiga-family/editor/compare/v5.1.0...v5.2.0) (2026-06-16)
+
+### 🐞 Bug Fixes
+
+- tiptap rendering to Angular 21+ (#2201)
+  [(3b44ba5)](https://github.com/taiga-family/editor/commit/3b44ba5f6199870df9b5924a9849ada3d0a6b773)
+- update tiptap to ^3.24.0 (#2197)
+  [(aa938ed)](https://github.com/taiga-family/editor/commit/aa938ed535ef6736e9df0f9797a7873e0c1c783d)
+
+### [5.1.0](https://github.com/taiga-family/editor/compare/v5.0.0...v5.1.0) (2026-06-08)
+
+### 🐞 Bug Fixes
+
+- disappears url and target (#2189)
+  [(4488961)](https://github.com/taiga-family/editor/commit/4488961b70d5156b7296197b003f1b923a773853)
+- update dependency markdown-it to v14.2.0 (#2186)
+  [(2c1d15d)](https://github.com/taiga-family/editor/commit/2c1d15d571ce85402c896c985ad626979246f742)
+- update tiptap to ^3.23.6 (#2179)
+  [(cc2632b)](https://github.com/taiga-family/editor/commit/cc2632b0806c526e6652a32ccaf3eee50ba341ce)
+- update tiptap to ^3.23.1 (#2168)
+  [(4d0b697)](https://github.com/taiga-family/editor/commit/4d0b697222db7148f667ecd1f53878400442c142)
+
+## [5.0.0](https://github.com/taiga-family/editor/compare/v4.60.1...v5.0.0) (2026-05-15)
+
+### 🚀 Features
+
+- replace any with strict types (#2158)
+  [(81810de)](https://github.com/taiga-family/editor/commit/81810de79b5d4d4b78584029bf868827f885147a)
+- drop `TUI_TIPTAP_WHITESPACE_HACK` (#2157)
+  [(3814b04)](https://github.com/taiga-family/editor/commit/3814b04e5aa0d3ba5ad4614a0cb05f42fcc94937)
+- drop details styles for list (#2154)
+  [(bf583e7)](https://github.com/taiga-family/editor/commit/bf583e7443398a2f84d5902e17157473ff5132a5)
+- drop deprecated (#2146)
+  [(3168f80)](https://github.com/taiga-family/editor/commit/3168f80a2465a9ffa520adb17a6c7a815f931dde)
+- remove magic numbers (#2149)
+  [(6139c58)](https://github.com/taiga-family/editor/commit/6139c58cdf5eb89120cdd07d029057d312f2ea41)
+- signal outputs (#2145)
+  [(589f9d3)](https://github.com/taiga-family/editor/commit/589f9d366874359eb86346125f6a4a6a99ce6b3c)
+- migration to TipTap v3 (#2132)
+  [(8d824d0)](https://github.com/taiga-family/editor/commit/8d824d00e29d0f22d77760f7c31df83c766122ed)
+- zoneless with hydration (#2125)
+  [(2bf12cc)](https://github.com/taiga-family/editor/commit/2bf12ccf02630dfed10f186fffe4be0b103babe2)
+- drop tuiPure (#2124)
+  [(4d0373e)](https://github.com/taiga-family/editor/commit/4d0373e33399723ed460e09efe03eb6eb148b674)
+- add Taiga 5 (#2097)
+  [(3bb4cb2)](https://github.com/taiga-family/editor/commit/3bb4cb284a6ce8c9e41ca45bce1058a6bbd7707d)
+- auto resolve from peer dependency (#2120)
+  [(3e74c19)](https://github.com/taiga-family/editor/commit/3e74c1919e219fa2c35dfffe58769f6d944f6eb6)
+- upgrade Angular (#2084)
+  [(ae337c1)](https://github.com/taiga-family/editor/commit/ae337c13aeb1327d0721880ac53a920e1bcfc9e5)
+- ssr safe (#2095) [(a7d583c)](https://github.com/taiga-family/editor/commit/a7d583c78bf39f00e182a60460003f61f46e3af6)
+- floating toolbar position shouldn't jump when you click on the tool (#2093)
+  [(67fc26b)](https://github.com/taiga-family/editor/commit/67fc26b4aac9eecb9a9166ca4c4b4cbb9b89114e)
+
+### 🐞 Bug Fixes
+
+- reopen link after closed dropdown (#2126)
+  [(d54d090)](https://github.com/taiga-family/editor/commit/d54d0905988455e31dcd121dead5e118d983079c)
+
+### [4.60.1](https://github.com/taiga-family/editor/compare/v4.60.0...v4.60.1) (2026-08-03)
+
+### 🐞 Bug Fixes
+
+- compatibility with angular 22 (#2241)
+  [(7cd8b34)](https://github.com/taiga-family/editor/commit/7cd8b34eacac440a218f56b874075faa83d49a58)
+
+### 🚀 Features
+
+- ssr safe (#2096) [(a78e97e)](https://github.com/taiga-family/editor/commit/a78e97e231af6becbfb7062305bcbebfcc14d294)
+- floating toolbar position shouldn't jump when you click on the tool (#2094)
+  [(baac898)](https://github.com/taiga-family/editor/commit/baac8985582934b23771d4b8c7ea1789d1bce43f)
+
+### 🐞 Bug Fixes
+
 - **details**: parseHTML return only boolean value (#2224)
   [(c83e4c5)](https://github.com/taiga-family/editor/commit/c83e4c52f56a76dbf51f68ecae4aa9cfbad9f163)
 
