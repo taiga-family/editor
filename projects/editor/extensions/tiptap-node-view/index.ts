@@ -1,8 +1,8 @@
 import {DOCUMENT} from '@angular/common';
 import {
     ApplicationRef,
-    ComponentFactoryResolver,
     type ComponentRef,
+    createComponent,
     ElementRef,
     type Injector,
     type Type,
@@ -29,10 +29,10 @@ export class TuiComponentRenderer<C, P> {
     constructor(component: Type<C>, injector: Injector, props: Partial<P>) {
         const applicationRef = injector.get(ApplicationRef);
 
-        const componentFactoryResolver = injector.get(ComponentFactoryResolver);
-        const factory = componentFactoryResolver.resolveComponentFactory(component);
-
-        this.componentRef = factory.create(injector, []);
+        this.componentRef = createComponent(component, {
+            environmentInjector: applicationRef.injector,
+            elementInjector: injector,
+        });
 
         // set input props to the component
         this.updateProps(props);
