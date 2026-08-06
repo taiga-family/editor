@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type TuiEditorOptions} from '@taiga-ui/editor/common';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n';
 
 import {TuiToolbarTool} from '../tool';
 import {TuiToolbarButtonTool} from '../tool-button';
@@ -23,7 +24,7 @@ export class TuiTaskListButtonTool extends TuiToolbarTool {
         return icons.taskList;
     }
 
-    protected getHint(): string {
-        return '';
+    protected getHint(texts?: TuiLanguageEditor['toolbarTools']): string {
+        return texts?.taskList ?? '';
     }
 }
