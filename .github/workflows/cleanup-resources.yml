@@ -10,7 +10,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         continue-on-error: true
       - run: |
           gh cache list --ref $BRANCH > cache.log && cat cache.log
@@ -26,9 +26,9 @@ jobs:
     env:
       channel: pr${{ github.event.number }}-${{ github.head_ref }}
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Drop e2e report site
-        uses: w9jds/firebase-action@a1d77669d1c6a9e6f8b731356c6015d981569a7a # v15.22.4
+        uses: w9jds/firebase-action@d22ff47470f4628073cf145378b43b6f198f05ae # v15.26.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-e2e --site taiga-editor-e2e-report -f
@@ -36,7 +36,7 @@ jobs:
           GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TUI_EDITOR }}
           PROJECT_ID: taiga-editor
       - name: Drop preview demo site
-        uses: w9jds/firebase-action@a1d77669d1c6a9e6f8b731356c6015d981569a7a # v15.22.4
+        uses: w9jds/firebase-action@d22ff47470f4628073cf145378b43b6f198f05ae # v15.26.0
         continue-on-error: true
         with:
           args: hosting:channel:delete ${{ env.channel }}-demo --site taiga-editor -f
