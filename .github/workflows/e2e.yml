@@ -11,10 +11,10 @@ jobs:
     name: Cypress / Component Testing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-node@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-cypress@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-cypress@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
       - run: npx nx component-test demo-cypress
 
   e2e:
@@ -23,25 +23,25 @@ jobs:
     outputs:
       details_url: ${{ steps.e2e-report.outputs.details_url }}
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-node@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
-      - uses: taiga-family/actions/setup-playwright@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-node@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
+      - uses: taiga-family/actions/setup-playwright@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
 
       - run: npx nx build editor-demo -c development
-      - uses: taiga-family/actions/http-serve@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/http-serve@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
 
       - run: npx nx e2e editor-demo-playwright -- --update-snapshots
 
-      - uses: taiga-family/actions/git-clone@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/git-clone@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/actions/http-serve@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/http-serve@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -71,7 +71,7 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - uses: taiga-family/actions/playwright-screenshot-diff@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/playwright-screenshot-diff@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -87,8 +87,8 @@ jobs:
     needs: [e2e, cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-      - uses: taiga-family/actions/setup-variables@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiga-family/actions/setup-variables@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -102,11 +102,11 @@ jobs:
           path: ${{ env.PW_RESULT }}
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_report
 
-      - uses: taiga-family/actions/playwright-diff-check@a6230c2ffdf53253580ec058dd4faccdb01ac85a # v2.4.0
+      - uses: taiga-family/actions/playwright-diff-check@0940659c204565776517de7e9cafaf017f66ee81 # v2.9.0
         with:
           pw-result: ${{ env.PW_RESULT }}
 
-      - uses: daun/playwright-report-summary@8bb85779022480a59ed8d33d9a4b8bda1c67666b # v4.0.0
+      - uses: daun/playwright-report-summary@31ed947ec7a623d18a66cfd20ef546dc66ef8063 # v4.1.0
         if: always()
         with:
           custom-info: 'For more information, [see our report](${{ needs.e2e.outputs.details_url }})'
