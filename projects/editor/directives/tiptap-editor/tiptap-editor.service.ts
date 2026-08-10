@@ -446,12 +446,7 @@ export class TuiTiptapEditorService extends AbstractTuiEditor {
     }
 
     public setYoutubeVideo(options: TuiYoutubeOptions): void {
-        // TipTap restricts width/height to number, but the iframe attribute accepts strings like '100%'
-        this.editor?.commands.setYoutubeVideo(
-            options as unknown as Parameters<
-                typeof this.editor.commands.setYoutubeVideo
-            >[0],
-        );
+        this.editor?.commands.setYoutubeVideo(options);
     }
 
     public setIframe(options: TuiEditableIframe): void {
