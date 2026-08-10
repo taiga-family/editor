@@ -1,1 +1,0 @@
-import{a,b,c}from"./chunk-7P6LEA3Z.js";import"./chunk-BERO5W6C.js";import"./chunk-ZNGVYAYS.js";import"./chunk-KJERHPTC.js";import"./chunk-HSTYGBAB.js";import"./chunk-HFB2H5VX.js";import"./chunk-MV4OHMNG.js";import"./chunk-RHWM3AIW.js";import"./chunk-DAQOROHW.js";export{a as TuiDetails,c as TuiDetailsContent,b as TuiDetailsSummary};
