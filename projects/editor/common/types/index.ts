@@ -2,6 +2,7 @@ import {
     type TuiEditableIframe,
     type TuiEditableImage,
     type TuiEditorAttachedFile,
+    type TuiYoutubeOptions,
 } from '@taiga-ui/editor/common';
 import {type Highlight} from '@tiptap/extension-highlight';
 import {type Image} from '@tiptap/extension-image';
@@ -89,12 +90,7 @@ declare module '@tiptap/core' {
             setImageLink(): ReturnType;
         };
         youtube: {
-            setYoutubeVideo(options: {
-                height?: number;
-                src: string;
-                start?: number;
-                width?: number;
-            }): ReturnType;
+            setYoutubeVideo(options: TuiYoutubeOptions): ReturnType;
         };
     }
 }
