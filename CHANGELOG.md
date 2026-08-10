@@ -1,3 +1,18 @@
+## [5.6.0](https://github.com/taiga-family/editor/compare/v5.5.0...v5.6.0) (2026-08-10)
+
+### 🚀 Features
+
+- **editor**: add hint to tasklist toolbar tool ([#2242](https://github.com/taiga-family/editor/pull/2242))
+  [(6e28ad2)](https://github.com/taiga-family/editor/commit/6e28ad28c2b413202a319bcb9ac9fdd8efedd81a)
+
+### 🐞 Bug Fixes
+
+- **editor**: make compatible with `@tiptap/extension-youtube@3.28.0`
+  ([#2249](https://github.com/taiga-family/editor/pull/2249))
+  [(b9519e4)](https://github.com/taiga-family/editor/commit/b9519e4d3da926fda1890385f113d3e9cf4237f5)
+- update dependency markdown-it to v14.3.0 ([#2247](https://github.com/taiga-family/editor/pull/2247))
+  [(f95a6e4)](https://github.com/taiga-family/editor/commit/f95a6e42789409d2987222a3b9503c7da05e0acb)
+
 ## [5.5.0](https://github.com/taiga-family/editor/compare/v5.4.2...v5.5.0) (2026-07-27)
 
 ### 🚀 Features
