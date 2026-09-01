@@ -26,6 +26,7 @@ jobs:
           FOLDER: ${{ env.DIST }}
           BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          SQUASH_HISTORY: true
 
       - name: Publish v${{ steps.info.outputs.version }}.x snapshots
         uses: s0/git-publish-subdir-action@92faf786f11dfa44fc366ac3eb274d193ca1af7e # v2.6.0
