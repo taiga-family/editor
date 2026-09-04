@@ -89,7 +89,7 @@
         "@nx/angular": "22.7.1",
         "@nx/cypress": "22.7.1",
         "@nx/jest": "22.7.1",
-        "@playwright/test": "1.61.1",
+        "@playwright/test": "1.62.1",
         "@taiga-ui/addon-doc": "5.18.0",
         "@taiga-ui/addon-mobile": "5.18.0",
         "@taiga-ui/cdk": "5.18.0",
