@@ -68,7 +68,7 @@
         "@types/markdown-it": "^14.1.2",
         "@types/markdown-it-container": "^2.0.11",
         "markdown-it": "^14.3.0",
-        "prosemirror-markdown": "^1.13.4"
+        "prosemirror-markdown": "^1.13.6"
     },
     "peerDependenciesMeta": {
         "@types/markdown-it": {
