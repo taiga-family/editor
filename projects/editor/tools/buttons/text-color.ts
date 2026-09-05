@@ -34,10 +34,20 @@ import {TuiToolbarButtonTool} from '../tool-button';
                 (selectedColor)="editor()?.setFontColor($event)"
             />
         </ng-container>
+
+        @if (!isBlankColor()) {
+            <div
+                tuiPlate
+                [style.background]="getFontColor()"
+            ></div>
+        }
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiToolbarButtonTool, TuiDropdownDirective, TuiWithDropdownOpen],
-    host: {'[attr.automation-id]': '"toolbar__color-button"'},
+    host: {
+        tuiPlateHost: '',
+        '[attr.automation-id]': '"toolbar__color-button"',
+    },
 })
 export class TuiTextColorButtonTool extends TuiToolbarTool {
     protected readonly dropdown = tuiDropdown(null);
@@ -51,7 +61,15 @@ export class TuiTextColorButtonTool extends TuiToolbarTool {
     public readonly colors = input(this.options.textColors ?? this.options.colors);
 
     protected override isActive(): boolean {
-        return this.editor()?.getFontColor() !== EDITOR_BLANK_COLOR;
+        return !this.isBlankColor();
+    }
+
+    protected isBlankColor(): boolean {
+        return this.getFontColor() === EDITOR_BLANK_COLOR;
+    }
+
+    protected getFontColor(): string {
+        return this.editor()?.getFontColor() ?? EDITOR_BLANK_COLOR;
     }
 
     protected getIcon(icons: TuiEditorOptions['icons']): string {
