@@ -5039,7 +5039,7 @@ var routes = [
   }),
   tuiProvideRoutePageTab({
     path: TuiDemoPath.ProcessingMarkdown,
-    loadComponent: async () => import("./chunk-JRAXSWKR.js"),
+    loadComponent: async () => import("./chunk-AAETC3GB.js"),
     title: "Editor \u2014 Markdown"
   }),
   tuiProvideRoutePageTab({

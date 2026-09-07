@@ -34,12 +34,12 @@ import "./chunk-KWSTWQNB.js";
 // projects/demo/src/app/pages/markdown/index.ts
 var _Example = class _Example {
   constructor() {
-    this.component1 = import("./chunk-56MRGDJT.js");
+    this.component1 = import("./chunk-JIKMT65V.js");
     this.example1 = {
       TypeScript: import("./chunk-F3PXOKUI.js"),
       HTML: import("./chunk-4KUEIGG5.js"),
       LESS: import("./chunk-ILS3VKQI.js"),
-      "example.md": import("./chunk-IT3RBWMB.js"),
+      "example.md": import("./chunk-ZRL6FOIY.js"),
       "make-markdown.ts": import("./chunk-BGBZ62RD.js")
     };
   }
@@ -71,4 +71,4 @@ var Example = _Example;
 export {
   Example as default
 };
-//# sourceMappingURL=chunk-JRAXSWKR.js.map
+//# sourceMappingURL=chunk-AAETC3GB.js.map

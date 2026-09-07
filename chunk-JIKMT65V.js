@@ -3759,7 +3759,7 @@ var _Example = class _Example {
     this.isE2E = inject(WA_IS_E2E);
   }
   ngOnInit() {
-    void tuiRawLoad(import("./chunk-IT3RBWMB.js")).then((data) => this.control.patchValue(data));
+    void tuiRawLoad(import("./chunk-ZRL6FOIY.js")).then((data) => this.control.patchValue(data));
   }
 };
 _Example.\u0275fac = function Example_Factory(__ngFactoryType__) {
@@ -3876,4 +3876,4 @@ export {
 showdown/dist/showdown.js:
   (*! showdown v 2.1.0 - 21-04-2022 *)
 */
-//# sourceMappingURL=chunk-56MRGDJT.js.map
+//# sourceMappingURL=chunk-JIKMT65V.js.map
