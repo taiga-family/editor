@@ -1,3 +1,18 @@
+## [5.7.0](https://github.com/taiga-family/editor/compare/v5.6.0...v5.7.0) (2026-09-07)
+
+### 🚀 Features
+
+- **editor**: unify color tool icons and show plate under text color
+  ([#2254](https://github.com/taiga-family/editor/pull/2254))
+  [(a4dae33)](https://github.com/taiga-family/editor/commit/a4dae33f911435c07997807fbee31fade3c2e43c)
+
+### 🐞 Bug Fixes
+
+- update dependency prosemirror-markdown to ^1.13.6 ([#2245](https://github.com/taiga-family/editor/pull/2245))
+  [(39e9351)](https://github.com/taiga-family/editor/commit/39e935101608cd8df16c4ea2782cc9c039f47dc8)
+- update tiptap to ^3.29.2 ([#2250](https://github.com/taiga-family/editor/pull/2250))
+  [(ff4af50)](https://github.com/taiga-family/editor/commit/ff4af5073bb08312eda75683c991a41356075a81)
+
 ## [5.6.0](https://github.com/taiga-family/editor/compare/v5.5.0...v5.6.0) (2026-08-10)
 
 ### 🚀 Features
