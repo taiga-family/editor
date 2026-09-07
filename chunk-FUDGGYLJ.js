@@ -1,0 +1,15 @@
+import{Da as N,ia as O,n as M}from"./chunk-2ROPFSBC.js";import"./chunk-ZQANYGME.js";import"./chunk-CXIBEND5.js";import"./chunk-J7WHKRTA.js";import"./chunk-TZBPBZFB.js";import"./chunk-PLVGK24E.js";import"./chunk-NNVK2SVY.js";import"./chunk-Y3OD62K7.js";import"./chunk-7LNIY4RB.js";import"./chunk-KZJOVDCI.js";import"./chunk-AWOMQCSB.js";import"./chunk-MJG3MZK2.js";import"./chunk-JA2DYB2W.js";import"./chunk-IUUOFLQ5.js";import"./chunk-IZDWFS36.js";import"./chunk-6WHJALQH.js";import"./chunk-KKKPCH6X.js";import{a as D,b,c as h}from"./chunk-KXNVDBZ6.js";import"./chunk-VHS3GHMH.js";import"./chunk-3VXHUGWH.js";import{d as A}from"./chunk-2ECPVTZZ.js";import{ea as I}from"./chunk-W3UK2JQM.js";import"./chunk-VUAK5MJH.js";import"./chunk-KCVFW5AG.js";import"./chunk-BEUY7UBT.js";import"./chunk-OCG6CYK4.js";import"./chunk-JLJOFALU.js";import{c as x,s as F}from"./chunk-I7M24DVB.js";import"./chunk-PXP5LW52.js";import"./chunk-HSTYGBAB.js";import{D as _,r as g,u as z,z as S}from"./chunk-HFB2H5VX.js";import{Dc as C,Gb as T,Mb as m,Tb as o,ac as i,bc as p,cc as c,dc as d,ec as f,jc as u,rb as n,sa as y,tc as l,uc as v}from"./chunk-MV4OHMNG.js";import"./chunk-JJ2OA5FC.js";import"./chunk-LWR4JIWF.js";import"./chunk-FTJLZ5K5.js";import"./chunk-7AGOMT3E.js";import"./chunk-DAQOROHW.js";function j(r,t){if(r&1&&(d(0),c(1,"tui-editor-socket",4),f()),r&2){let e=u();n(),o("content",e.control.value)}}function k(r,t){if(r&1&&(d(0),i(1,"span",5),l(2),p(),f()),r&2){let e=u();n(2),v(e.control.value)}}var a=class a{constructor(){this.builtInTools=[x.Undo,x.Size];this.isE2E=y(I);this.control=new z(`
+        <p><span style="font-size: 96px">96</span></p>
+        <p><span style="font-size: 72px">72</span></p>
+        <p><span style="font-size: 48px">48</span></p>
+        <p><span style="font-size: 36px">36</span></p>
+        <p><span style="font-size: 30px">30</span></p>
+        <p><span style="font-size: 24px">24</span></p>
+        <p><span style="font-size: 18px">18</span></p>
+        <p><span style="font-size: 14px">14</span></p>
+        <p><span style="font-size: 12px">12</span></p>
+        <p><span style="font-size: 11px">11</span></p>
+        <p><span style="font-size: 10px">10</span></p>
+        <p><span style="font-size: 9px">9</span></p>
+        <p><span style="font-size: 8px">8</span></p>
+    `)}};a.\u0275fac=function(e){return new(e||a)},a.\u0275cmp=T({type:a,selectors:[["ng-component"]],features:[C([F({fontOptions:()=>[8,9,10,11,12,14,18,24,30,36,48,60,72,96].map(t=>({px:t,name:`${t}`}))}),N()])],decls:10,vars:5,consts:[[1,"heading",3,"formControl","tools"],[3,"closeOthers"],[3,"tuiAccordion"],[4,"tuiItem"],[3,"content"],[1,"code"]],template:function(e,s){e&1&&(c(0,"tui-editor",0),i(1,"tui-accordion",1)(2,"button",2),l(3,"HTML"),p(),i(4,"tui-expand"),m(5,j,2,1,"ng-container",3),p(),i(6,"button",2),l(7,"Text"),p(),i(8,"tui-expand"),m(9,k,3,1,"ng-container",3),p()()),e&2&&(o("formControl",s.control)("tools",s.builtInTools),n(),o("closeOthers",!1),n(),o("tuiAccordion",s.isE2E),n(4),o("tuiAccordion",s.isE2E))},dependencies:[_,g,S,h,b,D,A,O,M],encapsulation:2,changeDetection:0});var E=a;export{E as default};
