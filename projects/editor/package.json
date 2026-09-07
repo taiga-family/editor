@@ -65,7 +65,7 @@
         "@tiptap/extensions": "^3.29.2",
         "@tiptap/pm": "^3.29.2",
         "@tiptap/starter-kit": "^3.29.2",
-        "@types/markdown-it": "^14.1.2",
+        "@types/markdown-it": "^14.2.0",
         "@types/markdown-it-container": "^2.0.11",
         "markdown-it": "^14.3.0",
         "prosemirror-markdown": "^1.13.6"
