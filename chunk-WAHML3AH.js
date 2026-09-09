@@ -1,1 +1,0 @@
-import{a,b,c,d,e,f,g,h,i,j,k,l,m}from"./chunk-TZBPBZFB.js";import"./chunk-7AGOMT3E.js";import"./chunk-DAQOROHW.js";export{h as DEFAULT_CELL_LINE_SEPARATOR,l as Table,a as TableCell,b as TableHeader,m as TableKit,c as TableRow,e as TableView,f as createColGroup,g as createTable,i as escapeTableCellPipes,j as preprocessTablePipes,k as renderTableToMarkdown,d as updateColumns};
