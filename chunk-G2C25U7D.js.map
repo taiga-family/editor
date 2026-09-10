@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/highlight/text/examples/1/index.less"],
+  "sourcesContent": ["::ng-deep .marked {\n    padding: 0.3125rem;\n    border-radius: 0.3125rem;\n    margin: 0 0.3125rem;\n    box-shadow: 0 0 0 0.125rem rgba(0, 123, 255, 0.25);\n    line-height: 2.6rem;\n}\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

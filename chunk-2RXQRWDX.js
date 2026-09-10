@@ -1,0 +1,8 @@
+import "./chunk-KWSTWQNB.js";
+
+// projects/demo/src/app/pages/upload-files/file-attach.md?raw
+var file_attach_default = "```ts\n@Injectable({\n  providedIn: `root`,\n})\nexport class UploadService {\n  readonly loading$ = new BehaviorSubject(false);\n\n  upload(file: File): Observable<TuiEditorAttachedFile> {\n    const body = new FormData();\n\n    body.append(`file`, file, file.name);\n\n    return from(fetch('https://cloud', {method: `POST`, body}).then(async (response: Response) => response.json()));\n  }\n}\n\n@Component({\n  standalone: true,\n  template: `\n    <tui-editor\n      [formControl]=\"control\"\n      [tools]=\"tools\"\n      (fileAttached)=\"attach($event)\"\n    ></tui-editor>\n  `,\n  providers: [\n    {\n      provide: TUI_ATTACH_FILES_OPTIONS,\n      useValue: {\n        multiple: true,\n        accept: '.pdf, .doc, .docx, .xls, .xlsx',\n      },\n    },\n    {\n      provide: TUI_ATTACH_FILES_LOADER,\n      deps: [UploadService],\n      useFactory(service: UploadService) {\n        return (files: File[]) => forkJoin(files.map((file) => service.upload(file)));\n      },\n    },\n  ],\n})\nexport class Example {\n  @ViewChild(TuiEditor)\n  private readonly wysiwyg?: TuiEditor;\n\n  readonly tools = [TuiEditorTool.Attach];\n\n  control = new FormControl('');\n\n  attach(files: TuiEditorAttachedFile[]): void {\n    files.forEach((file) => this.wysiwyg?.editor?.setFileLink(file));\n  }\n}\n```\n";
+export {
+  file_attach_default as default
+};
+//# sourceMappingURL=chunk-2RXQRWDX.js.map

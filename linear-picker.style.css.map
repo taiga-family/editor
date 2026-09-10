@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/editor/components/linear-picker/linear-picker.style.less"],
+  "sourcesContent": [":host {\n    position: relative;\n    display: block;\n    block-size: 1rem;\n    box-sizing: border-box;\n}\n\n.t-circle {\n    position: absolute;\n    inline-size: 1rem;\n    block-size: 1rem;\n    border-radius: 100%;\n    outline: 1px solid var(--tui-background-base);\n    margin: 0 -0.5rem;\n    box-shadow:\n        inset 0 0 0 2px var(--tui-base-01),\n        0 0 0 1px var(--tui-base-03);\n}\n"],
+  "mappings": ";AAAA;AACI,YAAA;AACA,WAAA;AACA,cAAA;AACA,cAAA;;AAGJ,CAAA;AACI,YAAA;AACA,eAAA;AACA,cAAA;AACA,iBAAA;AACA,WAAA,IAAA,MAAmB,IAAA;AACnB,UAAA,EAAA;AACA,cAAA,MAAA,EAAA,EAAA,EAAA,IACoB,IAAA,cAAA,EAAA,EAAA,EAAA,EAAA,IACN,IAAA;;",
+  "names": []
+}
