@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/editor/extensions/indent-outdent/index.ts"],
+  "sourcesContent": ["import {type Editor, Extension, type KeyboardShortcutCommand} from '@tiptap/core';\n\nexport function tuiIsListActive(editor: Editor): boolean {\n    return (\n        editor.isActive('bulletList') ||\n        editor.isActive('orderedList') ||\n        editor.isActive('taskList')\n    );\n}\n\nexport const TuiTabExtension = Extension.create({\n    name: 'indent',\n\n    addKeyboardShortcuts(): Record<string, KeyboardShortcutCommand> {\n        return {\n            Tab: () =>\n                tuiIsListActive(this.editor)\n                    ? false\n                    : this.editor.commands.insertContent('\\t'),\n        };\n    },\n});\n"],
+  "mappings": ";;;;;AAEM,SAAU,gBAAgB,QAAc;AAC1C,SACI,OAAO,SAAS,YAAY,KAC5B,OAAO,SAAS,aAAa,KAC7B,OAAO,SAAS,UAAU;AAElC;AAEO,IAAM,kBAAkB,UAAU,OAAO;EAC5C,MAAM;EAEN,uBAAoB;AAChB,WAAO;MACH,KAAK,MACD,gBAAgB,KAAK,MAAM,IACrB,QACA,KAAK,OAAO,SAAS,cAAc,GAAI;;EAEzD;CACH;",
+  "names": []
+}

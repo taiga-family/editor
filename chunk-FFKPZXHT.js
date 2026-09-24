@@ -1,0 +1,90 @@
+import {
+  Node2 as Node,
+  mergeAttributes
+} from "./chunk-42BGUG2S.js";
+import "./chunk-KWSTWQNB.js";
+
+// node_modules/@tiptap/extension-hard-break/dist/index.js
+var HardBreak = Node.create({
+  name: "hardBreak",
+  markdownTokenName: "br",
+  addOptions() {
+    return {
+      keepMarks: true,
+      HTMLAttributes: {}
+    };
+  },
+  inline: true,
+  group: "inline",
+  selectable: false,
+  linebreakReplacement: true,
+  parseHTML() {
+    return [{
+      tag: "br"
+    }];
+  },
+  renderHTML({
+    HTMLAttributes
+  }) {
+    return ["br", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)];
+  },
+  renderText() {
+    return "\n";
+  },
+  renderMarkdown: () => `  
+`,
+  parseMarkdown: () => {
+    return {
+      type: "hardBreak"
+    };
+  },
+  addCommands() {
+    return {
+      setHardBreak: () => ({
+        commands,
+        chain,
+        state,
+        editor
+      }) => {
+        return commands.first([() => commands.exitCode(), () => commands.command(() => {
+          const {
+            selection,
+            storedMarks
+          } = state;
+          if (selection.$from.parent.type.spec.isolating) return false;
+          const {
+            keepMarks
+          } = this.options;
+          const {
+            splittableMarks
+          } = editor.extensionManager;
+          const marks = storedMarks || selection.$to.parentOffset && selection.$from.marks();
+          return chain().insertContent({
+            type: this.name
+          }).command(({
+            tr,
+            dispatch
+          }) => {
+            if (dispatch && marks && keepMarks) {
+              const filteredMarks = marks.filter((mark) => splittableMarks.includes(mark.type.name));
+              tr.ensureMarks(filteredMarks);
+            }
+            return true;
+          }).scrollIntoView().run();
+        })]);
+      }
+    };
+  },
+  addKeyboardShortcuts() {
+    return {
+      "Mod-Enter": () => this.editor.commands.setHardBreak(),
+      "Shift-Enter": () => this.editor.commands.setHardBreak()
+    };
+  }
+});
+var src_default = HardBreak;
+export {
+  HardBreak,
+  src_default as default
+};
+//# sourceMappingURL=chunk-FFKPZXHT.js.map

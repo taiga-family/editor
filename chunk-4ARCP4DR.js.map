@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/custom-tool/paste-emoji/examples/1/index.less"],
+  "sourcesContent": [".hint {\n    display: flex;\n    color: var(--tui-border-hover);\n    block-size: 100%;\n    align-items: center;\n}\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

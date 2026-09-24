@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/starter/import/styles.less.md"],
+  "sourcesContent": ["```less\n@import '@taiga-ui/core/styles/taiga-ui-theme.less';\n```\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

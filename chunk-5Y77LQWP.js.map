@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/editor/extensions/enter/index.ts"],
+  "sourcesContent": ["import {Extension} from '@tiptap/core';\n\ndeclare const globalThis: {document: Document | undefined};\n\nexport const TuiCustomEnter = Extension.create({\n    name: 'customEnter',\n    addKeyboardShortcuts() {\n        return {\n            Enter: ({editor}) => {\n                if (editor.isActive('summary')) {\n                    editor.commands.selectNodeForward();\n                    editor.commands.focus(editor.state.selection.anchor + 1);\n\n                    if (globalThis.document) {\n                        editor.view\n                            .nodeDOM(editor.state.selection.anchor)\n                            ?.parentElement?.closest('details')\n                            ?.querySelector('[data-type=\"details-content\"]')\n                            ?.prepend(document.createElement('p'));\n                    }\n\n                    return false;\n                }\n\n                return this.editor.chain().createParagraphNear().run();\n            },\n        };\n    },\n});\n"],
+  "mappings": ";;;;;AAIO,IAAM,iBAAiB,UAAU,OAAO;EAC3C,MAAM;EACN,uBAAoB;AAChB,WAAO;MACH,OAAO,CAAC,EAAC,OAAM,MAAK;AAChB,YAAI,OAAO,SAAS,SAAS,GAAG;AAC5B,iBAAO,SAAS,kBAAiB;AACjC,iBAAO,SAAS,MAAM,OAAO,MAAM,UAAU,SAAS,CAAC;AAEvD,cAAI,WAAW,UAAU;AACrB,mBAAO,KACF,QAAQ,OAAO,MAAM,UAAU,MAAM,GACpC,eAAe,QAAQ,SAAS,GAChC,cAAc,+BAA+B,GAC7C,QAAQ,SAAS,cAAc,GAAG,CAAC;UAC7C;AAEA,iBAAO;QACX;AAEA,eAAO,KAAK,OAAO,MAAK,EAAG,oBAAmB,EAAG,IAAG;MACxD;;EAER;CACH;",
+  "names": []
+}
