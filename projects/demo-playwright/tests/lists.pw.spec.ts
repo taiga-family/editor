@@ -87,10 +87,6 @@ test.describe('Lists', () => {
         await contenteditable.selectText();
         await page.locator('[automation-id="toolbar__task-list-button"]').click();
 
-        // Tiptap's interactive TaskItem node view never sets `data-type` on
-        // the `<li>` it creates (only the static, non-interactive
-        // `renderHTML` fallback does) — it only sets `data-checked`, which is
-        // also what the app's own styles key off (see checkbox.less).
         const item = editor.host.locator('li[data-checked]').first();
 
         await item.locator('input[type="checkbox"]').click();
