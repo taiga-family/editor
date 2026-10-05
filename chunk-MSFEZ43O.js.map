@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/custom-tool/span/examples/1/thread-span.ts"],
+  "sourcesContent": ["import {Mark} from '@tiptap/core';\n\nexport const ThreadSpan = Mark.create({\n    name: 'threadSpan',\n\n    renderHTML({HTMLAttributes}) {\n        return ['span', HTMLAttributes, 0];\n    },\n\n    parseHTML() {\n        return [{tag: 'span[data-thread-id]'}];\n    },\n\n    addAttributes() {\n        return {\n            class: {default: null},\n            'data-thread-id': {default: null},\n        };\n    },\n});\n"],
+  "mappings": ";;;;;;AAEO,IAAM,aAAa,KAAK,OAAO;EAClC,MAAM;EAEN,WAAW,EAAC,eAAc,GAAC;AACvB,WAAO,CAAC,QAAQ,gBAAgB,CAAC;EACrC;EAEA,YAAS;AACL,WAAO,CAAC,EAAC,KAAK,uBAAsB,CAAC;EACzC;EAEA,gBAAa;AACT,WAAO;MACH,OAAO,EAAC,SAAS,KAAI;MACrB,kBAAkB,EAAC,SAAS,KAAI;;EAExC;CACH;",
+  "names": []
+}

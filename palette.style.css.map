@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/editor/components/palette/palette.style.less"],
+  "sourcesContent": [":host {\n    display: flex;\n    flex-wrap: wrap;\n    padding: 0.875rem;\n}\n\n.t-button {\n    appearance: none;\n    padding: 0;\n    background: none;\n    font-size: inherit;\n    line-height: inherit;\n    inline-size: 1.5625rem;\n    block-size: 1.5625rem;\n    box-sizing: border-box;\n    margin: 0.375rem;\n    border-radius: var(--tui-radius-m);\n    border: 1px solid rgba(0, 0, 0, 0.08);\n}\n"],
+  "mappings": ";AAAA;AACI,WAAA;AACA,aAAA;AACA,WAAA;;AAGJ,CAAA;AACI,sBAAA;AAAA,cAAA;AACA,WAAA;AACA,cAAA;AACA,aAAA;AACA,eAAA;AACA,eAAA;AACA,cAAA;AACA,cAAA;AACA,UAAA;AACA,iBAAe,IAAA;AACf,UAAA,IAAA,MAAA,KAAA,CAAA,EAAA,CAAA,EAAA,CAAA,EAAA;;",
+  "names": []
+}
