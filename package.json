@@ -109,6 +109,7 @@
         "cypress": "15.21.1",
         "express": "4.22.2",
         "husky": "9.1.7",
+        "jest-preset-angular": "14.6.2",
         "markdown-it": "14.3.0",
         "ng-packagr": "19.2.2",
         "nx": "22.1.1",
