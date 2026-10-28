@@ -1,3 +1,16 @@
+## [5.7.1](https://github.com/taiga-family/editor/compare/v5.7.0...v5.7.1) (2026-10-28)
+
+### 🐞 Bug Fixes
+
+- update dependency @types/markdown-it-container to v2.0.12 ([#2271](https://github.com/taiga-family/editor/pull/2271))
+  [(70bcd5d)](https://github.com/taiga-family/editor/commit/70bcd5d257991eeac7c7f5bbcb90453887654bf0)
+- update tiptap to ^3.30.5 ([#2266](https://github.com/taiga-family/editor/pull/2266))
+  [(75987a6)](https://github.com/taiga-family/editor/commit/75987a63b5a3b9b617b8e5660e6914c376fbbb64)
+- update tiptap to ^3.30.3 ([#2264](https://github.com/taiga-family/editor/pull/2264))
+  [(9b3dd79)](https://github.com/taiga-family/editor/commit/9b3dd79d68ed15a8d5933aedd136ae8767a9ab6d)
+- update dependency @types/markdown-it to v14.2.0 ([#2261](https://github.com/taiga-family/editor/pull/2261))
+  [(5863cda)](https://github.com/taiga-family/editor/commit/5863cdaed6b4c6fa8958e04e69831037990820f7)
+
 ## [5.7.0](https://github.com/taiga-family/editor/compare/v5.6.0...v5.7.0) (2026-09-07)
 
 ### 🚀 Features
