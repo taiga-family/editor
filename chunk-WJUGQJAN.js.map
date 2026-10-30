@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/cleanup-html/examples/1/index.html"],
+  "sourcesContent": ["<tui-editor\n    class=\"editor\"\n    [formControl]=\"control\"\n>\n    Placeholder\n</tui-editor>\n\n<tui-accordion [closeOthers]=\"false\">\n    <button [tuiAccordion]=\"isE2E\">HTML</button>\n    <tui-expand>\n        <ng-container *tuiItem>\n            <tui-editor-socket [content]=\"control.value\" />\n        </ng-container>\n    </tui-expand>\n\n    <button [tuiAccordion]=\"isE2E\">Text</button>\n    <tui-expand>\n        <ng-container *tuiItem>\n            <span class=\"code\">{{ control.value }}</span>\n        </ng-container>\n    </tui-expand>\n</tui-accordion>\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

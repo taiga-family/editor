@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/font/examples/5/index.ts"],
+  "sourcesContent": ["import {ChangeDetectionStrategy, Component} from '@angular/core';\nimport {FormControl, ReactiveFormsModule} from '@angular/forms';\nimport {\n    provideTuiEditor,\n    provideTuiEditorOptions,\n    TuiEditor,\n    TuiEditorTool,\n} from '@taiga-ui/editor';\nimport {PolymorpheusComponent} from '@taiga-ui/polymorpheus';\n\nimport {FontOption} from './font-option';\n\n@Component({\n    imports: [ReactiveFormsModule, TuiEditor],\n    template: '<tui-editor [formControl]=\"control\" [tools]=\"builtInTools\" />',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n    providers: [\n        provideTuiEditor(),\n        provideTuiEditorOptions({\n            fontOptionContent: new PolymorpheusComponent(FontOption),\n        }),\n    ],\n})\nexport default class Example {\n    protected readonly builtInTools = [TuiEditorTool.Undo, TuiEditorTool.Size];\n\n    protected readonly control = new FormControl(`\n        <h1>Title</h1>\n        <h2>Subtitle</h2>\n        <p>Normal text</p>\n    `);\n}\n"],
+  "mappings": ";;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;",
+  "names": []
+}
