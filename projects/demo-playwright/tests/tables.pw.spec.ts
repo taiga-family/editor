@@ -172,4 +172,58 @@ test.describe('Tables', () => {
         await page.mouse.move(0, 0);
         await expect.soft(editor.host).toHaveScreenshot('Tables-08.png');
     });
+
+    test('resizes the last column by dragging its edge', async ({page}) => {
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const table = getTable(editor);
+        const lastColumn = table.locator('colgroup col').nth(2);
+        const lastCell = table.locator('tr').first().locator('th, td').nth(2);
+
+        await expect(lastColumn).toHaveAttribute('style', 'min-width: 25px;');
+        await table.scrollIntoViewIfNeeded();
+
+        const box = await lastCell.boundingBox();
+
+        expect(box).not.toBeNull();
+
+        // Bug #1752: dragging the right edge of the last table column must
+        // shrink it (the last column is resizable, not just the inner ones).
+        await page.mouse.move(box!.x + box!.width - 2, box!.y + box!.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(box!.x + box!.width - 60, box!.y + box!.height / 2, {
+            steps: 15,
+        });
+        await page.mouse.up();
+
+        await expect(lastColumn).toHaveAttribute(
+            'style',
+            /min-width: 25px; width: \d+px;/,
+        );
+        await editor.host.blur();
+        await page.mouse.move(0, 0);
+        await expect.soft(editor.host).toHaveScreenshot('Tables-09.png');
+    });
+
+    test('inserts a horizontal rule into an empty cell without breaking the table', async ({
+        page,
+    }) => {
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const table = getTable(editor);
+        const emptyCell = getFirstRowCells(editor).first();
+
+        await emptyCell.click();
+        await page
+            .getByRole('button', {name: 'Insert horizontal rule', exact: true})
+            .click();
+
+        // Bug #1269: adding a separator to an empty cell used to render it above
+        // the table (single row) or split the table into two (multiple rows).
+        await expect(table).toHaveCount(1);
+        await expect(getRows(editor)).toHaveCount(2);
+        await expect(table.locator('hr')).toHaveCount(1);
+        await expect(emptyCell.locator('hr')).toHaveCount(1);
+        await editor.host.blur();
+        await page.mouse.move(0, 0);
+        await expect.soft(editor.host).toHaveScreenshot('Tables-10.png');
+    });
 });
