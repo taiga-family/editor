@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/starter/import/template.md"],
+  "sourcesContent": ["```html\n<tui-root>\n  <tui-editor\n    [formControl]=\"control\"\n    [tools]=\"tools\"\n  >\n    Placeholder\n  </tui-editor>\n</tui-root>\n```\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

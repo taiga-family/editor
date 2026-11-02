@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/font/examples/5/font-option/index.less"],
+  "sourcesContent": [":host {\n    display: contents;\n}\n\n[tuiOption] {\n    justify-content: space-between;\n}\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}
