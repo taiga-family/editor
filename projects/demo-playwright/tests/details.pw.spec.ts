@@ -1,5 +1,5 @@
 import {TuiDemoPath} from '@demo/shared/routes';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, type Page, test} from '@playwright/test';
 
 import {TuiEditorPO, tuiGoto} from '../utils';
 
@@ -238,5 +238,191 @@ test.describe('Details', () => {
 
         await expect.soft(editor.host).toHaveScreenshot('Details-triple-03.png');
         await expect(editor.host.locator('.t-details-wrapper')).toHaveCount(0);
+    });
+
+    async function openAccordion(page: Page): Promise<{
+        editor: TuiEditorPO;
+        wrappers: Locator;
+        summary: Locator;
+        content: Locator;
+    }> {
+        const detailsButton = page
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}`);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+        const wrappers = editor.host.locator('.t-details-wrapper');
+        const summary = editor.host.locator('summary').first();
+        const content = editor.host.locator('[data-type="details-content"]').first();
+
+        await contenteditable.click();
+        await contenteditable.selectText();
+        await contenteditable.clear();
+        await detailsButton.click();
+        await page.keyboard.type('Title');
+
+        return {editor, wrappers, summary, content};
+    }
+
+    test('two lines of text in the summary keep a single accordion (bug #1270)', async ({
+        page,
+    }) => {
+        const {editor, wrappers, summary} = await openAccordion(page);
+
+        await editor.placeCaretAtEnd(summary);
+        await page.keyboard.press('Enter');
+        await page.keyboard.type('Second line');
+
+        await expect(wrappers).toHaveCount(1);
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect.soft(editor.host).toHaveScreenshot('Details-1270-01.png');
+    });
+
+    test('horizontal rule inside the summary stays inside it (bug #1270)', async ({
+        page,
+    }) => {
+        const {editor, wrappers, summary} = await openAccordion(page);
+        const hrButton = page.getByRole('button', {
+            name: 'Insert horizontal rule',
+            exact: true,
+        });
+
+        await editor.placeCaretAtEnd(summary);
+        await page.keyboard.press('Enter');
+        await hrButton.click();
+
+        await expect(wrappers).toHaveCount(1);
+        await expect(summary.locator('hr')).toHaveCount(1);
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect.soft(editor.host).toHaveScreenshot('Details-1270-02.png');
+    });
+
+    test('nested accordion inside the summary is ignored (bug #1270)', async ({page}) => {
+        const {editor, wrappers, summary} = await openAccordion(page);
+        const detailsButton = page
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        await editor.placeCaretAtEnd(summary);
+        await detailsButton.click();
+
+        await expect(wrappers).toHaveCount(1);
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect.soft(editor.host).toHaveScreenshot('Details-1270-03.png');
+    });
+
+    test('table inside the summary is rendered on its own line (bug #1270)', async ({
+        page,
+    }) => {
+        const html = encodeURIComponent(`
+            <details open>
+                <summary>
+                    <table>
+                        <tbody>
+                            <tr><th><p>Title</p></th><th><p></p></th></tr>
+                            <tr><td><p></p></td><td><p></p></td></tr>
+                        </tbody>
+                    </table>
+                </summary>
+                <div data-type="details-content"><p></p></div>
+            </details>
+        `);
+
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=${html}`);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const wrappers = editor.host.locator('.t-details-wrapper');
+        const summary = editor.host.locator('summary').first();
+
+        await expect(wrappers).toHaveCount(1);
+        await expect(summary.locator('table')).toHaveCount(1);
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect.soft(editor.host).toHaveScreenshot('Details-1270-04.png');
+    });
+
+    test('horizontal rule inside the empty content stays inside it (bug #1270)', async ({
+        page,
+    }) => {
+        const {editor, wrappers, content} = await openAccordion(page);
+        const hrButton = page.getByRole('button', {
+            name: 'Insert horizontal rule',
+            exact: true,
+        });
+
+        await editor.placeCaretAtEnd(content);
+        await hrButton.click();
+
+        await expect(wrappers).toHaveCount(1);
+        await expect(content.locator('hr')).toHaveCount(1);
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect(editor.host).toHaveScreenshot('Details-1270-05.png');
+    });
+
+    test('long title in the accordion summary wraps onto multiple lines (bug #1274)', async ({
+        page,
+    }) => {
+        const longTitle = 'The quick brown fox jumps over the lazy dog. '.repeat(5);
+        const html = encodeURIComponent(`
+            <details open>
+                <summary><p>${longTitle}</p></summary>
+                <div data-type="details-content"><p></p></div>
+            </details>
+        `);
+
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}?ngModel=${html}`);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+
+        await page.mouse.move(0, 0);
+        await editor.host.blur();
+        await expect.soft(editor.host).toHaveScreenshot('Details-1274-word-wrap.png');
+    });
+
+    test('pasting into the accordion summary keeps a single accordion (bug #1751)', async ({
+        page,
+    }) => {
+        await tuiGoto(page, `/${TuiDemoPath.StarterKit}`);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+        const wrappers = editor.host.locator('.t-details-wrapper');
+        const summary = editor.host.locator('summary').first();
+        const detailsButton = page
+            .locator('tui-toolbar button')
+            .locator('text="Details"');
+
+        await contenteditable.click();
+        await contenteditable.selectText();
+        await contenteditable.clear();
+        await detailsButton.click();
+
+        await expect(wrappers).toHaveCount(1);
+
+        await contenteditable.focus();
+        await contenteditable.evaluate((el) => {
+            const dt = new DataTransfer();
+
+            dt.setData('text/plain', 'Pasted title');
+            dt.setData('text/html', '<p>Pasted title</p>');
+
+            el.dispatchEvent(
+                new ClipboardEvent('paste', {
+                    clipboardData: dt,
+                    bubbles: true,
+                    cancelable: true,
+                }),
+            );
+        });
+
+        await expect(wrappers).toHaveCount(1);
+        await expect(summary).toContainText('Pasted title');
     });
 });
