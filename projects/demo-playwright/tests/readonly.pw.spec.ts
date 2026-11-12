@@ -73,4 +73,44 @@ test.describe('Readonly and Disabled states', () => {
 
         await expect.soft(editor.host).toHaveScreenshot('Readonly-05.png');
     });
+
+    test('details delete is blocked in readonly/disabled state (bug #1744)', async ({
+        page,
+    }) => {
+        const detailsHtml = encodeURIComponent(`
+            <div class="t-details-wrapper t-details-wrapper_rendered">
+                <details data-opened="true">
+                    <summary><p>Title</p></summary>
+                    <div data-type="details-content"><p>Content</p></div>
+                </details>
+                <button class="t-details-arrow"></button>
+            </div>
+        `);
+
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+
+        async function assertDeleteBlocked(url: string): Promise<void> {
+            await tuiGoto(page, url);
+
+            await editor.contenteditable();
+
+            const wrappers = editor.host.locator('.t-details-wrapper');
+            const deleteButton = editor.host.locator('.t-details-delete').first();
+
+            await expect(wrappers).toHaveCount(1);
+
+            const before = await wrappers.count();
+
+            await expect(deleteButton).toBeHidden();
+            await expect(wrappers).toHaveCount(before);
+        }
+
+        await assertDeleteBlocked(
+            `/${TuiDemoPath.StarterKit}?readOnly=true&ngModel=${detailsHtml}`,
+        );
+
+        await assertDeleteBlocked(
+            `/${TuiDemoPath.StarterKit}?disabled=true&ngModel=${detailsHtml}`,
+        );
+    });
 });
