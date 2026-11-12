@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/dialog/examples/1/index.html"],
+  "sourcesContent": ["<button\n    tuiButton\n    type=\"button\"\n    (click)=\"showDialog()\"\n>\n    Show dialog\n</button>\n\n<ng-template\n    let-observer\n    [tuiDialogOptions]=\"{label: 'Editor', size: 'l'}\"\n    [(tuiDialog)]=\"open\"\n>\n    <form\n        [formGroup]=\"form\"\n        (ngSubmit)=\"observer.complete()\"\n    >\n        <tui-editor\n            formControlName=\"content\"\n            [tools]=\"tools\"\n        >\n            Start typing\n        </tui-editor>\n\n        <button\n            tuiButton\n            type=\"submit\"\n            class=\"tui-space_top-4\"\n        >\n            Save\n        </button>\n    </form>\n</ng-template>\n"],
+  "mappings": ";;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;",
+  "names": []
+}

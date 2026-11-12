@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/upload-files/examples/1/index.less"],
+  "sourcesContent": [".editor {\n    ::ng-deep .tui-editor-socket .ProseMirror {\n        min-block-size: 10rem;\n    }\n}\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}
