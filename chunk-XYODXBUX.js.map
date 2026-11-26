@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/forms/examples/1/index.html"],
+  "sourcesContent": ["<tui-editor\n    class=\"editor\"\n    [formControl]=\"control\"\n>\n    Typing...\n</tui-editor>\n\n<p class=\"status\">\n    touched: {{ control.touched }} \u00B7 dirty: {{ control.dirty }} \u00B7 invalid: {{ control.invalid }} \u00B7 disabled:\n    {{ control.disabled }}\n</p>\n\n<tui-error [formControl]=\"control\" />\n\n<button\n    tuiButton\n    type=\"button\"\n    (click)=\"reset()\"\n>\n    Reset\n</button>\n\n<button\n    tuiButton\n    type=\"button\"\n    (click)=\"toggleDisabled()\"\n>\n    Toggle disabled\n</button>\n\n<button\n    data-testid=\"outside\"\n    tuiButton\n    type=\"button\"\n>\n    Outside\n</button>\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}
