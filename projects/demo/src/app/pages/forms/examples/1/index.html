@@ -1,0 +1,37 @@
+<tui-editor
+    class="editor"
+    [formControl]="control"
+>
+    Typing...
+</tui-editor>
+
+<p class="status">
+    touched: {{ control.touched }} · dirty: {{ control.dirty }} · invalid: {{ control.invalid }} · disabled:
+    {{ control.disabled }}
+</p>
+
+<tui-error [formControl]="control" />
+
+<button
+    tuiButton
+    type="button"
+    (click)="reset()"
+>
+    Reset
+</button>
+
+<button
+    tuiButton
+    type="button"
+    (click)="toggleDisabled()"
+>
+    Toggle disabled
+</button>
+
+<button
+    data-testid="outside"
+    tuiButton
+    type="button"
+>
+    Outside
+</button>

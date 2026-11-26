@@ -125,4 +125,57 @@ test.describe('Links', () => {
 
         await expect.soft(editor.host).toHaveScreenshot('Links-09.png');
     });
+
+    test('created link keeps target and rel attributes (bug #2044)', async ({page}) => {
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.selectText();
+        await contenteditable.clear();
+
+        await page.keyboard.type('Hello');
+        await contenteditable.selectText();
+
+        await page.locator('[automation-id="toolbar__link-button"]').click();
+        await expect(editor.link.input).toBeVisible();
+        await editor.link.submit('abc.com');
+
+        const link = editor.host.locator('a[href*="abc.com"]');
+
+        await expect(link).toHaveCount(1);
+        await expect(link).toHaveAttribute('target', '_blank');
+        await expect(link).toHaveAttribute('rel', 'noopener noreferrer nofollow');
+    });
+
+    test('pasting multiple links keeps their distinct URLs (bug #577)', async ({
+        page,
+    }) => {
+        const editor = new TuiEditorPO(page.locator('tui-editor'));
+        const contenteditable = await editor.contenteditable();
+
+        await contenteditable.selectText();
+        await contenteditable.clear();
+
+        await contenteditable.focus();
+        await contenteditable.evaluate((el) => {
+            const dt = new DataTransfer();
+
+            dt.setData(
+                'text/html',
+                '<p><a href="https://example.com">first</a> <a href="https://example.org">second</a></p>',
+            );
+
+            el.dispatchEvent(
+                new ClipboardEvent('paste', {
+                    clipboardData: dt,
+                    bubbles: true,
+                    cancelable: true,
+                }),
+            );
+        });
+
+        await expect(editor.host.locator('a')).toHaveCount(2);
+        await expect(editor.host.locator('a[href="https://example.com"]')).toHaveCount(1);
+        await expect(editor.host.locator('a[href="https://example.org"]')).toHaveCount(1);
+    });
 });

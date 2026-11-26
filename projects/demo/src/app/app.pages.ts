@@ -98,6 +98,13 @@ export const DEMO_PAGES: TuiDocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Form',
+        route: TuiDemoPath.Form,
+        keywords:
+            'editor, form, validation, validators, touched, invalid, форма, валидация',
+    },
+    {
+        section: 'Documentation',
         title: 'Upload files',
         route: TuiDemoPath.UploadFiles,
         keywords: 'attach, files, upload, TUI_ATTACH_FILES_LOADER',

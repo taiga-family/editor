@@ -75,6 +75,11 @@ export const routes: Routes = [
         title: 'Focus',
     }),
     route({
+        path: TuiDemoPath.Form,
+        loadComponent: async () => import('./pages/forms'),
+        title: 'Form',
+    }),
+    route({
         path: TuiDemoPath.Groups,
         loadComponent: async () => import('./pages/groups'),
         title: 'Groups',

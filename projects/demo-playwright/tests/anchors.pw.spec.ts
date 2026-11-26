@@ -35,6 +35,31 @@ test.describe('Anchors', () => {
         }
     });
 
+    test('second click on an anchor link scrolls to the target again (bug #1731)', async ({
+        page,
+    }) => {
+        const socket = page.locator('tui-editor-socket').last();
+        const link = socket.locator('a[href="#moser"]').last();
+        const scrollY = async (): Promise<number> => page.evaluate(() => window.scrollY);
+
+        await link.click();
+        await waitForScrollEnd(page);
+        const firstScroll = await scrollY();
+
+        expect(firstScroll).toBeGreaterThan(0);
+
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(200);
+        expect(await scrollY()).toBe(0);
+
+        await link.click();
+        await waitForScrollEnd(page);
+
+        const secondScroll = await scrollY();
+
+        expect(secondScroll).toBeGreaterThan(0);
+    });
+
     test('make anchor', async ({page}) => {
         const fullExample = page.locator('tui-doc-example#anchors');
         const editor = new TuiEditorPO(fullExample.locator('tui-editor'));
