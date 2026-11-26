@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/appearance/examples/1/index.html"],
+  "sourcesContent": ["<tui-editor\n    appearance=\"no-border\"\n    [formControl]=\"control\"\n    [tools]=\"[]\"\n/>\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

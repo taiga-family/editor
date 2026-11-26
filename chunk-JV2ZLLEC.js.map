@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/custom-tool/color-picker/examples/1/index.ts"],
+  "sourcesContent": ["import {ChangeDetectionStrategy, Component} from '@angular/core';\nimport {FormControl, ReactiveFormsModule} from '@angular/forms';\nimport {provideTuiEditor, TuiEditor, TuiEditorTool} from '@taiga-ui/editor';\n\nimport {CustomColorPicker} from './custom-color-picker';\n\n@Component({\n    imports: [CustomColorPicker, ReactiveFormsModule, TuiEditor],\n    templateUrl: './index.html',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n    providers: [provideTuiEditor()],\n})\nexport default class Example {\n    protected readonly builtInTools = [TuiEditorTool.Undo];\n    protected readonly control = new FormControl('');\n}\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}

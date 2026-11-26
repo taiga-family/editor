@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/pages/custom-tool/color-picker/examples/1/index.html"],
+  "sourcesContent": ["<tui-editor\n    placeholder=\"Required text *\"\n    class=\"editor\"\n    [formControl]=\"control\"\n    [tools]=\"builtInTools\"\n>\n    <ng-container ngProjectAs=\"tools\">\n        <custom-color-picker\n            icon=\"@tui.baseline\"\n            type=\"FontColor\"\n        />\n\n        <custom-color-picker\n            icon=\"@tui.paint-bucket\"\n            type=\"BackgroundColor\"\n        />\n    </ng-container>\n</tui-editor>\n"],
+  "mappings": ";;;AAAA;",
+  "names": []
+}
